@@ -26,9 +26,8 @@ import { IcSignature } from '@proton/icons/icons/IcSignature';
 import { IcStorage } from '@proton/icons/icons/IcStorage';
 import { IcTag } from '@proton/icons/icons/IcTag';
 import { IcUsers } from '@proton/icons/icons/IcUsers';
-import type { FreePlanDefault, Plan } from '@proton/payments';
-import { PLANS, PLAN_NAMES } from '@proton/payments';
-import { getAppFromPathnameSafe } from '@proton/shared/lib/apps/slugHelper';
+import { PLANS } from '@proton/payments/core/constants';
+import type { FreePlanDefault, Plan } from '@proton/payments/core/plan/interface';
 import {
     APPS,
     BRAND_NAME,
@@ -47,6 +46,7 @@ import humanSize from '@proton/shared/lib/helpers/humanSize';
 
 import type { ComparisonFeatureRow } from '../components/ComparisonTable';
 import { CustomLogoHeader } from '../components/CustomLogoHeader';
+import { getPlanDisplayName } from '../helpers/getPlanDisplayName';
 
 const DRIVE_PLUS_NAME = `${DRIVE_SHORT_APP_NAME} Plus`;
 
@@ -681,7 +681,7 @@ const FreePlanHeader = ({ app }: { app?: APP_NAMES }) => {
 
 export const getTemporaryNeedConfig = (plan: Plan, freePlan: FreePlanDefault): TemporaryNeedPlanConfig | undefined => {
     const planTitle = plan.Title;
-    let planDisplayName = PLAN_NAMES[plan.Name as PLANS] ?? planTitle;
+    let planDisplayName = getPlanDisplayName(plan.Name as PLANS, planTitle);
 
     if (plan.Name === PLANS.DRIVE || plan.Name === PLANS.DRIVE_1TB) {
         planDisplayName = DRIVE_PLUS_NAME;
@@ -701,9 +701,9 @@ export const getTemporaryNeedConfig = (plan: Plan, freePlan: FreePlanDefault): T
     const mailFreePlanHeader = <FreePlanHeader app={APPS.PROTONMAIL} />;
     const driveFreePlanHeader = <FreePlanHeader app={APPS.PROTONDRIVE} />;
 
-    // The bundle free plan header will adapt the product logo based on the current app
-    const currentApp = getAppFromPathnameSafe(location.pathname);
-    const bundleFreePlanHeader = <FreePlanHeader app={currentApp} />;
+    // Always show the free Mail logo, except for Drive plans which use the Drive logo (see configs below).
+    // The logo is not based on the application the user is cancelling from.
+    const bundleFreePlanHeader = mailFreePlanHeader;
 
     const makePlanHeader = (planName: CustomLogoPlanName) => {
         let logo;
@@ -764,7 +764,7 @@ export const getTemporaryNeedConfig = (plan: Plan, freePlan: FreePlanDefault): T
         [PLANS.VISIONARY]: {
             currentPlanHeader: makePlanHeader(PLANS.VISIONARY),
             freePlanHeader: bundleFreePlanHeader,
-            subtitle: getVisionarySubtitle(planTitle),
+            subtitle: getVisionarySubtitle(planDisplayName),
             features: getVisionaryFeatures(values),
         },
         [PLANS.MAIL_PRO]: {

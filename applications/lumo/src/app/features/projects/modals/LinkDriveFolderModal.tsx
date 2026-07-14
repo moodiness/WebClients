@@ -3,15 +3,15 @@ import { useCallback, useState } from 'react';
 import { c } from 'ttag';
 
 import { Button } from '@proton/atoms/Button/Button';
-import { ModalTwo, ModalTwoContent, ModalTwoFooter, ModalTwoHeader, useNotifications } from '@proton/components';
+import { ButtonLikeSizeEnum } from '@proton/atoms/Button/ButtonLike';
 import type { ModalStateProps } from '@proton/components';
+import { ModalTwo, ModalTwoContent, ModalTwoFooter, ModalTwoHeader, useNotifications } from '@proton/components';
 import { IcBrandProtonDriveFilled } from '@proton/icons/icons/IcBrandProtonDriveFilled';
-import { IcExclamationTriangleFilled } from '@proton/icons/icons/IcExclamationTriangleFilled';
-import { IcFolder } from '@proton/icons/icons/IcFolder';
 import { DRIVE_SHORT_APP_NAME } from '@proton/shared/lib/constants';
 
 import { DriveBrowser } from '../../../components/Files';
 import type { BreadcrumbItem } from '../../../components/Files/DriveBrowser/DriveBreadcrumbs';
+import { LumoIcon } from '../../../components/LumoIcon/LumoIcon';
 import { MAX_INDEXABLE_FILES, useDriveFolderIndexing } from '../../../hooks/useDriveFolderIndexing';
 import { useDriveSDK } from '../../../hooks/useDriveSDK';
 import { useLumoDispatch, useLumoSelector } from '../../../redux/hooks';
@@ -20,7 +20,6 @@ import { locallyDeleteAttachmentFromLocalRequest } from '../../../redux/slices/c
 import { addSpace, pushSpaceRequest } from '../../../redux/slices/core/spaces';
 import { getProjectInfo } from '../../../types';
 import { sendProjectDriveFolderLinkEvent, sendProjectDriveFolderUnlinkEvent } from '../../../util/telemetry';
-import {ButtonLikeSizeEnum} from "@proton/atoms/Button/ButtonLike";
 
 interface LinkDriveFolderModalProps extends ModalStateProps {
     projectId: string;
@@ -38,7 +37,7 @@ export const LinkDriveFolderModal = ({ projectId, ...modalProps }: LinkDriveFold
     );
     const hasExistingFiles = files.length > 0;
     const { isInitialized } = useDriveSDK();
-    const { indexFolder, removeIndexedFolder } = useDriveFolderIndexing();
+    const { indexFolder, removeIndexedFoldersBySpace } = useDriveFolderIndexing();
     const [breadcrumbs, setBreadcrumbs] = useState<BreadcrumbItem[]>([]);
 
     // Project variables
@@ -110,19 +109,9 @@ export const LinkDriveFolderModal = ({ projectId, ...modalProps }: LinkDriveFold
                 type: 'error',
             });
         }
-    }, [
-        currentFolder,
-        space,
-        folderPath,
-        dispatch,
-        projectId,
-        createNotification,
-        modalProps,
-        isAtRoot,
-        indexFolder,
-    ]);
+    }, [currentFolder, space, folderPath, dispatch, projectId, createNotification, modalProps, isAtRoot, indexFolder]);
 
-    const handleUnlinkFolder = useCallback(() => {
+    const handleUnlinkFolder = useCallback(async () => {
         if (!space) {
             return;
         }
@@ -136,10 +125,7 @@ export const LinkDriveFolderModal = ({ projectId, ...modalProps }: LinkDriveFold
             dispatch(addSpace(updatedSpace));
             dispatch(pushSpaceRequest({ id: projectId }));
 
-            const folderId = linkedDriveFolder?.folderId;
-            if (folderId) {
-                void removeIndexedFolder(folderId);
-            }
+            await removeIndexedFoldersBySpace(projectId);
 
             // Clean up auto-retrieved attachments from this space
             // These are Drive files that were indexed but shouldn't be persisted
@@ -169,7 +155,7 @@ export const LinkDriveFolderModal = ({ projectId, ...modalProps }: LinkDriveFold
                 type: 'error',
             });
         }
-    }, [space, dispatch, projectId, createNotification, modalProps, removeIndexedFolder, spaceAttachments]);
+    }, [space, dispatch, projectId, createNotification, modalProps, removeIndexedFoldersBySpace, spaceAttachments]);
 
     return (
         <ModalTwo {...modalProps} size="large" className="link-drive-folder-modal">
@@ -193,7 +179,7 @@ export const LinkDriveFolderModal = ({ projectId, ...modalProps }: LinkDriveFold
                     <div className="p-4">
                         <div className="mb-4 p-4 bg-weak rounded border border-weak">
                             <div className="flex items-center gap-2 mb-2">
-                                <IcFolder size={5} className="color-primary" />
+                                <LumoIcon name="Folder" size={20} className="color-primary" />
                                 <span className="text-bold">{linkedDriveFolder.folderName}</span>
                             </div>
                             <div className="text-sm color-weak">{linkedDriveFolder.folderPath}</div>
@@ -211,7 +197,7 @@ export const LinkDriveFolderModal = ({ projectId, ...modalProps }: LinkDriveFold
                         {hasExistingFiles ? (
                             <div className="p-4 bg-warning-weak rounded border border-warning">
                                 <div className="flex items-center gap-2 mb-2">
-                                    <IcExclamationTriangleFilled className="color-warning" />
+                                    <LumoIcon name="TriangleAlert" size={16} className="color-warning" />
                                     <span className="text-bold">{c('collider_2025:Warning')
                                         .t`Cannot Link Drive Folder`}</span>
                                 </div>
@@ -237,7 +223,7 @@ export const LinkDriveFolderModal = ({ projectId, ...modalProps }: LinkDriveFold
                                 </div>
                                 {!isAtRoot && currentFolder && (
                                     <div className="mt-3 flex items-center gap-2 text-sm">
-                                        <IcFolder className="color-norm shrink-0" />
+                                        <LumoIcon name="Folder" size={16} className="color-norm shrink-0" />
                                         <span className="color-weak">{c('collider_2025:Label').t`Selected:`}</span>
                                         <span className="text-bold">{currentFolder.name}</span>
                                     </div>

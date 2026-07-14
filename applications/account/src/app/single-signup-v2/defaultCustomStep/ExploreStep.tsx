@@ -1,6 +1,6 @@
 import { c } from 'ttag';
 
-import type { PLANS } from '@proton/payments';
+import type { PLANS } from '@proton/payments/core/constants';
 import type { APP_NAMES } from '@proton/shared/lib/constants';
 import type { OrganizationExtended, User } from '@proton/shared/lib/interfaces';
 import { useFlag } from '@proton/unleash/useFlag';
@@ -12,9 +12,10 @@ interface Props {
     user?: User;
     organization?: OrganizationExtended;
     plan?: PLANS;
+    localID?: number;
 }
 
-const ExploreStep = ({ onExplore, user, organization, plan }: Props) => {
+const ExploreStep = ({ onExplore, user, organization, plan, localID }: Props) => {
     const isDocsHomepageAvailable = useFlag('DriveDocsLandingPageEnabled');
     const isSheetsAvailable = useFlag('DocsSheetsEnabled');
     const isMeetAvailable = useFlag('PMVC2025');
@@ -31,6 +32,7 @@ const ExploreStep = ({ onExplore, user, organization, plan }: Props) => {
             <div>
                 <ExploreAppsListV2
                     subscription={{ subscribed, plan }}
+                    localID={localID}
                     apps={getExploreApps({
                         user,
                         organization,

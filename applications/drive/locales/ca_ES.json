@@ -782,6 +782,9 @@
       "Re-index": [
         "Tornar a indexar"
       ],
+      "Re-indexing in progress": [
+        "La reindexació està en curs"
+      ],
       "Re-sign": [
         "Tornar a signar"
       ],
@@ -856,6 +859,9 @@
       ],
       "Report a problem": [
         "Notifica un problema"
+      ],
+      "Report abuse": [
+        "Denunciar un abús"
       ],
       "Report an issue": [
         "Informeu d'un problema"
@@ -956,6 +962,12 @@
       "Select country": [
         "Seleccioneu el país"
       ],
+      "Select rating ${ n } out of ${ to }": [
+        "Seleccioneu la valoració ${ n } de ${ to }"
+      ],
+      "Send Feedback": [
+        "Envieu-nos els vostres comentaris"
+      ],
       "Set as album cover": [
         "Estableix com a portada de l'àlbum"
       ],
@@ -1036,6 +1048,9 @@
       ],
       "Sign up": [
         "Crea un compte"
+      ],
+      "Skip": [
+        "Omet"
       ],
       "Skip verification": [
         "Omet la verificació"
@@ -1135,6 +1150,9 @@
       ],
       "Upload and share files": [
         "Carrega i comparteix fitxers"
+      ],
+      "Upload anyway": [
+        "Carrega de totes maneres"
       ],
       "Upload file": [
         "Puja un fitxer"
@@ -3656,12 +3674,6 @@
       "Incorrect username": [
         "Nom d'usuari incorrecte"
       ],
-      "Invalid ${ name } code": [
-        "Codi ${ name } no vàlid"
-      ],
-      "Invalid card number": [
-        "Número de targeta no vàlid"
-      ],
       "Invalid code": [
         "Codi invàlid"
       ],
@@ -3670,9 +3682,6 @@
       ],
       "Invalid email address": [
         "L'adreça de correu electrònic no és vàlida."
-      ],
-      "Invalid expiration date": [
-        "Data de caducitat invàlida"
       ],
       "Invalid IBAN": [
         "L'IBAN no és vàlid."
@@ -3740,9 +3749,6 @@
       ],
       "Not a valid number": [
         "Número no vàlid"
-      ],
-      "Not enough storage space in your ${ DRIVE_APP_NAME }": [
-        "No hi ha prou espai d'emmagatzematge al vostre ${ DRIVE_APP_NAME }"
       ],
       "One of the contacts has no email address: ${ noEmailsContactNamesList }": [
         "Un dels contactes no té adreça de correu electrònic: ${ noEmailsContactNamesList }",
@@ -4017,6 +4023,9 @@
       ],
       "We cannot retrieve this item": [
         "No s'ha pogut recuperar aquest element"
+      ],
+      "We couldn’t send a verification code using this method.": [
+        "No hem pogut enviar cap codi de verificació mitjançant aquest mètode."
       ],
       "We were not able to load some invitations": [
         "No s'han pogut carregar algunes invitacions"
@@ -4502,6 +4511,9 @@
       ],
       "Security key": [
         "Clau de seguretat"
+      ],
+      "Touch your security key.": [
+        "Toqueu la vostra clau de seguretat."
       ]
     },
     "fido2: Label": {
@@ -5244,6 +5256,9 @@
       "AI powered assistant to help you craft better emails, quickly and effortlessly.": [
         "Assistent amb intel·ligència artificial per ajudar-vos a crear millors correus electrònics, de manera ràpida i sense esforç."
       ],
+      "Album": [
+        "Àlbum"
+      ],
       "All (${ totalFoldersCount } folder)": [
         "Tot (${ totalFoldersCount } carpeta)",
         "Tot (${ totalFoldersCount } carpetes)"
@@ -5514,6 +5529,10 @@
       "Do you remember your password? ${ verifyButton }": [
         "Recordeu la vostra contrasenya? ${ verifyButton }"
       ],
+      "Do you still want to upload it?": [
+        "Encara voleu carregar-lo?",
+        "Encara voleu carregar-los?"
+      ],
       "Done": [
         "Fet"
       ],
@@ -5715,6 +5734,9 @@
       ],
       "How does encrypted search work?": [
         "Com funciona la cerca xifrada?"
+      ],
+      "I hereby confirm, in good faith, that the information and statements contained in the report are correct and complete.": [
+        "Per la present, confirmo de bona fe que la informació i les declaracions contingudes en l'informe són correctes i completes."
       ],
       "If those files are not fully downloaded locally on ${ deviceName } you will lose access to them.": [
         "Si aquests fitxers no estan completament descarregats a ${ deviceName }, hi perdreu l'accés."
@@ -6130,9 +6152,6 @@
       "Please ask the owner to directly invite you to the document.": [
         "Demaneu al propietari que us convidi directament al document."
       ],
-      "Please authenticate your card in the verification tab.": [
-        "Autentiqueu la vostra targeta a la pestanya de verificació."
-      ],
       "Please authenticate your payment in the verification tab.": [
         "Autentiqueu el vostre pagament a la pestanya de verificació."
       ],
@@ -6176,9 +6195,6 @@
       "Please try again using a different payment method, or contact your bank.": [
         "Torneu-ho a provar amb un mètode de pagament diferent o poseu-vos en contacte amb el vostre banc."
       ],
-      "Please try again, use a different payment method, or contact PayPal for assistance.": [
-        "Torneu-ho a provar, utilitzeu un mètode de pagament diferent o bé contacteu per assistència de PayPal."
-      ],
       "Please use another browser or download the file.": [
         "Utilitzeu un altre navegador o descarregueu el fitxer."
       ],
@@ -6193,6 +6209,12 @@
       ],
       "Preparing": [
         "En preparació"
+      ],
+      "Preparing download": [
+        "S'està preparant la descàrrega"
+      ],
+      "Preparing…": [
+        "S'està preparant…"
       ],
       "Preview failed to be loaded": [
         "La previsualització no s'ha pogut carregar."
@@ -6229,6 +6251,9 @@
       ],
       "Public sharing of documents is not yet supported.": [
         "L'intercanvi públic de documents encara no està suportat."
+      ],
+      "Re-indexing in progress": [
+        "La reindexació està en curs"
       ],
       "Ready to add some photos?": [
         "Preparat per a afegir algunes fotos?"
@@ -6483,6 +6508,10 @@
       "This can NOT be undone. Please enter the device name to confirm removal.": [
         "Això no es pot desfer. Introduïu el nom del dispositiu per confirmar l'eliminació."
       ],
+      "This file appears to be empty:": [
+        "Sembla que aquest fitxer és buit:",
+        "Sembla que aquests fitxers són buits:"
+      ],
       "This file is too large to preview": [
         "Aquest fitxer és massa gran per a previsualitzar-lo."
       ],
@@ -6670,6 +6699,9 @@
       "Uploaded": [
         "Carregat"
       ],
+      "Uploaded - file is empty": [
+        "S'ha carregat (el fitxer és buit)"
+      ],
       "Uploading": [
         "S'està pujant"
       ],
@@ -6829,6 +6861,9 @@
       "You are about to open your default browser and visit:": [
         "Esteu a punt d'obrir el navegador per defecte i visitar:"
       ],
+      "You are currently signed in as ${ username } for ${ organizationName }.": [
+        "Actualment heu iniciat sessió com a ${ username } per a ${ organizationName }."
+      ],
       "You are currently signed in as ${ username }.": [
         "Heu iniciat sessió com a ${ username }."
       ],
@@ -6899,9 +6934,6 @@
         "Haureu de tornar a desar-lo des de la pàgina d'enllaços públics.",
         "Haureu de tornar a desar-los des de la pàgina d'enllaços públics."
       ],
-      "You will soon be redirected to PayPal to verify your payment.": [
-        "Ben aviat sereu redirigits a PayPal per verificar el pagament."
-      ],
       "You won't be charged if you cancel before ${ trialEndsOnFormatted }.": [
         "No se us cobrarà res si cancel·leu abans del ${ trialEndsOnFormatted }."
       ],
@@ -6956,6 +6988,9 @@
       ],
       "Your email will only be used for this one-time verification.": [
         "El vostre correu electrònic només s’utilitzarà per a aquesta única verificació."
+      ],
+      "Your files are being re-indexed. You can keep searching - results may be incomplete until it finishes. We'll let you know when it's done.": [
+        "Els vostres fitxers s'estan reindexant. Podeu continuar cercant però els resultats podrien ser incomplets mentre no acabi. Us farem saber quan hagi finalitzat."
       ],
       "Your files are no longer accessible due to a password reset. Re-upload the old encryption key to regain the access. ${ KeyReactivationButton }": [
         "Els vostres arxius ja no són accessibles a causa d'un restabliment de contrasenya. Torneu a carregar la clau de xifratge antiga per recuperar-ne l'accés. ${ KeyReactivationButton }"
@@ -7413,6 +7448,12 @@
       "Environment compatible": [
         "Compatible amb l'entorn"
       ],
+      "Exact host matching": [
+        "Coincidència exacta d'amfitrió"
+      ],
+      "Exact URL matching": [
+        "Coincidència exacta d'URL"
+      ],
       "Expired": [
         "Caducat"
       ],
@@ -7430,6 +7471,9 @@
       ],
       "Extended address": [
         "Adreça completa"
+      ],
+      "Extremely Satisfied": [
+        "Altament satisfet"
       ],
       "File": [
         "Fitxer"
@@ -7491,8 +7535,8 @@
       "Index kinds": [
         "Tipus d'índex"
       ],
-      "Initial indexing": [
-        "Indexació inicial"
+      "Indexing": [
+        "S'està indexant"
       ],
       "Integrated 2FA authenticator": [
         "Autenticador de doble factor (2FA) integrat"
@@ -7575,6 +7619,9 @@
       "Never expires": [
         "No caduca mai"
       ],
+      "Never fill on this exact URL": [
+        "No empleneu mai en aquest URL exacte"
+      ],
       "New password": [
         "Contrasenya nova"
       ],
@@ -7607,6 +7654,9 @@
       ],
       "Outdated version": [
         "Versió obsoleta"
+      ],
+      "Parent domain and subdomains (default)": [
+        "Domini principal i subdominis (per defecte)"
       ],
       "Password": [
         "Contrasenya"
@@ -7661,6 +7711,9 @@
       ],
       "Region": [
         "Regió"
+      ],
+      "Regular expression": [
+        "Expressió regular"
       ],
       "Replace existing folder or file": [
         "Substituïu la carpeta o el fitxer existent"
@@ -7737,6 +7790,9 @@
       "Start date": [
         "Data d'inici"
       ],
+      "Starts with": [
+        "Comença amb"
+      ],
       "State": [
         "Estat"
       ],
@@ -7763,6 +7819,9 @@
       ],
       "System information": [
         "Informació del sistema"
+      ],
+      "Tell us more about your experience": [
+        "Expliqueu-nos més sobre la vostra experiència"
       ],
       "Theme": [
         "Tema"
@@ -7800,6 +7859,9 @@
       "Uploaded by": [
         "Carregat per"
       ],
+      "URL wildcard pattern": [
+        "Patró de comodí d'URL"
+      ],
       "User opted in": [
         "L'usuari ha acceptat"
       ],
@@ -7808,6 +7870,9 @@
       ],
       "Verification code": [
         "Codi de verificació"
+      ],
+      "Very Dissatisfied": [
+        "Molt insatisfet"
       ],
       "Viewer": [
         "Visualitzador"
@@ -8198,6 +8263,24 @@
       ]
     },
     "Message": {
+      "'Starts with' matching rule": [
+        "Regla de coincidència «Comença amb»"
+      ],
+      "Exact (sub) domain matching rule": [
+        "Regla de coincidència exacta de (sub)domini"
+      ],
+      "Exact URL matching rule": [
+        "Regla de coincidència exacta d'URL"
+      ],
+      "Never fill with this exact URL": [
+        "No ho emplenis mai amb aquest URL exacte"
+      ],
+      "Regular expression rule": [
+        "Regla d'expressió regular"
+      ],
+      "Wildcard pattern matching rule": [
+        "Regla de coincidència de patró de comodí"
+      ],
       "Your free trial has ended. ${ nonAutoRenewalAction }": [
         "La prova gratuïta us ha finalitzat. ${ nonAutoRenewalAction }"
       ],
@@ -9129,6 +9212,11 @@
         "Esteu gaudint d'un preu promocional al vostre pla actual. Si feu una baixada de categoria al vostre compte, perdreu el preu promocional i no estarà disponible si intenteu subscriure-us novament."
       ]
     },
+    "new_plans: label": {
+      "We're always striving to make ${ config.appName } better. How satisfied are you with your experience?": [
+        "Treballem constantment per millorar ${ config.appName }. Quin grau de satisfacció teniu amb la vostra experiència?"
+      ]
+    },
     "new_plans: Subtext": {
       "Starting from ${ priceLine }": [
         "Des de ${ priceLine }"
@@ -9578,9 +9666,6 @@
       "All items deleted permanently from trash": [
         "S'han eliminat permanentment tots els elements de la paperera"
       ],
-      "An invitation has been sent": [
-        "S'ha enviat una invitació."
-      ],
       "Cannot load link": [
         "No s'ha pogut carregar l'enllaç."
       ],
@@ -9617,17 +9702,11 @@
       "Failed to accept share invitation": [
         "No s'ha pogut acceptar la invitació per a compartir"
       ],
-      "Failed to convert external invitation": [
-        "No s'ha pogut convertir la invitació externa"
-      ],
       "Failed to load sharing details": [
         "No s'han pogut carregar els detalls per compartir"
       ],
       "Failed to move, please try again": [
         "No s'ha pogut moure, torneu-ho a provar"
-      ],
-      "Failed to open document": [
-        "No s'ha pogut obrir el document."
       ],
       "Failed to reject share invitation": [
         "No s'ha pogut rebutjar la invitació per a compartir."
@@ -10612,6 +10691,9 @@
       ],
       "New name": [
         "Nom nou"
+      ],
+      "Optional feedback": [
+        "Comentaris opcionals"
       ],
       "Organization name": [
         "Nom de l'organització"
@@ -12922,9 +13004,6 @@
       "Payment verification": [
         "Verificació de pagament"
       ],
-      "PayPal verification failed": [
-        "La verificació de PayPal no s'ha pogut completar."
-      ],
       "Phone numbers": [
         "Números de telèfon"
       ],
@@ -13184,6 +13263,9 @@
       "Upload and share files": [
         "Carregueu i compartiu fitxers"
       ],
+      "Upload empty file?": [
+        "Voleu carregar un fitxer buit?"
+      ],
       "Uploaded": [
         "Carregat"
       ],
@@ -13247,6 +13329,9 @@
       "We weren’t able to confirm that the node was created by ${ claimedKeyAuthor }. The reason is: ${ node.keyAuthor.error.error }": [
         "No hem pogut confirmar que el node hagi estat creat per ${ claimedKeyAuthor }. El motiu és: ${ node.keyAuthor.error.error }"
       ],
+      "We'd love to hear from you!": [
+        "Ens agradaria rebre la vostra opinió!"
+      ],
       "Welcome offer": [
         "Oferta de benvinguda"
       ],
@@ -13306,6 +13391,26 @@
       ],
       "You’ve got 5 GB of storage": [
         "Teniu 5 GB d'emmagatzematge"
+      ]
+    },
+    "Title header for keys table": {
+      "Actions": [
+        "Accions"
+      ],
+      "Created": [
+        "S'ha creat"
+      ],
+      "Expires": [
+        "Caduca"
+      ],
+      "Fingerprint": [
+        "Empremta digital"
+      ],
+      "Status": [
+        "Estat"
+      ],
+      "Type": [
+        "Tipus"
       ]
     },
     "Today icon tooltip in mini calendar": {
@@ -13404,6 +13509,9 @@
       "Upload a public key to enable sending end-to-end encrypted emails to this email": [
         "Pengeu una clau pública per permetre l'enviament de missatges de correu electrònic xifrats de final a extrem a aquest correu electrònic"
       ],
+      "Version 6 OpenPGP key": [
+        "Clau OpenPGP de la versió 6"
+      ],
       "We have sent them an invite to access the item.": [
         "Els hem enviat una invitació per accedir a l'element."
       ]
@@ -13446,6 +13554,11 @@
     "Upsell": {
       "Get Drive for Business": [
         "Obtingueu el Drive for Business"
+      ]
+    },
+    "user_modal": {
+      "You'll be able to assign roles once the user has accepted the invitation.": [
+        "Podreu assignar rols un cop l'usuari hagi acceptat la invitació."
       ]
     },
     "Validation": {
@@ -13564,6 +13677,9 @@
       ],
       "${ BRAND_NAME } will transfer as much data as possible, starting with your most recent messages.": [
         "${ BRAND_NAME } transferirà tantes dades com sigui possible, començant pels missatges més recents."
+      ],
+      "${ modeLabelStong } provides powerful control, but a single error can cause autofill to match and fill data on fraudulent or phishing websites.": [
+        "${ modeLabelStong } proporciona un control potent, però un sol error pot fer que l'emplenament automàtic coincideixi i empleni dades a llocs web fraudulents o de suplantació de credencials."
       ],
       "Are you sure you want to permanently delete ${ count } contact?": [
         "Estàs segur de que vols eliminar ${ count } contacte definitivament?",

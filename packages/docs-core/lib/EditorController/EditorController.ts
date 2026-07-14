@@ -24,6 +24,7 @@ import { downloadExport } from '../UseCase/ExportAndDownload'
 import { decompressDocumentUpdate, isCompressedDocumentUpdate } from '../utils/document-update-compression'
 import type { SheetsStorageService } from '../Services/SheetsStorageService'
 import { SheetsPatchesType } from '../Database/SheetsDBSchema'
+import { downloadUpdateTimeline } from '../utils/create-update-timeline'
 
 export interface EditorControllerInterface {
   getCurrentSelection(format: DataTypesThatDocumentCanBeExportedAs): Promise<string | null>
@@ -56,7 +57,11 @@ export interface EditorControllerInterface {
   downloadSpreadsheetPatches(): Promise<void>
   removeSpreadsheetPatches(): Promise<void>
   generateSpreadsheetPatches(): Promise<unknown>
+  getSpreadsheetPatchesAsJsonFile(): Promise<Blob>
   applyPatches(patches: unknown): Promise<void>
+  setTableOfContentsVisible(visible: boolean): Promise<void>
+  getBaseCommitAsZip(): Promise<Blob>
+  downloadBaseCommit(): Promise<void>
 }
 
 /** Allows the UI to invoke methods on the editor. */
@@ -548,10 +553,7 @@ export class EditorController implements EditorControllerInterface {
     return result.getValue()
   }
 
-  async downloadSpreadsheetPatches(): Promise<void> {
-    if (!this.editorInvoker) {
-      throw new Error('Attempting to download spreadsheet patches before editor invoker is initialized')
-    }
+  async getSpreadsheetPatchesAsJsonFile(): Promise<Blob> {
     if (!this.sheetsStorageService) {
       throw new Error('Sheets storage service not initialized')
     }
@@ -565,6 +567,11 @@ export class EditorController implements EditorControllerInterface {
 
     const stringifiedPatches = JSON.stringify(patches.getValue())
     const blob = new Blob([stringifiedPatches], { type: 'application/json' })
+    return blob
+  }
+
+  async downloadSpreadsheetPatches(): Promise<void> {
+    const blob = await this.getSpreadsheetPatchesAsJsonFile()
     const url = URL.createObjectURL(blob)
     const a = document.createElement('a')
     a.href = url
@@ -601,5 +608,50 @@ export class EditorController implements EditorControllerInterface {
     }
 
     await this.editorInvoker.applyPatches(patches)
+  }
+
+  async setTableOfContentsVisible(visible: boolean): Promise<void> {
+    if (!this.editorInvoker) {
+      throw new Error('Attempting to set table of contents visible before editor invoker is initialized')
+    }
+
+    await this.editorInvoker.setTableOfContentsVisible(visible)
+  }
+
+  async getBaseCommitAsZip(): Promise<Blob> {
+    const JSZip = (await import('jszip')).default
+    const zip = new JSZip()
+    const baseCommit = this.documentState.getProperty('baseCommit')
+    if (!baseCommit) {
+      return zip.generateAsync({ type: 'blob' })
+    }
+    for (const message of baseCommit.messages) {
+      const content = message.content
+      if (isCompressedDocumentUpdate(content)) {
+        const decompressed = decompressDocumentUpdate(content)
+        zip.file(`${message.timestamp}.bin`, decompressed)
+      } else {
+        zip.file(`${message.timestamp}.bin`, content)
+      }
+    }
+    return zip.generateAsync({ type: 'blob' })
+  }
+
+  async downloadBaseCommit(): Promise<void> {
+    const baseCommit = this.documentState.getProperty('baseCommit')
+    if (!baseCommit) {
+      return
+    }
+    const zipBlob = await this.getBaseCommitAsZip()
+    const zipUrl = URL.createObjectURL(zipBlob)
+    const zipLink = document.createElement('a')
+    zipLink.href = zipUrl
+    zipLink.download = 'all-updates-in-base-commit.zip'
+    document.body.appendChild(zipLink)
+    zipLink.click()
+    document.body.removeChild(zipLink)
+    URL.revokeObjectURL(zipUrl)
+    const yDocJSON = await this.getYDocAsJSON()
+    await downloadUpdateTimeline(baseCommit.messages, yDocJSON)
   }
 }

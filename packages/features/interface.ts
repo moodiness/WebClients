@@ -80,7 +80,6 @@ export enum FeatureCode {
     CategoryViewB2BOnboardingViewFlags = 'CategoryViewB2BOnboardingViewFlags',
     CategoryViewOnboardingAccountDateThreshold = 'CategoryViewOnboardingAccountDateThreshold',
     CategoryViewBeta = 'CategoryViewBeta',
-    CategoryViewVisionaryOnboarding = 'CategoryViewVisionaryOnboarding',
 
     OfferPassFamilyPlan2024Yearly = 'OfferPassFamilyPlan2024Yearly',
     OfferGoUnlimited2022 = 'OfferGoUnlimited2022',
@@ -158,6 +157,7 @@ export enum FeatureCode {
     NPSFeedbackDesktopCalendar = 'NPSFeedbackDesktopCalendar',
     NPSFeedbackDesktopMail = 'NPSFeedbackDesktopMail',
     NPSFeedbackWebCalendar = 'NPSFeedbackWebCalendar',
+    NPSFeedbackWebDrive = 'NPSFeedbackWebDrive',
     NPSFeedbackWebMail = 'NPSFeedbackWebMail',
 
     // Feedback First Cancellation Flow

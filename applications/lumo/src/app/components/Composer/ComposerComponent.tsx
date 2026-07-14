@@ -11,6 +11,7 @@ import { AgentPickerModal } from '../../features/agents/AgentPickerModal';
 import { ComposerAgentBar } from '../../features/agents/ComposerAgentBar';
 import { ConversationStarters } from '../../features/agents/ConversationStarters';
 import { SketchOverlay } from '../../features/drawingcanvas';
+import { useChatLimitGate } from '../../hooks/useChatLimitGate';
 import useComposerInput from '../../hooks/useComposerInput';
 import { useConversationAgent } from '../../hooks/useConversationAgent';
 import type { DriveSDKMethods } from '../../hooks/useDriveSDK';
@@ -28,18 +29,20 @@ import { ComposerMode } from '../../types';
 import { base64ToFile } from '../../util/imageHelpers';
 import { notifyMobileAppLoaded } from '../../util/mobileAppNotification';
 import { createAttachmentFromPastedContent, getPasteConversionMessage } from '../../util/pastedContentHelper';
-import { AttachmentArea } from '../Files';
 import GuestDisclaimer from '../Notifications/GuestDisclaimer';
 import { GuestNotificationCard } from '../Notifications/GuestNotificationCard';
-import TermsAndConditions from '../TermsAndConditions';
+import { ModelSwitchNotificationCard } from '../Notifications/ModelSwitchNotificationCard';
 import { ComposerAttachmentArea } from './ComposerAttachmentArea';
 import { ComposerEditorArea } from './ComposerEditorArea';
+import { ComposerExpirationBanner } from './ComposerExpirationBanner';
 import { ComposerLimitBanner } from './ComposerLimitBanner';
 import { ComposerToolbar } from './ComposerToolbar';
 import { useExcelSheetSelection } from './ExcelSheetSelectionModal';
 import { useAllRelevantAttachments } from './hooks/useAllRelevantAttachments';
 import { useEditorQuery } from './hooks/useEditorQuery';
 import { useFileHandling } from './hooks/useFileHandling';
+import { useImageGenerationMode } from './hooks/useImageGenerationMode';
+import { useNativeComposerCustomLumoApi } from './hooks/useNativeComposerCustomLumoApi';
 import { useNativeComposerFeatureFlagsApi } from './hooks/useNativeComposerFeatureFlagsApi';
 import { useNativeComposerFileApi } from './hooks/useNativeComposerFileApi';
 import { useNativeComposerLumoStateApi } from './hooks/useNativeComposerLumoStateApi';
@@ -86,6 +89,7 @@ export type ComposerComponentProps = {
     canShowLumoUpsellToggle?: boolean;
     canShowGuestNotificationCard?: boolean;
     placeholder?: string;
+    optionalElementBelowComposer?: React.ReactNode;
     /** Minimal agent surface: hides image creation, sketch and Drive upload from the composer. */
     isAgent?: boolean;
 };
@@ -115,12 +119,12 @@ const ComposerComponentInner = ({
     spaceId,
     autoOpenSketch,
     placeholder,
-    canShowLumoUpsellToggle = false,
     canShowGuestNotificationCard = false,
+    optionalElementBelowComposer,
     isAgent = false,
     driveContext,
 }: ComposerComponentInnerProps) => {
-    const { isDragging: isDraggingOverScreen } = useDragArea();
+    const { registerFileDropHandler } = useDragArea();
     const provisionalAttachments = useLumoSelector(selectProvisionalAttachments);
     const { isWebSearchButtonToggled } = useWebSearch();
     const hasAttachments = provisionalAttachments.length > 0;
@@ -136,6 +140,12 @@ const ComposerComponentInner = ({
     const dispatch = useLumoDispatch();
     const { createNotification } = useNotifications();
     const isGuest = useIsGuest();
+    const { isBlocked: isChatLimitBlocked, ensureTierError } = useChatLimitGate();
+
+    const { selectedAspectRatio, handleAspectRatioChange, isCreateImageMode, setIsCreateImageMode, getAspectRatio } =
+        useImageGenerationMode();
+
+    const isImageGenerationMode = composerMode === ComposerMode.GALLERY || isCreateImageMode;
 
     // Tell the native mobile shells (iOS/Android) the app is interactive once the real
     // composer is on screen. This is the authoritative "ready" signal that dismisses the
@@ -172,6 +182,10 @@ const ComposerComponentInner = ({
         onSelectExcelSheets: handleSelectExcelSheets,
     });
 
+    useEffect(() => {
+        return registerFileDropHandler(handleFileProcessing);
+    }, [registerFileDropHandler, handleFileProcessing]);
+
     const handleDrawSketch = useCallback(() => {
         setShowDrawingModal(true);
     }, []);
@@ -188,6 +202,7 @@ const ComposerComponentInner = ({
         showFileModal: isSheetModalOpen,
     });
     useNativeComposerFeatureFlagsApi();
+    useNativeComposerCustomLumoApi(messageChain?.[0]?.conversationId, canUseAgents);
 
     // registers a hook that updates the native composer state
     useNativeComposerFileApi(
@@ -237,15 +252,28 @@ const ComposerComponentInner = ({
                 console.log('Submission blocked: files are still being processed');
                 return;
             }
-            if (!value.trim()) {
+            if (!value.trim() && !hasAttachments) {
+                return;
+            }
+            if (isChatLimitBlocked) {
+                ensureTierError();
                 return;
             }
             composerInput.clear();
-            await handleSendMessage(value, isWebSearchButtonToggled);
+            const imageOptions = isImageGenerationMode ? { aspectRatio: getAspectRatio() } : undefined;
+            await handleSendMessage(value, isWebSearchButtonToggled, imageOptions);
         },
         // composerInput.clear is intentionally omitted from deps — it's stable but the object is created below
-
-        [handleSendMessage, isWebSearchButtonToggled, isProcessingAttachment]
+        // getAspectRatio is stable (useCallback with no deps), intentionally omitted
+        [
+            handleSendMessage,
+            isWebSearchButtonToggled,
+            isProcessingAttachment,
+            isImageGenerationMode,
+            isChatLimitBlocked,
+            ensureTierError,
+            hasAttachments,
+        ]
     );
 
     const composerInput = useComposerInput({
@@ -256,12 +284,14 @@ const ComposerComponentInner = ({
         onFocus: handleFocus,
         onBlur: handleBlur,
         onPasteLargeContent: handlePasteLargeContent,
+        canSubmitWithoutText: hasAttachments,
     });
 
     const { isEmpty, clear, textareaRef, setValue, handleSubmit } = composerInput;
 
-    const sendIsDisabled = !(isGenerating ?? false) && (isEmpty || isProcessingAttachment);
-    const canShowSendButton = (isGenerating ?? false) || !isEmpty;
+    const canSubmit = !isEmpty || hasAttachments;
+    const sendIsDisabled = !(isGenerating ?? false) && (!canSubmit || isProcessingAttachment || isChatLimitBlocked);
+    const canShowSendButton = (isGenerating ?? false) || canSubmit;
 
     // Update parent component when empty state changes
     useEffect(() => {
@@ -272,9 +302,13 @@ const ComposerComponentInner = ({
     const handleInitialQueryReady = useCallback(async () => {
         const currentValue = textareaRef.current?.value ?? '';
         if (!currentValue.trim()) return;
+        if (isChatLimitBlocked) {
+            ensureTierError();
+            return;
+        }
         clear();
         await handleSendMessage(currentValue, isWebSearchButtonToggled);
-    }, [textareaRef, clear, handleSendMessage, isWebSearchButtonToggled]);
+    }, [textareaRef, clear, handleSendMessage, isWebSearchButtonToggled, isChatLimitBlocked, ensureTierError]);
 
     useEditorQuery(initialQuery, textareaRef, setValue, isProcessingAttachment, handleInitialQueryReady);
     useEditorQuery(prefillQuery, textareaRef, setValue, isProcessingAttachment);
@@ -288,9 +322,7 @@ const ComposerComponentInner = ({
             e.preventDefault();
             for (const item of imageItems) {
                 const file = item.getAsFile();
-                // Pasted clipboard images are all named image.png by the browser,
-                // so auto-rename on collision (image (2).png) instead of rejecting.
-                if (file) await handleFileProcessing(file, true);
+                if (file) await handleFileProcessing(file);
             }
         };
 
@@ -325,9 +357,6 @@ const ComposerComponentInner = ({
 
     return (
         <>
-            {isGuest && canShowGuestNotificationCard && (
-                <GuestNotificationCard messageChain={messageChain} isGenerating={isGenerating} />
-            )}
             <div
                 style={{ visibility: nativeComposerVisibilityApi.showWebComposer() ? 'visible' : 'hidden' }}
                 className="w-full"
@@ -336,7 +365,7 @@ const ComposerComponentInner = ({
                 <section
                     ref={composerContainerRef}
                     className={clsx(
-                        'flex flex-column flex-nowrap min-h-custom items-center gap-1',
+                        'flex flex-column flex-nowrap min-h-custom items-center gap-2',
                         className,
                         isGhostChatMode && 'ghost-mode'
                     )}
@@ -347,11 +376,18 @@ const ComposerComponentInner = ({
 
                     {showLegalDisclaimer && <GuestDisclaimer />}
 
+                    {isGuest && canShowGuestNotificationCard && (
+                        <GuestNotificationCard messageChain={messageChain} isGenerating={isGenerating} />
+                    )}
+                    <ModelSwitchNotificationCard messageChain={messageChain} isGenerating={isGenerating} />
+
                     <ComposerLimitBanner
                         conversationId={messageChain?.[0]?.conversationId}
                         spaceId={spaceId}
                         onOpenFiles={handleOpenFiles}
                     />
+
+                    <ComposerExpirationBanner conversationId={messageChain?.[0]?.conversationId} />
 
                     {composerMode === ComposerMode.NEW_CONVERSATION && isEmpty && agentStarters.length > 0 && (
                         <ConversationStarters
@@ -363,56 +399,55 @@ const ComposerComponentInner = ({
                         />
                     )}
 
-                    <div
-                        className={clsx(
-                            'lumo-input-container border border-norm  w-full',
-                            isGhostChatMode && 'ghost-mode'
-                        )}
-                    >
-                        {canUseAgents && <ComposerAgentBar conversationId={messageChain?.[0]?.conversationId} />}
-                        {hasAttachments && (
-                            <ComposerAttachmentArea
-                                provisionalAttachments={provisionalAttachments}
-                                allRelevantAttachments={allRelevantAttachments}
+                    <div className="composer-input-glow-wrapper w-full">
+                        <div className={clsx('lumo-input-container bg-norm w-full', isGhostChatMode && 'ghost-mode')}>
+                            {canUseAgents && <ComposerAgentBar conversationId={messageChain?.[0]?.conversationId} />}
+                            {hasAttachments && (
+                                <ComposerAttachmentArea
+                                    provisionalAttachments={provisionalAttachments}
+                                    allRelevantAttachments={allRelevantAttachments}
+                                    messageChain={messageChain}
+                                    onDeleteAttachment={handleDeleteAttachment}
+                                    onViewFile={onOpenFilePreview ?? (() => {})}
+                                    onOpenFiles={handleOpenFiles}
+                                />
+                            )}
+                            <ComposerEditorArea
+                                composerInput={composerInput}
+                                canShowSendButton={canShowSendButton}
+                                sendIsDisabled={sendIsDisabled}
+                                isGenerating={isGenerating ?? false}
+                                isProcessingAttachment={isProcessingAttachment}
+                                onAbort={onAbort}
+                                onSubmit={handleSubmit}
+                                spaceId={spaceId}
                                 messageChain={messageChain}
-                                onDeleteAttachment={handleDeleteAttachment}
-                                onViewFile={onOpenFilePreview ?? (() => {})}
-                                onOpenFiles={handleOpenFiles}
+                                isAutocompleteActiveRef={isAutocompleteActiveRef}
+                                browseFolderChildren={driveContext?.browseFolderChildren}
+                                downloadFile={driveContext?.downloadFile}
+                                userId={driveContext?.userId}
+                                placeholder={placeholder}
                             />
-                        )}
-                        <ComposerEditorArea
-                            composerInput={composerInput}
-                            canShowSendButton={canShowSendButton}
-                            sendIsDisabled={sendIsDisabled}
-                            isGenerating={isGenerating ?? false}
-                            isProcessingAttachment={isProcessingAttachment}
-                            onAbort={onAbort}
-                            onSubmit={handleSubmit}
-                            spaceId={spaceId}
-                            messageChain={messageChain}
-                            isAutocompleteActiveRef={isAutocompleteActiveRef}
-                            browseFolderChildren={driveContext?.browseFolderChildren}
-                            downloadFile={driveContext?.downloadFile}
-                            userId={driveContext?.userId}
-                            placeholder={placeholder}
-                        />
-                        <ComposerToolbar
-                            composerMode={composerMode}
-                            onFilesSelected={handleFilesSelected}
-                            onBrowseDrive={handleBrowseDrive}
-                            onDrawSketch={handleDrawSketch}
-                            fileUploadMode={fileUploadMode}
-                            canShowLumoUpsellToggle={canShowLumoUpsellToggle}
-                            canUseAgents={canUseAgents}
-                            isAgent={isAgent}
-                        />
+                            <ComposerToolbar
+                                composerMode={composerMode}
+                                onFilesSelected={handleFilesSelected}
+                                onBrowseDrive={handleBrowseDrive}
+                                onDrawSketch={handleDrawSketch}
+                                fileUploadMode={fileUploadMode}
+                                selectedAspectRatio={selectedAspectRatio}
+                                onAspectRatioChange={handleAspectRatioChange}
+                                isCreateImageMode={isCreateImageMode}
+                                onCreateImageModeChange={setIsCreateImageMode}
+                                canUseAgents={canUseAgents}
+                                isAgent={isAgent}
+                            />
+                        </div>
                     </div>
-                    {isGuest && (
+                    {optionalElementBelowComposer && <div className="mt-1.5">{optionalElementBelowComposer}</div>}
+                    {/* {isGuest && (
                         <TermsAndConditions className={clsx('m-0', isAgent ? 'text-center' : 'hidden md:block')} />
-                    )}
+                    )} */}
                 </section>
-
-                {isDraggingOverScreen && <AttachmentArea handleFileProcessing={handleFileProcessing} />}
             </div>
 
             <SketchOverlay

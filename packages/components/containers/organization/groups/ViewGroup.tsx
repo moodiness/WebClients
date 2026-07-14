@@ -4,6 +4,7 @@ import { getIsScimGroup, getIsScimGroupPendingKeys } from '@proton/account/group
 import { useOrganization } from '@proton/account/organization/hooks';
 import { Button } from '@proton/atoms/Button/Button';
 import { PanelHeader } from '@proton/atoms/Panel/PanelHeader';
+import { Tooltip } from '@proton/atoms/Tooltip/Tooltip';
 import Copy from '@proton/components/components/button/Copy';
 import { useModalStateObject } from '@proton/components/components/modalTwo/useModalState';
 import useSpotlightShow from '@proton/components/components/spotlight/useSpotlightShow';
@@ -17,7 +18,6 @@ import { IcCogWheel } from '@proton/icons/icons/IcCogWheel';
 import { IcEnvelopeDot } from '@proton/icons/icons/IcEnvelopeDot';
 import { IcPencil } from '@proton/icons/icons/IcPencil';
 import { IcPlus } from '@proton/icons/icons/IcPlus';
-import { IcShareNode } from '@proton/icons/icons/IcShareNode';
 import { IcTrash } from '@proton/icons/icons/IcTrash';
 import { KEY_FLAG, SECOND } from '@proton/shared/lib/constants';
 import { hasBit } from '@proton/shared/lib/helpers/bitset';
@@ -28,15 +28,17 @@ import { useFlag } from '@proton/unleash/useFlag';
 import AddUsersToGroupModal from './AddUsersToGroupModal';
 import DeleteGroupPrompt from './DeleteGroupPrompt';
 import E2EEDisabledWarning from './E2EEDisabledWarning';
+import GroupIcon from './GroupIcon';
 import GroupInfoBanner from './GroupInfoBanner';
 import GroupMemberList from './GroupMemberList';
 import { useGroupsManagement } from './context/GroupsManagementContext';
 import shouldShowMail from './shouldShowMail';
+import { GROUPS_RESTRICTION_REASON, PANEL_HEADER_HEIGHT } from './types';
 
 const ViewGroup = () => {
     const { createNotification } = useNotifications();
     const {
-        isFrozen,
+        restrictedBy,
         actions,
         selectedGroup,
         groupMembers,
@@ -72,6 +74,10 @@ const ViewGroup = () => {
     const group = selectedGroup!;
     const { Name, Description, Address } = group;
 
+    const isResumingRoleAssignment =
+        restrictedBy.reason === GROUPS_RESTRICTION_REASON.RESUMING_ROLE_ASSIGNMENT && restrictedBy.groupId === group.ID;
+    const isFrozen = restrictedBy.reason === GROUPS_RESTRICTION_REASON.PLAN_UNSUPPORTED || isResumingRoleAssignment;
+
     const showMailFeatures = shouldShowMail(organization?.PlanName);
     const primaryGroupAddressKey = Address.Keys[0];
     const isE2eeEnabled = !hasBit(primaryGroupAddressKey?.Flags ?? 0, KEY_FLAG.FLAG_EMAIL_NO_ENCRYPT);
@@ -80,19 +86,24 @@ const ViewGroup = () => {
 
     const isScimGroup = getIsScimGroup(group);
     const isScimGroupPendingKeys = getIsScimGroupPendingKeys(group);
-    const pendingAdminMemberCount = groupMembers.filter((m) => m.State === GROUP_MEMBER_STATE.PENDING_ADMIN).length;
+    const pendingAdminApprovalCount = groupMembers.filter(
+        (m) => m.State === GROUP_MEMBER_STATE.PENDING_ADMIN_APPROVAL
+    ).length;
     const invitedMemberCount = groupMembers.filter((m) => m.State === GROUP_MEMBER_STATE.PENDING).length;
+
+    const isAddGroupMemberDisabled = isScimGroup || isFrozen;
+    const isDeleteGroupDisabled = isScimGroup || isResumingRoleAssignment;
 
     return (
         <>
             <section className="flex flex-column flex-nowrap">
-                <div className="shrink-0 pl-6 py-3">
+                <div className="shrink-0 pl-6" style={{ '--h-custom': PANEL_HEADER_HEIGHT }}>
                     <PanelHeader
-                        className="border-bottom pb-4 pt-5 lg:pt-1"
+                        className="border-bottom h-custom"
                         title={
                             <div className="flex flex-column gap-1">
                                 <h2
-                                    className="text-bold text-4xl text-ellipsis"
+                                    className="text-bold text-2xl text-ellipsis"
                                     style={{ lineHeight: '2rem' }}
                                     title={Name}
                                 >
@@ -100,24 +111,31 @@ const ViewGroup = () => {
                                 </h2>
                                 {isScimGroup && (
                                     <span className="flex items-center flex-nowrap gap-1 color-weak text-sm">
-                                        <IcShareNode className="shrink-0" size={3} />
+                                        <GroupIcon className="shrink-0" size={3} isScimGroup />
                                         {c('Info').t`Synced from identity provider`}
                                     </span>
                                 )}
                             </div>
                         }
                         actions={[
-                            <Button
-                                color="norm"
-                                icon={isMobile}
-                                disabled={isFrozen}
-                                className="flex items-center"
-                                key="button-add-user"
-                                onClick={() => addUsersToGroupModal.openModal(true)}
+                            <Tooltip
+                                key="button-add"
+                                title={isScimGroup ? c('Info').t`Manage groups in your identity provider` : null}
                             >
-                                <IcPlus className="shrink-0 md:mr-2" alt={c('Action').t`Add user`} />
-                                {!isMobile && <span>{c('Action').t`Add user`}</span>}
-                            </Button>,
+                                <span>
+                                    <Button
+                                        color="norm"
+                                        icon={isMobile}
+                                        disabled={isAddGroupMemberDisabled}
+                                        className="flex items-center"
+                                        key="button-add-user"
+                                        onClick={() => addUsersToGroupModal.openModal(true)}
+                                    >
+                                        <IcPlus className="shrink-0 md:mr-2" alt={c('Action').t`Add user`} />
+                                        {!isMobile && <span>{c('Action').t`Add user`}</span>}
+                                    </Button>
+                                </span>
+                            </Tooltip>,
                             <AdminRolesSpotlight
                                 key="button-edit"
                                 show={shouldShowSpotlight}
@@ -141,39 +159,46 @@ const ViewGroup = () => {
                                     <IcPencil alt={c('Action').t`Edit group`} />
                                 </Button>
                             </AdminRolesSpotlight>,
-                            <Button
-                                shape="outline"
-                                icon
+                            <Tooltip
                                 key="button-delete"
-                                onClick={() => {
-                                    deleteGroupPrompt.openModal(true);
-                                }}
-                                title={c('Action').t`Delete group`}
+                                title={isScimGroup ? c('Info').t`Manage groups in your identity provider` : null}
                             >
-                                <IcTrash alt={c('Action').t`Delete group`} />
-                            </Button>,
+                                <span>
+                                    <Button
+                                        shape="outline"
+                                        icon
+                                        disabled={isDeleteGroupDisabled}
+                                        onClick={() => {
+                                            deleteGroupPrompt.openModal(true);
+                                        }}
+                                        title={c('Action').t`Delete group`}
+                                    >
+                                        <IcTrash alt={c('Action').t`Delete group`} />
+                                    </Button>
+                                </span>
+                            </Tooltip>,
                         ]}
                     />
                 </div>
                 <div className="flex flex-column text-left pl-6 py-3 gap-4">
                     {isScimGroupPendingKeys && (
-                        <GroupInfoBanner icon={<IcCogWheel size={4.5} className="shrink-0 color-weak" />}>
+                        <GroupInfoBanner icon={<IcCogWheel size={4.5} className="shrink-0" />}>
                             {c('Info').t`New group created via your identity provider and pending review.`}
                         </GroupInfoBanner>
                     )}
 
-                    {pendingAdminMemberCount > 0 && (
-                        <GroupInfoBanner icon={<IcCogWheel size={4.5} className="shrink-0 color-weak" />}>
+                    {pendingAdminApprovalCount > 0 && (
+                        <GroupInfoBanner icon={<IcCogWheel size={4.5} className="shrink-0" />}>
                             {c('Info').ngettext(
-                                msgid`${pendingAdminMemberCount} new member added via your identity provider and pending review.`,
-                                `${pendingAdminMemberCount} new members added via your identity provider and pending review.`,
-                                pendingAdminMemberCount
+                                msgid`${pendingAdminApprovalCount} new member added via your identity provider and pending review.`,
+                                `${pendingAdminApprovalCount} new members added via your identity provider and pending review.`,
+                                pendingAdminApprovalCount
                             )}
                         </GroupInfoBanner>
                     )}
 
                     {invitedMemberCount > 0 && (
-                        <GroupInfoBanner icon={<IcEnvelopeDot size={4.5} className="shrink-0 color-weak" />}>
+                        <GroupInfoBanner icon={<IcEnvelopeDot size={4.5} className="shrink-0" />}>
                             {c('Info').ngettext(
                                 msgid`${invitedMemberCount} user needs to accept their invite to start receiving group emails.`,
                                 `${invitedMemberCount} users need to accept their invite to start receiving group emails.`,
@@ -197,8 +222,8 @@ const ViewGroup = () => {
 
                     {showMailFeatures && Address.Email && (
                         <div className="flex items-center">
-                            <span className="text-bold mr-1">{c('Group detail label').t`Group address:`}</span>
-                            <span className="mr-2">{Address.Email}</span>
+                            <span className="text-bold mr-1 shrink-0">{c('Group detail label').t`Group address:`}</span>
+                            <span className="mr-2 text-break">{Address.Email}</span>
                             <Copy
                                 size="small"
                                 shape="ghost"

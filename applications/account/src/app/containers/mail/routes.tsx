@@ -42,8 +42,10 @@ export const getMailAppRoutes = ({
     );
     const mailRouteTitles = getMailRouteTitles();
 
+    const isOrgAllowingCategoryView = organization ? organization.Settings.MailCategoryViewEnabled : false;
+
     return {
-        available: app === APPS.PROTONMAIL,
+        available: app === APPS.PROTONMAIL || app === APPS.PROTONACCOUNT,
         header: MAIL_APP_NAME,
         routes: {
             desktop: {
@@ -70,7 +72,7 @@ export const getMailAppRoutes = ({
                     {
                         text: c('Title').t`Email categories`,
                         id: 'categories',
-                        available: isCategoryViewEnabled,
+                        available: isCategoryViewEnabled && isOrgAllowingCategoryView,
                     },
                     {
                         text: c('Title').t`Layout`,

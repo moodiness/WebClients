@@ -3,21 +3,18 @@ import { c } from 'ttag';
 import type { SectionConfig, SidebarConfig } from '@proton/components';
 import { canUseGroups } from '@proton/components';
 import { isScribeSupported } from '@proton/components/helpers/assistant';
+import { PLANS } from '@proton/payments/core/constants';
+import { getIsB2BAudienceFromPlan, planSupportsSSO, upsellPlanSSO } from '@proton/payments/core/plan/helpers';
 import {
-    PLANS,
     getHasExternalMemberCapableB2BPlan,
     getHasMemberCapablePlan,
     getHasVpnB2BPlan,
-    getIsB2BAudienceFromPlan,
     hasAnyB2bBundle,
-    hasBundleBiz2025,
+    hasMeet,
+    hasMeetBusiness,
     hasVPNPassProfessional,
-    hasVisionary,
     hasVpnBusiness,
-    planSupportsSSO,
-    upsellPlanSSO,
-} from '@proton/payments';
-import { hasMeet, hasMeetBusiness } from '@proton/payments/core/subscription/helpers';
+} from '@proton/payments/core/subscription/helpers';
 import { appSupportsSSO } from '@proton/shared/lib/apps/apps';
 import {
     APPS,
@@ -50,7 +47,6 @@ export const getOrganizationAppRoutes = ({
     permissions,
 }: OrganizationRouterParams): SidebarConfig => {
     const {
-        canDisplayB2BLogsVPN = false,
         isUserGroupsFeatureEnabled = false,
         isUserGroupsNoCustomDomainEnabled = false,
         isUserGroupsPassBusinessEnabled = false,
@@ -60,7 +56,6 @@ export const getOrganizationAppRoutes = ({
         isSharedServerFeatureEnabled = false,
         isSsoForPbsEnabled = false,
         isRetentionPoliciesEnabled = false,
-        isRolesAndPermissionsEnabled = false,
     } = flags;
     const isAdmin = user.isAdmin && user.isSelf;
 
@@ -89,11 +84,7 @@ export const getOrganizationAppRoutes = ({
     const hasPlanWithEventLogging =
         hasVpnBusiness(subscription) || hasAnyB2bBundle(subscription) || hasVPNPassProfessional(subscription);
     const canShowB2BConnectionEvents =
-        canDisplayB2BLogsVPN &&
-        hasPlanWithEventLogging &&
-        app === APPS.PROTONVPN_SETTINGS &&
-        canHaveOrganization &&
-        isOrgConfigured;
+        hasPlanWithEventLogging && app === APPS.PROTONVPN_SETTINGS && canHaveOrganization && isOrgConfigured;
 
     //Change the title of the section when managing a family and avoid weird UI jump when no subscription is present
     const isPartOfFamily = getOrganizationDenomination(organization) === 'familyGroup';
@@ -160,14 +151,6 @@ export const getOrganizationAppRoutes = ({
         isOrgActive &&
         isOrgConfigured &&
         isOrganizationOneOf(organization, [PLANS.BUNDLE_BIZ_2025, PLANS.VISIONARY, PLANS.BUNDLE_PRO_2024]);
-
-    const canShowRolesAndPermissionsSection = !!(
-        isRolesAndPermissionsEnabled &&
-        canHaveOrganization &&
-        isOrgActive &&
-        isOrgConfigured &&
-        (hasBundleBiz2025(subscription) || hasVisionary(subscription))
-    );
 
     const canShowSecuritySection =
         permissions['account.security_policy.read'] &&
@@ -411,18 +394,6 @@ export const getOrganizationAppRoutes = ({
                     id: 'feature-access',
                     text: c('Title').t`Feature access`,
                     available: canShowVideoConferenceSection || canShowScribeSection,
-                },
-            ],
-        },
-        rolesAndPermissions: {
-            id: 'rolesAndPermissions',
-            text: c('Title').t`Roles and permissions`,
-            to: '/roles-and-permissions',
-            icon: 'users-plus',
-            available: canShowRolesAndPermissionsSection,
-            subsections: [
-                {
-                    id: 'roles',
                 },
             ],
         },

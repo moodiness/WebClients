@@ -12,18 +12,17 @@ import {
 } from '@proton/atoms/DashboardGrid/DashboardGrid';
 import Loader from '@proton/components/components/loader/Loader';
 import useLoad from '@proton/components/hooks/useLoad';
+import { PLANS } from '@proton/payments/core/constants';
+import { getHasPlusPlan } from '@proton/payments/core/plan/helpers';
+import type { FreePlanDefault, Plan } from '@proton/payments/core/plan/interface';
+import { FREE_PLAN } from '@proton/payments/core/subscription/freePlans';
 import {
-    FREE_PLAN,
-    type FreePlanDefault,
-    PLANS,
-    type Plan,
-    getHasPlusPlan,
-    getPlansMap,
     getSubscriptionPlanTitle,
     hasAllProductsB2CPlan,
     hasFreeOrPlus,
     hasVPN2024,
-} from '@proton/payments';
+} from '@proton/payments/core/subscription/helpers';
+import { getPlansMap } from '@proton/payments/core/subscription/plans-map-wrapper';
 import { isPaidSubscription } from '@proton/payments/core/type-guards';
 import type { APP_NAMES } from '@proton/shared/lib/constants';
 import { BRAND_NAME, VPN_APP_NAME } from '@proton/shared/lib/constants';
@@ -41,7 +40,9 @@ const AlsoInYourPlanSection = ({
     app,
     children,
     upsellBanner,
-}: PropsWithChildren<{ app: APP_NAMES; upsellBanner?: ReactNode }>) => {
+    title = c('Title').t`Also in your plan`,
+    subtitle,
+}: PropsWithChildren<{ app: APP_NAMES; upsellBanner?: ReactNode; title?: ReactNode; subtitle?: ReactNode }>) => {
     const [user] = useUser();
     const [subscription, loadingSubscription] = useSubscription();
 
@@ -65,6 +66,10 @@ const AlsoInYourPlanSection = ({
 
     const sectionSubtitleCopy = () => {
         const planTitlePlusMaybeBrand = planName === PLANS.FREE ? `${BRAND_NAME} ${planTitle}` : planTitle;
+
+        if (subtitle) {
+            return subtitle;
+        }
 
         if (getHasPlusPlan(planName) && !hasVPN2024(subscription)) {
             return c('Dashboard')
@@ -93,10 +98,7 @@ const AlsoInYourPlanSection = ({
         >
             <DashboardGrid columns={Children.count(children)}>
                 <DashboardGridSection spanAll="header">
-                    <DashboardGridSectionHeader
-                        title={c('Title').t`Also in your plan`}
-                        subtitle={sectionSubtitleCopy()}
-                    />
+                    <DashboardGridSectionHeader title={title} subtitle={sectionSubtitleCopy()} />
                 </DashboardGridSection>
                 {children}
                 {upsellBanner}

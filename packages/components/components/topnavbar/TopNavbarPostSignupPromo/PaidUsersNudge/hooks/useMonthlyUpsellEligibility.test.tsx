@@ -3,7 +3,9 @@ import { subDays } from 'date-fns';
 import { useSubscription } from '@proton/account/subscription/hooks';
 import useConfig from '@proton/components/hooks/useConfig';
 import useFeature from '@proton/features/useFeature';
-import { CYCLE, PLANS, type Subscription, SubscriptionPlatform } from '@proton/payments';
+import { CYCLE, PLANS } from '@proton/payments/core/constants';
+import { SubscriptionPlatform } from '@proton/payments/core/subscription/constants';
+import type { Subscription } from '@proton/payments/core/subscription/interface';
 import { APPS } from '@proton/shared/lib/constants';
 import { useFlag } from '@proton/unleash/useFlag';
 
@@ -54,30 +56,30 @@ describe('Mail Paid user nudge', () => {
         it('Should return false if the user hid the offer', () => {
             mockUseSubscription.mockReturnValue([defaultSubscription]);
             mockUseConfig.mockReturnValue(defaultConfigMail);
-            mockUseFlag.mockReturnValue(true);
+            mockUseFlag.mockReturnValue(false);
             mockUseFeature.mockReturnValue(featureHidden);
 
             expect(
                 useMonthlyUpsellEligibility({
                     allowedApps: paidConfig[PLANS.MAIL].allowedApps,
                     offerTimestampFlag: paidConfig[PLANS.MAIL].offerTimestampFlag,
-                    offerFlag: paidConfig[PLANS.MAIL].offerFlag,
+                    offerDisabledFlag: paidConfig[PLANS.MAIL].offerDisabledFlag,
                     eligiblePlan: paidConfig[PLANS.MAIL].currentPlan,
                 })
             ).toBe(false);
         });
 
-        it('Should return false since the flag is disabled', () => {
+        it('Should return false since the kill switch is enabled', () => {
             mockUseSubscription.mockReturnValue([defaultSubscription]);
             mockUseConfig.mockReturnValue(defaultConfigMail);
-            mockUseFlag.mockReturnValue(false);
+            mockUseFlag.mockReturnValue(true);
             mockUseFeature.mockReturnValue(featureEnabled);
 
             expect(
                 useMonthlyUpsellEligibility({
                     allowedApps: paidConfig[PLANS.MAIL].allowedApps,
                     offerTimestampFlag: paidConfig[PLANS.MAIL].offerTimestampFlag,
-                    offerFlag: paidConfig[PLANS.MAIL].offerFlag,
+                    offerDisabledFlag: paidConfig[PLANS.MAIL].offerDisabledFlag,
                     eligiblePlan: paidConfig[PLANS.MAIL].currentPlan,
                 })
             ).toBe(false);
@@ -86,14 +88,14 @@ describe('Mail Paid user nudge', () => {
         it('Should return false since the subscription is empty', () => {
             mockUseSubscription.mockReturnValue([null]);
             mockUseConfig.mockReturnValue(defaultConfigMail);
-            mockUseFlag.mockReturnValue(true);
+            mockUseFlag.mockReturnValue(false);
             mockUseFeature.mockReturnValue(featureEnabled);
 
             expect(
                 useMonthlyUpsellEligibility({
                     allowedApps: paidConfig[PLANS.MAIL].allowedApps,
                     offerTimestampFlag: paidConfig[PLANS.MAIL].offerTimestampFlag,
-                    offerFlag: paidConfig[PLANS.MAIL].offerFlag,
+                    offerDisabledFlag: paidConfig[PLANS.MAIL].offerDisabledFlag,
                     eligiblePlan: paidConfig[PLANS.MAIL].currentPlan,
                 })
             ).toBe(false);
@@ -104,14 +106,14 @@ describe('Mail Paid user nudge', () => {
             mockUseConfig.mockReturnValue({
                 APP_NAME: APPS.PROTONDRIVE,
             });
-            mockUseFlag.mockReturnValue(true);
+            mockUseFlag.mockReturnValue(false);
             mockUseFeature.mockReturnValue(featureEnabled);
 
             expect(
                 useMonthlyUpsellEligibility({
                     allowedApps: paidConfig[PLANS.MAIL].allowedApps,
                     offerTimestampFlag: paidConfig[PLANS.MAIL].offerTimestampFlag,
-                    offerFlag: paidConfig[PLANS.MAIL].offerFlag,
+                    offerDisabledFlag: paidConfig[PLANS.MAIL].offerDisabledFlag,
                     eligiblePlan: paidConfig[PLANS.MAIL].currentPlan,
                 })
             ).toBe(false);
@@ -122,7 +124,7 @@ describe('Mail Paid user nudge', () => {
         it('Should return false because the app is not valid', () => {
             mockUseSubscription.mockReturnValue([defaultSubscription]);
             mockUseFeature.mockReturnValue(featureEnabled);
-            mockUseFlag.mockReturnValue(true);
+            mockUseFlag.mockReturnValue(false);
             mockUseConfig.mockReturnValue({
                 APP_NAME: APPS.PROTONDRIVE,
             });
@@ -131,7 +133,7 @@ describe('Mail Paid user nudge', () => {
                 useMonthlyUpsellEligibility({
                     allowedApps: paidConfig[PLANS.MAIL].allowedApps,
                     offerTimestampFlag: paidConfig[PLANS.MAIL].offerTimestampFlag,
-                    offerFlag: paidConfig[PLANS.MAIL].offerFlag,
+                    offerDisabledFlag: paidConfig[PLANS.MAIL].offerDisabledFlag,
                     eligiblePlan: paidConfig[PLANS.MAIL].currentPlan,
                 })
             ).toBe(false);
@@ -140,7 +142,7 @@ describe('Mail Paid user nudge', () => {
         it('Should return true because the app is valid', () => {
             mockUseSubscription.mockReturnValue([defaultSubscription]);
             mockUseFeature.mockReturnValue(featureEnabled);
-            mockUseFlag.mockReturnValue(true);
+            mockUseFlag.mockReturnValue(false);
             mockUseConfig.mockReturnValue({
                 APP_NAME: APPS.PROTONMAIL,
             });
@@ -149,7 +151,7 @@ describe('Mail Paid user nudge', () => {
                 useMonthlyUpsellEligibility({
                     allowedApps: paidConfig[PLANS.MAIL].allowedApps,
                     offerTimestampFlag: paidConfig[PLANS.MAIL].offerTimestampFlag,
-                    offerFlag: paidConfig[PLANS.MAIL].offerFlag,
+                    offerDisabledFlag: paidConfig[PLANS.MAIL].offerDisabledFlag,
                     eligiblePlan: paidConfig[PLANS.MAIL].currentPlan,
                 })
             ).toBe(true);
@@ -160,7 +162,7 @@ describe('Mail Paid user nudge', () => {
         it('Should return false because user is not monthly', () => {
             mockUseFeature.mockReturnValue(featureEnabled);
             mockUseConfig.mockReturnValue(defaultConfigMail);
-            mockUseFlag.mockReturnValue(true);
+            mockUseFlag.mockReturnValue(false);
             mockUseSubscription.mockReturnValue([
                 {
                     PeriodStart: subDays(today.getTime(), 25).getTime() / 1000,
@@ -173,7 +175,7 @@ describe('Mail Paid user nudge', () => {
                 useMonthlyUpsellEligibility({
                     allowedApps: paidConfig[PLANS.MAIL].allowedApps,
                     offerTimestampFlag: paidConfig[PLANS.MAIL].offerTimestampFlag,
-                    offerFlag: paidConfig[PLANS.MAIL].offerFlag,
+                    offerDisabledFlag: paidConfig[PLANS.MAIL].offerDisabledFlag,
                     eligiblePlan: paidConfig[PLANS.MAIL].currentPlan,
                 })
             ).toBe(false);
@@ -182,7 +184,7 @@ describe('Mail Paid user nudge', () => {
         it('Should return false because user has upcoming yearly subcription', () => {
             mockUseFeature.mockReturnValue(featureEnabled);
             mockUseConfig.mockReturnValue(defaultConfigMail);
-            mockUseFlag.mockReturnValue(true);
+            mockUseFlag.mockReturnValue(false);
             mockUseSubscription.mockReturnValue([
                 {
                     PeriodStart: subDays(today.getTime(), 25).getTime() / 1000,
@@ -196,7 +198,7 @@ describe('Mail Paid user nudge', () => {
                 useMonthlyUpsellEligibility({
                     allowedApps: paidConfig[PLANS.MAIL].allowedApps,
                     offerTimestampFlag: paidConfig[PLANS.MAIL].offerTimestampFlag,
-                    offerFlag: paidConfig[PLANS.MAIL].offerFlag,
+                    offerDisabledFlag: paidConfig[PLANS.MAIL].offerDisabledFlag,
                     eligiblePlan: paidConfig[PLANS.MAIL].currentPlan,
                 })
             ).toBe(false);
@@ -205,7 +207,7 @@ describe('Mail Paid user nudge', () => {
         it('Should return false because the user is not in the window', () => {
             mockUseFeature.mockReturnValue(featureEnabled);
             mockUseConfig.mockReturnValue(defaultConfigMail);
-            mockUseFlag.mockReturnValue(true);
+            mockUseFlag.mockReturnValue(false);
             mockUseSubscription.mockReturnValue([
                 {
                     PeriodStart: subDays(today.getTime(), 19).getTime() / 1000,
@@ -219,7 +221,7 @@ describe('Mail Paid user nudge', () => {
                 useMonthlyUpsellEligibility({
                     allowedApps: paidConfig[PLANS.MAIL].allowedApps,
                     offerTimestampFlag: paidConfig[PLANS.MAIL].offerTimestampFlag,
-                    offerFlag: paidConfig[PLANS.MAIL].offerFlag,
+                    offerDisabledFlag: paidConfig[PLANS.MAIL].offerDisabledFlag,
                     eligiblePlan: paidConfig[PLANS.MAIL].currentPlan,
                 })
             ).toBe(false);
@@ -228,7 +230,7 @@ describe('Mail Paid user nudge', () => {
         it('Should return false because the user has a mobile subscription', () => {
             mockUseFeature.mockReturnValue(featureEnabled);
             mockUseConfig.mockReturnValue(defaultConfigMail);
-            mockUseFlag.mockReturnValue(true);
+            mockUseFlag.mockReturnValue(false);
             mockUseSubscription.mockReturnValue([
                 {
                     PeriodStart: subDays(today.getTime(), 25).getTime() / 1000,
@@ -243,7 +245,7 @@ describe('Mail Paid user nudge', () => {
                 useMonthlyUpsellEligibility({
                     allowedApps: paidConfig[PLANS.MAIL].allowedApps,
                     offerTimestampFlag: paidConfig[PLANS.MAIL].offerTimestampFlag,
-                    offerFlag: paidConfig[PLANS.MAIL].offerFlag,
+                    offerDisabledFlag: paidConfig[PLANS.MAIL].offerDisabledFlag,
                     eligiblePlan: paidConfig[PLANS.MAIL].currentPlan,
                 })
             ).toBe(false);
@@ -252,7 +254,7 @@ describe('Mail Paid user nudge', () => {
         it('Should return false because the user is Drive plus for Mail offer', () => {
             mockUseFeature.mockReturnValue(featureEnabled);
             mockUseConfig.mockReturnValue(defaultConfigMail);
-            mockUseFlag.mockReturnValue(true);
+            mockUseFlag.mockReturnValue(false);
             mockUseSubscription.mockReturnValue([
                 {
                     PeriodStart: subDays(today.getTime(), 25).getTime() / 1000,
@@ -266,7 +268,7 @@ describe('Mail Paid user nudge', () => {
                 useMonthlyUpsellEligibility({
                     allowedApps: paidConfig[PLANS.MAIL].allowedApps,
                     offerTimestampFlag: paidConfig[PLANS.MAIL].offerTimestampFlag,
-                    offerFlag: paidConfig[PLANS.MAIL].offerFlag,
+                    offerDisabledFlag: paidConfig[PLANS.MAIL].offerDisabledFlag,
                     eligiblePlan: paidConfig[PLANS.MAIL].currentPlan,
                 })
             ).toBe(false);
@@ -275,7 +277,7 @@ describe('Mail Paid user nudge', () => {
         it('Should return true because the user is Mail plus for Mail offer', () => {
             mockUseFeature.mockReturnValue(featureEnabled);
             mockUseConfig.mockReturnValue(defaultConfigMail);
-            mockUseFlag.mockReturnValue(true);
+            mockUseFlag.mockReturnValue(false);
             mockUseSubscription.mockReturnValue([
                 {
                     PeriodStart: subDays(today.getTime(), 25).getTime() / 1000,
@@ -289,7 +291,7 @@ describe('Mail Paid user nudge', () => {
                 useMonthlyUpsellEligibility({
                     allowedApps: paidConfig[PLANS.MAIL].allowedApps,
                     offerTimestampFlag: paidConfig[PLANS.MAIL].offerTimestampFlag,
-                    offerFlag: paidConfig[PLANS.MAIL].offerFlag,
+                    offerDisabledFlag: paidConfig[PLANS.MAIL].offerDisabledFlag,
                     eligiblePlan: paidConfig[PLANS.MAIL].currentPlan,
                 })
             ).toBe(true);
@@ -298,7 +300,7 @@ describe('Mail Paid user nudge', () => {
         it('Should return true because user has upcoming monthly subcription', () => {
             mockUseFeature.mockReturnValue(featureEnabled);
             mockUseConfig.mockReturnValue(defaultConfigMail);
-            mockUseFlag.mockReturnValue(true);
+            mockUseFlag.mockReturnValue(false);
             mockUseSubscription.mockReturnValue([
                 {
                     PeriodStart: subDays(today.getTime(), 25).getTime() / 1000,
@@ -312,7 +314,7 @@ describe('Mail Paid user nudge', () => {
                 useMonthlyUpsellEligibility({
                     allowedApps: paidConfig[PLANS.MAIL].allowedApps,
                     offerTimestampFlag: paidConfig[PLANS.MAIL].offerTimestampFlag,
-                    offerFlag: paidConfig[PLANS.MAIL].offerFlag,
+                    offerDisabledFlag: paidConfig[PLANS.MAIL].offerDisabledFlag,
                     eligiblePlan: paidConfig[PLANS.MAIL].currentPlan,
                 })
             ).toBe(true);
@@ -321,7 +323,7 @@ describe('Mail Paid user nudge', () => {
         it('Should return true because user has migration coupon', () => {
             mockUseFeature.mockReturnValue(featureEnabled);
             mockUseConfig.mockReturnValue(defaultConfigMail);
-            mockUseFlag.mockReturnValue(true);
+            mockUseFlag.mockReturnValue(false);
             mockUseSubscription.mockReturnValue([
                 {
                     PeriodStart: subDays(today.getTime(), 25).getTime() / 1000,
@@ -335,7 +337,7 @@ describe('Mail Paid user nudge', () => {
                 useMonthlyUpsellEligibility({
                     allowedApps: paidConfig[PLANS.MAIL].allowedApps,
                     offerTimestampFlag: paidConfig[PLANS.MAIL].offerTimestampFlag,
-                    offerFlag: paidConfig[PLANS.MAIL].offerFlag,
+                    offerDisabledFlag: paidConfig[PLANS.MAIL].offerDisabledFlag,
                     eligiblePlan: paidConfig[PLANS.MAIL].currentPlan,
                 })
             ).toBe(true);

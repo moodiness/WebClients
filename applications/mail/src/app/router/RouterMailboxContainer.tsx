@@ -1,5 +1,5 @@
-import { type RefObject, useEffect, useMemo, useState } from 'react';
-import { Redirect, Route, Switch, useLocation } from 'react-router-dom';
+import { useEffect, useState } from 'react';
+import { Redirect, Route, Switch } from 'react-router-dom';
 
 import { useRetentionPolicies } from '@proton/account/retentionPolicies/hooks';
 import { useUser } from '@proton/account/user/hooks';
@@ -10,21 +10,22 @@ import PrivateMainArea from '@proton/components/containers/layout/PrivateMainAre
 import useActiveBreakpoint from '@proton/components/hooks/useActiveBreakpoint';
 import { useCategoriesData } from '@proton/mail/features/categoriesView/useCategoriesData';
 import { MAILBOX_LABEL_IDS } from '@proton/shared/lib/constants';
-import { getSearchParams } from '@proton/shared/lib/helpers/url';
-import { CUSTOM_VIEWS, CUSTOM_VIEWS_LABELS, LABEL_IDS_TO_HUMAN } from '@proton/shared/lib/mail/constants';
-import type { Filter, Sort } from '@proton/shared/lib/mail/search';
+import { CUSTOM_VIEWS, CUSTOM_VIEWS_LABELS } from '@proton/shared/lib/mail/constants';
 import { isAdminOrLoginAsAdmin } from '@proton/shared/lib/user/helpers';
 import clsx from '@proton/utils/clsx';
 
+import { CategoriesOnboardingProvider } from 'proton-mail/components/categoryView/categoriesOnboarding/CategoriesOnboardingContext';
+import { CategoriesOnboardingSpotlight } from 'proton-mail/components/categoryView/categoriesOnboarding/CategoriesOnboardingSpotlights';
+import { OnboardingStep } from 'proton-mail/components/categoryView/categoriesOnboarding/onboardingInterface';
 import MailHeader from 'proton-mail/components/header/MailHeader';
-import useScrollToTop from 'proton-mail/components/list/useScrollToTop';
 import { NewsletterSubscriptionView } from 'proton-mail/components/view/NewsletterSubscription/NewsletterSubscriptionView';
 import { ROUTE_LABEL } from 'proton-mail/constants';
 import { MailboxContainerContextProvider } from 'proton-mail/containers/mailbox/MailboxContainerProvider';
-import { filterFromUrl, pageFromUrl, sortFromUrl } from 'proton-mail/helpers/mailboxUrl';
+import { getInboxRedirectUrl } from 'proton-mail/helpers/mailboxUrl';
 import useMailDrawer from 'proton-mail/hooks/drawer/useMailDrawer';
 import { useElements } from 'proton-mail/hooks/mailbox/useElements';
-import { selectParams } from 'proton-mail/store/elements/elementsSelectors';
+import { useScrollListToTopOnViewChange } from 'proton-mail/router/hooks/useScrollListToTopOnViewChange';
+import { selectElementID, selectIsSearching, selectLabelID } from 'proton-mail/store/elements/elementsSelectors';
 import { useMailDispatch, useMailSelector } from 'proton-mail/store/hooks';
 import { layoutActions } from 'proton-mail/store/layout/layoutSlice';
 
@@ -38,7 +39,10 @@ import { useMailboxContainerSideEffects } from './sideEffects/useMailboxContaine
 
 export const RouterMailboxContainer = () => {
     // We get most of the data here to avoid unnecessary re-renders
-    const { labelID, isSearching, elementID } = useMailSelector(selectParams);
+    const labelID = useMailSelector(selectLabelID);
+    const elementID = useMailSelector(selectElementID);
+    const isSearching = useMailSelector(selectIsSearching);
+
     const navigation = useRouterNavigation({ labelID: labelID });
     const elementsParams = useGetElementParams({ navigation });
     const elementsData = useElements(elementsParams);
@@ -46,7 +50,8 @@ export const RouterMailboxContainer = () => {
 
     const [user] = useUser();
     const [retentionRules] = useRetentionPolicies();
-    const { isColumnModeActive, messageContainerRef, mainAreaRef, scrollContainerRef } = useMailboxLayoutProvider();
+    const { isColumnModeActive, messageContainerRef, mainAreaRef } = useMailboxLayoutProvider();
+    useScrollListToTopOnViewChange();
 
     const { drawerSidebarButtons, showDrawerSidebar } = useMailDrawer();
 
@@ -55,7 +60,7 @@ export const RouterMailboxContainer = () => {
 
     const [isResizing, setIsResizing] = useState(false);
 
-    const { shouldSeeWideToolbars } = useCategoriesData();
+    const { shouldSeeWideToolbars, isCategoryViewEnabled, isCategoryViewEnabledSettled } = useCategoriesData();
 
     /**
      * Temporary: Router mailbox side effects
@@ -69,23 +74,7 @@ export const RouterMailboxContainer = () => {
         labelID: labelID,
     });
 
-    const dispatch = useMailDispatch(); // You're already using useMailSelector, so this is consistent
-
-    // TODO this will need to be improved to avoid depending on the URL, fix the test for the moment
-    const location = useLocation();
-    const urlPage = pageFromUrl(location);
-    const searchParams = getSearchParams(location.hash);
-    // eslint-disable-next-line react-hooks/exhaustive-deps -- autofix-eslint-649484
-    const sort = useMemo<Sort>(() => sortFromUrl(location, labelID), [searchParams.sort, labelID]);
-    // eslint-disable-next-line react-hooks/exhaustive-deps -- autofix-eslint-C5320A
-    const filter = useMemo<Filter>(() => filterFromUrl(location), [searchParams.filter]);
-    useScrollToTop(scrollContainerRef as RefObject<HTMLElement>, [
-        urlPage,
-        labelID,
-        sort,
-        filter,
-        elementsParams.search,
-    ]);
+    const dispatch = useMailDispatch();
     const breakpoints = useActiveBreakpoint();
 
     // When the labelID is updated, reset the select all value
@@ -93,81 +82,91 @@ export const RouterMailboxContainer = () => {
         dispatch(layoutActions.setSelectAll(false));
     }, [labelID, dispatch]);
 
+    const redirectURL = getInboxRedirectUrl({ isCategoryViewEnabled, isCategoryViewEnabledSettled });
+    const inboxRedirect = redirectURL ? <Redirect to={redirectURL} /> : null;
+
     if (!labelID) {
-        return <Redirect to={`/${LABEL_IDS_TO_HUMAN[MAILBOX_LABEL_IDS.INBOX]}`} />;
+        return inboxRedirect;
     }
 
     // Prevent non-admin users from accessing the Deleted folder via URL
     if (labelID === MAILBOX_LABEL_IDS.SOFT_DELETED && !isAdminOrLoginAsAdmin(user)) {
-        return <Redirect to={`/${LABEL_IDS_TO_HUMAN[MAILBOX_LABEL_IDS.INBOX]}`} />;
+        return inboxRedirect;
     }
 
     // Redirect users without retention rules from accessing the Deleted folder via URL
     if (labelID === MAILBOX_LABEL_IDS.SOFT_DELETED && retentionRules && !retentionRules.length) {
-        return <Redirect to={`/${LABEL_IDS_TO_HUMAN[MAILBOX_LABEL_IDS.INBOX]}`} />;
+        return inboxRedirect;
     }
 
     const viewPortIsNarrow = breakpoints.viewportWidth['<=small'] || breakpoints.viewportWidth.medium;
 
     return (
         <MailboxContainerContextProvider containerRef={messageContainerRef} isResizing={isResizing}>
-            <MailHeader
-                elementsData={elementsData}
-                actions={actions}
-                labelID={labelID}
-                settingsButton={<InboxQuickSettingsAppButton />}
-                toolbar={
-                    // Show toolbar in header when in row layout and an email is selected
-                    !shouldSeeWideToolbars && ((!isColumnModeActive && elementID) || viewPortIsNarrow) ? (
-                        <MailboxToolbar
-                            inHeader
-                            navigation={navigation}
-                            elementsData={elementsData}
-                            actions={actions}
+            <CategoriesOnboardingProvider>
+                <MailHeader
+                    elementsData={elementsData}
+                    actions={actions}
+                    labelID={labelID}
+                    settingsButton={
+                        <CategoriesOnboardingSpotlight step={OnboardingStep.CUSTOMIZE}>
+                            <InboxQuickSettingsAppButton />
+                        </CategoriesOnboardingSpotlight>
+                    }
+                    toolbar={
+                        // Show toolbar in header when in row layout and an email is selected
+                        !shouldSeeWideToolbars && ((!isColumnModeActive && elementID) || viewPortIsNarrow) ? (
+                            <MailboxToolbar
+                                inHeader
+                                navigation={navigation}
+                                elementsData={elementsData}
+                                actions={actions}
+                            />
+                        ) : undefined
+                    }
+                />
+                <PrivateMainArea
+                    className={clsx([
+                        'flex',
+                        !isColumnModeActive && elementID && 'row-layout-email-view full-width-email',
+                        isColumnModeActive && 'column-layout-view',
+                        breakpoints.viewportWidth['<=small'] && 'border-none',
+                    ])}
+                    innerClassName={breakpoints.viewportWidth['<=small'] ? 'border-none' : ''}
+                    hasToolbar
+                    hasRowMode={hasRowMode}
+                    ref={mainAreaRef}
+                    drawerVisibilityButton={canShowDrawer ? <DrawerVisibilityButton /> : undefined}
+                    drawerSidebar={<DrawerSidebar buttons={drawerSidebarButtons} />}
+                    mainBordered={canShowDrawer && !!showDrawerSidebar}
+                >
+                    <Switch>
+                        {redirectURL && <Redirect exact from="/" to={redirectURL} />}
+                        <Route
+                            path={CUSTOM_VIEWS[CUSTOM_VIEWS_LABELS.NEWSLETTER_SUBSCRIPTIONS].route}
+                            render={() => (
+                                <NewsletterSubscriptionView
+                                    elementsData={elementsData}
+                                    actions={actions}
+                                    navigation={navigation}
+                                />
+                            )}
                         />
-                    ) : undefined
-                }
-            />
-            <PrivateMainArea
-                className={clsx([
-                    'flex',
-                    !isColumnModeActive && elementID && 'row-layout-email-view full-width-email',
-                    isColumnModeActive && 'column-layout-view',
-                    breakpoints.viewportWidth['<=small'] && 'border-none',
-                ])}
-                innerClassName={breakpoints.viewportWidth['<=small'] ? 'border-none' : ''}
-                hasToolbar
-                hasRowMode={hasRowMode}
-                ref={mainAreaRef}
-                drawerVisibilityButton={canShowDrawer ? <DrawerVisibilityButton /> : undefined}
-                drawerSidebar={<DrawerSidebar buttons={drawerSidebarButtons} />}
-                mainBordered={canShowDrawer && !!showDrawerSidebar}
-            >
-                <Switch>
-                    <Route
-                        path={CUSTOM_VIEWS[CUSTOM_VIEWS_LABELS.NEWSLETTER_SUBSCRIPTIONS].route}
-                        render={() => (
-                            <NewsletterSubscriptionView
-                                elementsData={elementsData}
-                                actions={actions}
-                                navigation={navigation}
-                            />
-                        )}
-                    />
-                    <Route
-                        path={ROUTE_LABEL}
-                        render={() => (
-                            <RouterLabelContainer
-                                navigation={navigation}
-                                elementsData={elementsData}
-                                actions={actions}
-                                hasRowMode={hasRowMode}
-                                onResizingChange={setIsResizing}
-                            />
-                        )}
-                    />
-                </Switch>
-            </PrivateMainArea>
+                        <Route
+                            path={ROUTE_LABEL}
+                            render={() => (
+                                <RouterLabelContainer
+                                    navigation={navigation}
+                                    elementsData={elementsData}
+                                    actions={actions}
+                                    hasRowMode={hasRowMode}
+                                    onResizingChange={setIsResizing}
+                                />
+                            )}
+                        />
+                    </Switch>
+                </PrivateMainArea>
+            </CategoriesOnboardingProvider>
         </MailboxContainerContextProvider>
     );
 };

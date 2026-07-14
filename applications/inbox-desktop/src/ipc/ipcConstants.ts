@@ -30,6 +30,8 @@ export const DESKTOP_FEATURES = {
     MailtoBannerPermanentDismiss: true,
     OAuthPopupV2: true,
     SwitchViewShortcuts: true,
+    SetAllowedProtocols: true,
+    RegisterUrlRedirectRules: true,
 } as const satisfies Record<IPCInboxDesktopFeature, boolean>;
 
 export type IPCHasFeatureMessage = {

@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useMemo, useRef } from 'react';
-import { useHistory, useLocation } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 
 import { LEGACY_FORUM_CATEGORY_ID } from '@proton/mail/helpers/location';
 // eslint-disable-next-line no-restricted-imports
@@ -149,7 +149,6 @@ export const useElements: UseElements = ({
     const canReactToSettingsUpdate = useRef(false);
 
     const abortControllerRef = useRef<AbortController>();
-    const history = useHistory();
     const location = useLocation();
     const [labels = []] = useLabels();
     const [folders = []] = useFolders();
@@ -159,7 +158,7 @@ export const useElements: UseElements = ({
     const countValues = conversationMode ? conversationCounts : messageCounts;
     const countsLoading = conversationMode ? loadingConversationCounts : loadingMessageCounts;
 
-    const { categoryViewAccess } = useCategoriesView();
+    const { isCategoryViewEnabled } = useCategoriesView();
     const disabledCategoriesIDs = useMailSelector(selectDisabledCategoriesIDs);
 
     const { esStatus } = useEncryptedSearchContext();
@@ -216,12 +215,13 @@ export const useElements: UseElements = ({
     }, [labels.length, folders.length]);
 
     useEffect(() => {
-        const { rawLabelID, elementID, messageID } = getParametersFromPath(location.pathname);
-
-        if (!rawLabelID) {
-            history.replace(location.pathname + LABEL_IDS_TO_HUMAN[MAILBOX_LABEL_IDS.INBOX]);
+        // The router redirects users to the inbox when they visit the root path
+        // We ignore it to avoid resetting elements state unnecessarily
+        if (location.pathname === '/') {
+            return;
         }
 
+        const { rawLabelID, elementID, messageID } = getParametersFromPath(location.pathname);
         const labelID = getLabelIDFromRawID(labelIDs, rawLabelID);
         const sort = sortFromUrl(location, labelID);
         const filter = filterFromUrl(location);
@@ -258,7 +258,7 @@ export const useElements: UseElements = ({
 
         // Update the category IDs and push the disabled categories if the default category is selected
         const categoryIDs: CategoryLabelID[] = [];
-        if (categoryViewAccess && labelID === MAILBOX_LABEL_IDS.INBOX) {
+        if (isCategoryViewEnabled && labelID === MAILBOX_LABEL_IDS.INBOX) {
             const categoryInURL = categoryIDFromUrl(location);
             const category = categoryInURL ?? MAILBOX_LABEL_IDS.CATEGORY_DEFAULT;
             categoryIDs.push(category);
@@ -323,7 +323,7 @@ export const useElements: UseElements = ({
         labelIDs,
         esEnabled,
         onPage,
-        categoryViewAccess,
+        isCategoryViewEnabled,
         disabledCategoriesIDs,
     ]);
 

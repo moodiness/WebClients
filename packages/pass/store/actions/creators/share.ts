@@ -1,22 +1,25 @@
 import { createAction } from '@reduxjs/toolkit';
 import { c } from 'ttag';
 
+import type { SyncResult } from '@proton/pass/lib/sync/types';
 import { withCache } from '@proton/pass/store/actions/enhancers/cache';
 import { withShareDedupe } from '@proton/pass/store/actions/enhancers/dedupe';
+import { withItems } from '@proton/pass/store/actions/enhancers/items';
 import { withNotification } from '@proton/pass/store/actions/enhancers/notification';
 import type { ShareDedupeState } from '@proton/pass/store/reducers/shares-dedupe';
 import { requestActionsFactory } from '@proton/pass/store/request/flow';
-import type { SynchronizationResult } from '@proton/pass/store/sagas/client/sync';
-import type { Share, ShareId, ShareType } from '@proton/pass/types';
+import type { Share, ShareCreatedDTO, ShareId, ShareType } from '@proton/pass/types';
 import { pipe } from '@proton/pass/utils/fp/pipe';
 
 export const shareEventUpdate = createAction('share::event::update', (payload: Share) => pipe(withCache, withShareDedupe)({ payload }));
 
-export const shareEventDelete = createAction('share::event::delete', (share: Share) =>
-    pipe(withCache, withShareDedupe)({ payload: { shareId: share.shareId } })
+export const shareCreated = createAction('share::created', (payload: ShareCreatedDTO) => pipe(withCache, withShareDedupe)({ payload }));
+export const shareUpdated = createAction('share::updated', (payload: Share) => pipe(withCache, withShareDedupe)({ payload }));
+export const shareDeleted = createAction('share::deleted', ({ shareId }: Share) =>
+    pipe(withItems, withCache, withShareDedupe)({ payload: { shareId } })
 );
 
-export const sharesEventNew = createAction('shares::event::new', (payload: Omit<SynchronizationResult, 'dedupe'>) =>
+export const sharesEventNew = createAction('shares::event::new', (payload: Omit<SyncResult, 'dedupe'>) =>
     pipe(withCache, withShareDedupe)({ payload })
 );
 
@@ -38,6 +41,7 @@ export const sharesVisibilityEdit = requestActionsFactory<
         prepare: (payload) =>
             pipe(
                 withCache,
+                withItems,
                 withShareDedupe,
                 withNotification({
                     type: 'info',

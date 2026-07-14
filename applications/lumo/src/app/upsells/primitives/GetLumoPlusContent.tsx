@@ -12,7 +12,7 @@ interface GetLumoPlusContentProps {
     withGradient?: boolean;
 }
 
-// TODO: check if this can be removed after V2 updates
+// Used by BlackFridayOfferNavbarButton — remove when Black Friday offer is archived
 export const GetLumoPlusContent = ({
     customText,
     customTextClass = '',
@@ -27,8 +27,7 @@ export const GetLumoPlusContent = ({
 );
 
 export const UpgradeToLumoPlusContent = () => (
-    <span className="flex items-center gap-2">
-        <span>{c('collider_2025: Upsell Title').t`Upgrade to`}</span>
-        <LumoPlusLogoInline height="12px" />
+    <span className="flex items-center gap-2 justify-center">
+        <span>{c('collider_2025: Upsell Title').t`Upgrade`}</span>
     </span>
 );

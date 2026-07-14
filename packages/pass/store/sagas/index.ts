@@ -25,6 +25,7 @@ import cache from './client/cache.saga';
 import notification from './client/notification.saga';
 import offlineResume from './client/offline-resume.saga';
 import offlineSetup from './client/offline-setup.saga';
+import qa from './client/qa.saga';
 import reportProblem from './client/report-problem.saga';
 import settings from './client/settings.saga';
 import sync from './client/sync.saga';
@@ -56,9 +57,10 @@ import itemHistory from './items/item-history.saga';
 import itemMove from './items/item-move.saga';
 import itemPin from './items/item-pin.saga';
 import itemRestore from './items/item-restore.saga';
+import itemSetFlags from './items/item-set-flags.saga';
 import itemTrash from './items/item-trash.saga';
 import itemUnpin from './items/item-unpin.saga';
-import itemSetFlags from './items/item.set-flags.saga';
+import itemsUpdated from './items/items-updated.saga';
 import breachesAlias from './monitor/breaches.alias.saga';
 import breachesCustom from './monitor/breaches.custom.saga';
 import breachesProton from './monitor/breaches.proton.saga';
@@ -148,6 +150,7 @@ const COMMON_SAGAS = [
     itemRestore,
     itemSetFlags,
     itemsImport,
+    itemsUpdated,
     itemTrash,
     itemUnpin,
     lock,
@@ -178,6 +181,7 @@ const COMMON_SAGAS = [
     vaultTransferOwner,
     sharesDedupe,
     sharesNotification,
+    qa,
 ];
 
 export const rootSagaFactory = (platformSagas: PassSaga[]) =>

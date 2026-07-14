@@ -2,8 +2,8 @@ import type { ThunkDispatch, UnknownAction } from '@reduxjs/toolkit';
 
 import type { ProtonThunkArguments } from '@proton/redux-shared-store-types';
 import { CacheType } from '@proton/redux-utilities/interface';
+import { ADDRESS_FLAGS } from '@proton/shared/lib/constants';
 import type { Api, Group, MemberReadyForManualUnprivatization } from '@proton/shared/lib/interfaces';
-import { GROUP_MEMBER_STATE } from '@proton/shared/lib/interfaces';
 import type { GroupMember } from '@proton/shared/lib/interfaces/GroupMember';
 
 import { type GroupMembersState, groupMembersThunk } from '../groupMembers';
@@ -51,22 +51,28 @@ interface ScimApprovalDeps {
 
 async function* processScimGroup(
     group: Group,
-    { api, getMemberPublicKeys, dispatch }: ScimApprovalDeps
+    { pendingMembersByGroup, api, getMemberPublicKeys, dispatch }: ScimApprovalDeps
 ): AsyncGenerator<ScimProgress> {
     yield { type: 'groupStatus', groupID: group.ID, status: ItemStatus.Finalizing };
 
     let resolvedGroup = group;
     if (!group.Address.HasKeys) {
-        resolvedGroup = await dispatch(createKeysForGroup({ group, api }));
+        const e2eeDisabledGroup: Group = {
+            ...group,
+            Address: {
+                ...group.Address,
+                Flags: (group.Address?.Flags ?? 0) | ADDRESS_FLAGS.FLAG_DISABLE_E2EE,
+            },
+        };
+        resolvedGroup = await dispatch(createKeysForGroup({ group: e2eeDisabledGroup, api }));
         dispatch(updateGroup(resolvedGroup));
     }
 
-    const members = await dispatch(groupMembersThunk({ groupId: resolvedGroup.ID, cache: CacheType.None }));
-    const pendingAdmins = Object.values(members).filter((m) => m.State === GROUP_MEMBER_STATE.PENDING_ADMIN);
+    const pendingAdminApprovals = pendingMembersByGroup[group.ID] ?? [];
 
     let allCompleted = true;
-    if (pendingAdmins.length) {
-        for (const groupMember of pendingAdmins) {
+    if (pendingAdminApprovals.length) {
+        for (const groupMember of pendingAdminApprovals) {
             yield { type: 'groupMemberStatus', memberID: groupMember.ID, status: ItemStatus.Finalizing };
             try {
                 await dispatch(

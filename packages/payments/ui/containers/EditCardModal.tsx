@@ -20,18 +20,16 @@ import { CacheType } from '@proton/redux-utilities/interface';
 import type { ProductParam } from '@proton/shared/lib/apps/product';
 import noop from '@proton/utils/noop';
 
-import { getPaymentsVersion, setPaymentMethodV4, setPaymentMethodV5, updatePaymentMethod } from '../../core/api/api';
-import type { CardModel } from '../../core/cardDetails';
+import { getPaymentsVersion, setPaymentMethodV5, updatePaymentMethod } from '../../core/api/api';
 import { Autopay, PAYMENT_METHOD_TYPES } from '../../core/constants';
 import type { PaymentMethodCardDetails } from '../../core/interface';
 import { isV5PaymentToken } from '../../core/type-guards';
-import { v5PaymentTokenToLegacyPaymentToken } from '../../core/utils';
 import { tracePaymentError } from '../../sentry/capture';
 import { ChargebeeCreditCardWrapper } from '../components/ChargebeeWrapper';
 import { usePaymentPollers } from '../hooks/usePaymentPollers';
 
 interface Props extends Omit<ModalProps<'form'>, 'as' | 'children' | 'size'> {
-    card?: CardModel;
+    editExistingCard: boolean;
     renewState?: Autopay;
     paymentMethod?: PaymentMethodCardDetails;
     onMethodAdded?: () => void;
@@ -40,7 +38,7 @@ interface Props extends Omit<ModalProps<'form'>, 'as' | 'children' | 'size'> {
 }
 
 const EditCardModal = ({
-    card: existingCard,
+    editExistingCard,
     renewState,
     paymentMethod,
     onMethodAdded,
@@ -55,7 +53,7 @@ const EditCardModal = ({
 
     const [processing, withProcessing] = useLoading();
     const { createNotification } = useNotifications();
-    const title = existingCard ? c('Title').t`Edit credit/debit card` : c('Title').t`Add credit/debit card`;
+    const title = editExistingCard ? c('Title').t`Edit credit/debit card` : c('Title').t`Add credit/debit card`;
 
     const [chargebeeFormInitialized, setChargebeeFormInitialized] = useState(false);
 
@@ -69,7 +67,7 @@ const EditCardModal = ({
         amount: 0,
         currency: user.Currency,
         flow: 'add-card',
-        onChargeable: async (_, { chargeablePaymentParameters, sourceType }) => {
+        onChargeable: async (_, { chargeablePaymentParameters }) => {
             withProcessing(async () => {
                 if (!isV5PaymentToken(chargeablePaymentParameters)) {
                     return;
@@ -77,25 +75,15 @@ const EditCardModal = ({
 
                 const pollPaymentMethods = createPaymentMethodsPoller();
 
-                if (sourceType === PAYMENT_METHOD_TYPES.CARD) {
-                    const legacyPaymentToken = v5PaymentTokenToLegacyPaymentToken(chargeablePaymentParameters);
-                    await api(
-                        setPaymentMethodV4({
-                            ...legacyPaymentToken.Payment,
-                            Autopay: renewToggleProps.renewState,
-                        })
-                    );
-                } else if (sourceType === PAYMENT_METHOD_TYPES.CHARGEBEE_CARD) {
-                    await api(
-                        setPaymentMethodV5({
-                            PaymentToken: chargeablePaymentParameters.PaymentToken,
-                            v: 5,
-                            Autopay: renewToggleProps.renewState,
-                        })
-                    );
-                }
+                await api(
+                    setPaymentMethodV5({
+                        PaymentToken: chargeablePaymentParameters.PaymentToken,
+                        v: 5,
+                        Autopay: renewToggleProps.renewState,
+                    })
+                );
 
-                if (existingCard) {
+                if (editExistingCard) {
                     await getPaymentMethods({ cache: CacheType.None });
                     createNotification({ text: c('Success').t`Payment method updated` });
                 } else {
@@ -124,7 +112,7 @@ const EditCardModal = ({
                     component: 'edit-card-modal',
                 },
                 extra: {
-                    hasExistingCard: !!existingCard,
+                    hasExistingCard: editExistingCard,
                     renewState,
                     paymentMethodId,
                     processorType: paymentFacade.selectedProcessor?.meta.type,
@@ -142,27 +130,20 @@ const EditCardModal = ({
 
         if (paymentFacade.methods.isMethodTypeEnabled(PAYMENT_METHOD_TYPES.CHARGEBEE_CARD)) {
             paymentFacade.methods.selectMethod(PAYMENT_METHOD_TYPES.CHARGEBEE_CARD);
-        } else {
-            paymentFacade.methods.selectMethod(PAYMENT_METHOD_TYPES.CARD);
         }
     }, [loading]);
 
-    const isChargebeeCard = paymentFacade.selectedMethodType === PAYMENT_METHOD_TYPES.CHARGEBEE_CARD;
-    const formFullyLoaded = isChargebeeCard && chargebeeFormInitialized;
-
     const content = (
         <>
-            {isChargebeeCard && (
-                <ChargebeeCreditCardWrapper
-                    onInitialized={() => setChargebeeFormInitialized(true)}
-                    iframeHandles={paymentFacade.iframeHandles}
-                    chargebeeCard={paymentFacade.chargebeeCard}
-                    themeCode={paymentFacade.themeCode}
-                    initialCountryCode={paymentFacade.methods.status?.CountryCode}
-                    showCountry={true}
-                />
-            )}
-            {enableRenewToggle && formFullyLoaded && (
+            <ChargebeeCreditCardWrapper
+                onInitialized={() => setChargebeeFormInitialized(true)}
+                iframeHandles={paymentFacade.iframeHandles}
+                chargebeeCard={paymentFacade.chargebeeCard}
+                themeCode={paymentFacade.themeCode}
+                initialCountryCode={paymentFacade.methods.status?.CountryCode}
+                showCountry={true}
+            />
+            {enableRenewToggle && chargebeeFormInitialized && (
                 <RenewToggle
                     loading={processing}
                     onChange={async () => {
@@ -226,28 +207,8 @@ const EditCardModal = ({
             {...rest}
         >
             <ModalTwoHeader title={title} />
-            <ModalTwoContent>
-                {/* In the future, this spinner can be passed inside of chargebee card component to
-                replace its internal spinner and make to loading animation continious
-                currently there are two stages: first wait till the facade is fully loaded,
-                then wait till the chargebee form is initialized. We need to find a way to use one loading spinner
-                for both stages
-                */}
-                {/* {loading ? (
-                    <div
-                        className="flex justify-center items-center h-custom"
-                        style={{
-                            '--h-custom': '27rem',
-                        }}
-                    >
-                        <CircleLoader size="large" />
-                    </div>
-                ) : (
-                    content
-                )} */}
-                {content}
-            </ModalTwoContent>
-            {formFullyLoaded && (
+            <ModalTwoContent>{content}</ModalTwoContent>
+            {chargebeeFormInitialized && (
                 <ModalTwoFooter>
                     <Button disabled={processing} onClick={rest.onClose}>{c('Action').t`Cancel`}</Button>
                     <Button loading={processing} color="norm" type="submit" data-testid="edit-card-action-save">{c(

@@ -36,7 +36,11 @@ type MapExtraFields<T> = TypeMapper<T, [[ExtraField, DeobfuscatedItemExtraField]
 export type ItemContent<T extends ItemType> = {
     alias: ProtobufItemAlias;
     note: ProtobufItemNote;
-    login: Obfuscate<SanitizedBuffers<ProtobufItemLogin, string>, 'itemEmail' | 'itemUsername' | 'totpUri', 'password'>;
+    login: Obfuscate<
+        SanitizedBuffers<Omit<ProtobufItemLogin, 'urls'>, string>,
+        'itemEmail' | 'itemUsername' | 'totpUri',
+        'password'
+    >;
     creditCard: Obfuscate<ProtobufItemCreditCard, never, 'number' | 'verificationNumber' | 'pin'>;
     identity: MapExtraFields<ProtobufItemIdentity>;
     sshKey: Obfuscate<MapExtraFields<ProtobufItemSSHKey>, never, 'privateKey'>;
@@ -89,6 +93,7 @@ export type LoginItem = ItemRevision<'login'>;
 export type NoteItem = ItemRevision<'note'>;
 export type IdentityItem = ItemRevision<'identity'>;
 export type CreditCardItem = ItemRevision<'creditCard'>;
+export type SSHKeyItem = ItemRevision<'sshKey'>;
 
 export type ItemRevisionID = ItemIDRevision;
 export type ItemOptimisticState = { optimistic: boolean; failed: boolean };
@@ -111,7 +116,7 @@ export type SelectedItem = UniqueItem;
 export type SelectedRevision = SelectedItem & { revision: number };
 export type OptimisticItem = SelectedShare & { optimisticId: string; optimisticTime?: number };
 
-export type ItemSortFilter = 'recent' | 'titleASC' | 'createTimeDESC' | 'createTimeASC';
+export type ItemSortFilter = 'relevant' | 'recent' | 'titleASC' | 'createTimeDESC' | 'createTimeASC';
 export type ItemTypeFilter = '*' | Exclude<ItemType, 'sshKey' | 'wifi'>;
 
 export type ItemFilters = {

@@ -110,6 +110,9 @@
       "Apply": [
         "Εφαρμογή"
       ],
+      "Approve": [
+        "Έγκριση"
+      ],
       "Attach screenshot(s)": [
         "Επισύναψη στιγμιότυπου/ων οθόνης"
       ],
@@ -226,9 +229,6 @@
       ],
       "Connected": [
         "Συνδεδεμένο"
-      ],
-      "Contact support": [
-        "Επικοινωνήστε με την υποστήριξη πελατών"
       ],
       "Contact Support Center": [
         "Επικοινωνία Κέντρου Υποστήριξης"
@@ -503,9 +503,6 @@
       "Forgot password?": [
         "Ξεχάσατε τον κωδικό πρόσβασης;"
       ],
-      "Forgot recovery method?": [
-        "Ξεχάσατε τη μέθοδο ανάκτησης;"
-      ],
       "Generate new recovery phrase": [
         "Παραγωγή νέας φράσης ανάκτησης"
       ],
@@ -659,9 +656,6 @@
       "Load more": [
         "Φόρτωση περισσοτέρων"
       ],
-      "Loading verification": [
-        "Αναμονή για επαλήθευση"
-      ],
       "Lost access to your 2FA device?": [
         "Χάσατε την πρόσβαση στη συσκευή 2FA;"
       ],
@@ -757,6 +751,9 @@
       ],
       "Organization": [
         "Οργανισμός"
+      ],
+      "Pause": [
+        "Παύση"
       ],
       "Pay": [
         "Πληρωμή"
@@ -895,6 +892,9 @@
       ],
       "Review": [
         "Αναθεώρηση"
+      ],
+      "Review changes": [
+        "Επισκόπιση αλλαγών"
       ],
       "Revoke": [
         "Ανάκληση"
@@ -3671,6 +3671,15 @@
       "No one in your organization can connect to shared servers.": [
         "Κανείς στον οργανισμό σας δεν μπορεί να συνδεθεί σε κοινόχρηστους διακομιστές."
       ],
+      "Note that emails sent to this address, even from other ${ BRAND_NAME } addresses, will no longer be end-to-end encrypted.": [
+        "Σημειώστε ότι τα μηνύματα ηλεκτρονικού ταχυδρομείου που αποστέλλονται σε αυτήν τη διεύθυνση, ακόμη και από άλλες διευθύνσεις ${ BRAND_NAME }, δε θα είναι πλέον διατερματικά κρυπτογραφημένα."
+      ],
+      "Once disconnected and disabled, you will no longer be able to send or receive emails as ${ address.Email } in ${ BRAND_NAME }. Emails sent to this address will still arrive in Gmail, but not in ${ MAIL_APP_NAME }.": [
+        "Μόλις αποσυνδεθείτε και απενεργοποιηθεί, δε θα μπορείτε πλέον να στέλνετε ή να λαμβάνετε μηνύματα ως ${ address.Email } στο ${ BRAND_NAME }. Τα μηνύματα που αποστέλλονται σε αυτήν τη διεύθυνση θα εξακολουθούν να φτάνουν στο Gmail, αλλά όχι στο ${ MAIL_APP_NAME }."
+      ],
+      "Once disconnected, you will no longer be able to send or receive emails as ${ address.Email } in ${ BRAND_NAME }. Emails sent to this address will still arrive in Gmail, but not in ${ MAIL_APP_NAME }.": [
+        "Μόλις αποσυνδεθείτε, δε θα μπορείτε πλέον να στέλνετε ή να λαμβάνετε μηνύματα ως ${ address.Email } στο ${ BRAND_NAME }. Τα μηνύματα που αποστέλλονται σε αυτήν τη διεύθυνση θα εξακολουθούν να φτάνουν στο Gmail, αλλά όχι στο ${ MAIL_APP_NAME }."
+      ],
       "Read, reply, and stay on top of Gmail from within ${ MAIL_APP_NAME }": [
         "Διαβάστε, απαντήστε και μείνετε ενημερωμένοι στο Gmail μέσα από το ${ MAIL_APP_NAME }"
       ],
@@ -3753,11 +3762,8 @@
       "You can now send emails from ${ BRAND_NAME } using this address.": [
         "Τώρα μπορείτε να στέλνετε μηνύματα ηλεκτρονικού ταχυδρομείου από το ${ BRAND_NAME } χρησιμοποιώντας αυτή τη διεύθυνση."
       ],
-      "You can still login with this address and re-connect at any time.": [
-        "Μπορείτε ακόμα να συνδεθείτε με αυτήν τη διεύθυνση και να επανασυνδεθείτε οποιαδήποτε στιγμή."
-      ],
-      "You will no longer be able to use ${ address.Email } to receive and send emails in ${ BRAND_NAME }. Also note that messages sent to this address from ${ BRAND_NAME } will no longer be end-to-end encrypted.": [
-        "Δε θα μπορείτε πλέον να χρησιμοποιείτε το ${ address.Email } για να λαμβάνετε και να στέλνετε μηνύματα ηλεκτρονικού ταχυδρομείου στο ${ BRAND_NAME }. Σημειώστε επίσης ότι τα μηνύματα που αποστέλλονται σε αυτήν τη διεύθυνση από το ${ BRAND_NAME } δε θα είναι πλέον κρυπτογραφημένα διατερματικά."
+      "You can reconnect this address at any time.": [
+        "Μπορείτε να επανασυνδέσετε αυτήν τη διεύθυνση ανά πάσα στιγμή."
       ],
       "You're forwarding ${ numAddressesOrSync } Gmail address to ${ MAIL_APP_NAME }.": [
         "Προωθείτε ${ numAddressesOrSync } διεύθυνση Gmail προς ${ MAIL_APP_NAME }.",
@@ -4457,12 +4463,6 @@
       "Incorrect username": [
         "Εσφαλμένο όνομα χρήστη"
       ],
-      "Invalid ${ name } code": [
-        "Μη έγκυρο ${ name } κωδικός"
-      ],
-      "Invalid card number": [
-        "Μη έγκυρος αριθμός κάρτας"
-      ],
       "Invalid code": [
         "Μη έγκυρος κωδικός"
       ],
@@ -4474,9 +4474,6 @@
       ],
       "Invalid email address": [
         "Μη έγκυρη διεύθυνση email"
-      ],
-      "Invalid expiration date": [
-        "Μη έγκυρη ημερομηνία λήξης"
       ],
       "Invalid IBAN": [
         "Μη έγκυρο IBAN"
@@ -4527,6 +4524,9 @@
       "No contacts found to import": [
         "Δεν βρέθηκαν επαφές προς εισαγωγή"
       ],
+      "No drive found to import": [
+        "Δε βρέθηκε drive για εισαγωγή"
+      ],
       "No emails found to import - the account does not have an inbox": [
         "Δεν βρέθηκαν μηνύματα προς εισαγωγή - ο λογαριασμός δεν διαθέτει εισερχόμενα"
       ],
@@ -4538,6 +4538,9 @@
       ],
       "Not a valid number": [
         "Μη έγκυρος αριθμός"
+      ],
+      "Only capitalization and punctuation (periods, hyphens, and underscores) can be changed for this address": [
+        "Μόνο τα κεφαλαία και τα σημεία στίξης (τελείες, παύλες και παύλες υπογράμμισης) μπορούν να αλλάξουν για αυτήν τη διεύθυνση"
       ],
       "Organization key is not decrypted": [
         "Το κλειδί οργανισμού δεν είναι αποκρυπτογραφημένο"
@@ -4669,6 +4672,14 @@
       "Reverse charge scheme is not supported for this plan": [
         "Το σύστημα αντιστροφής χρέωσης δεν υποστηρίζεται για αυτό το πλάνο"
       ],
+      "Role assignment could not be completed for ${ errors.length } member": [
+        "Η ανάθεση ρόλου δεν μπόρεσε να ολοκληρωθεί για ${ errors.length } μέλος",
+        "Η ανάθεση ρόλου δεν μπόρεσε να ολοκληρωθεί για ${ errors.length } μέλη"
+      ],
+      "Role assignment could not be completed for ${ failedGroupCount } group": [
+        "Η ανάθεση ρόλου δεν μπόρεσε να ολοκληρωθεί για ${ failedGroupCount } ομάδα",
+        "Η ανάθεση ρόλου δεν μπόρεσε να ολοκληρωθεί για ${ failedGroupCount } ομάδες"
+      ],
       "Server not found": [
         "Δε βρέθηκε ο διακομιστής"
       ],
@@ -4795,6 +4806,9 @@
       "Unexpected error, we can't import the contacts": [
         "Μη αναμενόμενο σφάλμα, δεν είναι δυνατή η εισαγωγή των επαφών"
       ],
+      "Unexpected error, we can't import the files": [
+        "Μη αναμενόμενο σφάλμα, δεν είναι δυνατή η εισαγωγή των αρχείων"
+      ],
       "Unknown error": [
         "Άγνωστο σφάλμα"
       ],
@@ -4818,6 +4832,9 @@
       ],
       "Verification did not succeed, please try again in an hour.": [
         "Η επαλήθευση δεν επετεύχθη, παρακαλώ δοκιμάστε ξανά σε μια ώρα."
+      ],
+      "We couldn’t send a verification code using this method.": [
+        "Δεν μπορέσαμε να αποστείλουμε κωδικό επιβεβαίωσης με αυτήν τη μέθοδο."
       ],
       "We stopped DKIM signing due to problems with your DNS configuration. Please follow the instructions below to resume signing.": [
         "Σταματήσαμε την υπογραφή DKIM λόγω προβλημάτων με τη ρύθμιση παραμέτρων DNS. Ακολουθήστε τις παρακάτω οδηγίες για να συνεχίσετε την υπογραφή."
@@ -5011,9 +5028,6 @@
       ]
     },
     "Error message": {
-      "Account is deleted or disabled": [
-        "Ο λογαριασμός έχει διαγραφεί ή απενεργοποιηθεί"
-      ],
       "App currently unavailable": [
         "Η εφαρμογή δεν είναι διαθέσιμη αυτήν τη στιγμή"
       ],
@@ -5576,8 +5590,8 @@
       "Insert a security key linked to your ${ BRAND_NAME } Account.": [
         "Εισαγάγετε ένα κλειδί ασφαλείας συνδεδεμένο με τον ${ BRAND_NAME } λογαριασμό σας ."
       ],
-      "Insert your security key into your device's USB port.": [
-        "Τοποθετήστε το κλειδί ασφαλείας στη θύρα USB της συσκευής σας."
+      "Insert your security key into your device.": [
+        "Τοποθετήστε το κλειδί ασφαλείας στη συσκευή σας."
       ],
       "Security key": [
         "Κλειδί ασφαλείας"
@@ -5590,6 +5604,9 @@
       ],
       "This will delete all security keys linked to your account.": [
         "Αυτό θα διαγράψει όλα τα κλειδιά ασφαλείας που είναι συνδεδεμένα με τον λογαριασμό σας."
+      ],
+      "Touch your security key.": [
+        "Αγγίξτε το κλειδί ασφαλείας σας."
       ],
       "Verify your identity with a physical U2F or FIDO2 security key": [
         "Επαληθεύστε την ταυτότητά σας με ένα φυσικό κλειδί ασφαλείας U2F ή FIDO2"
@@ -5803,6 +5820,12 @@
       ],
       "General": [
         "Γενικά"
+      ],
+      "Manage users and groups, assign roles, and allocate licenses to members.": [
+        "Διαχειριστείτε χρήστες και ομάδες, αναθέστε ρόλους και εκχωρήστε άδειες χρήσης σε μέλη."
+      ],
+      "Manages security settings and can view all event logs and user details.": [
+        "Διαχειρίζεται τις ρυθμίσεις ασφαλείας και μπορεί να δει όλα τα αρχεία καταγραφής συμβάντων και τα στοιχεία χρήστη."
       ],
       "Roles and permissions": [
         "Ρόλοι και δικαιώματα"
@@ -6286,10 +6309,7 @@
       "${ appName } needs your permission to ${ enableDesktopNotifications }.": [
         "Το ${ appName } χρειάζεται την άδειά σας για ${ enableDesktopNotifications }."
       ],
-      "${ boldWarning } You will lose access to all current encrypted data in your account if you continue.": [
-        "${ boldWarning } Αν συνεχίσετε, θα χάσετε την πρόσβαση σε όλα τα τωρινά κρυπτογραφημένα δεδομένα εντός του λογαριασμού σας."
-      ],
-      "${ BRAND_NAME } Business plans gives your team all the collaboration tools they need to be productive and organized in their work, while safeguarding your business.": [
+      "${ BRAND_NAME } Business plans give your team all the collaboration tools they need to be productive and organized in their work, while safeguarding your business.": [
         "Τα ${ BRAND_NAME } Business πλάνα παρέχουν στην ομάδα σας όλα τα εργαλεία συνεργασίας που χρειάζονται για να είναι παραγωγικοί και οργανωμένοι στη δουλειά τους, ενώ ταυτόχρονα προστατεύουν την επιχείρησή σας."
       ],
       "${ BRAND_NAME } is independently funded and operates without advertising. Below are examples of how this independence has been used in practice.": [
@@ -6333,6 +6353,10 @@
       ],
       "${ emailAddress } is invalid": [
         "Η ${ emailAddress } είναι μη έγκυρη"
+      ],
+      "${ emails.length } member added to the group": [
+        "${ emails.length } μέλος προστέθηκε στην ομάδα",
+        "${ emails.length } μέλη προστέθηκαν στην ομάδα"
       ],
       "${ fileName }: full-size image": [
         "${ fileName }: εικόνα πλήρους μεγέθους"
@@ -6400,9 +6424,9 @@
       "${ PASS_SHORT_APP_NAME } lifetime deal has no renewal price, it's a one-time payment for lifetime access to ${ PASS_SHORT_APP_NAME }. Your ${ planTitle } subscription renewal price and date remain unchanged.": [
         "Η προσφορά ${ PASS_SHORT_APP_NAME } διάρκειας ζωής δεν έχει τιμή ανανέωσης, είναι μια εφάπαξ πληρωμή για πρόσβαση εφ' όρου ζωής στο ${ PASS_SHORT_APP_NAME }. Η τιμή και η ημερομηνία ανανέωσης της συνδρομής ${ planTitle } σας παραμένουν αμετάβλητες."
       ],
-      "${ pendingAdminMemberCount } new member added via your identity provider and pending review.": [
-        "${ pendingAdminMemberCount } νέο μέλος προστέθηκε μέσω του παρόχου ταυτότητάς σας και εκκρεμεί έλεγχος.",
-        "${ pendingAdminMemberCount } νέα μέλη προστέθηκαν μέσω του παρόχου ταυτότητάς σας και εκκρεμεί έλεγχος."
+      "${ pendingAdminApprovalCount } new member added via your identity provider and pending review.": [
+        "${ pendingAdminApprovalCount } νέο μέλος προστέθηκε μέσω του παρόχου ταυτότητάς σας και εκκρεμεί έλεγχος.",
+        "${ pendingAdminApprovalCount } νέα μέλη προστέθηκαν μέσω του παρόχου ταυτότητάς σας και εκκρεμεί έλεγχος."
       ],
       "${ plan.Title } requires at least 1 dedicated server ${ serverPricePerMonth }": [
         "${ plan.Title } απαιτεί τουλάχιστον 1 αποκλειστικό διακομιστή ${ serverPricePerMonth }"
@@ -6810,11 +6834,11 @@
       "Beta": [
         "Beta (Δοκιμαστική)"
       ],
-      "Billed at ${ monthlyDiscountedPrice } for the first 6 months, renews at ${ monthlyRenewalPrice }.": [
-        "Χρεώνεται ${ monthlyDiscountedPrice } για τους πρώτους 6 μήνες, ανανεώνεται στα ${ monthlyRenewalPrice }."
+      "Billed at ${ monthlyDiscountedPriceElement } for the first 6 months, renews at ${ monthlyRenewalPriceElement }.": [
+        "Χρεώνεται ${ monthlyDiscountedPriceElement } για τους πρώτους 6 μήνες, ανανεώνεται στα ${ monthlyRenewalPriceElement }."
       ],
-      "Billed at ${ yearlyDiscountedPrice } for the first 12 months, renews at ${ yearlyRenewalPrice }.": [
-        "Χρεώνεται ${ yearlyDiscountedPrice } για τους πρώτους 12 μήνες, ανανεώνεται στα ${ yearlyRenewalPrice }."
+      "Billed at ${ yearlyDiscountedPriceElement } for the first 12 months, renews at ${ yearlyRenewalPriceElement }.": [
+        "Χρεώνεται ${ yearlyDiscountedPriceElement } για τους πρώτους 12 μήνες, ανανεώνεται στα ${ yearlyRenewalPriceElement }."
       ],
       "Billing cycle: ${ text }": [
         "Κύκλος χρέωσης: ${ text }"
@@ -6979,9 +7003,6 @@
       "Data locked": [
         "Τα δεδομένα κλειδώθηκαν"
       ],
-      "Data recoverable on this device": [
-        "Δεδομένα ανακτήσιμα σε αυτήν τη συσκευή"
-      ],
       "Data recoverable with recovery phrase": [
         "Ανακτήσιμα δεδομένα με φράση ανάκτησης"
       ],
@@ -7067,9 +7088,6 @@
       ],
       "Don't lose access to your premium features. Enable auto-renew today.": [
         "Μη χάσετε την πρόσβαση στις προηγμένες δυνατότητες. Ενεργοποιήστε σήμερα την αυτόματη ανανέωση."
-      ],
-      "Done! We sent a code to ${ destination }.": [
-        "Έγινε! Στείλαμε έναν κωδικό στο ${ destination }."
       ],
       "Don’t know your recovery phrase?": [
         "Δεν γνωρίζετε τη φράση ανάκτησης;"
@@ -7194,12 +7212,6 @@
       "Enter the code from your authenticator app": [
         "Πληκτρολογήστε τον κωδικό από την εφαρμογή ταυτοποίησης"
       ],
-      "Enter the code sent to your phone number ${ phone }.": [
-        "Εισάγετε τον κωδικό που στάλθηκε στον αριθμό τηλεφώνου σας ${ phone }."
-      ],
-      "Enter the code that was sent to ${ email }. If you can't find the message in your inbox, please check your spam folder.": [
-        "Εισάγετε τον κωδικό που στάλθηκε στο ${ email }. Αν δεν μπορείτε να βρείτε το μήνυμα στα εισερχόμενα, παρακαλούμε ελέγξτε τον φάκελο των ενοχλητικών."
-      ],
       "Enter the credentials of the email account you want to import from.": [
         "Συμπληρώστε τα διαπιστευτήρια του λογαριασμού email από τον οποίο θέλετε να εισάγετε."
       ],
@@ -7259,6 +7271,9 @@
       ],
       "Failed to fetch logs.": [
         "Αποτυχία ανάκτησης αρχείων καταγραφής."
+      ],
+      "Files only (no photos, ${ DOCS_APP_NAME } or ${ SHEETS_APP_NAME }) - up to 100 GB total, 100,000 files, and 50 GB per file": [
+        "Μόνο αρχεία (όχι φωτογραφίες, ${ DOCS_APP_NAME } ή ${ SHEETS_APP_NAME }) - έως 100 GB συνολικά, 100.000 αρχεία και 50 GB ανά αρχείο"
       ],
       "Fill in user details": [
         "Συμπληρώστε τα στοιχεία χρήστη"
@@ -7332,8 +7347,14 @@
       "Got it": [
         "Το κατάλαβα"
       ],
+      "Group created": [
+        "Η ομάδα δημιουργήθηκε"
+      ],
       "Group deleted": [
         "Η ομάδα διαγράφηκε"
+      ],
+      "Group roles assigned": [
+        "Ρόλοι ομάδας που έχουν ανατεθεί"
       ],
       "Groups": [
         "Ομάδες"
@@ -7364,9 +7385,6 @@
       ],
       "If you are having trouble creating your account, please request an invitation and we will respond within one business day.": [
         "Αν αντιμετωπίζετε προβλήματα με τη δημιουργία του λογαριασμού σας, ζητήστε μια πρόσκληση και θα απαντήσουμε εντός μίας εργάσιμης ημέρας."
-      ],
-      "If you are signed in somewhere else, you may be able to ${ signedInPasswordResetLink }.": [
-        "Εάν είστε συνδεδεμένοι κάπου αλλού, ενδέχεται να μπορείτε να ${ signedInPasswordResetLink }."
       ],
       "If you are signed in to a ${ BRAND_NAME } web app in **another browser**, you may be able to perform a password reset from your active session.": [
         "Εάν είστε συνδεδεμένοι σε μια εφαρμογή ιστού ${ BRAND_NAME } σε **άλλο πρόγραμμα περιήγησης**, ενδέχεται να μπορείτε να πραγματοποιήσετε επαναφορά κωδικού πρόσβασης από την ενεργή σας περίοδο λειτουργίας."
@@ -7649,6 +7667,9 @@
       "Make sure you ${ addARecoveryMethod } so that you can get back into your account if you forget your password.": [
         "Βεβαιωθείτε ότι έχετε ${ addARecoveryMethod }, ώστε να μπορείτε να αποκτήσετε ξανά πρόσβαση στο λογαριασμό σας εάν ξεχάσετε τον κωδικό πρόσβασής σας."
       ],
+      "Manage groups in your identity provider": [
+        "Διαχείριση ομάδων στον πάροχο ταυτοτήτων σας"
+      ],
       "Manage which ${ BRAND_NAME } applications the members of your organization can access. If disabled, only administrators will have access.": [
         "Ελέγξτε ποιες εφαρμογές ${ BRAND_NAME } είναι προσβάσιμες από τα μέλη του οργανισμού σας. Αν απενεργοποιηθεί, μόνο οι διαχειριστές θα έχουν πρόσβαση."
       ],
@@ -7778,8 +7799,8 @@
       "Once access to your account has been granted, they can access your **Recovery** settings and **change your ${ ACCOUNT_APP_NAME } password** for you.": [
         "Μόλις τους παραχωρηθεί πρόσβαση στον λογαριασμό σας, μπορούν να έχουν πρόσβαση στις ρυθμίσεις **Ανάκτησης** και **να αλλάξουν τον κωδικό πρόσβασής σας ${ ACCOUNT_APP_NAME }** για εσάς."
       ],
-      "Once you reset your password:": [
-        "Μετά την αλλαγή του κωδικού σας:"
+      "Only capitalization and punctuation (periods, hyphens, and underscores) can be changed here. To use a different address, add a new one.": [
+        "Μόνο η χρήση κεφαλαίων και η στίξη (τελικές στιγμές, παύλες και υπογράμμιση) μπορούν να αλλάξουν εδώ. Για να χρησιμοποιήσετε διαφορετική διεύθυνση, προσθέστε μια νέα."
       ],
       "Open source": [
         "Ανοιχτού κώδικα"
@@ -7890,9 +7911,6 @@
       "Please ask the owner to directly invite you to the document.": [
         "Παρακαλούμε ζητήστε από τον ιδιοκτήτη να σας προσκαλέσει απευθείας στο έγγραφο."
       ],
-      "Please authenticate your card in the verification tab.": [
-        "Επαληθεύστε την ταυτότητά σας στην καρτέλα επαλήθευσης."
-      ],
       "Please authenticate your payment in the verification tab.": [
         "Επαληθεύστε την πληρωμή σας στην καρτέλα επαλήθευσης."
       ],
@@ -7901,9 +7919,6 @@
       ],
       "Please check your file, or try using our ${ csvTemplateButton }.": [
         "Παρακαλούμε ελέγξτε το αρχείο σας ή δοκιμάστε να χρησιμοποιήσετε το ${ csvTemplateButton } μας."
-      ],
-      "Please enter the 12-word recovery phrase associated with your account.": [
-        "Παρακαλούμε εισαγάγετε τη 12-λεκτη φράση ανάκτησης που σχετίζεται με τον λογαριασμό σας."
       ],
       "Please fill in all required fields.": [
         "Παρακαλούμε συμπληρώστε όλα τα απαιτούμενα πεδία."
@@ -7928,9 +7943,6 @@
       ],
       "Please try again using a different payment method, or contact your bank.": [
         "Δοκιμάστε ξανά χρησιμοποιώντας διαφορετικό τρόπο πληρωμής ή επικοινωνήστε με την τράπεζά σας."
-      ],
-      "Please try again, use a different payment method, or contact PayPal for assistance.": [
-        "Παρακαλώ προσπαθήστε ξανά, χρησιμοποιείστε ένα διαφορετικό τρόπο πληρωμής, ή επικοινωνήστε με το Paypal για περαιτέρω βοήθεια."
       ],
       "Please use another browser or download the file.": [
         "Χρησιμοποιήστε άλλο πρόγραμμα περιήγησης ή κατεβάστε το αρχείο."
@@ -8249,6 +8261,9 @@
       "Symbols (#$&)": [
         "Σύμβολα (#$&)"
       ],
+      "Synced from identity provider": [
+        "Συγχρονισμένο από τον πάροχο ταυτότητας"
+      ],
       "TechRadar Pro recommended with a rating of 4.2 out of 5 stars": [
         "Το TechRadar Pro το συνιστά με βαθμολογία 4,2 στα 5 αστέρια"
       ],
@@ -8314,6 +8329,10 @@
       ],
       "The name will be visible to your users while they are signed in.": [
         "Το όνομα θα είναι ορατό στους χρήστες σας ενώ είναι συνδεδεμένοι."
+      ],
+      "The process was interrupted for ${ pausedCount } group. Click Continue to resume assigning roles.": [
+        "Η διαδικασία διακόπηκε για ${ pausedCount } ομάδα. Κάντε κλικ στην επιλογή Συνέχεια για να συνεχίσετε την ανάθεση ρόλων.",
+        "Η διαδικασία διακόπηκε για ${ pausedCount } ομάδες. Κάντε κλικ στην επιλογή Συνέχεια για να συνεχίσετε την ανάθεση ρόλων."
       ],
       "The referral credit can be awarded up to 2 months after your friend's trial ended, only if your friend subscribed to a plan.": [
         "Η πίστωσή παραπομπής μπορεί να δοθεί μέχρι 2 μήνες μετά το τέλος της δοκιμαστικής περιόδου του φίλου σας, μόνο αν ο φίλος σας εγγράφηκε σε ένα πλάνο."
@@ -8516,9 +8535,6 @@
       "Trial ends on ${ formattedPeriodEndDate }": [
         "Η δοκιμαστική περίοδος λήγει στις ${ formattedPeriodEndDate }"
       ],
-      "trusted device": [
-        "αξιόπιστη συσκευή"
-      ],
       "Try ${ productName } totally risk free - if for any reason you change your mind, you'll receive a full refund. No questions asked.": [
         "Δοκιμάστε το ${ productName } εντελώς χωρίς κίνδυνο - εάν για οποιονδήποτε λόγο αλλάξετε γνώμη, θα λάβετε πλήρη επιστροφή χρημάτων. Χωρίς ερωτήσεις."
       ],
@@ -8542,9 +8558,6 @@
       ],
       "Unfortunately there is no recovery method available for this account.": [
         "Δυστυχώς, δεν υπάρχει διαθέσιμη μέθοδος ανάκτησης για αυτόν τον λογαριασμό."
-      ],
-      "Unfortunately there is no recovery method saved for this account.": [
-        "Δυστυχώς δεν έχει αποθηκευτεί μέθοδος ανάκτησης για αυτόν τον λογαριασμό."
       ],
       "Unique ID generated by your identity provider, usually in the form of a URL that contains the identity provider’s name within it (e.g. https://idp.example.com/XXXXX).": [
         "Μοναδικό αναγνωριστικό που δημιουργείται από τον πάροχο ταυτότητάς σας, συνήθως με τη μορφή διεύθυνσης URL που περιέχει το όνομα του παρόχου ταυτότητας (π.χ. https://idp.example.com/XXXXX)."
@@ -8681,9 +8694,6 @@
       "Want to learn more?": [
         "Θέλετε να μάθετε περισσότερα;"
       ],
-      "Warning:": [
-        "Προειδοποίηση:"
-      ],
       "Warning: deleting your account is permanent.": [
         "Προειδοποίηση: η διαγραφή του λογαριασμού σας είναι μόνιμη."
       ],
@@ -8720,14 +8730,8 @@
       "We recommend notifying the organization members and asking them to set up 2FA for their accounts before enforcing the use of 2FA.": [
         "Συνιστούμε να ειδοποιήσετε τα μέλη του οργανισμού και να τους ζητήσετε να ρυθμίσουν το 2FA για τους λογαριασμούς τους πριν επιβάλετε τη χρήση του 2FA."
       ],
-      "We recommend using your recovery phrase instead.": [
-        "Αντί για αυτό, συνιστούμε χρήση της φράσης σας ανάκτησης."
-      ],
       "We securely store recovery information on your trusted device to prevent you from losing your data": [
         "Αποθηκεύουμε με ασφάλεια πληροφορίες ανάκτησης στην αξιόπιστη συσκευή σας για να αποτρέψουμε την απώλεια των δεδομένων σας"
-      ],
-      "We stored a backup file in this browser because you allowed data recovery on this ${ deviceLink }. If the backup file is valid, you will immediately regain complete or partial access to your encrypted data.": [
-        "Αποθηκεύσαμε ένα αρχείο αντίγραφου ασφαλείας σε αυτό το πρόγραμμα περιήγησης, επειδή επιτρέψατε την ανάκτηση δεδομένων στη συσκευή ${ deviceLink }. Εάν το αρχείο αντίγραφου ασφαλείας είναι έγκυρο, θα αποκτήσετε αμέσως πλήρη ή μερική πρόσβαση στα κρυπτογραφημένα δεδομένα σας."
       ],
       "We use 3-D Secure to protect your payments": [
         "Χρησιμοποιούμε ασφάλεια 3-D για να προστατεύσουμε τις πληρωμές σας"
@@ -8761,12 +8765,6 @@
       ],
       "We’ll send a reset code to ${ boldValue }.": [
         "Θα στείλουμε έναν κωδικό επαναφοράς στο ${ boldValue }."
-      ],
-      "We’ll send a reset code to the email address you provided for account recovery.": [
-        "Θα στείλουμε έναν κωδικό επαναφοράς στην ηλ. διεύθυνση που καθορίσατε για ανακτήσεις λογαριασμού."
-      ],
-      "We’ll send a reset code to the phone number you provided for account recovery.": [
-        "Θα στείλουμε έναν κωδικό επαναφοράς στον αριθμό τηλεφώνου που καθορίσατε για ανακτήσεις λογαριασμού."
       ],
       "When enabling SAML for ${ appName } in your identity provider, you might be prompted to use the callback (ACS) URL and issuer ID. Just copy-paste the data below into your identity provider fields.": [
         "Όταν ενεργοποιείτε το SAML για ${ appName } στην υπηρεσία παροχής ταυτότητας, ενδέχεται να σας ζητηθεί να χρησιμοποιήσετε τη διεύθυνση URL επιστροφής κλήσης (ACS) και το αναγνωριστικό εκδότη. Απλώς αντιγράψτε-επικολλήστε τα παρακάτω δεδομένα στα πεδία της υπηρεσίας παροχής ταυτότητάς σας."
@@ -8827,6 +8825,9 @@
       ],
       "You already have a free account": [
         "Έχετε ήδη έναν δωρεάν λογαριασμό"
+      ],
+      "You are currently signed in as ${ username } for ${ organizationName }.": [
+        "Αυτήν τη στιγμή είστε συνδεδεμένοι ως ${ username } για το ${ organizationName }."
       ],
       "You are currently signed in as ${ username }.": [
         "Είστε συνδεδεμένος/η ως ${ username }."
@@ -8980,9 +8981,6 @@
       ],
       "You will regain complete or partial access to your encrypted data.": [
         "Θα ανακτήσετε πλήρη ή μερική πρόσβαση στα κρυπτογραφημένα δεδομένα σας."
-      ],
-      "You will soon be redirected to PayPal to verify your payment.": [
-        "Θα ανακατευθυνθείτε σύντομα στο Paypal, για να επαληθεύσετε την πληρωμή σας."
       ],
       "You won't be charged if you cancel before ${ trialEndsOnFormatted }.": [
         "Δε θα χρεωθείτε αν ακυρώσετε πριν από τις ${ trialEndsOnFormatted }."
@@ -9225,8 +9223,11 @@
       "Declined": [
         "Απορρίφθηκε"
       ],
-      "Owner": [
-        "Ιδιοκτήτης"
+      "Group Owner": [
+        "Κάτοχος Ομάδας"
+      ],
+      "Invited": [
+        "Προσκεκλημένοι"
       ],
       "Paused": [
         "Σε παύση"
@@ -9498,9 +9499,6 @@
       ],
       "City": [
         "Πόλη"
-      ],
-      "Code": [
-        "Κωδικός"
       ],
       "Code is 6 digits without spaces": [
         "Ο κωδικός είναι 6 ψηφία χωρίς κενά"
@@ -9959,8 +9957,8 @@
       "Password": [
         "Κωδικός πρόσβασης"
       ],
-      "Password reminders": [
-        "Υπενθυμίσεις κωδικού πρόσβασης"
+      "Password check-ins": [
+        "Έλεγχοι κωδικού πρόσβασης"
       ],
       "Password strength": [
         "Ισχύς Κωδικού Πρόσβασης"
@@ -10375,9 +10373,6 @@
       ]
     },
     "Link": {
-      "Account recovery explained": [
-        "Επεξήγηση της ανάκτησης λογαριασμού"
-      ],
       "activity monitor": [
         "παρακολούθηση δραστηριότητας"
       ],
@@ -10413,9 +10408,6 @@
       ],
       "Details": [
         "Λεπτομέρειες"
-      ],
-      "Don't have access to your 2FA?": [
-        "Δεν έχετε πρόσβαση στο 2FA σας;"
       ],
       "Encryption and keys": [
         "Κρυπτογράφηση και κλειδιά"
@@ -10531,9 +10523,6 @@
       "Pay invoice": [
         "Εξόφληση τιμολογίου"
       ],
-      "perform a password reset from your active session": [
-        "εκτελέστε επαναφορά κωδικού πρόσβασης από την ενεργή περίοδο λειτουργίας σας"
-      ],
       "Privacy policy": [
         "Πολιτική απορρήτου"
       ],
@@ -10589,20 +10578,6 @@
     "Link (Scribe)": {
       "Users and addresses": [
         "Χρήστες και διευθύνσεις"
-      ]
-    },
-    "Live Chat Modal": {
-      "Live chat is available with ${ planName }": [
-        "Η ζωντανή συνομιλία είναι διαθέσιμη στο ${ planName }"
-      ],
-      "Open support form": [
-        "Ανοίξτε τη φόρμα υποστήριξης"
-      ],
-      "Upgrade subscription": [
-        "Αναβάθμιση συνδρομής"
-      ],
-      "Upgrade to unlock chat support and other premium features, or use our free support form to report your issue.": [
-        "Αναβαθμίστε για να ξεκλειδώσετε την υποστήριξη συνομιλίας και άλλες πριμοδοτημένες δυνατότητες ή χρησιμοποιήστε τη δωρεάν φόρμα υποστήριξης για να αναφέρετε το πρόβλημά σας."
       ]
     },
     "Loading info": {
@@ -10915,6 +10890,9 @@
       ],
       "Add address": [
         "Προσθήκη διεύθυνσης"
+      ],
+      "Change backup password": [
+        "Αλλαγή κωδικού πρόσβασης αντιγράφων ασφαλείας"
       ],
       "Change password": [
         "Αλλαγή κωδικού πρόσβασης"
@@ -12860,22 +12838,11 @@
       "Make sure you memorize or securely store your password as it's the key to decrypt your data.": [
         "Βεβαιωθείτε ότι έχετε απομνημονεύσει ή αποθηκεύσει με ασφάλεια τον κωδικό πρόσβασής σας, καθώς είναι το κλειδί για την αποκρυπτογράφηση των δεδομένων σας."
       ],
-      "Turn off password reminders?": [
-        "Απενεργοποίηση υπενθυμίσεων κωδικού πρόσβασης;"
+      "Turn off check-ins": [
+        "Απενεργοποίηση των ελέγχων κωδικού πρόσβασης"
       ],
-      "Turn off reminders": [
-        "Απενεργοποίηση υπενθυμίσεων"
-      ]
-    },
-    "password_reset: info": {
-      "**All your existing data** (emails, events, contacts, files, ${ PASS_APP_NAME } entries, etc.) **will be locked** and can only be unlocked with your **old password**.": [
-        "**Όλα τα υπάρχοντα δεδομένα σας** (μηνύματα ηλεκτρονικού ταχυδρομείου, συμβάντα, επαφές, αρχεία, καταχωρήσεις ${ PASS_APP_NAME } κλπ.) **θα κλειδωθούν** και μπορούν να ξεκλειδωθούν μόνο με τον **παλιό κωδικό πρόσβασης** σας."
-      ],
-      "**All your existing data** (emails, events, contacts, files, ${ PASS_APP_NAME } entries, etc.) **will be locked** and can only be unlocked with your **recovery phrase** or your **old password**.": [
-        "**Όλα τα υπάρχοντα δεδομένα σας** (μηνύματα ηλεκτρονικού ταχυδρομείου, συμβάντα, επαφές, αρχεία, καταχωρήσεις ${ PASS_APP_NAME } κλπ.) **θα κλειδωθούν** και μπορούν να ξεκλειδωθούν μόνο με τη **φράση ανάκτησης** ή τον **παλιό κωδικό πρόσβασης** σας."
-      ],
-      "Any **two-factor authentication (2FA)** method on your account will be disabled.": [
-        "Οποιαδήποτε μέθοδος **ελέγχου ταυτότητας δύο παραγόντων (2FA)** στον λογαριασμό σας θα απενεργοποιηθεί."
+      "Turn off password check-ins?": [
+        "Απενεργοποίηση των ελέγχων κωδικού πρόσβασης;"
       ]
     },
     "passwordless": {
@@ -14132,6 +14099,66 @@
         "Δοκιμή διαμόρφωσης SAML"
       ]
     },
+    "scim": {
+      "${ memberCount } new member": [
+        "${ memberCount } νέο μέλος",
+        "${ memberCount } νέα μέλη"
+      ],
+      "${ numberOfPendingGroups } group synced": [
+        "${ numberOfPendingGroups } ομάδα συγχρονίστηκε",
+        "${ numberOfPendingGroups } ομάδες συγχρονίστηκαν"
+      ],
+      "${ numberOfPendingUsers } user synced": [
+        "${ numberOfPendingUsers } χρήστης συγχρονίστηκε",
+        "${ numberOfPendingUsers } χρήστες συγχρονίστηκαν"
+      ],
+      "${ pendingGroupsCount } group": [
+        "${ pendingGroupsCount } ομάδα",
+        "${ pendingGroupsCount } ομάδες"
+      ],
+      "${ pendingGroupsCount } group synced.": [
+        "${ pendingGroupsCount } ομάδα συγχρονίστηκε.",
+        "${ pendingGroupsCount } ομάδες συγχρονίστηκαν."
+      ],
+      "${ pendingUsersCount } user": [
+        "${ pendingUsersCount } χρήστης",
+        "${ pendingUsersCount } χρήστες"
+      ],
+      "${ pendingUsersCount } user synced.": [
+        "${ pendingUsersCount } χρήστης συγχρονίστηκε.",
+        "${ pendingUsersCount } χρήστες συγχρονίστηκαν."
+      ],
+      "${ usersText } and ${ groupsText } synced.": [
+        "Τα ${ usersText } και ${ groupsText } συγχρονίστηκαν."
+      ],
+      "Approve changes from your identity provider": [
+        "Έγκριση αλλαγών από τον πάροχο ταυτότητάς σας"
+      ],
+      "Final approval needed to grant access across all ${ BRAND_NAME } services.": [
+        "Απαιτείται τελική έγκριση για την παραχώρηση πρόσβασης σε όλες τις υπηρεσίες ${ BRAND_NAME }."
+      ],
+      "From your identity provider": [
+        "Από τον πάροχο ταυτότητάς σας"
+      ],
+      "New": [
+        "Νέο"
+      ],
+      "Once approved, they can access all ${ BRAND_NAME } services and share securely.": [
+        "Μόλις εγκριθούν, μπορούν να έχουν πρόσβαση σε όλες τις υπηρεσίες ${ BRAND_NAME } και να τις κοινοποιούν με ασφάλεια."
+      ],
+      "Private user": [
+        "Ιδιωτικός χρήστης"
+      ],
+      "Review users and groups before finishing setup": [
+        "Ελέγξτε τους χρήστες και τις ομάδες πριν από την ολοκλήρωση της ρύθμισης"
+      ],
+      "Updated": [
+        "Ενημερώθηκε"
+      ],
+      "Users set to private need to accept the invite to finish setup. We'll send them an invite once you approve.": [
+        "Οι χρήστες που έχουν οριστεί ως ιδιωτικοί πρέπει να αποδεχτούν την πρόσκληση για να ολοκληρώσουν τη ρύθμιση. Θα τους στείλουμε μια πρόσκληση μόλις την εγκρίνετε."
+      ]
+    },
     "scim: Action": {
       "Configure SCIM": [
         "Ρύθμιση παραμέτρων SCIM"
@@ -14925,13 +14952,13 @@
         "${ n } χρήστης αποσυνδέθηκε από SSO",
         "${ n } χρήστες αποσυνδέθηκαν από SSO"
       ],
-      "${ n } user has joined your organization through your Identity Provider. Review the account now:": [
-        "${ n } χρήστης έχει ενταχθεί στον οργανισμό σας μέσω της Υπηρεσίας Παροχής Ταυτότητάς σας. Ελέγξτε τον λογαριασμό του τώρα:",
-        "${ n } χρήστες έχουν ενταχθεί στον οργανισμό σας μέσω της Υπηρεσίας Παροχής Ταυτότητάς σας. Ελέγξτε τους λογαριασμούς τους τώρα:"
+      "${ n } user has joined your organization through your identity provider": [
+        "${ n } χρήστης έχει ενταχθεί στον οργανισμό σας μέσω του παρόχου ταυτότητας σας",
+        "${ n } χρήστες έχουν ενταχθεί στον οργανισμό σας μέσω του παρόχου ταυτότητας σας"
       ],
-      "${ n } user is inactive. You can safely remove this user from your organization.": [
-        "${ n } χρήστης είναι ανενεργός. Μπορείτε να καταργήσετε με ασφάλεια αυτόν τον χρήστη από τον οργανισμό σας.",
-        "${ n } χρήστες είναι ανενεργοί. Μπορείτε να καταργήσετε με ασφάλεια αυτούς τους χρήστες από τον οργανισμό σας."
+      "${ n } user is inactive.": [
+        "${ n } χρήστης είναι ανενεργός.",
+        "${ n } χρήστες είναι ανενεργοί."
       ],
       "${ n } user is requesting your help to sign in to their ${ BRAND_NAME } Account with single sign-on.": [
         "${ n } χρήστης ζητά τη βοήθειά σας για να συνδεθεί στον λογαριασμό του ${ BRAND_NAME } με καθολική σύνδεση.",
@@ -15191,6 +15218,17 @@
     "State": {
       "Canceling your subscription, please wait": [
         "Η συνδρομή σας ακυρώνεται, παρακαλούμε περιμένετε"
+      ]
+    },
+    "Status": {
+      "... waiting": [
+        "... σε αναμονή"
+      ],
+      "completed": [
+        "ολοκληρώθηκε"
+      ],
+      "finalizing": [
+        "οριστικοποιείται"
       ]
     },
     "Storage": {
@@ -15831,11 +15869,11 @@
       "Compare the key differences that matter for your business.": [
         "Συγκρίνετε τις βασικές διαφορές που έχουν σημασία για την επιχείρησή σας."
       ],
-      "Save 50% for 1 year, and keep full access": [
-        "Κερδίστε 50% για 1χρόνο και διατηρήστε πλήρη πρόσβαση"
-      ],
       "Save 50% for 6 months, and keep full access": [
         "Κερδίστε 50% για 6 μήνες και διατηρήστε πλήρη πρόσβαση"
+      ],
+      "Save 50% for one year, and keep full access": [
+        "Κερδίστε 50% για ένα χρόνο και διατηρήστε πλήρη πρόσβαση"
       ],
       "See how ${ MAIL_APP_NAME } compares, and why our independence makes a difference.": [
         "Δείτε πώς συγκρίνεται το ${ MAIL_APP_NAME } και γιατί η ανεξαρτησία μας κάνει τη διαφορά."
@@ -15941,14 +15979,14 @@
       "Organization name updated": [
         "Το όνομα του οργανισμού ενημερώθηκε"
       ],
+      "Password check-ins disabled": [
+        "Οι έλεγχοι κωδικών πρόσβασης είναι απενεργοποιημένοι"
+      ],
+      "Password check-ins enabled": [
+        "Οι έλεγχοι κωδικών πρόσβασης είναι ενεργοποιημένοι"
+      ],
       "Password copied to clipboard": [
         "Ο κωδικός πρόσβασης αντιγράφηκε στο πρόχειρο"
-      ],
-      "Password reminders disabled": [
-        "Οι υπενθυμίσεις κωδικού πρόσβασης απενεργοποιήθηκαν"
-      ],
-      "Password reminders enabled": [
-        "Οι υπενθυμίσεις κωδικού πρόσβασης ενεργοποιήθηκαν"
       ],
       "Password updated": [
         "Ο κωδικός πρόσβασης ενημερώθηκε"
@@ -16429,11 +16467,17 @@
       "Apply gift code": [
         "Εφαρμογή κωδικού δώρου"
       ],
+      "Approve changes": [
+        "Έγκριση αλλαγών"
+      ],
       "Are you already signed in to ${ BRAND_NAME } in a browser?": [
         "Έχετε ήδη συνδεθεί στο ${ BRAND_NAME } σε κάποιο πρόγραμμα περιήγησης;"
       ],
       "Are you sure you want to close the preview?": [
         "Είστε βέβαιοι ότι θέλετε να κλείσετε την προεπισκόπηση;"
+      ],
+      "Are you sure you want to disconnect and disable this address?": [
+        "Είστε βέβαιοι ότι θέλετε να αποσυνδέσετε και να απενεργοποιήσετε αυτήν τη διεύθυνση;"
       ],
       "Are you sure you want to disconnect this address?": [
         "Θέλετε σίγουρα να αποσυνδέσετε αυτή τη διεύθυνση;"
@@ -16822,9 +16866,6 @@
       "Find email or username": [
         "Αναζήτηση E-mail ή όνομα χρήστη"
       ],
-      "Forgot recovery method": [
-        "Ξεχάσατε τη μέθοδο ανάκτησης"
-      ],
       "Free plan": [
         "Δωρεάν πλάνο"
       ],
@@ -16878,6 +16919,9 @@
       ],
       "Gift code": [
         "Κωδικός δώρου"
+      ],
+      "Group role assignment paused": [
+        "Η ανάθεση ρόλου ομάδας τέθηκε σε παύση"
       ],
       "Groups": [
         "Ομάδες"
@@ -17009,9 +17053,6 @@
       "No events yet": [
         "Δεν υπάρχουν ακόμη γεγονότα"
       ],
-      "No recovery method": [
-        "Χωρίς μέθοδο ανάκτησης"
-      ],
       "Open": [
         "Άνοιγμα"
       ],
@@ -17077,9 +17118,6 @@
       ],
       "Payment verification": [
         "Επαλήθευση Πληρωμής"
-      ],
-      "PayPal verification failed": [
-        "Η επαλήθευση PayPal απέτυχε"
       ],
       "Phone": [
         "Τηλέφωνο"
@@ -17779,17 +17817,26 @@
       "Group membership paused": [
         "Η συμμετοχή στην ομάδα τέθηκε σε παύση"
       ],
+      "Resuming role assignment": [
+        "Συνέχιση ανάθεσης ρόλου"
+      ],
+      "Role assignment paused": [
+        "Η ανάθεση ρόλου τέθηκε σε παύση"
+      ],
       "Sending member invitation": [
         "Αποστολή πρόσκλησης μέλους"
       ],
       "User declined invitation": [
         "Ο χρήστης απέρριψε την πρόσκληση"
       ],
-      "User is a group": [
-        "Ο χρήστης είναι μια ομάδα"
+      "User is a group owner": [
+        "Ο χρήστης είναι κάτοχος ομάδας"
       ],
       "via ${ groupNames }": [
         "μέσω ${ groupNames }"
+      ],
+      "Waiting for admin approval": [
+        "Αναμονή για έγκριση από τον διαχειριστή"
       ],
       "Waiting for user to accept the invitation": [
         "Αναμονή για αποδοχή της πρόσκλησης από τον χρήστη"
@@ -17866,8 +17913,14 @@
       "Payment reversal": [
         "Αντιστροφή πληρωμής"
       ],
+      "Prepayment": [
+        "Προπληρωμή"
+      ],
       "Refund": [
         "Επιστροφή χρημάτων"
+      ],
+      "Test credit": [
+        "Δοκιμαστική πίστωση"
       ]
     },
     "Unlimited offer": {
@@ -17897,9 +17950,9 @@
       "Confirm all": [
         "Επιβεβαίωση όλων"
       ],
-      "Could not automatically enable administrator access for ${ n } user, because their encryption keys have been updated in the meanwhile:": [
-        "Δεν ήταν δυνατή η αυτόματη ενεργοποίηση της πρόσβασης διαχειριστή για τον ${ n } χρήστη, επειδή τα κλειδιά κρυπτογράφησης έχουν ενημερωθεί στο μεταξύ:",
-        "Δεν ήταν δυνατή η αυτόματη ενεργοποίηση της πρόσβασης διαχειριστή για τους ${ n } χρήστες, επειδή τα κλειδιά κρυπτογράφησης έχουν ενημερωθεί στο μεταξύ:"
+      "Could not enable admin access for ${ n } user": [
+        "Δεν ήταν δυνατή η ενεργοποίηση της πρόσβασης διαχειριστή για ${ n } χρήστη",
+        "Δεν ήταν δυνατή η ενεργοποίηση της πρόσβασης διαχειριστή για ${ n } χρήστες"
       ],
       "Could not enable administrator access: ${ error }": [
         "Δεν ήταν δυνατή η ενεργοποίηση της πρόσβασης διαχειριστή: ${ error }"
@@ -17928,6 +17981,10 @@
       "Request user permission for data access": [
         "Αίτηση άδειας χρήστη για πρόσβαση σε δεδομένα"
       ],
+      "Review their account now.": [
+        "Ελέγξτε τον λογαριασμό τους τώρα.",
+        "Ελέγξτε τους λογαριασμούς τους τώρα."
+      ],
       "Revoke access": [
         "Ανάκληση πρόσβασης"
       ],
@@ -17940,6 +17997,9 @@
       "The user must have an address to request data access": [
         "Ο χρήστης πρέπει να έχει μια διεύθυνση για να ζητήσει πρόσβαση στα δεδομένα"
       ],
+      "Their encryption keys were updated while we were making changes.": [
+        "Τα κλειδιά κρυπτογράφησης ενημερώθηκαν ενώ κάναμε αλλαγές."
+      ],
       "This will cancel the pending request for administrator access to the user’s data or password reset.": [
         "Αυτό θα ακυρώσει το εκκρεμές αίτημα για πρόσβαση διαχειριστή στα δεδομένα του χρήστη ή επαναφορά κωδικού πρόσβασης."
       ],
@@ -17951,6 +18011,10 @@
       ],
       "To proceed, you'll need to request the user's permission to access their data or reset their password.": [
         "Για να συνεχίσετε, θα πρέπει να ζητήσετε την άδεια του χρήστη για πρόσβαση στα δεδομένα του ή επαναφορά του κωδικού πρόσβασής του."
+      ],
+      "You can safely remove this user from your organization.": [
+        "Μπορείτε να καταργήσετε με ασφάλεια αυτόν τον χρήστη από τον οργανισμό σας.",
+        "Μπορείτε να καταργήσετε με ασφάλεια αυτούς τους χρήστες από τον οργανισμό σας."
       ]
     },
     "Upsell": {
@@ -18065,6 +18129,15 @@
       "Invitation email": [
         "Μήνυμα πρόσκλησης"
       ],
+      "Manage all users, groups, security, billing, and system configurations.": [
+        "Διαχειριστείτε όλους τους χρήστες, τις ομάδες, την ασφάλεια, τη χρέωση και τις διαμορφώσεις συστήματος."
+      ],
+      "Manage users and groups, assign roles, and allocate licenses to members.": [
+        "Διαχειριστείτε χρήστες και ομάδες, αναθέστε ρόλους και εκχωρήστε άδειες χρήσης σε μέλη."
+      ],
+      "Manages security settings and can view all event logs and user details.": [
+        "Διαχειρίζεται τις ρυθμίσεις ασφαλείας και μπορεί να δει όλα τα αρχεία καταγραφής συμβάντων και τα στοιχεία χρήστη."
+      ],
       "Name": [
         "Όνομα"
       ],
@@ -18097,6 +18170,9 @@
       ],
       "Writing assistant": [
         "Βοηθός γραφής"
+      ],
+      "You'll be able to assign roles once the user has accepted the invitation.": [
+        "Θα μπορείτε να αναθέσετε ρόλους μόλις ο χρήστης αποδεχτεί την πρόσκληση."
       ]
     },
     "Users table: badge": {

@@ -21,60 +21,61 @@ import { useCurrencies } from '@proton/components/payments/client-extensions/use
 import type { TelemetryPaymentFlow } from '@proton/components/payments/client-extensions/usePaymentsTelemetry';
 import { useLoading } from '@proton/hooks';
 import { IcGift } from '@proton/icons/icons/IcGift';
-import {
-    type AddonGuard,
-    Audience,
-    type Currency,
-    type Cycle,
-    DisplayablePaymentError,
-    type FreePlanDefault,
-    type FreeSubscription,
-    type FullPlansMap,
-    PLANS,
-    type PaymentMethodType,
-    type PaymentProcessorHook,
-    type PaymentProcessorType,
-    type PaymentStatus,
-    type PlainPaymentMethodType,
-    type Plan,
-    type PlanIDs,
-    SelectedPlan,
-    type Subscription,
-    type SubscriptionCheckForbiddenReason,
-    type SubscriptionEstimation,
-    SubscriptionMode,
-    captureWrongPlanIDs,
-    captureWrongPlanName,
-    getFreeCheckResult,
-    getHas2025OfferCoupon,
-    getIsB2BAudienceFromPlan,
-    getIsB2BAudienceFromSubscription,
-    getMaximumCycleForApp,
-    getPlanCurrencyFromPlanIDs,
-    getPlanFromPlanIDs,
-    getPlanIDs,
-    getPlanNameFromIDs,
-    getPlansMap,
-    hasDeprecatedVPN,
-    hasPlanIDs,
-    isSubscriptionCheckForbidden,
-    shouldPassIsTrial as shouldPassIsTrialPayments,
-    switchPlan,
-} from '@proton/payments';
 import { type CheckSubscriptionData, ProrationMode, getPaymentsVersion } from '@proton/payments/core/api/api';
 import type { BillingAddress, BillingAddressExtended } from '@proton/payments/core/billing-address/billing-address';
 import { getIsCustomCycle } from '@proton/payments/core/checkout';
 import { getCheckoutModifiers } from '@proton/payments/core/checkout-modifiers';
+import { PLANS } from '@proton/payments/core/constants';
+import { DisplayablePaymentError } from '@proton/payments/core/errors';
+import { captureWrongPlanIDs, captureWrongPlanName } from '@proton/payments/core/helpers';
+import type {
+    Currency,
+    Cycle,
+    FreeSubscription,
+    PaymentMethodType,
+    PaymentStatus,
+    PlainPaymentMethodType,
+    PlanIDs,
+} from '@proton/payments/core/interface';
 import { computeOptimisticSubscriptionMode } from '@proton/payments/core/optimisticSubscriptionMode';
 import { InvalidChargebeeCardDataError } from '@proton/payments/core/payment-processors/chargebeeCardPayment';
-import { getAutoCoupon } from '@proton/payments/core/subscription/helpers';
+import type { PaymentProcessorHook, PaymentProcessorType } from '@proton/payments/core/payment-processors/interface';
+import type { AddonGuard } from '@proton/payments/core/plan/addons';
+import {
+    getIsB2BAudienceFromPlan,
+    getPlanCurrencyFromPlanIDs,
+    getPlanFromPlanIDs,
+    getPlanNameFromIDs,
+    shouldPassIsTrial as shouldPassIsTrialPayments,
+} from '@proton/payments/core/plan/helpers';
+import type { FreePlanDefault, Plan } from '@proton/payments/core/plan/interface';
+import { hasPlanIDs, switchPlan } from '@proton/payments/core/planIDs';
+import { Audience, SubscriptionMode } from '@proton/payments/core/subscription/constants';
+import { getFreeCheckResult } from '@proton/payments/core/subscription/freePlans';
+import {
+    getAutoCoupon,
+    getHas2025OfferCoupon,
+    getIsB2BAudienceFromSubscription,
+    getMaximumCycleForApp,
+    getPlanIDs,
+    hasDeprecatedVPN,
+    isSubscriptionCheckForbidden,
+} from '@proton/payments/core/subscription/helpers';
+import type {
+    FullPlansMap,
+    Subscription,
+    SubscriptionCheckForbiddenReason,
+    SubscriptionEstimation,
+} from '@proton/payments/core/subscription/interface';
+import { getPlansMap } from '@proton/payments/core/subscription/plans-map-wrapper';
+import { SelectedPlan } from '@proton/payments/core/subscription/selected-plan';
 import { tracePaymentError } from '@proton/payments/sentry/capture';
 import type { SubscriptionModificationChangeAudienceTelemetry } from '@proton/payments/telemetry/subscription-container';
 import { checkoutTelemetry } from '@proton/payments/telemetry/telemetry';
 import { useSubscriptionModificationChangeStepTelemetry } from '@proton/payments/telemetry/useSubscriptionModificationChangeStepTelemetry';
-import { PaymentsContextProvider } from '@proton/payments/ui';
 import { VatReverseChargeErrorModal } from '@proton/payments/ui/billing-address/containers/VatReverseChargeErrorModal';
 import { useBillingAddress } from '@proton/payments/ui/billing-address/hooks/useBillingAddress';
+import { PaymentsContextProvider } from '@proton/payments/ui/context/PaymentContext';
 import { getStaticCouponConfig } from '@proton/payments/ui/coupon-config/get-static-coupon-config';
 import { isCSCoupon } from '@proton/payments/ui/coupon-config/helpers';
 import { useCouponConfig } from '@proton/payments/ui/coupon-config/useCouponConfig';
@@ -85,7 +86,6 @@ import { getShouldCalendarPreventSubscripitionChange } from '@proton/shared/lib/
 import { APPS } from '@proton/shared/lib/constants';
 import { API_CUSTOM_ERROR_CODES } from '@proton/shared/lib/errors';
 import type { Organization, UserModel } from '@proton/shared/lib/interfaces';
-import { useFlag } from '@proton/unleash/useFlag';
 import isTruthy from '@proton/utils/isTruthy';
 import noop from '@proton/utils/noop';
 
@@ -308,7 +308,6 @@ const SubscriptionContainerInner = ({
     const [subscriptionEstimationsForNonSelectedCycles, setSubscriptionEstimationsForNonSelectedCycles] =
         useState<SubscriptionEstimation[]>();
     const scribeEnabled = useAssistantFeatureEnabled();
-    const meetAddonFlag = useFlag('MeetAddonCustomizer');
     const [upsellModal, setUpsellModal, renderUpsellModal] = useModalState();
     const [plusToPlusUpsell, setPlusToPlusUpsell] = useState<{ unlockPlan: Plan | undefined } | null>(null);
     const getUser = useGetUser();
@@ -433,19 +432,14 @@ const SubscriptionContainerInner = ({
         getFreeCheckResult(model.currency, model.cycle)
     );
 
-    const hideLumoAddonForVpn2024 = useFlag('HideLumoAddonForVpn2024');
-
     const couponConfig = useCouponConfig({ checkResult, planIDs: model.planIDs, plansMap: plansMapRef.current });
 
     const lumoAddonEnabled = showLumoAddonCustomizer({
         subscription,
         couponConfig,
-        initialCoupon: maybeCoupon,
         planIDs: model.planIDs,
-        cycle: model.cycle,
-        hideLumoAddonForVpn2024,
     });
-    const meetAddonEnabled = showMeetAddonCustomizer({ meetAddonFlag, couponConfig });
+    const meetAddonEnabled = showMeetAddonCustomizer({ couponConfig, planIDs: model.planIDs });
     const [selectedProductPlans, setSelectedProductPlans] = useState(
         defaultSelectedProductPlans ||
             getDefaultSelectedProductPlans({
@@ -539,7 +533,7 @@ const SubscriptionContainerInner = ({
                     taxBillingAddress: model.taxBillingAddress,
                     StartTrial: isTrial,
                     // eslint-disable-next-line @typescript-eslint/no-use-before-define
-                    vatNumber: billingAddressHook.vatNumber?.vatNumber,
+                    vatNumber: billingAddressHook.vatNumber?.vatNumberToSubmit,
                 });
 
                 // eslint-disable-next-line @typescript-eslint/no-use-before-define
@@ -617,7 +611,7 @@ const SubscriptionContainerInner = ({
                     taxBillingAddress: model.taxBillingAddress,
                     StartTrial: isTrial,
                     // eslint-disable-next-line @typescript-eslint/no-use-before-define
-                    vatNumber: billingAddressHook.vatNumber?.vatNumber,
+                    vatNumber: billingAddressHook.vatNumber?.vatNumberToSubmit,
                 },
                 paymentProcessorType,
                 paymentMethodValue: source,
@@ -902,7 +896,7 @@ const SubscriptionContainerInner = ({
                     taxBillingAddress: model.taxBillingAddress,
                     StartTrial: isTrial,
                     // eslint-disable-next-line @typescript-eslint/no-use-before-define
-                    vatNumber: billingAddressHook.vatNumber?.vatNumber,
+                    vatNumber: billingAddressHook.vatNumber?.vatNumberToSubmit,
                 });
                 await processor.processPaymentToken();
             } catch (e) {
@@ -1061,12 +1055,7 @@ const SubscriptionContainerInner = ({
             currency={model.currency}
             onDone={onSubscribed}
             withLoading={withLoading}
-            loading={
-                loading ||
-                subscribing ||
-                paymentFacade.bitcoinInhouse.bitcoinLoading ||
-                paymentFacade.bitcoinChargebee.bitcoinLoading
-            }
+            loading={loading || subscribing || paymentFacade.bitcoinChargebee.bitcoinLoading}
             checkResult={checkResult}
             className="w-full"
             disabled={isFreeUserWithFreePlanSelected}

@@ -30,7 +30,6 @@ import { IndexPopulatorTask } from './tasks/CoreTasks/IndexPopulatorTask';
 import { PersistDataTask } from './tasks/CoreTasks/PersistDataTask';
 
 export type IndexerState = {
-    isInitialIndexing: boolean;
     isIndexing: boolean;
     isSearchable: boolean;
     permanentError: PermanentErrorKind | null;
@@ -38,7 +37,6 @@ export type IndexerState = {
 };
 
 export const DEFAULT_INDEXER_STATE: IndexerState = {
-    isInitialIndexing: false,
     isIndexing: false,
     isSearchable: false,
     permanentError: null,
@@ -47,6 +45,13 @@ export const DEFAULT_INDEXER_STATE: IndexerState = {
 
 // How often the indexer task queue reports indexing progress to the main thread.
 const PROGRESS_NOTIFY_THROTTLE_MS = 300;
+
+// Age after which a resumable BFS visitor checkpoint is considered abandoned and reaped at startup.
+// An actively-resuming walk refreshes its checkpoint's updatedAt on every commit, so it never ages
+// out; only markers whose triggering work will never resume (e.g. a folder deleted after a crash
+// mid-reindex) get this old. Generous by design, the visitor stale should be
+// managed by the task loop lifecycle, this is only a safeguard for DB leaks.
+const STALE_BFS_VISITOR_STATE_MS = 7 * 24 * 60 * 60 * 1000;
 
 export type IndexerStateListener = (state: IndexerState) => void;
 
@@ -75,7 +80,6 @@ export class IndexerTaskQueue {
     private readonly onlineMonitor = new OnlineMonitor();
 
     private state: IndexerState = {
-        isInitialIndexing: false,
         isIndexing: false,
         isSearchable: false,
         permanentError: null,
@@ -102,6 +106,15 @@ export class IndexerTaskQueue {
         Logger.info('IndexerTaskQueue: starting');
         this.stopped = false;
         this.abortController = new AbortController();
+
+        const isSearchable = await this.db.isSearchable();
+        await this.updateState({ isSearchable });
+
+        // Reap abandoned resumable-walk checkpoints (never active ones - those keep their
+        // updatedAt fresh). Fire-and-forget: it must not block indexing startup.
+        this.db.deleteStaleBFSVisitorStates(STALE_BFS_VISITOR_STATE_MS).catch((error: unknown) => {
+            Logger.error('IndexerTaskQueue: failed to reap stale BFS visitor states', error);
+        });
 
         const { bootstrapTasks, postBootstrapTasks } = await this.createTasks();
         this.postBootstrapTasks = postBootstrapTasks;
@@ -154,6 +167,11 @@ export class IndexerTaskQueue {
         return Promise.all([...this.populators.values()].map((p) => p.getStatus(this.db)));
     }
 
+    private async areBootstrapPopulatorsDone(): Promise<boolean> {
+        const done = await Promise.all([...this.populators.values()].map((p) => p.isDone(this.db)));
+        return done.every(Boolean);
+    }
+
     enqueue(task: BaseTask): void {
         this.queue.push(task);
         this.wakeUp?.();
@@ -184,7 +202,7 @@ export class IndexerTaskQueue {
         }
         Logger.info(`IndexerTaskQueue: manually triggering re-index for ${uid}`);
         await populator.markAsNotDone(this.db);
-        this.enqueueOnce(new IndexPopulatorTask(populator, false));
+        this.enqueueOnce(new IndexPopulatorTask(populator));
     }
 
     private async processLoop(): Promise<void> {
@@ -201,16 +219,26 @@ export class IndexerTaskQueue {
             const task = this.queue.shift();
             if (!task) {
                 // Queue is draining — cancel any pending throttled progress refresh so it
-                // doesn't fire a late, redundant broadcast after `isSearchable: true`. The
+                // doesn't fire a late, redundant broadcast after the terminal snapshot. The
                 // snapshot we're about to emit already carries the terminal status.
                 if (this.progressNotifyTimeout) {
                     clearTimeout(this.progressNotifyTimeout);
                     this.progressNotifyTimeout = null;
                 }
-                // All boostrap tasks are done, initial indexing/indexing is done.
-                await this.updateState({ isInitialIndexing: false, isIndexing: false, isSearchable: true });
+                // Only announce searchable once the bootstrap populators are actually done:
+                // chunked commits mean a transient-retry gap can drain the queue with a partially
+                // committed index. After bootstrap, re-indexes keep the last complete index visible
+                // (entries upsert in place under a new generation), so we don't hide search during
+                // a re-index. Persist it so search stays interactive on the next reload before
+                // indexing runs again.
+                const isFirstDrain = !this.bootstrapDone;
+                const isSearchable = this.bootstrapDone || (await this.areBootstrapPopulatorsDone());
+                if (isSearchable) {
+                    await this.db.markSearchableIndex();
+                }
+                await this.updateState({ isIndexing: false, isSearchable });
 
-                if (!this.bootstrapDone) {
+                if (isFirstDrain) {
                     this.bootstrapDone = true;
                     this.observeStartupIndexStats();
                     for (const task of this.postBootstrapTasks) {
@@ -281,11 +309,6 @@ export class IndexerTaskQueue {
                 }, delayMs);
                 this.pendingTimeouts.add(timeout);
             },
-            markInitialIndexing: () => {
-                this.updateState({ isInitialIndexing: true }).catch((err) =>
-                    Logger.error('IndexerTaskQueue: markInitialIndexing updateState failed', err)
-                );
-            },
             notifyIndexingProgress: () => this.notifyIndexingProgress(),
             activeIndexPopulators: [...this.populators.values()],
         };
@@ -348,7 +371,7 @@ export class IndexerTaskQueue {
         this.populators.set(myFilesPopulator.getUid(), myFilesPopulator);
 
         return {
-            bootstrapTasks: [new IndexPopulatorTask(myFilesPopulator, true /* isBootstrap */)],
+            bootstrapTasks: [new IndexPopulatorTask(myFilesPopulator)],
             postBootstrapTasks: [new CleanUpStaleIndexEntryTask(), new CleanUpStaleBlobsTask()],
         };
     }
@@ -363,7 +386,7 @@ export class IndexerTaskQueue {
     }
 
     private async updateState(patch: Partial<IndexerState>): Promise<void> {
-        // Sync change detection before any DB work so redundant markIndexing/markInitialIndexing
+        // Sync change detection before any DB work so redundant markIndexing
         // calls don't each trigger a populator read.
         const changed = Object.keys(patch).some(
             (k) => patch[k as keyof IndexerState] !== this.state[k as keyof IndexerState]

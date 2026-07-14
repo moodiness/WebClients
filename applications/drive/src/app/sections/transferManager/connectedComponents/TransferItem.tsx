@@ -13,7 +13,7 @@ import { IcCrossCircleFilled } from '@proton/icons/icons/IcCrossCircleFilled';
 import { IcExclamationCircle } from '@proton/icons/icons/IcExclamationCircle';
 import { shortHumanSize } from '@proton/shared/lib/helpers/humanSize';
 
-import { AbuseCategoryType, type AbuseReportPrefill } from '../../../modals/ReportAbuseModal';
+import { AbuseCategory, type AbuseReportPrefill } from '../../../modals/ReportAbuseModal';
 import { DownloadManager } from '../../../modules/download/DownloadManager';
 import {
     BaseTransferStatus,
@@ -34,6 +34,9 @@ type Props = {
 const getStatusLabel = (entry: TransferManagerEntry): string | undefined => {
     const labels: Record<string, string | undefined> = {
         [BaseTransferStatus.InProgress]: entry.type === 'download' ? c('Info').t`Downloading` : c('Info').t`Uploading`,
+        // Preparing status is showed on the header for download, since the content is actually downloading at the same time
+        // we show downloading status. We still need the general status to be set for the header.
+        [BaseTransferStatus.Preparing]: entry.type === 'download' ? c('Info').t`Downloading` : c('Info').t`Preparing`,
         [BaseTransferStatus.Pending]: c('Info').t`Waiting`,
         [BaseTransferStatus.Cancelled]: c('Info').t`Canceled`,
         [BaseTransferStatus.Failed]:
@@ -43,13 +46,13 @@ const getStatusLabel = (entry: TransferManagerEntry): string | undefined => {
         [BaseTransferStatus.Finished]: entry.type === 'download' ? c('Info').t`Downloaded` : c('Info').t`Uploaded`,
         [BaseTransferStatus.Paused]: c('Info').t`Paused`,
         [BaseTransferStatus.PausedServer]: c('Info').t`Paused`,
-        [UploadStatus.Preparing]: c('Info').t`Preparing`,
         [UploadStatus.ConflictFound]: c('Info').t`Waiting`,
         [UploadStatus.Waiting]: c('Info').t`Waiting`,
         [UploadStatus.ParentCancelled]: c('Info').t`Canceled`,
         [UploadStatus.Skipped]: c('Info').t`Canceled`,
         [UploadStatus.PhotosDuplicate]: c('Info').t`Already in your library`,
         [UploadStatus.NotSupportedForPhotos]: c('Info').t`Unsupported file type for Photos`,
+        [UploadStatus.EmptyFile]: c('Info').t`Uploaded - file is empty`,
     };
     return labels[entry.status];
 };
@@ -61,7 +64,7 @@ const getItemIconByStatus = (entry: TransferManagerEntry) => {
     if (entry.status === BaseTransferStatus.Pending || entry.status === UploadStatus.Waiting) {
         return <IcClock size={5} />;
     }
-    if (entry.status === BaseTransferStatus.InProgress || entry.status === UploadStatus.Preparing) {
+    if (entry.status === BaseTransferStatus.InProgress || entry.status === BaseTransferStatus.Preparing) {
         return <CircleLoader size="small" className="color-signal-info" />;
     }
     if (entry.status === BaseTransferStatus.Cancelled) {
@@ -72,6 +75,9 @@ const getItemIconByStatus = (entry: TransferManagerEntry) => {
     }
     if (entry.status === UploadStatus.ParentCancelled) {
         return <IcCrossCircle size={5} className="color-weak" />;
+    }
+    if (entry.status === UploadStatus.EmptyFile) {
+        return <IcExclamationCircle size={5} className="color-warning" />;
     }
     if (
         entry.status === BaseTransferStatus.Failed ||
@@ -89,9 +95,10 @@ const getItemIconByStatus = (entry: TransferManagerEntry) => {
 export const TransferItem = ({ entry, onShare, cancelTransfer, retryTransfer, onReportAbuse }: Props) => {
     // const showLocationText = c('Action').t`Show location`;
     const totalSize = entry.type === 'download' ? entry.storageSize : entry.clearTextSize;
+    const isAwaitingTotalSize = entry.type === 'download' && entry.status === BaseTransferStatus.Preparing;
     const onlyShowTransferredBytes = !totalSize;
     // Encrypted size is larger from file clear text size, we prevent showing larger transferred size to the user during upload
-    const transferredBytes = Math.min(totalSize, entry.transferredBytes);
+    const transferredBytes = totalSize ? Math.min(totalSize, entry.transferredBytes) : entry.transferredBytes;
     const transferredTotal = onlyShowTransferredBytes
         ? `${shortHumanSize(transferredBytes)}`
         : `${shortHumanSize(transferredBytes)} / ${shortHumanSize(totalSize)}`;
@@ -105,6 +112,7 @@ export const TransferItem = ({ entry, onShare, cancelTransfer, retryTransfer, on
         UploadStatus.Skipped,
         UploadStatus.PhotosDuplicate,
         UploadStatus.NotSupportedForPhotos,
+        UploadStatus.EmptyFile,
     ].includes(entry.status as BaseTransferStatus);
     const dm = DownloadManager.getInstance();
     const { item } = useDownloadManagerStore(
@@ -122,7 +130,7 @@ export const TransferItem = ({ entry, onShare, cancelTransfer, retryTransfer, on
             return;
         }
         onReportAbuse(item.malwareInfo.uid, {
-            category: AbuseCategoryType.Malware,
+            category: AbuseCategory.Malware,
             comment: item.malwareInfo.message,
         });
     };
@@ -146,7 +154,7 @@ export const TransferItem = ({ entry, onShare, cancelTransfer, retryTransfer, on
                     {entry.name}
                 </span>
                 <div className="gap-1 flex items-center">
-                    <span className="text-sm color-weak" data-testid="transfer-row:status">
+                    <span className="flex items-center gap-1 text-sm color-weak" data-testid="transfer-row:status">
                         {getStatusLabel(entry)}
                     </span>
                     {/* TODO: Uncomment once Show location is able to highlight and scroll to the item */}
@@ -176,7 +184,13 @@ export const TransferItem = ({ entry, onShare, cancelTransfer, retryTransfer, on
                                 data-testid="transfer-row:transferred-data"
                             >
                                 {shouldShowFailedMessage ? entry.error?.message : ''}
-                                {!shouldHideSizeInfo ? transferredTotal : ''}
+                                {!shouldHideSizeInfo && isAwaitingTotalSize && (
+                                    <span className="flex items-center gap-1">
+                                        {shortHumanSize(transferredBytes)} /
+                                        <CircleLoader size="small" />
+                                    </span>
+                                )}
+                                {!shouldHideSizeInfo && !isAwaitingTotalSize ? transferredTotal : ''}
                             </span>
                         </>
                     )}

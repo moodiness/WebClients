@@ -126,7 +126,11 @@ export class ClientInvoker implements EditorRequiresClientMethods {
 
   async reportUserInterfaceError(
     error: Error,
-    extraInfo: { irrecoverable?: boolean; errorInfo?: ErrorInfo; lockEditor?: boolean },
+    extraInfo: {
+      irrecoverable?: boolean
+      errorInfo?: ErrorInfo
+      lockEditor?: boolean
+    },
   ): Promise<void> {
     return this.invokeClientMethod('reportUserInterfaceError', [error, extraInfo])
   }
@@ -157,6 +161,14 @@ export class ClientInvoker implements EditorRequiresClientMethods {
 
   async checkIfFeatureFlagIsEnabled(featureFlag: FeatureFlag): Promise<boolean> {
     return this.invokeClientMethod('checkIfFeatureFlagIsEnabled', [featureFlag])
+  }
+
+  async getDocumentUrl(): Promise<string> {
+    return this.invokeClientMethod('getDocumentUrl', [])
+  }
+
+  async replaceDocumentUrl(url: string): Promise<void> {
+    return this.invokeClientMethod('replaceDocumentUrl', [url])
   }
 
   public handleReplyFromClient(message: ClientToEditorReplyMessage): void {
@@ -216,5 +228,9 @@ export class ClientInvoker implements EditorRequiresClientMethods {
     reason: 'local-differs-from-yjs' | 'local-change-not-observed-by-yjs',
   ): Promise<void> {
     return this.invokeClientMethod('reportSheetsYjsDriftDetected', [reason])
+  }
+
+  async showYjsDriftDetectedErrorModal(driftLogDetails: Record<string, unknown>): Promise<void> {
+    return this.invokeClientMethod('showYjsDriftDetectedErrorModal', [driftLogDetails])
   }
 }

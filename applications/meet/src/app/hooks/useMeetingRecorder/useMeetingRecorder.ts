@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useRef } from 'react';
 
 import { useRoomContext, useTracks } from '@livekit/components-react';
-import { Track } from 'livekit-client';
+import { RoomEvent, Track } from 'livekit-client';
 import { c } from 'ttag';
 
 import useNotifications from '@proton/components/hooks/useNotifications';
@@ -22,6 +22,7 @@ import { useFlag } from '@proton/unleash/useFlag';
 
 import { useSortedPagedParticipants } from '../../contexts/ParticipantsProvider/SortedParticipantsProvider';
 import { RecordingStatus } from '../../types';
+import { retry } from '../../utils/retry';
 import { useIsLargerThanMd } from '../useIsLargerThanMd';
 import { useIsNarrowHeight } from '../useIsNarrowHeight';
 import { useStableCallback } from '../useStableCallback';
@@ -31,6 +32,7 @@ import { useRecordedTracks } from './hooks/useRecordedTracks';
 import { useRecordingCodec } from './hooks/useRecordingCodec';
 import { useRecordingScene } from './hooks/useRecordingScene';
 import { useRecordingStatusPublish } from './hooks/useRecordingStatusPublish';
+import { useRecordingTelemetry } from './hooks/useRecordingTelemetry';
 import { useTrackPublishedSubscriber } from './hooks/useTrackPublishedSubscriber';
 import { isWebCodecsRecordingSupported } from './mediaEncoder/capabilities';
 import { RecordingSession } from './recordingSession/recordingSession';
@@ -71,16 +73,21 @@ export const useMeetingRecorder = () => {
         isNarrowHeight,
     });
 
+    const { sendTelemetryRecordingStats } = useRecordingTelemetry(recordingCodec);
+
     const publishRecordingStatus = useRecordingStatusPublish(
         isLocalRecording ? RecordingStatus.Started : RecordingStatus.Stopped
     );
 
     const sessionRef = useRef<RecordingSession | null>(null);
 
+    // Keep the recording identity that changes on a full reconnection.
+    const localRecordingIdentityRef = useRef(room.localParticipant.identity);
+
     const markRecordingStopped = useCallback(() => {
         dispatch(stopLocalRecordingTimer());
-        dispatch(removeParticipantRecording(room.localParticipant.identity));
-    }, [dispatch, room]);
+        dispatch(removeParticipantRecording(localRecordingIdentityRef.current));
+    }, [dispatch]);
 
     const cleanupSession = useCallback(async () => {
         const session = sessionRef.current;
@@ -115,16 +122,57 @@ export const useMeetingRecorder = () => {
 
     useTrackPublishedSubscriber({ enabled: isLocalRecording, room });
 
+    const announceRecordingToPeers = useStableCallback(async () => {
+        await retry(async () => {
+            if (!sessionRef.current?.isActive()) {
+                return;
+            }
+
+            await publishRecordingStatus(RecordingStatus.Started);
+        });
+    });
+
+    // Update local recording state after a reconnection changes the local participant identity.
+    useEffect(() => {
+        const rebindLocalRecording = () => {
+            if (!sessionRef.current?.isActive()) {
+                return;
+            }
+            const newIdentity = room.localParticipant.identity;
+            const previousIdentity = localRecordingIdentityRef.current;
+            if (!newIdentity || newIdentity === previousIdentity) {
+                return;
+            }
+            localRecordingIdentityRef.current = newIdentity;
+            dispatch(removeParticipantRecording(previousIdentity));
+            dispatch(addParticipantRecording(newIdentity));
+            void announceRecordingToPeers();
+        };
+
+        room.on(RoomEvent.Connected, rebindLocalRecording);
+        room.on(RoomEvent.Reconnected, rebindLocalRecording);
+
+        return () => {
+            room.off(RoomEvent.Connected, rebindLocalRecording);
+            room.off(RoomEvent.Reconnected, rebindLocalRecording);
+        };
+    }, [room, dispatch, announceRecordingToPeers]);
+
     const stopRecording = useCallback(async () => {
         const session = sessionRef.current;
-        if (!session || !isLocalRecording) {
+        if (!session || !session.isActive()) {
             return null;
         }
 
         try {
             const recording = await session.stop();
+
+            // Sending telemetry before resetting recording duration counter.
+            sendTelemetryRecordingStats(recording?.size);
+
             void publishRecordingStatus(RecordingStatus.Stopped);
             markRecordingStopped();
+
             return recording;
         } catch (error) {
             reportMeetError('MeetingRecording Error: Failed to stop recording', {
@@ -137,10 +185,10 @@ export const useMeetingRecorder = () => {
             console.error('Failed to stop recording:', error);
             throw error;
         }
-    }, [isLocalRecording, publishRecordingStatus, reportMeetError, markRecordingStopped]);
+    }, [sendTelemetryRecordingStats, publishRecordingStatus, markRecordingStopped, reportMeetError]);
 
     const finishRecording = useCallback(async () => {
-        if (!isLocalRecording) {
+        if (!sessionRef.current?.isActive()) {
             return;
         }
 
@@ -176,7 +224,7 @@ export const useMeetingRecorder = () => {
         } finally {
             await cleanupSession();
         }
-    }, [isLocalRecording, stopRecording, reportMeetError, dispatch, cleanupSession]);
+    }, [stopRecording, reportMeetError, dispatch, cleanupSession]);
 
     const handleStorageFull = useStableCallback(() => {
         createNotification({
@@ -213,6 +261,7 @@ export const useMeetingRecorder = () => {
                 initialRecordedTracks: recordedTracks,
             });
 
+            localRecordingIdentityRef.current = room.localParticipant.identity;
             dispatch(addParticipantRecording(room.localParticipant.identity));
             dispatch(startLocalRecordingTimer());
 

@@ -787,6 +787,9 @@
       "Re-index": [
         "Reindexare"
       ],
+      "Re-indexing in progress": [
+        "Reindexare în derulare"
+      ],
       "Re-sign": [
         "Reînregistrare"
       ],
@@ -861,6 +864,9 @@
       ],
       "Report a problem": [
         "Raportare problemă"
+      ],
+      "Report abuse": [
+        "Raportare abuz"
       ],
       "Report an issue": [
         "Raportare o problemă"
@@ -961,6 +967,12 @@
       "Select country": [
         "Selectare țară"
       ],
+      "Select rating ${ n } out of ${ to }": [
+        "Selectare evaluare ${ n } din ${ to }"
+      ],
+      "Send Feedback": [
+        "Trimitere feedback"
+      ],
       "Set as album cover": [
         "Setare ca o copertă de album"
       ],
@@ -1041,6 +1053,9 @@
       ],
       "Sign up": [
         "Înregistrare"
+      ],
+      "Skip": [
+        "Omitere"
       ],
       "Skip verification": [
         "Ignorare verificare"
@@ -1140,6 +1155,9 @@
       ],
       "Upload and share files": [
         "Încărcați și partajați fișiere"
+      ],
+      "Upload anyway": [
+        "Încărcare așa"
       ],
       "Upload file": [
         "Încărcare fișier"
@@ -1524,7 +1542,7 @@
     },
     "BF2025: Deal details": {
       "2 TB data storage": [
-        "2 TiB spațiu total"
+        "2 TiB spațiu de stocare"
       ],
       "3 TB data storage": [
         "3 TiB spațiu de stocare"
@@ -3681,12 +3699,6 @@
       "Incorrect username": [
         "Nume de utilizator incorect."
       ],
-      "Invalid ${ name } code": [
-        "Cod ${ name } nevalid."
-      ],
-      "Invalid card number": [
-        "Număr de card nevalid."
-      ],
       "Invalid code": [
         "Cod nevalid"
       ],
@@ -3695,9 +3707,6 @@
       ],
       "Invalid email address": [
         "Adresă de e-mail nevalidă."
-      ],
-      "Invalid expiration date": [
-        "Data expirării nu este validă."
       ],
       "Invalid IBAN": [
         "Acest IBAN nu este valid."
@@ -3751,6 +3760,9 @@
       ],
       "No contacts found to import": [
         "Nu s-au găsit contacte de importat."
+      ],
+      "No drive found to import": [
+        "Nu s-a găsit nici o unitate de importat."
       ],
       "No emails found to import - the account does not have an inbox": [
         "Nu s-au găsit mesaje de importat - contul nu are căsuță poștală."
@@ -4006,6 +4018,9 @@
       "Unexpected error, we can't import the contacts": [
         "Eroare neașteptată. Nu se pot importa contactele."
       ],
+      "Unexpected error, we can't import the files": [
+        "Eroare neașteptată. Fișierele nu se pot importa."
+      ],
       "Unknown conflict strategy: ${ strategy }": [
         "Conflict necunoscut strategie: ${ strategy }"
       ],
@@ -4038,6 +4053,9 @@
       ],
       "We cannot retrieve this item": [
         "Acest articol nu se poate prelua."
+      ],
+      "We couldn’t send a verification code using this method.": [
+        "Nu s-a putut trimite un cod de verificare folosind această metodă."
       ],
       "We were not able to load some invitations": [
         "Nu s-au putut încărca unele invitații"
@@ -4527,6 +4545,9 @@
       ],
       "Security key": [
         "Cheie de securitate"
+      ],
+      "Touch your security key.": [
+        "Atingeți cheia de securitate."
       ]
     },
     "fido2: Label": {
@@ -5311,6 +5332,9 @@
       "AI powered assistant to help you craft better emails, quickly and effortlessly.": [
         "Asistent pe bază de IA pentru a vă ajuta să scrieți mesaje mai bune, mai repede și fără efort."
       ],
+      "Album": [
+        "Album"
+      ],
       "All (${ totalFoldersCount } folder)": [
         "Toate (${ totalFoldersCount } folder)",
         "Toate (${ totalFoldersCount } foldere)",
@@ -5504,7 +5528,7 @@
         "Continuare utilizare ${ DRIVE_APP_NAME } și deblocare unitate mai târziu"
       ],
       "Copy the link to clipboard": [
-        "Copiați legătura în memorie"
+        "Copiere legătură web în memorie"
       ],
       "Copy your referral link": [
         "Copiere legătură web de recomandare"
@@ -5586,6 +5610,11 @@
       ],
       "Do you remember your password? ${ verifyButton }": [
         "Vă amintiți parola? ${ verifyButton }"
+      ],
+      "Do you still want to upload it?": [
+        "Încă doriți să-l încărcați?",
+        "Încă doriți să le încărcați?",
+        "Încă doriți să le încărcați?"
       ],
       "Done": [
         "Gata"
@@ -5733,6 +5762,9 @@
       "Files and folders that others shared with you will appear here": [
         "Fișierele și folderele pe care alții vi le-au partajat vor apărea aici."
       ],
+      "Files only (no photos, ${ DOCS_APP_NAME } or ${ SHEETS_APP_NAME }) - up to 100 GB total, 100,000 files, and 50 GB per file": [
+        "Doar fișiere (fără fotografii, ${ DOCS_APP_NAME } sau ${ SHEETS_APP_NAME }) - până la 100 GiB total, 100.000 de fișiere și 50 GiB per fișier."
+      ],
       "finance": [
         "finanțe"
       ],
@@ -5786,6 +5818,9 @@
       ],
       "How does encrypted search work?": [
         "Cum funcționează căutarea criptată?"
+      ],
+      "I hereby confirm, in good faith, that the information and statements contained in the report are correct and complete.": [
+        "Prin prezenta confirm, cu bună-credință, că informațiile și declarațiile conținute în raport sunt corecte și complete."
       ],
       "If those files are not fully downloaded locally on ${ deviceName } you will lose access to them.": [
         "Dacă acele fișiere nu sunt descărcate complet local pe ${ deviceName }, veți pierde accesul la ele."
@@ -6207,9 +6242,6 @@
       "Please ask the owner to directly invite you to the document.": [
         "Solicitați proprietarului să vă invite direct la document."
       ],
-      "Please authenticate your card in the verification tab.": [
-        "Autentificați cardul în fila de verificare."
-      ],
       "Please authenticate your payment in the verification tab.": [
         "Autentificați plata în fila de verificare."
       ],
@@ -6254,9 +6286,6 @@
       "Please try again using a different payment method, or contact your bank.": [
         "Reîncercați folosind o metodă de plată diferită sau contactați-vă banca."
       ],
-      "Please try again, use a different payment method, or contact PayPal for assistance.": [
-        "Mai încercați. Folosiți o metodă de plată diferită sau contactați PayPal pentru asistență."
-      ],
       "Please use another browser or download the file.": [
         "Folosiți alt tip de navigator web sau descărcați fișierul."
       ],
@@ -6271,6 +6300,12 @@
       ],
       "Preparing": [
         "Se pregătește"
+      ],
+      "Preparing download": [
+        "Se pregătește descărcarea"
+      ],
+      "Preparing…": [
+        "Se pregătește…"
       ],
       "Preview failed to be loaded": [
         "Examinarea nu a putut fi încărcată."
@@ -6307,6 +6342,9 @@
       ],
       "Public sharing of documents is not yet supported.": [
         "Partajarea publică a documentelor nu este încă implementată."
+      ],
+      "Re-indexing in progress": [
+        "Reindexare în derulare"
       ],
       "Ready to add some photos?": [
         "Sunteți gata să adăugați fotografii?"
@@ -6562,6 +6600,11 @@
       "This can NOT be undone. Please enter the device name to confirm removal.": [
         "Rezultatul acestei operații NU se mai poate anula. Introduceți numele dispozitivului pentru a confirma eliminarea."
       ],
+      "This file appears to be empty:": [
+        "Acest fișier pare să fie gol:",
+        "Aceste fișiere par să fie goale:",
+        "Aceste fișiere par să fie goale:"
+      ],
       "This file is too large to preview": [
         "Acest fișier este prea mare pentru a fi examinat."
       ],
@@ -6750,6 +6793,9 @@
       "Uploaded": [
         "Încărcat"
       ],
+      "Uploaded - file is empty": [
+        "S-a încărcat - fișierul este gol"
+      ],
       "Uploading": [
         "Se incarcă"
       ],
@@ -6912,6 +6958,9 @@
       "You are about to open your default browser and visit:": [
         "Urmează să deschideți navigatorul web implicit și să vizitați:"
       ],
+      "You are currently signed in as ${ username } for ${ organizationName }.": [
+        "V-ați conectat cu ${ username } pentru (${ organizationName }."
+      ],
       "You are currently signed in as ${ username }.": [
         "V-ați conectat cu ${ username }."
       ],
@@ -6986,9 +7035,6 @@
         "Va trebui să le salvați din nou de pe pagina cu legături web publice.",
         "Va trebui să le salvați din nou de pe pagina cu legături web publice."
       ],
-      "You will soon be redirected to PayPal to verify your payment.": [
-        "Pentru verificarea plății se va deschide o filă către PayPal."
-      ],
       "You won't be charged if you cancel before ${ trialEndsOnFormatted }.": [
         "Nu se va aplica taxa dacă anulați înainte de ${ trialEndsOnFormatted }."
       ],
@@ -7044,6 +7090,9 @@
       ],
       "Your email will only be used for this one-time verification.": [
         "Adresa va fi folosită doar pentru această verificare unică."
+      ],
+      "Your files are being re-indexed. You can keep searching - results may be incomplete until it finishes. We'll let you know when it's done.": [
+        "Fișierele sunt reindexate. Puteți căuta, dar rezultatele s-ar putea să fie incomplete până la finalizarea indexării. Vă vom anunța când s-a finalizat."
       ],
       "Your files are no longer accessible due to a password reset. Re-upload the old encryption key to regain the access. ${ KeyReactivationButton }": [
         "Fișierele nu mai sunt accesibile datorită resetării parolei. Reîncărcați vechea cheie de criptare pentru a redobândi accesul. ${ KeyReactivationButton }"
@@ -7505,6 +7554,12 @@
       "Environment compatible": [
         "Mediu compatibil"
       ],
+      "Exact host matching": [
+        "Potrivire exactă gazdă"
+      ],
+      "Exact URL matching": [
+        "Potrivire exactă URL"
+      ],
       "Expired": [
         "Expirat"
       ],
@@ -7522,6 +7577,9 @@
       ],
       "Extended address": [
         "Adresa extinsă"
+      ],
+      "Extremely Satisfied": [
+        "Extrem de mulțumit(ă)"
       ],
       "File": [
         "Fișier"
@@ -7583,8 +7641,8 @@
       "Index kinds": [
         "Tipuri de indexare"
       ],
-      "Initial indexing": [
-        "Indexare inițială"
+      "Indexing": [
+        "Se indexează"
       ],
       "Integrated 2FA authenticator": [
         "Autentificator A2F integrat"
@@ -7667,6 +7725,9 @@
       "Never expires": [
         "Nu expiră"
       ],
+      "Never fill on this exact URL": [
+        "La exact acest URL nu se completează"
+      ],
       "New password": [
         "Parola nouă"
       ],
@@ -7699,6 +7760,9 @@
       ],
       "Outdated version": [
         "Versiune învechită"
+      ],
+      "Parent domain and subdomains (default)": [
+        "Domeniu părinte și subdomeniu (implicit)"
       ],
       "Password": [
         "Parola"
@@ -7753,6 +7817,9 @@
       ],
       "Region": [
         "Județ"
+      ],
+      "Regular expression": [
+        "Expresie regulată"
       ],
       "Replace existing folder or file": [
         "Înlocuire folder sau fișier existent"
@@ -7829,6 +7896,9 @@
       "Start date": [
         "Dată început"
       ],
+      "Starts with": [
+        "Începe cu"
+      ],
       "State": [
         "Județ/Stat"
       ],
@@ -7855,6 +7925,9 @@
       ],
       "System information": [
         "Informații sistem"
+      ],
+      "Tell us more about your experience": [
+        "Spuneți-ne mai multe despre experiența proprie"
       ],
       "Theme": [
         "Tema"
@@ -7892,6 +7965,9 @@
       "Uploaded by": [
         "Încărcat de"
       ],
+      "URL wildcard pattern": [
+        "Model URL cu caractere generice"
+      ],
       "User opted in": [
         "Utilizatorul a optat pentru"
       ],
@@ -7900,6 +7976,9 @@
       ],
       "Verification code": [
         "Cod de verificare"
+      ],
+      "Very Dissatisfied": [
+        "Foarte nemulțumit(ă)"
       ],
       "Viewer": [
         "Utilizator"
@@ -8302,6 +8381,24 @@
       ]
     },
     "Message": {
+      "'Starts with' matching rule": [
+        "Regulă de potrivire „Începe cu”"
+      ],
+      "Exact (sub) domain matching rule": [
+        "Regulă de potrivire exactă (sub) domeniu"
+      ],
+      "Exact URL matching rule": [
+        "Regulă de potrivire exactă URL"
+      ],
+      "Never fill with this exact URL": [
+        "La exact acest URL nu se completează"
+      ],
+      "Regular expression rule": [
+        "Regulă expresie regulată"
+      ],
+      "Wildcard pattern matching rule": [
+        "Regulă de potrivire model caractere generice"
+      ],
       "Your free trial has ended. ${ nonAutoRenewalAction }": [
         "Perioada de evaluare gratuită s-a încheiat. ${ nonAutoRenewalAction }"
       ],
@@ -9201,6 +9298,11 @@
         "Vă bucurați de un preț promoțional la planul dvs. actual. Dacă vă retrogradați contul, veți pierde prețul promoțional și nu va fi disponibil dacă încercați să vă abonați din nou."
       ]
     },
+    "new_plans: label": {
+      "We're always striving to make ${ config.appName } better. How satisfied are you with your experience?": [
+        "Ne străduim mereu să îmbunătățim ${ config.appName }. Cum evaluați experiența avută?"
+      ]
+    },
     "new_plans: Subtext": {
       "Starting from ${ priceLine }": [
         "Începând de la ${ priceLine }"
@@ -9673,9 +9775,6 @@
       "All items deleted permanently from trash": [
         "S-au eliminat definitiv toate articolele din «Gunoi»."
       ],
-      "An invitation has been sent": [
-        "A fost trimisă o invitație."
-      ],
       "Cannot load link": [
         "Legătura nu s-a putut încărca."
       ],
@@ -9712,17 +9811,11 @@
       "Failed to accept share invitation": [
         "Eșuare acceptare invitație partajată"
       ],
-      "Failed to convert external invitation": [
-        "Nu s-a putut converti invitația externă."
-      ],
       "Failed to load sharing details": [
         "Încărcarea detaliilor de partajare a eșuat."
       ],
       "Failed to move, please try again": [
         "Mutarea a eșuat. Reîncercați."
-      ],
-      "Failed to open document": [
-        "Deschiderea documentului a eșuat."
       ],
       "Failed to reject share invitation": [
         "Eșuare refuzare invitație la partajare."
@@ -10720,6 +10813,9 @@
       "New name": [
         "Nume nou"
       ],
+      "Optional feedback": [
+        "Feedback opțional"
+      ],
       "Organization name": [
         "Nume organizație"
       ],
@@ -11640,7 +11736,7 @@
     },
     "storage_split: feature": {
       "Storage for data generated by ${ BRAND_NAME } ${ MAIL_SHORT_APP_NAME }, ${ CALENDAR_SHORT_APP_NAME }, ${ CONTACTS_SHORT_APP_NAME }, and ${ PASS_SHORT_APP_NAME }": [
-        "Spațiu de stocare pentru date generate de ${ BRAND_NAME } ${ MAIL_SHORT_APP_NAME }, ${ CALENDAR_SHORT_APP_NAME }, ${ CONTACTS_SHORT_APP_NAME }, și ${ PASS_SHORT_APP_NAME }."
+        "Spațiu de stocare pentru datele generate de ${ BRAND_NAME } ${ MAIL_SHORT_APP_NAME }, ${ CALENDAR_SHORT_APP_NAME }, ${ CONTACTS_SHORT_APP_NAME }, și ${ PASS_SHORT_APP_NAME }."
       ],
       "Up to ${ totalStorageSize } Drive storage": [
         "Până la ${ totalStorageSize } spațiu în Drive"
@@ -13082,9 +13178,6 @@
       "Payment verification": [
         "Verificare plată"
       ],
-      "PayPal verification failed": [
-        "Verificarea PayPal a eșuat"
-      ],
       "Phone numbers": [
         "Numere de telefon"
       ],
@@ -13345,6 +13438,9 @@
       "Upload and share files": [
         "Încărcați și partajați fișiere"
       ],
+      "Upload empty file?": [
+        "Încărcați fișier gol?"
+      ],
       "Uploaded": [
         "Încărcat"
       ],
@@ -13408,6 +13504,9 @@
       "We weren’t able to confirm that the node was created by ${ claimedKeyAuthor }. The reason is: ${ node.keyAuthor.error.error }": [
         "Nu s-a putut confirma că nodul a fost creat de către ${ claimedKeyAuthor }. Motiv: ${ node.keyAuthor.error.error }"
       ],
+      "We'd love to hear from you!": [
+        "Ne-ar plăcea să avem vești de la tine!"
+      ],
       "Welcome offer": [
         "Ofertă de bun venit"
       ],
@@ -13467,6 +13566,26 @@
       ],
       "You’ve got 5 GB of storage": [
         "Ați primit 5 GiB spațiu de stocare"
+      ]
+    },
+    "Title header for keys table": {
+      "Actions": [
+        "Acțiuni"
+      ],
+      "Created": [
+        "Creat"
+      ],
+      "Expires": [
+        "Expiră"
+      ],
+      "Fingerprint": [
+        "Amprenta"
+      ],
+      "Status": [
+        "Stare"
+      ],
+      "Type": [
+        "Tip"
       ]
     },
     "Today icon tooltip in mini calendar": {
@@ -13565,6 +13684,9 @@
       "Upload a public key to enable sending end-to-end encrypted emails to this email": [
         "Încărcați o cheie publică pentru a activa trimiterea mesajelor criptate bilateral la această adresă."
       ],
+      "Version 6 OpenPGP key": [
+        "Cheie PGP versiunea 6"
+      ],
       "We have sent them an invite to access the item.": [
         "Li s-a trimis o invitație pentru a accesa articolul."
       ]
@@ -13607,6 +13729,11 @@
     "Upsell": {
       "Get Drive for Business": [
         "Luați Drive for Business"
+      ]
+    },
+    "user_modal": {
+      "You'll be able to assign roles once the user has accepted the invitation.": [
+        "Vei putea atribui roluri după ce utilizatorul a acceptat invitația."
       ]
     },
     "Validation": {
@@ -13739,6 +13866,9 @@
       ],
       "${ BRAND_NAME } will transfer as much data as possible, starting with your most recent messages.": [
         "${ BRAND_NAME } va transfera cât mai multe date posibil, începând cu cele mai recente mesaje."
+      ],
+      "${ modeLabelStong } provides powerful control, but a single error can cause autofill to match and fill data on fraudulent or phishing websites.": [
+        "${ modeLabelStong } oferă un control puternic, dar o singură eroare poate determina completarea automată să se potrivească și să completeze datele pe site-uri web frauduloase sau de înșelăciune."
       ],
       "Are you sure you want to permanently delete ${ count } contact?": [
         "Contacte care vor fi șterse definitiv: ${ count }. Confirmați ștergerea?",

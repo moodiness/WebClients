@@ -2,7 +2,7 @@ import { c } from 'ttag';
 
 import { Button } from '@proton/atoms/Button/Button';
 import useModalState from '@proton/components/components/modalTwo/useModalState';
-import { EditCardModal } from '@proton/payments/ui';
+import EditCardModal from '@proton/payments/ui/containers/EditCardModal';
 import type { ProductParam } from '@proton/shared/lib/apps/product';
 
 import { InfoBanner } from './InfoBanner';
@@ -49,6 +49,7 @@ export const AddCreditCardButton = ({
                 .t`Payment method required for the subscription to be activated after the trial ends.`}</InfoBanner>
             {renderCreditCardModal && (
                 <EditCardModal
+                    editExistingCard={false}
                     app={app}
                     enableRenewToggle={false}
                     onMethodAdded={() => {

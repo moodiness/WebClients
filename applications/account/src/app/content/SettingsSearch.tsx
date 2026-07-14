@@ -51,8 +51,6 @@ const getAppNameFromParentKey = (parentKey: RouteParents): APP_NAMES => {
             return APPS.PROTONPASS;
         case 'wallet':
             return APPS.PROTONWALLET;
-        case 'meet':
-            return APPS.PROTONMEET;
         case 'authenticator':
             return APPS.PROTONAUTHENTICATOR;
     }
@@ -70,7 +68,7 @@ const getSearchableItems = (routes: Routes, app: APP_NAMES): SearchOption[] => {
             return [];
         }
 
-        const prefix = `/${getSlugFromApp(parentApp)}`;
+        const prefix = parentApp !== APPS.PROTONACCOUNT ? `/${getSlugFromApp(parentApp)}` : '';
 
         return Object.values(parentRoute.routes).flatMap((sectionRoute: SectionConfig) => {
             if (!getIsSectionAvailable(sectionRoute)) {

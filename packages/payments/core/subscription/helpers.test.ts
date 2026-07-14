@@ -12,7 +12,6 @@ import {
     getPlanIDs,
     getSubscriptionPlanTitle,
     hasLumoMobileSubscription,
-    isAddonDowngradeOnSameCycle,
     isDangerouslyAllowedSubscriptionEstimation,
     isManagedExternally,
     isSubscriptionCheckForbidden,
@@ -654,6 +653,207 @@ describe('isSubscriptionCheckForbiddenWithReason', () => {
             forbidden: false,
         });
     });
+
+    it('should return already-subscribed when the same plan+cycle is selected without a coupon', () => {
+        const subscription = buildSubscription();
+        const planIDs = getPlanIDs(subscription);
+
+        expect(isSubscriptionCheckForbiddenWithReason(subscription, { planIDs, cycle: subscription.Cycle })).toEqual({
+            forbidden: true,
+            reason: 'already-subscribed',
+        });
+    });
+
+    it('should return already-subscribed when the selected plan matches the upcoming subscription', () => {
+        const planIDs = { [PLANS.BUNDLE]: 1 };
+        const UpcomingSubscription = buildSubscription({
+            planName: PLANS.BUNDLE,
+            cycle: CYCLE.YEARLY,
+            currency: 'USD',
+        });
+        const subscription = buildSubscription(
+            {
+                planName: PLANS.BUNDLE,
+                cycle: CYCLE.MONTHLY,
+                currency: 'USD',
+            },
+            {
+                UpcomingSubscription,
+            }
+        );
+
+        expect(isSubscriptionCheckForbiddenWithReason(subscription, { planIDs, cycle: CYCLE.YEARLY })).toEqual({
+            forbidden: true,
+            reason: 'already-subscribed',
+        });
+    });
+
+    it('should return already-subscribed even when a coupon is present and the selected plan matches the upcoming subscription', () => {
+        const planIDs = { [PLANS.BUNDLE]: 1 };
+        const UpcomingSubscription = buildSubscription({
+            planName: PLANS.BUNDLE,
+            cycle: CYCLE.YEARLY,
+            currency: 'USD',
+        });
+        const subscription = buildSubscription(
+            {
+                planName: PLANS.BUNDLE,
+                cycle: CYCLE.MONTHLY,
+                currency: 'USD',
+            },
+            {
+                UpcomingSubscription,
+            }
+        );
+
+        expect(
+            isSubscriptionCheckForbiddenWithReason(subscription, {
+                planIDs,
+                cycle: CYCLE.YEARLY,
+                coupon: 'TEST_COUPON',
+            })
+        ).toEqual({
+            forbidden: true,
+            reason: 'already-subscribed',
+        });
+    });
+
+    it('should return already-subscribed when user who has a subscription with coupon selects same plan+cycle with the same coupon', () => {
+        const subscription = buildSubscription(
+            { planIDs: { [PLANS.MAIL]: 1 }, cycle: CYCLE.MONTHLY, currency: 'USD' },
+            { CouponCode: 'TEST_COUPON' }
+        );
+
+        expect(
+            isSubscriptionCheckForbiddenWithReason(subscription, {
+                planIDs: { [PLANS.MAIL]: 1 },
+                cycle: CYCLE.MONTHLY,
+                coupon: 'TEST_COUPON',
+            })
+        ).toEqual({
+            forbidden: true,
+            reason: 'already-subscribed',
+        });
+    });
+
+    it('should return possibly-invalid-coupon when user who has a subscription with coupon selects same plan+cycle with a different coupon', () => {
+        const subscription = buildSubscription(
+            { planIDs: { [PLANS.MAIL]: 1 }, cycle: CYCLE.MONTHLY, currency: 'USD' },
+            { CouponCode: 'TEST_COUPON' }
+        );
+
+        expect(
+            isSubscriptionCheckForbiddenWithReason(subscription, {
+                planIDs: { [PLANS.MAIL]: 1 },
+                cycle: CYCLE.MONTHLY,
+                Codes: ['TEST_COUPON', 'TEST_COUPON_2'],
+            })
+        ).toEqual({
+            forbidden: false,
+            reason: 'possibly-invalid-coupon',
+        });
+    });
+
+    // The externally-managed check is deliberately ordered before the 'already-subscribed' check, so an externally
+    // managed subscription selecting the same plan reports 'already-subscribed-externally' on ANY cycle, including the
+    // exact same cycle (which would otherwise be reported as 'already-subscribed').
+    it.each([CYCLE.MONTHLY, CYCLE.YEARLY, CYCLE.TWO_YEARS])(
+        'should return already-subscribed-externally when an externally managed subscription selects the same plan (cycle %s)',
+        (cycle) => {
+            const subscription = buildSubscription(
+                {
+                    planName: PLANS.LUMO,
+                    cycle: CYCLE.MONTHLY,
+                    currency: 'USD',
+                },
+                {
+                    External: SubscriptionPlatform.iOS,
+                }
+            );
+
+            expect(
+                isSubscriptionCheckForbiddenWithReason(subscription, { planIDs: { [PLANS.LUMO]: 1 }, cycle })
+            ).toEqual({
+                forbidden: true,
+                reason: 'already-subscribed-externally',
+            });
+        }
+    );
+
+    it('should return already-subscribed-externally even when a coupon is present (coupon does not rescue external subscriptions)', () => {
+        const subscription = buildSubscription(PLANS.LUMO, {
+            External: SubscriptionPlatform.iOS,
+        });
+
+        expect(
+            isSubscriptionCheckForbiddenWithReason(subscription, {
+                planIDs: { [PLANS.LUMO]: 1 },
+                cycle: CYCLE.MONTHLY,
+                coupon: 'TEST_COUPON',
+            })
+        ).toEqual({
+            forbidden: true,
+            reason: 'already-subscribed-externally',
+        });
+    });
+
+    it('should return offer-not-available when the modification is forbidden (Lumo mobile subscription selecting a multi-user personal plan)', () => {
+        const subscription = buildSubscription(
+            {
+                planName: PLANS.LUMO,
+                cycle: CYCLE.MONTHLY,
+                currency: 'USD',
+            },
+            {
+                External: SubscriptionPlatform.Android,
+            }
+        );
+
+        expect(
+            isSubscriptionCheckForbiddenWithReason(subscription, { planIDs: { [PLANS.DUO]: 1 }, cycle: CYCLE.MONTHLY })
+        ).toEqual({
+            forbidden: true,
+            reason: 'offer-not-available',
+        });
+    });
+
+    it('should return offer-not-available (not possibly-invalid-coupon) when a forbidden modification is attempted with a coupon', () => {
+        const subscription = buildSubscription(
+            {
+                planName: PLANS.LUMO,
+                cycle: CYCLE.MONTHLY,
+                currency: 'USD',
+            },
+            {
+                External: SubscriptionPlatform.Android,
+            }
+        );
+
+        expect(
+            isSubscriptionCheckForbiddenWithReason(subscription, {
+                planIDs: { [PLANS.DUO]: 1 },
+                cycle: CYCLE.MONTHLY,
+                coupon: 'TEST_COUPON',
+            })
+        ).toEqual({
+            forbidden: true,
+            reason: 'offer-not-available',
+        });
+    });
+
+    it('should return possibly-invalid-coupon when the same plan+cycle is selected and codes are provided', () => {
+        const planIDs = { [PLANS.MAIL]: 1 };
+        const cycle = CYCLE.MONTHLY;
+        const currency = 'USD';
+        const subscription = buildSubscription({ planIDs, cycle, currency });
+
+        expect(
+            isSubscriptionCheckForbiddenWithReason(subscription, { planIDs, cycle, Codes: ['TEST_COUPON'] })
+        ).toEqual({
+            forbidden: false,
+            reason: 'possibly-invalid-coupon',
+        });
+    });
 });
 
 describe('isDangerouslyAllowedSubscriptionEstimation', () => {
@@ -857,120 +1057,6 @@ describe('hasLumoMobileSubscription', () => {
             ],
         });
         expect(hasLumoMobileSubscription(subscription)).toBe(true);
-    });
-});
-
-describe('isAddonDowngradeOnSameCycle', () => {
-    it('should return false when cycles differ', () => {
-        const current = buildSubscription({
-            planIDs: { [PLANS.MAIL_PRO]: 1, [ADDON_NAMES.MEMBER_MAIL_PRO]: 3 },
-            cycle: CYCLE.YEARLY,
-            currency: 'EUR',
-        });
-        const upcoming = buildSubscription({
-            planIDs: { [PLANS.MAIL_PRO]: 1, [ADDON_NAMES.MEMBER_MAIL_PRO]: 1 },
-            cycle: CYCLE.MONTHLY,
-            currency: 'EUR',
-        });
-        expect(isAddonDowngradeOnSameCycle(current, upcoming)).toBe(false);
-    });
-
-    it('should return false when same cycle and same addons', () => {
-        const current = buildSubscription({
-            planIDs: { [PLANS.MAIL_PRO]: 1, [ADDON_NAMES.MEMBER_MAIL_PRO]: 3 },
-            cycle: CYCLE.YEARLY,
-            currency: 'EUR',
-        });
-        const upcoming = buildSubscription({
-            planIDs: { [PLANS.MAIL_PRO]: 1, [ADDON_NAMES.MEMBER_MAIL_PRO]: 3 },
-            cycle: CYCLE.YEARLY,
-            currency: 'EUR',
-        });
-        expect(isAddonDowngradeOnSameCycle(current, upcoming)).toBe(false);
-    });
-
-    it('should return true when same cycle and addon quantity decreased', () => {
-        const current = buildSubscription({
-            planIDs: { [PLANS.MAIL_PRO]: 1, [ADDON_NAMES.MEMBER_MAIL_PRO]: 3 },
-            cycle: CYCLE.YEARLY,
-            currency: 'EUR',
-        });
-        const upcoming = buildSubscription({
-            planIDs: { [PLANS.MAIL_PRO]: 1, [ADDON_NAMES.MEMBER_MAIL_PRO]: 1 },
-            cycle: CYCLE.YEARLY,
-            currency: 'EUR',
-        });
-        expect(isAddonDowngradeOnSameCycle(current, upcoming)).toBe(true);
-    });
-
-    it('should return true when same cycle and addon removed entirely', () => {
-        const current = buildSubscription({
-            planIDs: { [PLANS.MAIL_PRO]: 1, [ADDON_NAMES.MEMBER_MAIL_PRO]: 2 },
-            cycle: CYCLE.YEARLY,
-            currency: 'EUR',
-        });
-        const upcoming = buildSubscription({
-            planIDs: { [PLANS.MAIL_PRO]: 1 },
-            cycle: CYCLE.YEARLY,
-            currency: 'EUR',
-        });
-        expect(isAddonDowngradeOnSameCycle(current, upcoming)).toBe(true);
-    });
-
-    it('should return false when same cycle and addon quantity increased (upgrade)', () => {
-        const current = buildSubscription({
-            planIDs: { [PLANS.MAIL_PRO]: 1, [ADDON_NAMES.MEMBER_MAIL_PRO]: 1 },
-            cycle: CYCLE.YEARLY,
-            currency: 'EUR',
-        });
-        const upcoming = buildSubscription({
-            planIDs: { [PLANS.MAIL_PRO]: 1, [ADDON_NAMES.MEMBER_MAIL_PRO]: 3 },
-            cycle: CYCLE.YEARLY,
-            currency: 'EUR',
-        });
-        expect(isAddonDowngradeOnSameCycle(current, upcoming)).toBe(false);
-    });
-
-    it('should return false when same cycle and new addon added', () => {
-        const current = buildSubscription({
-            planIDs: { [PLANS.MAIL_PRO]: 1 },
-            cycle: CYCLE.YEARLY,
-            currency: 'EUR',
-        });
-        const upcoming = buildSubscription({
-            planIDs: { [PLANS.MAIL_PRO]: 1, [ADDON_NAMES.MEMBER_MAIL_PRO]: 1 },
-            cycle: CYCLE.YEARLY,
-            currency: 'EUR',
-        });
-        expect(isAddonDowngradeOnSameCycle(current, upcoming)).toBe(false);
-    });
-
-    it('should return true when same cycle and one addon decreased while another added', () => {
-        const current = buildSubscription({
-            planIDs: { [PLANS.MAIL_PRO]: 1, [ADDON_NAMES.MEMBER_MAIL_PRO]: 3 },
-            cycle: CYCLE.YEARLY,
-            currency: 'EUR',
-        });
-        const upcoming = buildSubscription({
-            planIDs: { [PLANS.MAIL_PRO]: 1, [ADDON_NAMES.MEMBER_MAIL_PRO]: 1, [ADDON_NAMES.MEMBER_SCRIBE_MAIL_PRO]: 1 },
-            cycle: CYCLE.YEARLY,
-            currency: 'EUR',
-        });
-        expect(isAddonDowngradeOnSameCycle(current, upcoming)).toBe(true);
-    });
-
-    it('should return false when same cycle and no addons on either side', () => {
-        const current = buildSubscription({
-            planIDs: { [PLANS.MAIL_PRO]: 1 },
-            cycle: CYCLE.YEARLY,
-            currency: 'EUR',
-        });
-        const upcoming = buildSubscription({
-            planIDs: { [PLANS.MAIL_PRO]: 1 },
-            cycle: CYCLE.YEARLY,
-            currency: 'EUR',
-        });
-        expect(isAddonDowngradeOnSameCycle(current, upcoming)).toBe(false);
     });
 });
 

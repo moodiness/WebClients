@@ -1,4 +1,4 @@
-import type { Currency } from '@proton/payments';
+import type { Currency } from '@proton/payments/core/interface';
 
 import type { Product } from '../ProductEnum';
 import type { AccessType } from '../authentication/accessType';
@@ -118,6 +118,7 @@ export interface User {
         sso: boolean;
         'has-a-byoe-address': boolean;
         'delegated-access': boolean;
+        'org-access': boolean;
     };
     AccountRecovery: {
         State: SessionRecoveryState;

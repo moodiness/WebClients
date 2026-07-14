@@ -75,6 +75,7 @@ export enum TelemetryMeasurementGroups {
     docsHomepage = 'drive.docs.homepage',
     /** Vpn TV */
     vpnTv = 'vpn.any.tv_signin',
+    vpnAlwaysOnPolicy = 'vpn.web.always_on_policy',
 }
 
 export enum TelemetryMailOnboardingEvents {
@@ -233,6 +234,10 @@ export enum TelemetrySafetyReviewScoreDiffEvents {
 
 export enum TelemetryAccountDashboardEvents {
     pageLoad = 'page_load',
+    crossProductClick = 'cross_product_click',
+    featureCardClick = 'feature_card_click',
+    upgradeButtonClick = 'upgrade_button_click',
+    upsellCtaClick = 'upsell_cta_click',
 }
 
 export enum TelemetryUpgradePageEvents {
@@ -329,7 +334,6 @@ export enum TelemetryMailComposerAssistantEvents {
 
 export enum TelemetryCategoriesOnboardingEvents {
     onboarding_reply = 'onboarding_reply',
-    onboarding_card_close = 'onboarding_card_close',
     category_nav = 'category_nav',
     recategorize_email = 'recategorize_email',
     settings_toggle_category_view = 'settings_toggle_category_view',
@@ -528,6 +532,15 @@ export const enum TelemetryVpnTvEvents {
     tvAuthInitiated = 'tv_auth_initiated',
 }
 
+export enum TelemetryVpnAlwaysOnPolicyEvents {
+    configureOpened = 'configure_opened',
+    generateStart = 'generate_start',
+    generateSuccess = 'generate_success',
+    generateFailure = 'generate_failure',
+    instructionsViewed = 'instructions_viewed',
+    removeModalOpened = 'remove_modal_opened',
+}
+
 export enum TelemetryPreventWasmLoading {
     wasm_unsupported = 'wasm_unsupported',
     wasm_loading = 'wasm_loading',
@@ -593,6 +606,7 @@ export type TelemetryEvents =
     | TelemetrySafetyReviewScoreDiffEvents
     | TelemetryUpgradePageEvents
     | TelemetryVpnTvEvents
+    | TelemetryVpnAlwaysOnPolicyEvents
     | TelemetryPreventWasmLoading
     | TelemetryCategoriesOnboardingEvents
     | TelemetryMeetFunnelTelemetry;

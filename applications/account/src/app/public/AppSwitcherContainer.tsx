@@ -2,6 +2,7 @@ import type { ReactElement } from 'react';
 
 import { c } from 'ttag';
 
+import { Button } from '@proton/atoms/Button/Button';
 import {
     DropdownMenu,
     DropdownMenuButton,
@@ -12,12 +13,15 @@ import {
 import Logo from '@proton/components/components/logo/Logo';
 import ProtonLogo from '@proton/components/components/logo/ProtonLogo';
 import getBoldFormattedText from '@proton/components/helpers/getBoldFormattedText';
+import { IcCogWheel } from '@proton/icons/icons/IcCogWheel';
 import { IcCrossCircleFilled } from '@proton/icons/icons/IcCrossCircleFilled';
 import { IcPlus } from '@proton/icons/icons/IcPlus';
 import { getForbiddenApps } from '@proton/shared/lib/apps/apps';
 import { getAppName } from '@proton/shared/lib/apps/helper';
 import { SessionSource } from '@proton/shared/lib/authentication/SessionInterface';
 import type { APP_NAMES } from '@proton/shared/lib/constants';
+import { APPS } from '@proton/shared/lib/constants';
+import { wait } from '@proton/shared/lib/helpers/promise';
 import type { OrganizationExtended } from '@proton/shared/lib/interfaces';
 import { useFlag } from '@proton/unleash/useFlag';
 
@@ -25,6 +29,7 @@ import ExploreAppsListV2, {
     getExploreApps,
     getForbiddenAppConfigs,
 } from '../components/ExploreAppsListV2/ExploreAppsListV2';
+import { useExploreAppsListTelemetry } from '../components/ExploreAppsListV2/exploreAppsListTelemetry';
 import Layout from './Layout';
 import PublicUserItem from './PublicUserItem';
 
@@ -125,7 +130,9 @@ const AppSwitcherContainer = ({ onLogin, onSwitch, state }: Props) => {
     const isMeetAvailable = useFlag('PMVC2025');
     const isSheetsAvailable = useFlag('DocsSheetsEnabled');
     const isAuthenticatorAvailable = useFlag('AuthenticatorSettingsEnabled');
+    const isGenericUserSettingsEnabled = useFlag('GenericUserSettings');
     const subscribed = User.Subscribed;
+    const { sendAppClick } = useExploreAppsListTelemetry();
 
     const forbiddenApps = getForbiddenApps(User);
 
@@ -138,6 +145,22 @@ const AppSwitcherContainer = ({ onLogin, onSwitch, state }: Props) => {
         isMeetAvailable,
         isAuthenticatorAvailable,
     }).concat(getForbiddenAppConfigs({ user: User, forbiddenApps }));
+
+    const goToAccountSettings = (source: 'settings' | 'settings-menu') => async () => {
+        sendAppClick({
+            appName: APPS.PROTONACCOUNT,
+            openMethod: source,
+        });
+        await wait(50); // This ensures the telemetry event has time to be initiated and sent before the page redirects
+
+        await onLogin({
+            ...session,
+            appIntent: {
+                app: APPS.PROTONACCOUNT,
+                ref: 'product-switch',
+            },
+        });
+    };
 
     return (
         <Layout
@@ -158,9 +181,19 @@ const AppSwitcherContainer = ({ onLogin, onSwitch, state }: Props) => {
                             <IcPlus />
                             {c('Action').t`Switch or add account`}
                         </DropdownMenuButton>
+                        <DropdownMenuButton
+                            className="flex flex-nowrap items-center gap-2 text-left"
+                            onClick={goToAccountSettings('settings-menu')}
+                        >
+                            <IcCogWheel className="shrink-0" />
+                            {c('Action').t`Account settings`}
+                        </DropdownMenuButton>
                     </DropdownMenu>
                 </SimpleDropdown>
             }
+            mainClassName="flex flex-column flex-nowrap h-full"
+            layoutClassName="h-full"
+            containerClassName="h-full"
         >
             <div>
                 <header className="mt-6 mb-8 md:mb-10 lg:mb-20 text-center fade-in">
@@ -193,6 +226,23 @@ const AppSwitcherContainer = ({ onLogin, onSwitch, state }: Props) => {
                     />
                 </div>
             </div>
+            {isGenericUserSettingsEnabled && (
+                <div className="w-full text-center mt-auto fade-in py-4">
+                    <Button
+                        pill
+                        shape="outline"
+                        className="inline-flex items-center gap-2"
+                        style={{
+                            '--button-default-border-color': 'color-mix(in srgb, var(--primary) 28%, transparent)',
+                            '--button-default-background-color': 'transparent',
+                        }}
+                        onClick={goToAccountSettings('settings')}
+                    >
+                        <IcCogWheel className="shrink-0" />
+                        {c('Action').t`Settings`}
+                    </Button>
+                </div>
+            )}
         </Layout>
     );
 };

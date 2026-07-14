@@ -2142,6 +2142,9 @@
       "Ensure you can still access your account and data even if you lose your ${ BRAND_NAME } password.": [
         "Garanta que você ainda possa acessar sua conta e seus dados, mesmo que perca sua senha do ${ BRAND_NAME }."
       ],
+      "For a seamless onboarding of your team to ${ BRAND_NAME }, import your data from Google, Outlook, and others.": [
+        "Para uma integração perfeita da sua equipe ao ${ BRAND_NAME }, importe seus dados do Google, Outlook e outros."
+      ],
       "Get notified if your password or other data was leaked from a third-party service.": [
         "Seja notificado caso sua senha ou outros dados sejam vazados de um serviço de terceiros."
       ],
@@ -2327,20 +2330,11 @@
       "Input isn't a valid email or bitcoin address": [
         "A entrada não é um endereço de bitcoin ou e-mail válido"
       ],
-      "Invalid ${ name } code": [
-        "O código ${ name } não é válido."
-      ],
-      "Invalid card number": [
-        "O número do cartão não é válido."
-      ],
       "Invalid code": [
         "O código não é válido."
       ],
       "Invalid coupon": [
         "Cupom inválido"
-      ],
-      "Invalid expiration date": [
-        "A data de validade não é válida."
       ],
       "Invalid IBAN": [
         "IBAN inválido"
@@ -2381,6 +2375,9 @@
       "Payment process not supported": [
         "Processo de pagamento não suportado"
       ],
+      "Please check if your ABN is registered for cross-border VAT": [
+        "Por favor, verifique se o seu ABN está registrado para IVA transfronteiriço"
+      ],
       "Please complete the billing details": [
         "Complete os detalhes de faturamento"
       ],
@@ -2413,6 +2410,9 @@
       ],
       "Request timed out": [
         "A solicitação expirou"
+      ],
+      "Reverse charge scheme is not supported for this plan": [
+        "O regime de reverse charge não é suportado para este plano"
       ],
       "Signature verification failed": [
         "Erro na verificação da assinatura"
@@ -2466,7 +2466,10 @@
         "O nome de usuário deve terminar com uma letra ou dígito"
       ],
       "VAT number must start with ${ prefixes }": [
-        "O número de IVA deve começar por ${ prefixes }"
+        "O número de IVA deve começar com ${ prefixes }"
+      ],
+      "We couldn’t send a verification code using this method.": [
+        "Não conseguimos enviar um código de verificação usando este método."
       ],
       "Wrong billing address": [
         "Endereço de cobrança incorreto"
@@ -2576,6 +2579,9 @@
       ],
       "Security key": [
         "Chave de segurança"
+      ],
+      "Touch your security key.": [
+        "Toque na sua chave de segurança."
       ]
     },
     "fido2: Label": {
@@ -3008,9 +3014,6 @@
       "Payments are protected with TLS encryption and Swiss privacy laws.": [
         "Os pagamentos são protegidos com criptografia TLS e leis de privacidade Suíças."
       ],
-      "Please authenticate your card in the verification tab.": [
-        "Autentique seu cartão na guia de verificação."
-      ],
       "Please authenticate your payment in the verification tab.": [
         "Autentique seu pagamento na guia de verificação."
       ],
@@ -3019,9 +3022,6 @@
       ],
       "Please try again using a different payment method, or contact your bank.": [
         "Tente novamente com outro método de pagamento ou entre em contato com seu banco."
-      ],
-      "Please try again, use a different payment method, or contact PayPal for assistance.": [
-        "Tente novamente, use um método de pagamento diferente ou entre em contato com seu banco."
       ],
       "Price includes all applicable cycle-based discounts and non-expired coupons saved to your account.": [
         "O preço inclui todos os descontos baseados em ciclos aplicáveis ​​e cupons não expirados salvos em sua conta."
@@ -3194,9 +3194,6 @@
       "You will lose access to ${ planTitle } features on this date.": [
         "Você perderá o acesso aos recursos do ${ planTitle } nessa data."
       ],
-      "You will soon be redirected to PayPal to verify your payment.": [
-        "Em breve você será redirecionado para o PayPal para verificar seu pagamento."
-      ],
       "You'll then be billed every ${ renewCycle } month at ${ renewAmountStr }. You can cancel at any time.": [
         "Você então será cobrado a cada ${ renewCycle } mês em ${ renewAmountStr }. Você pode cancelar a qualquer momento.",
         "Você então será cobrado a cada ${ renewCycle } meses em ${ renewAmountStr }.Você pode cancelar a qualquer momento."
@@ -3206,6 +3203,9 @@
       ],
       "Your ${ plan } subscription will be replaced with ${ PASS_SHORT_APP_NAME } Lifetime. The remaining balance of your subscription will be added to your account. ${ PASS_SHORT_APP_NAME } lifetime deal has no renewal price, it's a one-time payment for lifetime access to ${ PASS_SHORT_APP_NAME }.": [
         "Sua assinatura do ${ plan } será substituída pela versão ${ PASS_SHORT_APP_NAME } Lifetime. O saldo restante da sua assinatura será adicionado à sua conta. A oferta vitalícia do ${ PASS_SHORT_APP_NAME } não tem preço de renovação, é um pagamento único para acesso vitalício ao ${ PASS_SHORT_APP_NAME }."
+      ],
+      "Your account is currently configured to apply the reverse charge scheme. This is not supported for the selected plan. To proceed, either remove the VAT number from the billing address or select a different plan.": [
+        "Sua conta está configurada atualmente para aplicar o regime de reverse charge. Isso não é suportado para o plano selecionado. Para prosseguir, remova o número de IVA do endereço de faturamento ou selecione um plano diferente."
       ],
       "Your checkout has opened in a new tab. Please complete your payment there and return to this page when finished.": [
         "Seu checkout foi aberto em uma nova guia. Por favor, finalize seu pagamento lá e retorne a esta página quando terminar."
@@ -4843,6 +4843,9 @@
       "VAT number": [
         "Número de IVA"
       ],
+      "VAT reverse charge mechanism applies.": [
+        "O mecanismo de reverse charge de IVA se aplica."
+      ],
       "You already have a subscription to this plan.": [
         "Você já assina este plano."
       ],
@@ -5584,6 +5587,9 @@
       "${ feature } is now active": [
         "O recurso ${ feature } agora está ativo."
       ],
+      "${ LUMO_SHORT_APP_NAME } writing assistant": [
+        "Assistente de escrita do ${ LUMO_SHORT_APP_NAME }"
+      ],
       "Account restricted": [
         "Conta restrita"
       ],
@@ -5706,9 +5712,6 @@
       ],
       "Payment verification": [
         "Verificação de pagamento"
-      ],
-      "PayPal verification failed": [
-        "Ocorreu um erro na verificação do PayPal"
       ],
       "Processing...": [
         "Processando..."

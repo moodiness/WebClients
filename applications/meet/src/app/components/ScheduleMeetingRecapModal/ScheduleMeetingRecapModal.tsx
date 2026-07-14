@@ -20,8 +20,8 @@ import { openNewTab } from '@proton/shared/lib/helpers/browser';
 import { dateLocale } from '@proton/shared/lib/i18n';
 import { useFlag } from '@proton/unleash/useFlag';
 
+import { ConditionalTooltip } from '../../atoms/ConditionalTooltip/ConditionalTooltip';
 import { formatDate, formatTimeHHMM } from '../../utils/timeFormat';
-import { ConditionalTooltip } from '../ConditionalTooltip/ConditionalTooltip';
 import { DeleteMeetingModal } from '../DashboardMeetingList/DeleteMeetingModal';
 import type { MeetingVariant } from '../ScheduleMeetingForm/ScheduleMeetingForm';
 import { TranslucentModal } from '../TranslucentModal/TranslucentModal';
@@ -246,6 +246,7 @@ export const ScheduleMeetingRecapModal = ({
                                     title={meetingLink}
                                 >
                                     {meetingLink}
+                                    <span className="sr-only">{c('Accessibility').t`(opens in new tab)`}</span>
                                 </a>
                                 <Tooltip title={c('Action').t`Copy meeting link`}>
                                     <Button
@@ -297,6 +298,7 @@ export const ScheduleMeetingRecapModal = ({
                                         onClick={handleOutlookDeepLink}
                                     >
                                         {c('Label').t`Outlook Calendar`}
+                                        <span className="sr-only">{c('Accessibility').t`(opens in new tab)`}</span>
                                     </DropdownMenuButton>
                                     <DropdownMenuButton
                                         className="calendar-dropdown-menu text-left large-meet-radius flex flex-nowrap items-center gap-2 border-none shrink-0"
@@ -304,6 +306,7 @@ export const ScheduleMeetingRecapModal = ({
                                         onClick={handleGoogleDeepLink}
                                     >
                                         {c('Label').t`Google Calendar`}
+                                        <span className="sr-only">{c('Accessibility').t`(opens in new tab)`}</span>
                                     </DropdownMenuButton>
                                     <DropdownMenuButton
                                         className="calendar-dropdown-menu text-left large-meet-radius flex flex-nowrap items-center gap-2 border-none shrink-0"

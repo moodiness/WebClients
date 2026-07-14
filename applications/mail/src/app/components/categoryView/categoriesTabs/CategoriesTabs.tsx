@@ -1,10 +1,18 @@
+import { useEffect } from 'react';
+
 import ErrorBoundary from '@proton/components/containers/app/ErrorBoundary';
 import { useCategoriesTelemetry } from '@proton/mail/features/categoriesView/useCategoriesTelemetry';
+import { updateLastSeenEventId } from '@proton/mail/store/labels/actions';
+import { useDispatch } from '@proton/redux-shared-store/sharedProvider';
+import { MAILBOX_LABEL_IDS } from '@proton/shared/lib/constants';
 
-import { selectCategoryIDs } from 'proton-mail/store/elements/elementsSelectors';
+import { selectLabelIDUnreadCount } from 'proton-mail/hooks/mailboxCounter/useMaiboxCounter.selector';
+import { selectActiveCategoryID, selectCategoryIDs } from 'proton-mail/store/elements/elementsSelectors';
 import { useMailSelector } from 'proton-mail/store/hooks';
 import { selectSelectAll } from 'proton-mail/store/layout/layoutSliceSelectors';
 
+import { useCategoriesOnboarding } from '../categoriesOnboarding/CategoriesOnboardingContext';
+import { CategoriesOnboardingSpotlight } from '../categoriesOnboarding/CategoriesOnboardingSpotlights';
 import { useCategoriesView } from '../useCategoriesView';
 import { useRecategorizeElement } from '../useRecategorizeElement';
 import { CategoriesTabsError, CategoryTabError } from './CategoryTabsErrors';
@@ -17,9 +25,27 @@ import './CategoriesTabs.scss';
 export const CategoriesTabsList = () => {
     const recategorizeElement = useRecategorizeElement();
     const { activeCategoriesTabs } = useCategoriesView();
+    const { socialTabSpotlightStep } = useCategoriesOnboarding();
 
     const categoryIDs = useMailSelector(selectCategoryIDs);
+    const activeCategoryID = useMailSelector(selectActiveCategoryID);
     const selectAll = useMailSelector(selectSelectAll);
+
+    const dispatch = useDispatch();
+
+    const activeCategoryUnreadCount = useMailSelector((state) =>
+        activeCategoryID ? selectLabelIDUnreadCount(state, activeCategoryID) : 0
+    );
+
+    // We mark the current category as seen on first load and whenever a new email arrives in the active
+    // category. `activeCategoryUnreadCount` tells us something happened in the active category.
+    useEffect(() => {
+        if (!activeCategoryID) {
+            return;
+        }
+
+        void dispatch(updateLastSeenEventId({ labelID: activeCategoryID }));
+    }, [activeCategoryID, activeCategoryUnreadCount, dispatch]);
 
     const { sendReportRecategorizeEmail } = useCategoriesTelemetry();
 
@@ -45,6 +71,7 @@ export const CategoriesTabsList = () => {
             <div
                 className="categories-tabs flex flex-nowrap px-2 h-fit-content border-bottom border-weak"
                 data-testid="categories-tabs"
+                data-category-count={activeCategoriesTabs.length}
                 onDragEnter={handleDragEnter}
                 onDragLeave={handleDragLeave}
                 onDragEnd={handleDragEnd}
@@ -59,10 +86,27 @@ export const CategoriesTabsList = () => {
                         selectAll,
                     });
 
+                    const isSocialCategory = category.id === MAILBOX_LABEL_IDS.CATEGORY_SOCIAL;
+                    if (isSocialCategory && socialTabSpotlightStep) {
+                        return (
+                            <CategoriesOnboardingSpotlight step={socialTabSpotlightStep} key={category.id}>
+                                <div
+                                    className="tab-wrapper shrink-0"
+                                    onDragOver={handleDragOver(category.id)}
+                                    onDrop={handleDrop(category.id)}
+                                >
+                                    <ErrorBoundary component={<CategoryTabError />}>
+                                        <Tab category={category} tabState={tabState} />
+                                    </ErrorBoundary>
+                                </div>
+                            </CategoriesOnboardingSpotlight>
+                        );
+                    }
+
                     return (
                         <div
                             key={category.id}
-                            className="tab-wrapper shrink-0"
+                            className="tab-wrapper flex-none min-w-0"
                             onDragOver={handleDragOver(category.id)}
                             onDrop={handleDrop(category.id)}
                         >

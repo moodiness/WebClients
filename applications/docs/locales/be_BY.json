@@ -79,7 +79,7 @@
         "Дадаць нататку"
       ],
       "Add people or groups to share": [
-        "Дадаць карыстальнікаў або групы для абагулення"
+        "Дадаць карыстальнікаў або групы для абагульвання"
       ],
       "Add phone number": [
         "Дадаць нумар тэлефона"
@@ -342,6 +342,9 @@
       "Download anyway": [
         "Усё роўна спампаваць"
       ],
+      "Download debug information": [
+        "Спампаваць адладачную інфармацыю"
+      ],
       "Download logs": [
         "Спампаваць журналы"
       ],
@@ -384,11 +387,20 @@
       "Export contact group": [
         "Экспартаваць групу кантактаў"
       ],
+      "Export editor state for version": [
+        "Экспартаваць стан рэдактара для версіі"
+      ],
       "Export selection as .vcf": [
         "Экспарт вылучэння ў фармат .vcf"
       ],
+      "Export this version (as docx)": [
+        "Экспартаваць гэту версію (у фармаце docx)"
+      ],
       "Export this version (as xlsx)": [
         "Экспартаваць гэту версію (у фармаце xlsx)"
+      ],
+      "Export YJS state for version": [
+        "Экспартаваць стан YJS для версіі"
       ],
       "Forgot password?": [
         "Забылі пароль?"
@@ -645,6 +657,9 @@
       "Reload": [
         "Перазагрузіць"
       ],
+      "Reload spreadsheet": [
+        "Перазагрузіць электронную табліцу"
+      ],
       "Remove": [
         "Выдаліць"
       ],
@@ -673,6 +688,9 @@
         "Замяніць файл"
       ],
       "Report a problem": [
+        "Паведаміць аб праблеме"
+      ],
+      "Report issue": [
         "Паведаміць аб праблеме"
       ],
       "Request a call": [
@@ -3188,9 +3206,6 @@
       "Failed to load 'My files' folder": [
         "Не ўдалося загрузіць папку \"Мае файлы\""
       ],
-      "Failed to load document details": [
-        "Не ўдалося загрузіць падрабязнасці дакументу"
-      ],
       "Failed to load recent documents": [
         "Не ўдалося загрузіць нядаўнія дакументы"
       ],
@@ -3203,11 +3218,17 @@
       "Failed to remove older revisions": [
         "Не ўдалося выдаліць больш старую рэдакцыю"
       ],
+      "Failed to rename document": [
+        "Не ўдалося перайменаваць дакумент"
+      ],
       "Failed to rename document. Please try again later.": [
         "Не ўдалося перайменаваць дакумент. Паспрабуйце яшчэ раз пазней."
       ],
       "Failed to resend invitation": [
         "Не ўдалося паўторна адправіць запрашэнне"
+      ],
+      "Failed to trash document.": [
+        "Не ўдалося перамясціць дакумент у сметніцу."
       ],
       "Failed to unshare node": [
         "Не ўдалося скасаваць абаагульванне вузла"
@@ -3298,6 +3319,9 @@
       ],
       "No contacts found to import": [
         "Не знойдзены кантакты для імпартавання"
+      ],
+      "No drive found to import": [
+        "Не знойдзены дыск для імпартавання"
       ],
       "No emails found to import - the account does not have an inbox": [
         "Не знойдзена лістоў для імпартавання - уліковы запіс не мае ўваходных"
@@ -3536,6 +3560,9 @@
       "Unexpected error, we can't import the contacts": [
         "Нечаканая памылка. Немагчыма імпартаваць кантакты."
       ],
+      "Unexpected error, we can't import the files": [
+        "Нечаканая памылка. Немагчыма імпартаваць файлы."
+      ],
       "Unknown error": [
         "Невядомая памылка"
       ],
@@ -3565,6 +3592,9 @@
       ],
       "We couldn’t import this file into ${ SHEETS_APP_NAME }. You can try to copy and paste the contents into a new ${ SHEETS_APP_NAME }.": [
         "Нам не ўдалося імпартаваць гэты файл у ${ SHEETS_APP_NAME }. Вы можаце паспрабаваць скапіяваць і ўставіць змесціва ў новы файл ${ SHEETS_APP_NAME }."
+      ],
+      "We couldn’t send a verification code using this method.": [
+        "Немагчыма адправіць код спраўджання з дапамогай гэтага спосабу."
       ],
       "Wrong billing address": [
         "Няправільны плацежны адрас"
@@ -4005,6 +4035,9 @@
       ],
       "Security key": [
         "Ключ бяспекі"
+      ],
+      "Touch your security key.": [
+        "Дакраніцеся да свайго ключа бяспекі."
       ]
     },
     "fido2: Label": {
@@ -4589,12 +4622,6 @@
         "Выбраны ${ selectedContactsLength } кантактаў з ${ contactsLength }",
         "Выбраны ${ selectedContactsLength } кантактаў з ${ contactsLength }"
       ],
-      "${ selectedCount } selected": [
-        "${ selectedCount } выбраны",
-        "${ selectedCount } выбраны",
-        "${ selectedCount } выбраны",
-        "${ selectedCount } выбраны"
-      ],
       "${ selectedFoldersCountLocalized } folder selected": [
         "Выбрана ${ selectedFoldersCountLocalized } папка",
         "Выбрана ${ selectedFoldersCountLocalized } папкі",
@@ -5012,6 +5039,9 @@
       "File will not be updated": [
         "Файл не будзе абноўлены"
       ],
+      "Files only (no photos, ${ DOCS_APP_NAME } or ${ SHEETS_APP_NAME }) - up to 100 GB total, 100,000 files, and 50 GB per file": [
+        "Толькі файлы (без фатаграфій, ${ DOCS_APP_NAME } або ${ SHEETS_APP_NAME }). Абмежаванні: агульны аб'ём не больш за 100 ГБ, 100 000 файлаў і 50 ГБ на файл."
+      ],
       "finance": [
         "фінансы"
       ],
@@ -5051,8 +5081,14 @@
       "Governments and ISPs can monitor your online activity. By hiding your real IP and encrypting your activity your browsing becomes private.": [
         "Урады і пастаўшчыкі паслуг інтэрнэту могуць сачыць за тым, якія сайты вы наведваеце. Ваш прагляд вэб-старонак у інтэрнэце становіцца прыватным дзякуючы хаванню вашага рэальнага IP-адраса і шыфраванню."
       ],
+      "Help us improve this experience by reporting the issue. If you’re comfortable sharing spreadsheet content, attach the debug information below to your report.": [
+        "Дапамажыце нам палепшыць гэты сэрвіс, паведаміўшы пра праблему. Далучыце прыведзеную ніжэй адладачную інфармацыю да вашага паведамлення, калі электронная табліца не змяшчае канфідэнцыяльных даных."
+      ],
       "here": [
         "тут"
+      ],
+      "Hide table of contents": [
+        "Схаваць змест"
       ],
       "High Priority": [
         "Высокі прыярытэт"
@@ -5282,6 +5318,9 @@
       "Only the people with the link and the password can access this folder.": [
         "Толькі карыстальнікі са спасылкай і паролем змогуць атрымаць доступ да гэтай папкі."
       ],
+      "Oops! This spreadsheet can’t save your most recent edits, so we’ve paused editing to prevent you from losing your work.": [
+        "Вой! Не ўдалося захаваць апошнія змены ў гэтай электроннай табліцы. Рэдагаванне часова прыпынена, каб не дапусціць страты вашай працы."
+      ],
       "Open the guide for recommended actions and helpful links.": [
         "Адкрыйце дапаможнік, дзе можна даведацца пра рэкамендаваныя дзеянні і карысныя спасылкі."
       ],
@@ -5451,13 +5490,16 @@
         "Налады абноўлены"
       ],
       "Share via link settings": [
-        "Налады для абагулення праз спасылку"
+        "Налады для абагульвання праз спасылку"
       ],
       "Shared by": [
         "Абагулена"
       ],
       "Shared on": [
         "Абагулена"
+      ],
+      "Show table of contents": [
+        "Адлюстраваць змест"
       ],
       "Signature cannot be validated due to network error, please try again later.": [
         "Немагчыма выканаць праверку подпісу з прычыны памылкі сеткі. Паспрабуйце яшчэ раз пазней."
@@ -5770,6 +5812,9 @@
       ],
       "You are about to open your default browser and visit:": [
         "Вы збіраецеся адкрыць прадвызначаны браўзер і наведаць:"
+      ],
+      "You are currently signed in as ${ username } for ${ organizationName }.": [
+        "Вы ўжо ўвайшлі як ${ username } у ${ organizationName }."
       ],
       "You are currently signed in as ${ username }.": [
         "Вы ўжо ўвайшлі як ${ username }."
@@ -6202,6 +6247,9 @@
       "Download anyway": [
         "Усё роўна спампаваць"
       ],
+      "Drive": [
+        "Дыск"
+      ],
       "Duplicate found": [
         "Знойдзены дублікат"
       ],
@@ -6246,6 +6294,12 @@
       ],
       "Erase this link and remove everyone with access": [
         "Сцерці гэту спасылку і выдаліць доступ для ўсіх"
+      ],
+      "Exact host matching": [
+        "Дакладнае супадзенне з вузлом"
+      ],
+      "Exact URL matching": [
+        "Дакладнае супадзенне URL-адраса"
       ],
       "Expiry": [
         "Тэрмін дзеяння"
@@ -6388,6 +6442,9 @@
       "Optional": [
         "Неабавязкова"
       ],
+      "Parent domain and subdomains (default)": [
+        "Бацькоўскі дамен і паддамены (прадвызначана)"
+      ],
       "Password": [
         "Пароль"
       ],
@@ -6427,6 +6484,9 @@
       "Region": [
         "Вобласць"
       ],
+      "Regular expression": [
+        "Рэгулярны выраз"
+      ],
       "Replace existing file": [
         "Замяніць бягучы файл"
       ],
@@ -6463,6 +6523,9 @@
       "Skip folder": [
         "Прапусціць папку"
       ],
+      "Starts with": [
+        "Пачынаецца з"
+      ],
       "Stop sharing": [
         "Спыніць абагульванне"
       ],
@@ -6490,8 +6553,14 @@
       "Trash": [
         "Сметніца"
       ],
+      "Unknown user": [
+        "Невядомы карыстальнік"
+      ],
       "Upload picture": [
         "Запампаваць малюнак"
+      ],
+      "URL wildcard pattern": [
+        "Узор падстаноўчых знакаў URL-адраса"
       ],
       "Username": [
         "Імя карыстальніка"
@@ -6849,6 +6918,18 @@
       ]
     },
     "Message": {
+      "'Starts with' matching rule": [
+        "Правіла супадзення \"Пачынаць з\""
+      ],
+      "Exact (sub) domain matching rule": [
+        "Правіла дакладнага супадзення (пад)дамена"
+      ],
+      "Exact URL matching rule": [
+        "Правіла дакладнага супадзення URL-адраса"
+      ],
+      "Regular expression rule": [
+        "Правіла рэгулярнага выразу"
+      ],
       "Your free trial has ended. ${ nonAutoRenewalAction }": [
         "Ваш бясплатны пробны перыяд завяршыўся. ${ nonAutoRenewalAction }"
       ],
@@ -8283,6 +8364,15 @@
       "Device renamed": [
         "Прылада перайменавана"
       ],
+      "Document failed to be restored from trash": [
+        "Не ўдалося аднавіць дакумент са сметніцы"
+      ],
+      "Document moved to trash": [
+        "Дакумент перамешчаны ў сметніцу"
+      ],
+      "Document restored from trash": [
+        "Дакумент адноўлены са сметніцы"
+      ],
       "External invitation removed from the share": [
         "Знешнія запрашэнні выдалены з абагульвання"
       ],
@@ -8297,6 +8387,9 @@
       ],
       "Failed to load invitation details": [
         "Не ўдалося загрузіць падрабязнасці запрашэння"
+      ],
+      "Failed to load sharing details": [
+        "Не ўдалося загрузіць абагуленыя падрабязнасці"
       ],
       "Failed to reject share invitation": [
         "Не ўдалося адхіліць абагуленае запрашэнне"
@@ -10568,6 +10661,9 @@
       "Edit image": [
         "Рэдагаванне відарыса"
       ],
+      "Editing paused": [
+        "Рэдагаванне прыпынена"
+      ],
       "Email addresses": [
         "Адрасы электроннай пошты"
       ],
@@ -10959,6 +11055,26 @@
         "Вашы скампраметаваныя звесткі"
       ]
     },
+    "Title header for keys table": {
+      "Actions": [
+        "Дзеянні"
+      ],
+      "Created": [
+        "Створаны"
+      ],
+      "Expires": [
+        "Дзейнічаюць да"
+      ],
+      "Fingerprint": [
+        "Адбітак пальца"
+      ],
+      "Status": [
+        "Статус"
+      ],
+      "Type": [
+        "Тып"
+      ]
+    },
     "Today icon tooltip in mini calendar": {
       "Today": [
         "Сёння"
@@ -11007,6 +11123,9 @@
       "Gmail automatically categorizes some emails like Social or Promotions. You can select where to import these emails to.": [
         "Пошта Gmail аўтаматычна класіфікуе некаторыя лісты, такія як \"Сацыяльныя\" і \"Рэклама\". Вы можаце выбраць куды імпартаваць гэтыя лісты."
       ],
+      "Instant AI assistance, human expert on hand!": [
+        "Імгненная дапамога ШІ, эксперт-чалавек заўсёды напагатове!"
+      ],
       "Load image": [
         "Загрузіць відарыс"
       ],
@@ -11040,6 +11159,9 @@
       "Upload a public key to enable sending end-to-end encrypted emails to this email": [
         "Запампуйце адкрыты ключ, каб уключыць адпраўку лістоў з шыфраваннем скразным метадам на гэты адрас электроннай пошты"
       ],
+      "Version 6 OpenPGP key": [
+        "Ключ OpenPGP версіі 6"
+      ],
       "We have sent them an invite to access the item.": [
         "Ім адпраўлена запрашэнне, каб яны змаглі атрымаць доступ да элемента."
       ]
@@ -11072,6 +11194,11 @@
       ],
       "The user must have an address to request data access": [
         "Карыстальнік павінен мець адрас, каб запытаць доступ да даных"
+      ]
+    },
+    "user_modal": {
+      "You'll be able to assign roles once the user has accepted the invitation.": [
+        "Вы зможаце прызначаць ролі, як толькі карыстальнік прыме запрашэнне."
       ]
     },
     "Validation": {

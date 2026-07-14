@@ -46,7 +46,7 @@ import type { InviteAutoAcceptResult } from './InviteAutoAccepter'
 import { InviteAutoAccepter } from './InviteAutoAccepter'
 import { type DocumentError, DocumentErrorFallback } from './DocumentErrorFallback'
 import { CacheService } from '@proton/docs-core/lib/Services/CacheService'
-import { useAuthentication, useConfig, MimeIcon } from '@proton/components'
+import { useAuthentication, useConfig, MimeIcon, useModalState, AuthenticatedBugModal } from '@proton/components'
 import { IcLockFilled } from '@proton/icons/icons/IcLockFilled'
 import { useApplication } from '~/utils/application-context'
 import { useDocsUrlBar } from '~/utils/docs-url-bar'
@@ -64,10 +64,13 @@ import { Button } from '@proton/atoms/Button/Button'
 import { getAppHref } from '@proton/shared/lib/apps/helper'
 import { isLocalEnvironment } from '@proton/utils/env'
 import { useChangeAddressWhenPubliclyShared } from '../useChangeAddressWhenPubliclyShared'
-import { manageEventsSubscription } from '../../../utils/drive-events'
+import { manageEventsSubscription } from '../../../drive-sdk/manage-events-subscription'
 import { generateNodeUid, getDrive, type DriveEvent, type NodeEntity } from '@proton/drive'
-import { logger } from '@proton/pass/utils/logger'
-import { getNodeName } from '../../../utils/drive-sdk'
+import { getNodeName } from '~/drive-sdk'
+import { getDocsReportContextLines } from '~/utils/report-context'
+import { useDriftDetectionErrorModal } from './DriftDetectionErrorModal'
+import downloadFile from '@proton/shared/lib/helpers/downloadFile'
+import { traceError, SentryRealtimeInitiatives } from '@proton/shared/lib/helpers/sentry'
 
 const subscribeToEvents = manageEventsSubscription()
 
@@ -98,7 +101,7 @@ export function DocumentViewer({
   const { getLocalID } = useAuthentication()
   const getUserSettings = useGetUserSettings()
   const { isDebugMode } = useDebugMode()
-  const { APP_VERSION } = useConfig()
+  const { APP_VERSION, CLIENT_TYPE } = useConfig()
 
   const { removeLocalIDFromUrl } = useDocsUrlBar()
 
@@ -113,6 +116,7 @@ export function DocumentViewer({
   const [publicSplashModal, openPublicSplashModal] = useWelcomeSplashModal()
   const [genericAlertModal, showGenericAlertModal] = useGenericAlertModal()
   const [genericInfoModal, showGenericInfoModal] = useGenericAlertModal()
+  const [driftDetectionErrorModal, openDriftDetectionErrorModal] = useDriftDetectionErrorModal()
 
   const [editorFrame, setEditorFrame] = useState<HTMLIFrameElement | null>(null)
   const [docOrchestrator, setDocOrchestrator] = useState<EditorOrchestratorInterface | null>(null)
@@ -136,28 +140,42 @@ export function DocumentViewer({
         setCurrentDocumentNode(node)
       })
       .catch((error) => {
-        logger.error('Failed to get node of current document', error)
+        traceError(error, {
+          tags: {
+            initiative: SentryRealtimeInitiatives.SDK_SWITCH,
+            feature: 'DocsDocumentViewerEventsSDK',
+          },
+        })
       })
   }, [drive, nodeUid, sdkEventsEnabled])
 
   const handleEvent = useCallback(
     async (event: DriveEvent) => {
-      if (event.type === 'node_updated' && event.nodeUid === nodeUid && documentState) {
-        if (event.isTrashed) {
-          documentState.setProperty('documentTrashState', 'trashed')
-          return
-        }
+      try {
+        if (event.type === 'node_updated' && event.nodeUid === nodeUid && documentState) {
+          if (event.isTrashed) {
+            documentState.setProperty('documentTrashState', 'trashed')
+            return
+          }
 
-        // Document restored from trash
-        if (documentState.getProperty('documentTrashState') === 'trashed' && event.isTrashed === false) {
-          documentState.setProperty('documentTrashState', 'not_trashed')
-        }
+          // Document restored from trash
+          if (documentState.getProperty('documentTrashState') === 'trashed' && event.isTrashed === false) {
+            documentState.setProperty('documentTrashState', 'not_trashed')
+          }
 
-        const updatedNode = await drive.getNode(nodeUid)
-        const nodeName = getNodeName(updatedNode)
-        if (nodeName) {
-          documentState.setProperty('documentName', nodeName)
+          const updatedNode = await drive.getNode(nodeUid)
+          const nodeName = getNodeName(updatedNode)
+          if (nodeName) {
+            documentState.setProperty('documentName', nodeName)
+          }
         }
+      } catch (error) {
+        traceError(error, {
+          tags: {
+            initiative: SentryRealtimeInitiatives.SDK_SWITCH,
+            feature: 'DocsDocumentViewerEventsSDK',
+          },
+        })
       }
     },
     [documentState, drive, nodeUid],
@@ -270,6 +288,74 @@ export function DocumentViewer({
     }, ApplicationEvent.GenericInfo)
   }, [application.eventBus, showGenericInfoModal])
 
+  const downloadDebugInfo = useCallback(
+    async (driftLogDetails?: Record<string, unknown>) => {
+      if (!editorController) {
+        return
+      }
+      let JSZip
+      try {
+        JSZip = (await import('jszip')).default
+      } catch (error) {
+        console.error('Could not import jszip', error)
+        return
+      }
+      const zip = new JSZip()
+
+      if (driftLogDetails) {
+        try {
+          zip.file('drift-log-details.json', JSON.stringify(driftLogDetails))
+        } catch (error) {
+          console.error('Could not include drift log details in debug info', error)
+        }
+      }
+
+      try {
+        if (tmpConvertNewDocTypeToOld(documentType) === 'sheet') {
+          const spreadsheetPatches = await editorController.getSpreadsheetPatchesAsJsonFile()
+          zip.file('spreadsheet-patches.json', spreadsheetPatches)
+        }
+      } catch (error) {
+        console.error('Could not include spreadsheet patches in debug info', error)
+      }
+
+      if (docController) {
+        try {
+          const updatesZip = await docController.getAllUpdatesAsZip()
+          zip.file('all-updates.zip', updatesZip)
+        } catch (error) {
+          console.error('Could not include updates file in debug info', error)
+        }
+      } else {
+        try {
+          const baseCommit = await editorController.getBaseCommitAsZip()
+          zip.file('base-commit-updates.zip', baseCommit)
+        } catch (error) {
+          console.error('Could not include base commit in debug info', error)
+        }
+      }
+
+      if (docController) {
+        try {
+          const yDocJSON = await editorController.getYDocAsJSON()
+          const updatesTimeline = await docController.getUpdatesInformationAsJsonFile(yDocJSON)
+          zip.file('updates-timeline.json', updatesTimeline)
+        } catch (error) {
+          console.error('Could not include updates timeline in debug info', error)
+        }
+      }
+
+      try {
+        const zipBlob = await zip.generateAsync({ type: 'blob' })
+        const filename = `debug-info-${Date.now()}.zip`
+        downloadFile(zipBlob, filename)
+      } catch (error) {
+        console.error('Could not generate zip file', error)
+      }
+    },
+    [docController, documentType, editorController],
+  )
+
   useEffect(() => {
     return application.eventBus.addEventCallback<GeneralUserDisplayableErrorOccurredPayload>(
       (payload: GeneralUserDisplayableErrorOccurredPayload) => {
@@ -293,6 +379,18 @@ export function DocumentViewer({
       ApplicationEvent.GeneralUserDisplayableErrorOccurred,
     )
   }, [application, application.eventBus, showGenericAlertModal])
+
+  const [bugReportModal, setBugReportModal, renderBugReportModal] = useModalState()
+  useEffect(
+    () =>
+      application.eventBus.addEventCallback((driftLogDetails: Record<string, unknown>) => {
+        openDriftDetectionErrorModal({
+          openBugReportModal: () => setBugReportModal(true),
+          downloadDebugInfo: () => downloadDebugInfo(driftLogDetails),
+        })
+      }, ApplicationEvent.SheetsYjsDriftDetected),
+    [application.eventBus, downloadDebugInfo, setBugReportModal, openDriftDetectionErrorModal],
+  )
 
   useEffect(() => {
     return application.eventBus.addEventCallback(() => {
@@ -601,6 +699,17 @@ export function DocumentViewer({
       {signatureFailedModal}
       {genericAlertModal}
       {genericInfoModal}
+      {driftDetectionErrorModal}
+      {renderBugReportModal && (
+        <AuthenticatedBugModal
+          {...bugReportModal}
+          app={APPS.PROTONDOCS}
+          reportDescriptionContext={getDocsReportContextLines({
+            appVersion: APP_VERSION,
+            clientType: CLIENT_TYPE,
+          })}
+        />
+      )}
     </div>
   )
 }

@@ -1,9 +1,12 @@
+import { CCFieldType } from '@protontech/autofill/types';
 import { c, msgid } from 'ttag';
 
 import { MAX_ITEM_NAME_LENGTH } from '@proton/pass/constants';
-import { CCFieldType } from '@proton/pass/fathom/labels';
 import PassUI from '@proton/pass/lib/core/ui.proxy';
 import { parseOTPValue } from '@proton/pass/lib/otp/otp';
+import type { ParsedUrl } from '@proton/pass/lib/urls/types';
+import { getFirstUrl } from '@proton/pass/lib/urls/utils/autofill';
+import { resolveSubdomain } from '@proton/pass/lib/urls/utils/utils';
 import type { Draft } from '@proton/pass/store/reducers/drafts';
 import type {
     BulkSelectionDTO,
@@ -29,6 +32,28 @@ import { UNIX_DAY, UNIX_MONTH, UNIX_WEEK } from '@proton/pass/utils/time/constan
 import { getEpoch } from '@proton/pass/utils/time/epoch';
 
 import { hasUserIdentifier, isEditItemDraft, isExtraOTPField } from './item.predicates';
+
+/** Default item title when creating from a web page: prefer the page title when
+ * present, otherwise fall back to the hostname (previous default behaviour). */
+export const resolveDefaultItemName = ({
+    title,
+    url,
+    fallback,
+}: {
+    title?: MaybeNull<string>;
+    url?: MaybeNull<ParsedUrl>;
+    fallback?: MaybeNull<string>;
+}): string => {
+    const trimmedTitle = title?.trim();
+    if (trimmedTitle) return trimmedTitle.slice(0, MAX_ITEM_NAME_LENGTH);
+
+    if (url) {
+        const fromUrl = resolveSubdomain(url);
+        if (fromUrl) return fromUrl;
+    }
+
+    return fallback?.trim() ?? '';
+};
 
 export const compoundItemFilters: Partial<Record<ItemType, ItemType[]>> = {
     custom: ['custom', 'sshKey', 'wifi'],
@@ -121,6 +146,10 @@ export const filterItemsByUserIdentifier = (email: string) => (items: LoginItem[
         return acc;
     }, []);
 
+/** `relevant` only ranks while a search is active; with no search it degrades to `recent` */
+export const intoDisplayedSortFilter = (sort: ItemSortFilter, hasSearch: boolean): ItemSortFilter =>
+    sort === 'relevant' && !hasSearch ? 'recent' : sort;
+
 export const sortItems =
     (sort?: MaybeNull<ItemSortFilter>) =>
     <T extends ItemRevision>(items: T[]) => {
@@ -132,6 +161,9 @@ export const sortItems =
                     return a.createTime - b.createTime;
                 case 'createTimeDESC':
                     return b.createTime - a.createTime;
+                /* `relevant` orders by relevance only while searching (see
+                 * `searchItems`); with no active search it falls back to recency */
+                case 'relevant':
                 case 'recent':
                     return (
                         Math.max(b.lastUseTime ?? b.modifyTime, b.modifyTime) -
@@ -163,7 +195,7 @@ export const intoLoginItemPreview = (item: ItemRevision<'login'>): LoginItemPrev
     shareId: item.shareId,
     name: item.data.metadata.name,
     userIdentifier: intoUserIdentifier(item),
-    url: item.data.content.urls?.[0],
+    url: getFirstUrl(item.data.content.autofillUrls) ?? undefined,
 });
 
 export const intoIdentityItemPreview = (item: ItemRevision<'identity'>): IdentityItemPreview => ({

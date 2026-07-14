@@ -1,30 +1,23 @@
 import { useEffect, useRef, useState } from 'react';
 
 import { useGetPaymentStatus } from '@proton/account/paymentStatus/hooks';
-import {
-    type ADDON_NAMES,
-    type AvailablePaymentMethod,
-    type Currency,
-    type FreeSubscription,
-    PAYMENT_METHOD_TYPES,
-    type PLANS,
-    type PaymentMethodFlow,
-    type PaymentMethodType,
-    type PaymentMethods,
-    type PaymentStatus,
-    type PaymentsApi,
-    type PlainPaymentMethodType,
-    type PlanIDs,
-    type SavedPaymentMethod,
-    type SavedPaymentMethodExternal,
-    type SavedPaymentMethodInternal,
-    type Subscription,
-    initializePaymentMethods,
-    isExistingPaymentMethod,
-    isSavedPaymentMethodExternal,
-    isSavedPaymentMethodInternal,
-} from '@proton/payments';
 import type { BillingAddress } from '@proton/payments/core/billing-address/billing-address';
+import { type ADDON_NAMES, PAYMENT_METHOD_TYPES, type PLANS } from '@proton/payments/core/constants';
+import type {
+    AvailablePaymentMethod,
+    Currency,
+    FreeSubscription,
+    PaymentMethodFlow,
+    PaymentMethodType,
+    PaymentStatus,
+    PaymentsApi,
+    PlainPaymentMethodType,
+    PlanIDs,
+    SavedPaymentMethod,
+} from '@proton/payments/core/interface';
+import { type PaymentMethods, initializePaymentMethods } from '@proton/payments/core/methods';
+import type { Subscription } from '@proton/payments/core/subscription/interface';
+import { isExistingPaymentMethod } from '@proton/payments/core/type-guards';
 import type { Api, User } from '@proton/shared/lib/interfaces';
 
 export type OnMethodChangedHandler = (method: AvailablePaymentMethod) => void;
@@ -65,14 +58,11 @@ export type MethodsHook = {
     allMethods: AvailablePaymentMethod[];
     lastUsedMethod: AvailablePaymentMethod | undefined;
     selectedMethod: AvailablePaymentMethod | undefined;
-    savedInternalSelectedMethod: SavedPaymentMethodInternal | undefined;
-    savedExternalSelectedMethod: SavedPaymentMethodExternal | undefined;
     savedSelectedMethod: SavedPaymentMethod | undefined;
     selectMethod: (id?: string) => AvailablePaymentMethod | undefined;
     getSavedMethodByID: (id: string | undefined) => SavedPaymentMethod | undefined;
     status: PaymentStatus | undefined;
     savedMethods: SavedPaymentMethod[] | undefined;
-    isNewPaypal: boolean;
     isNewApplePay: boolean;
     isNewGooglePay: boolean;
     isMethodTypeEnabled: (methodType: PlainPaymentMethodType) => boolean;
@@ -377,28 +367,6 @@ export const useMethods = (
         return paymentMethodsRef.current.getSavedMethodById(paymentMethodID);
     };
 
-    const getSavedInternalMethodByID = (
-        paymentMethodID: string | undefined
-    ): SavedPaymentMethodInternal | undefined => {
-        const method = getSavedMethodByID(paymentMethodID);
-        if (isSavedPaymentMethodInternal(method)) {
-            return method;
-        }
-
-        return;
-    };
-
-    const getSavedExternalMethodByID = (
-        paymentMethodID: string | undefined
-    ): SavedPaymentMethodExternal | undefined => {
-        const method = getSavedMethodByID(paymentMethodID);
-        if (isSavedPaymentMethodExternal(method)) {
-            return method;
-        }
-
-        return;
-    };
-
     const selectMethod = (id?: PaymentMethodType) => {
         if (!id) {
             setSelectedMethod(undefined);
@@ -426,12 +394,7 @@ export const useMethods = (
         return paymentMethodsRef.current.isMethodTypeEnabled(methodType);
     };
 
-    const savedInternalSelectedMethod = getSavedInternalMethodByID(selectedMethod?.value);
-    const savedExternalSelectedMethod = getSavedExternalMethodByID(selectedMethod?.value);
     const savedSelectedMethod = getSavedMethodByID(selectedMethod?.value);
-
-    const isNewPaypal =
-        selectedMethod?.type === PAYMENT_METHOD_TYPES.PAYPAL && !isExistingPaymentMethod(selectedMethod?.value);
 
     const isNewApplePay =
         selectedMethod?.type === PAYMENT_METHOD_TYPES.APPLE_PAY && !isExistingPaymentMethod(selectedMethod?.value);
@@ -441,8 +404,6 @@ export const useMethods = (
 
     return {
         selectedMethod,
-        savedInternalSelectedMethod,
-        savedExternalSelectedMethod,
         savedSelectedMethod,
         selectMethod,
         loading,
@@ -453,7 +414,6 @@ export const useMethods = (
         getSavedMethodByID,
         status,
         savedMethods,
-        isNewPaypal,
         isNewApplePay,
         isNewGooglePay,
         isMethodTypeEnabled,

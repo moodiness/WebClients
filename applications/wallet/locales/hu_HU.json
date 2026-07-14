@@ -91,6 +91,9 @@
       "Continue": [
         "Tovább"
       ],
+      "Continue to ${ planOrAppName }": [
+        "Folytatás itt: ${ planOrAppName }"
+      ],
       "Copy address": [
         "Cím másolása"
       ],
@@ -447,6 +450,15 @@
       "${ users } user": [
         "${ users } felhasználó",
         "${ users } felhasználó"
+      ],
+      "Dedicated VPN servers": [
+        "Dedikált VPN szerverek"
+      ],
+      "Domains": [
+        "Domain nevek"
+      ],
+      "Writing assistant": [
+        "Írási segéd"
       ]
     },
     "Address list": {
@@ -498,6 +510,9 @@
       ]
     },
     "b2b_trials_2025_Info": {
+      "After the trial ends on ${ formattedDate1 }, it will become a paid subscription that auto-renews monthly. You won’t be charged if you cancel before ${ formattedDate2 }.": [
+        "A próbaidőszak ekkor ér véget: ${ formattedDate1 }, ezután automatikusan megújuló havi előfizetésre alakul át. Akkor nem kerül díj felszámításra, ha lemondja ${ formattedDate2 } előtt."
+      ],
       "You can have up to ${ TRIAL_MAX_DEDICATED_IPS } dedicated server during the trial period.": [
         "Akár ${ TRIAL_MAX_DEDICATED_IPS } dedikált szerverrel is rendelkezhet a próbaidőszakban."
       ],
@@ -560,6 +575,9 @@
       ],
       "Annually": [
         "Évente"
+      ],
+      "Billed monthly": [
+        "Havonta számlázva"
       ],
       "Lifetime": [
         "Élettartam"
@@ -1053,6 +1071,9 @@
       ],
       "Web search access": [
         "Webes keresési hozzáférés"
+      ],
+      "Zero-access encryption": [
+        "Zéró hozzáférésű titkosítás"
       ]
     },
     "collider_2025: Info": {
@@ -1254,6 +1275,9 @@
       ],
       "Canada": [
         "Kanada"
+      ],
+      "Canary Islands": [
+        "Kanári-szigetek"
       ],
       "Cape Verde": [
         "Zöld-foki Köztársaság"
@@ -2199,20 +2223,11 @@
       "Input isn't a valid email or bitcoin address": [
         "A megadott érték nem egy érvényes e-mail cím vagy bitcoin cím"
       ],
-      "Invalid ${ name } code": [
-        "Érvénytelen ${ name } kód"
-      ],
-      "Invalid card number": [
-        "Érvénytelen kártyaszám"
-      ],
       "Invalid code": [
         "Érvénytelen kód"
       ],
       "Invalid coupon": [
         "Érvénytelen kupon"
-      ],
-      "Invalid expiration date": [
-        "Érvénytelen lejárati dátum"
       ],
       "Invalid IBAN": [
         "Érvénytelen IBAN"
@@ -2318,6 +2333,9 @@
       ],
       "Username must end with a letter or digit": [
         "Felhasználónévnek betűvel vagy számmal kell végződnie"
+      ],
+      "Wrong billing address": [
+        "Hibás számlázási cím"
       ]
     },
     "Error message": {
@@ -2626,6 +2644,10 @@
       "Country code": [
         "Országkód"
       ],
+      "Create a secure cloud for ${ memberCount } member": [
+        "Hozzon létre biztonságos felhőárhelyet ${ memberCount } tagnak",
+        "Hozzon létre biztonságos felhőárhelyet ${ memberCount } tagnak"
+      ],
       "Credit for the unused portion of your previous plan subscription": [
         "Kredit az előző csomag-feliratkozásának fel nem használt részéért"
       ],
@@ -2773,9 +2795,6 @@
       "Payments are protected with TLS encryption and Swiss privacy laws.": [
         "Fizetés adatait TLS titkosítással védjük. Svájci adatvédelmi törvények vonatkoznak rá."
       ],
-      "Please authenticate your card in the verification tab.": [
-        "Kérjük, hitelesítse a kártyáját az ellenőrző lapon."
-      ],
       "Please authenticate your payment in the verification tab.": [
         "Kérjük, hitelesítse a befizetését az ellenőrző lapon."
       ],
@@ -2784,9 +2803,6 @@
       ],
       "Please try again using a different payment method, or contact your bank.": [
         "Kérjük, próbálkozzon újra egy másik fizetési mód használatával, vagy lépjen kapcsolatba a bankjával."
-      ],
-      "Please try again, use a different payment method, or contact PayPal for assistance.": [
-        "Kérjük, próbálja újra, válasszon más fizetési módot vagy kérjen segítséget a PayPaltól."
       ],
       "Price includes all applicable cycle-based discounts and non-expired coupons saved to your account.": [
         "Az ár tartalmaz minden vonatkozó, megújulás-alapú kedvezményt és a fiókjában mentett, le nem járt kupont."
@@ -2958,9 +2974,6 @@
       ],
       "You will lose access to ${ planTitle } features on this date.": [
         "Ezen a dátumon elveszíted a hozzáférést a ${ planTitle } szerverekhez és funkciókhoz."
-      ],
-      "You will soon be redirected to PayPal to verify your payment.": [
-        "A kifizetés ellenőrzéséhez hamarosan átirányítunk a PayPal oldalára."
       ],
       "You'll then be billed every ${ renewCycle } month at ${ renewAmountStr }. You can cancel at any time.": [
         "Ezután a számlázás ${ renewCycle } havonta történik, ${ renewAmountStr } összeggel. Bármikor lemondhatja.",
@@ -3186,6 +3199,9 @@
       "Sign message": [
         "Üzenet aláírása"
       ],
+      "Skip feedback": [
+        "Visszajelzés kihagyása"
+      ],
       "Start date": [
         "Kezdő dátum"
       ],
@@ -3360,6 +3376,16 @@
         "${ seats } ${ MEET_APP_NAME } licenc"
       ]
     },
+    "meet_2025: Feature": {
+      "${ n } participant": [
+        "${ n } résztvevő",
+        "${ n } résztvevő"
+      ],
+      "Up to ${ n } participant": [
+        "${ n } résztvevő",
+        "Akár ${ n } résztvevő"
+      ]
+    },
     "meet_2025: Info": {
       "${ seats } seat included": [
         "${ seats } licencet tartalmaz",
@@ -3516,6 +3542,9 @@
       "99.95% SLA": [
         "99.95% SLA"
       ],
+      "Access all countries": [
+        "Hozzáférés minden országhoz"
+      ],
       "Ad-blocker and malware protection": [
         "Hirdetésblokkoló és rosszindulatú program elleni védelem"
       ],
@@ -3530,6 +3559,10 @@
       ],
       "All basic ${ BRAND_NAME } services (${ MAIL_SHORT_APP_NAME }, ${ VPN_SHORT_APP_NAME }, ${ PASS_SHORT_APP_NAME })": [
         "Minden alapvető ${ BRAND_NAME } szolgáltatás (${ MAIL_SHORT_APP_NAME }, ${ VPN_SHORT_APP_NAME }, ${ PASS_SHORT_APP_NAME })"
+      ],
+      "Appointment scheduling with ${ n } booking page": [
+        "Időpontfoglalás ${ n } jelentkezési oldallal",
+        "Időpontfoglalás ${ n } jelentkezési oldallal"
       ],
       "Auto-delete Spam and Trash": [
         "Levélszemét és lomtár automatikus törlése"
@@ -4146,6 +4179,10 @@
       ]
     },
     "new_plans: Upsell attribute": {
+      "${ n } country": [
+        "${ n } ország",
+        "${ n } ország"
+      ],
       "Access advanced VPN features": [
         "További VPN lehetőségek elérése"
       ],
@@ -4345,6 +4382,9 @@
       ],
       "During this time, you will not be able to modify or cancel your subscription. Please wait until your payment is completed before attempting any changes. Thank you for your patience.": [
         "Ez idő alatt nem tudja módosítani vagy törölni az előfizetését. Kérjük, várjon, amíg a fizetés befejeződik, mielőtt bármilyen változtatással próbálkozna. Köszönjük türelmét."
+      ],
+      "Edit billing address": [
+        "Számlázási cím szerkesztése"
       ],
       "Got it": [
         "Értem."
@@ -4561,6 +4601,9 @@
       ],
       "Postal code": [
         "Irányítószám"
+      ],
+      "San Francisco": [
+        "San Francisco"
       ],
       "Search": [
         "Keresés"
@@ -5190,9 +5233,6 @@
       ],
       "Payment verification": [
         "Fizetés ellenőrzése"
-      ],
-      "PayPal verification failed": [
-        "A PayPal ellenőrzés sikertelen"
       ],
       "Processing...": [
         "Folyamatban..."

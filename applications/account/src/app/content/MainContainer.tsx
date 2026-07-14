@@ -48,13 +48,16 @@ import { getIsSectionAvailable, getRoutePaths } from '@proton/components/contain
 import UnprivatizationRequestTopBanner from '@proton/components/containers/members/Unprivatization/UnprivatizationRequestTopBanner';
 import { CANCEL_ROUTE } from '@proton/components/containers/payments/subscription/cancellationFlow/helper';
 import { useReferralUserEligible } from '@proton/components/containers/referral/hooks/useReferralUserEligible';
-import useShowDashboard from '@proton/components/hooks/accounts/useShowDashboard';
+import LiveChatZendesk from '@proton/components/containers/zendesk/LiveChatZendesk';
+import { getZendeskTags } from '@proton/components/containers/zendesk/helper';
+import { useZendeskChat } from '@proton/components/containers/zendesk/useZendeskChat';
+import useShowDashboard, { useShowGenericDashboard } from '@proton/components/hooks/accounts/useShowDashboard';
 import useAssistantFeatureEnabled from '@proton/components/hooks/assistant/useAssistantFeatureEnabled';
 import { useIsGroupOwner } from '@proton/components/hooks/useIsGroupOwner';
 import useShowVPNDashboard from '@proton/components/hooks/useShowVPNDashboard';
 import { useCategoriesData } from '@proton/mail/features/categoriesView/useCategoriesData';
-import { getHasPassB2BPlan, hasAIAssistant, hasAllProductsB2CPlan } from '@proton/payments';
-import { useIsB2BTrial } from '@proton/payments/ui';
+import { getHasPassB2BPlan, hasAIAssistant, hasAllProductsB2CPlan } from '@proton/payments/core/subscription/helpers';
+import useIsB2BTrial from '@proton/payments/ui/hooks/useIsB2BTrial';
 import { getAvailableApps } from '@proton/shared/lib/apps/apps';
 import { getAppFromPathnameSafe, getSlugFromApp } from '@proton/shared/lib/apps/slugHelper';
 import { getToApp } from '@proton/shared/lib/authentication/apps';
@@ -63,6 +66,7 @@ import type { APP_NAMES } from '@proton/shared/lib/constants';
 import { APPS, SETUP_ADDRESS_PATH, VPN_TV_PATHS, VPN_TV_PATH_WITH_CODE } from '@proton/shared/lib/constants';
 import { stripLeadingAndTrailingSlash } from '@proton/shared/lib/helpers/string';
 import { getPathFromLocation } from '@proton/shared/lib/helpers/url';
+import { localeCode } from '@proton/shared/lib/i18n';
 import type { Permission, UserModel } from '@proton/shared/lib/interfaces';
 import { getRequiresAddressSetup } from '@proton/shared/lib/keys';
 import { hasPaidPass } from '@proton/shared/lib/user/helpers';
@@ -107,10 +111,6 @@ const WalletSettingsRouter = lazy(
     () => import(/* webpackChunkName: "routers/WalletSettingsRouter" */ '../containers/wallet/WalletSettingsRouter')
 );
 
-const MeetSettingsRouter = lazy(
-    () => import(/* webpackChunkName: "routers/MeetSettingsRouter" */ '../containers/meet/MeetSettingsRouter')
-);
-
 const AuthenticatorSettingsRouter = lazy(
     () =>
         import(
@@ -125,7 +125,6 @@ const driveSlug = getSlugFromApp(APPS.PROTONDRIVE);
 const docsSlug = getSlugFromApp(APPS.PROTONDOCS);
 const walletSlug = getSlugFromApp(APPS.PROTONWALLET);
 const passSlug = getSlugFromApp(APPS.PROTONPASS);
-const meetSlug = getSlugFromApp(APPS.PROTONMEET);
 const authenticatorSlug = getSlugFromApp(APPS.PROTONAUTHENTICATOR);
 
 const getDefaultPassRedirect = (
@@ -191,8 +190,6 @@ const MainContainer = () => {
     const { viewportWidth } = useActiveBreakpoint();
 
     const showThemeSelection = useShowThemeSelection();
-    const canDisplayB2BLogsPass = useFlag('B2BLogsPass');
-    const canDisplayB2BLogsVPN = useFlag('B2BLogsVPN');
     const isUserGroupsFeatureEnabled = useFlag('UserGroupsPermissionCheck');
     const isUserGroupsNoCustomDomainEnabled = useFlag('UserGroupsNoCustomDomain');
     const isUserGroupsPassBusinessEnabled = useFlag('UserGroupsPassBusiness');
@@ -203,18 +200,17 @@ const MainContainer = () => {
     const isSharedServerFeatureEnabled = useFlag('SharedServerFeature');
     const isCryptoPostQuantumOptInEnabled =
         (useFlag('CryptoPostQuantumOptIn') && user.isPrivate) || !!userSettings.Flags.SupportPgpV6Keys;
-    const canDisplayPassReports = useFlag('PassB2BReports');
     const isDocsHomepageAvailable = useFlag('DriveDocsLandingPageEnabled');
     const isSheetsAvailable = useFlag('DocsSheetsEnabled');
     const isSsoForPbsEnabled = useFlag('SsoForPbs');
     const isRetentionPoliciesEnabled = useFlag('DataRetentionPolicy');
     const isMeetAvailable = useFlag('PMVC2025');
     const isAuthenticatorAvailable = useFlag('AuthenticatorSettingsEnabled');
-    const isRolesAndPermissionsEnabled = useFlag('AdminRoleMVP');
     const isMspEnabled = useFlag('MspEnabled');
     const isRecoverySettingsRedesignEnabled = useFlag('RecoverySettingsRedesign');
+    const isGenericUserSettingsEnabled = useFlag('GenericUserSettings');
 
-    const { hasAccessToCategoryView } = useCategoriesData();
+    const { canUseCategoryView } = useCategoriesData();
 
     const [referralInfo] = useReferralInfo();
 
@@ -224,8 +220,9 @@ const MainContainer = () => {
     const recoveryNotification = useRecoveryNotification(false, false);
 
     const appFromPathname = getAppFromPathnameSafe(location.pathname);
-    const app = appFromPathname || getToApp(undefined, user);
-    const appSlug = getSlugFromApp(app);
+    const isGenericSettings = isGenericUserSettingsEnabled && !appFromPathname;
+    const app = appFromPathname ?? (isGenericSettings ? APPS.PROTONACCOUNT : getToApp(undefined, user));
+    const appSlug = isGenericSettings ? '' : getSlugFromApp(app);
 
     // We hide the assistant upsell for users on Mail and Calendar app without the assistant when the kill switch is enabled
     const hasAssistant = hasAIAssistant(subscription);
@@ -258,6 +255,8 @@ const MainContainer = () => {
         'MeetDashboard'
     );
 
+    const canShowGenericDashboard = useShowGenericDashboard(app);
+
     const { isB2B: isB2BDrive } = useDrivePlan();
 
     const isB2BTrial = useIsB2BTrial(subscription, organization);
@@ -282,6 +281,7 @@ const MainContainer = () => {
         referralInfo: referralInfo.uiData,
         showMailDashboard,
         showMailDashboardVariant: showMailDashboardVariant.name,
+        showGenericDashboard: canShowGenericDashboard,
         showPassDashboard,
         showPassDashboardVariant: showPassDashboardVariant.name,
         showDriveDashboard,
@@ -302,9 +302,6 @@ const MainContainer = () => {
     };
 
     const flags: Flags = {
-        canDisplayB2BLogsPass,
-        canDisplayB2BLogsVPN,
-        canDisplayPassReports,
         canDisplayNonPrivateEmailPhone,
         isUserGroupsFeatureEnabled,
         isUserGroupsNoCustomDomainEnabled,
@@ -317,8 +314,7 @@ const MainContainer = () => {
         isSsoForPbsEnabled,
         isRetentionPoliciesEnabled,
         isAuthenticatorAvailable,
-        isCategoryViewEnabled: hasAccessToCategoryView,
-        isRolesAndPermissionsEnabled,
+        isCategoryViewEnabled: canUseCategoryView,
         isMspEnabled,
         isRecoverySettingsRedesignEnabled,
         isMnemonicAvailable,
@@ -347,9 +343,12 @@ const MainContainer = () => {
     const isLocal = [APPS.PROTONVPN_SETTINGS].includes(app as any);
     const toApp = isLocal ? APPS.PROTONACCOUNT : app;
     const to = isLocal ? `/${getSlugFromApp(app)}` : '/';
-    const pathPrefix = `/${appSlug}`;
+    const pathPrefix = isGenericSettings ? '' : `/${appSlug}`;
 
     const hasPassB2bPlan = getHasPassB2BPlan(subscription);
+
+    // Zendesk Chat Integration
+    const { handleOpenZendeskChat, showZendeskChat, zendeskRef } = useZendeskChat(user);
 
     const getLogo = () => {
         if (organizationTheme.logoURL) {
@@ -395,7 +394,9 @@ const MainContainer = () => {
 
     const header = (
         <PrivateHeader
-            userDropdown={<UserDropdown app={app} sessionOptions={{ path: pathPrefix }} />}
+            userDropdown={
+                <UserDropdown app={app} sessionOptions={{ path: pathPrefix }} onOpenChat={handleOpenZendeskChat} />
+            }
             // No onboarding in account
             upsellButton={<TopNavbarUpsell offerProps={{ ignoreOnboarding: true }} app={app} />}
             title={c('Title').t`Settings`}
@@ -447,9 +448,8 @@ const MainContainer = () => {
             return <PrivateMainAreaLoading />;
         }
 
-        const pathFromLocation = getPathFromLocation(location);
-
-        if (!appFromPathname) {
+        if (!isGenericSettings && !appFromPathname) {
+            const pathFromLocation = getPathFromLocation(location);
             return <Redirect to={`/${appSlug}${pathFromLocation}`} />;
         }
 
@@ -463,7 +463,7 @@ const MainContainer = () => {
             return getDefaultRedirect(routes.account);
         })();
 
-        return <Redirect to={`/${appSlug}${path}`} />;
+        return <Redirect to={`${pathPrefix}${path}`} />;
     })();
 
     if (
@@ -543,12 +543,13 @@ const MainContainer = () => {
                                 user={user}
                                 organization={organization}
                                 subscription={subscription}
+                                onOpenChat={handleOpenZendeskChat}
                             />
                         </Route>
                         <Route path={anyMspAppRoute}>
                             <MspSettingsRouter path={pathPrefix} mspAppRoutes={routes.msp} redirect={redirect} />
                         </Route>
-                        <Route path={`/${appSlug}${CANCEL_ROUTE}`}>
+                        <Route path={[`/${appSlug}${CANCEL_ROUTE}`, CANCEL_ROUTE]}>
                             <CancellationReminderSection app={app} />
                         </Route>
                         <Route path={`/${mailSlug}`}>
@@ -593,11 +594,6 @@ const MainContainer = () => {
                                 <PassSettingsRouter passAppRoutes={routes.pass} redirect={redirect} />
                             </Suspense>
                         </Route>
-                        <Route path={`/${meetSlug}`}>
-                            <Suspense fallback={<PrivateMainAreaLoading />}>
-                                <MeetSettingsRouter meetAppRoutes={routes.meet} redirect={redirect} />
-                            </Suspense>
-                        </Route>
                         <Route path={`/${authenticatorSlug}`}>
                             <Suspense fallback={<PrivateMainAreaLoading />}>
                                 <AuthenticatorSettingsRouter
@@ -608,6 +604,14 @@ const MainContainer = () => {
                         </Route>
                         {redirect}
                     </Switch>
+                    {showZendeskChat.render && (
+                        <LiveChatZendesk
+                            tags={getZendeskTags(user, organization)}
+                            zendeskRef={zendeskRef}
+                            autoLaunch={showZendeskChat.autoLaunch}
+                            locale={localeCode.replace('_', '-')}
+                        />
+                    )}
                 </PrivateAppContainer>
             </NavigationProvider>
         </SubscriptionModalProvider>

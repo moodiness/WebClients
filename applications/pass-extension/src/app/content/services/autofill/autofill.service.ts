@@ -1,3 +1,4 @@
+import { CCFieldType, FieldType } from '@protontech/autofill/types';
 import { DropdownAction, NotificationAction } from 'proton-pass-extension/app/content/constants.runtime';
 import { withContext } from 'proton-pass-extension/app/content/context/context';
 import type { ContentScriptContextFactoryOptions } from 'proton-pass-extension/app/content/context/factory';
@@ -11,7 +12,7 @@ import type { AutofillRequest, AutofillResult } from 'proton-pass-extension/type
 import type { FrameField } from 'proton-pass-extension/types/frames';
 import { WorkerMessageType } from 'proton-pass-extension/types/messages';
 
-import { CCFieldType, FieldType } from '@proton/pass/fathom/labels';
+import { resolveSubdomain } from '@proton/pass/lib/urls/utils/utils';
 import { passwordSave } from '@proton/pass/store/actions/creators/password';
 import type { ItemContent } from '@proton/pass/types/data/items';
 import { TelemetryEventName } from '@proton/pass/types/data/telemetry';
@@ -25,7 +26,6 @@ import { serialize } from '@proton/pass/utils/object/serialize';
 import { uniqueId } from '@proton/pass/utils/string/unique-id';
 import { getEpoch } from '@proton/pass/utils/time/epoch';
 import { nextTick, onNextTick } from '@proton/pass/utils/time/next-tick';
-import { resolveSubdomain } from '@proton/pass/utils/url/utils';
 import { omit } from '@proton/shared/lib/helpers/object';
 import noop from '@proton/utils/noop';
 

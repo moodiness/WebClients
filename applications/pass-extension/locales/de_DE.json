@@ -2765,9 +2765,6 @@
       "Unlock it with your PIN to access the settings": [
         "Entsperre sie mit deiner PIN, um auf die Einstellungen zuzugreifen."
       ],
-      "Unlock with biometrics": [
-        "Mit Biometrie entsperren"
-      ],
       "Unpinning item...": [
         "Eintrag wird losgelöst..."
       ],
@@ -3137,6 +3134,9 @@
       ],
       "Address details": [
         "Adressdetails"
+      ],
+      "Advanced": [
+        "Fortgeschritten"
       ],
       "Alias": [
         "Alias"

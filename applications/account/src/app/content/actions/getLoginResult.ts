@@ -180,6 +180,23 @@ export const getLoginResult = async ({
 
     // In any forking scenario, ignore the app switcher
     if (!maybeToApp && !forkState) {
+        // Skip app switcher when accessing generic settings
+        if (maybeLocalRedirect) {
+            const url = getUrlFromLocation({
+                location: maybeLocalRedirect.location,
+                toApp: APPS.PROTONACCOUNT,
+                context: maybeLocalRedirect.context,
+                localID: session.data.localID,
+            });
+
+            return {
+                type: 'done',
+                payload: {
+                    session,
+                    url,
+                },
+            };
+        }
         return goToAppSwitcher({ session, api, paths });
     }
 
@@ -201,6 +218,18 @@ export const getLoginResult = async ({
     // OAuth sessions are only allowed for the VPN browser extension at the moment. Go to the restricted settings view.
     if (persistedSession.source === SessionSource.Oauth && toApp !== APPS.PROTONVPNBROWSEREXTENSION) {
         const url = getOAuthSettingsUrl(session.data.localID);
+        return {
+            type: 'done',
+            payload: {
+                session,
+                url,
+            },
+        };
+    }
+
+    // Msp sessions are only allowed for account.
+    if (persistedSession.source === SessionSource.Msp) {
+        const url = new URL(getAppHref(`/${getSlugFromApp(toApp)}`, APPS.PROTONACCOUNT, session.data.localID));
         return {
             type: 'done',
             payload: {

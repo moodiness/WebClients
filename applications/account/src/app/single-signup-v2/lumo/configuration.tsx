@@ -15,7 +15,8 @@ import {
 } from '@proton/components/containers/payments/features/lumo';
 import { PlanCardFeatureList } from '@proton/components/containers/payments/subscription/PlanCardFeatures';
 import { IcMapPin } from '@proton/icons/icons/IcMapPin';
-import { ADDON_NAMES, CYCLE, type FreePlanDefault, PLANS, type PlansMap } from '@proton/payments';
+import { ADDON_NAMES, CYCLE, PLANS } from '@proton/payments/core/constants';
+import type { FreePlanDefault, PlansMap } from '@proton/payments/core/plan/interface';
 import { APPS, BRAND_NAME, LUMO_APP_NAME, LUMO_SHORT_APP_NAME, SSO_PATHS } from '@proton/shared/lib/constants';
 import { Audience } from '@proton/shared/lib/interfaces';
 import isTruthy from '@proton/utils/isTruthy';
@@ -34,10 +35,10 @@ import {
     getJoinString,
     getNoLogsFeature,
 } from '../configuration/helper';
+import CustomStep from '../defaultCustomStep/CustomStep';
 import type { PlanParameters, SignupConfiguration } from '../interface';
 import setupAccount from '../mail/account-setup.svg';
 import { getCustomMailFeatures } from '../mail/configuration';
-import CustomStep from './CustomStep';
 
 const getBuiltInEuropeFeature = () => ({
     key: 'built-in-europe',

@@ -908,6 +908,9 @@
       ],
       "Username must end with a letter or digit": [
         "Brukernavn må ende med en bokstav eller ett tall"
+      ],
+      "We couldn’t send a verification code using this method.": [
+        "Vi kunne ikke sende en bekreftelseskode med denne metoden."
       ]
     },
     "Error message": {
@@ -935,6 +938,9 @@
       ],
       "Security key": [
         "Sikkerhetsnøkkel"
+      ],
+      "Touch your security key.": [
+        "Berør sikkerhetsnøkkelen din."
       ]
     },
     "fido2: Label": {

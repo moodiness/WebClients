@@ -1471,6 +1471,12 @@
       ]
     },
     "BOSS": {
+      "Activated": [
+        "Aktiviert"
+      ],
+      "All": [
+        "Alle"
+      ],
       "Calendar": [
         "Kalender"
       ],
@@ -1485,6 +1491,9 @@
       ],
       "Emails": [
         "E-Mails"
+      ],
+      "Errors": [
+        "Fehler"
       ],
       "Estimated size": [
         "Geschätzte Größe"
@@ -1501,6 +1510,9 @@
       "Migrate": [
         "Migrieren"
       ],
+      "Migrated": [
+        "Migriert"
+      ],
       "Migration status": [
         "Migrationsstatus"
       ],
@@ -1510,14 +1522,29 @@
       "Missing organization public key": [
         "Öffentlicher Schlüssel der Organisation fehlt"
       ],
+      "No users to display": [
+        "Keine Benutzer vorhanden"
+      ],
+      "Not activated": [
+        "Nicht aktiviert"
+      ],
       "Organization does not have enough seats available": [
         "Organisation hat nicht genügend Lizenzen verfügbar"
       ],
       "Organization does not have enough storage available": [
         "Die Organisation hat nicht genügend Speicherplatz verfügbar"
       ],
+      "Pending": [
+        "Ausstehend"
+      ],
       "Select exactly what you'd like to migrate. It will apply to all organisation users.": [
         "Wähle genau aus, was du migrieren möchtest. Dies gilt für alle Benutzer der Organisation."
+      ],
+      "Select users to migrate": [
+        "Benutzer für die Übernahme auswählen"
+      ],
+      "Size": [
+        "Größe"
       ],
       "Status": [
         "Status"
@@ -1530,6 +1557,9 @@
       ],
       "What are you migrating?": [
         "Was übernimmst du?"
+      ],
+      "You": [
+        "Du"
       ]
     },
     "Browser": {
@@ -3834,12 +3864,6 @@
       "Interval cannot be empty": [
         "Intervall muss angegeben werden"
       ],
-      "Invalid ${ name } code": [
-        "Ungültiger ${ name }-Code"
-      ],
-      "Invalid card number": [
-        "Kartennummer ungültig"
-      ],
       "Invalid code": [
         "Ungültiger Code"
       ],
@@ -3848,9 +3872,6 @@
       ],
       "Invalid email address": [
         "Ungültige E-Mail-Adresse"
-      ],
-      "Invalid expiration date": [
-        "Ungültiges Ablaufdatum"
       ],
       "Invalid IBAN": [
         "Ungültige IBAN"
@@ -3922,9 +3943,6 @@
       "No contacts found to import": [
         "Keine Kontakte zum Importieren vorhanden"
       ],
-      "No drive found to import": [
-        "Es wurde kein Laufwerk zum Importieren gefunden"
-      ],
       "No emails found to import - the account does not have an inbox": [
         "Keine E-Mails zum Importieren vorhanden — das Konto verfügt über keinen Posteingang"
       ],
@@ -3939,9 +3957,6 @@
       ],
       "Not a valid number": [
         "Keine gültige Zahl"
-      ],
-      "Not enough storage space in your ${ DRIVE_APP_NAME }": [
-        "Nicht genügend Speicherplatz in deinem ${ DRIVE_APP_NAME }"
       ],
       "Number of occurrences cannot be empty": [
         "Anzahl der Serienelemente muss angegeben werden"
@@ -4181,9 +4196,6 @@
       "Unexpected error, we can't import the contacts": [
         "Unerwarteter Fehler, wir können die Kontakte nicht importieren"
       ],
-      "Unexpected error, we can't import the files": [
-        "Unerwarteter Fehler, wir können die Dateien nicht importieren"
-      ],
       "Unknown error": [
         "Unbekannter Fehler"
       ],
@@ -4201,6 +4213,9 @@
       ],
       "VAT number must start with ${ prefixes }": [
         "MWST-Nummer muss mit ${ prefixes } beginnen"
+      ],
+      "We couldn’t send a verification code using this method.": [
+        "Wir konnten mit dieser Methode keinen Bestätigungscode senden."
       ],
       "Wrong billing address": [
         "Ungültige Rechnungsadresse"
@@ -4720,6 +4735,9 @@
       ],
       "Security key": [
         "Sicherheitsschlüssel"
+      ],
+      "Touch your security key.": [
+        "Deinen Sicherheitsschlüssel berühren."
       ]
     },
     "fido2: Label": {
@@ -5708,7 +5726,7 @@
         "Code eingeben"
       ],
       "Enter the code from your authenticator app": [
-        "Code aus deiner Authentifizierungs-App ein eingeben"
+        "Code aus deiner Authentifizierungs-App eingeben"
       ],
       "Enter the credentials of the email account you want to import from.": [
         "Gib die Anmeldedaten des E-Mail-Kontos ein, aus dem du Daten importieren möchtest."
@@ -6096,9 +6114,6 @@
       "PGP/MIME automatically sends the message using the current composer mode.": [
         "PGP/MIME sendet die Nachricht automatisch unter Verwendung des aktuellen Verfassen-Modus."
       ],
-      "Please authenticate your card in the verification tab.": [
-        "Bitte authentifiziere deine Karte im Verifikationstab."
-      ],
       "Please authenticate your payment in the verification tab.": [
         "Bitte authentifiziere deine Zahlung im Verifikationstab."
       ],
@@ -6138,9 +6153,6 @@
       ],
       "Please try again using a different payment method, or contact your bank.": [
         "Bitte versuche es mit einer anderen Zahlungsmethode erneut oder kontaktiere deine Bank."
-      ],
-      "Please try again, use a different payment method, or contact PayPal for assistance.": [
-        "Bitte versuche es erneut, verwende eine andere Zahlungsmethode oder wende dich an PayPal, um Hilfe zu erhalten."
       ],
       "Please wait while we look for contacts that can be re-signed with the primary encryption key.": [
         "Bitte warte, während nach Kontakten gesucht wird, die mit dem primären Verschlüsselungsschlüssel neu signiert werden können."
@@ -6567,6 +6579,9 @@
       "You are about to open your default browser and visit:": [
         "Du bist dabei, deinen Standardbrowser zu öffnen und folgende Seite zu besuchen:"
       ],
+      "You are currently signed in as ${ username } for ${ organizationName }.": [
+        "Du bist derzeit al ${ username } für ${ organizationName } angemeldet."
+      ],
       "You are currently signed in as ${ username }.": [
         "Du bist derzeit als „${ username }“ angemeldet."
       ],
@@ -6628,9 +6643,6 @@
       ],
       "You will lose all unsaved changes.": [
         "Alle nicht gespeicherten Änderungen gehen verloren."
-      ],
-      "You will soon be redirected to PayPal to verify your payment.": [
-        "Du wirst in Kürze zu PayPal weitergeleitet, um deine Zahlung zu bestätigen."
       ],
       "You will update all the events in this series. Added and removed participants will be notified.": [
         "Du bist dabei, alle Termine dieser Serie zu aktualisieren. Hinzugefügte und entfernte Teilnehmer werden darüber informiert."
@@ -7138,6 +7150,9 @@
       ],
       "Don't show this again": [
         "Nicht erneut anzeigen"
+      ],
+      "Drive": [
+        "Drive"
       ],
       "e.g., Amazon, eBay, Etsy": [
         "z. B. Amazon, eBay, Etsy"
@@ -10107,6 +10122,9 @@
       "Search for name or email": [
         "Nach Namen oder E-Mail-Adressen suchen"
       ],
+      "Search for users or addresses": [
+        "Nach Benutzern oder Adressen suchen"
+      ],
       "Search parent folder": [
         "Übergeordneten Ordner durchsuchen"
       ],
@@ -11922,6 +11940,9 @@
       "${ feature } is now active": [
         "${ feature } ist jetzt aktiv"
       ],
+      "${ LUMO_SHORT_APP_NAME } writing assistant": [
+        "${ LUMO_SHORT_APP_NAME } Schreibassistent"
+      ],
       "Account recovery": [
         "Kontowiederherstellung"
       ],
@@ -12379,9 +12400,6 @@
       "Payment verification": [
         "Zahlungsbestätigung"
       ],
-      "PayPal verification failed": [
-        "PayPal-Verifizierung fehlgeschlagen"
-      ],
       "Phone numbers": [
         "Telefonnummern"
       ],
@@ -12691,6 +12709,26 @@
         "Anzahl auswählen"
       ]
     },
+    "Title header for keys table": {
+      "Actions": [
+        "Aktionen"
+      ],
+      "Created": [
+        "Erstellt"
+      ],
+      "Expires": [
+        "Läuft ab"
+      ],
+      "Fingerprint": [
+        "Fingerabdruck"
+      ],
+      "Status": [
+        "Status"
+      ],
+      "Type": [
+        "Typ"
+      ]
+    },
     "Title; create calendar modal": {
       "Create calendar": [
         "Kalender erstellen"
@@ -12787,6 +12825,9 @@
       ],
       "Upload a public key to enable sending end-to-end encrypted emails to this email": [
         "Lade einen öffentlichen Schlüssel hoch, um das Senden von Ende-zu-Ende-verschlüsselten Nachrichten an diese E-Mail-Adresse zu ermöglichen"
+      ],
+      "Version 6 OpenPGP key": [
+        "Version 6 OpenPGP Schlüssel"
       ]
     },
     "tooltip": {
@@ -12825,6 +12866,11 @@
       ],
       "The user must have an address to request data access": [
         "Der Nutzer muss über eine Adresse verfügen, um den Datenzugang zu beantragen"
+      ]
+    },
+    "user_modal": {
+      "You'll be able to assign roles once the user has accepted the invitation.": [
+        "Sobald der Benutzer die Einladung angenommen hat, kannst du ihm Rollen zuweisen."
       ]
     },
     "Validation": {

@@ -310,6 +310,9 @@
       "Do not show again when I press": [
         "Non mostrare più quando premo\n\n"
       ],
+      "Done": [
+        "Fatto"
+      ],
       "Download this CSV template": [
         "Scarica questo modello CSV"
       ],
@@ -375,6 +378,9 @@
       ],
       "Get Started": [
         "Inizia ora"
+      ],
+      "Hide": [
+        "Nascondi"
       ],
       "How do I export my data from ${ PROVIDER_INFO_MAP[form.values.provider].title }?": [
         "Come posso esportare i miei dati da ${ PROVIDER_INFO_MAP[form.values.provider].title }?"
@@ -1792,6 +1798,9 @@
       "Enter the address you want to email.": [
         "Inserisci l'indirizzo a cui vuoi inviare un'email."
       ],
+      "Enter verification code. Digit ${ digit }.": [
+        "Inserisci il codice di verifica. Cifra ${ digit }."
+      ],
       "Enter your extra password": [
         "Inserisci la password aggiuntiva"
       ],
@@ -1996,6 +2005,10 @@
       ],
       "Moving all items from \"${ payload.content.name }\"": [
         "Spostamento di tutti gli elementi da \"${ payload.content.name }\" in corso"
+      ],
+      "Moving an item to another vault will erase its secure links.": [
+        "Spostare un elemento in un'altra cassaforte cancellerà i suoi link sicuri.",
+        "Spostare degli elementi in un'altra cassaforte cancellerà i loro link sicuri."
       ],
       "Moving items": [
         "Spostamento degli elementi"
@@ -2786,6 +2799,9 @@
       "Address details": [
         "Dettagli dell'indirizzo"
       ],
+      "Advanced": [
+        "Avanzato"
+      ],
       "Alias": [
         "Alias"
       ],
@@ -3037,6 +3053,9 @@
       ],
       "Expired": [
         "Scaduto"
+      ],
+      "Expires in": [
+        "Scade tra"
       ],
       "Expiry Date": [
         "Data di scadenza"
@@ -4111,6 +4130,9 @@
       ],
       "Coupon": [
         "Coupon"
+      ],
+      "e.g. My automation script": [
+        "ad es. Il mio script di automazione"
       ],
       "E.g., ": [
         "Ad es "

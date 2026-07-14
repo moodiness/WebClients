@@ -5,8 +5,9 @@ import { isPreviewAvailable } from '@proton/shared/lib/helpers/preview';
 
 import { ItemContextMenu } from '../../../legacy/components/sections/ContextMenu/ItemContextMenu';
 import type { ContextMenuPosition } from '../../../modules/contextMenu';
-import { useOpenInDocs } from '../../../legacy/store/_documents';
+import { getOpenInDocsInfo } from '../../../utils/docs/openInDocs';
 import { RenameActionButton } from '../../buttons/RenameActionButton';
+import { ReportAbuseButton } from '../../commonButtons/ReportAbuseButton';
 import { CopyButton } from '../buttons/CopyButton';
 import { CopyLinkContextButton } from '../buttons/CopyLinkContextButton';
 import { DetailsButton } from '../buttons/DetailsButton';
@@ -58,7 +59,7 @@ export function FolderItemContextMenu({
 
     const canCopyPublicLink = canShareSelectedItem && selectedItem?.isSharedPublicly;
 
-    const openInDocs = useOpenInDocs(selectedItem);
+    const openInDocsInfo = selectedItem?.mimeType ? getOpenInDocsInfo(selectedItem.mimeType) : undefined;
     const hasPreviewAvailable =
         isOnlyOneFileItem && selectedItem?.mimeType && isPreviewAvailable(selectedItem.mimeType, selectedItem.size);
 
@@ -70,6 +71,7 @@ export function FolderItemContextMenu({
         showCopyModal,
         showMoveModal,
         showSharingModal,
+        showReportAbuseModal,
         getPublicLinkInfo,
     } = actions;
 
@@ -81,7 +83,7 @@ export function FolderItemContextMenu({
             {isOnlyOneFileItem && permissions.canOpenInDocs && (
                 <OpenInDocsButton type="context" selectedItems={selectedItems} close={close} />
             )}
-            {(hasPreviewAvailable || (isOnlyOneFileItem && openInDocs.canOpen && permissions.canOpenInDocs)) && (
+            {(hasPreviewAvailable || (isOnlyOneFileItem && !!openInDocsInfo && permissions.canOpenInDocs)) && (
                 <ContextSeparator />
             )}
             <DownloadButton type="context" selectedItems={selectedItems} onClick={downloadItems} close={close} />
@@ -96,7 +98,7 @@ export function FolderItemContextMenu({
                 <RenameActionButton type="context" close={close} onClick={showRenameModal} />
             )}
             <DetailsButton type="context" selectedItems={selectedItems} onClick={showDetailsModal} close={close} />
-            {permissions.canEdit && <ContextSeparator />}
+            {(permissions.canEdit || permissions.canReportAbuse) && <ContextSeparator />}
             {permissions.canEdit && isOnlyOneFileItem && (
                 <>
                     <RevisionsContextButton
@@ -110,6 +112,9 @@ export function FolderItemContextMenu({
                 </>
             )}
             {permissions.canTrash && <TrashButton type="context" selectedItems={selectedItems} close={close} />}
+            {permissions.canReportAbuse && isOnlyOneItem && (
+                <ReportAbuseButton buttonType="contextMenu" onClick={showReportAbuseModal} close={close} />
+            )}
             {children}
         </ItemContextMenu>
     );

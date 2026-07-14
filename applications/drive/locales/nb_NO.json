@@ -782,6 +782,9 @@
       "Re-index": [
         "Indekser på nytt"
       ],
+      "Re-indexing in progress": [
+        "Gjenindeksering pågår"
+      ],
       "Re-sign": [
         "Signér på nytt"
       ],
@@ -856,6 +859,9 @@
       ],
       "Report a problem": [
         "Rapporter et problem"
+      ],
+      "Report abuse": [
+        "Rapporter misbruk"
       ],
       "Report an issue": [
         "Rapporter et problem"
@@ -956,6 +962,12 @@
       "Select country": [
         "Velg land"
       ],
+      "Select rating ${ n } out of ${ to }": [
+        "Velg vurdering ${ n } av ${ to }"
+      ],
+      "Send Feedback": [
+        "Send tilbakemelding"
+      ],
       "Set as album cover": [
         "Angi som albumomslag"
       ],
@@ -1036,6 +1048,9 @@
       ],
       "Sign up": [
         "Registrer deg"
+      ],
+      "Skip": [
+        "Hopp over"
       ],
       "Skip verification": [
         "Hopp over bekreftelse"
@@ -1135,6 +1150,9 @@
       ],
       "Upload and share files": [
         "Last opp og del filer"
+      ],
+      "Upload anyway": [
+        "Last opp uansett"
       ],
       "Upload file": [
         "Last opp fil"
@@ -1264,7 +1282,7 @@
         "${ LUMO_APP_NAME } KI-lisens"
       ],
       "${ LUMO_APP_NAME } seats": [
-        "${ LUMO_APP_NAME }-lisenser"
+        "${ LUMO_APP_NAME } seter"
       ],
       "${ price } per dedicated server": [
         "${ price } per dedikerte tjener"
@@ -1273,7 +1291,7 @@
         "${ price } per domene"
       ],
       "${ price } per seat": [
-        "${ price } per lisens"
+        "${ price } per sete"
       ],
       "${ price } per user": [
         "${ price } per bruker"
@@ -1283,16 +1301,16 @@
         "${ seats } ${ LUMO_APP_NAME } KI-lisenser"
       ],
       "${ seats } ${ LUMO_APP_NAME } seat": [
-        "${ seats } ${ LUMO_APP_NAME } lisens",
-        "${ seats } ${ LUMO_APP_NAME } lisenser"
+        "${ seats } ${ LUMO_APP_NAME } sete",
+        "${ seats } ${ LUMO_APP_NAME } seter"
       ],
       "${ seats } ${ MEET_APP_NAME } license": [
-        "${ seats } ${ MEET_APP_NAME }-lisens",
-        "${ seats } ${ MEET_APP_NAME }-lisenser"
+        "${ seats } ${ MEET_APP_NAME } sete",
+        "${ seats } ${ MEET_APP_NAME } seter"
       ],
       "${ seats } writing assistant seat": [
-        "${ seats } skriveassistentlisens",
-        "${ seats } skriveassistentlisenser"
+        "${ seats } skriveassistentsete",
+        "${ seats } skriveassistentseter"
       ],
       "${ users } user": [
         "${ users } bruker",
@@ -1314,7 +1332,7 @@
         "Skriveassistent"
       ],
       "Writing assistant seats": [
-        "Skriveassistentlisenser"
+        "Skriveassistentseter"
       ]
     },
     "Alert": {
@@ -1372,10 +1390,10 @@
         "Du kan ha opptil ${ TRIAL_MAX_DEDICATED_IPS } dedikert server i prøveperioden."
       ],
       "You can have up to ${ TRIAL_MAX_LUMO_SEATS } ${ LUMO_SHORT_APP_NAME } seats during the trial period.": [
-        "Du kan ha opptil ${ TRIAL_MAX_LUMO_SEATS } ${ LUMO_SHORT_APP_NAME }-lisenser i prøveperioden."
+        "Du kan ha opptil ${ TRIAL_MAX_LUMO_SEATS } ${ LUMO_SHORT_APP_NAME } seter i prøveperioden."
       ],
       "You can have up to ${ TRIAL_MAX_SCRIBE_SEATS } Scribe seats during the trial period.": [
-        "Du kan ha opptil ${ TRIAL_MAX_SCRIBE_SEATS } Scribe-lisenser i prøveperioden."
+        "Du kan ha opptil ${ TRIAL_MAX_SCRIBE_SEATS } Scribe-seter i prøveperioden."
       ],
       "You can have up to ${ TRIAL_MAX_USERS } users during the trial period.": [
         "Du kan ha opptil ${ TRIAL_MAX_USERS } brukere i prøveperioden."
@@ -1654,7 +1672,7 @@
         "Ikke aktivert"
       ],
       "Organization does not have enough seats available": [
-        "Organisasjonen har ikke nok ledige lisenser"
+        "Organisasjonen har ikke nok ledige seter"
       ],
       "Organization does not have enough storage available": [
         "Organisasjonen har ikke nok lagringsplass tilgjengelig"
@@ -3656,12 +3674,6 @@
       "Incorrect username": [
         "Uriktig brukernavn"
       ],
-      "Invalid ${ name } code": [
-        "Ugyldig ${ name }-kode"
-      ],
-      "Invalid card number": [
-        "Ugyldig kortnummer"
-      ],
       "Invalid code": [
         "Ugyldig kode"
       ],
@@ -3670,9 +3682,6 @@
       ],
       "Invalid email address": [
         "Ugyldig e-postadresse"
-      ],
-      "Invalid expiration date": [
-        "Ugyldig utløpsdato"
       ],
       "Invalid IBAN": [
         "Ugyldig IBAN"
@@ -3725,6 +3734,9 @@
       ],
       "No contacts found to import": [
         "Fant ingen kontakter å importere"
+      ],
+      "No drive found to import": [
+        "Ingen disker å importere funnet"
       ],
       "No emails found to import - the account does not have an inbox": [
         "Fant ingen e-poster å importere - kontoen har ikke en innboks"
@@ -3976,6 +3988,9 @@
       "Unexpected error, we can't import the contacts": [
         "Uventet feil, vi kan ikke importere kontaktene"
       ],
+      "Unexpected error, we can't import the files": [
+        "Uventet feil, vi kan ikke importere filene"
+      ],
       "Unknown conflict strategy: ${ strategy }": [
         "Ukjent konfliktstrategi: ${ strategy }"
       ],
@@ -4008,6 +4023,9 @@
       ],
       "We cannot retrieve this item": [
         "Vi kan ikke hente dette elementet"
+      ],
+      "We couldn’t send a verification code using this method.": [
+        "Vi kunne ikke sende en bekreftelseskode med denne metoden."
       ],
       "We were not able to load some invitations": [
         "Vi kunne ikke laste inn enkelte invitasjoner"
@@ -4493,6 +4511,9 @@
       ],
       "Security key": [
         "Sikkerhetsnøkkel"
+      ],
+      "Touch your security key.": [
+        "Berør sikkerhetsnøkkelen din."
       ]
     },
     "fido2: Label": {
@@ -5069,7 +5090,7 @@
         "${ MEET_APP_NAME } er en ende-til-ende-kryptert løsning for videokonferanser. Legg den til abonnementet ditt for å verte sikre møter."
       ],
       "${ MEET_APP_NAME } seats": [
-        "${ MEET_APP_NAME }-tilganger"
+        "${ MEET_APP_NAME } seter"
       ],
       "${ normalizedProgress }% completed": [
         "${ normalizedProgress }% fullført"
@@ -5234,6 +5255,9 @@
       ],
       "AI powered assistant to help you craft better emails, quickly and effortlessly.": [
         "KI-drevet assistent for å hjelpe deg med å lage bedre e-poster, raskt og enkelt."
+      ],
+      "Album": [
+        "Album"
       ],
       "All (${ totalFoldersCount } folder)": [
         "(${ totalFoldersCount } mappe)",
@@ -5505,6 +5529,10 @@
       "Do you remember your password? ${ verifyButton }": [
         "Husker du passordet ditt? ${ verifyButton }"
       ],
+      "Do you still want to upload it?": [
+        "Vil du fortsatt laste den opp?",
+        "Vil du fortsatt laste de opp?"
+      ],
       "Done": [
         "Fullført"
       ],
@@ -5650,6 +5678,9 @@
       "Files and folders that others shared with you will appear here": [
         "Filer og mapper som andre har delt med deg, vises her."
       ],
+      "Files only (no photos, ${ DOCS_APP_NAME } or ${ SHEETS_APP_NAME }) - up to 100 GB total, 100,000 files, and 50 GB per file": [
+        "Bare filer (ingen bilder, ${ DOCS_APP_NAME } eller ${ SHEETS_APP_NAME }) – opptil 100 GB totalt, 100 000 filer og 50 GB per fil"
+      ],
       "finance": [
         "finans"
       ],
@@ -5703,6 +5734,9 @@
       ],
       "How does encrypted search work?": [
         "Hvordan fungerer kryptert søk?"
+      ],
+      "I hereby confirm, in good faith, that the information and statements contained in the report are correct and complete.": [
+        "Jeg bekrefter herved i god tro at informasjonen og uttalelsene i rapporten er korrekte og fullstendige."
       ],
       "If those files are not fully downloaded locally on ${ deviceName } you will lose access to them.": [
         "Hvis disse filene ikke er fullstendig lastet ned lokalt på ${ deviceName }, vil du miste tilgang til dem."
@@ -6118,9 +6152,6 @@
       "Please ask the owner to directly invite you to the document.": [
         "Be eieren om å invitere deg direkte til dokumentet."
       ],
-      "Please authenticate your card in the verification tab.": [
-        "Autentiser kortet ditt i verifiseringsfanen."
-      ],
       "Please authenticate your payment in the verification tab.": [
         "Autentiser betalingen din i verifiseringsfanen."
       ],
@@ -6164,9 +6195,6 @@
       "Please try again using a different payment method, or contact your bank.": [
         "Prøv igjen ved å bruke en annen betalingsmåte eller kontakt banken din."
       ],
-      "Please try again, use a different payment method, or contact PayPal for assistance.": [
-        "Prøv igjen, bruk en annen betalingsmåte, eller kontakt PayPal for hjelp."
-      ],
       "Please use another browser or download the file.": [
         "Bruk en annen nettleser eller last ned filen."
       ],
@@ -6181,6 +6209,12 @@
       ],
       "Preparing": [
         "Forbereder"
+      ],
+      "Preparing download": [
+        "Forbereder nedlasting"
+      ],
+      "Preparing…": [
+        "Forbereder…"
       ],
       "Preview failed to be loaded": [
         "Forhåndsvisning kunne ikke lastes"
@@ -6217,6 +6251,9 @@
       ],
       "Public sharing of documents is not yet supported.": [
         "Offentlig deling av dokumenter støttes enda ikke."
+      ],
+      "Re-indexing in progress": [
+        "Gjenindeksering pågår"
       ],
       "Ready to add some photos?": [
         "Klar til å legge til noen bilder?"
@@ -6471,6 +6508,10 @@
       "This can NOT be undone. Please enter the device name to confirm removal.": [
         "Dette kan IKKE angres. Skriv inn enhetens navn for å bekrefte fjerningen."
       ],
+      "This file appears to be empty:": [
+        "Denne filen ser ut til å være tom:",
+        "Disse filene ser ut til å være tomme:"
+      ],
       "This file is too large to preview": [
         "Denne filen er for stor til å forhåndsvises"
       ],
@@ -6658,6 +6699,9 @@
       "Uploaded": [
         "Lastet opp"
       ],
+      "Uploaded - file is empty": [
+        "Opplastet - filen er tom"
+      ],
       "Uploading": [
         "Laster opp"
       ],
@@ -6712,6 +6756,9 @@
       "We couldn't save this photo to your Drive": [
         "Vi kunne ikke lagre dette bildet på din Drive",
         "Vi kunne ikke lagre flere bilder på din Drive"
+      ],
+      "We couldn't verify ${ nameAuthor } uploaded ${ nodeName }. The following may have been tampered with: file data order. Only open if you trust it.": [
+        "Vi kunne ikke bekrefte at ${ nameAuthor } lastet opp ${ nodeName }. Følgende kan ha blitt tuklet med: fildatarekkefølge. Åpne bare hvis du stoler på den."
       ],
       "We couldn’t process your payment.": [
         "Vi kunne ikke behandle betalingen din."
@@ -6814,6 +6861,9 @@
       "You are about to open your default browser and visit:": [
         "Du er i ferd med å åpne standardnettleseren din og besøke:"
       ],
+      "You are currently signed in as ${ username } for ${ organizationName }.": [
+        "Du er for øyeblikket pålogget som ${ username } for (${ organizationName }."
+      ],
       "You are currently signed in as ${ username }.": [
         "Du er for øyeblikket pålogget som ${ username }."
       ],
@@ -6884,9 +6934,6 @@
         "Du må lagre det på nytt fra den offentlige koblingssiden.",
         "Du må lagre dem på nytt fra den offentlige koblingssiden."
       ],
-      "You will soon be redirected to PayPal to verify your payment.": [
-        "Du vil snart bli omdirigert til PayPal for å bekrefte betalingen."
-      ],
       "You won't be charged if you cancel before ${ trialEndsOnFormatted }.": [
         "Du blir ikke belastet hvis du avbryter før ${ trialEndsOnFormatted }."
       ],
@@ -6941,6 +6988,9 @@
       ],
       "Your email will only be used for this one-time verification.": [
         "E-posten din vil kun bli brukt til denne engangsbekreftelsen."
+      ],
+      "Your files are being re-indexed. You can keep searching - results may be incomplete until it finishes. We'll let you know when it's done.": [
+        "Filene dine blir indeksert på nytt. Du kan fortsette å søke – resultatene kan være ufullstendige før det er ferdig. Vi gir deg beskjed når det er ferdig."
       ],
       "Your files are no longer accessible due to a password reset. Re-upload the old encryption key to regain the access. ${ KeyReactivationButton }": [
         "Filene dine er ikke lenger tilgjengelige på grunn av en tilbakestilling av passord. Last opp den gamle krypteringsnøkkelen på nytt for å få tilgang igjen. ${ KeyReactivationButton }"
@@ -7347,6 +7397,9 @@
       "Download anyway": [
         "Last ned uansett"
       ],
+      "Drive": [
+        "Drive"
+      ],
       "Duplicate found": [
         "Duplikat funnet"
       ],
@@ -7392,6 +7445,12 @@
       "Environment compatible": [
         "Miljøkompatibel"
       ],
+      "Exact host matching": [
+        "Nøyaktig vertsmatching"
+      ],
+      "Exact URL matching": [
+        "Nøyaktig URL-samsvar"
+      ],
       "Expired": [
         "Utløpt"
       ],
@@ -7409,6 +7468,9 @@
       ],
       "Extended address": [
         "Utvidet adresse"
+      ],
+      "Extremely Satisfied": [
+        "Ekstremt fornøyd"
       ],
       "File": [
         "Fil"
@@ -7470,8 +7532,8 @@
       "Index kinds": [
         "Indekstyper"
       ],
-      "Initial indexing": [
-        "Innledende indeksering"
+      "Indexing": [
+        "Indekserer"
       ],
       "Integrated 2FA authenticator": [
         "Integrert 2FA-autentisering"
@@ -7554,6 +7616,9 @@
       "Never expires": [
         "Utløper aldri"
       ],
+      "Never fill on this exact URL": [
+        "Fyll aldri på denne nøyaktige nettadressen"
+      ],
       "New password": [
         "Nytt passord"
       ],
@@ -7586,6 +7651,9 @@
       ],
       "Outdated version": [
         "Utdatert versjon"
+      ],
+      "Parent domain and subdomains (default)": [
+        "Overordnet domene og underdomener (standard)"
       ],
       "Password": [
         "Passord"
@@ -7640,6 +7708,9 @@
       ],
       "Region": [
         "Region"
+      ],
+      "Regular expression": [
+        "Regulært uttrykk"
       ],
       "Replace existing folder or file": [
         "Erstatt eksisterende mappe eller fil"
@@ -7716,6 +7787,9 @@
       "Start date": [
         "Startdato"
       ],
+      "Starts with": [
+        "Begynner med"
+      ],
       "State": [
         "Stat"
       ],
@@ -7742,6 +7816,9 @@
       ],
       "System information": [
         "Systeminformasjon"
+      ],
+      "Tell us more about your experience": [
+        "Fortell oss mer om din opplevelse"
       ],
       "Theme": [
         "Tema"
@@ -7779,6 +7856,9 @@
       "Uploaded by": [
         "Lastet opp av"
       ],
+      "URL wildcard pattern": [
+        "URL-jokertegnmønster"
+      ],
       "User opted in": [
         "Brukeren samtykket"
       ],
@@ -7787,6 +7867,9 @@
       ],
       "Verification code": [
         "Verifiseringskode"
+      ],
+      "Very Dissatisfied": [
+        "Svært misfornøyd"
       ],
       "Viewer": [
         "Leser"
@@ -8102,11 +8185,11 @@
         "${ MEET_APP_NAME }-tilgang"
       ],
       "${ MEET_APP_NAME } seats": [
-        "${ MEET_APP_NAME }-tilganger"
+        "${ MEET_APP_NAME } seter"
       ],
       "${ seats } ${ MEET_APP_NAME } seat": [
-        "${ seats } ${ MEET_APP_NAME }-tilgang",
-        "${ seats } ${ MEET_APP_NAME }-tilganger"
+        "${ seats } ${ MEET_APP_NAME } sete",
+        "${ seats } ${ MEET_APP_NAME } seter"
       ]
     },
     "meet_2025: Feature": {
@@ -8169,14 +8252,32 @@
     },
     "meet_2025: Info": {
       "${ seats } seat included": [
-        "${ seats } tilgang inkludert",
-        "${ seats } tilganger inkludert"
+        "${ seats } sete inkludert",
+        "${ seats } seter inkludert"
       ],
       "You can have up to ${ TRIAL_MAX_MEET_SEATS } ${ MEET_SHORT_APP_NAME } seats during the trial period.": [
-        "Du kan ha opptil ${ TRIAL_MAX_MEET_SEATS } ${ MEET_SHORT_APP_NAME }-tilganger i prøveperioden."
+        "Du kan ha opptil ${ TRIAL_MAX_MEET_SEATS } ${ MEET_SHORT_APP_NAME } seter i prøveperioden."
       ]
     },
     "Message": {
+      "'Starts with' matching rule": [
+        "\"Begynner med\"-samsvarsregel"
+      ],
+      "Exact (sub) domain matching rule": [
+        "Regel for nøyaktig (under)domenesamsvar"
+      ],
+      "Exact URL matching rule": [
+        "Regel for nøyaktig URL-samsvar"
+      ],
+      "Never fill with this exact URL": [
+        "Fyll aldri med denne nøyaktige nettadressen"
+      ],
+      "Regular expression rule": [
+        "Regel for regulært uttrykk"
+      ],
+      "Wildcard pattern matching rule": [
+        "Regel for samsvar med jokertegnmønster"
+      ],
       "Your free trial has ended. ${ nonAutoRenewalAction }": [
         "Din gratis prøveperiode er over. ${ nonAutoRenewalAction }"
       ],
@@ -9108,6 +9209,11 @@
         "Du får en kampanjepris på det nåværende abonnementet ditt. Hvis du nedgraderer kontoen vil du miste kampanjeprisen og den vil ikke være tilgjengelig hvis du forsøker å abonnere igjen."
       ]
     },
+    "new_plans: label": {
+      "We're always striving to make ${ config.appName } better. How satisfied are you with your experience?": [
+        "Vi streber alltid etter å gjøre ${ config.appName } bedre. Hvor fornøyd er du med opplevelsen din?"
+      ]
+    },
     "new_plans: Subtext": {
       "Starting from ${ priceLine }": [
         "Starter fra ${ priceLine }"
@@ -9557,9 +9663,6 @@
       "All items deleted permanently from trash": [
         "Alle elementer slettet permanent fra papirkurven"
       ],
-      "An invitation has been sent": [
-        "En invitasjon er sendt"
-      ],
       "Cannot load link": [
         "Kan ikke laste kobling"
       ],
@@ -9596,14 +9699,11 @@
       "Failed to accept share invitation": [
         "Kunne ikke godta delingsinvitasjonen"
       ],
-      "Failed to convert external invitation": [
-        "Kunne ikke konvertere ekstern invitasjon"
+      "Failed to load sharing details": [
+        "Kunne ikke laste inn delingsdetaljene"
       ],
       "Failed to move, please try again": [
         "Kunne ikke flytte. Prøv igjen."
-      ],
-      "Failed to open document": [
-        "Kunne ikke åpne dokumentet"
       ],
       "Failed to reject share invitation": [
         "Kunne ikke avvise delingsinvitasjon"
@@ -10588,6 +10688,9 @@
       ],
       "New name": [
         "Nytt navn"
+      ],
+      "Optional feedback": [
+        "Valgfri tilbakemelding"
       ],
       "Organization name": [
         "Organisasjonsnavn"
@@ -12279,6 +12382,9 @@
       "${ freeUploadLength } of free uploads.": [
         "${ freeUploadLength } med gratis opplastinger."
       ],
+      "${ LUMO_SHORT_APP_NAME } writing assistant": [
+        "${ LUMO_SHORT_APP_NAME }-skriveassistent"
+      ],
       "Account recovery": [
         "Kontogjenoppretting"
       ],
@@ -12538,6 +12644,18 @@
       ],
       "Digital signature partially verified. This folder was uploaded using a publicly accessible share link by a user without a ${ BRAND_NAME } account, so their identity cannot be verified.": [
         "Digital signatur delvis verifisert. Denne mappen ble lastet opp ved hjelp av en offentlig tilgjengelig delingskobling av en bruker uten en ${ BRAND_NAME }-konto, dermed kan identiteten deres ikke bekreftes."
+      ],
+      "Digital signature verified. This file was securely created by ${ author }.": [
+        "Digital signatur verifisert. Denne filen ble opprettet på en sikker måte av ${ author }."
+      ],
+      "Digital signature verified. This file was securely uploaded by ${ author }.": [
+        "Digital signatur verifisert. Denne filen ble lastet opp på en sikker måte av ${ author }."
+      ],
+      "Digital signature verified. This folder was securely created by ${ author }.": [
+        "Digital signatur verifisert. Denne mappen ble opprettet på en sikker måte av ${ author }."
+      ],
+      "Digital signature verified. This folder was securely uploaded by ${ author }.": [
+        "Digital signatur verifisert. Denne mappen ble lastet opp på en sikker måte av ${ author }."
       ],
       "Discard": [
         "Forkast"
@@ -12883,9 +13001,6 @@
       "Payment verification": [
         "Betalingsbekreftelse"
       ],
-      "PayPal verification failed": [
-        "PayPal-bekreftelse mislyktes"
-      ],
       "Phone numbers": [
         "Telefonnumre"
       ],
@@ -13145,6 +13260,9 @@
       "Upload and share files": [
         "Last opp og del filer"
       ],
+      "Upload empty file?": [
+        "Laste opp tom fil?"
+      ],
       "Uploaded": [
         "Lastet opp"
       ],
@@ -13175,6 +13293,18 @@
       "Warning: suspected fake website": [
         "Advarsel: mistenkt falskt nettsted"
       ],
+      "We couldn’t verify that ${ author } created this file.": [
+        "Vi kunne ikke bekrefte at ${ author } opprettet denne filen."
+      ],
+      "We couldn’t verify that ${ author } created this folder.": [
+        "Vi kunne ikke bekrefte at ${ author } opprettet denne mappen."
+      ],
+      "We couldn’t verify that ${ author } uploaded this file.": [
+        "Vi kunne ikke bekrefte at ${ author } lastet opp denne filen."
+      ],
+      "We couldn’t verify that ${ author } uploaded this folder.": [
+        "Vi kunne ikke bekrefte at ${ author } lastet opp denne mappen."
+      ],
       "We couldn’t verify that an anonymous user created this file.": [
         "Vi kunne ikke bekrefte at en anonym bruker opprettet denne filen."
       ],
@@ -13189,6 +13319,15 @@
       ],
       "We weren’t able to confirm that the file content was uploaded by ${ claimedContentAuthor }. The reason is: ${ activeRevision.contentAuthor.error.error }": [
         "Vi klarte ikke å bekrefte at filinnholdet ble lastet opp av ${ claimedContentAuthor }. Årsaken er: ${ activeRevision.contentAuthor.error.error }"
+      ],
+      "We weren’t able to confirm that the name was created or modified by ${ claimedNameAuthor }. The reason is: ${ node.nameAuthor.error.error }": [
+        "Vi klarte ikke å bekrefte at navnet ble opprettet eller endret av ${ claimedNameAuthor }. Årsaken er: ${ node.nameAuthor.error.error }"
+      ],
+      "We weren’t able to confirm that the node was created by ${ claimedKeyAuthor }. The reason is: ${ node.keyAuthor.error.error }": [
+        "Vi klarte ikke å bekrefte at noden ble opprettet av ${ claimedKeyAuthor }. Årsaken er: ${ node.keyAuthor.error.error }"
+      ],
+      "We'd love to hear from you!": [
+        "Vi vil gjerne høre fra deg!"
       ],
       "Welcome offer": [
         "Velkomsttilbud"
@@ -13251,6 +13390,26 @@
         "Du har fått 5 GB lagringsplass"
       ]
     },
+    "Title header for keys table": {
+      "Actions": [
+        "Handlinger"
+      ],
+      "Created": [
+        "Opprettet"
+      ],
+      "Expires": [
+        "Utløper"
+      ],
+      "Fingerprint": [
+        "Fingeravtrykk"
+      ],
+      "Status": [
+        "Status"
+      ],
+      "Type": [
+        "Type"
+      ]
+    },
     "Today icon tooltip in mini calendar": {
       "Today": [
         "I dag"
@@ -13305,6 +13464,9 @@
       "If you purchased a gift code or received one from our support team, you can enter it here.": [
         "Hvis du kjøpte en gavekode eller mottok en fra vår kundestøtte, kan du angi den her."
       ],
+      "Instant AI assistance, human expert on hand!": [
+        "Øyeblikkelig KI-assistanse, menneskelig ekspert er klar!"
+      ],
       "Load image": [
         "Last inn bilde"
       ],
@@ -13343,6 +13505,9 @@
       ],
       "Upload a public key to enable sending end-to-end encrypted emails to this email": [
         "Last opp en offentlig nøkkel for å aktivere sending av ende-til-ende-krypterte e-postmeldinger til denne e-posten."
+      ],
+      "Version 6 OpenPGP key": [
+        "Versjon 6 OpenPGP-nøkkel"
       ],
       "We have sent them an invite to access the item.": [
         "Vi har sendt dem en invitasjon til å få tilgang til elementet."
@@ -13386,6 +13551,11 @@
     "Upsell": {
       "Get Drive for Business": [
         "Skaff deg Drive for Business"
+      ]
+    },
+    "user_modal": {
+      "You'll be able to assign roles once the user has accepted the invitation.": [
+        "Du vil kunne tildele roller når brukeren har godtatt invitasjonen."
       ]
     },
     "Validation": {
@@ -13504,6 +13674,9 @@
       ],
       "${ BRAND_NAME } will transfer as much data as possible, starting with your most recent messages.": [
         "${ BRAND_NAME } vil overføre så mye data som mulig, og starter med de nyeste meldingene dine."
+      ],
+      "${ modeLabelStong } provides powerful control, but a single error can cause autofill to match and fill data on fraudulent or phishing websites.": [
+        "${ modeLabelStong } gir kraftig kontroll, men én enkelt feil kan føre til at autofyll samsvarer med og fyller ut data på svindel- eller nettfisking-nettsteder."
       ],
       "Are you sure you want to permanently delete ${ count } contact?": [
         "Er du sikker på at du ønsker å slette ${ count } kontakt permanent?",

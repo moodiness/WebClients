@@ -10,12 +10,25 @@ import type {
     RoleAssignment,
 } from '@proton/shared/lib/interfaces';
 
+export const PANEL_HEADER_HEIGHT = '5rem';
+
 export enum GROUPS_STATE {
     EMPTY = 'empty',
     VIEW = 'view',
     NEW = 'new',
     EDIT = 'edit',
 }
+
+export enum GROUPS_RESTRICTION_REASON {
+    NONE = 'none',
+    PLAN_UNSUPPORTED = 'plan_unsupported',
+    RESUMING_ROLE_ASSIGNMENT = 'resuming_role_assignment',
+}
+
+export type GroupsRestriction =
+    | { reason: GROUPS_RESTRICTION_REASON.NONE }
+    | { reason: GROUPS_RESTRICTION_REASON.PLAN_UNSUPPORTED }
+    | { reason: GROUPS_RESTRICTION_REASON.RESUMING_ROLE_ASSIGNMENT; groupId: string };
 
 interface DomainData {
     selectedDomain: string;
@@ -29,6 +42,7 @@ export interface GroupFormData {
     address: string;
     permissions: GroupPermissions;
     members: string;
+    adminRoles: string[];
 }
 
 export interface SerializedGroupFormData {
@@ -47,9 +61,8 @@ export interface DomainSuggestion {
 }
 
 export interface GroupsManagementReturn {
-    groups: Group[];
-    /** Groups exist but full management is revoked — either the plan no longer supports groups, or the no-custom-domain feature flag was disabled after groups were created. Users can only delete. */
-    isFrozen: boolean;
+    groups: EnhancedGroup[];
+    restrictedBy: GroupsRestriction;
     members: EnhancedMember[];
     selectedGroup: EnhancedGroup | undefined;
     uiState: GROUPS_STATE;
@@ -72,5 +85,6 @@ export interface GroupsManagementReturn {
         onCreateGroup: () => void;
         onAddGroupMembers: (group: Group, emails: string[]) => Promise<void>;
         onUnselectGroup: () => void;
+        onToggleRoleAssignments: () => void;
     };
 }

@@ -1,12 +1,7 @@
 import { renderHook } from '@testing-library/react-hooks';
 
-import {
-    type AmountAndCurrency,
-    Autopay,
-    PAYMENT_METHOD_TYPES,
-    type PaymentMethodPaypal,
-    type SavedPaymentMethodInternal,
-} from '@proton/payments';
+import { Autopay, PAYMENT_METHOD_TYPES } from '@proton/payments/core/constants';
+import type { AmountAndCurrency, SavedPaymentMethod } from '@proton/payments/core/interface';
 import { apiMock } from '@proton/testing/lib/api';
 import { addTokensResponse } from '@proton/testing/lib/payments/api-endpoints';
 
@@ -19,10 +14,10 @@ beforeEach(() => {
     jest.clearAllMocks();
 });
 
-const savedMethod: SavedPaymentMethodInternal = {
+const savedMethod: SavedPaymentMethod = {
     Order: 500,
     ID: '1',
-    Type: PAYMENT_METHOD_TYPES.CARD,
+    Type: PAYMENT_METHOD_TYPES.CHARGEBEE_CARD,
     Details: {
         Name: 'John Doe',
         ExpMonth: '12',
@@ -149,7 +144,7 @@ it('should fetch token', async () => {
         PaymentToken: 'token123',
         v: 5,
         chargeable: true,
-        type: 'card',
+        type: 'chargebee-card',
     });
 });
 
@@ -194,7 +189,7 @@ it('should process token', async () => {
         PaymentToken: 'token123',
         v: 5,
         chargeable: true,
-        type: 'card',
+        type: 'chargebee-card',
     });
 });
 
@@ -265,7 +260,7 @@ it('should update the saved method', async () => {
             ),
         {
             initialProps: {
-                savedMethod: savedMethod as SavedPaymentMethodInternal,
+                savedMethod: savedMethod as SavedPaymentMethod,
             },
         }
     );
@@ -273,10 +268,10 @@ it('should update the saved method', async () => {
     expect((result.current.paymentProcessor as any).state.method.paymentMethodId).toEqual(savedMethod.ID);
     expect((result.current.paymentProcessor as any).state.method.type).toEqual(savedMethod.Type);
 
-    const newSavedMethod: PaymentMethodPaypal = {
+    const newSavedMethod: SavedPaymentMethod = {
         Order: 400,
         ID: '2',
-        Type: PAYMENT_METHOD_TYPES.PAYPAL,
+        Type: PAYMENT_METHOD_TYPES.CHARGEBEE_PAYPAL,
         Details: {
             BillingAgreementID: 'BA-123',
             PayerID: 'pid123',
@@ -285,7 +280,7 @@ it('should update the saved method', async () => {
     };
 
     rerender({
-        savedMethod: newSavedMethod as SavedPaymentMethodInternal,
+        savedMethod: newSavedMethod,
     });
 
     expect((result.current.paymentProcessor as any).state.method.paymentMethodId).toEqual(newSavedMethod.ID);

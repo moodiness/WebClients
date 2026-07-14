@@ -782,6 +782,9 @@
       "Re-index": [
         "Reindexar"
       ],
+      "Re-indexing in progress": [
+        "Reindexación en curso"
+      ],
       "Re-sign": [
         "Volver a firmar"
       ],
@@ -856,6 +859,9 @@
       ],
       "Report a problem": [
         "Reportar un problema"
+      ],
+      "Report abuse": [
+        "Reportar abuso"
       ],
       "Report an issue": [
         "Notificar un problema"
@@ -956,6 +962,12 @@
       "Select country": [
         "Seleccionar país"
       ],
+      "Select rating ${ n } out of ${ to }": [
+        "Seleccione una puntuación del ${ n } al ${ to }"
+      ],
+      "Send Feedback": [
+        "Enviar comentarios"
+      ],
       "Set as album cover": [
         "Establecer como portada del álbum"
       ],
@@ -1036,6 +1048,9 @@
       ],
       "Sign up": [
         "Registrarse"
+      ],
+      "Skip": [
+        "Omitir"
       ],
       "Skip verification": [
         "Omitir verificación"
@@ -1135,6 +1150,9 @@
       ],
       "Upload and share files": [
         "Cargar y compartir archivos"
+      ],
+      "Upload anyway": [
+        "Cargar de todos modos"
       ],
       "Upload file": [
         "Cargar archivo"
@@ -3656,12 +3674,6 @@
       "Incorrect username": [
         "Nombre de usuario incorrecto"
       ],
-      "Invalid ${ name } code": [
-        "Código ${ name } inválido"
-      ],
-      "Invalid card number": [
-        "Número de tarjeta inválido"
-      ],
       "Invalid code": [
         "Código inválido"
       ],
@@ -3670,9 +3682,6 @@
       ],
       "Invalid email address": [
         "Dirección de correo inválida"
-      ],
-      "Invalid expiration date": [
-        "Fecha de expiración inválida"
       ],
       "Invalid IBAN": [
         "El IBAN no es válido."
@@ -3725,6 +3734,9 @@
       ],
       "No contacts found to import": [
         "No se encontraron contactos para importar"
+      ],
+      "No drive found to import": [
+        "No se encontró ninguna unidad para importar"
       ],
       "No emails found to import - the account does not have an inbox": [
         "No se encontraron correos para importar, la cuenta no tiene un buzón"
@@ -3976,6 +3988,9 @@
       "Unexpected error, we can't import the contacts": [
         "Error inesperado, no podemos importar los contactos"
       ],
+      "Unexpected error, we can't import the files": [
+        "Error inesperado, no se pueden importar los archivos"
+      ],
       "Unknown conflict strategy: ${ strategy }": [
         "Estrategia de conflicto desconocida: ${ strategy }"
       ],
@@ -4008,6 +4023,9 @@
       ],
       "We cannot retrieve this item": [
         "No se puede recuperar este elemento"
+      ],
+      "We couldn’t send a verification code using this method.": [
+        "No pudimos enviar un código de verificación usando este método."
       ],
       "We were not able to load some invitations": [
         "No pudimos cargar algunas invitaciones"
@@ -4493,6 +4511,9 @@
       ],
       "Security key": [
         "Clave de seguridad"
+      ],
+      "Touch your security key.": [
+        "Toque su llave de seguridad."
       ]
     },
     "fido2: Label": {
@@ -5235,6 +5256,9 @@
       "AI powered assistant to help you craft better emails, quickly and effortlessly.": [
         "Asistente con tecnología de IA para ayudarle a crear mejores correos electrónicos de manera rápida y sin esfuerzo."
       ],
+      "Album": [
+        "Álbum"
+      ],
       "All (${ totalFoldersCount } folder)": [
         "Todo (${ totalFoldersCount } carpeta)",
         "Todo (${ totalFoldersCount } carpetas)"
@@ -5505,6 +5529,10 @@
       "Do you remember your password? ${ verifyButton }": [
         "¿Recuerda su contraseña? ${ verifyButton }"
       ],
+      "Do you still want to upload it?": [
+        "¿Aún desea cargarlo?",
+        "¿Aún desea cargarlos?"
+      ],
       "Done": [
         "Hecho"
       ],
@@ -5650,6 +5678,9 @@
       "Files and folders that others shared with you will appear here": [
         "Los archivos y carpetas que otros comparten con usted aparecerán aquí"
       ],
+      "Files only (no photos, ${ DOCS_APP_NAME } or ${ SHEETS_APP_NAME }) - up to 100 GB total, 100,000 files, and 50 GB per file": [
+        "Solo archivos (sin fotos, ${ DOCS_APP_NAME } ni ${ SHEETS_APP_NAME }) hasta 100 GB en total, 100 000 archivos y 50 GB por archivo"
+      ],
       "finance": [
         "finanzas"
       ],
@@ -5703,6 +5734,9 @@
       ],
       "How does encrypted search work?": [
         "¿Cómo funciona la búsqueda cifrada?"
+      ],
+      "I hereby confirm, in good faith, that the information and statements contained in the report are correct and complete.": [
+        "Por la presente confirmo que actúo de buena fe y que la información y las declaraciones contenidas en el informe son correctas y completas."
       ],
       "If those files are not fully downloaded locally on ${ deviceName } you will lose access to them.": [
         "Si esos archivos no están completamente descargados localmente en ${ deviceName }, no podrá acceder a ellos."
@@ -6118,9 +6152,6 @@
       "Please ask the owner to directly invite you to the document.": [
         "Pregunte al propietario que le invite directamente al documento."
       ],
-      "Please authenticate your card in the verification tab.": [
-        "Autentique la tarjeta en la pestaña de verificación."
-      ],
       "Please authenticate your payment in the verification tab.": [
         "Autentique el pago en la pestaña de verificación."
       ],
@@ -6164,9 +6195,6 @@
       "Please try again using a different payment method, or contact your bank.": [
         "Intente de nuevo usando un método de pago diferente o contacte con el banco."
       ],
-      "Please try again, use a different payment method, or contact PayPal for assistance.": [
-        "Intente de nuevo, use un método de pago diferente o contacte con PayPal por asistencia."
-      ],
       "Please use another browser or download the file.": [
         "Use otro navegador o descargue el archivo."
       ],
@@ -6181,6 +6209,12 @@
       ],
       "Preparing": [
         "Preparando"
+      ],
+      "Preparing download": [
+        "Preparando la descarga"
+      ],
+      "Preparing…": [
+        "Preparando…"
       ],
       "Preview failed to be loaded": [
         "Error al cargar la vista previa"
@@ -6217,6 +6251,9 @@
       ],
       "Public sharing of documents is not yet supported.": [
         "El intercambio público de documentos aún no está admitido."
+      ],
+      "Re-indexing in progress": [
+        "Reindexación en curso"
       ],
       "Ready to add some photos?": [
         "¿Listo para agregar algunas fotos?"
@@ -6471,6 +6508,10 @@
       "This can NOT be undone. Please enter the device name to confirm removal.": [
         "Esta acción no se puede deshacer. Ingrese el nombre del dispositivo para confirmar la eliminación."
       ],
+      "This file appears to be empty:": [
+        "Este archivo parece estar vacío:",
+        "Estos archivos parecen estar vacíos:"
+      ],
       "This file is too large to preview": [
         "Este archivo es demasiado grande para previsualizarlo."
       ],
@@ -6658,6 +6699,9 @@
       "Uploaded": [
         "Cargado"
       ],
+      "Uploaded - file is empty": [
+        "Cargado, el archivo está vacío"
+      ],
       "Uploading": [
         "Cargando"
       ],
@@ -6817,6 +6861,9 @@
       "You are about to open your default browser and visit:": [
         "Está a punto de abrir su navegador por defecto y consultar:"
       ],
+      "You are currently signed in as ${ username } for ${ organizationName }.": [
+        "Actualmente inició sesión como ${ username } en (${ organizationName }."
+      ],
       "You are currently signed in as ${ username }.": [
         "Actualmente inició sesión como ${ username }."
       ],
@@ -6887,9 +6934,6 @@
         "Necesitará guardarlo de nuevo desde la página del enlace público.",
         "Necesitará guardarlos de nuevo desde la página del enlace público."
       ],
-      "You will soon be redirected to PayPal to verify your payment.": [
-        "Pronto será redirigido a PayPal para verificar el pago."
-      ],
       "You won't be charged if you cancel before ${ trialEndsOnFormatted }.": [
         "No se le cobrará si cancela antes del ${ trialEndsOnFormatted }."
       ],
@@ -6944,6 +6988,9 @@
       ],
       "Your email will only be used for this one-time verification.": [
         "El correo electrónico sólo se usará para esta verificación única."
+      ],
+      "Your files are being re-indexed. You can keep searching - results may be incomplete until it finishes. We'll let you know when it's done.": [
+        "Sus archivos se están reindexando. Puede seguir buscando; los resultados pueden estar incompletos hasta que termine. Le avisaremos cuando haya terminado."
       ],
       "Your files are no longer accessible due to a password reset. Re-upload the old encryption key to regain the access. ${ KeyReactivationButton }": [
         "Los archivos ya no son accesibles debido a un restablecimiento de contraseña. Vuelva a cargar la clave de cifrado antigua para recuperar el acceso. ${ KeyReactivationButton }"
@@ -7353,6 +7400,9 @@
       "Download anyway": [
         "Descargar de todos modos"
       ],
+      "Drive": [
+        "Drive"
+      ],
       "Duplicate found": [
         "Duplicado encontrado"
       ],
@@ -7398,6 +7448,12 @@
       "Environment compatible": [
         "Entorno compatible"
       ],
+      "Exact host matching": [
+        "Coincidencia de host exacta"
+      ],
+      "Exact URL matching": [
+        "Coincidencia de URL exacta"
+      ],
       "Expired": [
         "Expirado"
       ],
@@ -7415,6 +7471,9 @@
       ],
       "Extended address": [
         "Dirección ampliada"
+      ],
+      "Extremely Satisfied": [
+        "Extremadamente satisfactoria"
       ],
       "File": [
         "Archivo"
@@ -7476,8 +7535,8 @@
       "Index kinds": [
         "Tipos de índice"
       ],
-      "Initial indexing": [
-        "Indexación inicial"
+      "Indexing": [
+        "Indexando"
       ],
       "Integrated 2FA authenticator": [
         "Autenticador de 2FA integrado"
@@ -7560,6 +7619,9 @@
       "Never expires": [
         "Nunca expira"
       ],
+      "Never fill on this exact URL": [
+        "Nunca completar esta URL exacta"
+      ],
       "New password": [
         "Contraseña nueva"
       ],
@@ -7592,6 +7654,9 @@
       ],
       "Outdated version": [
         "Versión obsoleta"
+      ],
+      "Parent domain and subdomains (default)": [
+        "Dominio principal y subdominios (por defecto)"
       ],
       "Password": [
         "Contraseña"
@@ -7646,6 +7711,9 @@
       ],
       "Region": [
         "Estado"
+      ],
+      "Regular expression": [
+        "Expresión regular"
       ],
       "Replace existing folder or file": [
         "Reemplazar la carpeta o el archivo existente"
@@ -7722,6 +7790,9 @@
       "Start date": [
         "Fecha inicial"
       ],
+      "Starts with": [
+        "Comienza con"
+      ],
       "State": [
         "Estado"
       ],
@@ -7748,6 +7819,9 @@
       ],
       "System information": [
         "Información del sistema"
+      ],
+      "Tell us more about your experience": [
+        "Cuéntenos más sobre su experiencia."
       ],
       "Theme": [
         "Tema"
@@ -7785,6 +7859,9 @@
       "Uploaded by": [
         "Cargado por"
       ],
+      "URL wildcard pattern": [
+        "Patrón comodín de URL"
+      ],
       "User opted in": [
         "El usuario optó por participar"
       ],
@@ -7793,6 +7870,9 @@
       ],
       "Verification code": [
         "Código de verificación"
+      ],
+      "Very Dissatisfied": [
+        "Poco satisfactoria"
       ],
       "Viewer": [
         "Lector"
@@ -8183,6 +8263,24 @@
       ]
     },
     "Message": {
+      "'Starts with' matching rule": [
+        "Regla de coincidencia «Comienza con»"
+      ],
+      "Exact (sub) domain matching rule": [
+        "Regla de coincidencia de (sub)dominio exacto"
+      ],
+      "Exact URL matching rule": [
+        "Regla de coincidencia de URL exacta"
+      ],
+      "Never fill with this exact URL": [
+        "Nunca completar con esta URL exacta"
+      ],
+      "Regular expression rule": [
+        "Regla de expresión regular"
+      ],
+      "Wildcard pattern matching rule": [
+        "Regla de coincidencia de patrón comodín"
+      ],
       "Your free trial has ended. ${ nonAutoRenewalAction }": [
         "Su prueba gratuita ha finalizado. ${ nonAutoRenewalAction }"
       ],
@@ -9114,6 +9212,11 @@
         "Está disfrutando de un precio promocional en el plan actual. Si pasa a un plan inferior, perderá el precio promocional y no estará disponible si crea una cuenta nueva."
       ]
     },
+    "new_plans: label": {
+      "We're always striving to make ${ config.appName } better. How satisfied are you with your experience?": [
+        "Siempre nos esforzamos por mejorar ${ config.appName }. ¿Su experiencia ha sido satisfactoria?"
+      ]
+    },
     "new_plans: Subtext": {
       "Starting from ${ priceLine }": [
         "A partir de ${ priceLine }"
@@ -9563,9 +9666,6 @@
       "All items deleted permanently from trash": [
         "Todos los elementos eliminados permanentemente de la Papelera"
       ],
-      "An invitation has been sent": [
-        "Se ha enviado una invitación"
-      ],
       "Cannot load link": [
         "Error al cargar el enlace"
       ],
@@ -9602,17 +9702,11 @@
       "Failed to accept share invitation": [
         "Ocurrió un error al aceptar la invitación compartida"
       ],
-      "Failed to convert external invitation": [
-        "Error al convertir la invitación externa"
-      ],
       "Failed to load sharing details": [
         "Error al cargar los detalles de uso compartido"
       ],
       "Failed to move, please try again": [
         "Error al mover, inténtelo de nuevo"
-      ],
-      "Failed to open document": [
-        "Error al abrir el documento"
       ],
       "Failed to reject share invitation": [
         "Ocurrió un error al rechazar la invitación compartida"
@@ -10597,6 +10691,9 @@
       ],
       "New name": [
         "Nombre nuevo"
+      ],
+      "Optional feedback": [
+        "Comentarios opcionales"
       ],
       "Organization name": [
         "Nombre de la organización"
@@ -12552,16 +12649,16 @@
         "Firma digital parcialmente verificada. Esta carpeta fue cargada usando un enlace para compartir de acceso público por un usuario sin una cuenta de ${ BRAND_NAME }, por lo que su identidad no puede ser verificada."
       ],
       "Digital signature verified. This file was securely created by ${ author }.": [
-        "Firma digital verificada. Este archivo se ha creado de forma segura por ${ author }."
+        "Firma digital verificada. Este archivo se creó de forma segura por ${ author }."
       ],
       "Digital signature verified. This file was securely uploaded by ${ author }.": [
-        "Firma digital verificada. Este archivo se ha cargado de forma segura por ${ author }."
+        "Firma digital verificada. Este archivo se cargó de forma segura por ${ author }."
       ],
       "Digital signature verified. This folder was securely created by ${ author }.": [
-        "Firma digital verificada. Esta carpeta se ha creado de forma segura por ${ author }."
+        "Firma digital verificada. Esta carpeta se cargó de forma segura por ${ author }."
       ],
       "Digital signature verified. This folder was securely uploaded by ${ author }.": [
-        "Firma digital verificada. Esta carpeta se ha cargado de forma segura por ${ author }."
+        "Firma digital verificada. Esta carpeta se cargó de forma segura por ${ author }."
       ],
       "Discard": [
         "Descartar"
@@ -12907,9 +13004,6 @@
       "Payment verification": [
         "Verificación de pago"
       ],
-      "PayPal verification failed": [
-        "Error con la verificación de PayPal"
-      ],
       "Phone numbers": [
         "Números de teléfono"
       ],
@@ -13169,6 +13263,9 @@
       "Upload and share files": [
         "Cargue y comparta archivos"
       ],
+      "Upload empty file?": [
+        "¿Cargar archivo vacío?"
+      ],
       "Uploaded": [
         "Cargado"
       ],
@@ -13227,10 +13324,13 @@
         "No hemos podido confirmar que ${ claimedContentAuthor } haya subido el contenido del archivo. El motivo es el siguiente: ${ activeRevision.contentAuthor.error.error }"
       ],
       "We weren’t able to confirm that the name was created or modified by ${ claimedNameAuthor }. The reason is: ${ node.nameAuthor.error.error }": [
-        "No hemos podido confirmar que el nombre se ha creado o modificado por ${ claimedNameAuthor }. El motivo es el siguiente: ${ node.nameAuthor.error.error }"
+        "No pudimos confirmar que el nombre se creó o modificó por ${ claimedNameAuthor }. El motivo es el siguiente: ${ node.nameAuthor.error.error }"
       ],
       "We weren’t able to confirm that the node was created by ${ claimedKeyAuthor }. The reason is: ${ node.keyAuthor.error.error }": [
         "No hemos podido confirmar que el nodo se ha creado por ${ claimedKeyAuthor }. El motivo es el siguiente: ${ node.keyAuthor.error.error }"
+      ],
+      "We'd love to hear from you!": [
+        "Nos encantaría saber su opinión"
       ],
       "Welcome offer": [
         "Bienvenida la oferta"
@@ -13293,6 +13393,26 @@
         "Ha obtenido 5 GB de almacenamiento"
       ]
     },
+    "Title header for keys table": {
+      "Actions": [
+        "Acciones"
+      ],
+      "Created": [
+        "Creada"
+      ],
+      "Expires": [
+        "Expira"
+      ],
+      "Fingerprint": [
+        "Huella digital"
+      ],
+      "Status": [
+        "Estado"
+      ],
+      "Type": [
+        "Tipo"
+      ]
+    },
     "Today icon tooltip in mini calendar": {
       "Today": [
         "Hoy"
@@ -13348,7 +13468,7 @@
         "Si compó un código de regalo o recibió uno de nuestro equipo de soporte, puede ingresarlo aquí."
       ],
       "Instant AI assistance, human expert on hand!": [
-        "Asistencia IA inmediata, experto humano a su disposición!"
+        "¡Asistencia IA inmediata, experto humano a su disposición!"
       ],
       "Load image": [
         "Cargar imagen"
@@ -13388,6 +13508,9 @@
       ],
       "Upload a public key to enable sending end-to-end encrypted emails to this email": [
         "Cargue una clave pública para permitir el envío de correos electrónicos cifrados de extremo a extremo a este correo electrónico"
+      ],
+      "Version 6 OpenPGP key": [
+        "Clave OpenPGP versión 6"
       ],
       "We have sent them an invite to access the item.": [
         "Hemos enviado una invitación para acceder al elemento."
@@ -13431,6 +13554,11 @@
     "Upsell": {
       "Get Drive for Business": [
         "Obtener Drive for Business"
+      ]
+    },
+    "user_modal": {
+      "You'll be able to assign roles once the user has accepted the invitation.": [
+        "Podrá asignar roles una vez que el usuario haya aceptado la invitación."
       ]
     },
     "Validation": {
@@ -13549,6 +13677,9 @@
       ],
       "${ BRAND_NAME } will transfer as much data as possible, starting with your most recent messages.": [
         "${ BRAND_NAME } transferirá tanta información posible, comenzando con los mensajes más recientes."
+      ],
+      "${ modeLabelStong } provides powerful control, but a single error can cause autofill to match and fill data on fraudulent or phishing websites.": [
+        "${ modeLabelStong } brinda un control potente, pero un solo error puede provocar que la función de autocompletar coincida con datos de sitios web fraudulentos o de suplantación y los complete automáticamente."
       ],
       "Are you sure you want to permanently delete ${ count } contact?": [
         "¿Está seguro de que quiere eliminar permanentemente ${ count } contacto?",

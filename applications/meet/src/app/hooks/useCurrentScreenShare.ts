@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 
 import { useRoomContext, useTracks } from '@livekit/components-react';
 import type { RemoteTrackPublication } from 'livekit-client';
-import { Track } from 'livekit-client';
+import { RoomEvent, Track } from 'livekit-client';
 import { c } from 'ttag';
 
 import useNotifications from '@proton/components/hooks/useNotifications';
@@ -76,7 +76,6 @@ export function useCurrentScreenShare({
                     audio:
                         isMeetEnableScreenShareAudio && !(isElectronApp && isWindows())
                             ? {
-                                  // @ts-expect-error Property exist but livekit types doesn't support it yet https://developer.mozilla.org/en-US/docs/Web/API/MediaTrackSettings/restrictOwnAudio
                                   restrictOwnAudio: true,
                               }
                             : false,
@@ -150,15 +149,18 @@ export function useCurrentScreenShare({
     }, [screenShareTrack?.publication?.trackSid]);
 
     useEffect(() => {
-        // Subscribe to all existing screen shares when joining
-        for (const participant of room.remoteParticipants.values()) {
-            for (const publication of participant.trackPublications.values()) {
-                if (publication.kind === Track.Kind.Video && publication.source === Track.Source.ScreenShare) {
-                    publication.setSubscribed(true);
-                    publication.setEnabled(true);
+        const subscribeToExistingScreenShares = () => {
+            for (const participant of room.remoteParticipants.values()) {
+                for (const publication of participant.trackPublications.values()) {
+                    if (publication.kind === Track.Kind.Video && publication.source === Track.Source.ScreenShare) {
+                        publication.setSubscribed(true);
+                        publication.setEnabled(true);
+                    }
                 }
             }
-        }
+        };
+
+        subscribeToExistingScreenShares();
 
         // Subscribe to new screen shares as they're published
         const handleTrackPublished = (publication: RemoteTrackPublication) => {
@@ -169,9 +171,13 @@ export function useCurrentScreenShare({
         };
 
         room.on('trackPublished', handleTrackPublished);
+        room.on(RoomEvent.Connected, subscribeToExistingScreenShares);
+        room.on(RoomEvent.Reconnected, subscribeToExistingScreenShares);
 
         return () => {
             room.off('trackPublished', handleTrackPublished);
+            room.off(RoomEvent.Connected, subscribeToExistingScreenShares);
+            room.off(RoomEvent.Reconnected, subscribeToExistingScreenShares);
         };
     }, [room]);
 

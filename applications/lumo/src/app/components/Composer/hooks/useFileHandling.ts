@@ -11,10 +11,11 @@ import { useFileProcessing } from '../../../hooks';
 import { useLumoDispatch, useLumoSelector, useLumoStore } from '../../../redux/hooks';
 import { selectProvisionalAttachments, selectSpaceByIdOptional } from '../../../redux/selectors';
 import { deleteAttachment } from '../../../redux/slices/core/attachments';
+import { onComposerError } from '../../../remote/nativeComposerBridgeHelpers';
 import { handleFileAsync } from '../../../services/files';
 import { type ExcelSheetInfo, createExcelSheetFile, getExcelSheetsFromFile } from '../../../services/files/excelSheets';
 import { SearchService } from '../../../services/search/searchService';
-import type { AttachmentId, Message, ProjectSpace } from '../../../types';
+import { type AttachmentId, LUMO_API_ERRORS, type Message, type ProjectSpace } from '../../../types';
 import type { DriveDocument } from '../../../types/documents';
 import {
     isExcelFile,
@@ -63,7 +64,7 @@ export const useFileHandling = ({
 
     // Derived from available data — no isGuest context read needed.
     // Absence of uploadToDrive signals a guest session; linkedDriveFolder signals Drive-upload mode.
-    //eslint-disable-next-line no-nested-ternary
+
     const fileUploadMode: FileUploadMode = !uploadToDrive ? 'guest' : linkedDriveFolder ? 'linked-drive' : 'local';
 
     const validateFile = useCallback(
@@ -83,6 +84,10 @@ export const useFileHandling = ({
                         type: 'error',
                     });
                 }
+                // The web notifications above are invisible inside the native mobile
+                // composer (the web UI is hidden), so also notify native to surface its
+                // own "file type not supported" message (e.g. for videos).
+                onComposerError(LUMO_API_ERRORS.UNSUPPORTED_FILE);
                 return false;
             }
 
@@ -223,7 +228,7 @@ export const useFileHandling = ({
     );
 
     const processFileLocally = useCallback(
-        async (file: File, selectedExcelSheetNames?: string[], renameOnConflict: boolean = false): Promise<void> => {
+        async (file: File, selectedExcelSheetNames?: string[]): Promise<void> => {
             if (isLargeSpreadsheetFile(file)) {
                 console.log(`Processing large spreadsheet file — this may take a moment...`);
             }
@@ -244,24 +249,10 @@ export const useFileHandling = ({
                 }
 
                 const result = await dispatch(
-                    handleFileAsync(
-                        fileToProcess.file,
-                        messageChain,
-                        fileProcessingService,
-                        {
-                            selectedExcelSheetNames: fileToProcess.selectedExcelSheetNames,
-                        },
-                        renameOnConflict
-                    )
+                    handleFileAsync(fileToProcess.file, messageChain, fileProcessingService, {
+                        selectedExcelSheetNames: fileToProcess.selectedExcelSheetNames,
+                    })
                 );
-
-                if (result.isDuplicate) {
-                    createNotification({
-                        text: c('collider_2025: Error').t`File already added: ${result.fileName}`,
-                        type: 'warning',
-                    });
-                    continue;
-                }
 
                 if (result.isUnsupported) {
                     if (isPresentationFile(fileToProcess.file)) {
@@ -348,7 +339,7 @@ export const useFileHandling = ({
     );
 
     const handleFileProcessing = useCallback(
-        async (file: File, renameOnConflict: boolean = false): Promise<void> => {
+        async (file: File): Promise<void> => {
             try {
                 // The limit only applies to attachments staged in the composer; linked-drive
                 // uploads go straight to Drive and don't occupy a composer slot.
@@ -363,7 +354,7 @@ export const useFileHandling = ({
                 if (fileUploadMode === 'linked-drive') {
                     await uploadFileToDrive(file, selectedExcelSheetNames);
                 } else {
-                    await processFileLocally(file, selectedExcelSheetNames, renameOnConflict);
+                    await processFileLocally(file, selectedExcelSheetNames);
                 }
             } catch (error) {
                 console.error('Error processing file:', error);

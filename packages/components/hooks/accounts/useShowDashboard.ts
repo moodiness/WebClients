@@ -2,7 +2,7 @@ import { useMemo } from 'react';
 
 import { useOrganization } from '@proton/account/organization/hooks';
 import { useSubscription } from '@proton/account/subscription/hooks';
-import { getIsB2BAudienceFromSubscription } from '@proton/payments';
+import { getIsB2BAudienceFromSubscription } from '@proton/payments/core/subscription/helpers';
 import type { APP_NAMES } from '@proton/shared/lib/constants';
 import { APPS } from '@proton/shared/lib/constants';
 import { isOrganizationB2B } from '@proton/shared/lib/organization/helper';
@@ -72,6 +72,14 @@ const useShowDashboard = <FlagName extends FeatureFlagsWithVariant>(appName: APP
     }, [canShowDashboard, variant]);
 
     return { showDashboard, variant, canShowDashboard };
+};
+
+export const useShowGenericDashboard = (appName: APP_NAMES) => {
+    const [organization] = useOrganization();
+    const [subscription] = useSubscription();
+    const isGenericUserSettingsEnabled = useFlag('GenericUserSettings');
+    const isB2B = getIsB2BAudienceFromSubscription(subscription) || isOrganizationB2B(organization);
+    return appName === APPS.PROTONACCOUNT && !isB2B && isGenericUserSettingsEnabled;
 };
 
 export default useShowDashboard;

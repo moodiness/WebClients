@@ -1,5 +1,5 @@
 import { Role } from '../../../types-api';
-import { DEFAULT_CHAT_MODEL, DEFAULT_REASONING_MODEL, toChatCompletionsBody } from './chat-completions';
+import { DEFAULT_CHAT_MODEL, LUMO_LITE_MODEL, LUMO_MAX_MODEL, toChatCompletionsBody } from './chat-completions';
 import type { LumoApiGenerationRequest } from './types';
 
 const baseRequest: LumoApiGenerationRequest = {
@@ -14,12 +14,13 @@ describe('toChatCompletionsBody', () => {
             model: DEFAULT_CHAT_MODEL,
             messages: [{ role: 'user', content: 'Hello' }],
             stream: true,
+            stream_options: { include_usage: true },
             reasoning_effort: 'none',
             lumo: { client_type: 'frontend' },
         });
     });
 
-    it('uses the reasoning model and effort when enabled', () => {
+    it('sets reasoning effort independently from the selected model', () => {
         const request: LumoApiGenerationRequest = {
             ...baseRequest,
             options: { reasoning: true },
@@ -28,14 +29,22 @@ describe('toChatCompletionsBody', () => {
         expect(
             toChatCompletionsBody(request, {
                 enableReasoning: true,
+                modelTier: 'lumo-lite',
             })
         ).toEqual({
-            model: DEFAULT_REASONING_MODEL,
+            model: LUMO_LITE_MODEL,
             messages: [{ role: 'user', content: 'Hello' }],
             stream: true,
+            stream_options: { include_usage: true },
             reasoning_effort: 'high',
             lumo: { client_type: 'frontend' },
         });
+    });
+
+    it('maps model tiers to API model names', () => {
+        expect(toChatCompletionsBody(baseRequest, { modelTier: 'lumo-lite' }).model).toBe(LUMO_LITE_MODEL);
+        expect(toChatCompletionsBody(baseRequest, { modelTier: 'lumo-max' }).model).toBe(LUMO_MAX_MODEL);
+        expect(toChatCompletionsBody(baseRequest, { modelTier: 'auto' }).model).toBe(DEFAULT_CHAT_MODEL);
     });
 
     it('serializes built-in tools as name-only objects and maps Lumo roles to OpenAI roles', () => {
@@ -57,10 +66,11 @@ describe('toChatCompletionsBody', () => {
             messages: [
                 { role: 'system', content: 'Be helpful' },
                 { role: 'tool', content: 'search results' },
-                { role: 'assistant', content: '{"name":"web_search"}' },
+                { role: 'lumo_tool_call', content: '{"name":"web_search"}' },
                 { role: 'user', content: 'Hello' },
             ],
             stream: true,
+            stream_options: { include_usage: true },
             reasoning_effort: 'none',
             tools: [{ name: 'web_search' }],
             tool_choice: 'auto',
@@ -101,7 +111,7 @@ describe('toChatCompletionsBody', () => {
         ]);
     });
 
-    it('carries U2L ciphertext via a data URL and a message-level encrypted flag', () => {
+    it('carries U2L ciphertext via a data URL with per-part encrypted flags', () => {
         const request: LumoApiGenerationRequest = {
             ...baseRequest,
             turns: [
@@ -117,14 +127,14 @@ describe('toChatCompletionsBody', () => {
         expect(toChatCompletionsBody(request).messages).toEqual([
             {
                 role: 'user',
-                encrypted: true,
                 content: [
-                    { type: 'text', text: 'cipher-text-refs' },
+                    { type: 'text', text: 'cipher-text-refs', encrypted: true },
                     {
                         type: 'image_url',
-                        image_url: { url: 'data:application/octet-stream;base64,cipher-text-bytes' },
+                        image_url: { url: 'data:application/octet-stream;base64,cipher-text-bytes', encrypted: true },
                     },
                 ],
+                encrypted: true, // tmp backward compat, see note in `serializeMessages()`.
             },
         ]);
     });
@@ -136,15 +146,22 @@ describe('toChatCompletionsBody', () => {
             request_id: 'request-id',
         };
 
-        expect(
-            toChatCompletionsBody(request, {
-                target: 'title',
-            }).lumo
-        ).toEqual({
+        expect(toChatCompletionsBody(request).lumo).toEqual({
             client_type: 'frontend',
-            target: 'title',
             request_key: 'encrypted-key',
             request_id: 'request-id',
+        });
+    });
+
+    it('maps image aspect ratio into the lumo extension', () => {
+        const request: LumoApiGenerationRequest = {
+            ...baseRequest,
+            options: { image_aspect_ratio: '16:9' },
+        };
+
+        expect(toChatCompletionsBody(request).lumo).toEqual({
+            client_type: 'frontend',
+            image_aspect_ratio: '16:9',
         });
     });
 });

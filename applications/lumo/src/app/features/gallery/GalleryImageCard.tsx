@@ -3,14 +3,14 @@ import { useCallback, useMemo, useState } from 'react';
 import { c } from 'ttag';
 
 import { CircleLoader } from '@proton/atoms/CircleLoader/CircleLoader';
-import { IcArrowDownLine } from '@proton/icons/icons/IcArrowDownLine';
-import { IcPen } from '@proton/icons/icons/IcPen';
 
 import { useFileHandling } from '../../components/Composer/hooks/useFileHandling';
+import { LumoIcon } from '../../components/LumoIcon/LumoIcon';
 import type { DrawingMode } from '../../features/drawingcanvas/types';
 import { ImagePreviewOverlay } from '../../features/imageActions/ImagePreviewOverlay';
 import { useLazyAttachment } from '../../hooks/useLazyAttachment';
 import { useLumoNavigate } from '../../hooks/useLumoNavigate';
+import { downloadImage } from '../../remote/lumoImageDownload';
 import { attachmentDataCache } from '../../services/attachmentDataCache';
 import type { AttachmentId } from '../../types';
 
@@ -46,15 +46,10 @@ export const GalleryImageCard = ({ attachmentId, createdAt, onExport, imageSrcOv
     }, []);
 
     const handleDownload = useCallback(
-        (e?: React.MouseEvent) => {
+        async (e?: React.MouseEvent) => {
             e?.stopPropagation();
             if (!imageDataUrl) return;
-            const link = document.createElement('a');
-            link.href = imageDataUrl;
-            link.download = attachment?.filename || `generated-image-${attachmentId}.png`;
-            document.body.appendChild(link);
-            link.click();
-            document.body.removeChild(link);
+            await downloadImage(imageDataUrl, attachment?.filename || `generated-image-${attachmentId}.png`);
         },
         [imageDataUrl, attachment, attachmentId]
     );
@@ -121,7 +116,7 @@ export const GalleryImageCard = ({ attachmentId, createdAt, onExport, imageSrcOv
                                     aria-label={c('collider_2025:Action').t`Edit image`}
                                     title={c('collider_2025:Action').t`Edit image`}
                                 >
-                                    <IcPen size={4} />
+                                    <LumoIcon name="Pen" size={16} />
                                 </button>
                             )}
                             <button
@@ -130,7 +125,7 @@ export const GalleryImageCard = ({ attachmentId, createdAt, onExport, imageSrcOv
                                 aria-label={c('collider_2025:Action').t`Download image`}
                                 title={c('collider_2025:Action').t`Download image`}
                             >
-                                <IcArrowDownLine size={4} />
+                                <LumoIcon name="ArrowDownToLine" size={16} />
                             </button>
                         </div>
                     </div>

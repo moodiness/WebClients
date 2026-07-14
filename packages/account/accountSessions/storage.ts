@@ -1,3 +1,5 @@
+import { uint8ArrayToUtf8String, utf8StringToUint8Array } from '@protontech/crypto/utils';
+
 import { type PersistedSessionLite, SessionSource } from '@proton/shared/lib/authentication/SessionInterface';
 import { AccessType } from '@proton/shared/lib/authentication/accessType';
 import {
@@ -5,7 +7,6 @@ import {
     getPersistedSessions,
 } from '@proton/shared/lib/authentication/persistedSessionStorage';
 import { getCookie, setCookie } from '@proton/shared/lib/helpers/cookies';
-import { stringToUint8Array, uint8ArrayToString } from '@proton/shared/lib/helpers/encoding';
 import { getSecondLevelDomain } from '@proton/shared/lib/helpers/url';
 import isEnumValue from '@proton/utils/isEnumValue';
 import isTruthy from '@proton/utils/isTruthy';
@@ -63,7 +64,10 @@ const fromItem = (value: any): PersistedSessionLite | undefined => {
 };
 
 const to = (value: PersistedSessionLite[]) => {
-    return stringToUint8Array(JSON.stringify(value.map(toItem))).toBase64({ alphabet: 'base64url', omitPadding: true });
+    return utf8StringToUint8Array(JSON.stringify(value.map(toItem))).toBase64({
+        alphabet: 'base64url',
+        omitPadding: true,
+    });
 };
 
 const from = (value: string | undefined): PersistedSessionLite[] | undefined => {
@@ -71,7 +75,7 @@ const from = (value: string | undefined): PersistedSessionLite[] | undefined => 
         if (!value) {
             return;
         }
-        const parsedValue = JSON.parse(uint8ArrayToString(Uint8Array.fromBase64(value, { alphabet: 'base64url' })));
+        const parsedValue = JSON.parse(uint8ArrayToUtf8String(Uint8Array.fromBase64(value, { alphabet: 'base64url' })));
         if (!Array.isArray(parsedValue)) {
             return;
         }
@@ -84,8 +88,8 @@ const from = (value: string | undefined): PersistedSessionLite[] | undefined => 
 
 export const writeAccountSessions = (persistedSessions = getPersistedSessions()) => {
     const sessions = persistedSessions
-        // Remove oauth sessions, we don't want them to be visible in the in-app account switcher
-        .filter((session) => session.source !== SessionSource.Oauth)
+        // Only want Proton and Saml sessions in the account switcher. Ignore Oauth and Msp.
+        .filter((session) => [SessionSource.Proton, SessionSource.Saml].some((source) => source === session.source))
         .map(getMinimalPersistedSession);
     syncToCookie(to(sessions));
 };

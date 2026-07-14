@@ -1,7 +1,7 @@
 import type { FunctionComponent } from 'react';
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Route } from 'react-router';
-import { Redirect, Switch, useHistory, useLocation } from 'react-router-dom';
+import { Redirect, Switch, useLocation } from 'react-router-dom';
 
 import OrganizationSettingsRouter from 'proton-account/src/app/containers/organization/OrganizationSettingsRouter';
 import { getOrganizationAppRoutes } from 'proton-account/src/app/containers/organization/routes';
@@ -19,12 +19,9 @@ import MembersAuthDevicesTopBanner from '@proton/account/sso/MembersAuthDevicesT
 import { useSubscription } from '@proton/account/subscription/hooks';
 import { useUser } from '@proton/account/user/hooks';
 import { useOrgPermissions } from '@proton/account/userPermissions/hooks';
-import { useUserSettings } from '@proton/account/userSettings/hooks';
 import {
     AccountRecoverySection,
-    AuthenticatedBugModal,
     AutomaticSubscriptionModal,
-    type BugModalMode,
     CancelSubscriptionSection,
     CancelSubscriptionViaSupportSection,
     CancellationReminderSection,
@@ -35,13 +32,11 @@ import {
     DeleteSection,
     DowngradeSubscriptionSection,
     EmailSubscriptionSection,
-    FreeUserLiveChatModal,
     GiftCodeSection,
     InviteSection,
     InvoicesSection,
     LanguageSection,
     LogsSection,
-    OpenVPNConfigurationSection,
     OpenVPNCredentialsSection,
     OverviewSection,
     PasswordsSection,
@@ -70,12 +65,10 @@ import {
     UsernameSection,
     VpnAlsoInYourPlanSection,
     VpnBlogSection,
-    WireGuardConfigurationSection,
     YourPlanSection,
     YourPlanSectionV2,
     YourPlanUpsellsSectionV2,
     useActiveBreakpoint,
-    useModalState,
     useRecoveryNotification,
     useToggle,
 } from '@proton/components';
@@ -87,24 +80,23 @@ import { CANCEL_ROUTE } from '@proton/components/containers/payments/subscriptio
 import ReferralPageTelemetry from '@proton/components/containers/referral/components/ReferralPageTelemetry';
 import { useReferralUserEligible } from '@proton/components/containers/referral/hooks/useReferralUserEligible';
 import { RewardSection } from '@proton/components/containers/referral/rewards/RewardSection';
-import LiveChatZendesk, { getIsSelfChat } from '@proton/components/containers/zendesk/LiveChatZendesk';
-import type { ZendeskRef } from '@proton/components/containers/zendesk/helper';
+import LiveChatZendesk from '@proton/components/containers/zendesk/LiveChatZendesk';
 import { getZendeskTags } from '@proton/components/containers/zendesk/helper';
-import { useCanEnableChat } from '@proton/components/containers/zendesk/useCanEnableChat';
+import { useZendeskChat } from '@proton/components/containers/zendesk/useZendeskChat';
 import { useIsGroupOwner } from '@proton/components/hooks/useIsGroupOwner';
 import useShowVPNDashboard from '@proton/components/hooks/useShowVPNDashboard';
-import { useIsB2BTrial } from '@proton/payments/ui';
+import useIsB2BTrial from '@proton/payments/ui/hooks/useIsB2BTrial';
 import { APPS, VPN_TV_PATHS } from '@proton/shared/lib/constants';
 import { localeCode } from '@proton/shared/lib/i18n';
 import { locales } from '@proton/shared/lib/i18n/locales';
 import type { Permission } from '@proton/shared/lib/interfaces';
 import { useFlag } from '@proton/unleash/useFlag';
 import { GetStartedOnboarding } from '@proton/vpn/components/Onboarding';
-import { VPNClientsSection } from '@proton/vpn/components/VPNClientsSection';
 import { VPNDownloadAndInfoSection } from '@proton/vpn/components/VPNDownloadSection';
 import { TVContainer } from '@proton/vpn/components/tv';
 import { NavigationProvider, useB2BAdminNavigation } from '@proton/vpn/contexts/navigation';
 
+import { DownloadsRoute } from '../routes/downloads';
 import { VPNSidebar } from './VPNSidebar';
 import { getRoutes } from './routes';
 
@@ -124,15 +116,10 @@ const MainContainer: FunctionComponent = () => {
     const [subscription, loadingSubscription] = useSubscription();
     const [organization, loadingOrganization] = useOrganization();
     const [permissions, loadingOrgPermissions] = useOrgPermissions();
-    const [userSettings] = useUserSettings();
-    const history = useHistory();
     const { state: expanded, toggle: onToggleExpand, set: setExpand } = useToggle();
     const { viewportWidth } = useActiveBreakpoint();
     const location = useLocation();
-    const zendeskRef = useRef<ZendeskRef>();
-    const [showChat, setShowChat] = useState({ autoLaunch: false, render: false });
     const isUserGroupsFeatureEnabled = useFlag('UserGroupsPermissionCheck');
-    const canDisplayB2BLogsVPN = useFlag('B2BLogsVPN');
     const isZoomIntegrationDisabled = useFlag('ZoomIntegrationDisabled');
     const isZoomIntegrationEnabled = !isZoomIntegrationDisabled;
     const isProtonMeetIntegrationEnabled = useFlag('NewScheduleOption');
@@ -141,7 +128,6 @@ const MainContainer: FunctionComponent = () => {
     const isRetentionPoliciesEnabled = useFlag('DataRetentionPolicy');
     const isUserGroupsNoCustomDomainEnabled = useFlag('UserGroupsNoCustomDomain');
     const isUserGroupsPassBusinessEnabled = useFlag('UserGroupsPassBusiness');
-    const isRolesAndPermissionsEnabled = useFlag('AdminRoleMVP');
     const [groups, loadingGroups] = useGroups();
     const { showVPNDashboard, showVPNDashboardVariant } = useShowVPNDashboard(APPS.PROTONVPN_SETTINGS);
     const isB2BTrial = useIsB2BTrial(subscription, organization);
@@ -152,6 +138,9 @@ const MainContainer: FunctionComponent = () => {
     const [isGroupOwner, loadingIsGroupOwner] = useIsGroupOwner();
 
     const { isUserEligible: isReferralProgramEnabled } = useReferralUserEligible();
+
+    // Zendesk Chat Integration
+    const { handleOpenZendeskChat, showZendeskChat, zendeskRef } = useZendeskChat(user);
 
     const vpnRoutes = getRoutes({
         user,
@@ -170,7 +159,6 @@ const MainContainer: FunctionComponent = () => {
     });
 
     const flags: Flags = {
-        canDisplayB2BLogsVPN,
         isUserGroupsFeatureEnabled,
         isUserGroupsNoCustomDomainEnabled,
         isUserGroupsPassBusinessEnabled,
@@ -179,7 +167,6 @@ const MainContainer: FunctionComponent = () => {
         isSharedServerFeatureEnabled,
         isSsoForPbsEnabled,
         isRetentionPoliciesEnabled,
-        isRolesAndPermissionsEnabled,
     };
 
     const organizationAppRoutes = getOrganizationAppRoutes({
@@ -195,39 +182,12 @@ const MainContainer: FunctionComponent = () => {
         flags,
     });
 
-    const canEnableChat = useCanEnableChat(user);
-    const [authenticatedBugReportMode, setAuthenticatedBugReportMode] = useState<BugModalMode>();
-    const [authenticatedBugReportModal, setAuthenticatedBugReportModal, render] = useModalState();
-    const [freeUserLiveChatModal, setFreeUserLiveChatModal, renderFreeUserLiveChatModal] = useModalState();
     const [{ ignoreOnboarding }] = useState(() => {
         return {
             ignoreOnboarding: location.pathname !== '/downloads',
         };
     });
     const app = APPS.PROTONVPN_SETTINGS;
-
-    const openAuthenticatedBugReportModal = (mode: BugModalMode) => {
-        setAuthenticatedBugReportMode(mode);
-        setAuthenticatedBugReportModal(true);
-    };
-
-    useEffect(() => {
-        const searchParams = new URLSearchParams(location.search);
-        const hasChatRequest = !!searchParams.get('chat');
-        const isSelfChat = getIsSelfChat();
-
-        searchParams.delete('chat');
-        history.replace({
-            search: searchParams.toString(),
-        });
-        if (hasChatRequest || isSelfChat) {
-            if (canEnableChat) {
-                setShowChat({ autoLaunch: hasChatRequest, render: true });
-            } else {
-                setFreeUserLiveChatModal(true);
-            }
-        }
-    }, []);
 
     useEffect(() => {
         setExpand(false);
@@ -240,17 +200,10 @@ const MainContainer: FunctionComponent = () => {
         </TopBanners>
     );
 
-    const openChat = canEnableChat
-        ? () => {
-              setShowChat({ autoLaunch: true, render: true });
-              zendeskRef.current?.open();
-          }
-        : undefined;
-
     const header = (
         <PrivateHeader
             app={app}
-            userDropdown={<UserDropdown app={app} onOpenChat={openChat} />}
+            userDropdown={<UserDropdown app={app} onOpenChat={handleOpenZendeskChat} />}
             upsellButton={<TopNavbarUpsell offerProps={{ ignoreOnboarding }} app={app} />}
             title={c('Title').t`Settings`}
             expanded={expanded}
@@ -260,9 +213,6 @@ const MainContainer: FunctionComponent = () => {
             onBoardingButton={<GetStartedOnboarding />}
         />
     );
-
-    const name = user.DisplayName || user.Name;
-    const email = user.Email || userSettings?.Email?.Value;
 
     const getRedirectPath = () => {
         if (getIsSectionAvailable(vpnRoutes.dashboardV2)) {
@@ -305,8 +255,6 @@ const MainContainer: FunctionComponent = () => {
 
     return (
         <SubscriptionModalProvider app={app}>
-            {render && <AuthenticatedBugModal mode={authenticatedBugReportMode} {...authenticatedBugReportModal} />}
-            {renderFreeUserLiveChatModal && <FreeUserLiveChatModal {...freeUserLiveChatModal} />}
             <Switch>
                 <Route path={VPN_TV_PATHS}>
                     <UnAuthenticated>
@@ -438,11 +386,7 @@ const MainContainer: FunctionComponent = () => {
                                     </PrivateMainSettingsArea>
                                 </Route>
                                 <Route path={vpnRoutes.downloads.to}>
-                                    <PrivateMainSettingsArea config={vpnRoutes.downloads}>
-                                        <VPNClientsSection />
-                                        <WireGuardConfigurationSection />
-                                        <OpenVPNConfigurationSection />
-                                    </PrivateMainSettingsArea>
+                                    <DownloadsRoute legacyRouteConfig={vpnRoutes.downloads} />
                                 </Route>
                                 {getIsSectionAvailable(vpnRoutes.referral) && (
                                     <Route path={vpnRoutes.referral.to}>
@@ -461,7 +405,7 @@ const MainContainer: FunctionComponent = () => {
                                         path=""
                                         organizationAppRoutes={organizationAppRoutes}
                                         redirect={redirect}
-                                        onOpenChat={openChat}
+                                        onOpenChat={handleOpenZendeskChat}
                                         user={user}
                                         organization={organization}
                                         subscription={subscription}
@@ -472,23 +416,14 @@ const MainContainer: FunctionComponent = () => {
                                 </Route>
                                 {redirect}
                             </Switch>
-                            {showChat.render && canEnableChat ? (
+                            {showZendeskChat.render && (
                                 <LiveChatZendesk
                                     tags={getZendeskTags(user, organization)}
                                     zendeskRef={zendeskRef}
-                                    name={name || ''}
-                                    email={email || ''}
-                                    onLoaded={() => {
-                                        if (showChat.autoLaunch) {
-                                            zendeskRef.current?.open();
-                                        }
-                                    }}
-                                    onUnavailable={() => {
-                                        openAuthenticatedBugReportModal('chat-no-agents');
-                                    }}
+                                    autoLaunch={showZendeskChat.autoLaunch}
                                     locale={localeCode.replace('_', '-')}
                                 />
-                            ) : null}
+                            )}
                         </PrivateAppContainer>
                     </NavigationProvider>
                 </Route>

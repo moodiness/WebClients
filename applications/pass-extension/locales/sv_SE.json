@@ -553,6 +553,9 @@
       "Regenerate": [
         "Generera igen"
       ],
+      "Regex invalid": [
+        "Regex ogiltigt"
+      ],
       "Reject": [
         "Avvisa"
       ],
@@ -2696,9 +2699,6 @@
       "Unlock it with your PIN to access the settings": [
         "Lås upp den med din PIN-kod för att komma åt inställningarna"
       ],
-      "Unlock with biometrics": [
-        "Lås upp med biometri"
-      ],
       "Unpinning item...": [
         "Lossar objekt …"
       ],
@@ -3066,6 +3066,9 @@
       "Address details": [
         "Adressuppgifter"
       ],
+      "Advanced": [
+        "Avancerat"
+      ],
       "Alias": [
         "Alias"
       ],
@@ -3129,6 +3132,9 @@
       "Bank Name": [
         "Banknamn"
       ],
+      "Basic": [
+        "Grundläggande"
+      ],
       "Biometrics": [
         "Biometri"
       ],
@@ -3155,6 +3161,9 @@
       ],
       "Catch-All": [
         "Catch-all"
+      ],
+      "Check": [
+        "Kontrollera"
       ],
       "Checkbox": [
         "Kryssruta"
@@ -3237,6 +3246,9 @@
       "Custom": [
         "Anpassad"
       ],
+      "Custom expiration (minutes)": [
+        "Anpassad utgång (minuter)"
+      ],
       "Custom Items": [
         "Anpassade objekt"
       ],
@@ -3311,6 +3323,9 @@
       ],
       "Enter email or username": [
         "Ange e-post eller användarnamn"
+      ],
+      "Exact URL matching": [
+        "Exakt URL-matchning"
       ],
       "Expiration date": [
         "Utgångsdatum"
@@ -3603,6 +3618,9 @@
       "Never": [
         "Aldrig"
       ],
+      "Never fill on this exact URL": [
+        "Fyll aldrig på denna exakta URL"
+      ],
       "New email": [
         "Ny e-post"
       ],
@@ -3659,6 +3677,9 @@
       ],
       "Owner": [
         "Ägare"
+      ],
+      "Parent domain and subdomains (default)": [
+        "Överordnad domän och underdomäner (standard)"
       ],
       "Passkey": [
         "Passkey"
@@ -3768,6 +3789,12 @@
       "Reddit handle": [
         "Reddit-användarnamn"
       ],
+      "Regular expression": [
+        "Vanligt uttryck"
+      ],
+      "Relevant": [
+        "Relevant"
+      ],
       "Remove link": [
         "Ta bort länk"
       ],
@@ -3875,6 +3902,9 @@
       ],
       "SSN": [
         "SSN"
+      ],
+      "Starts with": [
+        "Börjar med"
       ],
       "State or province": [
         "Delstat eller provins"
@@ -4095,6 +4125,9 @@
       "${ count } item": [
         "${ count } objekt",
         "${ count } objekt"
+      ],
+      "Never fill with this exact URL": [
+        "Fyll aldrig med denna exakta URL"
       ],
       "You can drag and drop the selected item to another vault": [
         "Du kan dra och släppa det valda objektet till ett annat valv",
@@ -4396,6 +4429,23 @@
       ],
       "Used on ${ url }": [
         "Används på ${ url }"
+      ]
+    },
+    "Result": {
+      "Enter a URL to check to see if your current rule is matching the URL": [
+        "Ange en URL för att kontrollera om din nuvarande regel matchar URL:en"
+      ],
+      "The rule is matching this URL": [
+        "Regeln matchar denna URL"
+      ],
+      "The rule is NOT matching this URL": [
+        "Regeln matchar INTE denna URL"
+      ],
+      "This URL will be blocked from autofill": [
+        "Denna URL kommer att blockeras från automatisk ifyllning"
+      ],
+      "This URL will NOT be blocked from autofill": [
+        "Denna URL kommer INTE att blockeras från automatisk ifyllning"
       ]
     },
     "Security Center - Info": {
@@ -4810,6 +4860,9 @@
       "Last modified": [
         "Senast ändrad"
       ],
+      "Learn more": [
+        "Lär dig mer"
+      ],
       "Leave this item?": [
         "Lämna detta objekt?"
       ],
@@ -5021,6 +5074,9 @@
       "Sync your aliases from SimpleLogin": [
         "Synkronisera dina alias från SimpleLogin"
       ],
+      "Test a URL against this rule": [
+        "Testa en URL mot denna regel"
+      ],
       "Thank you for installing ${ PASS_APP_NAME }": [
         "Tack för att du installerar ${ PASS_APP_NAME }"
       ],
@@ -5041,6 +5097,9 @@
       ],
       "Update available": [
         "Uppdatering tillgänglig"
+      ],
+      "URL matching": [
+        "URL-matchning"
       ],
       "Use my email": [
         "Använd min e-post"

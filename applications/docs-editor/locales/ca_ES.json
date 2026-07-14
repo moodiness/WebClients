@@ -224,9 +224,6 @@
       "Superscript": [
         "Superíndex"
       ],
-      "Table of contents": [
-        "Taula de continguts"
-      ],
       "Table options": [
         "Opcions de taula"
       ],
@@ -451,8 +448,8 @@
       "There was an error processing updates to the document. Please reload the page and try again.": [
         "S'ha produït un error en processar les actualitzacions del document. Torneu a carregar la pàgina i torneu-ho a provar."
       ],
-      "This spreadsheet detected a local syncing inconsistency. Please reload the document before continuing.": [
-        "Aquest full de càlcul ha detectat una inconsistència en la sincronització local. Torneu a carregar el document abans de continuar."
+      "This spreadsheet detected a local syncing inconsistency. Editing has been disabled to prevent data loss. Please file a report and if you are okay with sharing the contents, download and include the debug information from below.": [
+        "Aquest full de càlcul ha detectat una incongruència de sincronització local. S'ha desactivat l'edició per evitar la pèrdua de dades. Envieu un informe i, si us sembla bé compartir-ne el contingut, descarregueu i incloeu la informació de depuració de més avall."
       ],
       "This spreadsheet is incompatible with the current client version. Please try reloading the client. If the error persists, please contact support.": [
         "Aquest full de càlcul és incompatible amb la versió actual del client. Torneu a carregar el client. Si l'error persisteix, contacteu amb el servei de suport."
@@ -505,9 +502,6 @@
         "${ usersTranslation } està escrivint...",
         "${ usersTranslation } estan escrivint..."
       ],
-      "Alpha only experimental feature": [
-        "Funció experimental només alfa"
-      ],
       "Are you sure you want to delete this comment?": [
         "Esteu segur que voleu suprimir aquest comentari?"
       ],
@@ -525,9 +519,6 @@
       ],
       "Font size": [
         "Mida de la lletra"
-      ],
-      "Headings you add to the document will appear here.": [
-        "Els encapçalaments que afegiu al document apareixeran aquí."
       ],
       "Highlight": [
         "Destaca"
@@ -2324,6 +2315,9 @@
       ],
       "Language not supported": [
         "L'idioma no està disponible."
+      ],
+      "Outline": [
+        "Esquema"
       ]
     },
     "Warning": {

@@ -39,7 +39,6 @@ import { getAccentColorForUsername } from '@proton/atoms/UserAvatar/getAccentCol
 import type { Doc as YDoc, Transaction } from 'yjs'
 import { getCurrencyFromLocale, useAccountLocale, useLocaleAuto } from './locale'
 import { CURRENCY_SYMBOL } from './constants'
-import { minutes_to_ms, seconds_to_ms } from '@proton/docs-core/lib/Util/time-utils'
 import { useEditorState } from '../EditorStateProvider'
 import { useApplication } from '../ApplicationProvider'
 import { getBufferHash } from '@proton/docs-core/lib/utils/hash'
@@ -48,6 +47,7 @@ import { SheetsPatchesType } from '@proton/docs-core/lib/Database/SheetsDBSchema
 import type { SpreadsheetLocalYjsAuditKey, SpreadsheetLocalYjsUpdateAuditResult } from './yjs-local-update-audit'
 import { detectLocalYjsUpdateDrift, recordSpreadsheetLocalStateChange } from './yjs-local-update-audit'
 import { formatSpreadsheetYjsDriftLogDetails } from './yjs-drift-log'
+import { minutesToMs, secondsToMs } from './time-utils'
 
 // local state
 // -----------
@@ -106,6 +106,8 @@ function getValueFromUpdateAction<T>(updateAction: UpdateAction<T>, prevValue: T
   return typeof updateAction === 'function' ? (updateAction as (state: T) => T)(prevValue) : updateAction
 }
 type LocalStateStoreSetter = (partial: (state: LocalState) => Partial<LocalState>) => void
+
+let shouldRecordLocalStateChange = false
 function createAuditedLocalStateSetter<Key extends SpreadsheetLocalYjsAuditKey>(
   key: Key,
   set: LocalStateStoreSetter,
@@ -114,15 +116,17 @@ function createAuditedLocalStateSetter<Key extends SpreadsheetLocalYjsAuditKey>(
     set((state) => {
       const previousValue = state[key]
       const nextValue = getValueFromUpdateAction(updateAction, previousValue)
-      recordSpreadsheetLocalStateChange(key, previousValue, nextValue)
+      if (shouldRecordLocalStateChange) {
+        recordSpreadsheetLocalStateChange(key, previousValue, nextValue)
+      }
       return { [key]: nextValue } as Partial<LocalState>
     })
   }
 }
+
 // TODO: this shouldn't be a singleton
 const useLocalSpreadsheetState = create<LocalState>()((set) => {
   const auditedSet = set as LocalStateStoreSetter
-
   return {
     sheets: [],
     sheetData: {},
@@ -376,16 +380,22 @@ type ProtonSheetsStateDependencies = Omit<SpreadsheetStateDependencies, OmitDeps
     isConversionFlow: boolean
     pushPatches: (patches: unknown, updateHash: string, type?: SheetsPatchesType) => void
     hasBasePatchesStored: () => Promise<boolean>
+    isPatchesStorageEnabled: boolean
     // Gates the Yjs drift detection (SheetsDriftDetectionEnabled feature flag). When false,
     // local updates propagate without the dry-run audit/guard (original behavior).
     isDriftDetectionEnabled: boolean
-    onYjsDriftDetected?: (result: SpreadsheetLocalYjsUpdateAuditResult) => void
+    onYjsDriftDetected?: (
+      result: SpreadsheetLocalYjsUpdateAuditResult,
+      driftLogDetails: Record<string, unknown>,
+    ) => void
   }
 
 export function useProtonSheetsState(deps: ProtonSheetsStateDependencies) {
   const { application } = useApplication()
   const kv = useKeyValueState()
   const hasBlockedYjsDrift = useRef(false)
+
+  const { receivedEverythingFromRTS } = useSyncedState()
 
   // Drift detection: the y-spreadsheet onAfterBroadcastPatch hook fires inside the broadcast
   // transaction (patches applied to the doc). We compute the local-vs-doc drift there and stash
@@ -408,6 +418,12 @@ export function useProtonSheetsState(deps: ProtonSheetsStateDependencies) {
       application.logger.error('[sheets-yjs-drift] failed to audit outgoing Yjs update')
     }
   })
+
+  useEffect(() => {
+    if (receivedEverythingFromRTS && deps.isDriftDetectionEnabled) {
+      shouldRecordLocalStateChange = true
+    }
+  }, [deps.isDriftDetectionEnabled, receivedEverythingFromRTS])
 
   const localeAccount = useAccountLocale()
   const localeAuto = useLocaleAuto()
@@ -449,6 +465,9 @@ export function useProtonSheetsState(deps: ProtonSheetsStateDependencies) {
     }
   }, [hasBasePatchesStored, pushPatches])
   const pushLatestPatches = useEvent(async (update?: Uint8Array<ArrayBuffer>, type?: SheetsPatchesType) => {
+    if (!deps.isPatchesStorageEnabled) {
+      return
+    }
     const patches = structuredClone(latestPatches.current.shift())
     if (patches) {
       await writeBasePatchIfNecessary()
@@ -509,12 +528,11 @@ export function useProtonSheetsState(deps: ProtonSheetsStateDependencies) {
           ...driftLogDetails,
         },
       )
-      console.error('[sheets-yjs-drift] local Yjs drift details', JSON.stringify(driftLogDetails, null, 2))
       hasBlockedYjsDrift.current = true
       application.logger.error(
         '[sheets-yjs-drift] blocked outgoing Yjs update because local state and the broadcast Yjs doc drifted',
       )
-      deps.onYjsDriftDetected?.(driftResult)
+      deps.onYjsDriftDetected?.(driftResult, driftLogDetails)
       pushLatestPatches(undefined, SheetsPatchesType.Drifted).catch(console.error)
       return false
     }
@@ -573,6 +591,9 @@ export function useProtonSheetsState(deps: ProtonSheetsStateDependencies) {
   const canvasGridMethods = useSpreadsheet()
 
   useEffect(() => {
+    if (!deps.isPatchesStorageEnabled) {
+      return
+    }
     async function handleUpdatePropagation(update: Uint8Array<ArrayBuffer>) {
       await pushLatestPatches(update)
     }
@@ -580,10 +601,16 @@ export function useProtonSheetsState(deps: ProtonSheetsStateDependencies) {
     return () => {
       deps.docState.removeUpdatePropagationListener(handleUpdatePropagation)
     }
-  }, [deps.docState, hasBasePatchesStored, pushLatestPatches, pushPatches, writeBasePatchIfNecessary])
+  }, [
+    deps.docState,
+    hasBasePatchesStored,
+    pushLatestPatches,
+    pushPatches,
+    writeBasePatchIfNecessary,
+    deps.isPatchesStorageEnabled,
+  ])
 
   const previousLocaleResolved = useRef(localeResolved)
-  const { receivedEverythingFromRTS } = useSyncedState()
   useLayoutEffect(() => {
     if (receivedEverythingFromRTS && previousLocaleResolved.current !== localeResolved) {
       previousLocaleResolved.current = localeResolved
@@ -877,8 +904,8 @@ export function sortSheetsByIndex<S extends BaseSheet>(sheets: S[], includeHidde
 // versioning
 // ----------
 
-const LOCK_START_THRESHOLD = seconds_to_ms(2.5)
-const MAX_LOCK_DURATION = minutes_to_ms(5)
+const LOCK_START_THRESHOLD = secondsToMs(2.5)
+const MAX_LOCK_DURATION = minutesToMs(5)
 const CLIENT_VERSION = 2
 
 const versionToMigrationMap: Record<number, (state: ProtonSheetsState) => void> = {

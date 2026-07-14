@@ -10,35 +10,32 @@ import { ProtonPlanCustomizer, getHasPlanCustomizer } from '@proton/components/c
 import { usePaymentFacade } from '@proton/components/payments/client-extensions';
 import { BilledUserInlineMessage } from '@proton/components/payments/client-extensions/billed-user';
 import type { WithLoading } from '@proton/hooks/useLoading';
+import { getPaymentsVersion } from '@proton/payments/core/api/api';
+import type { FullBillingAddressFlat } from '@proton/payments/core/billing-address/billing-address';
+import { PAYMENT_METHOD_TYPES } from '@proton/payments/core/constants';
 import type {
     AvailablePaymentMethod,
     ExtendedTokenPayment,
     PaymentMethodFlow,
-    PaymentProcessorHook,
     PaymentsApi,
     TokenPayment,
-} from '@proton/payments';
-import {
-    PAYMENT_METHOD_TYPES,
-    type Plan,
-    SubscriptionMode,
-    getIsB2BAudienceFromPlan,
-    isV5PaymentToken,
-    v5PaymentTokenToLegacyPaymentToken,
-} from '@proton/payments';
-import { getPaymentsVersion } from '@proton/payments/core/api/api';
-import type { FullBillingAddressFlat } from '@proton/payments/core/billing-address/billing-address';
+} from '@proton/payments/core/interface';
+import type { PaymentProcessorHook } from '@proton/payments/core/payment-processors/interface';
+import { getIsB2BAudienceFromPlan } from '@proton/payments/core/plan/helpers';
+import type { Plan } from '@proton/payments/core/plan/interface';
+import { SubscriptionMode } from '@proton/payments/core/subscription/constants';
+import { isV5PaymentToken } from '@proton/payments/core/type-guards';
+import { v5PaymentTokenToLegacyPaymentToken } from '@proton/payments/core/utils';
 import { tracePaymentError } from '@proton/payments/sentry/capture';
 import type { PaymentTelemetryContext } from '@proton/payments/telemetry/helpers';
-import { PayButton } from '@proton/payments/ui';
 import { useBillingAddress } from '@proton/payments/ui/billing-address/hooks/useBillingAddress';
+import { PayButton } from '@proton/payments/ui/components/PayButton';
 import type { CouponConfigRendered } from '@proton/payments/ui/coupon-config/useCouponConfig';
 import { TelemetryAccountSignupEvents } from '@proton/shared/lib/api/telemetry';
 import type { APP_NAMES } from '@proton/shared/lib/constants';
 import { APPS } from '@proton/shared/lib/constants';
 import type { Api } from '@proton/shared/lib/interfaces';
 import { Audience, isBilledUser } from '@proton/shared/lib/interfaces';
-import { useFlag } from '@proton/unleash/useFlag';
 import noop from '@proton/utils/noop';
 
 import AccountStepPaymentSummary from './AccountStepPaymentSummary';
@@ -112,8 +109,6 @@ const AccountStepPayment = ({
     onMethodChanged,
     couponConfig,
 }: Props) => {
-    const meetAddonFlag = useFlag('MeetAddonCustomizer');
-
     const signupV2Theme = useSignupV2Theme();
     const formRef = useRef<HTMLFormElement>(null);
 
@@ -206,7 +201,7 @@ const AccountStepPayment = ({
                 let paymentType: 'cc' | 'pp' | 'btc';
                 if (type === PAYMENT_METHOD_TYPES.CHARGEBEE_PAYPAL) {
                     paymentType = 'pp';
-                } else if (type === PAYMENT_METHOD_TYPES.BITCOIN || type === PAYMENT_METHOD_TYPES.CHARGEBEE_BITCOIN) {
+                } else if (type === PAYMENT_METHOD_TYPES.CHARGEBEE_BITCOIN) {
                     paymentType = 'btc';
                 } else {
                     paymentType = 'cc';
@@ -352,15 +347,13 @@ const AccountStepPayment = ({
 
     const isSignupPass = paymentFacade.flow === 'signup-pass' || paymentFacade.flow === 'signup-pass-upgrade';
 
-    const selectedMethodCard =
-        paymentFacade.selectedMethodType === PAYMENT_METHOD_TYPES.CARD ||
-        paymentFacade.selectedMethodType === PAYMENT_METHOD_TYPES.CHARGEBEE_CARD;
+    const selectedMethodCard = paymentFacade.selectedMethodType === PAYMENT_METHOD_TYPES.CHARGEBEE_CARD;
     const showAlert3ds = selectedMethodCard && !isSignupPass;
 
     const loadingPaymentsForm = model.loadingDependencies;
 
     const showLumoCustomizer = app === APPS.PROTONLUMO;
-    const showMeetCustomizer = meetAddonFlag && app === APPS.PROTONMEET;
+    const showMeetCustomizer = app === APPS.PROTONMEET;
 
     const paymentsForm = (
         <>
@@ -428,9 +421,7 @@ const AccountStepPayment = ({
                         return;
                     }
 
-                    const isBitcoin =
-                        paymentFacade.selectedMethodType === PAYMENT_METHOD_TYPES.BITCOIN ||
-                        paymentFacade.selectedMethodType === PAYMENT_METHOD_TYPES.CHARGEBEE_BITCOIN;
+                    const isBitcoin = paymentFacade.selectedMethodType === PAYMENT_METHOD_TYPES.CHARGEBEE_BITCOIN;
 
                     // Users who selected bitcoin, can't click "pay" to signup. They need to transfer BTC to the
                     // displayed address, and then the subscription will be created.

@@ -364,6 +364,9 @@
       "Get Started": [
         "Bắt Đầu"
       ],
+      "Hide": [
+        "Ẩn"
+      ],
       "How do I export my data from ${ PROVIDER_INFO_MAP[form.values.provider].title }?": [
         "Làm sao để tôi xuất dữ liệu của mình từ ${ PROVIDER_INFO_MAP[form.values.provider].title }?"
       ],
@@ -648,9 +651,6 @@
       ],
       "Skip": [
         "Bỏ qua"
-      ],
-      "Someone shared an item with you on ${ PASS_APP_NAME }.": [
-        "Có người đã chia sẻ một mục với bạn trên ${ PASS_APP_NAME }."
       ],
       "Sort vault items": [
         "Phân loại mục kho"
@@ -987,6 +987,9 @@
       "Error reporting problem": [
         "Lỗi khi báo cáo vấn đề"
       ],
+      "Failed loading group members": [
+        "Không tải được các thành viên nhóm"
+      ],
       "Failed removing the invite.": [
         "Không xóa được lời mời."
       ],
@@ -1211,9 +1214,6 @@
       ],
       "Trashing item failed": [
         "Không đưa được mục vào thùng rác"
-      ],
-      "Try reaching out to the link owner.": [
-        "Hãy thử liên hệ với chủ sở hữu liên kết."
       ],
       "Unable to generate an OTP code for this item": [
         "Không thể tạo mã OTP cho mục này"
@@ -1689,6 +1689,9 @@
       "Enter the address you want to email.": [
         "Nhập địa chỉ bạn muốn gửi email."
       ],
+      "Enter verification code. Digit ${ digit }.": [
+        "Nhập mã xác minh. Chữ số ${ digit }."
+      ],
       "Enter your extra password": [
         "Nhập mật khẩu bổ sung"
       ],
@@ -1877,9 +1880,6 @@
       ],
       "Moving all items from \"${ payload.content.name }\"": [
         "Đang chuyển tất cả mục từ \"${ payload.content.name }\""
-      ],
-      "Moving an item to another vault will erase its secure links.": [
-        "Việc chuyển các mục sang kho khác sẽ xóa các liên kết bảo mật của chúng."
       ],
       "Moving items": [
         "Đang chuyển mục"
@@ -2608,6 +2608,9 @@
       "Address details": [
         "Chi tiết địa chỉ"
       ],
+      "Advanced": [
+        "Nâng cao"
+      ],
       "Alias": [
         "Biệt danh"
       ],
@@ -2838,6 +2841,9 @@
       ],
       "Expired": [
         "Đã hết hạn"
+      ],
+      "Expires in": [
+        "Hết hạn sau"
       ],
       "Expiry Date": [
         "Ngày hết hạn"
@@ -3466,9 +3472,6 @@
       "Theme": [
         "Chủ đề"
       ],
-      "This item is accessible until ${ date } or until the view limit is reached.": [
-        "Mục này có thể truy cập cho đến ${ date } hoặc cho đến khi đạt giới hạn lượt xem."
-      ],
       "Tier/Level": [
         "Cấp/Bậc"
       ],
@@ -3856,6 +3859,9 @@
       ],
       "Coupon": [
         "Phiếu mua hàng"
+      ],
+      "e.g. My automation script": [
+        "Ví dụ: Tập lệnh tự động hóa của tôi"
       ],
       "E.g., ": [
         "Ví dụ, "

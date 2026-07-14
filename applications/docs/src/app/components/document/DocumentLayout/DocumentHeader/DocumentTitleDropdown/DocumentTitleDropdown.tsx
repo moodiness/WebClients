@@ -66,6 +66,8 @@ import {
   useIsDownloadLogsAllowed,
   useMoveModalDriveSdkEnabled,
   useRenameWithSDK,
+  useIsTableOfContentsEnabled,
+  useTrashWithSDK,
 } from '~/utils/flags'
 import { useDebugMode } from '~/utils/debug-mode-context'
 import * as Ariakit from '@ariakit/react'
@@ -76,6 +78,9 @@ import { VersionNumber } from '@proton/docs-shared/components/ui/VersionNumber'
 import { versionCookieAtLoad } from '@proton/components/helpers/versionCookie'
 import { useMoveItemsModal } from '@proton/drive/public/moveItemsModal'
 import { generateNodeUid, getDrive } from '@proton/drive'
+import { IcListBullets } from '@proton/icons/icons/IcListBullets'
+import { trashAndNotify } from '~/drive-sdk/trash'
+import { traceError, SentryRealtimeInitiatives } from '@proton/shared/lib/helpers/sentry'
 
 export type DocumentTitleDropdownProps = {
   authenticatedController: AuthenticatedDocControllerInterface | undefined
@@ -109,13 +114,16 @@ export function DocumentTitleDropdown({
   const { createNotification } = useNotifications()
   const moveModalDriveSdkEnabled = useMoveModalDriveSdkEnabled()
   const renameWithSDK = useRenameWithSDK()
+  const trashWithSDK = useTrashWithSDK()
   const isSheetsEnabled = useIsSheetsEnabled()
+  const isTableOfContentsFeatureEnabled = useIsTableOfContentsEnabled()
 
   const [pdfModal, openPdfModal] = useExportToPDFModal()
   const [historyModal, showHistoryModal] = useHistoryViewerModal()
   const [sheetImportModal, showSheetImportModal] = useSheetImportModal()
   const { moveItemsModal, showMoveItemsModal } = useMoveItemsModal()
 
+  const [tableOfContentsVisible, setTableOfContentsVisible] = useState(isTableOfContentsFeatureEnabled)
   const [title, setTitle] = useState<string | undefined>(documentState.getProperty('documentName'))
   const [isDuplicating, setIsDuplicating] = useState<boolean>(false)
   const [trashState, setTrashState] = useState<DocTrashState | undefined>(
@@ -188,7 +196,12 @@ export function DocumentTitleDropdown({
               })
             })
             .catch((error) => {
-              application.logger.error('Failed to rename document', error)
+              traceError(error, {
+                tags: {
+                  initiative: SentryRealtimeInitiatives.SDK_SWITCH,
+                  feature: 'DocsRenameWithDriveSDK',
+                },
+              })
               PostApplicationError(application.eventBus, { translatedError: c('Error').t`Failed to rename document` })
               setTitle(oldName)
             })
@@ -351,12 +364,22 @@ export function DocumentTitleDropdown({
     if (!authenticatedController) {
       throw new Error('Attempting to trash document in a public context')
     }
+
     try {
-      await authenticatedController.trashDocument()
+      if (trashWithSDK) {
+        const drive = getDrive()
+        const { volumeId, linkId } = documentState.getProperty('entitlements').nodeMeta as NodeMeta
+        await trashAndNotify(drive, createNotification, generateNodeUid(volumeId, linkId), () =>
+          authenticatedController.markAsRestored(),
+        )
+        authenticatedController.markAsTrashed()
+      } else {
+        await authenticatedController.trashDocument()
+      }
     } finally {
       close()
     }
-  }, [authenticatedController, close])
+  }, [authenticatedController, close, createNotification, documentState, trashWithSDK])
 
   const showVersionHistory = useCallback(() => {
     if (!authenticatedController) {
@@ -370,6 +393,26 @@ export function DocumentTitleDropdown({
       documentState,
     })
   }, [authenticatedController, editorController, documentType, showHistoryModal, documentState])
+
+  useEffect(() => {
+    function syncTableOfContentsStateToEditor() {
+      void editorController.setTableOfContentsVisible(tableOfContentsVisible)
+    }
+    if (documentState.getProperty('editorReady')) {
+      syncTableOfContentsStateToEditor()
+    }
+    return documentState.subscribeToProperty('editorReady', (ready) => {
+      if (ready) {
+        syncTableOfContentsStateToEditor()
+      }
+    })
+  }, [documentState, editorController, tableOfContentsVisible])
+
+  function handleTableOfContentsToggle() {
+    const nextTableOfContentsVisible = !tableOfContentsVisible
+    setTableOfContentsVisible(nextTableOfContentsVisible)
+    void editorController.setTableOfContentsVisible(nextTableOfContentsVisible)
+  }
 
   const openHelp = useCallback(() => {
     window.open(getStaticURL(isSpreadsheet ? '/support/drive/sheets' : '/support/drive'), '_blank')
@@ -514,6 +557,7 @@ export function DocumentTitleDropdown({
         {historyModal}
         {pdfModal}
         {sheetImportModal}
+        {moveItemsModal}
         {authenticatedController && isDocumentState(documentState) && (
           <TrashedDocumentModal
             documentTitle={title || ''}
@@ -747,6 +791,13 @@ export function DocumentTitleDropdown({
             </SimpleDropdown>
           )}
 
+          {!isSpreadsheet && isTableOfContentsFeatureEnabled && (
+            <DropdownMenuButton className="flex items-center text-left" onClick={handleTableOfContentsToggle}>
+              <IcListBullets className="color-weak mr-2" />
+              {tableOfContentsVisible ? c('Info').t`Hide table of contents` : c('Info').t`Show table of contents`}
+            </DropdownMenuButton>
+          )}
+
           {documentState.getProperty('userRole').canTrash() && (
             <DropdownMenuButton
               disabled={trashState === 'trashing' || trashState === 'trashed'}
@@ -763,6 +814,7 @@ export function DocumentTitleDropdown({
               {trashState === 'trashing' && <CircleLoader size="small" className="ml-auto" />}
             </DropdownMenuButton>
           )}
+
           <hr className="my-1 min-h-px" />
 
           <DropdownMenuButton className="flex items-center text-left" onClick={printAsPDF} data-testid="dropdown-print">

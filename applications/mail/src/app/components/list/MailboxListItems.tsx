@@ -17,6 +17,9 @@ import { useMailSelector } from 'proton-mail/store/hooks';
 
 import { useEncryptedSearchContext } from '../../containers/EncryptedSearchProvider';
 import { PLACEHOLDER_ID_PREFIX } from '../../hooks/usePlaceholders';
+import { useCategoriesOnboarding } from '../categoryView/categoriesOnboarding/CategoriesOnboardingContext';
+import { CategoriesOnboardingSpotlight } from '../categoryView/categoriesOnboarding/CategoriesOnboardingSpotlights';
+import { HIGHLIGHTED_ITEM_INDEX } from '../categoryView/categoriesOnboarding/onboardingInterface';
 import UserOnboardingMessageListPlaceholder from '../onboarding/checklist/messageListPlaceholder/UserOnboardingMessageListPlaceholder';
 import EmptyListPlaceholder from '../view/EmptyListPlaceholder';
 import Item from './Item';
@@ -75,6 +78,7 @@ const MailboxListItems = ({
     const location = useLocation();
 
     const { isColumnModeActive } = useMailboxLayoutProvider();
+    const { listSpotlightStep } = useCategoriesOnboarding();
 
     useEffect(() => {
         // When we show more than 5 elements in the list, the onboarding should be collapsed.
@@ -98,8 +102,7 @@ const MailboxListItems = ({
         ) {
             return (
                 <div className="w-full h-full flex items-center justify-center">
-                    <p className="text-center text-sm color-weak">{c('Info')
-                        .t`Seems like you are all caught up for now`}</p>
+                    <p className="text-center color-weak">{c('Info').t`Seems like you are all caught up for now`}</p>
                 </div>
             );
         }
@@ -119,9 +122,45 @@ const MailboxListItems = ({
         <div className="overflow-auto h-full" ref={scrollContainerRef}>
             <div className="w-full shrink-0" ref={listRef}>
                 {elements.map((element, index) => {
+                    const isPlaceholder = element.ID.startsWith(PLACEHOLDER_ID_PREFIX);
+
+                    const item = (
+                        <Item
+                            conversationMode={conversationMode}
+                            isCompactView={isCompactView}
+                            labelID={labelID}
+                            loading={mailboxListLoading}
+                            columnLayout={columnLayout}
+                            element={element}
+                            checked={!!checkedIDsMap[element.ID || '']}
+                            onCheck={onCheckOne}
+                            onClick={onClick}
+                            onContextMenu={onContextMenu}
+                            onDragStart={handleDragStart}
+                            onDragEnd={handleDragEnd}
+                            dragged={!!draggedIDsMap[element.ID || '']}
+                            index={index}
+                            onFocus={onFocus}
+                            userSettings={userSettings}
+                            mailSettings={mailSettings}
+                            onBack={onBack}
+                            labels={labels}
+                        />
+                    );
+
+                    if (!isPlaceholder && listSpotlightStep !== undefined && index === HIGHLIGHTED_ITEM_INDEX) {
+                        return (
+                            <Fragment key={element.ID}>
+                                <CategoriesOnboardingSpotlight step={listSpotlightStep}>
+                                    {item}
+                                </CategoriesOnboardingSpotlight>
+                            </Fragment>
+                        );
+                    }
+
                     return (
                         <Fragment key={element.ID}>
-                            {element.ID.startsWith(PLACEHOLDER_ID_PREFIX) ? (
+                            {isPlaceholder ? (
                                 <SkeletonItem
                                     conversationMode={conversationMode}
                                     isCompactView={isCompactView}
@@ -132,27 +171,7 @@ const MailboxListItems = ({
                                     index={index}
                                 />
                             ) : (
-                                <Item
-                                    conversationMode={conversationMode}
-                                    isCompactView={isCompactView}
-                                    labelID={labelID}
-                                    loading={mailboxListLoading}
-                                    columnLayout={columnLayout}
-                                    element={element}
-                                    checked={!!checkedIDsMap[element.ID || '']}
-                                    onCheck={onCheckOne}
-                                    onClick={onClick}
-                                    onContextMenu={onContextMenu}
-                                    onDragStart={handleDragStart}
-                                    onDragEnd={handleDragEnd}
-                                    dragged={!!draggedIDsMap[element.ID || '']}
-                                    index={index}
-                                    onFocus={onFocus}
-                                    userSettings={userSettings}
-                                    mailSettings={mailSettings}
-                                    onBack={onBack}
-                                    labels={labels}
-                                />
+                                item
                             )}
                         </Fragment>
                     );

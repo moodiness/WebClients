@@ -3870,12 +3870,6 @@
       "Interval cannot be empty": [
         "Interval må ikke være tomt"
       ],
-      "Invalid ${ name } code": [
-        "Ugyldig ${ name }-kode"
-      ],
-      "Invalid card number": [
-        "Ugyldigt kortnummer"
-      ],
       "Invalid code": [
         "Ugyldig kode"
       ],
@@ -3884,9 +3878,6 @@
       ],
       "Invalid email address": [
         "Ugyldig e-mailadresse"
-      ],
-      "Invalid expiration date": [
-        "Ugyldig udløbsdato"
       ],
       "Invalid IBAN": [
         "Ugyldig IBAN"
@@ -3957,6 +3948,9 @@
       ],
       "No contacts found to import": [
         "Ingen kontakter fundet til import"
+      ],
+      "No drive found to import": [
+        "Der blev ikke fundet noget drev til import"
       ],
       "No emails found to import - the account does not have an inbox": [
         "Ingen e-mails fundet til import - kontoen har ikke en indbakke"
@@ -4211,6 +4205,9 @@
       "Unexpected error, we can't import the contacts": [
         "Uventet fejl, vi kan ikke importere kontakterne"
       ],
+      "Unexpected error, we can't import the files": [
+        "Uventet fejl. Vi kan ikke importere filerne"
+      ],
       "Unknown error": [
         "Ukendt fejl"
       ],
@@ -4228,6 +4225,9 @@
       ],
       "VAT number must start with ${ prefixes }": [
         "Momsnummer skal starte med ${ prefixes }"
+      ],
+      "We couldn’t send a verification code using this method.": [
+        "Vi kunne ikke sende en bekræftelseskode ved hjælp af denne metode."
       ],
       "Wrong billing address": [
         "Forkert faktureringsadresse"
@@ -4747,6 +4747,9 @@
       ],
       "Security key": [
         "Sikkerhedsnøgle"
+      ],
+      "Touch your security key.": [
+        "Tryk på din sikkerhedsnøgle."
       ]
     },
     "fido2: Label": {
@@ -5789,6 +5792,9 @@
       "Failed to update meeting schedule": [
         "Kunne ikke opdatere mødeplanen"
       ],
+      "Files only (no photos, ${ DOCS_APP_NAME } or ${ SHEETS_APP_NAME }) - up to 100 GB total, 100,000 files, and 50 GB per file": [
+        "Kun filer (ingen fotos, ${ DOCS_APP_NAME } eller ${ SHEETS_APP_NAME }) - op til 100 GB i alt, 100.000 filer og 50 GB pr. fil"
+      ],
       "finance": [
         "finans"
       ],
@@ -6120,9 +6126,6 @@
       "PGP/MIME automatically sends the message using the current composer mode.": [
         "PGP/MIME sender automatisk beskeden ved hjælp af den aktuelle komponisttilstand."
       ],
-      "Please authenticate your card in the verification tab.": [
-        "Bekræft dit kort i verifikationsfanen."
-      ],
       "Please authenticate your payment in the verification tab.": [
         "Bekræft din betaling i verifikationsfanen."
       ],
@@ -6162,9 +6165,6 @@
       ],
       "Please try again using a different payment method, or contact your bank.": [
         "Prøv igen med en anden betalingsmetode, eller kontakt din bank."
-      ],
-      "Please try again, use a different payment method, or contact PayPal for assistance.": [
-        "Forsøg venligst igen, benyt en anden betalingsmetode eller kontakt PayPal for hjælp."
       ],
       "Please wait while we look for contacts that can be re-signed with the primary encryption key.": [
         "Vent venligst mens vi leder efter kontakter, der kan gensigneres med den primære krypteringsnøgle."
@@ -6591,6 +6591,9 @@
       "You are about to open your default browser and visit:": [
         "Du er ved at åbne din standardbrowser og besøge:"
       ],
+      "You are currently signed in as ${ username } for ${ organizationName }.": [
+        "Du er i øjeblikket logget ind som ${ username } i (${ organizationName }."
+      ],
       "You are currently signed in as ${ username }.": [
         "Du er i øjeblikket logget ind som ${ username }."
       ],
@@ -6652,9 +6655,6 @@
       ],
       "You will lose all unsaved changes.": [
         "Du vil miste alle ikke-gemte ændringer."
-      ],
-      "You will soon be redirected to PayPal to verify your payment.": [
-        "Du omdirigeres snart til PayPal for at bekræfte din betaling."
       ],
       "You will update all the events in this series. Added and removed participants will be notified.": [
         "Du vil opdatere alle begivenheder i denne serie. Tilføjede og fjernede deltagere vil blive underrettet."
@@ -12412,9 +12412,6 @@
       "Payment verification": [
         "Betalingsbekræftelse"
       ],
-      "PayPal verification failed": [
-        "PayPal-bekræftelse fejlede"
-      ],
       "Phone numbers": [
         "Telefonnumre"
       ],
@@ -12724,6 +12721,26 @@
         "Vælg et nummer"
       ]
     },
+    "Title header for keys table": {
+      "Actions": [
+        "Handlinger"
+      ],
+      "Created": [
+        "Oprettet"
+      ],
+      "Expires": [
+        "Udløber"
+      ],
+      "Fingerprint": [
+        "Fingeraftryk"
+      ],
+      "Status": [
+        "Status"
+      ],
+      "Type": [
+        "Type"
+      ]
+    },
     "Title; create calendar modal": {
       "Create calendar": [
         "Opret kalender"
@@ -12820,6 +12837,9 @@
       ],
       "Upload a public key to enable sending end-to-end encrypted emails to this email": [
         "Upload en offentlig nøgle for at aktivere afsendelse af end-to-end krypterede e-mails til denne e-mail"
+      ],
+      "Version 6 OpenPGP key": [
+        "OpenPGP-nøgle version 6"
       ]
     },
     "tooltip": {
@@ -12858,6 +12878,11 @@
       ],
       "The user must have an address to request data access": [
         "Brugeren skal have en adresse for at anmode om dataadgang"
+      ]
+    },
+    "user_modal": {
+      "You'll be able to assign roles once the user has accepted the invitation.": [
+        "Du vil kunne tildele roller når brugeren har accepteret invitationen."
       ]
     },
     "Validation": {

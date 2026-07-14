@@ -4,86 +4,103 @@ import { c } from 'ttag';
 
 import { getNotificationsManager } from '@proton/drive/modules/notifications';
 
-import {
-    type SearchResultItem,
-    tryCatchWithNotification,
-    useSearchModule,
-    useUrlSearchParams,
-} from '../../../../modules/search';
+import { tryCatchWithNotification, useSearchModule, useUrlSearchParams } from '../../../../modules/search';
 import { sendErrorReportForSearch } from '../../../../modules/search/internal/shared/errors';
+import { useSearchViewStore } from '../store';
 import type { SearchViewModelAdapter } from '../type';
+import { loadNodesForSearchView } from './loadNodesForSearchView';
 
 export const useSearchViewModel = (): SearchViewModelAdapter => {
     const searchModule = useSearchModule();
     const [searchParams] = useUrlSearchParams();
 
     const [refreshMarker, setRefreshMarker] = useState(0);
-    const [currentResultUids, setCurrentResultUids] = useState<string[]>([]);
-
     const [isSearching, setIsSearching] = useState(false);
+
     const abortControllerRef = useRef<AbortController | null>(null);
 
+    // Keep latest values in refs so doSearch stays stable and the search effect only re-runs on
+    // real triggers (query change, manual refresh, becoming ready) - not on every indexer state
+    // broadcast during re-indexing, which would clear + refetch results and make them blink.
+    const searchModuleRef = useRef(searchModule);
+    searchModuleRef.current = searchModule;
+    const searchParamsRef = useRef(searchParams);
+    searchParamsRef.current = searchParams;
+
     const doSearch = useCallback(async () => {
+        const searchModule = searchModuleRef.current;
+        const searchParams = searchParamsRef.current;
+
         abortControllerRef.current?.abort();
         const abortController = new AbortController();
         abortControllerRef.current = abortController;
 
-        try {
-            setIsSearching(true);
-            setCurrentResultUids([]);
+        useSearchViewStore.getState().clearAll();
 
-            if (!searchModule.isAvailable || !searchModule.isSearchable) {
-                const errorMsg = 'Doing search query on non-ready search module';
-                sendErrorReportForSearch(errorMsg, new Error(errorMsg));
+        if (!searchModule.isAvailable || !searchModule.isSearchable) {
+            const errorMsg = 'Doing search query on non-ready search module';
+            sendErrorReportForSearch(errorMsg, new Error(errorMsg));
+            return;
+        }
+
+        setIsSearching(true);
+
+        try {
+            // Phase 1: collect all matching UIDs from the WASM engine (fast, in-memory).
+            const collectedUids: string[] = [];
+            for await (const item of searchModule.search({ filename: searchParams })) {
+                if (abortController.signal.aborted) {
+                    break;
+                }
+                collectedUids.push(item.nodeUid);
+            }
+            // Dedup because the same node can appear in multiple indices.
+            const allUids = [...new Set(collectedUids)];
+
+            // Phase 2: stream nodes from the SDK in one call; iterateNodes handles
+            // internal API batching. Results appear progressively as they resolve.
+            if (!abortController.signal.aborted && allUids.length > 0) {
+                useSearchViewStore.getState().setLoading(true);
+                const result = await loadNodesForSearchView(allUids, abortController.signal);
+                if (result.hadPartialErrors) {
+                    getNotificationsManager().createNotification({
+                        type: 'error',
+                        text: c('Error').t`We were not able to load some search results`,
+                    });
+                }
+            }
+        } catch (e) {
+            if (e instanceof DOMException && e.name === 'AbortError') {
                 return;
             }
-
-            try {
-                // Collect all results before updating state: the downstream useEffect
-                // that calls loadNodes() depends on resultUids and aborts on every change,
-                // so updating state per item would cause repeated abort/restart cycles.
-                // TODO: Enable progressive rendering once loadNodes supports incremental loading.
-                const collected: SearchResultItem[] = [];
-                for await (const item of searchModule.search({ filename: searchParams })) {
-                    if (abortController.signal.aborted) {
-                        break;
-                    }
-                    collected.push(item);
-                }
-                if (!abortController.signal.aborted) {
-                    setCurrentResultUids(mergeAndSortResults(collected));
-                }
-            } catch (e) {
-                if (e instanceof DOMException && e.name === 'AbortError') {
-                    return;
-                }
-                if (abortController.signal.aborted) {
-                    return;
-                }
-                getNotificationsManager().createNotification({
-                    type: 'error',
-                    text: c('Error').t`Search failed`,
-                });
-                sendErrorReportForSearch('Search query failed', e);
+            if (abortController.signal.aborted) {
+                return;
             }
+            getNotificationsManager().createNotification({
+                type: 'error',
+                text: c('Error').t`Search failed`,
+            });
+            sendErrorReportForSearch('Search query failed', e);
         } finally {
             if (!abortController.signal.aborted) {
                 setIsSearching(false);
+                useSearchViewStore.getState().setLoading(false);
             }
         }
-    }, [searchModule, searchParams]);
+    }, []);
+
+    const isReady = searchModule.isAvailable && searchModule.isSearchable;
 
     useEffect(() => {
-        if (!searchModule.isAvailable || !searchModule.isSearchable) {
+        if (!isReady) {
             return;
         }
         void doSearch();
 
-        // - Use refreshMarker as a dep to refresh the search when required.
-        // - searchModule is not included in deps: we don't want to refetch search results
-        //   when the search DB state changes.
-        // TODO: Revisit this search triggering logic inherited from legacy search.
-    }, [doSearch, refreshMarker]);
+        // Triggers: query change, manual refresh, or the index becoming ready. We depend on the
+        // `isReady` boolean (not the searchModule object) so progress broadcasts during
+        // re-indexing don't refetch and blink the results.
+    }, [searchParams, refreshMarker, isReady, doSearch]);
 
     const refresh = useCallback(() => {
         setRefreshMarker((prev) => prev + 1);
@@ -107,27 +124,9 @@ export const useSearchViewModel = (): SearchViewModelAdapter => {
         isSearchable: searchModule.isAvailable ? searchModule.isSearchable : false,
         startIndexing,
         isSearching,
-        resultUids: currentResultUids,
         refreshResults: refresh,
         indexingProgress: searchModule.isAvailable
             ? searchModule.indexingProgress
             : { files: 0, folders: 0, albums: 0, photos: 0 },
     };
 };
-
-/**
- * Deduplicates search results by nodeUid (keeping the highest score)
- * and returns uids sorted by descending score.
- */
-export function mergeAndSortResults(items: SearchResultItem[]): string[] {
-    const best = new Map<string, number>();
-    for (const { nodeUid, score } of items) {
-        const existing = best.get(nodeUid);
-        if (existing === undefined || score > existing) {
-            best.set(nodeUid, score);
-        }
-    }
-    return [...best.entries()]
-        .sort(([uidA, scoreA], [uidB, scoreB]) => scoreB - scoreA || uidA.localeCompare(uidB))
-        .map(([uid]) => uid);
-}

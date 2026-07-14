@@ -66,6 +66,9 @@
       "Accept": [
         "Accepteren"
       ],
+      "Account settings": [
+        "Accountinstellingen"
+      ],
       "activate": [
         "activeer"
       ],
@@ -801,9 +804,6 @@
       "Forgot password?": [
         "Wachtwoord vergeten?"
       ],
-      "Forgot recovery method?": [
-        "Herstelmethode vergeten?"
-      ],
       "Generate": [
         "Genereren"
       ],
@@ -1059,9 +1059,6 @@
       "Load more": [
         "Laad meer"
       ],
-      "Loading verification": [
-        "Verificatie laden"
-      ],
       "Lost access to your 2FA device?": [
         "Geen toegang meer tot uw 2FA-apparaat?"
       ],
@@ -1205,6 +1202,9 @@
       ],
       "Organization": [
         "Organisatie"
+      ],
+      "Pause": [
+        "Onderbreken"
       ],
       "Pay": [
         "Betalen"
@@ -1527,9 +1527,6 @@
       "Set as default": [
         "Als standaard instellen"
       ],
-      "Set as default mail application": [
-        "Stel in als standaard e-mailapplicatie"
-      ],
       "Set catch-all": [
         "Stel catch-all in"
       ],
@@ -1652,6 +1649,9 @@
       ],
       "Stay": [
         "Blijf"
+      ],
+      "Stop": [
+        "Stop"
       ],
       "Stop using single sign-on": [
         "Stop met single sign-on"
@@ -2483,12 +2483,141 @@
         "Aanbieding niet beschikbaar"
       ]
     },
+    "bf2023: Tooltip": {
+      "Includes support for 1 custom email domain, 10 email addresses, 10 hide-my-email aliases, calendar sharing, and more.": [
+        "Ondersteuning voor 1 aangepast e-maildomein, 10 e-mailadressen, 10 hide-my-email-aliassen, gedeelde agenda's en meer."
+      ]
+    },
     "BF2024: Deal details": {
       "${ MAIL_APP_NAME } desktop app": [
         "${ MAIL_APP_NAME }-desktopapp"
       ],
+      "${ plan } and ${ CALENDAR_SHORT_APP_NAME }": [
+        "${ plan } en ${ CALENDAR_SHORT_APP_NAME }"
+      ],
+      "${ storageSize } storage": [
+        "${ storageSize } opslagruimte"
+      ],
+      "1 user account": [
+        "1 gebruikersaccount"
+      ],
+      "200 GB storage: 40x your current plan": [
+        "200 GB opslag: 40x uw huidig abonnement"
+      ],
+      "6 user accounts": [
+        "6 gebruikersaccounts"
+      ],
+      "Admin panel to manage your family": [
+        "Beheerderpaneel om uw gezin te beheren"
+      ],
+      "Advanced account protection": [
+        "Geavanceerde accountbeveiliging"
+      ],
+      "Easily add or remove users": [
+        "Eenvoudig gebruikers toevoegen of verwijderen"
+      ],
+      "One-time payment, lifetime deal": [
+        "Eenmalige betaling, levenslange deal"
+      ],
+      "Online document editor": [
+        "Online document editor"
+      ],
+      "Password health alerts": [
+        "Wachtwoordgezondheidswaarschuwingen"
+      ],
+      "Recover previous file versions": [
+        "Herstel vorige bestandsversies"
+      ],
+      "Unlimited folders, labels and filters": [
+        "Onbeperkt aantal mappen, labels en filters"
+      ],
+      "Unlimited logins, credit cards, hide-my-email aliases and more": [
+        "Onbeperkt inloggen, kredietkaarten, hide-my-email aliassen en meer"
+      ],
       "Use your own email domain": [
         "Gebruik uw eigen e-maildomein"
+      ]
+    },
+    "BF2024: Offers": {
+      "Billed at ${ amount } once": [
+        "U betaalt ${ amount } eenmaal"
+      ],
+      "Renews after 1 month at ${ regularAmount }.": [
+        "Verlenging na 1 maand voor ${ regularAmount }."
+      ]
+    },
+    "BF2024: Tooltip": {
+      "Access blocked content and browse privately. Includes 8,500+ servers across 110+ countries, 10 devices, high-speed streaming, ad-blocker and malware protection, VPN Accelerator and more.": [
+        "Bekijk geblokkeerde inhoud en surf privé. Met meer dan 8 500 servers in meer dan 110 landen, 10 apparaten, high-speed streaming, advertentieblokkering en malwarebescherming, VPN Accelerator en meer."
+      ],
+      "Secure logins on all your devices. Includes unlimited hide-my-email aliases, sharing, integrated 2FA, ${ DARK_WEB_MONITORING_NAME } and more.": [
+        "Beveiligd inloggen op al uw apparaten. Inclusief ongelimiteerde hide-my-email aliassen, delen, geïntegreerde 2FA, ${ DARK_WEB_MONITORING_NAME } en meer."
+      ],
+      "Secure your emails and schedule with end-to-end encryption. Includes ${ addresses } email address, support for custom email domains, ${ BRAND_NAME } Scribe writing assistant, unlimited hide-my-email aliases and more.": [
+        "Beveilig uw e-mails en agenda met end-to-end versleuteling. Inclusief ${ addresses } e-mailadres, ondersteuning voor aangepaste e-maildomeinen, ${ BRAND_NAME } Scribe schrijfassistent, ongelimiteerde hide-my-email aliassen en meer.",
+        "Beveilig uw e-mails en agenda met end-to-end versleuteling. Inclusief ${ addresses } e-mailadres, ondersteuning voor aangepaste e-maildomeinen, ${ BRAND_NAME } Scribe schrijfassistent, ongelimiteerde hide-my-email aliassen en meer."
+      ],
+      "Secure your emails and schedule with end-to-end encryption. Includes ${ addresses } email address, support for custom email domains, unlimited hide-my-email aliases and more.": [
+        "Beveilig uw e-mails en agenda met end-to-end versleuteling. Inclusief ${ addresses } e-mailadres, ondersteuning voor aangepaste e-maildomeinen, onbeperkte hide-my-email aliassen en meer.",
+        "Beveilig uw e-mails en agenda met end-to-end versleuteling. Inclusief ${ addresses } e-mailadres, ondersteuning voor aangepaste e-maildomeinen, onbeperkte hide-my-email aliassen en meer."
+      ],
+      "Secure your emails and schedule with end-to-end encryption. Includes 15 email addresses, support for custom email domains, ${ BRAND_NAME } Scribe writing assistant, unlimited hide-my-email aliases and more.": [
+        "Beveilig uw e-mails en agenda met end-to-end versleuteling. Inclusief 15 e-mailadressen, ondersteuning voor aangepaste e-maildomeinen, ${ BRAND_NAME } Scribe schrijfassistent, ongelimiteerde hide-my-email aliassen en meer."
+      ],
+      "Secure your emails and schedule with end-to-end encryption. Includes 15 email addresses, support for custom email domains, unlimited hide-my-email aliases and more.": [
+        "Beveilig uw e-mails en agenda met end-to-end versleuteling. Inclusief 15 e-mailadres, ondersteuning voor aangepaste e-maildomeinen, ongelimiteerde hide-my-email aliassen en meer."
+      ],
+      "Secure your files with encrypted cloud storage. Includes online document editor, photo backup, version history, encrypted file sharing, and more.": [
+        "Beveilig uw bestanden met versleutelde cloudopslag. Inclusief online documenteditor, foto back-up, versiegeschiedenis, versleuteld bestanden delen en meer."
+      ],
+      "Storage space is shared across all ${ BRAND_NAME } services.": [
+        "Opslagruimte wordt gedeeld binnen alle ${ BRAND_NAME }-diensten."
+      ]
+    },
+    "BF2025: Deal details": {
+      "2 TB data storage": [
+        "2 TB opslagruimte"
+      ],
+      "3 TB data storage": [
+        "3 TB opslagruimte"
+      ],
+      "Access 15,000+ servers in 120+ countries": [
+        "Toegang tot 15 000+ servers in 120+ landen"
+      ],
+      "Access advanced AI models": [
+        "Toegang tot geavanceerde AI-modellen"
+      ],
+      "All premium features of ${ MAIL_SHORT_APP_NAME }, ${ PASS_SHORT_APP_NAME }, ${ DRIVE_SHORT_APP_NAME }, ${ VPN_SHORT_APP_NAME }, and ${ CALENDAR_SHORT_APP_NAME }": [
+        "Alle premium functies van ${ MAIL_SHORT_APP_NAME }, ${ PASS_SHORT_APP_NAME }, ${ DRIVE_SHORT_APP_NAME }, ${ VPN_SHORT_APP_NAME }, en ${ CALENDAR_SHORT_APP_NAME }"
+      ],
+      "Block ads, trackers, and malware": [
+        "Blokkeer advertenties, trackers en malware"
+      ],
+      "Built-in 2FA authenticator": [
+        "Ingebouwde 2FA-authenticator"
+      ],
+      "Connect 10 devices at once": [
+        "Verbind 10 apparaten tegelijk"
+      ],
+      "Full chat history with easy search and favorites": [
+        "Volledige chatgeschiedenis met eenvoudig zoeken en favorieten"
+      ],
+      "Individual accounts for 6 users": [
+        "Individuele accounts voor 6 gebruikers"
+      ],
+      "Individual accounts for you and a partner": [
+        "Individuele accounts voor u en een partner"
+      ],
+      "Stronger protection against cyber threats": [
+        "Sterkere bescherming tegen cyberdreigingen"
+      ],
+      "Unlimited daily chats": [
+        "Onbeperkt aantal dagelijkse chats"
+      ]
+    },
+    "BF2025: Tooltip": {
+      "Specially designed NetShield protects your devices and speeds up your browsing by blocking ads, trackers, and malware.": [
+        "Het speciaal ontworpen NetShield beschermt uw apparaten en versnelt uw browsen door advertenties, trackers en malware te blokkeren."
       ]
     },
     "Billing cycle": {
@@ -5136,12 +5265,6 @@
       "${ DOCS_SHORT_APP_NAME } in ${ DRIVE_APP_NAME } allows you to work together with others in a secure, encrypted environment.": [
         "Met ${ DOCS_SHORT_APP_NAME } in ${ DRIVE_APP_NAME } kunt u samenwerken met anderen in een veilige, versleutelde omgeving."
       ],
-      "${ MAIL_APP_NAME } is not your default mail application.": [
-        "${ MAIL_APP_NAME } is niet uw standaard e-mailapplicatie."
-      ],
-      "${ MAIL_APP_NAME } is your default mail application.": [
-        "${ MAIL_APP_NAME } is uw standaard e-mailapplicatie."
-      ],
       "${ MAIL_APP_NAME } keeps your business data secure and lets you send encrypted emails to anyone.": [
         "${ MAIL_APP_NAME } houdt uw bedrijfsgegevens veilig en laat u versleutelde e-mails verzenden naar iedereen."
       ],
@@ -5799,6 +5922,14 @@
       ],
       "Tailored made solutions for larger organizations with custom needs": [
         "Op maat gemaakte oplossingen voor grote organisaties met eigen, aangepaste, wensen"
+      ]
+    },
+    "driveplus2024: Deal details": {
+      "Extended version history": [
+        "Uitgebreide versiegeschiedenis bekijken"
+      ],
+      "Priority support": [
+        "Prioriteitsondersteuning"
       ]
     },
     "Duo offer": {
@@ -7121,12 +7252,6 @@
       "Intended recipient does not support calendar sharing": [
         "De bedoelde ontvangen heeft geen ondersteuning voor het delen van een agenda."
       ],
-      "Invalid ${ name } code": [
-        "Ongeldig ${ name } code"
-      ],
-      "Invalid card number": [
-        "Ongeldig creditcardnummer"
-      ],
       "Invalid code": [
         "Ongeldige code"
       ],
@@ -7138,9 +7263,6 @@
       ],
       "Invalid email address": [
         "Ongeldig e-mailadres"
-      ],
-      "Invalid expiration date": [
-        "Ongeldige vervaldatum"
       ],
       "Invalid IBAN": [
         "Ongeldige IBAN"
@@ -7556,6 +7678,9 @@
       "We couldn't sign you in": [
         "We konden u niet aanmelden"
       ],
+      "We couldn’t send a verification code using this method.": [
+        "We konden via deze methode geen verificatiecode verzenden."
+      ],
       "We stopped DKIM signing due to problems with your DNS configuration. Please follow the instructions below to resume signing.": [
         "We zijn gestopt met het ondertekenen van DKIM-ondertekening, vanwege problemen met uw DNS-configuratie. Volg de onderstaande instructies om ondertekenen te hervatten."
       ],
@@ -7757,9 +7882,6 @@
       ]
     },
     "Error message": {
-      "Account is deleted or disabled": [
-        "Account is verwijderd of uitgeschakeld"
-      ],
       "App currently unavailable": [
         "App momenteel niet beschikbaar"
       ],
@@ -7956,9 +8078,19 @@
         "U kunt een ICS-bestand van de succesvol geëxporteerde afspraken opslaan."
       ]
     },
+    "familyOffer_2023: Deal details": {
+      "3 TB total storage": [
+        "3 TB opslagruimte"
+      ]
+    },
     "familyOffer_2023: Title": {
       "Your account's benefits": [
         "De voordelen van uw account"
+      ]
+    },
+    "familyOffer_2023: Tooltip": {
+      "Storage space is shared between family members across ${ MAIL_APP_NAME }, ${ CALENDAR_APP_NAME }, and ${ DRIVE_APP_NAME }.": [
+        "Opslagruimte wordt gedeeld tussen familieleden op ${ MAIL_APP_NAME }, ${ CALENDAR_APP_NAME } en ${ DRIVE_APP_NAME }."
       ]
     },
     "familyOffer_2023:Action": {
@@ -7991,6 +8123,11 @@
       ],
       "View invitation": [
         "Uitnodiging weergeven"
+      ]
+    },
+    "familyOffer_2023:Deal details": {
+      "Up to 6 users": [
+        "Tot 6 gebruikers"
       ]
     },
     "familyOffer_2023:Error": {
@@ -8114,9 +8251,6 @@
       ],
       "You need to configure a custom domain before creating a new user.": [
         "U moet een eigen domein configureren voordat u een nieuwe gebruiker aanmaakt."
-      ],
-      "You will lose access to all premium features included with ${ plan }.": [
-        "U verliest toegang tot alle premium-functies van ${ plan }."
       ],
       "You're invited by **${ invite.InviterEmail }** to link your account to this group plan.": [
         "U bent uitgenodigd door **${ invite.InviterEmail }** om uw account te koppelen aan dit groepsabonnement."
@@ -8245,6 +8379,17 @@
       ],
       "Set family name": [
         "Gezinsnaam instellen"
+      ]
+    },
+    "familyOffer_2023:Tooltip": {
+      "Includes 2700 servers in 65+ countries, connect up to 10 devices, access worldwide streaming services, malware and ad-blocker, and more.": [
+        "Met 2700 servers in meer dan 65 landen, verbinding met maximaal 10 apparaten, wereldwijd toegang tot streamingdiensten, malware- en advertentieblokkering, en meer."
+      ],
+      "Includes support for 3 custom email domains, 90 email addresses, unlimited hide-my-email aliases, calendar sharing and more.": [
+        "Ondersteuning voor 3 aangepaste e-maildomeinen, 90 e-mailadressen, onbeperkt Hide-my-email-aliassen, gedeelde agenda's en meer."
+      ],
+      "Secure your files with encrypted cloud storage. Includes automatic sync, encrypted file sharing, and more.": [
+        "Beveilig uw bestanden met versleutelde cloudopslag. Inclusief automatische synchronisatie, versleuteld delen van bestanden en meer."
       ]
     },
     "Feature": {
@@ -8444,9 +8589,6 @@
       "Insert a security key linked to your ${ BRAND_NAME } Account.": [
         "Plaats een beveiligingssleutel die is gekoppeld aan uw ${ BRAND_NAME }-account."
       ],
-      "Insert your security key into your device's USB port.": [
-        "Steek uw beveiligingssleutel in de USB-poort van uw apparaat."
-      ],
       "Security key": [
         "Beveiligingssleutel"
       ],
@@ -8458,6 +8600,9 @@
       ],
       "This will delete all security keys linked to your account.": [
         "Dit zal alle beveiligingssleutels voor uw account verwijderen."
+      ],
+      "Touch your security key.": [
+        "Raak uw beveiligingssleutel aan."
       ],
       "Verify your identity with a physical U2F or FIDO2 security key": [
         "Verifieer uw identiteit met een fysieke U2F of FIDO2 beveiligingssleutel"
@@ -9521,12 +9666,6 @@
       "${ boldName } will be set as default calendar.": [
         "${ boldName } zal worden ingesteld als standaardagenda."
       ],
-      "${ boldWarning } You will lose access to all current encrypted data in your account if you continue.": [
-        "${ boldWarning } U verliest de toegang tot alle huidige versleutelde gegevens in uw account als u doorgaat."
-      ],
-      "${ BRAND_NAME } Business plans gives your team all the collaboration tools they need to be productive and organized in their work, while safeguarding your business.": [
-        "${ BRAND_NAME } Business abonnementen bieden uw team alle samenwerkingstools die ze nodig hebben om productief en georganiseerd te werken, terwijl uw bedrijf wordt beschermd."
-      ],
       "${ BRAND_NAME } Free": [
         "${ BRAND_NAME } Free"
       ],
@@ -9595,6 +9734,10 @@
       "${ hasTwoFAMembersLength }/${ canHaveTwoFAMembersLength } of your non-SSO members use two-factor authentication to sign in to your organization.": [
         "${ hasTwoFAMembersLength }/${ canHaveTwoFAMembersLength } van uw niet-SSO leden gebruiken tweestapsverificatie om in te loggen bij uw organisatie.",
         "${ hasTwoFAMembersLength }/${ canHaveTwoFAMembersLength } van uw niet-SSO leden gebruiken tweestapsverificatie om in te loggen bij uw organisatie."
+      ],
+      "${ invitedMemberCount } user needs to accept their invite to start receiving group emails.": [
+        "${ invitedMemberCount } gebruiker moet hun uitnodiging accepteren om groepsmails te kunnen ontvangen.",
+        "${ invitedMemberCount } gebruikers moeten hun uitnodigingen accepteren om groepsmails te kunnen ontvangen."
       ],
       "${ inviterEmailJSX } wants to share data with you in ${ PASS_APP_NAME }": [
         "${ inviterEmailJSX } wil data met u delen in ${ PASS_APP_NAME }"
@@ -10247,12 +10390,6 @@
       "Beta": [
         "Bèta"
       ],
-      "Billed at ${ monthlyDiscountedPrice } for the first 6 months, renews at ${ monthlyRenewalPrice }.": [
-        "De eerste 6 maanden wordt het abonnement gefactureerd tegen ${ monthlyDiscountedPrice }, waarna het wordt verlengd tegen ${ monthlyRenewalPrice }."
-      ],
-      "Billed at ${ yearlyDiscountedPrice } for the first 12 months, renews at ${ yearlyRenewalPrice }.": [
-        "De eerste 12 maanden wordt het abonnement gefactureerd tegen ${ yearlyDiscountedPrice }, waarna het wordt verlengd tegen ${ yearlyRenewalPrice }."
-      ],
       "Billing cycle: ${ text }": [
         "Facturatiefrequentie: ${ text }"
       ],
@@ -10491,9 +10628,6 @@
       "Data locked": [
         "Gegevens vergrendeld"
       ],
-      "Data recoverable on this device": [
-        "Gegevens herstelbaar op dit apparaat"
-      ],
       "Data recoverable with recovery phrase": [
         "Gegevens kunnen worden hersteld met een herstelzin."
       ],
@@ -10597,9 +10731,6 @@
       ],
       "Don't lose access to your premium features. Enable auto-renew today.": [
         "Raak de toegang tot uw premium functies niet kwijt. Schakel vandaag automatisch vernieuwen in."
-      ],
-      "Done! We sent a code to ${ destination }.": [
-        "Klaar! We hebben een code verzonden naar ${ destination }."
       ],
       "Don’t know your recovery phrase?": [
         "U weet uw herstelzin niet?"
@@ -10762,12 +10893,6 @@
       ],
       "Enter the code from your authenticator app": [
         "Voer de code van uw authenticatie app in"
-      ],
-      "Enter the code sent to your phone number ${ phone }.": [
-        "Voer de code in die naar uw telefoonnummer ${ phone } is gestuurd."
-      ],
-      "Enter the code that was sent to ${ email }. If you can't find the message in your inbox, please check your spam folder.": [
-        "Voer de code in die is verzonden naar ${ email }. Als u het bericht niet kan vinden in uw inbox, kijk dan in de map 'Spam'."
       ],
       "Enter the credentials of the email account you want to import from.": [
         "Voer de inloggegevens in van het e-mailaccount waarvan u wilt importeren."
@@ -11053,9 +11178,6 @@
       ],
       "If you are having trouble creating your account, please request an invitation and we will respond within one business day.": [
         "Als u problemen ondervindt met het aanmaken van uw account, vraag dan een uitnodiging aan. Wij reageren op uw verzoek binnen een werkdag."
-      ],
-      "If you are signed in somewhere else, you may be able to ${ signedInPasswordResetLink }.": [
-        "Indien u ergens anders ingelogd bent, kunt u mogelijk ${ signedInPasswordResetLink }."
       ],
       "If you are signed in to a ${ BRAND_NAME } web app in **another browser**, you may be able to perform a password reset from your active session.": [
         "Als u bent ingelogd bij een ${ BRAND_NAME } web-app in **een andere browser**, kunt u mogelijk uw wachtwoord opnieuw instellen vanuit uw actieve sessie."
@@ -11588,9 +11710,6 @@
       "Once access to your account has been granted, they can access your **Recovery** settings and **change your ${ ACCOUNT_APP_NAME } password** for you.": [
         "Zodra zij toegang tot uw account hebben gekregen, kunnen zij uw **herstelinstellingen** bekijken en **uw wachtwoord voor ${ ACCOUNT_APP_NAME }** voor u wijzigen."
       ],
-      "Once you reset your password:": [
-        "Zodra u uw wachtwoord herstelt:"
-      ],
       "Only change these settings if you are using PGP with non-${ BRAND_NAME } recipients.": [
         "Wijzig deze instellingen alleen als u PGP met niet-${ BRAND_NAME } ontvangers gebruikt."
       ],
@@ -11736,9 +11855,6 @@
       "Please ask the owner to directly invite you to the document.": [
         "Vraag aan de eigenaar om u rechtstreeks uit te nodigen voor het document."
       ],
-      "Please authenticate your card in the verification tab.": [
-        "Authenticeer uw kaart in het verificatietabblad."
-      ],
       "Please authenticate your payment in the verification tab.": [
         "Authenticeer uw betaling in het verificatietabblad."
       ],
@@ -11747,9 +11863,6 @@
       ],
       "Please check your file, or try using our ${ csvTemplateButton }.": [
         "Controleer uw bestand, of probeer onze ${ csvTemplateButton }."
-      ],
-      "Please enter the 12-word recovery phrase associated with your account.": [
-        "Voer de herstelzin van 12 woorden in die bij uw account hoort."
       ],
       "Please fill in all required fields.": [
         "Vul alle verplichte velden in."
@@ -11789,9 +11902,6 @@
       ],
       "Please try again using a different payment method, or contact your bank.": [
         "Probeer opnieuw met een andere betalingsmethode, of neem contact op met uw bank."
-      ],
-      "Please try again, use a different payment method, or contact PayPal for assistance.": [
-        "Probeer het opnieuw, gebruik een andere betaalmethode, of neem contact op met PayPal voor hulp."
       ],
       "Please use another browser or download the file.": [
         "Gebruik een andere browser of download het bestand."
@@ -12219,6 +12329,9 @@
       "Sync and manage files with the ${ DRIVE_APP_NAME } app. Create and share documents in ${ DOCS_APP_NAME }, and securely store them. All on ${ ios }, ${ android } and ${ desktop }.": [
         "Synchroniseer en beheer bestanden met de ${ DRIVE_APP_NAME } app. Maak en deel documenten in ${ DOCS_APP_NAME } en sla ze veilig op. Alles op ${ ios }, ${ android } en ${ desktop }."
       ],
+      "Synced from identity provider": [
+        "Gesynct vanuit identiteitsprovider"
+      ],
       "TechRadar Pro recommended with a rating of 4.2 out of 5 stars": [
         "Aanbevolen door TechRadar Pro met een beoordeling van 4,2 van de 5 sterren."
       ],
@@ -12594,9 +12707,6 @@
       "Trial ends on ${ formattedPeriodEndDate }": [
         "Proefversie eindigt op ${ formattedPeriodEndDate }"
       ],
-      "trusted device": [
-        "vertrouwd apparaat"
-      ],
       "Try ${ productName } totally risk free - if for any reason you change your mind, you'll receive a full refund. No questions asked.": [
         "Probeer ${ productName } volledig risicoloos - als u om een andere reden van gedachten verandert, krijgt u een volledige terugbetaling. Zonder vragen."
       ],
@@ -12620,9 +12730,6 @@
       ],
       "Unfortunately there is no recovery method available for this account.": [
         "Helaas is er geen herstelmethode beschikbaar voor dit account."
-      ],
-      "Unfortunately there is no recovery method saved for this account.": [
-        "Helaas is er geen herstelmethode opgeslagen voor dit account."
       ],
       "Unique ID generated by your identity provider, usually in the form of a URL that contains the identity provider’s name within it (e.g. https://idp.example.com/XXXXX).": [
         "Unieke ID gegenereerd door uw identiteitsprovider, meestal in de vorm van een URL die de naam van de identiteitsprovider erin bevat (bv. https://idp.example.com/XXXXX)."
@@ -12798,9 +12905,6 @@
       "Want to learn more?": [
         "Wilt u meer weten?"
       ],
-      "Warning:": [
-        "Waarschuwing:"
-      ],
       "Warning: deleting your account is permanent.": [
         "Opgelet: het verwijderen van uw account is permanent."
       ],
@@ -12849,14 +12953,8 @@
       "We recommend notifying the organization members and asking them to set up 2FA for their accounts before enforcing the use of 2FA.": [
         "We raden aan om de organisatieleden op de hoogte te brengen en ze te vragen om 2FA in te stellen voor hun account voordat u het gebruik van 2FA forceert."
       ],
-      "We recommend using your recovery phrase instead.": [
-        "Wij raden u aan in plaats daarvan uw herstelzin te gebruiken."
-      ],
       "We securely store recovery information on your trusted device to prevent you from losing your data": [
         "Wij slaan herstelinformatie veilig op uw vertrouwde apparaat op om te voorkomen dat u uw gegevens verliest"
-      ],
-      "We stored a backup file in this browser because you allowed data recovery on this ${ deviceLink }. If the backup file is valid, you will immediately regain complete or partial access to your encrypted data.": [
-        "Wij hebben een back-upbestand in deze browser opgeslagen omdat u gegevens herstellen voor dit ${ deviceLink } toestond. Als het back-upbestand geldig is, krijgt u onmiddellijk volledige of gedeeltelijke toegang tot uw versleutelde gegevens."
       ],
       "We strongly recommend that everyone enable recovery by recovery phrase.": [
         "We raden iedereen ten zeerste aan om herstel via een herstelzin in te schakelen."
@@ -12900,20 +12998,11 @@
       "We’ll send a reset code to ${ boldValue }.": [
         "We zullen een reset code sturen naar ${ boldValue }."
       ],
-      "We’ll send a reset code to the email address you provided for account recovery.": [
-        "We sturen een resetcode naar het e-mailadres dat u hebt opgegeven voor het herstel van uw account."
-      ],
-      "We’ll send a reset code to the phone number you provided for account recovery.": [
-        "We sturen een resetcode naar het telefoonnummer dat u hebt opgegeven voor het herstel van uw account."
-      ],
       "When disabled, this prevents image files from loading on your device without your knowledge.": [
         "Indien uitgeschakeld, voorkomt dit dat afbeeldingsbestanden op uw apparaat laden zonder dat u het weet."
       ],
       "When disabled, this prevents remote images from loading without your knowledge.": [
         "Indien uitgeschakeld, voorkomt dit dat externe afbeeldingen worden geladen zonder dat u het weet."
-      ],
-      "When enabled, we will check if ${ MAIL_APP_NAME } is your default mail application and notify you if it is not.": [
-        "Wanneer ingeschakeld, zullen we controleren of ${ MAIL_APP_NAME } uw standaard e-mail applicatie is en u informeren indien dit niet het geval is."
       ],
       "When enabling SAML for ${ appName } in your identity provider, you might be prompted to use the callback (ACS) URL and issuer ID. Just copy-paste the data below into your identity provider fields.": [
         "Wanneer u SAML inschakelt voor ${ appName } in uw identiteitsprovider, kunt u worden gevraagd om de callback (ACS) URL en uitgevende ID te gebruiken. Kopieer en plak onderstaande gegevens in de velden van uw identiteitsprovider."
@@ -12995,6 +13084,9 @@
       ],
       "You are about to open your default browser and visit:": [
         "U staat op het punt uw standaardbrowser te openen om te bezoeken:"
+      ],
+      "You are currently signed in as ${ username } for ${ organizationName }.": [
+        "U bent momenteel aangemeld als ${ username } voor ${ organizationName }."
       ],
       "You are currently signed in as ${ username }.": [
         "U bent momenteel aangemeld als ${ username }."
@@ -13079,6 +13171,9 @@
       ],
       "You can now sign in to your account again.": [
         "U kunt nu opnieuw inloggen op uw account."
+      ],
+      "You can only have one chat instance open at a time. Please close previous conversations before starting a new one.": [
+        "U kunt slechts één gesprek tegelijk voeren. Sluit voorgaande gesprekken voordat u een nieuw gesprek begint."
       ],
       "You can turn on notifications to get alerts when new email messages arrive in this folder.": [
         "U kunt meldingen inschakelen om meldingen te krijgen wanneer nieuwe e-mailberichten in deze map binnenkomen."
@@ -13199,9 +13294,6 @@
       ],
       "You will regain complete or partial access to your encrypted data.": [
         "U krijgt weer volledige of gedeeltelijke toegang tot uw versleutelde gegevens."
-      ],
-      "You will soon be redirected to PayPal to verify your payment.": [
-        "Binnenkort wordt u doorverwezen naar PayPal om uw betaling te verifiëren."
       ],
       "You won't be charged if you cancel before ${ trialEndsOnFormatted }.": [
         "U wordt niets in rekening gebracht als u annuleert voor ${ trialEndsOnFormatted }."
@@ -13499,9 +13591,6 @@
     "invitation status": {
       "Declined": [
         "Afgewezen"
-      ],
-      "Owner": [
-        "Eigenaar"
       ],
       "Paused": [
         "Onderbroken"
@@ -14339,9 +14428,6 @@
       "City": [
         "Stad"
       ],
-      "Code": [
-        "Code"
-      ],
       "Code is 6 digits without spaces": [
         "Code is 6 cijfers zonder spaties"
       ],
@@ -14392,9 +14478,6 @@
       ],
       "Confirm login password": [
         "Bevestig inlogwachtwoord"
-      ],
-      "Confirm MX records added": [
-        "Bevestig dat MX-records zijn toegevoegd"
       ],
       "Confirm new password": [
         "Bevestig nieuw wachtwoord"
@@ -14552,6 +14635,9 @@
       ],
       "Donation amount": [
         "Donatiebedrag"
+      ],
+      "Drive": [
+        "Drive"
       ],
       "Duration": [
         "Duur"
@@ -14973,6 +15059,9 @@
       "Newsletters": [
         "Nieuwsbrieven"
       ],
+      "Newsletters - News, editorial emails, and non-promotional content": [
+        "Nieuwsbrieven - Nieuws, redactionele e-mails en niet-promotionele inhoud"
+      ],
       "No": [
         "Nee"
       ],
@@ -15063,9 +15152,6 @@
       "Password": [
         "Wachtwoord"
       ],
-      "Password reminders": [
-        "Wachtwoordherinneringen"
-      ],
       "Password strength": [
         "Wachtwoordsterkte"
       ],
@@ -15129,11 +15215,17 @@
       "Primary": [
         "Primair"
       ],
+      "Primary - Personal and work emails, plus important updates": [
+        "Primaire - Persoonlijke en zakelijke e-mails, plus belangrijke updates"
+      ],
       "Priority support": [
         "Prioriteitsondersteuning"
       ],
       "Promotions": [
         "Promoties"
+      ],
+      "Promotions - Deals, offers, and marketing emails": [
+        "Promoties - Aanbiedingen, kortingen en marketingmails"
       ],
       "Prompt to trust keys": [
         "Vraag naar het vertrouwen van sleutels"
@@ -15310,6 +15402,9 @@
       "Social": [
         "Sociaal"
       ],
+      "Social - Social media updates, activity, and messages": [
+        "Sociaal - Updates, activiteit en berichten op sociale media"
+      ],
       "Social media updates and activity": [
         "Updates en activiteit op sociale media"
       ],
@@ -15418,6 +15513,9 @@
       "Transactions": [
         "Transacties"
       ],
+      "Transactions - Receipts, bookings, bills, and orders": [
+        "Transacties - Bonnen, boekingen, facturen en bestellingen"
+      ],
       "Two-password mode": [
         "Twee-wachtwoord modus"
       ],
@@ -15438,6 +15536,9 @@
       ],
       "Updates": [
         "Updates"
+      ],
+      "Updates - Automated confirmations, alerts, and account updates": [
+        "Updates - Geautomatiseerde bevestigingen, meldingen en account updates"
       ],
       "Upload 1 or more encryption keys": [
         "Upload 1 of meer encryptiesleutels"
@@ -15609,12 +15710,12 @@
     },
     "Label (begin date/advanced search)": {
       "From": [
-        "Afzender"
+        "Van"
       ]
     },
     "Label (end date/advanced search)": {
       "To": [
-        "Naar"
+        "Tot"
       ]
     },
     "Label BYOE": {
@@ -15784,9 +15885,6 @@
       "${ BRAND_NAME } Foundation's": [
         "${ BRAND_NAME } Foundation"
       ],
-      "Account recovery explained": [
-        "Accountherstel uitgelegd"
-      ],
       "Activity log": [
         "Activiteitenlog"
       ],
@@ -15834,9 +15932,6 @@
       ],
       "Details": [
         "Details"
-      ],
-      "Don't have access to your 2FA?": [
-        "Heeft u geen toegang tot uw 2FA?"
       ],
       "Downloads": [
         "Downloads"
@@ -15963,9 +16058,6 @@
       ],
       "Pay invoice": [
         "Factuur betalen"
-      ],
-      "perform a password reset from your active session": [
-        "mogelijk een wachtwoord reset vanuit uw actieve sessie uitvoeren"
       ],
       "Privacy policy": [
         "Privacybeleid"
@@ -16587,14 +16679,8 @@
       "Create a new ${ appName } account": [
         "Maak een nieuw ${ appName } account aan"
       ],
-      "Enjoy two weeks of ${ BRAND_NAME } for free": [
-        "Geniet gratis van twee weken ${ BRAND_NAME }"
-      ],
       "Experience true online privacy with a secure email, cloud storage, password manager, and VPN. Join ${ BRAND_NAME } today and get ${ refereeRewardAmount } off your next subscription.": [
         "Ervaar echte online privacy met een veilige e-mail, cloudopslag, wachtwoordbeheerder en VPN. Sluit u vandaag nog aan bij ${ BRAND_NAME } en ontvang ${ refereeRewardAmount } korting op uw volgende abonnement."
-      ],
-      "Experience true online privacy. Protect your data with ${ BRAND_NAME } for free for the next 14 days.": [
-        "Ervaar echte on-line privacy. Bescherm gratis uw gegevens met ${ BRAND_NAME } voor de komende 14 dagen."
       ],
       "Find your ${ BRAND_NAME } Account username": [
         "Vind uw ${ BRAND_NAME }-account gebruikersnaam"
@@ -18380,7 +18466,7 @@
         "Desktop"
       ],
       "To get started, choose a display name. This is what people will see when you send an email, invite them to an event, or share a file.": [
-        "Kies een weergavenaam om te beginnende. Dit is de naam die mensen zien als u een e-mail verzendt, ze uitnodigt voor een gebeurtenis of een bestand deelt."
+        "Kies een weergavenaam om te beginnen. Dit is de naam die mensen zien als u een e-mail verzendt, ze uitnodigt voor een gebeurtenis of een bestand deelt."
       ]
     },
     "Onboarding Trial": {
@@ -19290,23 +19376,6 @@
       ],
       "Make sure you memorize or securely store your password as it's the key to decrypt your data.": [
         "Zorg ervoor dat u uw wachtwoord onthoudt of veilig opslaat, aangezien dit de sleutel is om uw gegevens te ontsleutelen."
-      ],
-      "Turn off password reminders?": [
-        "Wachtwoordherinneringen uitschakelen?"
-      ],
-      "Turn off reminders": [
-        "Schakel herinneringen uit"
-      ]
-    },
-    "password_reset: info": {
-      "**All your existing data** (emails, events, contacts, files, ${ PASS_APP_NAME } entries, etc.) **will be locked** and can only be unlocked with your **old password**.": [
-        "**Al uw bestaande gegevens** (e-mails, evenementen, contactpersonen, bestanden, ${ PASS_APP_NAME } gegevens, etc.) **zullen worden vergrendeld** en kunnen alleen ontgrendeld worden met uw **oude wachtwoord**."
-      ],
-      "**All your existing data** (emails, events, contacts, files, ${ PASS_APP_NAME } entries, etc.) **will be locked** and can only be unlocked with your **recovery phrase** or your **old password**.": [
-        "**Al uw bestaande gegevens** (e-mails, evenementen, contactpersonen, bestanden, ${ PASS_APP_NAME } gegevens, etc.) **zullen worden vergrendeld** en kunnen alleen ontgrendeld worden met uw **herstelzin** of uw **oude wachtwoord**."
-      ],
-      "Any **two-factor authentication (2FA)** method on your account will be disabled.": [
-        "Elke **tweestapsverificatie (2FA)** methode op uw account wordt uitgeschakeld."
       ]
     },
     "passwordless": {
@@ -19812,7 +19881,7 @@
         "E-mailadres"
       ],
       "End date": [
-        "Eind datum"
+        "Einddatum"
       ],
       "Enter a name": [
         "Voer een naam in"
@@ -19908,7 +19977,7 @@
         "Selecteer provincie"
       ],
       "Start date": [
-        "Begindatum"
+        "Startdatum"
       ],
       "Text": [
         "Tekst"
@@ -21016,7 +21085,7 @@
         "Controleer de veiligheid van uw account"
       ],
       "Safeguard account now": [
-        "Veilige account nu"
+        "Beveilig account nu"
       ],
       "Safeguard your account": [
         "Bescherm uw account"
@@ -21494,6 +21563,36 @@
       ],
       "Testing SAML configuration": [
         "SAML-configuratie aan het testen"
+      ]
+    },
+    "scim": {
+      "${ memberCount } new member": [
+        "${ memberCount } nieuw lid",
+        "${ memberCount } nieuwe leden"
+      ],
+      "${ numberOfPendingGroups } group synced": [
+        "${ numberOfPendingGroups } groep gesynct",
+        "${ numberOfPendingGroups } groepen gesynct"
+      ],
+      "${ numberOfPendingUsers } user synced": [
+        "${ numberOfPendingUsers } gebruiker gesynct",
+        "${ numberOfPendingUsers } gebruikers gesynct"
+      ],
+      "${ pendingGroupsCount } group": [
+        "${ pendingGroupsCount } groep",
+        "${ pendingGroupsCount } groepen"
+      ],
+      "${ pendingGroupsCount } group synced.": [
+        "${ pendingGroupsCount } groep gesynct.",
+        "${ pendingGroupsCount } groepen gesynct."
+      ],
+      "${ pendingUsersCount } user": [
+        "${ pendingUsersCount } gebruiker",
+        "${ pendingUsersCount } gebruikers"
+      ],
+      "${ pendingUsersCount } user synced.": [
+        "${ pendingUsersCount } gebruiker gesynct.",
+        "${ pendingUsersCount } gebruikers gesynct."
       ]
     },
     "scim: Action": {
@@ -22234,6 +22333,9 @@
       "Connect all your devices": [
         "Al uw apparaten verbinden"
       ],
+      "Continue with ${ planName }": [
+        "Ga verder met ${ planName }"
+      ],
       "Create a ${ BRAND_NAME } Account": [
         "Maak een ${ BRAND_NAME }-account aan"
       ],
@@ -22659,6 +22761,18 @@
       ]
     },
     "specialoffer: Deal details": {
+      "3 TB": [
+        "3 TB"
+      ],
+      "6 users": [
+        "6 gebruikers"
+      ],
+      "All paid Mail and Calendar features": [
+        "Alle betaalde Mail- en Calendar-kenmerken"
+      ],
+      "High speed VPN": [
+        "High-speed VPN"
+      ],
       "Highest VPN speed": [
         "Hoogste VPN-snelheid"
       ],
@@ -22671,8 +22785,17 @@
       "Premium ${ appName1 } & ${ appName2 } & ${ appName3 }": [
         "Premium ${ appName1 } & ${ appName2 } & ${ appName3 }"
       ],
+      "Premium early access": [
+        "Premium vroege toegang"
+      ],
+      "Secure cloud storage": [
+        "Veilige cloudopslag"
+      ],
       "Secure streaming": [
         "Beveiligd streamen"
+      ],
+      "Support online privacy": [
+        "Ondersteun online privacy"
       ]
     },
     "specialoffer: Footer": {
@@ -22716,17 +22839,72 @@
       ]
     },
     "specialoffer: Offers": {
+      "${ n } month": [
+        "${ n } maand",
+        "${ n } maanden"
+      ],
       "/ month": [
         "/ maand"
       ],
       "/month": [
         "/maandelijks"
       ],
+      "1 year": [
+        "1 jaar"
+      ],
+      "15 months": [
+        "15 maanden"
+      ],
+      "2 years": [
+        "2 jaar"
+      ],
+      "30 months": [
+        "30 maanden"
+      ],
+      "Billed at ${ amount } for 1 month": [
+        "U betaalt ${ amount } voor 1 maand"
+      ],
+      "Billed at ${ amount } for 12 months": [
+        "U betaalt ${ amount } voor 12 maanden"
+      ],
+      "Billed at ${ amount } for 15 months": [
+        "U betaalt ${ amount } voor 15 maanden"
+      ],
+      "Billed at ${ amount } for 24 months": [
+        "U betaalt ${ amount } voor 24 maanden"
+      ],
+      "Billed at ${ amount } for 30 months": [
+        "U betaalt ${ amount } voor 30 maanden"
+      ],
       "Get the deal": [
         "Kies deze deal"
       ],
+      "Renews after 1 year at a discounted price of ${ discountedAmount } instead of ${ regularAmount } (${ discount }% discount)": [
+        "Wordt na 1 jaar verlengd tegen de gereduceerde prijs van ${ discountedAmount } in plaats van ${ regularAmount } (${ discount }% korting)"
+      ],
+      "Renews after 2 years at a discounted price of ${ discountedAmount } instead of ${ regularAmount } (${ discount }% discount)": [
+        "Wordt na 2 jaar verlengd tegen de gereduceerde prijs van ${ discountedAmount } in plaats van ${ regularAmount } (${ discount }% korting)"
+      ],
       "Save ${ discount }%": [
         "Bespaar ${ discount }%"
+      ],
+      "Standard price ${ amount } for 1 month": [
+        "Standaardprijs ${ amount } voor 1 maand"
+      ],
+      "Standard price ${ amount } for 12 months": [
+        "Standaardprijs ${ amount } voor 12 maanden"
+      ],
+      "Standard price ${ amount } for 15 months": [
+        "Standaardprijs ${ amount } voor 15 maanden"
+      ],
+      "Standard price ${ amount } for 24 months": [
+        "Standaardprijs ${ amount } voor 24 maanden"
+      ],
+      "Standard price ${ amount } for 30 months": [
+        "Standaardprijs ${ amount } voor 30 maanden"
+      ],
+      "The special offer is valid for the first 2 years": [
+        "De speciale aanbieding is geldig voor de eerste 2 jaar"
       ]
     },
     "specialoffer: Title": {
@@ -22753,6 +22931,29 @@
       ],
       "Upgrade and save more with 2 years of ${ planName }": [
         "Upgrade en bespaar meer met 2 jaar ${ planName }"
+      ]
+    },
+    "specialoffer: Tooltip": {
+      "Access blocked content and browse privately. Includes 1700 servers in 60+ countries, highest VPN speed, 10 VPN connections per user, worldwide streaming services, malware and ad-blocker, and more.": [
+        "Bekijk geblokkeerde inhoud en surf privé. Met 1700 servers in meer dan 60 landen, de hoogste VPN-snelheid, 10 VPN-verbindingen per gebruiker, wereldwijd toegang tot streamingdiensten, malware- en advertentieblokkering en meer."
+      ],
+      "Access blocked content and browse privately. Includes 1700 servers in 60+ countries, highest VPN speed, 10 VPN connections, worldwide streaming services, malware and ad-blocker, and more.": [
+        "Bekijk geblokkeerde inhoud en surf privé. Met 1700 servers in meer dan 60 landen, de hoogste VPN-snelheid, 10 VPN-verbindingen, wereldwijd toegang tot streamingdiensten, malware- en advertentieblokkering, en meer."
+      ],
+      "All our premium services with their highest limits: 100 email addresses, support for 10 custom domains, unlimited hide-my-email aliases, calendar sharing, encrypted cloud storage and file sharing, and more.": [
+        "Al onze premium diensten met hun hoogste limieten: 100 e-mailadressen, ondersteuning voor 10 aangepaste domeinen, onbeperkt Hide-my-email-aliassen, gedeelde agenda's, versleutelde cloudopslag, versleuteld bestanden delen en meer."
+      ],
+      "Includes support for 3 custom email domains, 15 email addresses, unlimited hide-my-email aliases, calendar sharing, and more.": [
+        "Ondersteuning voor 3 aangepaste e-maildomeinen, 15 e-mailadressen, onbeperkt Hide-my-email-aliassen, gedeelde agenda's en meer."
+      ],
+      "Perfect for families or small teams, each can have their own inbox and aliases. Requires a custom domain.": [
+        "Perfect voor gezinnen of kleine teams, met voor iedereen een eigen inbox en aliassen. Vereist een aangepast domein."
+      ],
+      "Receive at no extra cost the paid versions of all new privacy services we release in the future, along with early access to all future features and products.": [
+        "Ontvang kostenloos de betaalde versies van alle nieuwe privacyservices die we in de toekomst uitbrengen en krijg vroege toegang tot alle toekomstige kenmerken en producten."
+      ],
+      "Secure your files with encrypted cloud storage. Includes automatic sync, encrypted file sharing, and more.": [
+        "Beveilig uw bestanden met versleutelde cloudopslag. Inclusief automatische synchronisatie, versleuteld delen van bestanden en meer."
       ]
     },
     "Spotlight": {
@@ -22802,14 +23003,6 @@
       "${ n } user detached from SSO": [
         "${ n } gebruiker losgekoppeld van SSO",
         "${ n } gebruikers losgekoppeld van SSO"
-      ],
-      "${ n } user has joined your organization through your Identity Provider. Review the account now:": [
-        "${ n } gebruiker heeft zich aangesloten bij uw organisatie via uw Identity Provider. Controleer het account nu:",
-        "${ n } gebruikers hebben zich aangesloten bij uw organisatie via uw Identity Provider. Controleer hun accounts nu:"
-      ],
-      "${ n } user is inactive. You can safely remove this user from your organization.": [
-        "${ n } gebruiker is inactief. U kunt deze gebruiker veilig verwijderen uit uw organisatie.",
-        "${ n } gebruikers zijn inactief. U kunt ze veilig verwijderen uit uw organisatie."
       ],
       "${ n } user is requesting your help to sign in to their ${ BRAND_NAME } Account with single sign-on.": [
         "${ n } gebruiker vraagt om uw hulp om in te loggen op hun ${ BRAND_NAME }-account met een enkel signaal.",
@@ -23079,6 +23272,12 @@
         "${ count } persoon",
         "${ count } personen"
       ],
+      "... waiting": [
+        "... wachten"
+      ],
+      "Active": [
+        "Actief"
+      ],
       "Add a phone number": [
         "Voeg een telefoonnummer toe"
       ],
@@ -23093,6 +23292,9 @@
       ],
       "Disable recovery by phone": [
         "Herstellen via telefoon uitschakelen"
+      ],
+      "Disabled": [
+        "Uitgeschakeld"
       ],
       "Generate a recovery phrase": [
         "Genereer herstelzin"
@@ -23458,7 +23660,7 @@
         "${ planName } geeft u toegang tot alle premium functies van ${ BRAND_NAME } ${ MAIL_SHORT_APP_NAME }, ${ PASS_SHORT_APP_NAME }, ${ VPN_SHORT_APP_NAME }, ${ DRIVE_SHORT_APP_NAME }, en ${ CALENDAR_SHORT_APP_NAME }. Privacy is ingebouwd, zodat u verder kunt, wetende dat uw gegevens en identiteit veilig zijn."
       ],
       "${ planName } gives you all apps, all features, early access to new releases, and everything you need to be in control of your data and its security.": [
-        "${ planName } geeft u alle apps, alle functies, vroegtijdige toegang tot nieuwe releases, en alles wat u nodig heeft om de controle over de veiligheid van de veiligheid te hebben."
+        "${ planName } geeft u alle apps, alle functies, vroegtijdige toegang tot nieuwe releases, en alles wat u nodig heeft om de controle over uw gegevens en de beveiliging daarvan te hebben."
       ],
       "${ planName } gives you unlimited privacy and more storage for up to 2 people.": [
         "${ planName } geeft u onbeperkte privacy en meer opslagruimte voor tot wel 2 personen."
@@ -23851,9 +24053,6 @@
       "per month, billed annually": [
         "per maand, jaarlijks gefactureerd"
       ],
-      "Save 50% for 1 year, and keep full access": [
-        "Bespaar 50% gedurende 1 jaar en behoud volledige toegang"
-      ],
       "Save 50% for 6 months, and keep full access": [
         "Bespaar 50% gedurende 6 maanden en behoud volledige toegang."
       ],
@@ -23862,12 +24061,6 @@
       ],
       "View VPN session details for your organization.": [
         "Bekijk VPN-sessiedetails voor uw organisatie."
-      ],
-      "With managed companies, you can add, edit, and remove access for organizations you oversee.": [
-        "Bij beheerde bedrijven kunt u toegang toevoegen, bewerken en verwijderen voor organisaties waarop u toezicht houdt."
-      ],
-      "Your total monthly cost for all managed companies.": [
-        "Uw totale maandelijkse kosten voor alle beheerde bedrijven."
       ]
     },
     "Success": {
@@ -24002,12 +24195,6 @@
       ],
       "Password copied to clipboard": [
         "Wachtwoord gekopieerd naar klembord"
-      ],
-      "Password reminders disabled": [
-        "Wachtwoordherinneringen uitgeschakeld"
-      ],
-      "Password reminders enabled": [
-        "Wachtwoordherinneringen ingeschakeld"
       ],
       "Password updated": [
         "Wachtwoord bijgewerkt"
@@ -24208,6 +24395,20 @@
     "Summary of errors during export calendar": {
       "Details about events that couldn't be exported": [
         "Details over afspraken die niet konden worden geëxporteerd"
+      ]
+    },
+    "summer2023: Tooltip": {
+      "Create secure login details on all your devices. Includes unlimited aliases, 20 vaults, integrated 2FA, credit card auto-fill and more.": [
+        "Maak veilige inloggegevens op al uw apparaten. Inclusief onbeperkte aliassen, 20 kluizen, geïntegreerde 2FA, automatisch invullen van creditcardgegevens en meer."
+      ],
+      "Includes 2950+ servers in 65+ countries, connect up to 10 devices, access worldwide streaming services, malware and ad-blocker, and more.": [
+        "Met 2950 servers in meer dan 65 landen, verbinding met maximaal 10 apparaten, wereldwijd toegang tot streamingdiensten, malware- en advertentieblokkering en meer."
+      ],
+      "Includes support for 1 custom email domain, 10 email addresses, 10 hide-my-email aliases, calendar sharing, and more.": [
+        "Ondersteuning voor 1 aangepast e-maildomein, 10 e-mailadressen, 10 hide-my-email-aliassen, gedeelde agenda's en meer."
+      ],
+      "Secure your files with encrypted cloud storage. Includes version history, encrypted file sharing, and more.": [
+        "Beveilig uw bestanden met versleutelde cloudopslag. Inclusief versiegeschiedenis, versleuteld bestanden delen en meer."
       ]
     },
     "Tab": {
@@ -24736,9 +24937,6 @@
       "Change second password": [
         "Verander tweede wachtwoord"
       ],
-      "Check your default mail application": [
-        "Controleer uw standaard e-mailapplicatie"
-      ],
       "Choose a provider": [
         "Kies een provider"
       ],
@@ -25252,9 +25450,6 @@
       "Forgot password": [
         "Wachtwoord vergeten"
       ],
-      "Forgot recovery method": [
-        "Herstelmethode vergeten"
-      ],
       "Forward and auto-reply": [
         "Doorsturen en automatisch beantwoorden"
       ],
@@ -25472,9 +25667,6 @@
       "Layout": [
         "Lay-out"
       ],
-      "Leave ${ organisationName }?": [
-        "${ organisationName } verlaten?"
-      ],
       "Leave group?": [
         "Groep verlaten?"
       ],
@@ -25571,9 +25763,6 @@
       "No need to empty the trash": [
         "Het is niet nodig om de prullenbak te legen"
       ],
-      "No recovery method": [
-        "Geen herstelmethode"
-      ],
       "Notifications": [
         "Meldingen"
       ],
@@ -25666,9 +25855,6 @@
       ],
       "Payment verification": [
         "Betalingsverificatie"
-      ],
-      "PayPal verification failed": [
-        "PayPal verificatie mislukt"
       ],
       "Pending invitations": [
         "Uitnodigingen in behandeling"
@@ -26565,6 +26751,9 @@
       "Includes professional email at @yourdomain.com, cloud storage with collaborative document editing, scheduling and video conferencing, password management, a secure ${ VPN_SHORT_APP_NAME }, and more.": [
         "Inclusief professioneel e-mailadres bij @yourdomain.com, cloudopslag met mogelijkheden voor gezamenlijke documentbewerking, planning en videoconferenties, wachtwoordbeheer, een beveiligde ${ VPN_SHORT_APP_NAME } en meer."
       ],
+      "Instant AI assistance, human expert on hand!": [
+        "Directe AI-ondersteuning, menselijke expert binnen handbereik!"
+      ],
       "Members who do not use 2FA will get an email asking them to enable it as soon as possible. Single sign-on users will not receive the email reminder.": [
         "Leden die geen 2FA gebruiken krijgen een e-mail met het verzoek om deze zo snel mogelijk in te schakelen. Single sign-on gebruikers zullen de e-mail herinnering niet ontvangen."
       ],
@@ -26703,6 +26892,9 @@
       "Verified email address": [
         "Geverifieerd e-mailadres"
       ],
+      "Version 6 OpenPGP key": [
+        "Versie 6 OpenPGP-sleutel"
+      ],
       "We detected a problem with your DNS configuration. Please make sure your records match the instructions below. If the problem persists, we will have to switch DKIM signing off.": [
         "We hebben een probleem met uw DNS-configuratie ontdekt. Zorg ervoor dat uw records overeenkomen met de instructies hieronder. Als het probleem zich blijft voordoen, moeten we het ondertekenen met DKIM stopzetten."
       ],
@@ -26752,9 +26944,6 @@
       ],
       "User declined invitation": [
         "Gebruiker weigerde uitnodiging"
-      ],
-      "User is a group": [
-        "Gebruiker is een groep"
       ],
       "via ${ groupNames }": [
         "via ${ groupNames }"
@@ -26912,10 +27101,6 @@
       ],
       "Confirm all": [
         "Alles bevestigen"
-      ],
-      "Could not automatically enable administrator access for ${ n } user, because their encryption keys have been updated in the meanwhile:": [
-        "Kon de beheerderstoegang voor ${ n } -gebruiker niet automatisch inschakelen, omdat de encryptiesleutels in de tussentijd zijn bijgewerkt:",
-        "Kon beheerderstoegang niet automatisch inschakelen voor ${ n } gebruikers, omdat de encryptiesleutels in de tussentijd zijn bijgewerkt:"
       ],
       "Could not enable administrator access: ${ error }": [
         "Kan beheerderstoegang niet inschakelen: ${ error }"

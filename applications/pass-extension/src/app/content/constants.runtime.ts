@@ -1,4 +1,5 @@
-import { FieldType, FormType } from '@proton/pass/fathom/labels';
+import { FieldType, FormType } from '@protontech/autofill/types';
+
 import browser from '@proton/pass/lib/globals/browser';
 
 export const ACTIVE_ICON_SRC = browser.runtime.getURL('/assets/protonpass-icon-active.svg');
@@ -67,3 +68,18 @@ export const FORM_TRACKER_CONFIG: Record<FormType, Partial<Record<FieldType, Fie
         [FieldType.CREDIT_CARD]: { action: DropdownAction.AUTOFILL_CC },
     },
 };
+
+/** Field types detected in sub-frames only when the `PassIFrameExtendedAutofill`
+ * flag is enabled. Must cover every `FieldType` except OTP (never detected in
+ * sub-frames) and credit-card (detected in sub-frames regardless of the flag) :
+ * combined with those two exclusions in `runDetection`, a fully excluded set
+ * signals that sub-frame detection is disabled and tracked forms can be detached.
+ * FIXME: remove when `PassIFrameExtendedAutofill` becomes stable */
+export const IFRAME_EXTENDED_AUTOFILL_FIELDS = [
+    FieldType.EMAIL,
+    FieldType.IDENTITY,
+    FieldType.PASSWORD_CURRENT,
+    FieldType.PASSWORD_NEW,
+    FieldType.USERNAME,
+    FieldType.USERNAME_HIDDEN,
+];

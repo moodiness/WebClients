@@ -1,16 +1,16 @@
 import { type PayloadAction, type ThunkAction, type UnknownAction, createSlice } from '@reduxjs/toolkit';
 
-import type { ModelState } from '@proton/account';
-import { getInitialModelState } from '@proton/account';
 import type { ProtonThunkArguments } from '@proton/redux-shared-store-types';
-import { CacheType } from '@proton/redux-utilities/interface';
 import { createAsyncModelThunk, handleAsyncModel, previousSelector } from '@proton/redux-utilities/creator';
+import { getInitialModelState } from '@proton/redux-utilities/initialModelState';
+import type { ModelState } from '@proton/redux-utilities/initialModelState/interface';
+import { CacheType } from '@proton/redux-utilities/interface';
 import { getMeetingQuery, getUpcomingMeetingsQuery } from '@proton/shared/lib/api/meet';
 import { updateCollectionAsyncV6 } from '@proton/shared/lib/eventManager/updateCollectionAsyncV6';
 import type { UpdateCollectionV6 } from '@proton/shared/lib/eventManager/updateCollectionV6';
 import { updateCollectionV6 } from '@proton/shared/lib/eventManager/updateCollectionV6';
 import type { Api } from '@proton/shared/lib/interfaces';
-import type { MeetEventResponse, Meeting } from '@proton/shared/lib/interfaces/Meet';
+import { type MeetEventResponse, type Meeting, MeetingType } from '@proton/shared/lib/interfaces/Meet';
 
 const name = 'meet_meetings' as const;
 
@@ -72,6 +72,18 @@ const slice = createSlice({
         handleAsyncModel(builder, modelThunk);
     },
 });
+
+export const selectIsPersonalRoom = (state: MeetingsState, meetingId: string) => {
+    return (
+        state[name].value?.some(
+            (meeting) => meeting.MeetingLinkName === meetingId && meeting.Type === MeetingType.PERSONAL
+        ) ?? false
+    );
+};
+
+export const selectIsMeetingHost = (state: MeetingsState, meetingId: string) => {
+    return state[name].value?.some((meeting) => meeting.MeetingLinkName === meetingId) ?? false;
+};
 
 const queryMeeting = async (api: Api, id: string) => {
     const { Meeting } = await api<{ Meeting: Meeting }>(getMeetingQuery(id));

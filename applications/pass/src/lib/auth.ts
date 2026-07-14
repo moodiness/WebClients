@@ -8,6 +8,7 @@ import { B2BEvents } from 'proton-pass-web/lib/b2b';
 import { deletePassDB } from 'proton-pass-web/lib/database';
 import { logStore } from 'proton-pass-web/lib/logger';
 import { spotlight } from 'proton-pass-web/lib/spotlight';
+import { sshAgent } from 'proton-pass-web/lib/ssh-agent';
 import { clearUserLocalData, localGarbageCollect } from 'proton-pass-web/lib/storage';
 import { telemetry } from 'proton-pass-web/lib/telemetry';
 import { getThemeForLocalID } from 'proton-pass-web/lib/theme';
@@ -67,7 +68,7 @@ import {
     stripLocalBasenameFromPathname,
 } from '@proton/shared/lib/authentication/pathnameHelper';
 import { APPS } from '@proton/shared/lib/constants';
-import { stringToUint8Array } from '@proton/shared/lib/helpers/encoding';
+import { binaryStringToUint8Array } from '@proton/shared/lib/helpers/encoding';
 import { omit } from '@proton/shared/lib/helpers/object';
 import { wait } from '@proton/shared/lib/helpers/promise';
 import { setUID as setSentryUID } from '@proton/shared/lib/helpers/sentry';
@@ -388,7 +389,7 @@ export const createAuthService = ({
                         if (blob?.type === 'offline') {
                             const { offlineKeyPassword: password, offlineKeySalt: salt } = blob;
                             const { offlineKD, offlineConfig } = extractOfflineComponents(password, salt);
-                            const offlineVerifier = await getOfflineVerifier(stringToUint8Array(offlineKD));
+                            const offlineVerifier = await getOfflineVerifier(binaryStringToUint8Array(offlineKD));
                             authStore.setOfflineComponents({ offlineKD, offlineConfig, offlineVerifier });
 
                             switch (fork.reauth.type) {
@@ -467,6 +468,10 @@ export const createAuthService = ({
 
             const sessionState = JSON.stringify(data ?? redirect.data);
             sessionStorage.setItem(getStateKey(state), sessionState);
+
+            /** Clear SSH keys before navigating to SSO */
+            void sshAgent?.clear();
+
             window.location.replace(url);
         },
 

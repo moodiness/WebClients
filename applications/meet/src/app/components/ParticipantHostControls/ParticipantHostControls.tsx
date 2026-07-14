@@ -18,7 +18,7 @@ import { selectParticipantName, selectParticipantsMap } from '@proton/meet/store
 import { ParticipantCapabilityPermission } from '@proton/meet/types/types';
 import clsx from '@proton/utils/clsx';
 
-import { useMLSContext } from '../../contexts/MLSContext';
+import { useMeetCoreClient } from '../../contexts/MeetCoreClientContext';
 
 import './ParticipantHostControls.scss';
 
@@ -46,7 +46,7 @@ export const ParticipantHostControls = ({
         useMeetSelector((state) => selectParticipantName(state, participant.identity)) ?? c('Info').t`Participant`;
     const participantsMap = useMeetSelector(selectParticipantsMap);
 
-    const mls = useMLSContext();
+    const meetCoreClient = useMeetCoreClient();
 
     const participantData = participantsMap[participant.identity];
 
@@ -71,6 +71,7 @@ export const ParticipantHostControls = ({
                 )}
                 size="small"
                 style={{ '--w-custom': '2rem', '--h-custom': '2rem' }}
+                aria-haspopup="menu"
                 icon
             >
                 <IcThreeDotsVertical className="shrink-0" alt={c('Alt').t`Participant host control options`} size={5} />
@@ -81,15 +82,18 @@ export const ParticipantHostControls = ({
                 onClose={close}
                 className="participant-host-controls-dropdown p-0 meet-radius border border-norm"
                 size={{ width: DropdownSizeUnit.Dynamic, maxWidth: '15rem' }}
+                role="menu"
+                aria-label={c('Label').t`Participant controls`}
             >
                 <DropdownMenu className="h-full flex flex-column items-start py-2 px-1 flex-nowrap gap-2">
                     <DropdownMenuButton
                         className="participant-host-controls-dropdown-item text-left rounded flex flex-nowrap items-center gap-2 border-none shrink-0 color-norm"
                         liClassName="w-full"
+                        role="menuitem"
                         onClick={() =>
                             isVideoEnabled &&
                             withLoading(
-                                mls.updateParticipantTrackSettings(
+                                meetCoreClient.updateParticipantTrackSettings(
                                     participant.identity,
                                     null,
                                     ParticipantCapabilityPermission.NotAllowed
@@ -108,10 +112,11 @@ export const ParticipantHostControls = ({
                     <DropdownMenuButton
                         className="participant-host-controls-dropdown-item rounded text-left flex flex-nowrap items-center gap-2 border-none shrink-0 color-norm"
                         liClassName="w-full"
+                        role="menuitem"
                         onClick={() =>
                             isAudioEnabled &&
                             withLoading(
-                                mls.updateParticipantTrackSettings(
+                                meetCoreClient.updateParticipantTrackSettings(
                                     participant.identity,
                                     ParticipantCapabilityPermission.NotAllowed,
                                     null
@@ -129,9 +134,10 @@ export const ParticipantHostControls = ({
                     <DropdownMenuButton
                         className="participant-host-controls-dropdown-item rounded text-left participant-host-controls-kick-button flex flex-nowrap items-center gap-2 border-none shrink-0"
                         liClassName="w-full"
+                        role="menuitem"
                         loading={loading}
                         disabled={loading}
-                        onClick={() => withLoading(mls.removeParticipant(participant.identity))}
+                        onClick={() => withLoading(meetCoreClient.removeParticipant(participant.identity))}
                     >
                         <IcCrossCircle size={5} className="shrink-0" />
                         <span className="flex-1 text-ellipsis" title={c('Action').t`Kick out`}>{c('Action')

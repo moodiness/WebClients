@@ -319,8 +319,14 @@
       "Do not show again when I press": [
         "Nezobrazovať znova po stlačení"
       ],
+      "Do not show this again": [
+        "Nabudúce nezobrazovať"
+      ],
       "Don't show this again": [
         "Nabudúce nezobrazovať"
+      ],
+      "Done": [
+        "Hotovo"
       ],
       "Download this CSV template": [
         "Stiahnuť si túto CSV šablónu"
@@ -570,6 +576,12 @@
       ],
       "Regenerate": [
         "Generovať znova"
+      ],
+      "Regex invalid": [
+        "Neplatný regulárny výraz"
+      ],
+      "Regex unsafe": [
+        "Nebezpečný regulárny výraz"
       ],
       "Reject": [
         "Odmietnuť"
@@ -1222,6 +1234,12 @@
       "Failed to set default mailbox": [
         "Nastavenie predvolenej poštovej schránky zlyhalo"
       ],
+      "Failed to start SSH agent: ${ errorMessage }": [
+        "Nepodarilo sa spustiť SSH agenta: ${ errorMessage }"
+      ],
+      "Failed to stop SSH agent: ${ errorMessage }": [
+        "Nepodarilo sa zastaviť SSH agenta: ${ errorMessage }"
+      ],
       "Failed to sync aliases": [
         "Nepodarilo sa synchronizovať aliasy"
       ],
@@ -1643,6 +1661,9 @@
       "${ PASS_APP_NAME } will only import logins, notes, credit cards and identities.": [
         "${ PASS_APP_NAME } naimportuje len prihlasovacie údaje, poznámky, platobné karty a identity."
       ],
+      "${ PASS_APP_NAME } will use the SSH keys saved in your vaults.": [
+        "${ PASS_APP_NAME } použije SSH kľúče uložené vo vašich trezoroch."
+      ],
       "${ PASS_SHORT_APP_NAME } offline mode enabled.": [
         "Režim offline aplikácie ${ PASS_SHORT_APP_NAME } je povolený."
       ],
@@ -2030,6 +2051,9 @@
       "finance": [
         "financie"
       ],
+      "Find \"OpenSSH Authentication Agent\", right-click Properties.": [
+        "Nájdite položku „OpenSSH Authentication Agent“ a kliknite na ňu pravým tlačidlom myši a vyberte možnosť „Vlastnosti“."
+      ],
       "Follow those steps to import your data with a generic CSV:": [
         "Pre importovanie údajov pomocou všeobecného CSV súboru, postupujte nasledovne:"
       ],
@@ -2074,6 +2098,9 @@
       ],
       "Identity confirmed": [
         "Identita potvrdená"
+      ],
+      "If you do not plan to use the SSH agent on another paid account, remember to disable this setting before switching to that account.": [
+        "Ak nemáte v pláne používať SSH agenta v inom platenom účte, nezabudnite toto nastavenie deaktivovať pred prechodom na tento účet."
       ],
       "Import the CSV file below.": [
         "Importovať CSV súbor nižšie."
@@ -2186,6 +2213,9 @@
       "Low Priority": [
         "Nízka priorita"
       ],
+      "Make sure to keep ${ PASS_APP_NAME } running (can be minimized) for the SSH agent to stay active. SSH keys with passphrase are currently not supported.": [
+        "Uistite sa, že ${ PASS_APP_NAME } beží (môže byť minimalizovaná), aby agent SSH zostal aktívny. SSH kľúče s prístupovou frázou momentálne nie sú podporované."
+      ],
       "Manager": [
         "Správca"
       ],
@@ -2215,6 +2245,12 @@
       ],
       "Moving all items from \"${ payload.content.name }\"": [
         "Presúvanie všetkých položiek z \"${ payload.content.name }\""
+      ],
+      "Moving an item to another vault will erase its secure links.": [
+        "Presunutím položky do iného trezora sa vymažú jej bezpečné odkazy.",
+        "Presunutím položiek do iného trezora sa vymažú ich bezpečné odkazy.",
+        "Presunutím položiek do iného trezora sa vymažú ich bezpečné odkazy.",
+        "Presunutím položiek do iného trezora sa vymažú ich bezpečné odkazy."
       ],
       "Moving items": [
         "Presúvanie položiek"
@@ -2249,6 +2285,9 @@
       "No network connection": [
         "Žiadne sieťové pripojenie"
       ],
+      "No SSH keys found in ${ PASS_SHORT_APP_NAME }. Create SSH key items to use with the agent.": [
+        "V ${ PASS_SHORT_APP_NAME } neboli nájdené žiadne SSH kľúče. Vytvorte položky SSH kľúčov na použitie s agentom."
+      ],
       "No vaults available.": [
         "Nie sú k dispozícii žiadne trezory."
       ],
@@ -2272,6 +2311,9 @@
       ],
       "Only tokens that expired in the last 30 days are shown. Older tokens are automatically deleted.": [
         "Zobrazujú sa len tokeny, ktorých platnosť uplynula v posledných 30 dňoch. Staršie tokeny sa automaticky mažú."
+      ],
+      "Open \"Services\" (you can use the Windows search bar or press Win+R and enter services.msc).": [
+        "Otvorte okno „Služby“ (môžete použiť vyhľadávacie pole systému Windows alebo stlačiť klávesovú skratku Win+R a zadať services.msc)."
       ],
       "Open your Safari settings for the extension and verify site permissions are enabled for ${ BRAND_NAME } domains": [
         "Otvorte nastavenia rozšírenia v prehliadači Safari a skontrolujte, či sú povolenia pre domény ${ BRAND_NAME } povolené."
@@ -2299,6 +2341,9 @@
         "Heslá staršie ako ${ MAX_PASSWORD_HISTORY_RETENTION_WEEKS } týždne sa automaticky odstránia z histórie.",
         "Heslá staršie ako ${ MAX_PASSWORD_HISTORY_RETENTION_WEEKS } týždňov sa automaticky odstránia z histórie.",
         "Heslá staršie ako ${ MAX_PASSWORD_HISTORY_RETENTION_WEEKS } týždňov sa automaticky odstránia z histórie."
+      ],
+      "Paste the following command in your terminal:": [
+        "Vložte do terminálu nasledujúci príkaz:"
       ],
       "Paused": [
         "Pozastavené"
@@ -2447,6 +2492,9 @@
       "Protected by ${ PROTON_SENTINEL_LINK }, our advanced account protection program": [
         "Chránené naším pokročilým programom na ochranu účtov ${ PROTON_SENTINEL_LINK }"
       ],
+      "Ranked by field (title first, then username or email, website, notes) and match precision (exact, starts with, contains).": [
+        "Zoradené podľa poľa (najskôr názov, potom používateľské meno alebo email, webová stránka, poznámky) a presnosti zhody (presná zhoda, začína na, obsahuje)."
+      ],
       "Read item": [
         "Prečítať položku"
       ],
@@ -2527,6 +2575,9 @@
       ],
       "Session timed out": [
         "Relácia vypršala"
+      ],
+      "Set \"Startup type\" to Disabled, click OK.": [
+        "Nastavte „Typ spustenia“ na „Vypnuté“ a kliknite na OK."
       ],
       "Set by your organization": [
         "Nastavené vašou organizáciou"
@@ -2672,6 +2723,9 @@
       "This will reject the device **${ name }** that tried signing into your ${ BRAND_NAME } account on **${ date }**.": [
         "Tým zamietnete zariadenie **${ name }**, ktoré sa **${ date }** pokúsilo prihlásiť k vášmu ${ BRAND_NAME } účtu."
       ],
+      "Tip: add it to your .bashrc or .zshrc file so it runs automatically when you open the terminal.": [
+        "Tip: pridajte to do súboru .bashrc alebo .zshrc, aby sa to spustilo automaticky pri otvorení terminálu."
+      ],
       "To keep receiving emails transfer these aliases to a different mailbox:": [
         "Ak chcete aj naďalej dostávať emaily, presuňte tieto aliasy do inej poštovej schránky:"
       ],
@@ -2686,6 +2740,9 @@
       ],
       "To set up biometrics unlock, ${ PASS_APP_NAME } requires a new browser permission. After you accept it, the extension will reload. Please re-open this page afterwards.": [
         "Na nastavenie odomykania pomocou biometrických údajov vyžaduje ${ PASS_APP_NAME } nové povolenie prehliadača. Po ich udelení sa rozšírenie znovu načíta. Následne znovu otvorte túto stránku, prosím."
+      ],
+      "To use ${ PASS_APP_NAME } SSH agent on Windows, the OpenSSH service must be disabled.": [
+        "Aby bolo možné používať ${ PASS_APP_NAME } SSH agenta v systéme Windows, je potrebné deaktivovať službu OpenSSH."
       ],
       "Trusted by over 50,000 business users and 100 million accounts around the world.": [
         "Má dôveru viac ako 50 000 firemných používateľov a 100 miliónov účtov na celom svete."
@@ -2713,9 +2770,6 @@
       ],
       "Unlock ${ PASS_SHORT_APP_NAME } with your second password": [
         "Odomknúť ${ PASS_SHORT_APP_NAME } pomocou vášho druhého hesla"
-      ],
-      "Unlock with biometrics": [
-        "Odomknúť pomocou biometrie"
       ],
       "Unpinning item...": [
         "Odopínanie položky..."
@@ -3114,6 +3168,9 @@
       "Address details": [
         "Detaily adresy"
       ],
+      "Advanced": [
+        "Pokročilé"
+      ],
       "Alias": [
         "Alias"
       ],
@@ -3159,6 +3216,9 @@
       "Bank Name": [
         "Názov banky"
       ],
+      "Basic": [
+        "Základná"
+      ],
       "Besides storing your logins, ${ PASS_APP_NAME } protects your identity with an integrated email alias feature. Whenever you sign up for a new online account, ${ PASS_APP_NAME } can automatically create an alias to keep your actual email address protected. ": [
         "Okrem ukladania prihlasovacích údajov ${ PASS_APP_NAME } chráni vašu identitu integrovanou funkciou emailového aliasu. Vždy, keď sa zaregistrujete na nové online konto, ${ PASS_APP_NAME } môže automaticky vytvoriť alias, aby bola vaša skutočná emailová adresa chránená. "
       ],
@@ -3191,6 +3251,9 @@
       ],
       "Catch-All": [
         "Doménový kôš"
+      ],
+      "Check": [
+        "Skontrolovať"
       ],
       "Checkbox": [
         "Zaškrtávacie políčko"
@@ -3356,6 +3419,12 @@
       ],
       "Enter email or username": [
         "Zadajte email alebo používateľské meno"
+      ],
+      "Exact host matching": [
+        "Presná zhoda hostiteľa"
+      ],
+      "Exact URL matching": [
+        "Presná zhoda URL"
       ],
       "Experimental": [
         "Experimentálne"
@@ -3684,6 +3753,9 @@
       "Never": [
         "Nikdy"
       ],
+      "Never fill on this exact URL": [
+        "Nikdy nevypĺňať túto presnú URL adresu"
+      ],
       "New": [
         "Nová"
       ],
@@ -3746,6 +3818,9 @@
       ],
       "Owner": [
         "Vlastník"
+      ],
+      "Parent domain and subdomains (default)": [
+        "Nadradená doména a subdomény (predvolené nastavenie)"
       ],
       "Passkey": [
         "Prístupový kľúč"
@@ -3857,6 +3932,12 @@
       ],
       "Reddit handle": [
         "Používateľské meno Reddit"
+      ],
+      "Regular expression": [
+        "Regulárny výraz"
+      ],
+      "Relevant": [
+        "Relevantné"
       ],
       "Remove link": [
         "Odstrániť odkaz"
@@ -3983,6 +4064,9 @@
       ],
       "SSN": [
         "SSN"
+      ],
+      "Starts with": [
+        "Začína s"
       ],
       "State or province": [
         "Štát alebo provincia"
@@ -4112,6 +4196,12 @@
       ],
       "Update": [
         "Aktualizovať"
+      ],
+      "URL wildcard pattern": [
+        "Vzor so zástupnými znakmi v URL"
+      ],
+      "Use ${ PASS_APP_NAME } as SSH agent": [
+        "Použiť ${ PASS_APP_NAME } ako SSH agenta"
       ],
       "Use for AI agent": [
         "Použiť pre AI agenta"
@@ -4251,6 +4341,24 @@
         "${ count } položky",
         "${ count } položiek",
         "${ count } položiek"
+      ],
+      "'Starts with' matching rule": [
+        "Pravidlo porovnávania „začína na“"
+      ],
+      "Exact (sub) domain matching rule": [
+        "Pravidlo presnej zhody (pod)domén"
+      ],
+      "Exact URL matching rule": [
+        "Pravidlo presnej zhody URL"
+      ],
+      "Never fill with this exact URL": [
+        "Nikdy nevypĺňať presne túto URL adresu"
+      ],
+      "Regular expression rule": [
+        "Pravidlo regulárneho výrazu"
+      ],
+      "Wildcard pattern matching rule": [
+        "Pravidlo porovnávania vzorov so zástupnými znakmi"
       ],
       "You can drag and drop the selected item to another vault": [
         "Vybratú položku môžete pretiahnuť do iného trezoru",
@@ -4555,6 +4663,23 @@
         "Používa sa na ${ url }"
       ]
     },
+    "Result": {
+      "Enter a URL to check to see if your current rule is matching the URL": [
+        "Zadajte URL adresu, aby ste skontrolovali, či sa s ňou zhoduje vaše aktuálne pravidlo"
+      ],
+      "The rule is matching this URL": [
+        "Pravidlo zodpovedá tejto URL adrese"
+      ],
+      "The rule is NOT matching this URL": [
+        "Toto pravidlo sa na túto URL adresu NEVZŤAHUJE"
+      ],
+      "This URL will be blocked from autofill": [
+        "Táto URL adresa bude vylúčená z automatického vypĺňania"
+      ],
+      "This URL will NOT be blocked from autofill": [
+        "Táto URL adresa NEBUDE vylúčená z automatického vypĺňania"
+      ]
+    },
     "Security Center - Info": {
       "${ name } and ${ remainingCount } other potential leaks detected. Turn on ${ DARK_WEB_MONITORING_NAME } to view details. ${ link }": [
         "${ name } a ${ remainingCount } ďalšie zistené potenciálne úniky. Ak chcete zobraziť podrobnosti, zapnite ${ DARK_WEB_MONITORING_NAME }. ${ link }"
@@ -4708,6 +4833,12 @@
       "Random prefix generation successfully enabled": [
         "Generovanie náhodnej predpony bolo úspešne povolené"
       ],
+      "SSH agent successfully started": [
+        "SSH agent bol úspešne spustený"
+      ],
+      "SSH agent successfully stopped": [
+        "SSH agent bol úspešne zastavený"
+      ],
       "Vaults can’t contain more than ${ targetMaxMembers } user.": [
         "Trezory nemôžu obsahovať viac než ${ targetMaxMembers } používateľa.",
         "Trezory nemôžu obsahovať viac než ${ targetMaxMembers } používateľov.",
@@ -4756,6 +4887,9 @@
       ],
       "Add mailbox": [
         "Pridať poštovú schránku"
+      ],
+      "Adjust autofill behaviors to change where logins are suggested.": [
+        "Upravte správanie funkcie automatického vypĺňania, aby ste zmenili miesta, kde sa navrhujú prihlasovacie údaje."
       ],
       "Agent setup instructions": [
         "Pokyny na nastavenie agenta"
@@ -4958,6 +5092,9 @@
       "Last modified": [
         "Posledná zmena"
       ],
+      "Learn more": [
+        "Zistiť viac"
+      ],
       "Leave this item?": [
         "Opustiť túto položku?"
       ],
@@ -5126,6 +5263,9 @@
       "Review and share": [
         "Skontrolovať a zdieľať"
       ],
+      "Screenshot of OpenSSH service on Windows": [
+        "Snímka obrazovky služby OpenSSH v systéme Windows"
+      ],
       "Secure your data": [
         "Zabezpečte svoje údaje"
       ],
@@ -5147,6 +5287,9 @@
       "Settings": [
         "Nastavenia"
       ],
+      "Setup ${ PASS_APP_NAME } SSH Agent": [
+        "Nastaviť SSH agenta pre ${ PASS_APP_NAME }"
+      ],
       "Setup offline mode": [
         "Nastavenie offline režimu"
       ],
@@ -5164,6 +5307,9 @@
       ],
       "SPF (Optional)": [
         "SPF (nepovinné)"
+      ],
+      "SSH Agent": [
+        "SSH Agent"
       ],
       "Status": [
         "Stav"
@@ -5183,6 +5329,9 @@
       "Sync your aliases from SimpleLogin": [
         "Synchronizujte svoje aliasy z aplikácie SimpleLogin"
       ],
+      "Test a URL against this rule": [
+        "Otestujte URL adresu podľa tohto pravidla"
+      ],
       "Transfer ownership": [
         "Previesť vlastníctvo"
       ],
@@ -5197,6 +5346,9 @@
       ],
       "Update available": [
         "K dispozícii je aktualizácia"
+      ],
+      "URL matching": [
+        "Zhoda URL"
       ],
       "Vault": [
         "Trezor"
@@ -5316,6 +5468,9 @@
     "Warning": {
       "${ BRAND_NAME } password is required": [
         "${ BRAND_NAME } heslo je povinné"
+      ],
+      "${ modeLabelStong } provides powerful control, but a single error can cause autofill to match and fill data on fraudulent or phishing websites.": [
+        "Funkcia ${ modeLabelStong } ponúka rozsiahle možnosti ovládania, avšak už jediná chyba môže spôsobiť, že funkcia automatického vypĺňania bude na podvodných alebo phishingových webových stránkach vyhľadávať a vypĺňať údaje."
       ],
       "${ PASS_SHORT_APP_NAME } offline mode disabled.": [
         "Režim offline aplikácie ${ PASS_SHORT_APP_NAME } je zakázaný."
@@ -5524,6 +5679,9 @@
       "Something went wrong while starting ${ PASS_APP_NAME }. Please try refreshing or reloading the extension": [
         "Pri spúšťaní ${ PASS_APP_NAME } sa niečo pokazilo. Skúste, prosím, obnoviť alebo znova načítať rozšírenie."
       ],
+      "SSH agent requires using SSH keys, which is not available in your plan.": [
+        "SSH agent vyžaduje použitie SSH kľúčov, čo vo vašom pláne nie je k dispozícii."
+      ],
       "The alias prefix cannot be longer than 40 characters": [
         "Predpona aliasu nemôže byť dlhšia ako 40 znakov"
       ],
@@ -5532,6 +5690,9 @@
       ],
       "This email address will no longer be monitored for data breaches.": [
         "Táto emailová adresa už nebude monitorovaná na úniky údajov"
+      ],
+      "This item can't be suggested for autofill due to the \"${ neverModeDescriptionStrong }\". Add another URL if you want this item to autofill.": [
+        "Táto položka nemôže byť navrhnutá na automatické vyplnenie kvôli „${ neverModeDescriptionStrong }“. Ak chcete, aby sa táto položka automaticky vyplnila, pridajte ďalšiu URL adresu."
       ],
       "This item is currently shared. Deleting it will remove access for all other users.": [
         "Táto položka je v súčasnosti zdieľaná. Jej odstránením sa zruší prístup pre všetkých ostatných používateľov."

@@ -3,7 +3,8 @@ import type { Entry } from '@proton/proton-foundation-search';
 import type { MainThreadBridge } from '../mainThread/MainThreadBridge';
 import { Logger } from '../shared/Logger';
 import { SearchDB } from '../shared/SearchDB';
-import { type SearchMetrics, startSearchTimer } from '../shared/searchMetrics';
+import { SearchDBUserMismatchError } from '../shared/errors';
+import { type SearchMetrics, searchMetrics, startSearchTimer } from '../shared/searchMetrics';
 import type { SearchModuleStateUpdateChannel } from '../shared/searchModuleStateUpdateChannel';
 import { createSearchModuleStateUpdateChannel } from '../shared/searchModuleStateUpdateChannel';
 import type {
@@ -37,6 +38,7 @@ export class SharedWorkerAPI {
     private clientsCoordinator = new ClientCoordinator(() => this.searchMetrics);
     private indexRegistry: IndexRegistry | null = null;
     private db: SearchDB | null = null;
+    private dbUserId: string | null = null;
     private indexer: IndexerTaskQueue | null = null;
     private searcher: SearchQueryExecutor | null = null;
     private stateChannel: SearchModuleStateUpdateChannel | null = null;
@@ -47,9 +49,16 @@ export class SharedWorkerAPI {
     }
 
     private async getDb(userId: string) {
-        if (!this.db) {
-            this.db = await SearchDB.open(userId);
+        if (this.db) {
+            if (this.dbUserId !== userId) {
+                const error = new SearchDBUserMismatchError();
+                searchMetrics.markSearchOtherError({ error });
+                throw error;
+            }
+            return this.db;
         }
+        this.db = await SearchDB.open(userId);
+        this.dbUserId = userId;
         return this.db;
     }
 
@@ -86,7 +95,6 @@ export class SharedWorkerAPI {
         // Notify all tabs that search has been deactivated.
         this.stateChannel?.postMessage({
             isUserOptIn: false,
-            isInitialIndexing: false,
             isIndexing: false,
             isSearchable: false,
             permanentError: null,
@@ -114,7 +122,6 @@ export class SharedWorkerAPI {
         }
 
         this.stateChannel?.postMessage({
-            isInitialIndexing: false,
             isIndexing: false,
             isSearchable: false,
             permanentError: null,
@@ -257,7 +264,6 @@ export class SharedWorkerAPI {
             this.stateChannel.postMessage(this.indexer.getState());
             this.indexer.onStateChange((state) => {
                 this.stateChannel?.postMessage({
-                    isInitialIndexing: state.isInitialIndexing,
                     isIndexing: state.isIndexing,
                     isSearchable: state.isSearchable,
                     permanentError: state.permanentError,

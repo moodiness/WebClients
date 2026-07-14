@@ -3,7 +3,7 @@ import { useEffect, useRef, useState } from 'react';
 import { c } from 'ttag';
 
 import { useErrorHandler, useMyCountry } from '@proton/components';
-import { getIsB2BAudienceFromPlan, getPlanFromPlanIDs } from '@proton/payments';
+import { getIsB2BAudienceFromPlan, getPlanFromPlanIDs } from '@proton/payments/core/plan/helpers';
 import { TelemetryAccountSignupEvents } from '@proton/shared/lib/api/telemetry';
 import { getAppHref } from '@proton/shared/lib/apps/helper';
 import { getSlugFromApp } from '@proton/shared/lib/apps/slugHelper';
@@ -18,7 +18,7 @@ import { handleDisplayName, handleDone, handleSaveRecovery, handleSetupOrg } fro
 import { useFlowRef } from '../../useFlowRef';
 import Layout from '../Layout';
 import Step2 from '../Step2';
-import type { SignupCustomStepProps } from '../interface';
+import type { SignupCustomStepProps, SignupModelV2 } from '../interface';
 import CongratulationsStep from './CongratulationsStep';
 import ExploreStep from './ExploreStep';
 import OrgSetupStep from './OrgSetupStep';
@@ -34,6 +34,21 @@ enum Step {
     RedirectAdmin,
 }
 
+function getLocalIdAndPathInfo(model: SignupModelV2) {
+    if (model.cache?.type === 'user') {
+        return {
+            pathname: '/multi-user-support',
+            localID: model.cache.session.resumedSessionResult.localID,
+        };
+    } else if (model.cache?.type === 'signup') {
+        return {
+            pathname: '/users-addresses',
+            localID: model.cache.setupData?.authResponse.LocalID,
+        };
+    }
+    throw new Error('Unknown cache');
+}
+
 const CustomStep = ({
     model,
     onSetup,
@@ -42,10 +57,8 @@ const CustomStep = ({
     measure,
     product,
     signupParameters,
-    hasRecoveryStepConfirmWarning = true,
     hasExploreStep,
 }: SignupCustomStepProps & {
-    hasRecoveryStepConfirmWarning?: boolean;
     hasExploreStep?: boolean;
 }) => {
     const createFlow = useFlowRef();
@@ -172,7 +185,6 @@ const CustomStep = ({
             )}
             {step === Step.SaveRecovery && (
                 <RecoveryStep
-                    hasConfirmWarning={hasRecoveryStepConfirmWarning}
                     defaultCountry={defaultCountry}
                     defaultEmail={defaultEmail}
                     defaultPhone={verificationModel?.method === 'sms' ? verificationModel?.value : ''}
@@ -233,20 +245,7 @@ const CustomStep = ({
                     product={productAppName}
                     logo={logo}
                     onSetup={async () => {
-                        const { localID, pathname } = (() => {
-                            if (model.cache?.type === 'user') {
-                                return {
-                                    pathname: '/multi-user-support',
-                                    localID: model.cache.session.resumedSessionResult.localID,
-                                };
-                            } else if (model.cache?.type === 'signup') {
-                                return {
-                                    pathname: '/users-addresses',
-                                    localID: model.cache.setupData?.authResponse.LocalID,
-                                };
-                            }
-                            throw new Error('Unknown cache');
-                        })();
+                        const { localID, pathname } = getLocalIdAndPathInfo(model);
 
                         await measure({
                             event: TelemetryAccountSignupEvents.onboardFinish,
@@ -275,6 +274,7 @@ const CustomStep = ({
             {step === Step.Explore && (
                 <ExploreStep
                     user={cache.setupData?.user}
+                    localID={getLocalIdAndPathInfo(model).localID}
                     plan={plan?.Name}
                     onExplore={async (app) => {
                         try {

@@ -1,4 +1,13 @@
-import type { GenerationResponseMessage, GenerationTarget, LumoCompletionTarget } from './types';
+import { CONTEXT_LENGTH_EXCEEDED_CODE } from '../../../types-api';
+import type { LumoStreamUsage, UsageMessage } from '../../../types-api';
+import { mapStreamErrorCode } from './generation-terminal';
+import type {
+    GenerationResponseMessage,
+    GenerationTarget,
+    LumoCompletionTarget,
+    ServerToolCallMessage,
+    ServerToolResultMessage,
+} from './types';
 import { isGenerationResponseMessage } from './types';
 
 type OpenAiDelta = {
@@ -6,6 +15,7 @@ type OpenAiDelta = {
     content?: string;
     reasoning_content?: string;
     reasoning?: string;
+    encrypted?: boolean;
     target?: GenerationTarget;
     tool_calls?: OpenAiToolCallDelta[];
 };
@@ -24,7 +34,7 @@ type OpenAiChunk = {
         delta?: OpenAiDelta;
         finish_reason?: string | null;
     }[];
-    usage?: Record<string, number>;
+    usage?: LumoStreamUsage;
     error?: {
         message?: string;
         type?: string;
@@ -39,6 +49,25 @@ type LumoImageDataChunk = {
         id: string;
         data: string;
         seed?: number;
+        encrypted?: boolean;
+    };
+};
+
+type ChatToolCallChunk = {
+    object: 'chat.tool_call';
+    tool_call: {
+        id: string;
+        name: string;
+        arguments?: string;
+        encrypted?: boolean;
+    };
+};
+
+type ChatToolResultChunk = {
+    object: 'chat.tool_result';
+    tool_result: {
+        call_id: string;
+        content: string;
         encrypted?: boolean;
     };
 };
@@ -125,11 +154,16 @@ export class StreamProcessor {
             return this.processCommentLine(trimmed);
         }
 
-        if (!trimmed.startsWith('data:')) {
+        let payload: string | undefined;
+        if (trimmed.startsWith('data:')) {
+            payload = trimmed.slice(5).trim();
+        } else if (trimmed.startsWith('{')) {
+            // Some endpoints emit bare JSON lines without an SSE `data:` prefix.
+            payload = trimmed;
+        } else {
             return [];
         }
 
-        const payload = trimmed.slice(5).trim();
         if (!payload) {
             return [];
         }
@@ -139,14 +173,27 @@ export class StreamProcessor {
         }
 
         try {
-            const item = JSON.parse(payload) as OpenAiChunk | GenerationResponseMessage | LumoImageDataChunk;
+            const item = JSON.parse(payload) as
+                | OpenAiChunk
+                | GenerationResponseMessage
+                | LumoImageDataChunk
+                | ChatToolCallChunk
+                | ChatToolResultChunk;
 
             if (isGenerationResponseMessage(item)) {
                 return [this.applyDefaultTarget(item)];
             }
 
-            if ('object' in item && item.object === 'lumo.image_data') {
-                return [this.processLumoImageDataChunk(item)];
+            if ('object' in item) {
+                if (item.object === 'lumo.image_data') {
+                    return [this.processLumoImageDataChunk(item)];
+                }
+                if (item.object === 'chat.tool_call') {
+                    return [this.processChatToolCallChunk(item)];
+                }
+                if (item.object === 'chat.tool_result') {
+                    return [this.processChatToolResultChunk(item)];
+                }
             }
 
             return this.processOpenAiChunk(item as OpenAiChunk);
@@ -167,6 +214,28 @@ export class StreamProcessor {
         };
     }
 
+    private processChatToolCallChunk(chunk: ChatToolCallChunk): ServerToolCallMessage {
+        const { id, name, arguments: args, encrypted } = chunk.tool_call;
+        return {
+            type: 'server_tool_call',
+            call_id: id,
+            name,
+            ...(args !== undefined ? { arguments: args } : {}),
+            ...(encrypted ? { encrypted: true } : {}),
+        };
+    }
+
+    private processChatToolResultChunk(chunk: ChatToolResultChunk): ServerToolResultMessage {
+        // eslint-disable-next-line @typescript-eslint/naming-convention
+        const { call_id, content, encrypted } = chunk.tool_result;
+        return {
+            type: 'server_tool_result',
+            call_id,
+            content,
+            ...(encrypted ? { encrypted: true } : {}),
+        };
+    }
+
     private processCommentLine(line: string): GenerationResponseMessage[] {
         const comment = line.slice(1).trim();
 
@@ -183,15 +252,37 @@ export class StreamProcessor {
     private processOpenAiChunk(chunk: OpenAiChunk): GenerationResponseMessage[] {
         if (chunk.error) {
             console.warn('[STREAM] Stream error:', chunk.error);
-            return [{ type: 'error' }];
+            if (chunk.error.code === CONTEXT_LENGTH_EXCEEDED_CODE) {
+                return [
+                    {
+                        type: 'tool-error',
+                        error: {
+                            code: CONTEXT_LENGTH_EXCEEDED_CODE,
+                            message: chunk.error.message,
+                        },
+                    },
+                ];
+            }
+            return [{ type: mapStreamErrorCode(chunk.error.code) }];
+        }
+
+        // const messages: GenerationResponseMessage[] = [];
+
+        // if (chunk.usage) {
+        //     messages.push(this.createUsageMessage(chunk.usage));
+        // }
+
+        const messages: GenerationResponseMessage[] = [];
+
+        if (chunk.usage) {
+            messages.push(this.createUsageMessage(chunk.usage));
         }
 
         if (!chunk.choices?.length) {
-            return [];
+            return messages;
         }
 
         const choice = chunk.choices[0];
-        const messages: GenerationResponseMessage[] = [];
 
         if (choice.finish_reason === 'content_filter') {
             messages.push({ type: 'harmful' });
@@ -207,16 +298,23 @@ export class StreamProcessor {
         return messages;
     }
 
+    private createUsageMessage(usage: LumoStreamUsage): UsageMessage {
+        return {
+            type: 'usage',
+            usage,
+        };
+    }
+
     private processDelta(delta: OpenAiDelta, defaultTarget: GenerationTarget): GenerationResponseMessage[] {
         const messages: GenerationResponseMessage[] = [];
 
         if (typeof delta.content === 'string' && delta.content.length > 0) {
-            messages.push(this.createTokenData(defaultTarget, delta.content));
+            messages.push(this.createTokenData(defaultTarget, delta.content, delta.encrypted));
         }
 
         const reasoning = delta.reasoning_content ?? delta.reasoning;
         if (typeof reasoning === 'string' && reasoning.length > 0) {
-            messages.push(this.createTokenData('reasoning', reasoning));
+            messages.push(this.createTokenData('reasoning', reasoning, delta.encrypted));
         }
 
         if (Array.isArray(delta.tool_calls)) {
@@ -248,10 +346,10 @@ export class StreamProcessor {
             return null;
         }
 
-        let parameters: Record<string, unknown> = {};
+        let toolArguments: Record<string, unknown> = {};
         if (existing.arguments) {
             try {
-                parameters = JSON.parse(existing.arguments);
+                toolArguments = JSON.parse(existing.arguments);
             } catch {
                 return {
                     type: 'token_data',
@@ -259,7 +357,7 @@ export class StreamProcessor {
                     count: this.counters.toolCall++,
                     content: JSON.stringify({
                         name: existing.name,
-                        parameters: existing.arguments,
+                        arguments: existing.arguments,
                     }),
                 };
             }
@@ -271,7 +369,7 @@ export class StreamProcessor {
             count: this.counters.toolCall++,
             content: JSON.stringify({
                 name: existing.name,
-                parameters,
+                arguments: toolArguments,
             }),
         };
     }
@@ -288,7 +386,7 @@ export class StreamProcessor {
         return message;
     }
 
-    private createTokenData(target: GenerationTarget, content: string): GenerationResponseMessage {
+    private createTokenData(target: GenerationTarget, content: string, encrypted?: boolean): GenerationResponseMessage {
         const counterKey = this.getCounterKey(target);
 
         return {
@@ -296,6 +394,7 @@ export class StreamProcessor {
             target,
             count: this.counters[counterKey]++,
             content,
+            ...(encrypted ? { encrypted: true } : {}),
         };
     }
 

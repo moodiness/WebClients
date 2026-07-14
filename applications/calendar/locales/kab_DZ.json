@@ -2188,6 +2188,11 @@
         "Tzemreḍ ad tcerḍeḍ ɣef yinermisen ur tebɣiḍ ara ad tesmezdiḍ neɣ ad tḥerzeḍ. Tukksa ur tetteddu ara alamma tessdeḍ ɣef tqeffalt n usmezdi"
       ]
     },
+    "description": {
+      "use the Easy Switch import assistant": [
+        "seqdec amwasis n usserṛeḥ Easy Switch"
+      ]
+    },
     "Description of the purpose of the import CSV modal": {
       "Also, we have automatically matched CSV fields with vCard fields. You can review and change this matching manually.": [
         "Daɣen, nsemṣada s wudem awurman urtan CSV akked wurtan n vCard. Tzemreḍ ad tesneqdeḍ neɣ ad tbeddleḍ amṣada-a s ufus."
@@ -2405,20 +2410,11 @@
       "Interval cannot be empty": [
         "Azilal ur ilaq ara ad yili d ilem"
       ],
-      "Invalid ${ name } code": [
-        "Tangalt n ${ name } ur d tameɣtut"
-      ],
-      "Invalid card number": [
-        "Yir uṭṭun n tkarḍa"
-      ],
       "Invalid code": [
         "Yir tangalt"
       ],
       "Invalid email address": [
         "Yir tansa imayl"
-      ],
-      "Invalid expiration date": [
-        "Yir azemz n taggara"
       ],
       "Invalid link to the event": [
         "Aseɣwen ɣer tedyant d arameɣtu"
@@ -3819,9 +3815,6 @@
       "Please try again using a different payment method, or contact your bank.": [
         "Ma ulac aɣilif ɛṛeḍ tikkelt niḍen aseqdec n tarrayt n uxelleṣ niḍen, neɣ siwel i tbanka-k."
       ],
-      "Please try again, use a different payment method, or contact PayPal for assistance.": [
-        "Ma ulac aɣilif ɛṛeḍ tikkelt nniḍen, seqdec tarrayt n uxelleṣ nniḍen, neɣ siwel i tbanka-inek/m i tallelt."
-      ],
       "Please wait while we look for contacts that can be re-signed with the primary encryption key.": [
         "Ttxil rǧu simmal ad nmuqel inermisen izemren ad ttuzemlen tikkelt-nniḍen s tsarut n uwgelhen tagejdant."
       ],
@@ -4031,9 +4024,6 @@
       ],
       "You will lose all unsaved changes.": [
         "Ad teṣruḥeḍ akk ibeddilen ur nettwasekles ara."
-      ],
-      "You will soon be redirected to PayPal to verify your payment.": [
-        "Ad tettuwellheḍ ɣer PyPal i usenqed n uxelleṣ-ik•im."
       ],
       "You will update all the events in this series. Added and removed participants will be notified.": [
         "Ad tleqqemeḍ akk ineḍruyen deg umazrar-agi. Imttekkiyen yettwarnan akked wid yettwakksen ad ṭṭfen talɣut."
@@ -5117,6 +5107,9 @@
       ],
       "DNS leak prevention": [
         "Asewḥel n tuffɣa n DNS"
+      ],
+      "Easy Switch import assistant": [
+        "Amallal n usserṛeḥ Easy Switch"
       ],
       "Encrypted contact details": [
         "Talqayt n unermis awgelhan"
@@ -6892,9 +6885,6 @@
       ],
       "Payment verification": [
         "Asenqed n usellek"
-      ],
-      "PayPal verification failed": [
-        "Asenqed n PayPal yecceḍ"
       ],
       "Phone numbers": [
         "Uṭṭunen n tiliɣṛi"

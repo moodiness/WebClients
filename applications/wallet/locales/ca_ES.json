@@ -2330,20 +2330,11 @@
       "Input isn't a valid email or bitcoin address": [
         "L'entrada no és un correu electrònic o una adreça de Bitcoin vàlida."
       ],
-      "Invalid ${ name } code": [
-        "Codi ${ name } no vàlid"
-      ],
-      "Invalid card number": [
-        "Número de targeta no vàlid"
-      ],
       "Invalid code": [
         "Codi invàlid"
       ],
       "Invalid coupon": [
         "El cupó no és vàlid"
-      ],
-      "Invalid expiration date": [
-        "Data de caducitat invàlida"
       ],
       "Invalid IBAN": [
         "L'IBAN no és vàlid."
@@ -2477,6 +2468,9 @@
       "VAT number must start with ${ prefixes }": [
         "El número d'IVA ha de començar per ${ prefixes }"
       ],
+      "We couldn’t send a verification code using this method.": [
+        "No hem pogut enviar cap codi de verificació mitjançant aquest mètode."
+      ],
       "Wrong billing address": [
         "L'adreça de facturació és incorrecta"
       ]
@@ -2585,6 +2579,9 @@
       ],
       "Security key": [
         "Clau de seguretat"
+      ],
+      "Touch your security key.": [
+        "Toqueu la vostra clau de seguretat."
       ]
     },
     "fido2: Label": {
@@ -3017,9 +3014,6 @@
       "Payments are protected with TLS encryption and Swiss privacy laws.": [
         "Els pagaments estan protegits amb xifratge TLS i les lleis de privacitat suïsses."
       ],
-      "Please authenticate your card in the verification tab.": [
-        "Autentiqueu la vostra targeta a la pestanya de verificació."
-      ],
       "Please authenticate your payment in the verification tab.": [
         "Autentiqueu el vostre pagament a la pestanya de verificació."
       ],
@@ -3028,9 +3022,6 @@
       ],
       "Please try again using a different payment method, or contact your bank.": [
         "Torneu-ho a provar amb un mètode de pagament diferent o poseu-vos en contacte amb el vostre banc."
-      ],
-      "Please try again, use a different payment method, or contact PayPal for assistance.": [
-        "Torneu-ho a provar, utilitzeu un mètode de pagament diferent o bé contacteu per assistència de PayPal."
       ],
       "Price includes all applicable cycle-based discounts and non-expired coupons saved to your account.": [
         "El preu inclou tots els descomptes basats en cicles aplicables i els cupons no caducats desats al vostre compte."
@@ -3202,9 +3193,6 @@
       ],
       "You will lose access to ${ planTitle } features on this date.": [
         "Perdreu accés a funcions de ${ planTitle } en aquesta data."
-      ],
-      "You will soon be redirected to PayPal to verify your payment.": [
-        "Ben aviat sereu redirigits a PayPal per verificar el pagament."
       ],
       "You'll then be billed every ${ renewCycle } month at ${ renewAmountStr }. You can cancel at any time.": [
         "Se us facturarà cada ${ renewCycle } mes a ${ renewAmountStr }. Podeu cancel·lar-ho en qualsevol moment.",
@@ -5719,9 +5707,6 @@
       "Payment verification": [
         "Verificació de pagament"
       ],
-      "PayPal verification failed": [
-        "La verificació de PayPal no s'ha pogut completar."
-      ],
       "Processing...": [
         "Processant..."
       ],
@@ -5884,6 +5869,11 @@
       ],
       "The user must have an address to request data access": [
         "L'usuari ha de tenir una adreça per sol·licitar l'accés a les dades."
+      ]
+    },
+    "user_modal": {
+      "You'll be able to assign roles once the user has accepted the invitation.": [
+        "Podreu assignar rols un cop l'usuari hagi acceptat la invitació."
       ]
     },
     "Validation": {

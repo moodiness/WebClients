@@ -3,8 +3,14 @@ import { c } from 'ttag';
 import useApi from '@proton/components/hooks/useApi';
 import useAuthentication from '@proton/components/hooks/useAuthentication';
 import type { IconName } from '@proton/icons/types';
-import type { AvailablePaymentMethod, PaymentMethodFlow, SavedPaymentMethod, SepaDetails } from '@proton/payments';
-import { PAYMENT_METHOD_TYPES, isSignupFlow } from '@proton/payments';
+import { PAYMENT_METHOD_TYPES } from '@proton/payments/core/constants';
+import { isSignupFlow } from '@proton/payments/core/helpers';
+import type {
+    AvailablePaymentMethod,
+    PaymentMethodFlow,
+    SavedPaymentMethod,
+    SepaDetails,
+} from '@proton/payments/core/interface';
 import { isAndroid, isIos } from '@proton/shared/lib/helpers/browser';
 import isTruthy from '@proton/utils/isTruthy';
 
@@ -24,17 +30,11 @@ export interface ClientMethodsHook extends MethodsHook {
 }
 
 const getIcon = (paymentMethod: SavedPaymentMethod): IconName | undefined => {
-    if (
-        paymentMethod.Type === PAYMENT_METHOD_TYPES.PAYPAL ||
-        paymentMethod.Type === PAYMENT_METHOD_TYPES.CHARGEBEE_PAYPAL
-    ) {
+    if (paymentMethod.Type === PAYMENT_METHOD_TYPES.CHARGEBEE_PAYPAL) {
         return 'brand-paypal';
     }
 
-    if (
-        paymentMethod.Type === PAYMENT_METHOD_TYPES.CARD ||
-        paymentMethod.Type === PAYMENT_METHOD_TYPES.CHARGEBEE_CARD
-    ) {
+    if (paymentMethod.Type === PAYMENT_METHOD_TYPES.CHARGEBEE_CARD) {
         switch (paymentMethod.Details.Brand.toLowerCase()) {
             case 'american express':
                 return 'brand-amex';
@@ -77,13 +77,11 @@ export function formattedSavedSepaDetails(details: SepaDetails): string {
 
 const getMethod = (paymentMethod: SavedPaymentMethod): string => {
     switch (paymentMethod.Type) {
-        case PAYMENT_METHOD_TYPES.CARD:
         case PAYMENT_METHOD_TYPES.CHARGEBEE_CARD:
             const brand = paymentMethod.Details.Brand;
             const last4 = paymentMethod.Details.Last4;
             // translator: example would be: "Mastercard" ending in "7777"
             return c('new_plans: info').t`${brand} ending in ${last4}`;
-        case PAYMENT_METHOD_TYPES.PAYPAL:
         case PAYMENT_METHOD_TYPES.CHARGEBEE_PAYPAL:
             return `PayPal - ${paymentMethod.Details.PayerID}`;
         case PAYMENT_METHOD_TYPES.CHARGEBEE_SEPA_DIRECT_DEBIT:
@@ -109,7 +107,7 @@ const getMethod = (paymentMethod: SavedPaymentMethod): string => {
 /**
  * Transform the payment method object from the react-extensions package to a view model that can be used in the UI.
  */
-export function convertMethod(
+function convertMethod(
     method: AvailablePaymentMethod,
     getSavedMethodById: MethodsHook['getSavedMethodByID'],
     flow: PaymentMethodFlow
@@ -124,13 +122,7 @@ export function convertMethod(
         };
     }
 
-    if (method.type === PAYMENT_METHOD_TYPES.PAYPAL) {
-        return {
-            icon: 'brand-paypal' as const,
-            text: c('Payment method option').t`PayPal`,
-            ...method,
-        };
-    } else if (method.type === PAYMENT_METHOD_TYPES.BITCOIN || method.type === PAYMENT_METHOD_TYPES.CHARGEBEE_BITCOIN) {
+    if (method.type === PAYMENT_METHOD_TYPES.CHARGEBEE_BITCOIN) {
         return {
             icon: 'brand-bitcoin' as const,
             text: c('Payment method option').t`Bitcoin`,

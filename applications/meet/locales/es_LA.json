@@ -4,6 +4,26 @@
     "language": "es_LA"
   },
   "contexts": {
+    "Accessibility": {
+      "(opens in new tab)": [
+        "(se abre en una pestaña nueva)"
+      ],
+      "camera off": [
+        "cámara desactivada"
+      ],
+      "camera on": [
+        "cámara activada"
+      ],
+      "Meeting controls": [
+        "Controles de reunión"
+      ],
+      "microphone muted": [
+        "micrófono silenciado"
+      ],
+      "microphone on": [
+        "micrófono activado"
+      ]
+    },
     "Accessibility announcement": {
       "${ name } joined the meeting": [
         "${ name } se ha unido a la reunión"
@@ -23,20 +43,26 @@
       "${ name } says: ${ message }": [
         "${ name } dijo: ${ message }"
       ],
+      "${ name }: ${ message }": [
+        "${ name }: ${ message }"
+      ],
       "A participant joined the meeting": [
-        "Un participante se ha unido a la reunión"
+        "Un participante se unió a la reunión"
       ],
       "A participant left the meeting": [
-        "Un participante ha abandonado la reunión"
+        "Un participante abandonó la reunión"
       ],
       "A participant lowered their hand": [
-        "Un participante ha bajado la mano"
+        "Un participante bajó la mano"
       ],
       "A participant raised their hand": [
-        "Un participante ha levantado la mano"
+        "Un participante levantó la mano"
       ],
       "A participant reacted with ${ emoji }": [
-        "Un participante ha reaccionado con ${ emoji }"
+        "Un participante reaccionó con ${ emoji }"
+      ],
+      "Connected via TURN relay mode due to network restrictions. This may increase latency and affect call quality.": [
+        "Conexión mediante modo de retransmisión TURN debido a restricciones en la red. Esto puede aumentar la latencia y afectar a la calidad de la llamada."
       ],
       "Connection lost. Reconnecting…": [
         "Conexión perdida. Reconectando…"
@@ -50,14 +76,53 @@
       "Reconnected to the meeting": [
         "Reconectando a la reunión"
       ],
+      "Recording saved": [
+        "Grabación guardada"
+      ],
       "Recording started. By continuing in the meeting, you acknowledge and consent to being recorded.": [
-        "Comenzó la grabación. Al continuar en la reunión, usted reconoce y autoriza que se le grabe."
+        "Comenzó la grabación. Al continuar en la reunión, reconoce y autoriza que se le grabe."
       ],
       "Recording stopped": [
         "Se detuvo la grabación"
       ],
+      "Screen share started": [
+        "Se inició compartir la pantalla"
+      ],
+      "Screen share started by ${ name }": [
+        "${ name } inició compartir la pantalla"
+      ],
+      "Screen share stopped": [
+        "Se dejó de compartir la pantalla"
+      ],
+      "Screen share stopped by ${ name }": [
+        "${ name } detuvo compartir la pantalla"
+      ],
+      "The meeting will close in 1 minute": [
+        "Esta reunión se cerrará en 1 minuto"
+      ],
+      "The meeting will close in 15 seconds": [
+        "Esta reunión se cerrará en 15 segundos"
+      ],
+      "The meeting will close in 30 seconds": [
+        "Esta reunión se cerrará en 30 segundos"
+      ],
+      "The meeting will end in 1 minute": [
+        "Esta reunión finalizará en 1 minuto"
+      ],
+      "The meeting will end in 10 minutes": [
+        "Esta reunión finalizará en 10 minutos"
+      ],
+      "The meeting will end in 15 seconds": [
+        "La reunión finalizará en 15 segundos"
+      ],
+      "The meeting will end in 5 minutes": [
+        "Esta reunión finalizará en 5 minutos"
+      ],
       "This meeting is being recorded. By joining, you acknowledge and consent to being recorded.": [
         "Esta reunión está siendo grabada. Al unirse, reconoce y autoriza que se le grabe."
+      ],
+      "You are the only participant. The meeting will close in 2 minutes unless someone joins.": [
+        "Es el único participante. La reunión se cerrará en 2 minutos a menos que alguien más se una."
       ],
       "You have been disconnected from the meeting": [
         "Se ha desconectado de la reunión."
@@ -66,12 +131,16 @@
         "Se ha silenciado su micrófono"
       ],
       "Your camera has been turned off by the host": [
-        "Se ha desactivado su cámara"
+        "Su cámara fue desactivada por el anfitrión"
       ]
     },
     "Action": {
       "${ BRAND_NAME } shop": [
         "Tienda ${ BRAND_NAME }"
+      ],
+      "${ newMessageCount } new": [
+        "${ newMessageCount } nuevo",
+        "${ newMessageCount } nuevos"
       ],
       "Add account": [
         "Agregar una cuenta"
@@ -79,8 +148,29 @@
       "Add another account": [
         "Añada otra cuenta"
       ],
+      "Admit": [
+        "Admitir"
+      ],
+      "Admit ${ participantName }": [
+        "Admitir a ${ participantName }"
+      ],
+      "Admit all": [
+        "Admitir a todos"
+      ],
       "Allow access": [
         "Permitir el acceso"
+      ],
+      "Anyone with the link can join immediately": [
+        "CUalquiera con el enlace puede unirse automáticamente"
+      ],
+      "Applied": [
+        "Aplicado"
+      ],
+      "Apply changes": [
+        "Aplicar cambios"
+      ],
+      "Approve participants before they can join": [
+        "Aprobar a los participantes antes de que se unan"
       ],
       "Assign ${ selectedParticipantName } as host": [
         "Asignar a ${ selectedParticipantName } como anfitrión"
@@ -112,6 +202,12 @@
       "Close": [
         "Cerrar"
       ],
+      "Close preview": [
+        "Cerrar vista previa"
+      ],
+      "Close reply composer": [
+        "Cerrar editor de respuestas"
+      ],
       "Close this banner": [
         "Cerrar este banner"
       ],
@@ -129,6 +225,9 @@
       ],
       "Copy address": [
         "Copiar la dirección"
+      ],
+      "Copy invitation link": [
+        "Copiar enlace de invitación"
       ],
       "Copy link": [
         "Copiar enlace"
@@ -157,14 +256,29 @@
       "Delete": [
         "Eliminar"
       ],
+      "Deny": [
+        "Denegar"
+      ],
+      "Deny ${ participantName }": [
+        "Denegar a ${ participantName }"
+      ],
       "Disable ${ participantName }'s video": [
         "Desactivar el vídeo de ${ participantName }"
       ],
       "Disable camera": [
         "Desactivar la cámara"
       ],
+      "Disable waiting room": [
+        "Desactivar sala de espera"
+      ],
+      "Discard": [
+        "Descartar"
+      ],
       "Dismiss": [
         "Descartar"
+      ],
+      "Dismiss new messages": [
+        "Descartar mensajes nuevos"
       ],
       "Done": [
         "Hecho"
@@ -184,6 +298,9 @@
       "Download participant report": [
         "Descargar informe de participante"
       ],
+      "Download recording": [
+        "Descargar grabación"
+      ],
       "Download room level report": [
         "Descargar informe de nivel de sala"
       ],
@@ -202,8 +319,8 @@
       "Enable camera": [
         "Activar la cámara"
       ],
-      "Enable video": [
-        "Encender video"
+      "Enable waiting room": [
+        "Activar sala de espera"
       ],
       "End meeting": [
         "Finalizar la reunión"
@@ -213,6 +330,9 @@
       ],
       "Forgot password?": [
         "¿Olvidó su contraseña?"
+      ],
+      "Full size": [
+        "Tamaño completo"
       ],
       "Generate a new meeting link.": [
         "Generar un enlace de reunión."
@@ -228,6 +348,9 @@
       ],
       "Help and resources": [
         "Ayuda y recursos"
+      ],
+      "Hide options": [
+        "Ocultar opciones"
       ],
       "Hide participants": [
         "Ocultar participantes"
@@ -268,6 +391,9 @@
       "Lower hand": [
         "Bajar la mano"
       ],
+      "Minimize preview": [
+        "Minimizar vista previa"
+      ],
       "More info: ${ safeTitle }": [
         "Más información: ${ safeTitle }"
       ],
@@ -292,6 +418,15 @@
       "Open link": [
         "Abrir enlace"
       ],
+      "Participants join after you approve them": [
+        "Los participantes se unen después de que los apruebe"
+      ],
+      "Participants join the call directly": [
+        "Los participantes se unen directamente a la llamada"
+      ],
+      "Pause": [
+        "Pausar"
+      ],
       "Previous month": [
         "Mes anterior"
       ],
@@ -304,8 +439,15 @@
       "React with ${ emoji }": [
         "Reaccionar con ${ emoji }"
       ],
+      "React with ${ emoji }, ${ identities.length } reaction": [
+        "Reaccionar con ${ emoji }, ${ identities.length } reacción",
+        "Reaccionar con ${ emoji }, ${ identities.length } reacciones"
+      ],
       "Receive video": [
         "Recibir video"
+      ],
+      "Record": [
+        "Grabar"
       ],
       "Refer a friend": [
         "Referir una amistad"
@@ -322,6 +464,13 @@
       "Rejoin meeting": [
         "Volver a unirse a la reunión"
       ],
+      "Remove reaction ${ emoji }, ${ identities.length } reaction": [
+        "Eliminar reacción ${ emoji }, ${ identities.length } reacción",
+        "Eliminar reacción ${ emoji }, ${ identities.length } reacciones"
+      ],
+      "Reply": [
+        "Responder"
+      ],
       "Report a problem": [
         "Reportar un problema"
       ],
@@ -336,6 +485,15 @@
       ],
       "Resend code": [
         "Reenviar código"
+      ],
+      "Reset to defaults": [
+        "Restablecer valores por defecto"
+      ],
+      "Resume": [
+        "Reanudar"
+      ],
+      "Retry": [
+        "Reintentar"
       ],
       "Return to dashboard": [
         "Volver al panel"
@@ -364,11 +522,20 @@
       "Send an encrypted message": [
         "Enviar un mensaje cifrado"
       ],
+      "Send reply": [
+        "Enviar respuesta"
+      ],
       "Settings": [
         "Ajustes"
       ],
+      "Show duration": [
+        "Mostrar duración"
+      ],
       "Show floating thumbnail during screensharing": [
         "Mostrar miniatura flotante al compartir pantalla"
+      ],
+      "Show options": [
+        "Mostrar opciones"
       ],
       "Show participants": [
         "Mostrar participantes"
@@ -391,6 +558,9 @@
       "Skip": [
         "Omitir"
       ],
+      "Skip to main content": [
+        "Saltar al contenido principal"
+      ],
       "Start an instant meeting": [
         "Iniciar una reunión al instante"
       ],
@@ -408,6 +578,9 @@
       ],
       "Start your own meeting": [
         "Inicie su propia reunión"
+      ],
+      "Starting…": [
+        "Iniciando…"
       ],
       "Stay in meeting": [
         "Permanecer en la reunión"
@@ -451,6 +624,18 @@
       "Upgrade": [
         "Actualizar"
       ],
+      "Upgrade now": [
+        "Actualizar ahora"
+      ],
+      "Upgrade your plan to use waiting room in your next meeting.": [
+        "Actualice su plan para usar la sala de espera en su próxima reunión."
+      ],
+      "Upload another video": [
+        "Cargar otro video"
+      ],
+      "Upload video": [
+        "Cargar video"
+      ],
       "Use authentication code": [
         "Usar código de autenticación"
       ],
@@ -463,6 +648,9 @@
       "Use recovery code": [
         "Usar un código de recuperación"
       ],
+      "Use waiting room with a paid plan": [
+        "Usar sala de espera con un plan de pago"
+      ],
       "Verify": [
         "Verificar"
       ],
@@ -471,6 +659,9 @@
       ],
       "View invoice": [
         "Ver la factura"
+      ],
+      "Waiting room": [
+        "Sala de espera"
       ]
     },
     "Alt": {
@@ -501,6 +692,9 @@
       "Go to dashboard": [
         "Ir al panel de control"
       ],
+      "Hide self view": [
+        "Ocultar vista propia"
+      ],
       "Leave Meeting": [
         "Salir de la reunión"
       ],
@@ -512,6 +706,12 @@
       ],
       "Meeting details": [
         "Detalles de la reunión"
+      ],
+      "More options": [
+        "Más opciones"
+      ],
+      "Noise cancellation": [
+        "Cancelación de ruido"
       ],
       "Open chat message search": [
         "Abrir búsqueda de mensajes del chat"
@@ -537,6 +737,12 @@
       "Settings": [
         "Ajustes"
       ],
+      "Show duration": [
+        "Mostrar duración"
+      ],
+      "Show floating thumbnail during screensharing": [
+        "Mostrar miniatura flotante al compartir pantalla"
+      ],
       "Show passphrase": [
         "Mostrar frase de contraseña"
       ],
@@ -561,6 +767,9 @@
       "Toggle settings": [
         "Alternar ajustes"
       ],
+      "Turn off incoming video": [
+        "Desactivar video entrante"
+      ],
       "Video settings": [
         "Ajustes de video"
       ]
@@ -568,6 +777,44 @@
     "Apps dropdown": {
       "${ BRAND_NAME } applications": [
         "Aplicaciones de ${ BRAND_NAME }"
+      ]
+    },
+    "Aria": {
+      "Assign host": [
+        "Asignar anfitrión"
+      ],
+      "Audio settings": [
+        "Ajustes de audio"
+      ],
+      "Chat": [
+        "Chat"
+      ],
+      "Chat messages": [
+        "Mensajes del chat"
+      ],
+      "Device settings": [
+        "Ajustes del dispositivo"
+      ],
+      "Meeting details": [
+        "Detalles de la reunión"
+      ],
+      "Meeting rooms": [
+        "Salas de reunión"
+      ],
+      "Participants": [
+        "Participantes"
+      ],
+      "Participants list": [
+        "Lista de participantes"
+      ],
+      "Primary navigation": [
+        "Navegación principal"
+      ],
+      "Settings": [
+        "Ajustes"
+      ],
+      "Video settings": [
+        "Ajustes de video"
       ]
     },
     "Badge": {
@@ -1522,6 +1769,12 @@
       ],
       "Rotating group encryption key for best security": [
         "Rotando la clave de cifrado del grupo para mejor seguridad"
+      ],
+      "Try a different name.": [
+        "Pruebe un nombre diferente."
+      ],
+      "You'll see people here when they join the meeting.": [
+        "Verá personas aquí cuando se unan a la reunión."
       ]
     },
     "Display name": {
@@ -1580,6 +1833,9 @@
       "Failed to join meeting. Please try again later.": [
         "Error al unirse a la reunión. Intente de nuevo más tarde."
       ],
+      "Failed to join meeting. Please try again.": [
+        "Error al unirse a la reunión. Intente de nuevo."
+      ],
       "Failed to lock meeting": [
         "Error al bloquear la reunión"
       ],
@@ -1594,6 +1850,9 @@
       ],
       "Failed to send reaction. Please try again.": [
         "Error al enviar la reacción. Inténtelo de nuevo."
+      ],
+      "Failed to start meeting. Please try again.": [
+        "Error al iniciar la reunión. Intente de nuevo."
       ],
       "Failed to start recording": [
         "Error al iniciar la grabación"
@@ -1670,6 +1929,12 @@
       "Username must end with a letter or digit": [
         "El nombre de usuario debe terminar con una letra o dígito"
       ],
+      "We couldn’t send a verification code using this method.": [
+        "No pudimos enviar un código de verificación usando este método."
+      ],
+      "Your browser ran out of storage space. We saved the recording up to this point.": [
+        "Su navegador se quedó sin espacio de almacenamiento. Se guardó la grabación hasta este momento."
+      ],
       "Your device's clock appears to be out of sync. Please check your system time and try again.": [
         "Parece que la hora de su dispositivo está desincronizada. Revísela e intente de nuevo."
       ]
@@ -1716,6 +1981,9 @@
       ],
       "Security key": [
         "Clave de seguridad"
+      ],
+      "Touch your security key.": [
+        "Toque su llave de seguridad."
       ]
     },
     "fido2: Label": {
@@ -1880,6 +2148,10 @@
       "${ reactorNames } reacted with ${ emoji }": [
         "${ reactorNames } reaccionó con ${ emoji }"
       ],
+      "${ replyCount } reply": [
+        "${ replyCount } respuesta",
+        "${ replyCount } respuestas"
+      ],
       "${ totalParticipantCount } of up to ${ maxParticipants } participants": [
         "${ totalParticipantCount } de un máximo de ${ maxParticipants } participantes"
       ],
@@ -1893,8 +2165,14 @@
       "-Removed dangerous URL-": [
         "-Se eliminó una URL peligrosa-"
       ],
+      "1 reply draft": [
+        "1 borrador de respuesta"
+      ],
       "A phone number can only be used to verify one ${ BRAND_NAME } account": [
         "Un número telefónico solo puede usarse para verificar una cuenta de ${ BRAND_NAME }"
+      ],
+      "Advanced mode: tune every blur constant for the next version, then Apply to rebuild the preview. Overrides take precedence over file and Unleash values.": [
+        "Modo avanzado: ajuste cada constante de difuminado para la siguiente versión y luego pulse en Aplicar para reconstruir la vista previa. Las anulaciones tienen prioridad sobre los valores de archivo y de Liberar."
       ],
       "Anonymous ${ particle } ${ participantNumber }": [
         "Anónimo ${ particle } ${ participantNumber }"
@@ -1922,6 +2200,9 @@
       ],
       "Camera permission denied": [
         "Permiso de cámara denegado"
+      ],
+      "Changes are staged. Apply to rebuild the preview with the new constants.": [
+        "Los cambios se realizan por fases. Aplique para reconstruir la vista previa con las constantes nuevas."
       ],
       "Chat with everyone": [
         "Chatear con todos"
@@ -1952,6 +2233,12 @@
       ],
       "Copied to clipboard": [
         "Copiado al portapapeles"
+      ],
+      "Could not access the camera.": [
+        "No se pudo acceder a la cámara."
+      ],
+      "Could not start recording.": [
+        "No se pudo iniciar la grabación."
       ],
       "Country code": [
         "Código de país"
@@ -2030,6 +2317,9 @@
       ],
       "Everyone has been disconnected from the call.": [
         "Todos se han desconectado de la llamada."
+      ],
+      "Failed to apply background blur": [
+        "Error al aplicar el fondo difuminado"
       ],
       "Failed to update meeting name": [
         "Error al actualizar el nombre de la reunión"
@@ -2112,11 +2402,17 @@
       "Loading meetings...": [
         "Cargando reuniones..."
       ],
+      "Loading recordings…": [
+        "Cargando grabaciones…"
+      ],
       "Loading...": [
         "Cargando..."
       ],
       "Loading…": [
         "Cargando…"
+      ],
+      "Loop an uploaded video or your live camera through both background blur versions side by side.": [
+        "Reproduzca en bucle un video cargado o su cámara en directo a través de ambas versiones con fondo difuminado, una al lado de la otra."
       ],
       "Lower participant's hand": [
         "Bajar la mano del participante"
@@ -2157,6 +2453,12 @@
       "Member": [
         "Miembro"
       ],
+      "Message actions": [
+        "Acciones del mensaje"
+      ],
+      "Message from ${ participantName }": [
+        "Mensaje de ${ participantName }"
+      ],
       "microphone": [
         "micrófono"
       ],
@@ -2180,6 +2482,9 @@
       ],
       "New host": [
         "Nuevo anfitrión"
+      ],
+      "New reply": [
+        "Respuesta nueva"
       ],
       "No ${ microphoneLinkButton }${ andString }${ cameraLinkButton } detected.": [
         "No se detectaron un ${ microphoneLinkButton }${ andString }${ cameraLinkButton }."
@@ -2214,6 +2519,9 @@
       "No speaker detected": [
         "Ningún altavoz detectado"
       ],
+      "Not sent, check your connection.": [
+        "No enviado, compruebe su conexión."
+      ],
       "Only meetings you created appear here": [
         "Aquí solo aparecen las reuniones que ha creado usted"
       ],
@@ -2225,6 +2533,9 @@
       ],
       "Our end-to-end encrypted meetings protect privacy and empower truly free expression.": [
         "Nuestras reuniones cifradas de extremo a extremo protegen la privacidad y fomentan la verdadera libertad de expresión."
+      ],
+      "Page ${ displayPage } of ${ totalPages }": [
+        "Página ${ displayPage } de ${ totalPages }"
       ],
       "Participant": [
         "Participante"
@@ -2256,6 +2567,12 @@
       "privacy": [
         "privacidad"
       ],
+      "Quick reactions": [
+        "Reacciones rápidas"
+      ],
+      "Reactions": [
+        "Reacciones"
+      ],
       "Reconnected successfully": [
         "Reconectada con éxito"
       ],
@@ -2264,6 +2581,9 @@
       ],
       "Record your meetings": [
         "Grabe sus reuniones"
+      ],
+      "Record your raw camera feed and the production background blur side by side. Stopping downloads both clips.": [
+        "Grabe la señal de video original de su cámara y el fondo difuminado de la producción simultáneamente. Al detener la descarga, se detendrán ambos clips."
       ],
       "Recording": [
         "Grabando"
@@ -2334,6 +2654,9 @@
       "Start recording": [
         "Iniciar grabación"
       ],
+      "Starting camera…": [
+        "Iniciando la cámara…"
+      ],
       "Stop sharing your screen": [
         "Dejar de compartir la pantalla"
       ],
@@ -2351,6 +2674,9 @@
       ],
       "The meeting link you tried to open doesn't exist or may have expired. Make sure the link is correct, or start a new secure meeting instead.": [
         "Este enlace de reunión que intentó abrir no existe o expiró. Asegúrese de que el enlace sea correcto, o inicie una reunión segura nueva."
+      ],
+      "This conversation started before you joined.": [
+        "Esta conversación comenzó antes de que se uniera."
       ],
       "This is an end to end encrypted chat with ephemeral messages, which disappear at the end of the call.": [
         "Este es un chat cifrado de extremo a extremo con mensajes efímeros, que desaparecen al final de la llamada."
@@ -2426,6 +2752,12 @@
       ],
       "Video effects": [
         "Efectos de video"
+      ],
+      "View ": [
+        "Vista "
+      ],
+      "Warning": [
+        "Advertencia"
       ],
       "We'll send a new verification code to ${ strong }": [
         "Enviaremos un código de verificación nuevo a ${ strong }"
@@ -2523,6 +2855,9 @@
       "Add to calendar": [
         "Añadir al calendario"
       ],
+      "Advanced mode": [
+        "Modo avanzado"
+      ],
       "Attach screenshot(s)": [
         "Adjuntar captura(s)"
       ],
@@ -2531,6 +2866,9 @@
       ],
       "Authenticator app": [
         "Aplicación de autenticación"
+      ],
+      "Blurred (next)": [
+        "Difuminado (siguiente)"
       ],
       "Browser": [
         "Navegador"
@@ -2556,14 +2894,23 @@
       "Copy invite link": [
         "Copiar enlace de invitación"
       ],
+      "Create meeting options": [
+        "Crear opciones de la reunión"
+      ],
       "Created": [
         "Creado"
+      ],
+      "Current": [
+        "Actual"
       ],
       "Delete": [
         "Eliminar"
       ],
       "Delete recovery-related information.": [
         "Eliminar información de recuperación relacionada."
+      ],
+      "Disabled": [
+        "Desactivado"
       ],
       "Does not repeat": [
         "No se repite"
@@ -2573,6 +2920,12 @@
       ],
       "Email address": [
         "Dirección de correo"
+      ],
+      "Emoji picker": [
+        "Selector de emojis"
+      ],
+      "Emoji reactions": [
+        "Reacciones con emojis"
       ],
       "Enabled": [
         "Activada"
@@ -2613,11 +2966,20 @@
       "Last used": [
         "Último uso"
       ],
+      "Leave meeting options": [
+        "Abandonar opciones de la reunión"
+      ],
       "Manage recordings": [
         "Gestionar grabaciones"
       ],
       "Meeting ID": [
         "ID de la reunión"
+      ],
+      "Meeting link": [
+        "Enlace de la reunión"
+      ],
+      "Message": [
+        "Mensaje"
       ],
       "Microphone Active": [
         "Micrófono activo"
@@ -2631,6 +2993,9 @@
       "Name": [
         "Nombre"
       ],
+      "Next": [
+        "Siguiente"
+      ],
       "Operating system": [
         "Sistema operativo"
       ],
@@ -2639,6 +3004,9 @@
       ],
       "Outlook Calendar": [
         "Calendario de Outlook"
+      ],
+      "Participant controls": [
+        "Controles de participante"
       ],
       "Passphrase": [
         "Frase de contraseña"
@@ -2649,11 +3017,17 @@
       "Phone number": [
         "Número telefónico"
       ],
+      "Raw": [
+        "En bruto"
+      ],
       "Remember my name on this device": [
         "Recordar mi nombre en este dispositivo"
       ],
       "Repeat event": [
         "Repetir el evento"
+      ],
+      "Reply": [
+        "Responder"
       ],
       "Return to dashboard": [
         "Volver al panel"
@@ -2663,6 +3037,9 @@
       ],
       "Schedule meeting": [
         "Programar reunión"
+      ],
+      "Screen share": [
+        "Compartir pantalla"
       ],
       "Selected Camera": [
         "Cámara seleccionada"
@@ -2681,6 +3058,12 @@
       ],
       "Track SID": [
         "Seguimiento de SID"
+      ],
+      "Use live camera feed": [
+        "Usar transmisión de la cámara en directo"
+      ],
+      "Use simple selfie segmentation": [
+        "Usar una segmentación sencilla para selfies"
       ],
       "Verification code": [
         "Código de verificación"
@@ -2846,6 +3229,9 @@
       "Please describe the problem and include any error messages": [
         "Describa el problema e incluya cualquier mensaje de error"
       ],
+      "Reply...": [
+        "Responder..."
+      ],
       "Room name, e.g. team sync, project update, etc": [
         "Nombre de la sala, por ejemplo, sincronización de equipo, actualización de proyecto, etc."
       ],
@@ -2998,6 +3384,9 @@
       "Activity events": [
         "Eventos de actividad"
       ],
+      "All participants": [
+        "Todos los participantes"
+      ],
       "Allow camera ": [
         "Permitir cámara "
       ],
@@ -3025,6 +3414,9 @@
       "Available Speakers": [
         "Altavoces disponibles"
       ],
+      "Background blur comparison": [
+        "Comparación de fondo difuminado"
+      ],
       "Camera and microphone are blocked": [
         "El acceso a la cámara y el micrófono está bloqueado"
       ],
@@ -3033,6 +3425,12 @@
       ],
       "Chat": [
         "Chat"
+      ],
+      "Constants": [
+        "Constantes"
+      ],
+      "Couldn't prepare the recording": [
+        "No se ha podido preparar la grabación"
       ],
       "Create new room": [
         "Crear una sala"
@@ -3122,6 +3520,12 @@
       "Minicalendar": [
         "Minicalendario"
       ],
+      "No one is waiting": [
+        "Nadie está esperando"
+      ],
+      "No results found": [
+        "No se encontraron resultados"
+      ],
       "Participants": [
         "Participantes"
       ],
@@ -3134,11 +3538,17 @@
       "Personal meeting room": [
         "Sala de reuniones personal"
       ],
+      "Preparing your recording…": [
+        "Preparando su grabación..."
+      ],
       "Publications": [
         "Publicaciones"
       ],
       "Reconnection Testing": [
         "Prueba de reconexión"
+      ],
+      "Record raw vs blurred camera": [
+        "Grabación en bruto vs. cámara borrosa"
       ],
       "Record this meeting": [
         "Grabar esta reunión"
@@ -3173,9 +3583,6 @@
       "Settings": [
         "Ajustes"
       ],
-      "Show duration": [
-        "Mostrar duración"
-      ],
       "Sign out": [
         "Cerrar sesión"
       ],
@@ -3203,11 +3610,17 @@
       "Video": [
         "Video"
       ],
+      "Waiting room": [
+        "Sala de espera"
+      ],
       "What went wrong?": [
         "¿Qué salió mal?"
       ],
       "Your feedback has been submitted": [
         "Sus comentarios han sido enviados"
+      ],
+      "Your recording is ready": [
+        "Su grabación está lista"
       ]
     },
     "Today icon tooltip in mini calendar": {
@@ -3223,7 +3636,7 @@
         "Generar un nuevo enlace para la reunión. El enlace actual dejará de funcionar."
       ],
       "Instant AI assistance, human expert on hand!": [
-        "Asistencia IA inmediata, experto humano a su disposición!"
+        "¡Asistencia IA inmediata, experto humano a su disposición!"
       ],
       "Recurring meeting": [
         "Reunión recurrente"

@@ -9,12 +9,12 @@ import {
     UnavailableAddressesError,
     assignMemberRoles,
     createMember,
+    getAssignRolesInvitationText,
     getPrivateAdminError,
     getPrivateText,
 } from '@proton/account';
 import { getInitialStorage, getStorageRange, getTotalStorage } from '@proton/account/organization/storage';
 import { useOrganizationKey } from '@proton/account/organizationKey/hooks';
-import { useOrganizationRoles } from '@proton/account/organizationRoles/hooks';
 import { usePasswordPolicies } from '@proton/account/passwordPolicies/hooks';
 import { useSubscription } from '@proton/account/subscription/hooks';
 import { Button } from '@proton/atoms/Button/Button';
@@ -41,7 +41,7 @@ import useSpotlightOnFeature from '@proton/components/hooks/useSpotlightOnFeatur
 import { FeatureCode, useFeature } from '@proton/features';
 import { useLoading } from '@proton/hooks';
 import { IcInfoCircleFilled } from '@proton/icons/icons/IcInfoCircleFilled';
-import { getHasVpnB2BPlan, hasDuo, hasFamily, hasVisionary } from '@proton/payments';
+import { getHasVpnB2BPlan, hasDuo, hasFamily, hasVisionary } from '@proton/payments/core/subscription/helpers';
 import { useDispatch } from '@proton/redux-shared-store/sharedProvider';
 import {
     type APP_NAMES,
@@ -140,7 +140,6 @@ const SubUserCreateModal = ({
 
     const [step, setStep] = useState<Step>(Step.SINGLE);
     const [selectedRoles, setSelectedRoles] = useState<Set<string>>(new Set());
-    const [organizationRoles, loadingRoles] = useOrganizationRoles();
 
     const hasVPN = Boolean(organization?.MaxVPN);
 
@@ -178,6 +177,7 @@ const SubUserCreateModal = ({
             (hasVpnB2bPlan ? true : organization.MaxVPN - organization.UsedVPN >= VPN_CONNECTIONS),
         storage: clamp(getInitialStorage(organization, storageRange), storageRange.min, storageRange.max),
     });
+    const [activeTabIndex, setActiveTabIndex] = useState(0);
 
     const [submitting, withLoading] = useLoading();
 
@@ -593,15 +593,21 @@ const SubUserCreateModal = ({
                 event.preventDefault();
                 event.stopPropagation();
                 if (!onFormSubmit(event.currentTarget) || passwordPolicyError) {
+                    setActiveTabIndex(0);
                     return;
                 }
                 void withLoading(handleSubmit());
             }}
         >
             <ModalHeaderWithTabs
+                tabIndex={activeTabIndex}
+                onChangeTabIndex={setActiveTabIndex}
                 title={c('user_modal').t`Add new user`}
                 tabs={[
-                    { title: c('user_modal').t`General`, content: generalTabContent },
+                    {
+                        title: c('user_modal').t`General`,
+                        content: generalTabContent,
+                    },
                     ...(showRolesTab
                         ? [
                               {
@@ -625,13 +631,10 @@ const SubUserCreateModal = ({
                                       <RolesAndPermissionsTab
                                           selectedRoles={selectedRoles}
                                           onChange={setSelectedRoles}
-                                          organizationRoles={organizationRoles}
-                                          loadingRoles={loadingRoles}
                                           disabled={model.mode !== CreateMemberMode.Password}
                                           banner={
                                               model.mode !== CreateMemberMode.Password
-                                                  ? c('user_modal')
-                                                        .t`You'll be able to assign roles once the user has accepted the invitation.`
+                                                  ? getAssignRolesInvitationText()
                                                   : undefined
                                           }
                                       />
@@ -640,6 +643,7 @@ const SubUserCreateModal = ({
                           ]
                         : []),
                 ]}
+                style={{ minBlockSize: '45rem' }}
             />
             <ModalFooter>
                 {showMultipleUserUploadButton ? (

@@ -8,9 +8,6 @@ import { ButtonLike } from '@proton/atoms/Button/ButtonLike';
 import { Href } from '@proton/atoms/Href/Href';
 import { Tooltip } from '@proton/atoms/Tooltip/Tooltip';
 import { useModalStateObject, useNotifications } from '@proton/components';
-import { IcInfoCircle } from '@proton/icons/icons/IcInfoCircle';
-import { IcPen } from '@proton/icons/icons/IcPen';
-import { IcPlus } from '@proton/icons/icons/IcPlus';
 import { DRIVE_APP_NAME, LUMO_SHORT_APP_NAME } from '@proton/shared/lib/constants';
 import humanSize from '@proton/shared/lib/helpers/humanSize';
 import { getKnowledgeBaseUrl } from '@proton/shared/lib/helpers/url';
@@ -19,6 +16,7 @@ import { FilePreviewPanel } from '../../components/Files/Common/FilePreviewPanel
 import type { BreadcrumbItem } from '../../components/Files/DriveBrowser/DriveBreadcrumbs';
 import type { DriveBrowserHandle } from '../../components/Files/DriveBrowser/DriveBrowser';
 import type { UploadProgress } from '../../components/Files/DriveBrowser/UploadProgressOverlay';
+import { LumoIcon } from '../../components/LumoIcon/LumoIcon';
 import { MAX_ASSET_SIZE } from '../../constants';
 import { useFileProcessing } from '../../hooks';
 import { useSearchService } from '../../hooks/useSearchService';
@@ -38,14 +36,14 @@ interface ProjectFilesPanelProps {
     projectId: string;
     instructions?: string;
     onEditInstructions: () => void;
-    modal?: boolean;
+    modal?: boolean; //TODO: clean up since no longer using modal
 }
 
 export const ProjectFilesPanel = ({
     projectId,
     instructions,
     onEditInstructions,
-    modal = false,
+    // modal = false,
 }: ProjectFilesPanelProps) => {
     const fileInputRef = useRef<HTMLInputElement>(null);
     const driveBrowserRef = useRef<DriveBrowserHandle>(null);
@@ -191,12 +189,13 @@ export const ProjectFilesPanel = ({
 
     return (
         <div
-            className={clsx('project-files-panel md:w-1/3', {
+            className={clsx('project-files-panel', {
                 'has-drive-browser': linkedDriveFolder,
-                'modal p-0 sm:p-1': modal,
+                // 'modal p-0 sm:p-1': modal,
             })}
+            style={{ outline: '1px solid green' }}
         >
-            <div className="project-files-panel-content">
+            <div className="project-files-panel-content h-full min-h-full">
                 {/* Instructions Section */}
                 <div className="project-files-section flex-none md:flex-1 flex flex-column flex-nowrap">
                     <div className="project-files-section-header">
@@ -210,7 +209,7 @@ export const ProjectFilesPanel = ({
                                     shape="ghost"
                                     size="small"
                                 >
-                                    <IcInfoCircle size={4} />
+                                    <LumoIcon name="Info" size={16} />
                                 </ButtonLike>
                             </Tooltip>
                         </h3>
@@ -221,7 +220,7 @@ export const ProjectFilesPanel = ({
                             onClick={onEditInstructions}
                             title={c('collider_2025:Action').t`Edit instructions`}
                         >
-                            <IcPen size={4} />
+                            <LumoIcon name="Pen" size={16} />
                         </Button>
                     </div>
                     <div className="project-files-section-content flex-auto">
@@ -229,7 +228,7 @@ export const ProjectFilesPanel = ({
                             <p className="project-instructions-text h-full">{instructions}</p>
                         ) : (
                             <button className="project-instructions-add" onClick={onEditInstructions}>
-                                <IcPlus size={4} />
+                                <LumoIcon name="Plus" size={16} />
                                 <span>{c('collider_2025:Button')
                                     .t`Add instructions to tailor ${LUMO_SHORT_APP_NAME}'s responses`}</span>
                             </button>

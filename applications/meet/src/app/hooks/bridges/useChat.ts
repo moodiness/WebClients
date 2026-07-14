@@ -1,40 +1,188 @@
 import { useCallback, useEffect } from 'react';
 
 import { useRoomContext } from '@livekit/components-react';
+import { ChatEventKind } from '@proton-meet/proton-meet-core';
 import type { RemoteParticipant } from 'livekit-client';
 
 import { useMeetErrorReporting } from '@proton/meet/hooks/useMeetErrorReporting';
-import { useMeetDispatch, useMeetSelector } from '@proton/meet/store/hooks';
-import { addChatMessages } from '@proton/meet/store/slices/chatAndReactionsSlice';
+import { useMeetDispatch, useMeetSelector, useMeetStore } from '@proton/meet/store/hooks';
+import {
+    addChatMessageReaction,
+    addChatMessages,
+    removeChatMessageReaction,
+    selectChatMessages,
+} from '@proton/meet/store/slices/chatAndReactionsSlice';
 import { MeetingSideBars, selectSideBarState } from '@proton/meet/store/slices/uiStateSlice';
 import type { MeetChatMessage } from '@proton/meet/types/types';
 import { sanitizeMessage } from '@proton/sanitize/purify';
-import { stringToUint8Array } from '@proton/shared/lib/helpers/encoding';
+import { binaryStringToUint8Array } from '@proton/shared/lib/helpers/encoding';
 import { wait } from '@proton/shared/lib/helpers/promise';
+import { useFlag } from '@proton/unleash/useFlag';
 
-import { useMLSContext } from '../../contexts/MLSContext';
+import { useMeetCoreClient } from '../../contexts/MeetCoreClientContext';
+import { PublishableDataTypes } from '../../types';
 import { isValidMessageString } from '../../utils/isValidMessageString';
+import { retry } from '../../utils/retry';
+import type { ChatIncomingEventInfoData } from '../../wasm/MeetCoreClient';
 
 export const useChat = () => {
     const dispatch = useMeetDispatch();
+    const store = useMeetStore();
     const room = useRoomContext();
 
     const sideBarState = useMeetSelector(selectSideBarState);
 
-    const mls = useMLSContext();
+    const meetCoreClient = useMeetCoreClient();
 
     const isChatOpen = sideBarState[MeetingSideBars.Chat];
 
+    const isNewChatHandling = useFlag('MeetNewChatHandling');
+
     const { reportMeetError } = useMeetErrorReporting();
 
-    const handleDataReceive = useCallback(
+    const handleDataReceiveNew = useCallback(
         // This is the actual typing LiveKit uses for the payload
         // eslint-disable-next-line @protontech/enforce-uint8array-arraybuffer/enforce-uint8array-arraybuffer
-        async (payload: Uint8Array, participant?: RemoteParticipant) => {
-            if (!participant || !payload) {
-                return;
-            }
+        async (payload: Uint8Array, participant: RemoteParticipant) => {
+            try {
+                const decodedPayload = new TextDecoder().decode(payload);
 
+                // Parsing the type from the string decoded payload as new data format breaks JSON.parse
+                const type = decodedPayload.match(/"type"\s*:\s*"([^"]+)"/)?.[1];
+
+                if (type && type !== PublishableDataTypes.Message) {
+                    return;
+                }
+
+                // Decoding relies on MLS group state that may not be ready yet, so retry a few
+                // times with increasing delays, mirroring the legacy decryption retry.
+                const event = (await retry(() => meetCoreClient.decodeChat(payload), {
+                    stopAfterFirstSuccess: true,
+                })) as (ChatIncomingEventInfoData & { type: string }) | undefined;
+
+                if (!event) {
+                    // Decoding failed after all retries; surface it like the legacy decrypt path
+                    // rather than dropping the message silently.
+                    reportMeetError('Failed to decode chat event', { level: 'error' });
+                    return;
+                }
+
+                // new version of decodeChat will preserve the type property for backwards compatibility
+                if (event.type && event.type !== PublishableDataTypes.Message) {
+                    return;
+                }
+
+                if (event.kind !== ChatEventKind.Message && event.kind !== ChatEventKind.Reaction) {
+                    return;
+                }
+
+                const mlsSenderId = event.sender_participant_id;
+
+                if (participant.identity !== mlsSenderId) {
+                    reportMeetError('Chat event LiveKit identity does not match MLS sender', {
+                        level: 'error',
+                        context: {
+                            participantIdentity: participant.identity,
+                            senderParticipantId: mlsSenderId,
+                            eventKind: event.kind,
+                        },
+                    });
+                    return;
+                }
+
+                if (event.kind === ChatEventKind.Reaction) {
+                    // An unreact references the original reaction event id via `replaces_id`.
+                    if (event.replaces_id) {
+                        dispatch(removeChatMessageReaction({ replacesId: event.replaces_id, identity: mlsSenderId }));
+                        return;
+                    }
+
+                    const messageId = event.target_id;
+                    const emoji = event.emoji;
+
+                    if (!messageId || !emoji || emoji.length > 10) {
+                        return;
+                    }
+
+                    dispatch(addChatMessageReaction({ reactionId: event.id, messageId, emoji, identity: mlsSenderId }));
+                    return;
+                }
+
+                if (!event.text) {
+                    return;
+                }
+
+                if (!isValidMessageString(event.text) || event.text.length === 0 || event.text.length > 50000) {
+                    return;
+                }
+
+                const sanitizedMessage = sanitizeMessage(event.text);
+
+                // A reply carries the thread `topic_id` (which points at the root message id) and is
+                // therefore not a root message of its own thread.
+                const isReply = !!event.topic_id && event.topic_id !== event.id;
+
+                const messagesToAdd: MeetChatMessage[] = [];
+
+                // A reply is only seen when the chat is open and its parent thread is expanded; a
+                // collapsed thread hides the reply, so it stays unseen. Threads default to expanded
+                // once they already have replies.
+                let seen = isChatOpen;
+                if (isReply) {
+                    const chatMessages = selectChatMessages(store.getState());
+                    const root = chatMessages.find((m) => m.id === event.topic_id);
+
+                    // The thread's root message is not available locally (e.g. it was sent before the
+                    // local participant joined). Create a placeholder root the first time so the
+                    // thread's open/seen state can be tracked like any other thread.
+                    if (!root) {
+                        messagesToAdd.push({
+                            id: event.topic_id as string,
+                            timestamp: Number(event.received_at_ms),
+                            identity: '',
+                            seen: true,
+                            message: '',
+                            type: 'message',
+                            topicId: event.topic_id,
+                            expanded: false,
+                            isMissingRoot: true,
+                        });
+                    }
+
+                    if (isChatOpen) {
+                        const threadHasReplies = chatMessages.some(
+                            (m) => m.id !== event.topic_id && m.topicId === event.topic_id
+                        );
+                        seen = root?.expanded ?? threadHasReplies;
+                    }
+                }
+
+                const newMessage: MeetChatMessage = {
+                    id: event.id,
+                    timestamp: Number(event.received_at_ms),
+                    identity: mlsSenderId,
+                    seen,
+                    message: sanitizedMessage,
+                    type: 'message',
+                    inReplyToId: event.in_reply_to_id,
+                    topicId: event.topic_id,
+                };
+
+                messagesToAdd.push(newMessage);
+
+                dispatch(addChatMessages(messagesToAdd));
+            } catch (error) {
+                // eslint-disable-next-line no-console
+                console.error('Error handling chat event:', error);
+            }
+        },
+        [dispatch, isChatOpen, meetCoreClient, reportMeetError, store]
+    );
+
+    const handleDataReceiveLegacy = useCallback(
+        // This is the actual typing LiveKit uses for the payload
+        // eslint-disable-next-line @protontech/enforce-uint8array-arraybuffer/enforce-uint8array-arraybuffer
+        async (payload: Uint8Array, participant: RemoteParticipant) => {
             try {
                 const decodedPayload = new TextDecoder().decode(payload);
 
@@ -52,7 +200,7 @@ export const useChat = () => {
                     return;
                 }
 
-                const encryptedData = stringToUint8Array(decodedMessage.message);
+                const encryptedData = binaryStringToUint8Array(decodedMessage.message);
 
                 // Trying the decryption 3 times with increasing delays, to work around temporary issues with the MLS
                 const tryDecrypt = async (attemptIndex: number) => {
@@ -67,7 +215,7 @@ export const useChat = () => {
                     }
 
                     try {
-                        const result = await mls?.decryptMessage(encryptedData);
+                        const result = await meetCoreClient.decryptMessage(encryptedData);
                         if (!result) {
                             return await tryDecrypt(attemptIndex + 1);
                         }
@@ -118,6 +266,7 @@ export const useChat = () => {
                     identity: mlsSenderId,
                     seen: isChatOpen,
                     message: sanitizedMessage,
+                    type: 'message',
                 };
 
                 dispatch(addChatMessages([newMessage]));
@@ -126,7 +275,21 @@ export const useChat = () => {
                 console.error('Error handling chat message:', error);
             }
         },
-        [isChatOpen]
+        [dispatch, isChatOpen, meetCoreClient, reportMeetError]
+    );
+
+    const handleDataReceive = useCallback(
+        // This is the actual typing LiveKit uses for the payload
+        // eslint-disable-next-line @protontech/enforce-uint8array-arraybuffer/enforce-uint8array-arraybuffer
+        async (payload: Uint8Array, participant?: RemoteParticipant) => {
+            if (!participant || !payload) {
+                return;
+            }
+
+            const handler = isNewChatHandling ? handleDataReceiveNew : handleDataReceiveLegacy;
+            await handler(payload, participant);
+        },
+        [isNewChatHandling, handleDataReceiveNew, handleDataReceiveLegacy]
     );
 
     useEffect(() => {

@@ -110,6 +110,9 @@
       "Apply": [
         "Aplica"
       ],
+      "Approve": [
+        "Aprovar"
+      ],
       "Attach screenshot(s)": [
         "Adjunta una o més captures de pantalla"
       ],
@@ -226,9 +229,6 @@
       ],
       "Connected": [
         "Connectat"
-      ],
-      "Contact support": [
-        "Contactar amb el suport"
       ],
       "Contact Support Center": [
         "Contacteu amb el Centre d'ajuda"
@@ -503,9 +503,6 @@
       "Forgot password?": [
         "Heu oblidat la contrasenya?"
       ],
-      "Forgot recovery method?": [
-        "Heu oblidat el mètode de recuperació?"
-      ],
       "Generate new recovery phrase": [
         "Genera una nova frase de recuperació "
       ],
@@ -659,9 +656,6 @@
       "Load more": [
         "Carrega'n més"
       ],
-      "Loading verification": [
-        "Carregant verificació"
-      ],
       "Lost access to your 2FA device?": [
         "Heu perdut l'accés al vostre dispositiu de 2FA?"
       ],
@@ -757,6 +751,9 @@
       ],
       "Organization": [
         "Organització"
+      ],
+      "Pause": [
+        "Pausa"
       ],
       "Pay": [
         "Pagar"
@@ -895,6 +892,9 @@
       ],
       "Review": [
         "Revisa"
+      ],
+      "Review changes": [
+        "Revisar els canvis"
       ],
       "Revoke": [
         "Revoca"
@@ -3671,6 +3671,15 @@
       "No one in your organization can connect to shared servers.": [
         "Ningú de la vostra organització no es pot connectar a servidors compartits."
       ],
+      "Note that emails sent to this address, even from other ${ BRAND_NAME } addresses, will no longer be end-to-end encrypted.": [
+        "Tingueu en compte que els correus electrònics enviats a aquesta adreça, fins i tot des d'altres adreces de ${ BRAND_NAME }, ja no s'encriptaran d'extrem a extrem."
+      ],
+      "Once disconnected and disabled, you will no longer be able to send or receive emails as ${ address.Email } in ${ BRAND_NAME }. Emails sent to this address will still arrive in Gmail, but not in ${ MAIL_APP_NAME }.": [
+        "Un cop desconnectat i desactivat, ja no podreu enviar ni rebre correus com a ${ address.Email } a ${ BRAND_NAME }. Els correus enviats a aquesta adreça continuaran arribant a Gmail, però no a ${ MAIL_APP_NAME }."
+      ],
+      "Once disconnected, you will no longer be able to send or receive emails as ${ address.Email } in ${ BRAND_NAME }. Emails sent to this address will still arrive in Gmail, but not in ${ MAIL_APP_NAME }.": [
+        "Un cop desconnectat, ja no podreu enviar ni rebre correus com a ${ address.Email } a ${ BRAND_NAME }. Els correus enviats a aquesta adreça continuaran arribant a Gmail, però no a ${ MAIL_APP_NAME }."
+      ],
       "Read, reply, and stay on top of Gmail from within ${ MAIL_APP_NAME }": [
         "Llegiu, responeu i estigueu al dia de Gmail des de ${ MAIL_APP_NAME }"
       ],
@@ -3753,11 +3762,8 @@
       "You can now send emails from ${ BRAND_NAME } using this address.": [
         "Ara ja podeu enviar correus electrònics des de ${ BRAND_NAME } utilitzant aquesta adreça."
       ],
-      "You can still login with this address and re-connect at any time.": [
-        "Encara podeu iniciar sessió amb aquesta adreça i tornar-vos a connectar en qualsevol moment."
-      ],
-      "You will no longer be able to use ${ address.Email } to receive and send emails in ${ BRAND_NAME }. Also note that messages sent to this address from ${ BRAND_NAME } will no longer be end-to-end encrypted.": [
-        "Ja no podreu utilitzar ${ address.Email } per rebre i enviar correus a ${ BRAND_NAME }. Tingueu en compte també que els missatges enviats a aquesta adreça des de ${ BRAND_NAME } ja no estaran xifrats d'extrem a extrem."
+      "You can reconnect this address at any time.": [
+        "Podreu tornar a connectar aquesta adreça en qualsevol moment."
       ],
       "You're forwarding ${ numAddressesOrSync } Gmail address to ${ MAIL_APP_NAME }.": [
         "Esteu redirigint ${ numAddressesOrSync } adreça de Gmail a ${ MAIL_APP_NAME }.",
@@ -4457,12 +4463,6 @@
       "Incorrect username": [
         "Nom d'usuari incorrecte"
       ],
-      "Invalid ${ name } code": [
-        "Codi ${ name } no vàlid"
-      ],
-      "Invalid card number": [
-        "Número de targeta no vàlid"
-      ],
       "Invalid code": [
         "Codi invàlid"
       ],
@@ -4474,9 +4474,6 @@
       ],
       "Invalid email address": [
         "L'adreça de correu electrònic no és vàlida."
-      ],
-      "Invalid expiration date": [
-        "Data de caducitat invàlida"
       ],
       "Invalid IBAN": [
         "L'IBAN no és vàlid."
@@ -4542,8 +4539,8 @@
       "Not a valid number": [
         "Número no vàlid"
       ],
-      "Not enough storage space in your ${ DRIVE_APP_NAME }": [
-        "No hi ha prou espai d'emmagatzematge al vostre ${ DRIVE_APP_NAME }"
+      "Only capitalization and punctuation (periods, hyphens, and underscores) can be changed for this address": [
+        "Només es poden canviar les majúscules i la puntuació (punts, guionets i guions baixos) per aquesta adreça"
       ],
       "Organization key is not decrypted": [
         "La clau de l'organització no està desxifrada"
@@ -4674,6 +4671,14 @@
       ],
       "Reverse charge scheme is not supported for this plan": [
         "El règim d'inversió del subjecte passiu no és compatible amb aquest pla"
+      ],
+      "Role assignment could not be completed for ${ errors.length } member": [
+        "No s'ha pogut completar l'assignació de rols per a ${ errors.length } membre",
+        "No s'ha pogut completar l'assignació de rols per a ${ errors.length } membres"
+      ],
+      "Role assignment could not be completed for ${ failedGroupCount } group": [
+        "No s'ha pogut completar l'assignació de rols per a ${ failedGroupCount } grup",
+        "No s'ha pogut completar l'assignació de rols per a ${ failedGroupCount } grups"
       ],
       "Server not found": [
         "No s'ha trobat el servidor"
@@ -4827,6 +4832,9 @@
       ],
       "Verification did not succeed, please try again in an hour.": [
         "No s'ha pogut realitzar la verificació. Intenteu-ho de nou d'aquí a una hora."
+      ],
+      "We couldn’t send a verification code using this method.": [
+        "No hem pogut enviar cap codi de verificació mitjançant aquest mètode."
       ],
       "We stopped DKIM signing due to problems with your DNS configuration. Please follow the instructions below to resume signing.": [
         "Hem aturat la signatura de DKIM per problemes amb la vostra configuració DNS. Seguiu les instruccions a continuació per continuar a signar."
@@ -5020,9 +5028,6 @@
       ]
     },
     "Error message": {
-      "Account is deleted or disabled": [
-        "S'ha eliminat el compte o s'ha desactivat"
-      ],
       "App currently unavailable": [
         "L'aplicació no està disponible actualment."
       ],
@@ -5585,8 +5590,8 @@
       "Insert a security key linked to your ${ BRAND_NAME } Account.": [
         "Inseriu una clau de seguretat enllaçada al vostre compte de ${ BRAND_NAME }."
       ],
-      "Insert your security key into your device's USB port.": [
-        "Inseriu la clau de seguretat al port USB del vostre dispositiu."
+      "Insert your security key into your device.": [
+        "Introduïu la clau de seguretat al vostre dispositiu."
       ],
       "Security key": [
         "Clau de seguretat"
@@ -5599,6 +5604,9 @@
       ],
       "This will delete all security keys linked to your account.": [
         "Això eliminarà totes les claus de seguretat vinculades al vostre compte."
+      ],
+      "Touch your security key.": [
+        "Toqueu la vostra clau de seguretat."
       ],
       "Verify your identity with a physical U2F or FIDO2 security key": [
         "Confirmeu la vostra identitat amb una clau de seguretat física U2F o FIDO2."
@@ -5812,6 +5820,12 @@
       ],
       "General": [
         "General"
+      ],
+      "Manage users and groups, assign roles, and allocate licenses to members.": [
+        "Gestioneu usuaris i grups, assigneu rols i distribuïu llicències als membres."
+      ],
+      "Manages security settings and can view all event logs and user details.": [
+        "Gestiona els paràmetres de seguretat i pot veure tots els registres d'esdeveniments i detalls dels usuaris."
       ],
       "Roles and permissions": [
         "Rols i permisos"
@@ -6295,11 +6309,8 @@
       "${ appName } needs your permission to ${ enableDesktopNotifications }.": [
         "${ appName } necessita el vostre permís per ${ enableDesktopNotifications }."
       ],
-      "${ boldWarning } You will lose access to all current encrypted data in your account if you continue.": [
-        "${ boldWarning } Si continueu, perdreu l'accés a totes les dades xifrades actuals del vostre compte."
-      ],
-      "${ BRAND_NAME } Business plans gives your team all the collaboration tools they need to be productive and organized in their work, while safeguarding your business.": [
-        "Els plans d'empresa de ${ BRAND_NAME } donen al vostre equip totes les eines de col·laboració que necessiten per ser productius i organitzats en la seva feina, mentre protegeixen el vostre negoci."
+      "${ BRAND_NAME } Business plans give your team all the collaboration tools they need to be productive and organized in their work, while safeguarding your business.": [
+        "Els plans de negoci de ${ BRAND_NAME } li donen al vostre equip totes les eines de col·laboració que necessiten per ser productius i organitzats en el seu treball, alhora que protegeixen la vostra empresa."
       ],
       "${ BRAND_NAME } is independently funded and operates without advertising. Below are examples of how this independence has been used in practice.": [
         "${ BRAND_NAME } es finança de manera independent i funciona sense publicitat. A continuació es mostren exemples de com s'ha aplicat aquesta independència en la pràctica."
@@ -6342,6 +6353,10 @@
       ],
       "${ emailAddress } is invalid": [
         "${ emailAddress } no és vàlida"
+      ],
+      "${ emails.length } member added to the group": [
+        "S'ha afegit ${ emails.length }membre al grup",
+        "S'han afegit ${ emails.length }membres al grup"
       ],
       "${ fileName }: full-size image": [
         "${ fileName }: imatge a mida completa"
@@ -6409,9 +6424,9 @@
       "${ PASS_SHORT_APP_NAME } lifetime deal has no renewal price, it's a one-time payment for lifetime access to ${ PASS_SHORT_APP_NAME }. Your ${ planTitle } subscription renewal price and date remain unchanged.": [
         "L'oferta de per vida de ${ PASS_SHORT_APP_NAME } no té preu de renovació, és un pagament únic per a accedir durant tota la vida a ${ PASS_SHORT_APP_NAME }. El preu i la data de renovació de la subscripció de ${ planTitle } es mantindran sense canvis."
       ],
-      "${ pendingAdminMemberCount } new member added via your identity provider and pending review.": [
-        "S'ha afegit ${ pendingAdminMemberCount } membre nou a través del vostre proveïdor d'identitat i està pendent de revisió.",
-        "S'han afegit ${ pendingAdminMemberCount } membres nous a través del vostre proveïdor d'identitat i estan pendents de revisió."
+      "${ pendingAdminApprovalCount } new member added via your identity provider and pending review.": [
+        "S'ha afegit ${ pendingAdminApprovalCount } membre nou a través del vostre proveïdor d'identitat i està pendent de revisió.",
+        "S'han afegit ${ pendingAdminApprovalCount } membres nous mitjançant el vostre proveïdor d'identitat i estan pendents de revisió."
       ],
       "${ plan.Title } requires at least 1 dedicated server ${ serverPricePerMonth }": [
         "${ plan.Title } requereix almenys un servidor dedicat ${ serverPricePerMonth }"
@@ -6819,11 +6834,11 @@
       "Beta": [
         "Beta"
       ],
-      "Billed at ${ monthlyDiscountedPrice } for the first 6 months, renews at ${ monthlyRenewalPrice }.": [
-        "Es facturarà a ${ monthlyDiscountedPrice } els primers sis mesos i es renovarà a ${ monthlyRenewalPrice }."
+      "Billed at ${ monthlyDiscountedPriceElement } for the first 6 months, renews at ${ monthlyRenewalPriceElement }.": [
+        "Es facturarà a ${ monthlyDiscountedPriceElement } els primers sis mesos i es renovarà a ${ monthlyRenewalPriceElement }."
       ],
-      "Billed at ${ yearlyDiscountedPrice } for the first 12 months, renews at ${ yearlyRenewalPrice }.": [
-        "Es facturarà a ${ yearlyDiscountedPrice } els primers dotze mesos i es renovarà a ${ yearlyRenewalPrice }."
+      "Billed at ${ yearlyDiscountedPriceElement } for the first 12 months, renews at ${ yearlyRenewalPriceElement }.": [
+        "Es facturarà a ${ yearlyDiscountedPriceElement } els primers dotze mesos i es renovarà a ${ yearlyRenewalPriceElement }."
       ],
       "Billing cycle: ${ text }": [
         "Cicle de facturació: ${ text }"
@@ -6985,9 +7000,6 @@
       "Data locked": [
         "Dades bloquejades"
       ],
-      "Data recoverable on this device": [
-        "Dades recuperables en aquest dispositiu"
-      ],
       "Data recoverable with recovery phrase": [
         "Podeu recuperar les dades amb la frase de recuperació"
       ],
@@ -7073,9 +7085,6 @@
       ],
       "Don't lose access to your premium features. Enable auto-renew today.": [
         "No perdeu l'accés a les funcions prèmium. Activeu la renovació automàtica avui mateix."
-      ],
-      "Done! We sent a code to ${ destination }.": [
-        "Fet! Hem enviat un codi a ${ destination }."
       ],
       "Don’t know your recovery phrase?": [
         "No sabeu la vostra frase de recuperació?"
@@ -7199,12 +7208,6 @@
       ],
       "Enter the code from your authenticator app": [
         "Introduïu el codi de la vostra aplicació d'autenticació."
-      ],
-      "Enter the code sent to your phone number ${ phone }.": [
-        "Introduïu el codi enviat al vostre número de telefon ${ phone }."
-      ],
-      "Enter the code that was sent to ${ email }. If you can't find the message in your inbox, please check your spam folder.": [
-        "Introduïu el codi que s'ha enviat a ${ email }. Si no trobeu el missatge a la vostra safata d'entrada, comproveu la vostra carpeta de correu brossa."
       ],
       "Enter the credentials of the email account you want to import from.": [
         "Introduïu les credencials del compte de correu electrònic des d'on voleu importar."
@@ -7341,8 +7344,14 @@
       "Got it": [
         "D'acord"
       ],
+      "Group created": [
+        "S'ha creat el grup"
+      ],
       "Group deleted": [
         "S'ha eliminat el grup."
+      ],
+      "Group roles assigned": [
+        "S'han assignat els rols del grup"
       ],
       "Groups": [
         "Grups"
@@ -7373,9 +7382,6 @@
       ],
       "If you are having trouble creating your account, please request an invitation and we will respond within one business day.": [
         "Si teniu problemes per crear el vostre compte, sol·liciteu una invitació i us respondrem en un dia laborable."
-      ],
-      "If you are signed in somewhere else, you may be able to ${ signedInPasswordResetLink }.": [
-        "Si teniu sessió iniciada a qualsevol altre lloc, podríeu ${ signedInPasswordResetLink }."
       ],
       "If you are signed in to a ${ BRAND_NAME } web app in **another browser**, you may be able to perform a password reset from your active session.": [
         "Si heu iniciat sessió en una aplicació web de ${ BRAND_NAME } en un **altre navegador**, és possible que pugueu realitzar un restabliment de contrasenya des de la vostra sessió activa."
@@ -7658,6 +7664,9 @@
       "Make sure you ${ addARecoveryMethod } so that you can get back into your account if you forget your password.": [
         "Assegureu-vos d'${ addARecoveryMethod } perquè pugueu tornar al vostre compte si oblideu la contrasenya."
       ],
+      "Manage groups in your identity provider": [
+        "Gestioneu els grups al vostre proveïdor d'identitat"
+      ],
       "Manage which ${ BRAND_NAME } applications the members of your organization can access. If disabled, only administrators will have access.": [
         "Gestioneu a quines aplicacions de ${ BRAND_NAME } poden accedir els membres de la vostra organització. Si està desactivat, només els administradors hi tindran accés."
       ],
@@ -7787,8 +7796,8 @@
       "Once access to your account has been granted, they can access your **Recovery** settings and **change your ${ ACCOUNT_APP_NAME } password** for you.": [
         "Un cop concedit l'accés al vostre compte, podran anar a la vostra configuració de **Recuperació** i canviar-vos la **contrasenya de ${ ACCOUNT_APP_NAME }**."
       ],
-      "Once you reset your password:": [
-        "Un cop restabliu la contrasenya:"
+      "Only capitalization and punctuation (periods, hyphens, and underscores) can be changed here. To use a different address, add a new one.": [
+        "Només podeu canviar les majúscules i la puntuació (punts, guionets i guions baixos). Per utilitzar una adreça diferent, afegiu-ne una de nova."
       ],
       "Open source": [
         "Codi obert"
@@ -7899,9 +7908,6 @@
       "Please ask the owner to directly invite you to the document.": [
         "Demaneu al propietari que us convidi directament al document."
       ],
-      "Please authenticate your card in the verification tab.": [
-        "Autentiqueu la vostra targeta a la pestanya de verificació."
-      ],
       "Please authenticate your payment in the verification tab.": [
         "Autentiqueu el vostre pagament a la pestanya de verificació."
       ],
@@ -7910,9 +7916,6 @@
       ],
       "Please check your file, or try using our ${ csvTemplateButton }.": [
         "Comproveu el vostre fitxer o proveu d'utilitzar el nostre ${ csvTemplateButton }."
-      ],
-      "Please enter the 12-word recovery phrase associated with your account.": [
-        "Introduïu la frase de recuperació de 12 paraules associada amb el vostre compte."
       ],
       "Please fill in all required fields.": [
         "Empleneu tots els camps obligatoris."
@@ -7937,9 +7940,6 @@
       ],
       "Please try again using a different payment method, or contact your bank.": [
         "Torneu-ho a provar amb un mètode de pagament diferent o poseu-vos en contacte amb el vostre banc."
-      ],
-      "Please try again, use a different payment method, or contact PayPal for assistance.": [
-        "Torneu-ho a provar, utilitzeu un mètode de pagament diferent o bé contacteu per assistència de PayPal."
       ],
       "Please use another browser or download the file.": [
         "Utilitzeu un altre navegador o descarregueu el fitxer."
@@ -8258,6 +8258,9 @@
       "Symbols (#$&)": [
         "Símbols (#$&)"
       ],
+      "Synced from identity provider": [
+        "Sincronitzat des del proveïdor d'identitat"
+      ],
       "TechRadar Pro recommended with a rating of 4.2 out of 5 stars": [
         "Recomanat per TechRadar Pro amb una puntuació de 4,2 sobre 5 estrelles"
       ],
@@ -8323,6 +8326,10 @@
       ],
       "The name will be visible to your users while they are signed in.": [
         "El nom serà visible per als vostres usuaris quan estiguin connectats."
+      ],
+      "The process was interrupted for ${ pausedCount } group. Click Continue to resume assigning roles.": [
+        "El procés s'ha interromput per a ${ pausedCount } grup. Feu clic a Continuar per reprendre l'assignació de rols.",
+        "El procés s'ha interromput per a ${ pausedCount } grups. Feu clic a Continuar per reprendre l'assignació de rols."
       ],
       "The referral credit can be awarded up to 2 months after your friend's trial ended, only if your friend subscribed to a plan.": [
         "El crèdit per recomanació es pot concedir fins dos mesos després que hagi finalitzat la prova del vostre amic, i només si aquest s'ha subscrit a un pla."
@@ -8525,9 +8532,6 @@
       "Trial ends on ${ formattedPeriodEndDate }": [
         "La prova finalitza el ${ formattedPeriodEndDate }"
       ],
-      "trusted device": [
-        "dispositiu de confiança"
-      ],
       "Try ${ productName } totally risk free - if for any reason you change your mind, you'll receive a full refund. No questions asked.": [
         "Proveu ${ productName } totalment sense riscos. Si per qualsevol motiu canvieu d'opinió, rebreu un reemborsament complet. Sense preguntes."
       ],
@@ -8551,9 +8555,6 @@
       ],
       "Unfortunately there is no recovery method available for this account.": [
         "Malauradament no hi ha cap mètode de recuperació disponible per aquest compte."
-      ],
-      "Unfortunately there is no recovery method saved for this account.": [
-        "Malauradament no hi ha cap mètode de recuperació establert per a aquest compte."
       ],
       "Unique ID generated by your identity provider, usually in the form of a URL that contains the identity provider’s name within it (e.g. https://idp.example.com/XXXXX).": [
         "Identificador únic generat pel vostre proveïdor d'identitat, normalment en forma d'URL que conté el nom del proveïdor d'identitat dins d'ell (p. ex. https://idp.exemple.com/XXXXX)."
@@ -8690,9 +8691,6 @@
       "Want to learn more?": [
         "Voleu saber-ne més?"
       ],
-      "Warning:": [
-        "Atenció:"
-      ],
       "Warning: deleting your account is permanent.": [
         "Atenció: La supressió del compte és permanent."
       ],
@@ -8729,14 +8727,8 @@
       "We recommend notifying the organization members and asking them to set up 2FA for their accounts before enforcing the use of 2FA.": [
         "Recomanem que notifiqueu als membres de l'organització i els demaneu que estableixin l'autenticació de doble factor (2FA) per als seus comptes abans de fer-ne complir l'ús."
       ],
-      "We recommend using your recovery phrase instead.": [
-        "Recomanem utilitzar la frase de recuperació."
-      ],
       "We securely store recovery information on your trusted device to prevent you from losing your data": [
         "Emmagatzemem de manera segura la informació de recuperació al vostre dispositiu de confiança per a evitar que perdeu les vostres dades"
-      ],
-      "We stored a backup file in this browser because you allowed data recovery on this ${ deviceLink }. If the backup file is valid, you will immediately regain complete or partial access to your encrypted data.": [
-        "Hem emmagatzemat un fitxer de còpia de seguretat en aquest navegador perquè heu permès la recuperació de dades en aquest ${ deviceLink }. Si el fitxer de còpia de seguretat és vàlid, recuperareu immediatament l'accés complet o parcial a les vostres dades xifrades."
       ],
       "We use 3-D Secure to protect your payments": [
         "Utilitzem 3-D Secure per protegir els vostres pagaments."
@@ -8770,12 +8762,6 @@
       ],
       "We’ll send a reset code to ${ boldValue }.": [
         "Enviarem un codi de restabliment a ${ boldValue }."
-      ],
-      "We’ll send a reset code to the email address you provided for account recovery.": [
-        "Enviarem un codi de restabliment a l'adreça de correu electrònic que heu proporcionat per a la recuperació del compte."
-      ],
-      "We’ll send a reset code to the phone number you provided for account recovery.": [
-        "Enviarem un codi de restabliment al número de telèfon que heu proporcionat per a la recuperació del compte."
       ],
       "When enabling SAML for ${ appName } in your identity provider, you might be prompted to use the callback (ACS) URL and issuer ID. Just copy-paste the data below into your identity provider fields.": [
         "Quan activeu SAML per a ${ appName } al vostre proveïdor d'identitat, és possible que se us demani que utilitzeu l'URL de la crida de retorn (ACS) i l'identificador de l'emissor. Només cal copiar i enganxar les dades de sota als camps del proveïdor d'identitat."
@@ -8836,6 +8822,9 @@
       ],
       "You already have a free account": [
         "Ja teniu un compte gratuït"
+      ],
+      "You are currently signed in as ${ username } for ${ organizationName }.": [
+        "Actualment heu iniciat sessió com a ${ username } per a ${ organizationName }."
       ],
       "You are currently signed in as ${ username }.": [
         "Heu iniciat sessió com a ${ username }."
@@ -8989,9 +8978,6 @@
       ],
       "You will regain complete or partial access to your encrypted data.": [
         "Recuperareu l'accés complet o parcial a les vostres dades xifrades."
-      ],
-      "You will soon be redirected to PayPal to verify your payment.": [
-        "Ben aviat sereu redirigits a PayPal per verificar el pagament."
       ],
       "You won't be charged if you cancel before ${ trialEndsOnFormatted }.": [
         "No se us cobrarà res si cancel·leu abans del ${ trialEndsOnFormatted }."
@@ -9234,8 +9220,11 @@
       "Declined": [
         "Rebutjat"
       ],
-      "Owner": [
-        "Propietari"
+      "Group Owner": [
+        "Propietari del grup"
+      ],
+      "Invited": [
+        "Convidat"
       ],
       "Paused": [
         "En pausa"
@@ -9507,9 +9496,6 @@
       ],
       "City": [
         "Ciutat"
-      ],
-      "Code": [
-        "Codi"
       ],
       "Code is 6 digits without spaces": [
         "El codi consta de 6 dígits sense espais"
@@ -9968,8 +9954,8 @@
       "Password": [
         "Contrasenya"
       ],
-      "Password reminders": [
-        "Recordatoris de contrasenya"
+      "Password check-ins": [
+        "Inicis de sessió amb contrasenya"
       ],
       "Password strength": [
         "Nivell de seguretat de la contrasenya"
@@ -10384,9 +10370,6 @@
       ]
     },
     "Link": {
-      "Account recovery explained": [
-        "Explicació de la recuperació del compte"
-      ],
       "activity monitor": [
         "monitor d’activitats"
       ],
@@ -10422,9 +10405,6 @@
       ],
       "Details": [
         "Detalls"
-      ],
-      "Don't have access to your 2FA?": [
-        "No teniu accés al vostre 2FA?"
       ],
       "Encryption and keys": [
         "Xifratge i claus"
@@ -10540,9 +10520,6 @@
       "Pay invoice": [
         "Paga la factura"
       ],
-      "perform a password reset from your active session": [
-        "realitzar un restabliment de contrasenya des de la vostra sessió activa"
-      ],
       "Privacy policy": [
         "Política de privacitat"
       ],
@@ -10598,20 +10575,6 @@
     "Link (Scribe)": {
       "Users and addresses": [
         "Usuaris i adreces"
-      ]
-    },
-    "Live Chat Modal": {
-      "Live chat is available with ${ planName }": [
-        "El xat en viu està disponible amb ${ planName }"
-      ],
-      "Open support form": [
-        "Obriu el formulari de suport"
-      ],
-      "Upgrade subscription": [
-        "Milloreu la subscripció"
-      ],
-      "Upgrade to unlock chat support and other premium features, or use our free support form to report your issue.": [
-        "Milloreu el pla per desbloquejar el suport per a xats i altres característiques prèmium, o utilitzeu el nostre formulari de suport gratuït per informar del vostre problema."
       ]
     },
     "Loading info": {
@@ -10924,6 +10887,9 @@
       ],
       "Add address": [
         "Afegeix una adreça"
+      ],
+      "Change backup password": [
+        "Canviar la contrasenya de recuperació"
       ],
       "Change password": [
         "Canvia la contrasenya"
@@ -12869,22 +12835,11 @@
       "Make sure you memorize or securely store your password as it's the key to decrypt your data.": [
         "Assegureu-vos de memoritzar o desar de manera segura la contrasenya, ja que és la clau per desxifrar les vostres dades."
       ],
-      "Turn off password reminders?": [
-        "Voleu desactivar els recordatoris de contrasenya?"
+      "Turn off check-ins": [
+        "Desactivar les entrades"
       ],
-      "Turn off reminders": [
-        "Desactiveu els recordatoris"
-      ]
-    },
-    "password_reset: info": {
-      "**All your existing data** (emails, events, contacts, files, ${ PASS_APP_NAME } entries, etc.) **will be locked** and can only be unlocked with your **old password**.": [
-        "**Totes les vostres dades** (correus electrònics, esdeveniments, contactes, fitxers, entrades de ${ PASS_APP_NAME }, etc.) **es bloquejaran** i només es podran desbloquejar amb la **contrasenya antiga**."
-      ],
-      "**All your existing data** (emails, events, contacts, files, ${ PASS_APP_NAME } entries, etc.) **will be locked** and can only be unlocked with your **recovery phrase** or your **old password**.": [
-        "**Totes les vostres dades** (correus electrònics, esdeveniments, contactes, fitxers, entrades de ${ PASS_APP_NAME }, etc.) **es bloquejaran** i només es podran desbloquejar amb la **frase de recuperació** o la **contrasenya antiga**."
-      ],
-      "Any **two-factor authentication (2FA)** method on your account will be disabled.": [
-        "Es desactivarà qualsevol mètode d'**autenticació de doble factor (A2F)** del vostre compte."
+      "Turn off password check-ins?": [
+        "Voleu desactivar les entrades amb contrasenya?"
       ]
     },
     "passwordless": {
@@ -14141,6 +14096,66 @@
         "S'està provant la configuració de SAML"
       ]
     },
+    "scim": {
+      "${ memberCount } new member": [
+        "${ memberCount } nou membre",
+        "${ memberCount } nous membres"
+      ],
+      "${ numberOfPendingGroups } group synced": [
+        "${ numberOfPendingGroups } grup sincronitzat",
+        "${ numberOfPendingGroups } grups sincronitzats"
+      ],
+      "${ numberOfPendingUsers } user synced": [
+        "${ numberOfPendingUsers } usuari sincronitzat",
+        "${ numberOfPendingUsers } usuaris sincronitzats"
+      ],
+      "${ pendingGroupsCount } group": [
+        "${ pendingGroupsCount } grup",
+        "${ pendingGroupsCount } grups"
+      ],
+      "${ pendingGroupsCount } group synced.": [
+        "${ pendingGroupsCount } grup sincronitzat.",
+        "${ pendingGroupsCount } grups sincronitzats."
+      ],
+      "${ pendingUsersCount } user": [
+        "${ pendingUsersCount } usuari",
+        "${ pendingUsersCount } usuaris"
+      ],
+      "${ pendingUsersCount } user synced.": [
+        "${ pendingUsersCount } usuari sincronitzat.",
+        "${ pendingUsersCount } usuaris sincronitzats."
+      ],
+      "${ usersText } and ${ groupsText } synced.": [
+        "${ usersText } i ${ groupsText } s'han sincronitzat."
+      ],
+      "Approve changes from your identity provider": [
+        "Aproveu els canvis del vostre proveïdor d'identitat"
+      ],
+      "Final approval needed to grant access across all ${ BRAND_NAME } services.": [
+        "Cal l'aprovació final per concedir accés a tots els serveis de ${ BRAND_NAME }."
+      ],
+      "From your identity provider": [
+        "Del vostre proveïdor d'identitat"
+      ],
+      "New": [
+        "Nou"
+      ],
+      "Once approved, they can access all ${ BRAND_NAME } services and share securely.": [
+        "Un cop aprovats, podran accedir a tots els serveis de ${ BRAND_NAME } i compartir de manera segura."
+      ],
+      "Private user": [
+        "Usuari privat"
+      ],
+      "Review users and groups before finishing setup": [
+        "Reviseu els usuaris i els grups abans de completar la configuració"
+      ],
+      "Updated": [
+        "Actualitzat"
+      ],
+      "Users set to private need to accept the invite to finish setup. We'll send them an invite once you approve.": [
+        "Els usuaris configurats com a privats han d'acceptar la invitació per acabar la configuració. Els enviarem una invitació un cop ho aproveu."
+      ]
+    },
     "scim: Action": {
       "Configure SCIM": [
         "Configura SCIM"
@@ -14937,13 +14952,13 @@
         "S'ha desconnectat ${ n } usuari de l'inici de sessió únic (SSO).",
         "S'han desconnectat ${ n } usuaris de l'inici de sessió únic (SSO)."
       ],
-      "${ n } user has joined your organization through your Identity Provider. Review the account now:": [
-        "${ n } usuari s'ha unit a la vostra organització mitjançant el vostre proveïdor d'identitat. Reviseu el compte ara:",
-        "${ n } usuaris s'han unit a la vostra organització mitjançant el vostre proveïdor d'identitat. Reviseu els seus comptes ara:"
+      "${ n } user has joined your organization through your identity provider": [
+        "${ n } usuari s'ha unit a la vostra organització a través del vostre proveïdor d'identitat.",
+        "${ n } usuaris s'han unit a la vostra organització a través del vostre proveïdor d'identitat."
       ],
-      "${ n } user is inactive. You can safely remove this user from your organization.": [
-        "${ n } usuari està inactiu. Podeu suprimir aquest usuari de la vostra organització amb seguretat.",
-        "${ n } usuaris estan inactius. Podeu eliminar-los de la vostra organització amb seguretat."
+      "${ n } user is inactive.": [
+        "${ n } usuari està inactiu.",
+        "${ n } usuaris estan inactius."
       ],
       "${ n } user is requesting your help to sign in to their ${ BRAND_NAME } Account with single sign-on.": [
         "${ n } usuari demana la vostra ajuda per a iniciar la sessió al seu compte de ${ BRAND_NAME } amb un inici de sessió únic.",
@@ -15203,6 +15218,17 @@
     "State": {
       "Canceling your subscription, please wait": [
         "Espereu, s'està cancel·lant la vostra subscripció"
+      ]
+    },
+    "Status": {
+      "... waiting": [
+        "... esperant"
+      ],
+      "completed": [
+        "s'ha completat"
+      ],
+      "finalizing": [
+        "està finalitzant"
       ]
     },
     "Storage": {
@@ -15843,11 +15869,11 @@
       "Compare the key differences that matter for your business.": [
         "Compareu les diferències clau que són importants per la vostra empresa."
       ],
-      "Save 50% for 1 year, and keep full access": [
-        "Estalvieu el 50% durant 1 any i mantingueu l'accés complet"
-      ],
       "Save 50% for 6 months, and keep full access": [
         "Estalvieu el 50% durant sis mesos i mantingueu l'accés complet"
+      ],
+      "Save 50% for one year, and keep full access": [
+        "Estalvieu el 50% durant 1 any i mantingueu-hi l'accés complet"
       ],
       "See how ${ MAIL_APP_NAME } compares, and why our independence makes a difference.": [
         "Vegeu com es compara ${ MAIL_APP_NAME } i per què la nostra independència marca la diferència."
@@ -15953,14 +15979,14 @@
       "Organization name updated": [
         "S'ha actualitzat el nom de l'organització."
       ],
+      "Password check-ins disabled": [
+        "Els inicis de sessió amb contrasenya estan desactivats"
+      ],
+      "Password check-ins enabled": [
+        "Els inicis de sessió amb contrasenya estan habilitats"
+      ],
       "Password copied to clipboard": [
         "La contrasenya s'ha copiat al porta-retalls."
-      ],
-      "Password reminders disabled": [
-        "S'han deshabilitat els recordatoris de contrasenya"
-      ],
-      "Password reminders enabled": [
-        "S'han habilitat els recordatoris de contrasenya"
       ],
       "Password updated": [
         "Contrasenya actualitzada"
@@ -16441,11 +16467,17 @@
       "Apply gift code": [
         "Aplicar el codi regal"
       ],
+      "Approve changes": [
+        "Aprovar els canvis"
+      ],
       "Are you already signed in to ${ BRAND_NAME } in a browser?": [
         "Ja heu iniciat sessió a ${ BRAND_NAME } en un navegador?"
       ],
       "Are you sure you want to close the preview?": [
         "Segur que voleu tancar la previsualització?"
+      ],
+      "Are you sure you want to disconnect and disable this address?": [
+        "Segur que voleu desconnectar i desactivar aquesta adreça?"
       ],
       "Are you sure you want to disconnect this address?": [
         "Esteu segurs que voleu desconnectar aquesta adreça?"
@@ -16834,9 +16866,6 @@
       "Find email or username": [
         "Cerca correu electrònic o nom d’usuari"
       ],
-      "Forgot recovery method": [
-        "Oblideu el mètode de recuperació"
-      ],
       "Free plan": [
         "Pla gratuït"
       ],
@@ -16890,6 +16919,9 @@
       ],
       "Gift code": [
         "Codi regal"
+      ],
+      "Group role assignment paused": [
+        "S'ha pausat l'assignació de rols de grup"
       ],
       "Groups": [
         "Grups"
@@ -17021,9 +17053,6 @@
       "No events yet": [
         "Encara no hi ha esdeveniments"
       ],
-      "No recovery method": [
-        "No hi ha mètode de recuperació"
-      ],
       "Open": [
         "Pendent"
       ],
@@ -17089,9 +17118,6 @@
       ],
       "Payment verification": [
         "Verificació de pagament"
-      ],
-      "PayPal verification failed": [
-        "La verificació de PayPal no s'ha pogut completar."
       ],
       "Phone": [
         "Telèfon"
@@ -17791,17 +17817,26 @@
       "Group membership paused": [
         "S'ha pausat la subscripció del grup."
       ],
+      "Resuming role assignment": [
+        "S'està reprenent l'assignació de rols"
+      ],
+      "Role assignment paused": [
+        "S'ha pausat l'assignació de rols"
+      ],
       "Sending member invitation": [
         "S'està enviant la invitació al membre."
       ],
       "User declined invitation": [
         "L'usuari ha rebutjat la invitació."
       ],
-      "User is a group": [
-        "L'usuari és un grup"
+      "User is a group owner": [
+        "L'usuari és propietari d'un grup"
       ],
       "via ${ groupNames }": [
         "mitjançant ${ groupNames }"
+      ],
+      "Waiting for admin approval": [
+        "S'està esperant l'aprovació de l'administrador"
       ],
       "Waiting for user to accept the invitation": [
         "S'està esperant que l'usuari accepti la invitació."
@@ -17878,8 +17913,14 @@
       "Payment reversal": [
         "Cancel·lació de pagament"
       ],
+      "Prepayment": [
+        "Prepagament"
+      ],
       "Refund": [
         "Reemborsament"
+      ],
+      "Test credit": [
+        "Crèdit de prova"
       ]
     },
     "Unlimited offer": {
@@ -17909,9 +17950,9 @@
       "Confirm all": [
         "Confirma-ho tot"
       ],
-      "Could not automatically enable administrator access for ${ n } user, because their encryption keys have been updated in the meanwhile:": [
-        "No s'ha pogut activar automàticament l'accés d'administrador per a ${ n } usuari perquè les seves claus de xifratge s'han actualitzat recentment:",
-        "No s'ha pogut activar automàticament l'accés d'administrador per a ${ n } usuaris perquè les seves claus de xifratge s'han actualitzat recentment:"
+      "Could not enable admin access for ${ n } user": [
+        "No s'ha pogut activar l'accés d'administrador per a ${ n } usuari",
+        "No s'ha pogut activar l'accés d'administrador per a ${ n } usuaris"
       ],
       "Could not enable administrator access: ${ error }": [
         "No s'ha pogut activar l'accés de l'administrador: ${ error }"
@@ -17940,6 +17981,10 @@
       "Request user permission for data access": [
         "Sol·licita permís a l'usuari per accedir a les dades"
       ],
+      "Review their account now.": [
+        "Reviseu el seu compte ara.",
+        "Reviseu els seus comptes ara."
+      ],
       "Revoke access": [
         "Revoca l'accés"
       ],
@@ -17952,6 +17997,9 @@
       "The user must have an address to request data access": [
         "L'usuari ha de tenir una adreça per sol·licitar l'accés a les dades."
       ],
+      "Their encryption keys were updated while we were making changes.": [
+        "Les seves claus d'encriptació s'han actualitzat mentre estàvem fent canvis."
+      ],
       "This will cancel the pending request for administrator access to the user’s data or password reset.": [
         "Això cancel·larà la sol·licitud pendent d'accés de l'administrador a les dades de l'usuari o al restabliment de la contrasenya."
       ],
@@ -17963,6 +18011,10 @@
       ],
       "To proceed, you'll need to request the user's permission to access their data or reset their password.": [
         "Per a continuar, haureu de sol·licitar el permís de l'usuari per a accedir a les seves dades o restablir la seva contrasenya."
+      ],
+      "You can safely remove this user from your organization.": [
+        "Podeu eliminar aquest usuari de la vostra organització de manera segura.",
+        "Podeu eliminar aquests usuaris de la vostra organització de manera segura."
       ]
     },
     "Upsell": {
@@ -18077,6 +18129,15 @@
       "Invitation email": [
         "Correu electrònic d'invitació"
       ],
+      "Manage all users, groups, security, billing, and system configurations.": [
+        "Gestioneu tots els usuaris, grups, seguretat, facturació i configuracions del sistema."
+      ],
+      "Manage users and groups, assign roles, and allocate licenses to members.": [
+        "Gestioneu usuaris i grups, assigneu rols i distribuïu llicències als membres."
+      ],
+      "Manages security settings and can view all event logs and user details.": [
+        "Gestiona els paràmetres de seguretat i pot veure tots els registres d'esdeveniments i detalls dels usuaris."
+      ],
       "Name": [
         "Nom"
       ],
@@ -18109,6 +18170,9 @@
       ],
       "Writing assistant": [
         "Assistent d'escriptura"
+      ],
+      "You'll be able to assign roles once the user has accepted the invitation.": [
+        "Podreu assignar rols un cop l'usuari hagi acceptat la invitació."
       ]
     },
     "Users table: badge": {

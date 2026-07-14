@@ -1,8 +1,13 @@
 import { render, screen } from '@testing-library/react';
 
 import { formattedSavedSepaDetails } from '@proton/components/payments/client-extensions/useMethods';
-import type { PayPalDetails, PaymentMethodSepa, SavedCardDetails, SavedPaymentMethod } from '@proton/payments';
-import { Autopay, PAYMENT_METHOD_TYPES } from '@proton/payments';
+import { Autopay, PAYMENT_METHOD_TYPES } from '@proton/payments/core/constants';
+import type {
+    PayPalDetails,
+    PaymentMethodSepa,
+    SavedCardDetails,
+    SavedPaymentMethod,
+} from '@proton/payments/core/interface';
 import { APPS } from '@proton/shared/lib/constants';
 
 import TableBody from '../../../components/table/TableBody';
@@ -32,7 +37,7 @@ describe('PaymentMethodsTable', () => {
         };
 
         const cardPaymentMethod: SavedPaymentMethod = {
-            Type: PAYMENT_METHOD_TYPES.CARD,
+            Type: PAYMENT_METHOD_TYPES.CHARGEBEE_CARD,
             Details,
             Order: 1,
             ID: 'id123',
@@ -66,7 +71,7 @@ describe('PaymentMethodsTable', () => {
         };
 
         const paypalMethod: SavedPaymentMethod = {
-            Type: PAYMENT_METHOD_TYPES.PAYPAL,
+            Type: PAYMENT_METHOD_TYPES.CHARGEBEE_PAYPAL,
             Details,
             Order: 1,
             ID: 'id123',
@@ -127,7 +132,7 @@ describe('PaymentMethodsTable', () => {
         };
 
         const cardPaymentMethod1: SavedPaymentMethod = {
-            Type: PAYMENT_METHOD_TYPES.CARD,
+            Type: PAYMENT_METHOD_TYPES.CHARGEBEE_CARD,
             Details: Details1,
             Order: 1,
             ID: 'id-visa',
@@ -145,7 +150,7 @@ describe('PaymentMethodsTable', () => {
         };
 
         const cardPaymentMethod2: SavedPaymentMethod = {
-            Type: PAYMENT_METHOD_TYPES.CARD,
+            Type: PAYMENT_METHOD_TYPES.CHARGEBEE_CARD,
             Details: Details2,
             Order: 2,
             ID: 'id-mastercard',
@@ -153,7 +158,7 @@ describe('PaymentMethodsTable', () => {
         };
 
         const paypalMethod: SavedPaymentMethod = {
-            Type: PAYMENT_METHOD_TYPES.PAYPAL,
+            Type: PAYMENT_METHOD_TYPES.CHARGEBEE_PAYPAL,
             Details: {
                 BillingAgreementID: 'agreement-id-123',
                 PayerID: 'payer-id-123',
@@ -206,7 +211,7 @@ describe('PaymentMethodsTable', () => {
         };
 
         const cardPaymentMethod1: SavedPaymentMethod = {
-            Type: PAYMENT_METHOD_TYPES.CARD,
+            Type: PAYMENT_METHOD_TYPES.CHARGEBEE_CARD,
             Details: Details1,
             Order: 1,
             ID: 'id-visa',
@@ -224,7 +229,7 @@ describe('PaymentMethodsTable', () => {
         };
 
         const cardPaymentMethod2: SavedPaymentMethod = {
-            Type: PAYMENT_METHOD_TYPES.CARD,
+            Type: PAYMENT_METHOD_TYPES.CHARGEBEE_CARD,
             Details: Details2,
             Order: 2,
             ID: 'id-mastercard',
@@ -232,7 +237,7 @@ describe('PaymentMethodsTable', () => {
         };
 
         const paypalMethod: SavedPaymentMethod = {
-            Type: PAYMENT_METHOD_TYPES.PAYPAL,
+            Type: PAYMENT_METHOD_TYPES.CHARGEBEE_PAYPAL,
             Details: {
                 BillingAgreementID: 'agreement-id-123',
                 PayerID: 'payer-id-123',

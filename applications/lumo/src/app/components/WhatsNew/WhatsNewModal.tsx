@@ -1,12 +1,15 @@
+import { useEffect, useState } from 'react';
+
 import { c } from 'ttag';
 
 import { Button } from '@proton/atoms/Button/Button';
-import { Pill } from '@proton/atoms/Pill/Pill';
+import { Tooltip } from '@proton/atoms/Tooltip/Tooltip';
 import type { ModalProps } from '@proton/components';
-import { Icon, ModalContent, ModalTwo, ModalTwoFooter } from '@proton/components';
-import lumoProjects from '@proton/styles/assets/img/lumo/lumo-projects.svg';
+import { ModalContent, ModalTwo, ModalTwoFooter, StepDot, StepDots } from '@proton/components';
+import { IcCross } from '@proton/icons/icons/IcCross';
+import range from '@proton/utils/range';
 
-import { LazyLottie } from '../LazyLottie';
+import { LumoIcon } from '../LumoIcon/LumoIcon';
 import type { FeaturePoint, WhatsNewModalFeature } from './types';
 
 import './WhatsNew.scss';
@@ -17,52 +20,144 @@ interface WhatsNewModalProps extends ModalProps {
     onCancel: () => void;
 }
 
-const WhatsNewModal = ({ feature, onCallToAction, onCancel, ...modalProps }: WhatsNewModalProps) => {
-    return (
-        <ModalTwo size="large" className="whats-new-modal p-4" enableCloseWhenClickOutside {...modalProps}>
-            {feature.lottieAnimation && (
-                <LazyLottie getAnimationData={feature.lottieAnimation} loop={true} className="pb-3 md:pb-4" />
-            )}
-            <div className="background flex items-center justify-center rounded mb-2">
-                <img src={lumoProjects} alt="Projects" className="mt-5" />
-            </div>
-            <ModalContent>
-                <div className="whats-new-content">
-                    <div className="flex flex-column flex-nowrap gap-2">
-                        <Pill backgroundColor="#D4EFD2" rounded="rounded-sm" className="self-start">{c(
-                            'collider_2025: Feature'
-                        ).t`New`}</Pill>
-                        <h2 className="text-2xl text-semibold">{feature.getTitle()}</h2>
-                        {feature.getDescription && <p className="m-0 color-weak">{feature.getDescription()}</p>}
-                        {feature.getFeaturePoints && (
-                            <ul className="unstyled my-0">
-                                {feature.getFeaturePoints().map((point: FeaturePoint) => (
-                                    <li
-                                        key={point.icon}
-                                        className="feature-point flex flex-nowrap items-center gap-3 my-2"
-                                    >
-                                        {point.svg ? (
-                                            point.svg
-                                        ) : (
-                                            <Icon name={point.icon} className="shrink-0" size={4} />
-                                        )}
-                                        <span>{point.getText()}</span>
-                                    </li>
-                                ))}
-                            </ul>
-                        )}
-                    </div>
-                </div>
-            </ModalContent>
+const WhatsNewModal = ({ feature, onCallToAction, onCancel, open, ...modalProps }: WhatsNewModalProps) => {
+    const [step, setStep] = useState(0);
+    const stages = feature.stages;
+    const currentStage = stages[step];
+    const isFirstStep = step === 0;
+    const isLastStep = step === stages.length - 1;
 
-            <ModalTwoFooter>
-                <div className="flex flex-row flex-nowrap gap-2 mr-auto">
-                    <Button size="medium" color="norm" onClick={onCallToAction}>{c('collider_2025: Button')
-                        .t`Try it now`}</Button>
-                    <Button size="medium" shape="outline" onClick={onCancel}>{c('collider_2025: Button')
-                        .t`Maybe later`}</Button>
+    useEffect(() => {
+        if (open) {
+            setStep(0);
+        }
+    }, [open]);
+
+    if (!currentStage) {
+        return null;
+    }
+
+    const handleNext = () => {
+        if (isLastStep) {
+            onCallToAction();
+            return;
+        }
+        setStep((currentStep) => currentStep + 1);
+    };
+
+    const handleBack = () => {
+        setStep((currentStep) => Math.max(0, currentStep - 1));
+    };
+
+    const nextButtonLabel = (() => {
+        if (isLastStep) {
+            return c('collider_2025: Button').t`Get started`;
+        }
+        if (isFirstStep) {
+            return c('collider_2025: Button').t`Continue`;
+        }
+        return c('collider_2025: Button').t`Next`;
+    })();
+
+    const renderFeaturePoints = () => {
+        if (!currentStage.getFeaturePoints) {
+            return null;
+        }
+
+        return (
+            <ul className="unstyled my-0">
+                {currentStage.getFeaturePoints().map((point: FeaturePoint) => (
+                    <li key={point.icon} className="feature-point flex flex-nowrap items-center gap-3 my-2">
+                        <LumoIcon name={point.icon} className="shrink-0" size={16} />
+                        <span>{point.getText()}</span>
+                    </li>
+                ))}
+            </ul>
+        );
+    };
+
+    return (
+        <ModalTwo
+            size="large"
+            className="whats-new-modal"
+            rootClassName="whats-new-modal-root"
+            enableCloseWhenClickOutside
+            {...modalProps}
+            open={open}
+        >
+            <Tooltip title={c('collider_2025:Action').t`Close`}>
+                <button
+                    type="button"
+                    className="whats-new-modal-close absolute inline-flex items-center justify-center border bg-norm color-norm p-0 rounded w-custom h-custom"
+                    style={{ '--w-custom': '2.25rem', '--h-custom': '2.25rem' }}
+                    onClick={onCancel}
+                    aria-label={c('collider_2025:Action').t`Close`}
+                >
+                    <IcCross size={4} />
+                </button>
+            </Tooltip>
+            <div className="flex flex-column flex-nowrap flex-1">
+                <div
+                    className="whats-new-modal-illustration relative overflow-hidden shrink-0 w-full flex items-center justify-center h-custom"
+                    style={{ '--h-custom': '20rem' }}
+                >
+                    {currentStage.image && (
+                        <img
+                            src={currentStage.image}
+                            alt={currentStage.imageAlt ?? ''}
+                            className="relative z-1 w-full object-contain rounded-lg"
+                        />
+                    )}
                 </div>
-            </ModalTwoFooter>
+                <ModalContent className="mt-6">
+                    <div className="flex flex-column flex-nowrap gap-2">
+                        <span className="self-start py-0.5 px-3 rounded-sm bg-weak color-weak text-sm text-normal">
+                            {c('collider_2025: Feature').t`What's new`}
+                        </span>
+                        <h2 className="whats-new-title text-2xl text-semibold m-0">{currentStage.getTitle()}</h2>
+                        {currentStage.getDescription && (
+                            <p className="m-0 color-weak lh-rg">{currentStage.getDescription()}</p>
+                        )}
+                        {renderFeaturePoints()}
+                    </div>
+                </ModalContent>
+                <ModalTwoFooter className="mt-0">
+                    <div
+                        className="flex flex-row flex-nowrap items-center justify-space-between w-full gap-4 min-h-custom"
+                        style={{ '--min-h-custom': '2.25rem' }}
+                    >
+                        {stages.length > 1 ? (
+                            <StepDots value={step} ulClassName="mb-0">
+                                {range(0, stages.length).map((index) => (
+                                    <StepDot
+                                        active={index === step}
+                                        key={stages[index].id}
+                                        index={index}
+                                        aria-controls={`whats-new-${stages[index].id}`}
+                                        onClick={() => {
+                                            setStep(index);
+                                        }}
+                                    />
+                                ))}
+                            </StepDots>
+                        ) : (
+                            <span />
+                        )}
+                        <div className="flex flex-row flex-nowrap gap-2 shrink-0">
+                            {isFirstStep ? (
+                                <Button size="medium" shape="outline" onClick={onCancel}>{c('collider_2025: Button')
+                                    .t`Skip`}</Button>
+                            ) : (
+                                <Button size="medium" shape="outline" onClick={handleBack}>{c('collider_2025: Button')
+                                    .t`Back`}</Button>
+                            )}
+                            <Button size="medium" color="norm" onClick={handleNext}>
+                                {nextButtonLabel}
+                            </Button>
+                        </div>
+                    </div>
+                </ModalTwoFooter>
+            </div>
         </ModalTwo>
     );
 };

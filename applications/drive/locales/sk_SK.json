@@ -792,6 +792,9 @@
       "Re-index": [
         "Preindexovať"
       ],
+      "Re-indexing in progress": [
+        "Prebieha opätovná indexácia"
+      ],
       "Re-sign": [
         "Znovu podpísať"
       ],
@@ -866,6 +869,9 @@
       ],
       "Report a problem": [
         "Nahlásiť problém"
+      ],
+      "Report abuse": [
+        "Nahlásiť zneužitie"
       ],
       "Report an issue": [
         "Nahlásiť problém"
@@ -966,6 +972,12 @@
       "Select country": [
         "Vyberte krajinu"
       ],
+      "Select rating ${ n } out of ${ to }": [
+        "Vyberte hodnotenie ${ n } z ${ to }"
+      ],
+      "Send Feedback": [
+        "Odoslať spätnú väzbu"
+      ],
       "Set as album cover": [
         "Nastaviť ako obal albumu"
       ],
@@ -1046,6 +1058,9 @@
       ],
       "Sign up": [
         "Zaregistrujte sa"
+      ],
+      "Skip": [
+        "Preskočiť"
       ],
       "Skip verification": [
         "Preskočiť overenie"
@@ -1145,6 +1160,9 @@
       ],
       "Upload and share files": [
         "Nahrávanie a zdieľanie súborov"
+      ],
+      "Upload anyway": [
+        "Napriek tomu nahrať"
       ],
       "Upload file": [
         "Nahrať súbor"
@@ -3706,12 +3724,6 @@
       "Incorrect username": [
         "Nesprávne používateľské meno"
       ],
-      "Invalid ${ name } code": [
-        "Neplatný kód ${ name }"
-      ],
-      "Invalid card number": [
-        "Neplatné číslo karty"
-      ],
       "Invalid code": [
         "Neplatný kód"
       ],
@@ -3720,9 +3732,6 @@
       ],
       "Invalid email address": [
         "Neplatná emailová adresa"
-      ],
-      "Invalid expiration date": [
-        "Neplatný koniec platnosti"
       ],
       "Invalid IBAN": [
         "Neplatný IBAN"
@@ -3777,6 +3786,9 @@
       ],
       "No contacts found to import": [
         "Neboli nájdené žiadne kontakty na import"
+      ],
+      "No drive found to import": [
+        "Nenašiel sa žiadny disk na import"
       ],
       "No emails found to import - the account does not have an inbox": [
         "Neboli nájdené žiadne emaily na import - účet nemá priečinok Doručená pošta"
@@ -4036,6 +4048,9 @@
       "Unexpected error, we can't import the contacts": [
         "Neočakávaná chyba, nemôžeme importovať kontakty"
       ],
+      "Unexpected error, we can't import the files": [
+        "Neočakávaná chyba, nemôžeme importovať súbory"
+      ],
       "Unknown conflict strategy: ${ strategy }": [
         "Neznáma stratégia riešenia konfliktu: ${ strategy }"
       ],
@@ -4068,6 +4083,9 @@
       ],
       "We cannot retrieve this item": [
         "Túto položku sa nám nepodarilo získať"
+      ],
+      "We couldn’t send a verification code using this method.": [
+        "Touto metódou sa nám nepodarilo odoslať overovací kód."
       ],
       "We were not able to load some invitations": [
         "Neboli sme schopní načítať niektoré pozvánky"
@@ -4561,6 +4579,9 @@
       ],
       "Security key": [
         "Bezpečnostný kľúč"
+      ],
+      "Touch your security key.": [
+        "Dotknite sa svojho bezpečnostného kľúča."
       ]
     },
     "fido2: Label": {
@@ -5387,6 +5408,9 @@
       "AI powered assistant to help you craft better emails, quickly and effortlessly.": [
         "Asistent s umelou inteligenciou vám pomôže tvoriť lepšie emaily, rýchlo a jednoducho."
       ],
+      "Album": [
+        "Album"
+      ],
       "All (${ totalFoldersCount } folder)": [
         "Všetky (${ totalFoldersCount } zložka)",
         "Všetky (${ totalFoldersCount } zložky)",
@@ -5669,6 +5693,12 @@
       "Do you remember your password? ${ verifyButton }": [
         "Pamätáte si svoje heslo? ${ verifyButton }"
       ],
+      "Do you still want to upload it?": [
+        "Chcete ho aj tak nahrať?",
+        "Chcete ich aj tak nahrať?",
+        "Chcete ich aj tak nahrať?",
+        "Chcete ich aj tak nahrať?"
+      ],
       "Done": [
         "Hotovo"
       ],
@@ -5816,6 +5846,9 @@
       "Files and folders that others shared with you will appear here": [
         "Tu sa zobrazia súbory a priečinky, ktoré s vami zdieľajú iní."
       ],
+      "Files only (no photos, ${ DOCS_APP_NAME } or ${ SHEETS_APP_NAME }) - up to 100 GB total, 100,000 files, and 50 GB per file": [
+        "Iba súbory (bez fotografií, ${ DOCS_APP_NAME } alebo ${ SHEETS_APP_NAME }) – celkovo až 100 GB, 100 000 súborov a 50 GB na jeden súbor"
+      ],
       "finance": [
         "financie"
       ],
@@ -5869,6 +5902,9 @@
       ],
       "How does encrypted search work?": [
         "Ako funguje vyhľadávanie v šifrovaných dátach?"
+      ],
+      "I hereby confirm, in good faith, that the information and statements contained in the report are correct and complete.": [
+        "Týmto v dobrej viere potvrdzujem, že informácie a tvrdenia uvedené v správe sú správne a úplné."
       ],
       "If those files are not fully downloaded locally on ${ deviceName } you will lose access to them.": [
         "Ak tieto súbory nie sú plne stiahnuté lokálne na ${ deviceName }, stratíte k nim prístup."
@@ -6296,9 +6332,6 @@
       "Please ask the owner to directly invite you to the document.": [
         "Požiadajte vlastníka, aby vás do dokumentu priamo pozval."
       ],
-      "Please authenticate your card in the verification tab.": [
-        "Overte svoju kartu v okne overenia."
-      ],
       "Please authenticate your payment in the verification tab.": [
         "Overte svoju platbu v okne overenia."
       ],
@@ -6344,9 +6377,6 @@
       "Please try again using a different payment method, or contact your bank.": [
         "Skúste to znova pomocou iného spôsobu platby, alebo kontaktujte svoju banku."
       ],
-      "Please try again, use a different payment method, or contact PayPal for assistance.": [
-        "Skúste to znova, použite iný spôsob platby, alebo požiadajte o pomoc PayPal."
-      ],
       "Please use another browser or download the file.": [
         "Použite iný prehliadač alebo si súbor stiahnite, prosím."
       ],
@@ -6361,6 +6391,12 @@
       ],
       "Preparing": [
         "Príprava"
+      ],
+      "Preparing download": [
+        "Príprava na stiahnutie"
+      ],
+      "Preparing…": [
+        "Príprava…"
       ],
       "Preview failed to be loaded": [
         "Náhľad sa nepodarilo načítať"
@@ -6397,6 +6433,9 @@
       ],
       "Public sharing of documents is not yet supported.": [
         "Verejné zdieľanie dokumentov zatiaľ nie je podporované."
+      ],
+      "Re-indexing in progress": [
+        "Prebieha opätovná indexácia"
       ],
       "Ready to add some photos?": [
         "Chcete pridať nejaké fotografie?"
@@ -6653,6 +6692,12 @@
       "This can NOT be undone. Please enter the device name to confirm removal.": [
         "Toto sa NEDÁ vrátiť späť. Odstránenie potvrďte zadaním názvu zariadenia."
       ],
+      "This file appears to be empty:": [
+        "Zdá sa, že tento súbor je prázdny:",
+        "Zdá sa, že tieto súbory sú prázdne:",
+        "Zdá sa, že tieto súbory sú prázdne:",
+        "Zdá sa, že tieto súbory sú prázdne:"
+      ],
       "This file is too large to preview": [
         "Tento súbor je príliš veľký na zobrazenie náhľadu"
       ],
@@ -6842,6 +6887,9 @@
       "Uploaded": [
         "Nahrané"
       ],
+      "Uploaded - file is empty": [
+        "Nahrané – súbor je prázdny"
+      ],
       "Uploading": [
         "Nahrávanie"
       ],
@@ -7007,6 +7055,9 @@
       "You are about to open your default browser and visit:": [
         "Chystáte sa otvoriť váš predvolený prehliadač a navštíviť:"
       ],
+      "You are currently signed in as ${ username } for ${ organizationName }.": [
+        "Momentálne ste prihlásený ako ${ username } v (${ organizationName }."
+      ],
       "You are currently signed in as ${ username }.": [
         "V súčasnosti používate účet ako ${ username }."
       ],
@@ -7085,9 +7136,6 @@
         "Budete ich musieť znova uložiť zo stránky s verejným odkazom",
         "Budete ich musieť znova uložiť zo stránky s verejným odkazom"
       ],
-      "You will soon be redirected to PayPal to verify your payment.": [
-        "Za účelom overenia platby budete presmerovaný na PayPal."
-      ],
       "You won't be charged if you cancel before ${ trialEndsOnFormatted }.": [
         "Nebude sa vám nič účtovať, ak službu zrušíte pred ${ trialEndsOnFormatted }."
       ],
@@ -7144,6 +7192,9 @@
       ],
       "Your email will only be used for this one-time verification.": [
         "Váš email bude použitý iba pre toto jednorazové overenie."
+      ],
+      "Your files are being re-indexed. You can keep searching - results may be incomplete until it finishes. We'll let you know when it's done.": [
+        "Vaše súbory sa práve znovu indexujú. Môžete pokračovať vo vyhľadávaní – výsledky môžu byť neúplné, kým sa proces nedokončí. Dáme vám vedieť, keď bude hotový."
       ],
       "Your files are no longer accessible due to a password reset. Re-upload the old encryption key to regain the access. ${ KeyReactivationButton }": [
         "Vaše súbory už nie sú prístupné z dôvodu resetovania hesla. Pre opätovné obnovenie prístupu znovu nahrajte starý šifrovací kľúč. ${ KeyReactivationButton }"
@@ -7565,7 +7616,7 @@
         "Stiahnuť aj tak"
       ],
       "Drive": [
-        "Drive"
+        "Jednotka"
       ],
       "Duplicate found": [
         "Nájdený duplikát"
@@ -7612,6 +7663,12 @@
       "Environment compatible": [
         "Kompatibilné prostredie"
       ],
+      "Exact host matching": [
+        "Presná zhoda hostiteľa"
+      ],
+      "Exact URL matching": [
+        "Presná zhoda URL"
+      ],
       "Expired": [
         "Vypršal"
       ],
@@ -7629,6 +7686,9 @@
       ],
       "Extended address": [
         "Rozšírená adresa"
+      ],
+      "Extremely Satisfied": [
+        "Mimoriadna spokojnosť"
       ],
       "File": [
         "Súbor"
@@ -7690,8 +7750,8 @@
       "Index kinds": [
         "Typy indexu"
       ],
-      "Initial indexing": [
-        "Počiatočné indexovanie"
+      "Indexing": [
+        "Indexovanie"
       ],
       "Integrated 2FA authenticator": [
         "Integrovaný 2FA autentifikátor"
@@ -7774,6 +7834,9 @@
       "Never expires": [
         "Platnosť nikdy nevyprší"
       ],
+      "Never fill on this exact URL": [
+        "Nikdy nevypĺňať túto presnú URL adresu"
+      ],
       "New password": [
         "Nové heslo"
       ],
@@ -7806,6 +7869,9 @@
       ],
       "Outdated version": [
         "Zastaralá verzia"
+      ],
+      "Parent domain and subdomains (default)": [
+        "Nadradená doména a subdomény (predvolené nastavenie)"
       ],
       "Password": [
         "Heslo"
@@ -7860,6 +7926,9 @@
       ],
       "Region": [
         "Kraj"
+      ],
+      "Regular expression": [
+        "Regulárny výraz"
       ],
       "Replace existing folder or file": [
         "Nahradiť existujúci priečinok alebo súbor"
@@ -7936,6 +8005,9 @@
       "Start date": [
         "Dátum začiatku"
       ],
+      "Starts with": [
+        "Začína s"
+      ],
       "State": [
         "Štát"
       ],
@@ -7962,6 +8034,9 @@
       ],
       "System information": [
         "Systémové informácie"
+      ],
+      "Tell us more about your experience": [
+        "Povedzte nám viac o svojich skúsenostiach"
       ],
       "Theme": [
         "Vzhľad"
@@ -7999,6 +8074,9 @@
       "Uploaded by": [
         "Nahrané používateľom"
       ],
+      "URL wildcard pattern": [
+        "Vzor so zástupnými znakmi v URL"
+      ],
       "User opted in": [
         "Používateľ udelil súhlas"
       ],
@@ -8007,6 +8085,9 @@
       ],
       "Verification code": [
         "Overovací kód"
+      ],
+      "Very Dissatisfied": [
+        "Veľká nespokojnosť"
       ],
       "Viewer": [
         "Čitateľ"
@@ -8421,6 +8502,24 @@
       ]
     },
     "Message": {
+      "'Starts with' matching rule": [
+        "Pravidlo porovnávania „začína na“"
+      ],
+      "Exact (sub) domain matching rule": [
+        "Pravidlo presnej zhody (pod)domén"
+      ],
+      "Exact URL matching rule": [
+        "Pravidlo presnej zhody URL"
+      ],
+      "Never fill with this exact URL": [
+        "Nikdy nevypĺňať presne túto URL adresu"
+      ],
+      "Regular expression rule": [
+        "Pravidlo regulárneho výrazu"
+      ],
+      "Wildcard pattern matching rule": [
+        "Pravidlo porovnávania vzorov so zástupnými znakmi"
+      ],
       "Your free trial has ended. ${ nonAutoRenewalAction }": [
         "Vaša bezplatná skúšobná verzia skončila. ${ nonAutoRenewalAction }"
       ],
@@ -9345,6 +9444,11 @@
         "Využívate propagačnú cenu vášho aktuálneho plánu. Ak prejdete na nižšiu verziu účtu, prídete o propagačnú cenu a ak sa znova pokúsite o predplatné, nebude už k dispozícii."
       ]
     },
+    "new_plans: label": {
+      "We're always striving to make ${ config.appName } better. How satisfied are you with your experience?": [
+        "Neustále sa snažíme vylepšovať ${ config.appName }. Aká je vaša spokojnosť s našimi službami?"
+      ]
+    },
     "new_plans: Subtext": {
       "Starting from ${ priceLine }": [
         "Cena od ${ priceLine }"
@@ -9840,9 +9944,6 @@
       "All items deleted permanently from trash": [
         "Všetky položky natrvalo odstránené z koša"
       ],
-      "An invitation has been sent": [
-        "Pozvánka bola odoslaná"
-      ],
       "Cannot load link": [
         "Odkaz sa nepodarilo načítať"
       ],
@@ -9879,14 +9980,11 @@
       "Failed to accept share invitation": [
         "Prijatie pozvania na zdieľanie zlyhalo"
       ],
-      "Failed to convert external invitation": [
-        "Konvertovanie externej pozvánky zlyhalo"
+      "Failed to load sharing details": [
+        "Nepodarilo sa načítať podrobnosti zdieľania"
       ],
       "Failed to move, please try again": [
         "Presun zlyhal, skúste znovu, prosím"
-      ],
-      "Failed to open document": [
-        "Otovorenie dokumentu zlyhalo"
       ],
       "Failed to reject share invitation": [
         "Odmietnutie pozvania na zdieľanie zlyhalo"
@@ -10895,6 +10993,9 @@
       ],
       "New name": [
         "Nový názov"
+      ],
+      "Optional feedback": [
+        "Voliteľná spätná väzba"
       ],
       "Organization name": [
         "Názov organizácie"
@@ -12678,6 +12779,9 @@
       "${ freeUploadLength } of free uploads.": [
         "${ freeUploadLength } z bezplatných nahratí."
       ],
+      "${ LUMO_SHORT_APP_NAME } writing assistant": [
+        "${ LUMO_SHORT_APP_NAME } asistenta písania"
+      ],
       "Account recovery": [
         "Obnovenie účtu"
       ],
@@ -12947,6 +13051,18 @@
       ],
       "Digital signature partially verified. This folder was uploaded using a publicly accessible share link by a user without a ${ BRAND_NAME } account, so their identity cannot be verified.": [
         "Elektronický podpis bol čiastočne overený. Tento priečinok bol nahratý pomocou verejne prístupného zdieľaného odkazu používateľom bez ${ BRAND_NAME } účtu, takže jeho identita nemôže byť overená."
+      ],
+      "Digital signature verified. This file was securely created by ${ author }.": [
+        "Elektronický podpis overený. Tento súbor bol bezpečne vytvorený používateľom ${ author }."
+      ],
+      "Digital signature verified. This file was securely uploaded by ${ author }.": [
+        "Elektronický podpis overený. Tento súbor bol bezpečne nahraný používateľom ${ author }."
+      ],
+      "Digital signature verified. This folder was securely created by ${ author }.": [
+        "Elektronický podpis overený. Tento priečinok bol bezpečne vytvorený používateľom ${ author }."
+      ],
+      "Digital signature verified. This folder was securely uploaded by ${ author }.": [
+        "Elektronický podpis overený. Táto zložka bola bezpečne nahraná používateľom ${ author }."
       ],
       "Discard": [
         "Zahodiť"
@@ -13296,9 +13412,6 @@
       "Payment verification": [
         "Overenie platby"
       ],
-      "PayPal verification failed": [
-        "Overenie platby PayPal zlyhalo"
-      ],
       "Phone numbers": [
         "Telefónne čísla"
       ],
@@ -13560,6 +13673,9 @@
       "Upload and share files": [
         "Nahrávanie a zdieľanie súborov"
       ],
+      "Upload empty file?": [
+        "Nahrať prázdny súbor?"
+      ],
       "Uploaded": [
         "Nahrané"
       ],
@@ -13590,6 +13706,18 @@
       "Warning: suspected fake website": [
         "Varovanie: podozrenie na falošnú webovú stránku"
       ],
+      "We couldn’t verify that ${ author } created this file.": [
+        "Nemohli sme overiť, že tento súbor vytvoril používateľ ${ author }."
+      ],
+      "We couldn’t verify that ${ author } created this folder.": [
+        "Nemohli sme overiť, že tento priečinok vytvoril používateľ ${ author }."
+      ],
+      "We couldn’t verify that ${ author } uploaded this file.": [
+        "Nemohli sme overiť, že tento súbor nahral používateľ ${ author }."
+      ],
+      "We couldn’t verify that ${ author } uploaded this folder.": [
+        "Nemohli sme overiť, že tento priečinok nahral používateľ ${ author }."
+      ],
       "We couldn’t verify that an anonymous user created this file.": [
         "Nemohli sme overiť, že tento súbor vytvoril anonymný používateľ."
       ],
@@ -13610,6 +13738,9 @@
       ],
       "We weren’t able to confirm that the node was created by ${ claimedKeyAuthor }. The reason is: ${ node.keyAuthor.error.error }": [
         "Nepodarilo sa nám potvrdiť, že uzol vytvoril používateľ ${ claimedKeyAuthor }. Dôvod: ${ node.keyAuthor.error.error }"
+      ],
+      "We'd love to hear from you!": [
+        "Radi si vypočujeme váš názor!"
       ],
       "Welcome offer": [
         "Uvítacia ponuka"
@@ -13670,6 +13801,26 @@
       ],
       "You’ve got 5 GB of storage": [
         "Máte k dispozícii 5 GB úložného priestoru"
+      ]
+    },
+    "Title header for keys table": {
+      "Actions": [
+        "Akcie"
+      ],
+      "Created": [
+        "Vytvorené"
+      ],
+      "Expires": [
+        "Vyprší"
+      ],
+      "Fingerprint": [
+        "Odtlačok prsta"
+      ],
+      "Status": [
+        "Stav"
+      ],
+      "Type": [
+        "Typ"
       ]
     },
     "Today icon tooltip in mini calendar": {
@@ -13768,6 +13919,9 @@
       "Upload a public key to enable sending end-to-end encrypted emails to this email": [
         "Pre zasielanie emailov s koncovým šifrovaním na túto emailovú adresu, nahrajte prosím verejný kľúč"
       ],
+      "Version 6 OpenPGP key": [
+        "Kľúč OpenPGP verzie 6"
+      ],
       "We have sent them an invite to access the item.": [
         "Poslali sme im pozvánku s prístupom k položke."
       ]
@@ -13810,6 +13964,11 @@
     "Upsell": {
       "Get Drive for Business": [
         "Získať Drive for Business"
+      ]
+    },
+    "user_modal": {
+      "You'll be able to assign roles once the user has accepted the invitation.": [
+        "Akonáhle používateľ prijme pozvánku, budete môcť priradiť pozície."
       ]
     },
     "Validation": {
@@ -13956,6 +14115,9 @@
       ],
       "${ BRAND_NAME } will transfer as much data as possible, starting with your most recent messages.": [
         "Tento import môže prekročiť kapacitu úložiska, ktorá je momentálne k dispozícii vo vašom ${ BRAND_NAME } účte. Zvážte prosím prispôsobenie importu."
+      ],
+      "${ modeLabelStong } provides powerful control, but a single error can cause autofill to match and fill data on fraudulent or phishing websites.": [
+        "Funkcia ${ modeLabelStong } ponúka rozsiahle možnosti ovládania, avšak už jediná chyba môže spôsobiť, že funkcia automatického vypĺňania bude na podvodných alebo phishingových webových stránkach vyhľadávať a vypĺňať údaje."
       ],
       "Are you sure you want to permanently delete ${ count } contact?": [
         "Naozaj chcete natrvalo vymazať ${ count } kontakt?",

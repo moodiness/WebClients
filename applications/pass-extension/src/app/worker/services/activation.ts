@@ -20,6 +20,8 @@ import { authStore } from '@proton/pass/lib/auth/store';
 import { clientErrored, clientOffline, clientPasswordLocked, clientStale } from '@proton/pass/lib/client';
 import browser from '@proton/pass/lib/globals/browser';
 import { sanitizeSettings } from '@proton/pass/lib/settings/utils';
+import { parseUrl } from '@proton/pass/lib/urls/utils/parser';
+import { intoDomainWithPort } from '@proton/pass/lib/urls/utils/utils';
 import { clientInit, offlineResume } from '@proton/pass/store/actions/creators/client';
 import { selectFilters, selectTabState } from '@proton/pass/store/selectors/filters';
 import { selectItem } from '@proton/pass/store/selectors/items';
@@ -32,8 +34,6 @@ import { logger } from '@proton/pass/utils/logger';
 import { semver } from '@proton/pass/utils/string/semver';
 import { UNIX_HOUR } from '@proton/pass/utils/time/constants';
 import { getEpoch } from '@proton/pass/utils/time/epoch';
-import { parseUrl } from '@proton/pass/utils/url/parser';
-import { intoDomainWithPort } from '@proton/pass/utils/url/utils';
 import { ForkType } from '@proton/shared/lib/authentication/fork/constants';
 import { APPS, SSO_PATHS } from '@proton/shared/lib/constants';
 import noop from '@proton/utils/noop';
@@ -272,7 +272,7 @@ export const createActivationService = () => {
         const url = tab?.url ?? '';
         const parsedUrl = parseUrl(url);
         const { subdomain, domain, port, protocol } = parsedUrl;
-        const items = ctx.service.autofill.getLoginCandidates({ url });
+        const items = ctx.service.autofill.getLoginCandidates(url);
         const hasAutofillCandidates = items.length > 0;
 
         const state = ctx.service.store.getState();
@@ -346,7 +346,14 @@ export const createActivationService = () => {
             if (!(current && current?.id)) throw new Error('No active tabs');
             const tabUrl = parseUrl(current.url);
             const senderTabId = tab?.id ?? 0; /** NOTE: on firefox, popup does not have a tab */
-            return { tabId: current.id, frameUrl: tabUrl, tabUrl, senderTabId, frameId };
+            return {
+                tabId: current.id,
+                frameUrl: tabUrl,
+                tabUrl,
+                tabTitle: current.title?.trim() || null,
+                senderTabId,
+                frameId,
+            };
         }
 
         return resolveEndpointContext(tab, frameId);

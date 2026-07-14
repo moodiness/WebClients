@@ -31,6 +31,9 @@
       "Add": [
         "Přidat"
       ],
+      "Add ${ BRAND_NAME } ${ PASS_SHORT_APP_NAME }": [
+        "Přidat ${ BRAND_NAME } ${ PASS_SHORT_APP_NAME }"
+      ],
       "Add account": [
         "Přidat účet"
       ],
@@ -1383,6 +1386,9 @@
       "Canada": [
         "Kanada"
       ],
+      "Canary Islands": [
+        "Kanárské ostrovy"
+      ],
       "Cape Verde": [
         "Kapverdské ostrovy"
       ],
@@ -2162,6 +2168,9 @@
       "Ensure you can still access your account and data even if you lose your ${ BRAND_NAME } password.": [
         "Zajistěte si přístup ke svému účtu a datům i v případě ztráty hesla ${ BRAND_NAME }."
       ],
+      "For a seamless onboarding of your team to ${ BRAND_NAME }, import your data from Google, Outlook, and others.": [
+        "Pro bezproblémové zahájení používání ${ BRAND_NAME } vaším týmem importujte data ze služeb Google, Outlook a dalších."
+      ],
       "Get notified if your password or other data was leaked from a third-party service.": [
         "Nechte se upozornit, pokud vaše heslo nebo jiná data uniknou ze služby třetí strany."
       ],
@@ -2347,20 +2356,11 @@
       "Input isn't a valid email or bitcoin address": [
         "Zadání není platnou e-mailovou nebo Bitcoinovou adresou"
       ],
-      "Invalid ${ name } code": [
-        "Neplatný kód ${ name }"
-      ],
-      "Invalid card number": [
-        "Neplatné číslo karty"
-      ],
       "Invalid code": [
         "Neplatný kód"
       ],
       "Invalid coupon": [
         "Neplatný kupón"
-      ],
-      "Invalid expiration date": [
-        "Neplatné datum expirace"
       ],
       "Invalid IBAN": [
         "Neplatný IBAN"
@@ -2400,6 +2400,9 @@
       ],
       "Payment process not supported": [
         "Platební proces není podporován"
+      ],
+      "Please check if your ABN is registered for cross-border VAT": [
+        "Zkontrolujte prosím, zda je vaše ABN registrováno pro přeshraniční DPH"
       ],
       "Please complete the billing details": [
         "Prosím, doplňte fakturační údaje"
@@ -2487,6 +2490,12 @@
       ],
       "Username must end with a letter or digit": [
         "Uživatelské jméno musí končit písmenem nebo číslicí"
+      ],
+      "VAT number must start with ${ prefixes }": [
+        "DIČ musí začínat ${ prefixes }"
+      ],
+      "We couldn’t send a verification code using this method.": [
+        "Pomocí této metody se nám nepodařilo odeslat ověřovací kód."
       ],
       "Wrong billing address": [
         "Nesprávná fakturační adresa"
@@ -2596,6 +2605,9 @@
       ],
       "Security key": [
         "Bezpečnostní klíč"
+      ],
+      "Touch your security key.": [
+        "Dotkněte se svého bezpečnostního klíče."
       ]
     },
     "fido2: Label": {
@@ -2776,6 +2788,9 @@
       "${ storage } storage": [
         "${ storage } úložiště"
       ],
+      "${ VPN_SHORT_APP_NAME } hides your traffic. ${ PASS_SHORT_APP_NAME } hides your identity\n— unlimited **hide-my-email aliases** and **dark-web alerts** if your data is ever leaked.": [
+        "${ VPN_SHORT_APP_NAME } skrývá váš síťový provoz. ${ PASS_SHORT_APP_NAME } skrývá vaši identitu\n— neomezené **hide-my-email aliasy** a **upozornění na úniky na dark webu**, pokud by došlo k úniku vašich dat."
+      ],
       "(${ memberCount } member)": [
         "(${ memberCount } člen)",
         "(${ memberCount } členové)",
@@ -2805,6 +2820,9 @@
       ],
       "Account successfully updated": [
         "Účet byl úspěšně aktualizován"
+      ],
+      "Add ${ BRAND_NAME } ${ PASS_SHORT_APP_NAME }": [
+        "Přidat ${ BRAND_NAME } ${ PASS_SHORT_APP_NAME }"
       ],
       "Add ${ PLAN_NAMES[PLANS.MEET_BUSINESS] }": [
         "Přidat ${ PLAN_NAMES[PLANS.MEET_BUSINESS] }"
@@ -2853,6 +2871,12 @@
       ],
       "Country code": [
         "Kód země"
+      ],
+      "Create a secure cloud for ${ memberCount } member": [
+        "Vytvořte bezpečný cloud pro ${ memberCount } člena",
+        "Vytvořte bezpečný cloud pro ${ memberCount } členy",
+        "Vytvořte bezpečný cloud pro ${ memberCount } členů",
+        "Vytvořte bezpečný cloud pro ${ memberCount } členů"
       ],
       "Credit for the unused portion of your previous plan subscription": [
         "Kredit za nevyužitou část vašeho předchozího předplatného"
@@ -2940,6 +2964,9 @@
       ],
       "for ${ price }": [
         "za ${ price }"
+      ],
+      "For just ${ bundlePlanPriceInline }": [
+        "Za pouhých ${ bundlePlanPriceInline }"
       ],
       "Google Pay mark": [
         "Značka Google Pay"
@@ -3031,9 +3058,6 @@
       "Payments are protected with TLS encryption and Swiss privacy laws.": [
         "Platby jsou chráněny šifrováním TLS a švýcarskými zákony o ochraně soukromí."
       ],
-      "Please authenticate your card in the verification tab.": [
-        "Na kartě ověření ověřte pravost své karty."
-      ],
       "Please authenticate your payment in the verification tab.": [
         "Na kartě ověření ověřte svou platbu."
       ],
@@ -3043,11 +3067,11 @@
       "Please try again using a different payment method, or contact your bank.": [
         "Zkuste prosím použít jinou platební metodu a nebo kontaktujte svou banku."
       ],
-      "Please try again, use a different payment method, or contact PayPal for assistance.": [
-        "Zkuste to prosím znovu, použijte jinou platební metodu, nebo požádejte PayPal o pomoc."
-      ],
       "Price includes all applicable cycle-based discounts and non-expired coupons saved to your account.": [
         "Cena zahrnuje všechny příslušné slevy na základě cyklu a kupóny, které nevypršely a jsou uložené na vašem účtu."
+      ],
+      "RECOMMENDED": [
+        "DOPORUČENO"
       ],
       "Recovery information will remain on this device unless you select to delete it.": [
         "Informace o obnovení zůstanou v tomto zařízení, pokud nezvolíte jejich odstranění."
@@ -3220,9 +3244,6 @@
       "You will lose access to ${ planTitle } features on this date.": [
         "K tomuto datu ztratíte přístup k funkcím ${ planTitle }."
       ],
-      "You will soon be redirected to PayPal to verify your payment.": [
-        "Za účelem ověření platby budete přesměrováni na PayPal."
-      ],
       "You'll then be billed every ${ renewCycle } month at ${ renewAmountStr }. You can cancel at any time.": [
         "Poté vám bude každý ${ renewCycle } měsíc účtováno ${ renewAmountStr }. Zrušit můžete kdykoli.",
         "Poté vám bude každé ${ renewCycle } měsíce účtováno ${ renewAmountStr }. Zrušit můžete kdykoli.",
@@ -3299,6 +3320,9 @@
         "${ n } měsíce",
         "${ n } měsíců",
         "${ n } měsíců"
+      ],
+      "${ value.length }/${ maxLength } characters": [
+        "${ value.length }/${ maxLength } znaků"
       ],
       "Access ${ PASS_APP_NAME } securely from the terminal, ideal for scripting, automation, and development workflows.": [
         "Přistupujte k aplikaci ${ PASS_APP_NAME } bezpečně z terminálu, což je ideální pro skriptování, automatizaci a vývojářské pracovní postupy."
@@ -3936,6 +3960,9 @@
       "99.95% SLA": [
         "99,95 % SLA"
       ],
+      "Access all countries": [
+        "Přístup ke všem zemím"
+      ],
       "Ad-blocker and malware protection": [
         "Blokování reklam a ochrana před malware"
       ],
@@ -4089,6 +4116,9 @@
       "Multiple admin roles": [
         "Více rolí správce"
       ],
+      "No streaming support": [
+        "Bez podpory streamování"
+      ],
       "Online document editor": [
         "Online editor dokumentů"
       ],
@@ -4220,6 +4250,9 @@
       ],
       "Unlimited volume/bandwidth": [
         "Neomezený objem/šířka pásma"
+      ],
+      "Unlock streaming": [
+        "Odemkněte streamování"
       ],
       "Up to ${ n } user": [
         "Až ${ n } uživatel",
@@ -4617,6 +4650,12 @@
       ]
     },
     "new_plans: Upsell attribute": {
+      "${ n } country": [
+        "${ n } země",
+        "${ n } země",
+        "${ n } zemí",
+        "${ n } zemí"
+      ],
       "Access advanced VPN features": [
         "Odemkněte pokročilé VPN funkce"
       ],
@@ -5814,6 +5853,9 @@
       "Invalid verification code": [
         "Neplatný ověřovací kód"
       ],
+      "Migrate your organization to ${ BRAND_NAME }": [
+        "Migrujte svou organizaci do ${ BRAND_NAME }"
+      ],
       "Minicalendar": [
         "Minikalendář"
       ],
@@ -5825,9 +5867,6 @@
       ],
       "Payment verification": [
         "Ověřování platby"
-      ],
-      "PayPal verification failed": [
-        "Ověření platby PayPal se nezdařilo"
       ],
       "Processing...": [
         "Zpracovávání..."
@@ -5930,6 +5969,9 @@
     "Tooltip": {
       "If you purchased a gift code or received one from our support team, you can enter it here.": [
         "Pokud jste zakoupil dárkový kód nebo jste je obdržel od naší podpory, můžete ho vložit sem."
+      ],
+      "Instant AI assistance, human expert on hand!": [
+        "Okamžitá asistence AI, lidský expert po ruce!"
       ],
       "The new subscription cycle starts on ${ formattedTime }": [
         "Nový cyklus předplatného začíná ${ formattedTime }"

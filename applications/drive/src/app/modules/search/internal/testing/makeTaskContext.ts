@@ -19,6 +19,10 @@ export function makeTaskContext(overrides?: Partial<TaskContext>): TaskContext {
         bridge: {} as MainThreadBridge,
         db: {
             getPopulatorState: jest.fn().mockResolvedValue({ generation: 1, version: 1, done: false }),
+            putPopulatorState: jest.fn().mockResolvedValue(undefined),
+            getBFSVisitorState: jest.fn().mockResolvedValue(undefined),
+            putBFSVisitorState: jest.fn().mockResolvedValue(undefined),
+            deleteBFSVisitorState: jest.fn().mockResolvedValue(undefined),
         } as unknown as SearchDB,
         indexRegistry: { getAll: jest.fn().mockReturnValue([].values()) } as unknown as IndexRegistry,
         treeSubscriptionRegistry: {
@@ -30,7 +34,6 @@ export function makeTaskContext(overrides?: Partial<TaskContext>): TaskContext {
         signal: new AbortController().signal,
         searchMetrics: noopSearchMetrics,
         markIndexing: jest.fn(),
-        markInitialIndexing: jest.fn(),
         enqueueOnce: jest.fn(),
         enqueueDelayed: jest.fn(),
         notifyIndexingProgress: jest.fn(),

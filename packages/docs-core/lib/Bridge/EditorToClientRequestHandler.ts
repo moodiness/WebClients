@@ -127,7 +127,11 @@ export class EditorToClientRequestHandler implements EditorRequiresClientMethods
 
   async reportUserInterfaceError(
     error: Error,
-    extraInfo?: { irrecoverable?: boolean; errorInfo?: ErrorInfo; lockEditor?: boolean },
+    extraInfo?: {
+      irrecoverable?: boolean
+      errorInfo?: ErrorInfo
+      lockEditor?: boolean
+    },
   ): Promise<void> {
     this.docOrchestrator.editorReportingError(error.message, {
       irrecoverable: extraInfo?.irrecoverable,
@@ -200,7 +204,19 @@ export class EditorToClientRequestHandler implements EditorRequiresClientMethods
     return this.docOrchestrator.hasBasePatches()
   }
 
+  async getDocumentUrl(): Promise<string> {
+    return window.location.href
+  }
+
+  async replaceDocumentUrl(url: string): Promise<void> {
+    window.history.replaceState(null, '', url)
+  }
+
   reportSheetsYjsDriftDetected(reason: 'local-differs-from-yjs' | 'local-change-not-observed-by-yjs'): void {
     this.docOrchestrator.reportSheetsYjsDriftDetected(reason)
+  }
+
+  showYjsDriftDetectedErrorModal(driftLogDetails: Record<string, unknown>): void {
+    this.docOrchestrator.showYjsDriftDetectedErrorModal(driftLogDetails)
   }
 }

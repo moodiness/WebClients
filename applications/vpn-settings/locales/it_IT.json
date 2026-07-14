@@ -56,6 +56,9 @@
       "Add": [
         "Aggiungi"
       ],
+      "Add ${ BRAND_NAME } ${ PASS_SHORT_APP_NAME }": [
+        "Aggiungi ${ BRAND_NAME } ${ PASS_SHORT_APP_NAME }"
+      ],
       "Add ${ BRAND_NAME } address": [
         "Aggiungi indirizzo ${ BRAND_NAME }"
       ],
@@ -209,9 +212,6 @@
       "Connected": [
         "Connesso"
       ],
-      "Contact support": [
-        "Contatta l'assistenza"
-      ],
       "Contact Support Center": [
         "Contatta il centro assistenza"
       ],
@@ -229,6 +229,9 @@
       ],
       "Continue import": [
         "Continua l'importazione"
+      ],
+      "Continue to ${ planOrAppName }": [
+        "Continua con ${ planOrAppName }"
       ],
       "Continue to sign in": [
         "Continua per accedere"
@@ -473,9 +476,6 @@
       "Forgot password?": [
         "Hai dimenticato la password?"
       ],
-      "Forgot recovery method?": [
-        "Hai dimenticato il metodo di recupero?"
-      ],
       "Generate new recovery phrase": [
         "Genera una nuova frase di recupero"
       ],
@@ -557,6 +557,9 @@
       "Help and resources": [
         "Aiuto e risorse utili"
       ],
+      "Hide": [
+        "Nascondi"
+      ],
       "Hide more benefits": [
         "Nascondi maggiori benefici"
       ],
@@ -619,9 +622,6 @@
       ],
       "Load more": [
         "Carica di più"
-      ],
-      "Loading verification": [
-        "Caricamento della verifica in corso"
       ],
       "Lost access to your 2FA device?": [
         "Hai perso l'accesso al tuo dispositivo A2F?"
@@ -718,6 +718,9 @@
       ],
       "Organization": [
         "Organizzazione"
+      ],
+      "Pause": [
+        "Metti in pausa"
       ],
       "Pay": [
         "Paga"
@@ -1169,6 +1172,9 @@
       "Verify domain": [
         "Verifica il dominio"
       ],
+      "Verify now": [
+        "Verifica ora"
+      ],
       "Verify the domain ${ unverifiedSSODomain.DomainName }": [
         "Verifica il dominio ${ unverifiedSSODomain.DomainName }"
       ],
@@ -1249,6 +1255,10 @@
         "${ domains } dominio personalizzato aggiuntivo",
         "${ domains } domini personalizzati aggiuntivi"
       ],
+      "${ ips } dedicated VPN server": [
+        "${ ips } server VPN dedicato",
+        "${ ips } server VPN dedicati"
+      ],
       "${ LUMO_APP_NAME } AI assistant": [
         "${ LUMO_APP_NAME } assistente IA"
       ],
@@ -1277,6 +1287,10 @@
       "${ quantity } custom domain": [
         "${ quantity } dominio personalizzato",
         "${ quantity } domini personalizzati"
+      ],
+      "${ seats } ${ LUMO_APP_NAME } AI license": [
+        "${ seats } licenza AI ${ LUMO_APP_NAME }",
+        "${ seats } licenze AI ${ LUMO_APP_NAME }"
       ],
       "${ seats } ${ LUMO_APP_NAME } seat": [
         "${ seats } licenza ${ LUMO_APP_NAME }",
@@ -1710,11 +1724,46 @@
       "2 TB data storage": [
         "2 TB di spazio di archiviazione"
       ],
+      "3 TB data storage": [
+        "3 TB di archiviazione dati"
+      ],
+      "Access 15,000+ servers in 120+ countries": [
+        "Accedi a oltre 15.000 server in più di 120 Paesi"
+      ],
+      "Access advanced AI models": [
+        "Accedi a modelli IA avanzati"
+      ],
+      "All premium features of ${ MAIL_SHORT_APP_NAME }, ${ PASS_SHORT_APP_NAME }, ${ DRIVE_SHORT_APP_NAME }, ${ VPN_SHORT_APP_NAME }, and ${ CALENDAR_SHORT_APP_NAME }": [
+        "Tutte le funzionalità premium di ${ MAIL_SHORT_APP_NAME }, ${ PASS_SHORT_APP_NAME }, ${ DRIVE_SHORT_APP_NAME }, ${ VPN_SHORT_APP_NAME } e ${ CALENDAR_SHORT_APP_NAME }"
+      ],
       "Block ads, trackers, and malware": [
         "Blocca annunci, tracker e malware"
       ],
       "Built-in 2FA authenticator": [
         "Autenticazione 2FA integrata"
+      ],
+      "Connect 10 devices at once": [
+        "Connetti 10 dispositivi contemporaneamente"
+      ],
+      "Full chat history with easy search and favorites": [
+        "Cronologia chat completa con ricerca semplice e preferiti"
+      ],
+      "Individual accounts for 6 users": [
+        "Account individuali per sei utenti"
+      ],
+      "Individual accounts for you and a partner": [
+        "Account individuali per te e un'altra persona"
+      ],
+      "Stronger protection against cyber threats": [
+        "Protezione più efficace dalle minacce informatiche"
+      ],
+      "Unlimited daily chats": [
+        "Chat giornaliere illimitate"
+      ]
+    },
+    "BF2025: Tooltip": {
+      "Specially designed NetShield protects your devices and speeds up your browsing by blocking ads, trackers, and malware.": [
+        "NetShield è progettato appositamente per proteggere i tuoi dispositivi e accelerare la tua navigazione bloccando annunci, tracker e malware."
       ]
     },
     "Billing cycle": {
@@ -2050,6 +2099,9 @@
       "${ users } user": [
         "${ users } utente",
         "${ users } utenti"
+      ],
+      "Subtotal": [
+        "Subtotale"
       ],
       "Subtotal for ${ cycle } month": [
         "Subtotale per ${ cycle } mese",
@@ -2453,6 +2505,9 @@
       "Canada": [
         "Canada"
       ],
+      "Canary Islands": [
+        "Isole Canarie"
+      ],
       "Cape Verde": [
         "Capo Verde"
       ],
@@ -2851,6 +2906,9 @@
       ],
       "North Korea": [
         "Corea del Nord"
+      ],
+      "North Macedonia": [
+        "Macedonia del Nord"
       ],
       "Northern Mariana Islands": [
         "Isole Marianne Settentrionali"
@@ -3344,6 +3402,9 @@
       "Everyone in your organization can connect to shared servers in all countries.": [
         "Tutti nella tua organizzazione possono connettersi ai server condivisi in tutti i paesi."
       ],
+      "For a seamless onboarding of your team to ${ BRAND_NAME }, import your data from Google, Outlook, and others.": [
+        "Per un onboarding senza problemi del tuo team a ${ BRAND_NAME }, importa i tuoi dati da Google, Outlook e altri."
+      ],
       "Get notified if your password or other data was leaked from a third-party service.": [
         "Ricevi una notifica se la tua password o altri dati vengono resi pubblici da un servizio di terze parti."
       ],
@@ -3425,6 +3486,9 @@
       ],
       "We've started importing your emails from Gmail. We'll let you know when it's done.": [
         "Abbiamo iniziato a importare le tue email da Gmail. Ti faremo sapere quando avremo finito."
+      ],
+      "We’re sorry to see you go. If you have a moment, we’d really appreciate hearing why you’d like to cancel. Your feedback helps us make ${ BRAND_NAME } better for everyone.": [
+        "Siamo spiacenti di vederti andare via. Se hai un momento, apprezzeremmo molto sapere perché vorresti annullare. Il tuo feedback ci aiuta a rendere ${ BRAND_NAME } migliore per tutti."
       ],
       "You already have a Gmail address forwarding to ${ MAIL_APP_NAME }. Connect it below to send and receive emails directly from ${ MAIL_APP_NAME }.": [
         "Hai già un indirizzo Gmail che inoltra a ${ MAIL_APP_NAME }. Collegalo qui sotto per inviare e ricevere email direttamente da ${ MAIL_APP_NAME }."
@@ -3998,6 +4062,9 @@
       "Checkout expired, please try again": [
         "Checkout scaduto, riprova"
       ],
+      "Company name or personal name is required": [
+        "Il nome dell'azienda o il nome personale è obbligatorio"
+      ],
       "Couldn't load invoices. Please try again later.": [
         "Impossibile caricare le fatture. Riprova più tardi."
       ],
@@ -4047,6 +4114,9 @@
       ],
       "Failed to load OAuth modal.": [
         "Impossibile caricare la modalità OAuth."
+      ],
+      "Failed to load subscription data. Please try again later.": [
+        "Impossibile caricare i dati dell'abbonamento. Riprova più tardi."
       ],
       "Failed to load the STL preview": [
         "Impossibile caricare l'anteprima STL"
@@ -4102,12 +4172,6 @@
       "Incorrect username": [
         "Username non corretto"
       ],
-      "Invalid ${ name } code": [
-        "Codice ${ name } non valido"
-      ],
-      "Invalid card number": [
-        "Numero della carta non valido"
-      ],
       "Invalid code": [
         "Codice non valido"
       ],
@@ -4119,9 +4183,6 @@
       ],
       "Invalid email address": [
         "Indirizzo email non valido"
-      ],
-      "Invalid expiration date": [
-        "Data di scadenza non valida"
       ],
       "Invalid IBAN": [
         "IBAN non valido"
@@ -4140,6 +4201,9 @@
       ],
       "Invalid reset token. Please refresh the page and try again.": [
         "Token di ripristino non valido. Aggiorna la pagina e riprova."
+      ],
+      "Invalid VAT number": [
+        "Partita IVA non valida"
       ],
       "Invalid verification code": [
         "Codice di verifica non valido"
@@ -4213,6 +4277,9 @@
       ],
       "Please add a payment method before reactivating your subscription": [
         "Aggiungi un metodo di pagamento prima di riattivare il tuo abbonamento"
+      ],
+      "Please check if your ABN is registered for cross-border VAT": [
+        "Controlla se il tuo ABN è registrato per l'IVA transfrontaliera"
       ],
       "Please complete the billing details": [
         "Completa i dettagli di fatturazione"
@@ -4299,6 +4366,9 @@
       "Request timed out": [
         "Timeout della richiesta"
       ],
+      "Reverse charge scheme is not supported for this plan": [
+        "Il regime di inversione contabile non è previsto per questo piano"
+      ],
       "Server not found": [
         "Server non trovato"
       ],
@@ -4374,6 +4444,9 @@
       "The minimum amount of credit that can be added is ${ price }": [
         "L'importo minimo di credito che può essere aggiunto è di ${ price }"
       ],
+      "The minimum donation amount is ${ price }": [
+        "L'importo minimo della donazione è ${ price }"
+      ],
       "The policy name must be between 3 and 40 characters.": [
         "Il nome della policy deve essere compreso tra 3 e 40 caratteri."
       ],
@@ -4437,11 +4510,20 @@
       "Username must end with a letter or digit": [
         "Il nome utente deve terminare con una lettera o un numero/"
       ],
+      "VAT number must start with ${ prefixes }": [
+        "Il numero di partita IVA deve iniziare con ${ prefixes }"
+      ],
       "Verification did not succeed, please try again in an hour.": [
         "Verifica non riuscita, riprova tra un'ora."
       ],
+      "We couldn’t send a verification code using this method.": [
+        "Non è stato possibile inviare un codice di verifica con questo metodo."
+      ],
       "We stopped DKIM signing due to problems with your DNS configuration. Please follow the instructions below to resume signing.": [
         "Abbiamo interrotto la firma DKIM a causa di problemi con la tua configurazione DNS. Segui le istruzioni di seguito per riprendere la firma."
+      ],
+      "Wrong billing address": [
+        "Indirizzo di fatturazione errato"
       ],
       "Wrong recovery phrase. Try again or use another recovery method.": [
         "Frase di recupero errata. Riprova o usa un altro metodo di recupero."
@@ -4629,9 +4711,6 @@
       ]
     },
     "Error message": {
-      "Account is deleted or disabled": [
-        "Account eliminato o disattivato"
-      ],
       "App currently unavailable": [
         "App attualmente non disponibile"
       ],
@@ -5126,6 +5205,9 @@
       ]
     },
     "fido2: Error": {
+      "Something went wrong authenticating with your security key. Please try again.": [
+        "Si è verificato un errore durante l'autenticazione con la tua chiave di sicurezza. Per favore riprova."
+      ],
       "Something went wrong registering your security key. Please try again.": [
         "Qualcosa è andato storto durante la registrazione della tua chiave di sicurezza. Per favore riprova."
       ]
@@ -5146,8 +5228,8 @@
       "Are you sure you want to delete security key ${ name }?": [
         "Sei sicuro di voler eliminare la chiave di sicurezza ${ name }?"
       ],
-      "Insert your security key into your device's USB port.": [
-        "Inserisci la tua chiave di sicurezza nella porta USB del tuo dispositivo."
+      "Insert a security key linked to your ${ BRAND_NAME } Account.": [
+        "Inserisci una chiave di sicurezza collegata al tuo account ${ BRAND_NAME }."
       ],
       "Security key": [
         "Chiave di sicurezza"
@@ -5160,6 +5242,9 @@
       ],
       "This will delete all security keys linked to your account.": [
         "Questo cancellerà tutte le chiavi di sicurezza collegate al tuo account."
+      ],
+      "Touch your security key.": [
+        "Tocca la tua chiave di sicurezza."
       ],
       "Verify your identity with a physical U2F or FIDO2 security key": [
         "Verifica la tua identità con una U2F fisica o una chiave di sicurezza FIDO2"
@@ -5831,9 +5916,6 @@
       "${ appName } needs your permission to ${ enableDesktopNotifications }.": [
         "${ appName } ha bisogno della tua autorizzazione per ${ enableDesktopNotifications }."
       ],
-      "${ boldWarning } You will lose access to all current encrypted data in your account if you continue.": [
-        "${ boldWarning } Se continui, perderai l'accesso a tutti i dati crittografati correnti nel tuo account."
-      ],
       "${ BRAND_NAME } never shares your information with third parties. Data comes from ${ BRAND_NAME }'s own analyses and Constella Intelligence.": [
         "${ BRAND_NAME } non condivide mai le tue informazioni con terze parti. I dati provengono dalle analisi di ${ BRAND_NAME } e da Constella Intelligence."
       ],
@@ -5896,6 +5978,12 @@
       ],
       "${ MAIL_APP_NAME } can also be used with a single password which replaces both the login and second password. To switch to single password mode, enter the single password you would like to use and click Save.": [
         "${ MAIL_APP_NAME } può anche essere usato con una singola password che sostituisce sia la password di accesso che la seconda password. Per passare alla modalità a singola password, inserisci la password che desideri e clicca su Salva."
+      ],
+      "${ MEET_APP_NAME } is an end-to-end encrypted video conferencing solution. Add it to your plan to host secure meetings.": [
+        "${ MEET_APP_NAME } è una soluzione di videoconferenza crittografata end-to-end. Aggiungila al tuo piano per ospitare riunioni sicure."
+      ],
+      "${ MEET_APP_NAME } seats": [
+        "Licenze ${ MEET_APP_NAME }"
       ],
       "${ n } address": [
         "${ n } indirizzo",
@@ -6010,6 +6098,9 @@
       "${ vaultLink } updated": [
         "${ vaultLink } aggiornato"
       ],
+      "${ VPN_SHORT_APP_NAME } hides your traffic. ${ PASS_SHORT_APP_NAME } hides your identity\n— unlimited **hide-my-email aliases** and **dark-web alerts** if your data is ever leaked.": [
+        "${ VPN_SHORT_APP_NAME } nasconde il tuo traffico. ${ PASS_SHORT_APP_NAME } nasconde la tua identità\n— **alias hide-my-email** illimitati e **avvisi sul dark web** in caso di perdite dei tuoi dati."
+      ],
       "${ vpnPlus } required for Country level connection.": [
         "${ vpnPlus } richiesta per la connessione a livello di Paese."
       ],
@@ -6035,11 +6126,20 @@
       "**Import your existing codes** from other 2FA apps, like Google Authenticator": [
         "**Importa i codici esistenti** da altre app 2FA, come Google Authenticator."
       ],
+      "**Invite your friends** to ${ BRAND_NAME } with your referral link.": [
+        "**Invita i tuoi amici** a ${ BRAND_NAME } con il tuo link di affiliazione."
+      ],
       "**Sync codes** to all your devices": [
         "**Sincronizza i codici** su tutti i tuoi dispositivi."
       ],
+      "**They get ${ refereeRewardAmount }** in credits if they subscribe.": [
+        "**Loro ottengono ${ refereeRewardAmount }** in crediti se si abbonano."
+      ],
       "**This will disable 2-factor authentication.**": [
         "**Questo disabilità l'autenticazione a due fattori **"
+      ],
+      "**You get ${ referrerRewardAmount }** in credits for every friend that subscribes.": [
+        "**Ottieni ${ referrerRewardAmount }** in crediti per ogni amico che si abbona."
       ],
       "+ ${ invisibleCount } More": [
         "+ ${ invisibleCount } Altro",
@@ -6090,6 +6190,12 @@
       ],
       "active": [
         "attivo"
+      ],
+      "Add ${ BRAND_NAME } ${ PASS_SHORT_APP_NAME }": [
+        "Aggiungi ${ BRAND_NAME } ${ PASS_SHORT_APP_NAME }"
+      ],
+      "Add ${ PLAN_NAMES[PLANS.MEET_BUSINESS] }": [
+        "Aggiungi ${ PLAN_NAMES[PLANS.MEET_BUSINESS] }"
       ],
       "add a recovery method": [
         "aggiungere un metodo di recupero"
@@ -6436,9 +6542,6 @@
       "Data locked": [
         "Dati bloccati"
       ],
-      "Data recoverable on this device": [
-        "Dati recuperabili su questo dispositivo"
-      ],
       "Data recoverable with recovery phrase": [
         "Dati recuperabili con frase di recupero"
       ],
@@ -6500,6 +6603,9 @@
       "Do NOT forget this password. If you forget it, you will not be able to manage your organization.": [
         "NON dimenticare questa password. Se la dimentichi, non sarai più in grado di gestire la tua organizzazione."
       ],
+      "Do you remember your password? ${ verifyButton }": [
+        "Ricordi la tua password? ${ verifyButton }"
+      ],
       "Do you want to revoke all other sessions than the current one?": [
         "Vuoi revocare tutte le sessioni diverse da quella attuale?"
       ],
@@ -6521,9 +6627,6 @@
       ],
       "Don't lose access to your premium features. Enable auto-renew today.": [
         "Non perdere l'accesso alle tue funzionalità premium. Abilita oggi il rinnovo automatico."
-      ],
-      "Done! We sent a code to ${ destination }.": [
-        "Fatto! Abbiamo inviato un codice a ${ destination }."
       ],
       "Don’t know your recovery phrase?": [
         "Non conosci la tua frase di recupero?"
@@ -6557,6 +6660,9 @@
       ],
       "Due to end-to-end encryption, you can reset your password, but ${ DataLockedText } until you use a ${ DataRecoveryOptionsLink }:": [
         "A causa della crittografia end-to-end, puoi reimpostare la tua password, ma ${ DataLockedText } finché non utilizzi le opzioni di ${ DataRecoveryOptionsLink }:"
+      ],
+      "Each code can only be used once": [
+        "Ogni codice può essere utilizzato una sola volta"
       ],
       "Each domain can only have one SPF (TXT) record. If you want to keep the existing SPF (TXT) record, you can add ${ spf } to your current record (put it after ${ spfValue }).": [
         "Ogni dominio può avere un solo record SPF (TXT). Se desideri mantenere il record SPF (TXT) esistente, puoi aggiungere ${ spf } al record attuale (inseriscilo dopo ${ spfValue })."
@@ -6639,12 +6745,6 @@
       "Enter the code from your authenticator app": [
         "Inserisci il codice dalla tua app di autenticazione."
       ],
-      "Enter the code sent to your phone number ${ phone }.": [
-        "Inserisci il codice inviato al tuo numero di telefono ${ phone }."
-      ],
-      "Enter the code that was sent to ${ email }. If you can't find the message in your inbox, please check your spam folder.": [
-        "Inserisci il codice che è stato inviato a ${ email }. Se non riesci a trovare il messaggio nella tua casella di posta, controlla la tua cartella spam."
-      ],
       "Enter the credentials of the email account you want to import from.": [
         "Inserisci le credenziali dell'account email da cui vuoi importare."
       ],
@@ -6656,6 +6756,9 @@
       ],
       "Enter the verification code that was sent to ${ destinationText }.": [
         "Inserisci il codice di verifica inviato a ${ destinationText }."
+      ],
+      "Enter verification code. Digit ${ digit }.": [
+        "Inserisci il codice di verifica. Cifra ${ digit }."
       ],
       "Enter your ${ BRAND_NAME } Account details.": [
         "Inserisci i dettagli del tuo account ${ BRAND_NAME }."
@@ -6684,6 +6787,9 @@
       "Everything in ${ planOrAppName }": [
         "Tutto in ${ planOrAppName }"
       ],
+      "Everything in ${ planOrAppName }, plus:": [
+        "Tutto ciò che è compreso in ${ planOrAppName }, più:"
+      ],
       "Example: ${ spfExample }": [
         "Esempio: ${ spfExample }"
       ],
@@ -6702,11 +6808,20 @@
       "finance": [
         "dati finanziari"
       ],
+      "for ${ price }": [
+        "per ${ price }"
+      ],
       "for choosing ${ product }": [
         "per aver scelto ${ product }"
       ],
+      "For just ${ bundlePlanPriceInline }": [
+        "A soli ${ bundlePlanPriceInline }"
+      ],
       "For users who are switching to ${ MAIL_APP_NAME } from another email service, select the ${ boldAddresses } tab and add all active email addresses before changing the MX record to ensure a smooth transition.": [
         "Per gli utenti che stanno passando a ${ MAIL_APP_NAME } da un altro servizio di posta elettronica, seleziona la scheda ${ boldAddresses } e aggiungi tutti gli indirizzi email attivi prima di modificare il record MX per garantire una transizione fluida."
+      ],
+      "Forgot password?": [
+        "Hai dimenticato la password?"
       ],
       "Free trial": [
         "Prova gratuita"
@@ -6779,9 +6894,6 @@
       ],
       "If you are having trouble creating your account, please request an invitation and we will respond within one business day.": [
         "Se stai avendo problemi con la creazione del tuo account, chiedi un invito e ti risponderemo entro un giorno lavorativo."
-      ],
-      "If you are signed in somewhere else, you may be able to ${ signedInPasswordResetLink }.": [
-        "Se hai effettuato l'accesso da qualche altra parte, potresti riuscire a ${ signedInPasswordResetLink }."
       ],
       "If you are signed in to a ${ BRAND_NAME } web app in **another browser**, you may be able to perform a password reset from your active session.": [
         "Se sei connesso a un'app web ${ BRAND_NAME } in un **browser diverso**, potresti essere in grado di reimpostare la password dalla tua sessione attiva."
@@ -7172,9 +7284,6 @@
       "Once access to your account has been granted, they can access your **Recovery** settings and **change your ${ ACCOUNT_APP_NAME } password** for you.": [
         "Una volta ottenuto l'accesso al tuo account, possono accedere alle impostazioni di **Ripristino** e **modificare la tua password ${ ACCOUNT_APP_NAME }** per te."
       ],
-      "Once you reset your password:": [
-        "Una volta che reimposti la tua password:"
-      ],
       "Open source": [
         "Open source"
       ],
@@ -7252,6 +7361,9 @@
       "Password must have:": [
         "La password deve contenere:"
       ],
+      "Password verified": [
+        "Password verificata"
+      ],
       "Payments are protected with TLS encryption and Swiss privacy laws.": [
         "I pagamenti sono protetti dalla crittografia TLS e dalle leggi svizzere sulla privacy."
       ],
@@ -7275,9 +7387,6 @@
       "Please ask the owner to directly invite you to the document.": [
         "Chiedi al proprietario di invitarti direttamente al documento."
       ],
-      "Please authenticate your card in the verification tab.": [
-        "Verifica la carta nella scheda di verifica."
-      ],
       "Please authenticate your payment in the verification tab.": [
         "Verifica il pagamento nella scheda di verifica."
       ],
@@ -7286,9 +7395,6 @@
       ],
       "Please check your file, or try using our ${ csvTemplateButton }.": [
         "Verifica il tuo file, o provare ad utilizzare il nostro ${ csvTemplateButton }."
-      ],
-      "Please enter the 12-word recovery phrase associated with your account.": [
-        "Inserisci la frase di recupero di 12 parole associata al tuo account."
       ],
       "Please fill in all required fields.": [
         "Compila tutti i campi obbligatori."
@@ -7305,11 +7411,11 @@
       "Please select the folders you would like to import:": [
         "Seleziona le cartelle che vuoi importare:"
       ],
+      "Please select the labels you would like to import:": [
+        "Seleziona le etichette che desideri importare:"
+      ],
       "Please try again using a different payment method, or contact your bank.": [
         "Riprova utilizzando un altro metodo di pagamento oppure contatta PayPal per assistenza."
-      ],
-      "Please try again, use a different payment method, or contact PayPal for assistance.": [
-        "Riprova, usa un metodo di pagamento differente o contatta PayPal per assistenza."
       ],
       "Please use another browser or download the file.": [
         "Usa un altro browser o scarica il file."
@@ -7364,6 +7470,9 @@
       ],
       "Recently used servers:": [
         "Server usati di recente:"
+      ],
+      "RECOMMENDED": [
+        "CONSIGLIATO"
       ],
       "Recommended on trusted devices. ${ keepMeSignedInLearnMoreLink }": [
         "Consigliato su dispositivi affidabili. ${ keepMeSignedInLearnMoreLink }"
@@ -7601,6 +7710,9 @@
       "TechRadar Pro recommended with a rating of 4.2 out of 5 stars": [
         "Consigliato da TechRadar Pro con una valutazione di 4,2 stelle su 5"
       ],
+      "Temporarily unavailable due to high demand. Please try again later.": [
+        "Temporaneamente non disponibile a causa dell'elevato traffico. Riprova più tardi."
+      ],
       "Temporarily unavailable. Please check back later.": [
         "Temporaneamente non disponibile. Sei pregato di ricontrollare in seguito."
       ],
@@ -7808,6 +7920,9 @@
       "To help keep your account safe, we want to make sure it’s really you trying to sign in.": [
         "Per mantenere sicuro il tuo account, vogliamo assicurarci che sia davvero tu a tentare l'accesso."
       ],
+      "To help you remember your password, we'll ask you to enter it periodically. We ask you less over time.": [
+        "Per aiutarti a ricordare la tua password, ti chiederemo di inserirla periodicamente. Con il tempo te lo chiederemo sempre meno."
+      ],
       "To import events, first create a calendar in ${ CALENDAR_APP_NAME }. This is where the events will appear after the import.": [
         "Per importare eventi, devi prima creare un calendario su ${ CALENDAR_APP_NAME }. È dove appariranno gli eventi dopo l'importazione."
       ],
@@ -7844,9 +7959,6 @@
       "Total VPN connections": [
         "Totale connessioni VPN"
       ],
-      "trusted device": [
-        "dispositivo attendibile"
-      ],
       "Try ${ productName } totally risk free - if for any reason you change your mind, you'll receive a full refund. No questions asked.": [
         "Prova ${ productName } senza alcun rischio: se per qualsiasi motivo cambi idea, riceverai un rimborso completo. Nessuna domanda."
       ],
@@ -7870,9 +7982,6 @@
       ],
       "Unfortunately there is no recovery method available for this account.": [
         "Purtroppo non è disponibile alcun metodo di recupero per questo account."
-      ],
-      "Unfortunately there is no recovery method saved for this account.": [
-        "Purtroppo non c'è nessun metodo di recupero salvato per questo account."
       ],
       "Unique ID generated by your identity provider, usually in the form of a URL that contains the identity provider’s name within it (e.g. https://idp.example.com/XXXXX).": [
         "ID unico generato dal tuo fornitore d'identità, solitamente sotto forma di URL che contiene in esso il nome del fornitore d'identità (es. https://idp.esempio.com/XXXXX)."
@@ -8006,9 +8115,6 @@
       "Want to learn more?": [
         "Vuoi saperne di più?"
       ],
-      "Warning:": [
-        "Attenzione:"
-      ],
       "Warning: deleting your account is permanent.": [
         "Attenzione: l'eliminazione del tuo account è definitiva."
       ],
@@ -8045,14 +8151,8 @@
       "We recommend notifying the organization members and asking them to set up 2FA for their accounts before enforcing the use of 2FA.": [
         "Raccomandiamo di notificare i membri di una organizzazione e invitarli ad impostare una autenticazione a due fattori, prima di forzarne l'uso."
       ],
-      "We recommend using your recovery phrase instead.": [
-        "Ti consigliamo di utilizzare invece la frase di recupero."
-      ],
       "We securely store recovery information on your trusted device to prevent you from losing your data": [
         "Le informazioni necessarie per il recupero vengono salvate in modo sicuro sul tuo dispositivo attendibile per evitare la perdita dei tuoi dati"
-      ],
-      "We stored a backup file in this browser because you allowed data recovery on this ${ deviceLink }. If the backup file is valid, you will immediately regain complete or partial access to your encrypted data.": [
-        "Abbiamo archiviato un file di backup in questo browser perché hai consentito il ripristino dei dati su questo ${ deviceLink }. Se il file di backup è valido, riacquisterai immediatamente l'accesso completo o parziale ai tuoi dati crittografati."
       ],
       "We use 3-D Secure to protect your payments": [
         "Utilizziamo 3-D Secure per proteggere i tuoi pagamenti"
@@ -8069,6 +8169,9 @@
       "We'll notify you when the import is done.": [
         "Ti avviseremo quando l'importazione sarà completata."
       ],
+      "We'll remind you to verify your password again later": [
+        "Ti ricorderemo di verificare di nuovo la tua password più tardi"
+      ],
       "We'll send a new verification code to ${ strong }": [
         "Invieremo un nuovo codice di verifica a ${ strong }"
       ],
@@ -8083,12 +8186,6 @@
       ],
       "We’ll send a reset code to ${ boldValue }.": [
         "Invieremo un codice di reimpostazione a ${ boldValue }."
-      ],
-      "We’ll send a reset code to the email address you provided for account recovery.": [
-        "Invieremo un codice di recupero all'indirizzo email fornito per il recupero dell'account."
-      ],
-      "We’ll send a reset code to the phone number you provided for account recovery.": [
-        "Invieremo un codice di recupero al numero di telefono fornito per il recupero dell'account."
       ],
       "When enabling SAML for ${ appName } in your identity provider, you might be prompted to use the callback (ACS) URL and issuer ID. Just copy-paste the data below into your identity provider fields.": [
         "Quando abiliti SAML per ${ appName } nel tuo fornitore di identità, ti potrebbe essere chiesto di usare l'issuer ID e l'URL (ACS) di callback. Copia e incolla i dati seguenti nei campi del tuo fornitore di identità."
@@ -8146,6 +8243,9 @@
       ],
       "You already have a free account": [
         "Hai già un account gratuito"
+      ],
+      "You are currently signed in as ${ username } for ${ organizationName }.": [
+        "Al momento hai effettuato l'accesso come ${ username } per ${ organizationName }."
       ],
       "You are currently signed in as ${ username }.": [
         "Sei attualmente connesso come ${ username }."
@@ -8294,9 +8394,6 @@
       "You will regain complete or partial access to your encrypted data.": [
         "Recupererai l’accesso completo o parziale ai tuoi dati crittografati."
       ],
-      "You will soon be redirected to PayPal to verify your payment.": [
-        "Sarai presto reindirizzato a PayPal per verificare il pagamento."
-      ],
       "You won't be charged if you cancel before ${ trialEndsOnFormatted }.": [
         "Non ti verrà addebitato nulla se annulli prima del ${ trialEndsOnFormatted }."
       ],
@@ -8340,6 +8437,9 @@
       ],
       "Your account has at least one overdue invoice. Your access will soon get restricted. ${ payInvoiceLink }": [
         "Il tuo account ha una fattura scaduta. Il tuo accesso sarà presto limitato. ${ payInvoiceLink }"
+      ],
+      "Your account is currently configured to apply the reverse charge scheme. This is not supported for the selected plan. To proceed, either remove the VAT number from the billing address or select a different plan.": [
+        "Il tuo account è attualmente configurato per applicare il regime di inversione contabile. Questo non è previsto per il piano selezionato. Per procedere, rimuovi il numero di partita IVA dall'indirizzo di fatturazione o seleziona un piano diverso."
       ],
       "Your account was successfully updated with this promotion": [
         "Il tuo account è stato aggiornato con questa promozione"
@@ -8517,9 +8617,6 @@
       "Declined": [
         "Rifiutato"
       ],
-      "Owner": [
-        "Proprietario"
-      ],
       "Paused": [
         "In pausa"
       ],
@@ -8617,6 +8714,9 @@
         "${ nbDay } giorno",
         "${ nbDay } giorni"
       ],
+      "${ value.length }/${ maxLength } characters": [
+        "${ value.length }/${ maxLength } caratteri"
+      ],
       "(Temporarily unavailable. Please check back later.)": [
         "(Temporaneamente non disponibile. Sei pregato di ricontrollare in seguito.)"
       ],
@@ -8640,6 +8740,9 @@
       ],
       "Add all organization members": [
         "Aggiungi tutti i membri dell'organizzazione"
+      ],
+      "Additional comments": [
+        "Commenti aggiuntivi"
       ],
       "Address": [
         "Indirizzo"
@@ -8761,9 +8864,6 @@
       "City": [
         "Città"
       ],
-      "Code": [
-        "Codice"
-      ],
       "Code is 6 digits without spaces": [
         "Codice a 6 cifre senza spazi"
       ],
@@ -8808,6 +8908,9 @@
       ],
       "Contacts": [
         "Contatti"
+      ],
+      "Continue cancelling": [
+        "Continua la cancellazione"
       ],
       "Copy": [
         "Copia"
@@ -8882,6 +8985,9 @@
       "Don't show this again": [
         "Non mostrare più"
       ],
+      "Drive": [
+        "Drive"
+      ],
       "e.g. example.com": [
         "es. example.com"
       ],
@@ -8905,6 +9011,9 @@
       ],
       "Emails (last 3 months)": [
         "Email (ultimi 3 mesi)"
+      ],
+      "Emails (last 6 months)": [
+        "Email (ultimi 6 mesi)"
       ],
       "Emails (last month)": [
         "Email (ultimo mese)"
@@ -9058,6 +9167,9 @@
       ],
       "Main": [
         "Principale"
+      ],
+      "Main reason for cancelling": [
+        "Motivo principale dell'annullamento"
       ],
       "Manage categories": [
         "Gestione delle categorie"
@@ -9300,6 +9412,9 @@
       "Single sign-on URL": [
         "URL di accesso singolo"
       ],
+      "Skip feedback": [
+        "Ignora feedback"
+      ],
       "Spam": [
         "Spam"
       ],
@@ -9535,9 +9650,6 @@
       ]
     },
     "Link": {
-      "Account recovery explained": [
-        "Recupero dell’account spiegato"
-      ],
       "activity monitor": [
         "monitor attività"
       ],
@@ -9586,11 +9698,17 @@
       "Forgot username?": [
         "Hai dimenticato il nome utente?"
       ],
+      "Frequent sign-in problems": [
+        "Problemi frequenti di accesso"
+      ],
       "Get ${ BRAND_NAME } Pass": [
         "Ottieni ${ BRAND_NAME } Pass"
       ],
       "Get ${ VPN_APP_NAME }": [
         "Ottieni ${ VPN_APP_NAME }"
+      ],
+      "Get help from ${ LUMO_SHORT_APP_NAME }": [
+        "Chiedi aiuto a ${ LUMO_SHORT_APP_NAME }"
       ],
       "Groups": [
         "Gruppi"
@@ -9678,9 +9796,6 @@
       ],
       "Pay invoice": [
         "Pagamento della fattura"
-      ],
-      "perform a password reset from your active session": [
-        "esegui una reimpostazione della password dalla sessione attiva"
       ],
       "Privacy policy": [
         "Informativa sulla privacy"
@@ -9917,6 +10032,12 @@
       ]
     },
     "meet_2025: Addon": {
+      "${ MEET_APP_NAME } license": [
+        "Licenza ${ MEET_APP_NAME }"
+      ],
+      "${ MEET_APP_NAME } seats": [
+        "Licenze ${ MEET_APP_NAME }"
+      ],
       "${ seats } ${ MEET_APP_NAME } seat": [
         "${ seats } licenza ${ MEET_APP_NAME }",
         "${ seats } licenze ${ MEET_APP_NAME }"
@@ -9952,6 +10073,9 @@
       "End-to-end encrypted screen sharing and ephemeral in-call chat": [
         "Condivisione dello schermo con crittografia end-to-end e chat effimera durante la chiamata"
       ],
+      "Hosts can record meetings locally on their computers": [
+        "Gli host possono registrare le riunioni localmente sui propri computer"
+      ],
       "Meeting recording": [
         "Registrazione riunione"
       ],
@@ -9981,6 +10105,9 @@
       "${ seats } seat included": [
         "${ seats } licenza inclusa",
         "${ seats } licenze incluse"
+      ],
+      "You can have up to ${ TRIAL_MAX_MEET_SEATS } ${ MEET_SHORT_APP_NAME } seats during the trial period.": [
+        "Puoi avere fino a ${ TRIAL_MAX_MEET_SEATS } licenze ${ MEET_SHORT_APP_NAME } durante il periodo di prova."
       ]
     },
     "Member action": {
@@ -10338,6 +10465,9 @@
       "99.95% SLA": [
         "SLA del 99,95%"
       ],
+      "Access all countries": [
+        "Accedi a tutti i Paesi"
+      ],
       "Activity logs and policy": [
         "Log attività e politica"
       ],
@@ -10429,8 +10559,14 @@
       "Data breach monitoring": [
         "Monitoraggio di violazioni di dati"
       ],
+      "Data retention policies": [
+        "Policy di conservazione dei dati"
+      ],
       "Dedicated servers and IP": [
         "Server e IP dedicati"
+      ],
+      "Dedicated servers optimized for speed": [
+        "Server dedicati ottimizzati per la velocità"
       ],
       "Desktop app": [
         "Applicazione desktop"
@@ -10505,6 +10641,9 @@
       "Multiple admin roles": [
         "Ruoli di amministratore multipli"
       ],
+      "No streaming support": [
+        "Nessun supporto streaming"
+      ],
       "No-logs policy": [
         "Politica di non conservazione dei log"
       ],
@@ -10540,6 +10679,9 @@
       ],
       "Priority support & live chat": [
         "Supporto prioritario e chat dal vivo"
+      ],
+      "Private AI Chat (${ LUMO_APP_NAME })": [
+        "Chat AI privata (${ LUMO_APP_NAME })"
       ],
       "Private photo backup": [
         "Backup privato delle foto"
@@ -10661,6 +10803,9 @@
       "Unlimited volume/bandwidth": [
         "Larghezza di banda/volume illimitati"
       ],
+      "Unlock streaming": [
+        "Sblocca streaming"
+      ],
       "Up to ${ n } user": [
         "${ n } utente",
         "Fino a ${ n } utenti"
@@ -10695,6 +10840,9 @@
       "Vault sharing with up to ${ n } person": [
         "Condivisione delle casseforti fino a ${ n } persona",
         "Condivisione delle casseforti fino a ${ n } persone"
+      ],
+      "VPN with ad-blocker and malware protection": [
+        "VPN con ad-blocker e protezione da malware"
       ],
       "We scan the dark web to check if your ${ BRAND_NAME } addresses or aliases have been leaked and alert you immediately if we find anything.": [
         "Monitoriamo il dark web per verificare se i tuoi indirizzi o alias ${ BRAND_NAME } vengono diffusi e ti avvisiamo immediatamente se troviamo qualcosa."
@@ -11845,17 +11993,6 @@
         "Offerta a tempo limitato"
       ]
     },
-    "password_reset: info": {
-      "**All your existing data** (emails, events, contacts, files, ${ PASS_APP_NAME } entries, etc.) **will be locked** and can only be unlocked with your **old password**.": [
-        "**Tutti i tuoi dati esistenti** (email, eventi, contatti, file, voci di ${ PASS_APP_NAME }, ecc.) **saranno bloccati** e potranno essere sbloccati solo con la tua **vecchia password**."
-      ],
-      "**All your existing data** (emails, events, contacts, files, ${ PASS_APP_NAME } entries, etc.) **will be locked** and can only be unlocked with your **recovery phrase** or your **old password**.": [
-        "**Tutti i tuoi dati esistenti** (email, eventi, contatti, file, voci di ${ PASS_APP_NAME }, ecc.) **saranno bloccati** e potranno essere sbloccati solo con la tua **frase di recupero** o la tua ** vecchia password**."
-      ],
-      "Any **two-factor authentication (2FA)** method on your account will be disabled.": [
-        "Qualsiasi metodo di **autenticazione a due fattori (2FA)** sul tuo account verrà disabilitato."
-      ]
-    },
     "passwordless": {
       "All administrators will get access to the key.": [
         "Tutti gli amministratori avranno accesso alla chiave."
@@ -11974,6 +12111,12 @@
       "${ formattedPrice } (excl. tax)": [
         "${ formattedPrice } (IVA esclusa)"
       ],
+      "${ rate }% tax: ${ taxAmountElement }": [
+        "Imposta del ${ rate }%: ${ taxAmountElement }"
+      ],
+      "${ rate }% taxes: ${ taxAmountElement }": [
+        "${ rate }% imposte: ${ taxAmountElement }"
+      ],
       "Amount due after trial on ${ formattedDate }": [
         "Importo dovuto dopo la prova il ${ formattedDate }"
       ],
@@ -11995,14 +12138,23 @@
       "During this time, you will not be able to modify or cancel your subscription. Please wait until your payment is completed before attempting any changes. Thank you for your patience.": [
         "Durante questo periodo non sarà possibile modificare o annullare l'abbonamento. Si prega di attendere il completamento del pagamento prima di tentare qualsiasi modifica. Grazie per la pazienza."
       ],
+      "Edit billing address": [
+        "Modifica indirizzo di fatturazione"
+      ],
       "Got it": [
         "Tutto chiaro"
       ],
       "I'm purchasing as a business": [
         "Sto acquistando come azienda"
       ],
+      "Including ${ rate }% tax": [
+        "Inclusa l'imposta del ${ rate }%"
+      ],
       "Including ${ rate }% tax: ${ taxAmountElement }": [
         "Inclusa l'imposta del ${ rate }%: ${ taxAmountElement }"
+      ],
+      "Including ${ rate }% taxes": [
+        "Incluse imposte del ${ rate }%"
       ],
       "Including ${ rate }% taxes: ${ taxAmountElement }": [
         "Incluse imposte del ${ rate }%: ${ taxAmountElement }"
@@ -12030,6 +12182,9 @@
       ],
       "Sorry, this offer is not available with your current plan.": [
         "Scusa, questa offerta non è disponibile con il tuo piano attuale."
+      ],
+      "Tax ${ rate }%": [
+        "Imposta ${ rate }%"
       ],
       "Taxes ${ rate }%": [
         "Imposte ${ rate }%"
@@ -12084,6 +12239,9 @@
       ],
       "VAT number": [
         "Numero partita IVA"
+      ],
+      "VAT reverse charge mechanism applies.": [
+        "Si applica il meccanismo di inversione contabile IVA."
       ],
       "You already have a subscription to this plan.": [
         "Hai già un abbonamento a questo piano."
@@ -12182,8 +12340,14 @@
       "Renewal price is dependent on the billing region and ABN.": [
         "Il prezzo del rinnovo dipende dalla regione di fatturazione e dall'ABN."
       ],
+      "Renewal price is dependent on the billing region and Business Number.": [
+        "Il prezzo del rinnovo dipende dalla regione di fatturazione e dal numero di identificazione aziendale."
+      ],
       "Renewal price is dependent on the billing region and EIN.": [
         "Il prezzo del rinnovo dipende dalla regione di fatturazione e dall'EIN."
+      ],
+      "Renewal price is dependent on the billing region and VAT number.": [
+        "Il prezzo del rinnovo dipende dalla regione di fatturazione e dal numero di partita IVA."
       ]
     },
     "Payments.Saved payment method details": {
@@ -12261,6 +12425,9 @@
       "Anderson": [
         "Rossi"
       ],
+      "Anything you'd like us to know": [
+        "Qualcosa che vorresti farci sapere"
+      ],
       "Anytown": [
         "Roma"
       ],
@@ -12275,6 +12442,9 @@
       ],
       "Confirm": [
         "Conferma"
+      ],
+      "Cortex Inc.": [
+        "Cortex Inc."
       ],
       "domain.com": [
         "dominio.it"
@@ -12296,6 +12466,9 @@
       ],
       "End date": [
         "Data di fine"
+      ],
+      "Enter a name": [
+        "Inserisci un nome"
       ],
       "example@domain.com": [
         "esempio@dominio.it"
@@ -12333,6 +12506,9 @@
       "Postal code": [
         "Codice postale"
       ],
+      "San Francisco": [
+        "San Francisco"
+      ],
       "Search": [
         "Cerca"
       ],
@@ -12353,6 +12529,9 @@
       ],
       "Select": [
         "Seleziona"
+      ],
+      "Select a provider": [
+        "Seleziona un provider"
       ],
       "Select a reason": [
         "Seleziona un motivo"
@@ -12498,6 +12677,26 @@
       ],
       "Unknown": [
         "Sconosciuto"
+      ]
+    },
+    "Provider option": {
+      "Gmail": [
+        "Gmail"
+      ],
+      "Google Workspace": [
+        "Google Workspace"
+      ],
+      "Microsoft 365": [
+        "Microsoft 365"
+      ],
+      "Other": [
+        "Altro"
+      ],
+      "Outlook": [
+        "Outlook"
+      ],
+      "Yahoo": [
+        "Yahoo"
       ]
     },
     "q2campaign2026: Action": {
@@ -13244,6 +13443,18 @@
       "You have ${ timeRemaining.inDays } day to reset your password.": [
         "Hai ${ timeRemaining.inDays } giorno rimanente per reimpostare la password.",
         "Hai ${ timeRemaining.inDays } giorni rimanenti per reimpostare la password."
+      ],
+      "You have ${ timeRemaining.inHours } hour to reset your password.": [
+        "Hai ${ timeRemaining.inHours } ora per reimpostare la tua password.",
+        "Hai ${ timeRemaining.inHours } ore per reimpostare la tua password."
+      ],
+      "You have ${ timeRemaining.inMinutes } minute to reset your password.": [
+        "Hai ${ timeRemaining.inMinutes } minuto per reimpostare la tua password.",
+        "Hai ${ timeRemaining.inMinutes } minuti per reimpostare la tua password."
+      ],
+      "You have ${ timeRemaining.inSeconds } second to reset your password.": [
+        "Hai ${ timeRemaining.inSeconds } secondo per reimpostare la tua password.",
+        "Hai ${ timeRemaining.inSeconds } secondi per reimpostare la tua password."
       ]
     },
     "session_recovery:available:link": {
@@ -13487,6 +13698,9 @@
     "sheets_2025:Action": {
       "Open in ${ appName }": [
         "Apri in ${ appName }"
+      ],
+      "Open in ${ appName } (Beta)": [
+        "Apri in ${ appName } (Beta)"
       ]
     },
     "Signup": {
@@ -13714,6 +13928,9 @@
       "Get unlimited aliases to protect your identity and reduce spam": [
         "Ottieni alias illimitati per proteggere la tua identità e ridurre lo spam"
       ],
+      "Keep your passwords safe and organized in multiple vaults": [
+        "Mantieni le tue password al sicuro e organizzate in varie casseforti"
+      ],
       "Protect your account from threats with Sentinel": [
         "Proteggi il tuo account dalle minacce con Sentinel"
       ],
@@ -13759,14 +13976,6 @@
       "${ n } user detached from SSO": [
         "${ n } utente scollegato da SSO",
         "${ n } utenti scollegati da SSO"
-      ],
-      "${ n } user has joined your organization through your Identity Provider. Review the account now:": [
-        "${ n } utente è entrato a far parte della tua organizzazione tramite il tuo provider di identità. Esamina l'account adesso:",
-        "${ n } utenti si sono uniti alla tua organizzazione tramite il tuo provider di identità. Controlla subito i loro account:"
-      ],
-      "${ n } user is inactive. You can safely remove this user from your organization.": [
-        "L'utente ${ n } è inattivo. Puoi rimuovere in sicurezza questo utente dalla tua organizzazione.",
-        "${ n } utenti sono inattivi. Puoi rimuoverli in sicurezza dalla tua organizzazione."
       ],
       "${ n } user is requesting your help to sign in to their ${ BRAND_NAME } Account with single sign-on.": [
         "${ n } utente sta richiedendo il tuo aiuto per accedere al proprio account ${ BRAND_NAME } con Single Sign-On.",
@@ -14243,6 +14452,12 @@
       ]
     },
     "Subscription reminder": {
+      "${ BRAND_NAME } Scribe writing assistant": [
+        "Assistente alla scrittura ${ BRAND_NAME } Scribe"
+      ],
+      "${ CALENDAR_APP_NAME }, ${ DRIVE_SHORT_APP_NAME }, ${ PASS_SHORT_APP_NAME }, ${ VPN_SHORT_APP_NAME }, ${ MEET_SHORT_APP_NAME }, and ${ LUMO_APP_NAME } with premium features": [
+        "${ CALENDAR_APP_NAME }, ${ DRIVE_SHORT_APP_NAME }, ${ PASS_SHORT_APP_NAME }, ${ VPN_SHORT_APP_NAME }, ${ MEET_SHORT_APP_NAME }, e ${ LUMO_APP_NAME } con funzionalità premium"
+      ],
       "${ CALENDAR_APP_NAME }, ${ DRIVE_SHORT_APP_NAME }, ${ PASS_SHORT_APP_NAME }, and ${ VPN_SHORT_APP_NAME } with premium features": [
         "${ CALENDAR_APP_NAME }, ${ DRIVE_SHORT_APP_NAME }, ${ PASS_SHORT_APP_NAME }, e ${ VPN_SHORT_APP_NAME } con funzionalità premium"
       ],
@@ -15551,9 +15766,6 @@
       "Find email or username": [
         "Trova email o nome utente"
       ],
-      "Forgot recovery method": [
-        "Metodo di recupero dimenticato"
-      ],
       "Gateway": [
         "Gateway"
       ],
@@ -15639,6 +15851,9 @@
       "Import via ${ PRODUCT_NAMES.EASY_SWITCH }": [
         "Importa tramite ${ PRODUCT_NAMES.EASY_SWITCH }"
       ],
+      "Import your data to ${ BRAND_NAME }": [
+        "Importa i tuoi dati in ${ BRAND_NAME }"
+      ],
       "Information exposed in breach": [
         "Informazioni esposte in caso di violazioni"
       ],
@@ -15666,6 +15881,9 @@
       "Main password": [
         "Password principale"
       ],
+      "Migrate your organization to ${ BRAND_NAME }": [
+        "Migra la tua organizzazione su ${ BRAND_NAME }"
+      ],
       "Minicalendar": [
         "Mini calendario"
       ],
@@ -15692,9 +15910,6 @@
       ],
       "No events": [
         "Nessun evento"
-      ],
-      "No recovery method": [
-        "Nessun metodo di recupero"
       ],
       "Open": [
         "Aperto"
@@ -15746,9 +15961,6 @@
       ],
       "Payment verification": [
         "Verifica pagamento"
-      ],
-      "PayPal verification failed": [
-        "Verifica PayPal non riuscita"
       ],
       "Phone": [
         "Telefono"
@@ -15872,6 +16084,9 @@
       ],
       "Select contact group": [
         "Seleziona gruppo di contatti"
+      ],
+      "Select data to import": [
+        "Seleziona i dati da importare"
       ],
       "Send and receive Gmail using ${ MAIL_APP_NAME }": [
         "Invia e ricevi Gmail usando ${ MAIL_APP_NAME }"
@@ -16090,6 +16305,9 @@
       "Verify it’s you": [
         "Verifica che sia tu"
       ],
+      "Verify your password": [
+        "Verifica la tua password"
+      ],
       "Verifying your card...": [
         "Verifica della carta..."
       ],
@@ -16293,6 +16511,9 @@
       "If you purchased a gift code or received one from our support team, you can enter it here.": [
         "Se hai acquistato un codice regalo o ne hai ricevuto uno dal nostro team di supporto, puoi inserirlo qui."
       ],
+      "Instant AI assistance, human expert on hand!": [
+        "Assistenza IA istantanea, esperto umano a tua disposizione!"
+      ],
       "Members who do not use 2FA will get an email asking them to enable it as soon as possible. Single sign-on users will not receive the email reminder.": [
         "I membri che non utilizzano 2FA riceveranno un'email che chiederà loro di abilitarla il prima possibile. Gli utenti Single sign-on non riceveranno il promemoria via email."
       ],
@@ -16390,9 +16611,6 @@
       ],
       "User declined invitation": [
         "L'utente ha rifiutato l'invito"
-      ],
-      "User is a group": [
-        "L'utente è un gruppo"
       ],
       "Waiting for user to accept the invitation": [
         "In attesa che l'utente accetti l'invito"
@@ -16499,10 +16717,6 @@
       ],
       "Confirm all": [
         "Conferma tutti"
-      ],
-      "Could not automatically enable administrator access for ${ n } user, because their encryption keys have been updated in the meanwhile:": [
-        "Impossibile abilitare automaticamente l'accesso amministratore per l'utente ${ n }, perché nel frattempo le sue chiavi di crittografia sono state aggiornate:",
-        "Impossibile abilitare automaticamente l'accesso amministratore per gli utenti ${ n }, perché nel frattempo le loro chiavi di crittografia sono state aggiornate:"
       ],
       "Could not enable administrator access: ${ error }": [
         "Impossibile abilitare l'accesso come amministratore: ${ error }"

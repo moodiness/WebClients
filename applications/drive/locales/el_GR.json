@@ -782,6 +782,9 @@
       "Re-index": [
         "Επαναδημιουργία ευρετηρίου"
       ],
+      "Re-indexing in progress": [
+        "Επαναδημιουργία ευρετηρίου σε εξέλιξη"
+      ],
       "Re-sign": [
         "Επανασυνδεθείτε"
       ],
@@ -856,6 +859,9 @@
       ],
       "Report a problem": [
         "Αναφορά προβλήματος"
+      ],
+      "Report abuse": [
+        "Αναφορά κατάχρησης"
       ],
       "Report an issue": [
         "Αναφορά προβλήματος"
@@ -956,6 +962,12 @@
       "Select country": [
         "Επιλογή Χώρας"
       ],
+      "Select rating ${ n } out of ${ to }": [
+        "Επιλέξτε βαθμολογία ${ n } από ${ to }"
+      ],
+      "Send Feedback": [
+        "Αποστολή Σχολίων"
+      ],
       "Set as album cover": [
         "Ορισμός ως εξώφυλλο άλμπουμ"
       ],
@@ -1036,6 +1048,9 @@
       ],
       "Sign up": [
         "Εγγραφείτε"
+      ],
+      "Skip": [
+        "Παράλειψη"
       ],
       "Skip verification": [
         "Παράλειψη επαλήθευσης"
@@ -1135,6 +1150,9 @@
       ],
       "Upload and share files": [
         "Μεταφορτώστε και μοιραστείτε αρχεία"
+      ],
+      "Upload anyway": [
+        "Ανέβασμα οπωσδήποτε"
       ],
       "Upload file": [
         "Ανέβασμα αρχείου"
@@ -3656,12 +3674,6 @@
       "Incorrect username": [
         "Εσφαλμένο όνομα χρήστη"
       ],
-      "Invalid ${ name } code": [
-        "Μη έγκυρο ${ name } κωδικός"
-      ],
-      "Invalid card number": [
-        "Μη έγκυρος αριθμός κάρτας"
-      ],
       "Invalid code": [
         "Μη έγκυρος κωδικός"
       ],
@@ -3670,9 +3682,6 @@
       ],
       "Invalid email address": [
         "Μη έγκυρη διεύθυνση email"
-      ],
-      "Invalid expiration date": [
-        "Μη έγκυρη ημερομηνία λήξης"
       ],
       "Invalid IBAN": [
         "Μη έγκυρο IBAN"
@@ -3725,6 +3734,9 @@
       ],
       "No contacts found to import": [
         "Δεν βρέθηκαν επαφές προς εισαγωγή"
+      ],
+      "No drive found to import": [
+        "Δε βρέθηκε drive για εισαγωγή"
       ],
       "No emails found to import - the account does not have an inbox": [
         "Δεν βρέθηκαν μηνύματα προς εισαγωγή - ο λογαριασμός δεν διαθέτει εισερχόμενα"
@@ -3976,6 +3988,9 @@
       "Unexpected error, we can't import the contacts": [
         "Μη αναμενόμενο σφάλμα, δεν είναι δυνατή η εισαγωγή των επαφών"
       ],
+      "Unexpected error, we can't import the files": [
+        "Μη αναμενόμενο σφάλμα, δεν είναι δυνατή η εισαγωγή των αρχείων"
+      ],
       "Unknown conflict strategy: ${ strategy }": [
         "Άγνωστη στρατηγική διένεξης: ${ strategy }"
       ],
@@ -4008,6 +4023,9 @@
       ],
       "We cannot retrieve this item": [
         "Δεν είναι δυνατή η ανάκτηση αυτού του στοιχείου"
+      ],
+      "We couldn’t send a verification code using this method.": [
+        "Δεν μπορέσαμε να αποστείλουμε κωδικό επιβεβαίωσης με αυτήν τη μέθοδο."
       ],
       "We were not able to load some invitations": [
         "Δεν μπορέσαμε να φορτώσουμε μερικές προσκλήσεις"
@@ -4493,6 +4511,9 @@
       ],
       "Security key": [
         "Κλειδί ασφαλείας"
+      ],
+      "Touch your security key.": [
+        "Αγγίξτε το κλειδί ασφαλείας σας."
       ]
     },
     "fido2: Label": {
@@ -5235,6 +5256,9 @@
       "AI powered assistant to help you craft better emails, quickly and effortlessly.": [
         "Βοηθός με τεχνητή νοημοσύνη που σας βοηθά να δημιουργείτε καλύτερα μηνύματα ηλεκτρονικού ταχυδρομείου, γρήγορα και αβίαστα."
       ],
+      "Album": [
+        "Άλμπουμ"
+      ],
       "All (${ totalFoldersCount } folder)": [
         "Όλοι (${ totalFoldersCount } φάκελος)",
         "Όλοι (${ totalFoldersCount } φάκελοι)"
@@ -5505,6 +5529,10 @@
       "Do you remember your password? ${ verifyButton }": [
         "Θυμάστε τον κωδικό πρόσβασής σας; ${ verifyButton }"
       ],
+      "Do you still want to upload it?": [
+        "Θέλετε ακόμα να το μεταμορφώσετε;",
+        "Θέλετε ακόμα να τα μεταμορφώσετε;"
+      ],
       "Done": [
         "Έτοιμο"
       ],
@@ -5650,6 +5678,9 @@
       "Files and folders that others shared with you will appear here": [
         "Τα αρχεία και οι φάκελοι που έχουν μοιραστεί μαζί σας άλλοι χρήστες θα εμφανίζονται εδώ"
       ],
+      "Files only (no photos, ${ DOCS_APP_NAME } or ${ SHEETS_APP_NAME }) - up to 100 GB total, 100,000 files, and 50 GB per file": [
+        "Μόνο αρχεία (όχι φωτογραφίες, ${ DOCS_APP_NAME } ή ${ SHEETS_APP_NAME }) - έως 100 GB συνολικά, 100.000 αρχεία και 50 GB ανά αρχείο"
+      ],
       "finance": [
         "οικονομικά"
       ],
@@ -5703,6 +5734,9 @@
       ],
       "How does encrypted search work?": [
         "Πώς δουλεύει η κρυπτογραφημένη αναζήτηση;"
+      ],
+      "I hereby confirm, in good faith, that the information and statements contained in the report are correct and complete.": [
+        "Με την παρούσα βεβαιώνω, καλή τη πίστει, ότι οι πληροφορίες και οι δηλώσεις που περιέχονται στην έκθεση είναι ορθές και πλήρεις."
       ],
       "If those files are not fully downloaded locally on ${ deviceName } you will lose access to them.": [
         "Εάν αυτά τα αρχεία δεν έχουν ληφθεί πλήρως τοπικά στη συσκευή ${ deviceName }, θα χάσετε πρόσβαση σε αυτά."
@@ -6118,9 +6152,6 @@
       "Please ask the owner to directly invite you to the document.": [
         "Παρακαλούμε ζητήστε από τον ιδιοκτήτη να σας προσκαλέσει απευθείας στο έγγραφο."
       ],
-      "Please authenticate your card in the verification tab.": [
-        "Επαληθεύστε την ταυτότητά σας στην καρτέλα επαλήθευσης."
-      ],
       "Please authenticate your payment in the verification tab.": [
         "Επαληθεύστε την πληρωμή σας στην καρτέλα επαλήθευσης."
       ],
@@ -6164,9 +6195,6 @@
       "Please try again using a different payment method, or contact your bank.": [
         "Δοκιμάστε ξανά χρησιμοποιώντας διαφορετικό τρόπο πληρωμής ή επικοινωνήστε με την τράπεζά σας."
       ],
-      "Please try again, use a different payment method, or contact PayPal for assistance.": [
-        "Παρακαλώ προσπαθήστε ξανά, χρησιμοποιείστε ένα διαφορετικό τρόπο πληρωμής, ή επικοινωνήστε με το Paypal για περαιτέρω βοήθεια."
-      ],
       "Please use another browser or download the file.": [
         "Χρησιμοποιήστε άλλο πρόγραμμα περιήγησης ή κατεβάστε το αρχείο."
       ],
@@ -6181,6 +6209,12 @@
       ],
       "Preparing": [
         "Προετοιμασία"
+      ],
+      "Preparing download": [
+        "Προετοιμασία λήψης"
+      ],
+      "Preparing…": [
+        "Προετοιμασία…"
       ],
       "Preview failed to be loaded": [
         "Η φόρτωση της προεπισκόπησης απέτυχε"
@@ -6217,6 +6251,9 @@
       ],
       "Public sharing of documents is not yet supported.": [
         "Η δημόσια κοινή χρήση εγγράφων δεν υποστηρίζεται ακόμη."
+      ],
+      "Re-indexing in progress": [
+        "Επαναδημιουργία ευρετηρίου σε εξέλιξη"
       ],
       "Ready to add some photos?": [
         "Είστε έτοιμοι να προσθέσετε φωτογραφίες;"
@@ -6471,6 +6508,10 @@
       "This can NOT be undone. Please enter the device name to confirm removal.": [
         "Αυτό ΔΕΝ μπορεί να αναιρεθεί. Παρακαλούμε εισάγετε το όνομα της συσκευής για να επιβεβαιώσετε την αφαίρεση."
       ],
+      "This file appears to be empty:": [
+        "Αυτό το αρχείο φαίνεται να είναι κενό:",
+        "Αυτά τα αρχεία φαίνονται να είναι κενά:"
+      ],
       "This file is too large to preview": [
         "Αυτό το αρχείο είναι πολύ μεγάλο για προεπισκόπηση"
       ],
@@ -6658,6 +6699,9 @@
       "Uploaded": [
         "Ανέβηκε"
       ],
+      "Uploaded - file is empty": [
+        "Μεταμορφώθηκε - το αρχείο είναι κενό"
+      ],
       "Uploading": [
         "Γίνεται μεταφόρτωση"
       ],
@@ -6817,6 +6861,9 @@
       "You are about to open your default browser and visit:": [
         "Πρόκειται να ανοίξετε το προεπιλεγμένο πρόγραμμα περιήγησής σας και να επισκεφθείτε:"
       ],
+      "You are currently signed in as ${ username } for ${ organizationName }.": [
+        "Αυτήν τη στιγμή είστε συνδεδεμένοι ως ${ username } για το ${ organizationName }."
+      ],
       "You are currently signed in as ${ username }.": [
         "Είστε συνδεδεμένος/η ως ${ username }."
       ],
@@ -6887,9 +6934,6 @@
         "Θα χρειαστεί να το αποθηκεύσετε ξανά από τη σελίδα δημόσιου συνδέσμου.",
         "Θα χρειαστεί να τα αποθηκεύσετε ξανά από τη σελίδα δημόσιου συνδέσμου."
       ],
-      "You will soon be redirected to PayPal to verify your payment.": [
-        "Θα ανακατευθυνθείτε σύντομα στο Paypal, για να επαληθεύσετε την πληρωμή σας."
-      ],
       "You won't be charged if you cancel before ${ trialEndsOnFormatted }.": [
         "Δε θα χρεωθείτε αν ακυρώσετε πριν από τις ${ trialEndsOnFormatted }."
       ],
@@ -6944,6 +6988,9 @@
       ],
       "Your email will only be used for this one-time verification.": [
         "Το email σας θα χρησιμοποιηθεί μόνο για αυτή την εφάπαξ επαλήθευση."
+      ],
+      "Your files are being re-indexed. You can keep searching - results may be incomplete until it finishes. We'll let you know when it's done.": [
+        "Τα αρχεία σας καταχωρούνται εκ νέου στο ευρετήριο. Μπορείτε να συνεχίσετε την αναζήτηση - τα αποτελέσματα ενδέχεται να μην είναι ολοκληρωμένα μέχρι να ολοκληρωθεί. Θα σας ενημερώσουμε όταν ολοκληρωθεί."
       ],
       "Your files are no longer accessible due to a password reset. Re-upload the old encryption key to regain the access. ${ KeyReactivationButton }": [
         "Τα αρχεία σας δεν είναι πλέον προσβάσιμα, λόγω επαναφοράς κωδικού πρόσβασης. Για να αποκτήσετε ξανά πρόσβαση, ανεβάστε ξανά το παλιό κλειδί κρυπτογράφησης. ${ KeyReactivationButton }"
@@ -7398,6 +7445,12 @@
       "Environment compatible": [
         "Συμβατό με το περιβάλλον"
       ],
+      "Exact host matching": [
+        "Ακριβής αντιστοίχιση κεντρικού υπολογιστή"
+      ],
+      "Exact URL matching": [
+        "Ακριβής αντιστοίχιση URL"
+      ],
       "Expired": [
         "Έχει λήξει"
       ],
@@ -7415,6 +7468,9 @@
       ],
       "Extended address": [
         "Εκτεταμένη διεύθυνση"
+      ],
+      "Extremely Satisfied": [
+        "Εξαιρετικά Ικανοποιημένος"
       ],
       "File": [
         "Αρχείο"
@@ -7476,8 +7532,8 @@
       "Index kinds": [
         "Τύποι ευρετηρίου"
       ],
-      "Initial indexing": [
-        "Αρχικοποίηση ευρετηρίου"
+      "Indexing": [
+        "Δημιουργία ευρετηρίου"
       ],
       "Integrated 2FA authenticator": [
         "Ενσωματωμένος ελεγκτής 2FA"
@@ -7560,6 +7616,9 @@
       "Never expires": [
         "Δε λήγει ποτέ"
       ],
+      "Never fill on this exact URL": [
+        "Ποτέ μη συμπληρώνετε αυτήν ακριβώς τη διεύθυνση URL"
+      ],
       "New password": [
         "Νέος κωδικός"
       ],
@@ -7592,6 +7651,9 @@
       ],
       "Outdated version": [
         "Ξεπερασμένη έκδοση"
+      ],
+      "Parent domain and subdomains (default)": [
+        "Γονικός τομέας και υποτομείς (προεπιλογή)"
       ],
       "Password": [
         "Κωδικός πρόσβασης"
@@ -7646,6 +7708,9 @@
       ],
       "Region": [
         "Περιοχή"
+      ],
+      "Regular expression": [
+        "Κανονική έκφραση"
       ],
       "Replace existing folder or file": [
         "Αντικατάσταση υπάρχοντος φακέλου ή αρχείου"
@@ -7722,6 +7787,9 @@
       "Start date": [
         "Ημερομηνία Έναρξης"
       ],
+      "Starts with": [
+        "Ξεκινάει με"
+      ],
       "State": [
         "Πολιτεία"
       ],
@@ -7748,6 +7816,9 @@
       ],
       "System information": [
         "Πληροφορίες Συστήματος"
+      ],
+      "Tell us more about your experience": [
+        "Πείτε μας περισσότερα για την εμπειρία σας"
       ],
       "Theme": [
         "Θέμα"
@@ -7785,6 +7856,9 @@
       "Uploaded by": [
         "Ανέβηκε από"
       ],
+      "URL wildcard pattern": [
+        "Πρότυπο μπαλαντέρ URL"
+      ],
       "User opted in": [
         "Ο χρήστης επέλεξε να συμμετάσχει"
       ],
@@ -7793,6 +7867,9 @@
       ],
       "Verification code": [
         "Κωδικός επαλήθευσης"
+      ],
+      "Very Dissatisfied": [
+        "Πολύ Δυσαρεστημένος"
       ],
       "Viewer": [
         "Θεατής"
@@ -8183,6 +8260,24 @@
       ]
     },
     "Message": {
+      "'Starts with' matching rule": [
+        "Κανόνας αντιστοίχισης 'Ξεκινά με'"
+      ],
+      "Exact (sub) domain matching rule": [
+        "Ακριβής κανόνας αντιστοίχισης (υπο) τομέα"
+      ],
+      "Exact URL matching rule": [
+        "Κανόνας αντιστοίχισης ακριβούς διεύθυνσης URL"
+      ],
+      "Never fill with this exact URL": [
+        "Ποτέ μην συμπληρώνετε με αυτήν ακριβώς τη διεύθυνση URL"
+      ],
+      "Regular expression rule": [
+        "Κανόνας κανονικής έκφρασης"
+      ],
+      "Wildcard pattern matching rule": [
+        "Κανόνας αντιστοίχισης μοτίβου μπαλαντέρ"
+      ],
       "Your free trial has ended. ${ nonAutoRenewalAction }": [
         "Η δωρεάν δοκιμή σας έχει λήξει. ${ nonAutoRenewalAction }"
       ],
@@ -9057,6 +9152,11 @@
         "Απολαμβάνετε μια τιμή προσφοράς στο τρέχον πλάνο σας. Εάν υποβαθμίσετε τον λογαριασμό σας, θα χάσετε την τιμή προσφοράς και δε θα είναι διαθέσιμη εάν προσπαθήσετε να εγγραφείτε ξανά."
       ]
     },
+    "new_plans: label": {
+      "We're always striving to make ${ config.appName } better. How satisfied are you with your experience?": [
+        "Προσπαθούμε πάντα να βελτιώνουμε το ${ config.appName }. Πόσο ικανοποιημένοι είστε από την εμπειρία σας;"
+      ]
+    },
     "new_plans: Subtext": {
       "Starting from ${ priceLine }": [
         "Ξεκινώντας από ${ priceLine }"
@@ -9506,9 +9606,6 @@
       "All items deleted permanently from trash": [
         "Όλα τα στοιχεία εξαλείφθηκαν οριστικά από τα διαγραμμένα"
       ],
-      "An invitation has been sent": [
-        "Έχει σταλεί μία πρόσκληση"
-      ],
       "Cannot load link": [
         "Αποτυχία φόρτωσης συνδέσμου"
       ],
@@ -9545,17 +9642,11 @@
       "Failed to accept share invitation": [
         "Αποτυχία αποδοχής πρόσκλησης κοινής χρήσης"
       ],
-      "Failed to convert external invitation": [
-        "Αποτυχία μετατροπής εξωτερικής πρόσκλησης"
-      ],
       "Failed to load sharing details": [
         "Αποτυχία φόρτωσης λεπτομερειών κοινής χρήσης"
       ],
       "Failed to move, please try again": [
         "Αποτυχία μετακίνησης, παρακαλούμε δοκιμάστε ξανά"
-      ],
-      "Failed to open document": [
-        "Αποτυχία ανοίγματος εγγράφου"
       ],
       "Failed to reject share invitation": [
         "Αποτυχία απόρριψης πρόσκλησης κοινής χρήσης"
@@ -10540,6 +10631,9 @@
       ],
       "New name": [
         "Νέο όνομα"
+      ],
+      "Optional feedback": [
+        "Προαιρετικά σχόλια"
       ],
       "Organization name": [
         "Όνομα οργανισμού"
@@ -12850,9 +12944,6 @@
       "Payment verification": [
         "Επαλήθευση Πληρωμής"
       ],
-      "PayPal verification failed": [
-        "Η επαλήθευση PayPal απέτυχε"
-      ],
       "Phone numbers": [
         "Αριθμοί Τηλεφώνου"
       ],
@@ -13112,6 +13203,9 @@
       "Upload and share files": [
         "Μεταφορτώστε και μοιραστείτε αρχεία"
       ],
+      "Upload empty file?": [
+        "Μεταφόρτωση κενού αρχείου;"
+      ],
       "Uploaded": [
         "Ανέβηκε"
       ],
@@ -13175,6 +13269,9 @@
       "We weren’t able to confirm that the node was created by ${ claimedKeyAuthor }. The reason is: ${ node.keyAuthor.error.error }": [
         "Δεν μπορέσαμε να επιβεβαιώσουμε ότι ο κόμβος δημιουργήθηκε από τον ${ claimedKeyAuthor }. Ο λόγος είναι: ${ node.keyAuthor.error.error }"
       ],
+      "We'd love to hear from you!": [
+        "Θα χαρούμε να ακούσουμε τη γνώμη σας!"
+      ],
       "Welcome offer": [
         "Προσφορά καλωσορίσματος"
       ],
@@ -13234,6 +13331,26 @@
       ],
       "You’ve got 5 GB of storage": [
         "Έχετε 5 GB αποθηκευτικού χώρου"
+      ]
+    },
+    "Title header for keys table": {
+      "Actions": [
+        "Ενέργειες"
+      ],
+      "Created": [
+        "Δημιουργήθηκε"
+      ],
+      "Expires": [
+        "Λήγει"
+      ],
+      "Fingerprint": [
+        "Δακτυλικό αποτύπωμα"
+      ],
+      "Status": [
+        "Κατάσταση"
+      ],
+      "Type": [
+        "Τύπος"
       ]
     },
     "Today icon tooltip in mini calendar": {
@@ -13332,6 +13449,9 @@
       "Upload a public key to enable sending end-to-end encrypted emails to this email": [
         "Για ενεργοποίηση της αποστολής διατερματικά κρυπτογραφημένων μηνυμάτων προς αυτήν τη διεύθυνση, ανεβάστε ένα δημόσιο κλειδί"
       ],
+      "Version 6 OpenPGP key": [
+        "Κλειδί OpenPGP έκδοσης 6"
+      ],
       "We have sent them an invite to access the item.": [
         "Τους στείλαμε μια πρόσκληση για πρόσβαση στο στοιχείο."
       ]
@@ -13374,6 +13494,11 @@
     "Upsell": {
       "Get Drive for Business": [
         "Αποκτήστε το Drive για Επιχειρήσεις"
+      ]
+    },
+    "user_modal": {
+      "You'll be able to assign roles once the user has accepted the invitation.": [
+        "Θα μπορείτε να αναθέσετε ρόλους μόλις ο χρήστης αποδεχτεί την πρόσκληση."
       ]
     },
     "Validation": {
@@ -13492,6 +13617,9 @@
       ],
       "${ BRAND_NAME } will transfer as much data as possible, starting with your most recent messages.": [
         "Η ${ BRAND_NAME } θα μεταφέρει όσο το δυνατόν περισσότερα δεδομένα, ξεκινώντας από τα πιο πρόσφατα μηνύματά σας."
+      ],
+      "${ modeLabelStong } provides powerful control, but a single error can cause autofill to match and fill data on fraudulent or phishing websites.": [
+        "Το ${ modeLabelStong } παρέχει ισχυρό έλεγχο, αλλά ένα μόνο σφάλμα μπορεί να προκαλέσει την αντιστοίχιση και συμπλήρωση δεδομένων από την αυτόματη συμπλήρωση σε δόλιες ιστοσελίδες ή ιστοσελίδες ηλεκτρονικού \"ψαρέματος\" (phishing)."
       ],
       "Are you sure you want to permanently delete ${ count } contact?": [
         "Είστε βέβαιοι ότι θέλετε να διαγράψετε οριστικά ${ count } επαφή;",

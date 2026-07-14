@@ -195,9 +195,6 @@
       "Connected": [
         "Povezano"
       ],
-      "Contact support": [
-        "Kontakt za podporo"
-      ],
       "Contact us": [
         "Kontaktirajte nas"
       ],
@@ -209,9 +206,6 @@
       ],
       "Continue import": [
         "Nadaljuj z uvozom"
-      ],
-      "Continue to ${ planOrAppName }": [
-        "Nadaljuj v ${ planOrAppName }"
       ],
       "Continue with Free": [
         "Nadaljujte z brezplačnim"
@@ -447,9 +441,6 @@
       "Forgot password?": [
         "Pozabljeno geslo?"
       ],
-      "Forgot recovery method?": [
-        "Ste pozabili način obnovitve?"
-      ],
       "Generate new recovery phrase": [
         "Ustvari novo obnovitveno frazo"
       ],
@@ -570,9 +561,6 @@
       "Load more": [
         "Naloži več"
       ],
-      "Loading verification": [
-        "Nalaganje preverjanja"
-      ],
       "Make admin": [
         "Naredite za skrbnika"
       ],
@@ -662,6 +650,9 @@
       ],
       "Organization": [
         "Organizacija"
+      ],
+      "Pause": [
+        "Premor"
       ],
       "Pay": [
         "Plačilo"
@@ -1086,9 +1077,6 @@
       "Verify domain": [
         "Potrdi domeno"
       ],
-      "Verify now": [
-        "Preveri zdaj"
-      ],
       "View": [
         "Pogled"
       ],
@@ -1191,12 +1179,6 @@
         "${ seats } sedeža ${ LUMO_APP_NAME }",
         "${ seats } sedeži ${ LUMO_APP_NAME }",
         "${ seats } sedežev ${ LUMO_APP_NAME }"
-      ],
-      "${ seats } ${ MEET_APP_NAME } license": [
-        "${ seats } ${ MEET_APP_NAME } licenca",
-        "${ seats } ${ MEET_APP_NAME } licenci",
-        "${ seats } ${ MEET_APP_NAME } licence",
-        "${ seats } ${ MEET_APP_NAME } licenc"
       ],
       "${ seats } writing assistant seat": [
         "${ seats } licenca za pomočnika pri pisanju",
@@ -1928,9 +1910,6 @@
       ],
       "Advanced account and network security in one plan": [
         "Napredna varnost računa in omrežja v enem paketu"
-      ],
-      "Private video calls for the conversations that matter.": [
-        "Zasebni video klici za pomembne pogovore."
       ]
     },
     "color": {
@@ -3061,7 +3040,7 @@
         "Razpoložljiva shramba: ${ storageText }"
       ],
       "Block Google's ability to profile you. Gmail can't see what you do in ${ MAIL_APP_NAME }": [
-        "Onemogočite Googlu, da bi ustvaril vaš profil. Gmail ne more videti, kaj počnete v ${ MAIL_APP_NAME }"
+        "Onemogočite Googlu, da bi ustvaril profil o vas. Gmail ne more videti, kaj počnete v ${ MAIL_APP_NAME }"
       ],
       "Connect your CRM, website, printers, and more.": [
         "Povežite svoj CRM, spletno stran, tiskalnike in drugo."
@@ -3181,7 +3160,7 @@
         "Zdaj lahko s tega naslova pošiljate e-pošto iz ${ BRAND_NAME }."
       ],
       "Your free ${ MAIL_APP_NAME } account comes with limited storage so we'll only import ${ newUserStorageText } of your most recent Gmail messages": [
-        "Vaš brezplačni račun ${ MAIL_APP_NAME } ima omejeno shrambo, zato bomo uvozili le ${ newUserStorageText } vaših najnovejših sporočil Gmail"
+        "Vaš brezplačni račun ${ MAIL_APP_NAME } ima omejeno shrambo, zato bomo uvozili le ${ newUserStorageText } vaših najnovejših sporočil Gmail."
       ],
       "Your free ${ MAIL_APP_NAME } account comes with limited storage so we'll only import your most recent Gmail emails.": [
         "Vaš brezplačni račun ${ MAIL_APP_NAME } ima omejeno shrambo, zato bomo uvozili le vaša najnovejša e-poštna sporočila iz Gmaila."
@@ -3729,9 +3708,6 @@
       "Failed to load OAuth modal.": [
         "Ni bilo mogoče naložiti modal OAuth."
       ],
-      "Failed to load subscription data. Please try again later.": [
-        "Nalaganje podatkov o naročnini uspelo. Prosimo, poizkusite znova kasneje."
-      ],
       "Failed to load the STL preview": [
         "Nalaganje predogleda STL ni uspelo"
       ],
@@ -3780,12 +3756,6 @@
       "Incorrect username": [
         "Nepravilno uporabniško ime"
       ],
-      "Invalid ${ name } code": [
-        "Neveljavna koda ${ name }"
-      ],
-      "Invalid card number": [
-        "Neveljavna številka kartice"
-      ],
       "Invalid code": [
         "Neveljavna koda"
       ],
@@ -3797,9 +3767,6 @@
       ],
       "Invalid email address": [
         "Neveljaven e-poštni naslov"
-      ],
-      "Invalid expiration date": [
-        "Neveljaven datum poteka veljavnosti"
       ],
       "Invalid IBAN": [
         "Neveljaven IBAN"
@@ -4086,11 +4053,11 @@
       "Username must end with a letter or digit": [
         "Uporabniško ime se mora končati s črko ali številko"
       ],
-      "VAT number must start with ${ prefixes }": [
-        "Davčna številka se mora začeti z ${ prefixes }"
-      ],
       "Verification did not succeed, please try again in an hour.": [
         "Preverjanje ni uspelo, poskusite znova čez eno uro."
+      ],
+      "We couldn’t send a verification code using this method.": [
+        "S to metodo nam ni uspelo poslati potrditvenega kode."
       ],
       "We stopped DKIM signing due to problems with your DNS configuration. Please follow the instructions below to resume signing.": [
         "Ustavili smo DKIM podpisovanje zaradi napak v vaši DNS konfiguraciji. Prosimo sledite spodnjim navodilom, da nadaljujete s podpisovanjem."
@@ -4761,9 +4728,6 @@
       ],
       "Insert a security key linked to your ${ BRAND_NAME } Account.": [
         "Vstavite varnostni ključ, povezan z vašim ${ BRAND_NAME } računom."
-      ],
-      "Insert your security key into your device's USB port.": [
-        "Vstavite vaš varnostni ključ v USB vrata vaše naprave."
       ],
       "Security key": [
         "Varnostni ključ"
@@ -5461,9 +5425,6 @@
       "${ appName } needs your permission to ${ enableDesktopNotifications }.": [
         "${ appName } potrebuje vaše dovoljenje za ${ enableDesktopNotifications }."
       ],
-      "${ boldWarning } You will lose access to all current encrypted data in your account if you continue.": [
-        "${ boldWarning } Če nadaljujete, boste izgubili dostop do vseh trenutno šifriranih podatkov v vašem računu."
-      ],
       "${ BRAND_NAME } never shares your information with third parties. Data comes from ${ BRAND_NAME }'s own analyses and Constella Intelligence.": [
         "${ BRAND_NAME } vaših podatkov nikoli ne deli s tretjimi osebami. Podatki izvirajo iz lastnih analiz družbe ${ BRAND_NAME } in družbe Constella Intelligence."
       ],
@@ -5716,9 +5677,6 @@
       "Activity Monitor": [
         "Nadzor dejavnosti"
       ],
-      "Add ${ PLAN_NAMES[PLANS.MEET_BUSINESS] }": [
-        "Dodaj ${ PLAN_NAMES[PLANS.MEET_BUSINESS] }"
-      ],
       "add a recovery method": [
         "dodajte način obnovitve"
       ],
@@ -5787,12 +5745,6 @@
       ],
       "All your changes will be lost.": [
         "Vse vaše spremembe bodo izgubljene."
-      ],
-      "All your contacts will be imported, up to a limit of ${ maxContact }": [
-        "Vsi vaši stiki bodo uvoženi, do meje ${ maxContact }.",
-        "Vsi vaši stiki bodo uvoženi, do meje ${ maxContact }.",
-        "Vsi vaši stiki bodo uvoženi, do meje ${ maxContact }.",
-        "Vsi vaši stiki bodo uvoženi, do meje ${ maxContact }."
       ],
       "Allocated": [
         "Dodeljeno"
@@ -5965,12 +5917,6 @@
       "Create a label for the imported messages, a time range for this import, and the labels you would like to import.": [
         "Ustvarite oznako za uvožena sporočila, določite časovni obseg uvoza in oznake, ki jih želite uvoziti."
       ],
-      "Create a secure cloud for ${ memberCount } member": [
-        "Ustvari varen oblak za ${ memberCount } člana",
-        "Ustvari varen oblak za ${ memberCount } člana",
-        "Ustvari varen oblak za ${ memberCount } člane",
-        "Ustvari varen oblak za ${ memberCount } članov"
-      ],
       "Create and manage sub-accounts and assign them email addresses on your custom domain.": [
         "Ustvarite in upravljajte podračune ter jim dodajte elektronske naslove s svojo lastno domeno."
       ],
@@ -6082,9 +6028,6 @@
         "uporabljenih domen",
         "uporabljenih domen"
       ],
-      "Done! We sent a code to ${ destination }.": [
-        "Končano! Poslali smo kodo na ${ destination }."
-      ],
       "Don’t know your recovery phrase?": [
         "Ne poznate obnovitvene fraze?"
       ],
@@ -6175,12 +6118,6 @@
       "Enter the code from your authenticator app": [
         "Vnesite kodo iz aplikacije za preverjanje pristnosti"
       ],
-      "Enter the code sent to your phone number ${ phone }.": [
-        "Vnesite kodo, poslano na vašo telefonsko številko ${ phone }."
-      ],
-      "Enter the code that was sent to ${ email }. If you can't find the message in your inbox, please check your spam folder.": [
-        "Vnesite kodo, ki je bila poslana na ${ email }. Če ne najdete sporočila v svojem nabiralniku, preverite mapo z neželeno pošto."
-      ],
       "Enter the credentials of the email account you want to import from.": [
         "Vnesite poverilnice e-poštnega računa, iz katerega želite uvoziti podatke."
       ],
@@ -6241,9 +6178,6 @@
       "For users who are switching to ${ MAIL_APP_NAME } from another email service, select the ${ boldAddresses } tab and add all active email addresses before changing the MX record to ensure a smooth transition.": [
         "Za uporabnike, ki prehajajo na ${ MAIL_APP_NAME } iz druge e-poštne storitve, izberite zavihek ${ boldAddresses } in dodajte vse aktivne e-poštne naslove, preden spremenite zapis MX, da zagotovite nemoten prenos."
       ],
-      "Forgot password?": [
-        "Pozabljeno geslo?"
-      ],
       "Friends and family": [
         "Prijatelji in družina"
       ],
@@ -6300,9 +6234,6 @@
       ],
       "If you are having trouble creating your account, please request an invitation and we will respond within one business day.": [
         "Če imate težave z ustvarjanjem računa, lahko zahtevate povabilo in odzvali se bomo v enem delovnem dnevu."
-      ],
-      "If you are signed in somewhere else, you may be able to ${ signedInPasswordResetLink }.": [
-        "Če ste prijavljeni drugje, lahko izvedete ${ signedInPasswordResetLink }."
       ],
       "If you believe this is in error, please contact us ${ contactLink }.": [
         "Če menite, da je prišlo do pomote, se obrnite na nas ${ contactLink }."
@@ -6505,6 +6436,9 @@
       "Make sure you ${ addARecoveryMethod } so that you can get back into your account if you forget your password.": [
         "Poskrbite, da ${ addARecoveryMethod }, da boste lahko ponovno dostopali do svojega računa, če pozabite geslo."
       ],
+      "Manage groups in your identity provider": [
+        "Skupine upravljajte pri vašem ponudniku identitet"
+      ],
       "Manage which ${ BRAND_NAME } applications the members of your organization can access. If disabled, only administrators will have access.": [
         "Upravljajte, do katerih aplikacij ${ BRAND_NAME } lahko dostopajo člani vaše organizacije. Če je to onemogočeno, bodo imeli dostop samo skrbniki."
       ],
@@ -6604,9 +6538,6 @@
       "On": [
         "Vklopljeno"
       ],
-      "Once you reset your password:": [
-        "Ko ponovno nastavite geslo:"
-      ],
       "Open source": [
         "Odprtokoden"
       ],
@@ -6697,9 +6628,6 @@
         "V vrstice vnesite e-poštne naslove uporabnikov",
         "V vrstice vnesite e-poštne naslove uporabnikov"
       ],
-      "Please authenticate your card in the verification tab.": [
-        "Prosim, potrdite svojo kartico na zavihku za preverjanje."
-      ],
       "Please authenticate your payment in the verification tab.": [
         "Prosim, potrdite vaše plačilo na zavihku za preverjanje."
       ],
@@ -6708,9 +6636,6 @@
       ],
       "Please check your file, or try using our ${ csvTemplateButton }.": [
         "Preverite datoteko ali poskusite uporabiti našo ${ csvTemplateButton }."
-      ],
-      "Please enter the 12-word recovery phrase associated with your account.": [
-        "Vnesite obnovitveno frazo z 12 besedami, ki je povezana z vašim računom."
       ],
       "Please fill in all required fields.": [
         "Izpolnite vsa zahtevana polja."
@@ -6732,9 +6657,6 @@
       ],
       "Please try again using a different payment method, or contact your bank.": [
         "Prosimo, poskusite znova z uporabo drugega načina plačila ali se obrnite na vašo banko."
-      ],
-      "Please try again, use a different payment method, or contact PayPal for assistance.": [
-        "Poskusite znova, uporabite drug način plačila ali se za pomoč obrnite na PayPal."
       ],
       "Please use another browser or download the file.": [
         "Prosimo, uporabite drug brskalnik ali prenesite datoteko."
@@ -6789,9 +6711,6 @@
       ],
       "Recently used servers:": [
         "Nedavno uporabljeni strežniki:"
-      ],
-      "RECOMMENDED": [
-        "PRIPOROČENO"
       ],
       "Recommended on trusted devices. ${ keepMeSignedInLearnMoreLink }": [
         "Priporočeno na zaupanja vrednih napravah. ${ keepMeSignedInLearnMoreLink }"
@@ -7201,9 +7120,6 @@
       "Total VPN connections": [
         "Skupno število VPN povezav"
       ],
-      "trusted device": [
-        "zaupanja vredna naprava"
-      ],
       "Two-password mode requires two passwords: one to sign in to your account and one to decrypt your data. (Advanced)": [
         "Način z dvema gesloma zahteva dve gesli: eno za prijavo v vaš račun in drugo za dešifriranje vaših podatkov. (Napredno)"
       ],
@@ -7212,9 +7128,6 @@
       ],
       "Unable to verify recovery file signature. Please contact support.": [
         "Ni mogoče preveriti podpisa datoteke za obnovitev. Prosim, obrnite se na podporo."
-      ],
-      "Unfortunately there is no recovery method saved for this account.": [
-        "Na žalost ni shranjenega načina za obnovitev tega računa."
       ],
       "Unique ID generated by your identity provider, usually in the form of a URL that contains the identity provider’s name within it (e.g. https://idp.example.com/XXXXX).": [
         "Enolični ID, ki ga ustvari vaš ponudnik identitete, običajno v obliki URL-ja, ki vsebuje ime ponudnika identitete (npr. https://idp.example.com/XXXXX)."
@@ -7330,9 +7243,6 @@
       "Want to learn more?": [
         "Želite izvedeti več?"
       ],
-      "Warning:": [
-        "Opozorilo:"
-      ],
       "We advise you to use official ${ VPN_APP_NAME } applications when possible.": [
         "Svetujemo vam, da če je le mogoče, uporabljate uradne aplikacije ${ VPN_APP_NAME }."
       ],
@@ -7359,9 +7269,6 @@
       ],
       "We recommend notifying the organization members and asking them to set up 2FA for their accounts before enforcing the use of 2FA.": [
         "Priporočamo, da obvestite člane organizacije in jih prosite, naj nastavijo dvojno preverjanje pristnosti za svoje račune, preden zahtevate uporabo tega preverjanja."
-      ],
-      "We recommend using your recovery phrase instead.": [
-        "Namesto tega priporočamo uporabo vaše obnovitvene fraze."
       ],
       "We securely store recovery information on your trusted device to prevent you from losing your data": [
         "Varno shranimo podatke za obnovitev na vaši zaupanja vredni napravi, da preprečimo izgubo podatkov."
@@ -7392,12 +7299,6 @@
       ],
       "We’ll send a reset code to ${ boldValue }.": [
         "Poslali bomo kodo za ponastavitev na ${ boldValue }."
-      ],
-      "We’ll send a reset code to the email address you provided for account recovery.": [
-        "Poslali vam bomo kodo za ponastavitev na e-poštni naslov, ki ste ga navedli za obnovitev računa."
-      ],
-      "We’ll send a reset code to the phone number you provided for account recovery.": [
-        "Poslali vam bomo kodo za ponastavitev na telefonsko številko, ki ste jo navedli za obnovitev računa."
       ],
       "When enabling SAML for ${ appName } in your identity provider, you might be prompted to use the callback (ACS) URL and issuer ID. Just copy-paste the data below into your identity provider fields.": [
         "Ko omogočite SAML za ${ appName } pri vašem ponudniku identitete, boste morda pozvani, da uporabite URL povratnega klica (ACS) in ID izdajatelja. Preprosto kopirajte in prilepite spodnje podatke v polja vašega ponudnika identitete."
@@ -7443,6 +7344,9 @@
       ],
       "You already have a free account": [
         "Brezplačen račun že imate"
+      ],
+      "You are currently signed in as ${ username } for ${ organizationName }.": [
+        "Trenutno ste prijavljeni kot ${ username } v (${ organizationName }."
       ],
       "You are currently signed in as ${ username }.": [
         "Trenutno ste prijavljeni kot ${ username }."
@@ -7579,9 +7483,6 @@
       "You will need a ${ BRAND_NAME } address to use ${ MAIL_APP_NAME } and ${ CALENDAR_APP_NAME }": [
         "Za uporabo aplikacij ${ MAIL_APP_NAME } in ${ CALENDAR_APP_NAME } boste potrebovali naslov ${ BRAND_NAME }."
       ],
-      "You will soon be redirected to PayPal to verify your payment.": [
-        "Za preverjanje plačila boste kmalu preusmerjeni na spletno mesto PayPal."
-      ],
       "You won't be charged if you cancel before ${ trialEndsOnFormatted }.": [
         "Ne bo vam zaračunano, če prekličete pred ${ trialEndsOnFormatted }."
       ],
@@ -7599,12 +7500,6 @@
       ],
       "You'll receive the credit reward 2 months after your friend's trial ended.": [
         "Dobitek dobroimetja boste prejeli 2 meseca po koncu preskusne različice vašega prijatelja."
-      ],
-      "You'll then be billed every ${ renewCycle } month at ${ renewAmountStr }. You can cancel at any time.": [
-        "Nato boste vsak ${ renewCycle } mesec prejeli račun v znesku ${ renewAmountStr }. Prekličete lahko kadarkoli.",
-        "Nato boste vsaka ${ renewCycle } meseca prejeli račun v znesku ${ renewAmountStr }. Prekličete lahko kadarkoli.",
-        "Nato boste vsake ${ renewCycle } mesece prejeli račun v znesku ${ renewAmountStr }. Prekličete lahko kadarkoli.",
-        "Nato boste vsakih ${ renewCycle } mesecev prejeli račun v znesku ${ renewAmountStr }. Prekličete lahko kadarkoli."
       ],
       "Your ${ BRAND_NAME } account is currently suspended. After 28 days, emails will no longer be delivered to your inbox, your Drive sharing links will be blocked, and you will not be able to upload new files. To resume normal service, please pay any overdue invoices.": [
         "Vaš račun ${ BRAND_NAME } je trenutno suspendiran. Po 28 dneh e-poštni predal ne bo več prejemal sporočil, vaše povezave za skupno rabo na Disku bodo blokirane in ne boste mogli nalagati novih datotek. Za nadaljnje delovanje storitve plačajte morebitne zapadle račune."
@@ -7772,9 +7667,6 @@
     "invitation status": {
       "Declined": [
         "Zavrnjeno"
-      ],
-      "Owner": [
-        "Lastnik"
       ],
       "Paused": [
         "Začasno zaustavljeno"
@@ -8004,9 +7896,6 @@
       "City": [
         "Mesto"
       ],
-      "Code": [
-        "Koda"
-      ],
       "Code is 6 digits without spaces": [
         "Koda vsebuje 6 števk brez presledkov"
       ],
@@ -8117,9 +8006,6 @@
       ],
       "Don't show this again": [
         "Ne prikazuj več"
-      ],
-      "Drive": [
-        "Drive"
       ],
       "e.g. example.com": [
         "npr. primer.com"
@@ -8754,11 +8640,17 @@
       "Forgot username?": [
         "Pozabljeno uporabniško ime?"
       ],
+      "Frequent sign-in problems": [
+        "Pogoste težave s prijavo"
+      ],
       "Get ${ BRAND_NAME } Pass": [
         "Pridobi ${ BRAND_NAME } Pass"
       ],
       "Get ${ VPN_APP_NAME }": [
         "Pridobi ${ VPN_APP_NAME }."
+      ],
+      "Get help from ${ LUMO_SHORT_APP_NAME }": [
+        "Poiščite pomoč pri ${ LUMO_SHORT_APP_NAME }"
       ],
       "Groups": [
         "Skupine"
@@ -8835,9 +8727,6 @@
       "Pay invoice": [
         "Plačilo računa"
       ],
-      "perform a password reset from your active session": [
-        "ponastavitev gesla iz aktivne seje"
-      ],
       "Privacy policy": [
         "Pravilnik o zasebnosti"
       ],
@@ -8885,20 +8774,6 @@
       ],
       "What’s this?": [
         "Kaj je to?"
-      ]
-    },
-    "Live Chat Modal": {
-      "Live chat is available with ${ planName }": [
-        "Klepet v živo je na voljo z ${ planName }"
-      ],
-      "Open support form": [
-        "Odprite obrazec za podporo"
-      ],
-      "Upgrade subscription": [
-        "Nadgradite naročnino"
-      ],
-      "Upgrade to unlock chat support and other premium features, or use our free support form to report your issue.": [
-        "Nadgradite za odklepanje podpore za klepet in drugih premijskih funkcij, ali uporabite naš brezplačni obrazec za podporo, da prijavite svojo težavo."
       ]
     },
     "Loading info": {
@@ -9080,12 +8955,6 @@
         "${ MEET_APP_NAME } (za ${ quantity } uporabnika)",
         "${ MEET_APP_NAME } (za ${ quantity } uporabnike)",
         "${ MEET_APP_NAME } (za ${ quantity } uporabnikov)"
-      ],
-      "${ seats } ${ MEET_APP_NAME } seat": [
-        "${ seats } sedež ${ MEET_APP_NAME }",
-        "${ seats } sedeža ${ MEET_APP_NAME }",
-        "${ seats } sedeži ${ MEET_APP_NAME }",
-        "${ seats } sedežev ${ MEET_APP_NAME }"
       ]
     },
     "meet_2025: Feature": {
@@ -9130,20 +8999,6 @@
         "Do ${ n } udeleženca",
         "Do ${ n } udeleženci",
         "Do ${ n } udeležencev"
-      ],
-      "Video meetings, ${ n } participant": [
-        "Video sestanki, ${ n } udeleženec",
-        "Video sestanki, ${ n } udeleženca",
-        "Video sestanki, ${ n } udeleženci",
-        "Video sestanki, ${ n } udeležencev"
-      ]
-    },
-    "meet_2025: Info": {
-      "${ seats } seat included": [
-        "${ seats } sedež vključen",
-        "${ seats } sedeža vključena",
-        "${ seats } sedeži vključeni",
-        "${ seats } sedežev vključenih"
       ]
     },
     "Member action": {
@@ -9499,15 +9354,6 @@
       "All basic ${ BRAND_NAME } services (${ MAIL_SHORT_APP_NAME }, ${ VPN_SHORT_APP_NAME }, ${ PASS_SHORT_APP_NAME })": [
         "Vse osnovne storitve ${ BRAND_NAME } (${ MAIL_SHORT_APP_NAME }, ${ VPN_SHORT_APP_NAME }, ${ PASS_SHORT_APP_NAME })"
       ],
-      "Appointment scheduling": [
-        "Načrtovanje sestanka"
-      ],
-      "Appointment scheduling with ${ n } booking page": [
-        "Sestanek načrtovan z ${ n } stranjo za rezervacijo",
-        "Sestanek načrtovan z ${ n } stranema za rezervacijo",
-        "Sestanek načrtovan s ${ n } stranmi za rezervacijo",
-        "Sestanek načrtovan s ${ n } stranmi za rezervacijo"
-      ],
       "Apps for": [
         "Aplikacije za"
       ],
@@ -9564,9 +9410,6 @@
       ],
       "Data breach monitoring": [
         "Spremljanje vdorov v podatke"
-      ],
-      "Data retention policies": [
-        "Pravilniki hrambe podatkov"
       ],
       "Dedicated servers and IP": [
         "Namenski strežniki in IP"
@@ -9675,9 +9518,6 @@
       ],
       "Priority support & live chat": [
         "Prednostna podpora in klepet v živo"
-      ],
-      "Private AI Chat (${ LUMO_APP_NAME })": [
-        "Zasebni pogovor z AI (${ LUMO_APP_NAME })"
       ],
       "Private photo backup": [
         "Zasebna varnostna kopija fotografij"
@@ -9834,9 +9674,6 @@
         "Delitev trezorja (z do ${ n } osebama)",
         "Delitev trezorja (z do ${ n } osebami)",
         "Delitev trezorja (z do ${ n } osebami)"
-      ],
-      "VPN with ad-blocker and malware protection": [
-        "VPN z blokiranjem oglasov in zaščito pred zlonamerno programsko opremo"
       ],
       "We scan the dark web to check if your ${ BRAND_NAME } addresses or aliases have been leaked and alert you immediately if we find anything.": [
         "Pregledujemo temni splet in preverjamo, ali so bili razkriti naslovi ali vzdevki ${ BRAND_NAME }. V primeru uhajanja podatkov vas bomo o tem obvestili."
@@ -10250,12 +10087,6 @@
       ]
     },
     "new_plans: Upsell attribute": {
-      "${ n } country": [
-        "${ n } država",
-        "${ n } državi",
-        "${ n } države",
-        "${ n } držav"
-      ],
       "Access advanced VPN features": [
         "Dostop do naprednih funkcij VPN"
       ],
@@ -10915,17 +10746,6 @@
         "Časovno omejena ponudba."
       ]
     },
-    "password_reset: info": {
-      "**All your existing data** (emails, events, contacts, files, ${ PASS_APP_NAME } entries, etc.) **will be locked** and can only be unlocked with your **old password**.": [
-        "**Vsi vaši obstoječi podatki** (e-pošta, dogodki, stiki, datoteke, vnosi v ${ PASS_APP_NAME } in podobno) **bodo zaklenjeni** in jih lahko odklenete le z vašim **starim geslom**."
-      ],
-      "**All your existing data** (emails, events, contacts, files, ${ PASS_APP_NAME } entries, etc.) **will be locked** and can only be unlocked with your **recovery phrase** or your **old password**.": [
-        "**Vsi vaši obstoječi podatki** (e-pošta, dogodki, stiki, datoteke, vnosi v ${ PASS_APP_NAME } in podobno) **bodo zaklenjeni** in jih lahko odklenete le z vašo **obnovitveno frazo** ali z vašim **starim geslom**."
-      ],
-      "Any **two-factor authentication (2FA)** method on your account will be disabled.": [
-        "Vse metode **dvojnega preverjanja pristnosti (2FA)** na vašem računu bodo onemogočene."
-      ]
-    },
     "passwordless": {
       "All administrators will get access to the key.": [
         "Vsi skrbniki bodo imeli dostop do ključa."
@@ -11110,26 +10930,8 @@
       "terms and conditions": [
         "pravili in pogoji"
       ],
-      "The discount is valid for ${ renewalsWithCoupon } renewal.": [
-        "Kupon velja za ${ renewalsWithCoupon } podaljšanje.",
-        "Kupon velja za ${ renewalsWithCoupon } podaljšanji.",
-        "Kupon velja za ${ renewalsWithCoupon } podaljšanja.",
-        "Kupon velja za ${ renewalsWithCoupon } podaljšanj."
-      ],
-      "The specially discounted price is valid for ${ couponRedemptions } month. Then it will automatically be renewed at ${ renewPriceStr } for 1 month. You can cancel at any time.": [
-        "Posebno znižana cena velja ${ couponRedemptions } mesec. Nato se bo samodejno podaljšala za ${ renewPriceStr } za 1 mesec. Prekličete lahko kadarkoli.",
-        "Posebno znižana cena velja ${ couponRedemptions } meseca. Nato se bo samodejno podaljšala za ${ renewPriceStr } za 1 mesec. Prekličete lahko kadarkoli.",
-        "Posebno znižana cena velja ${ couponRedemptions } mesece. Nato se bo samodejno podaljšala za ${ renewPriceStr } vsak mesec. Prekličete lahko kadarkoli.",
-        "Posebno znižana cena velja ${ couponRedemptions } mesecev. Nato se bo samodejno podaljšala za ${ renewPriceStr } vsak mesec. Prekličete lahko kadarkoli."
-      ],
       "The specially discounted price is valid for the first month. Then it will automatically be renewed at ${ renewPriceStr } every month. You can cancel at any time.": [
         "Posebno znižana cena velja prvi mesec. Nato se bo samodejno podaljšala za ${ renewPriceStr } vsak mesec. Prekličete lahko kadarkoli."
-      ],
-      "The specially discounted price of ${ priceWithDiscount } is valid for ${ couponRedemptions } month. Then it will automatically be renewed at ${ renewPriceStr } for 1 month. You can cancel at any time.": [
-        "Izredno znižana cena ${ priceWithDiscount } velja za ${ couponRedemptions } mesec. Potem se bo samodejno podaljšala mesečno za ${ renewPriceStr }. Naročnino lahko kadarkoli prekinete.",
-        "Izredno znižana cena ${ priceWithDiscount } velja za ${ couponRedemptions } meseca. Potem se bo samodejno podaljšala mesečno za ${ renewPriceStr }. Naročnino lahko kadarkoli prekinete.",
-        "Izredno znižana cena ${ priceWithDiscount } velja za ${ couponRedemptions } mesece. Potem se bo samodejno podaljšala mesečno za ${ renewPriceStr }. Naročnino lahko kadarkoli prekinete.",
-        "Izredno znižana cena ${ priceWithDiscount } velja za ${ couponRedemptions } mesecev. Potem se bo samodejno podaljšala mesečno za ${ renewPriceStr }. Naročnino lahko kadarkoli prekinete."
       ],
       "The specially discounted price of ${ priceWithDiscount } is valid for the first ${ subscriptionLength } month.": [
         "Posebna znižana cena v višini ${ priceWithDiscount } velja za ${ subscriptionLength } mesec.",
@@ -12556,18 +12358,6 @@
         "${ n } uporabniki so bili odstranjeni iz SSO",
         "${ n } uporabnikov je bilo odstranjenih iz SSO"
       ],
-      "${ n } user has joined your organization through your Identity Provider. Review the account now:": [
-        "${ n } uporabnik se je pridružil vaši organizaciji preko vašega ponudnika identitete. Preglejte račun zdaj:",
-        "${ n } uporabnika sta je pridružila vaši organizaciji preko vašega ponudnika identitete. Preglejte računa zdaj:",
-        "${ n } uporabniki so se pridružili vaši organizaciji preko vašega ponudnika identitete. Preglejte račune zdaj:",
-        "${ n } uporabnikov se je pridružilo vaši organizaciji preko vašega ponudnika identitete. Preglejte račune zdaj:"
-      ],
-      "${ n } user is inactive. You can safely remove this user from your organization.": [
-        "${ n } uporabnik je neaktiven. Tega uporabnika lahko varno odstranite iz svoje organizacije.",
-        "${ n } uporabnika sta neaktivna. Ta uporabnika lahko varno odstranite iz svoje organizacije.",
-        "${ n } uporabniki so neaktivni. Te uporabnike lahko varno odstranite iz svoje organizacije.",
-        "${ n } uporabnikov je neaktivnih. Te uporabnike lahko varno odstranite iz svoje organizacije."
-      ],
       "${ n } user is requesting your help to sign in to their ${ BRAND_NAME } Account with single sign-on.": [
         "${ n } uporabnik zahteva vašo pomoč pri prijavi v svoj ${ BRAND_NAME } račun z enotno prijavo (SSO).",
         "${ n } uporabnika zahtevata vašo pomoč pri prijavi v svoj ${ BRAND_NAME } račun z enotno prijavo (SSO).",
@@ -13021,9 +12811,6 @@
       ]
     },
     "Subscription reminder": {
-      "${ CALENDAR_APP_NAME }, ${ DRIVE_SHORT_APP_NAME }, ${ PASS_SHORT_APP_NAME }, ${ VPN_SHORT_APP_NAME }, ${ MEET_SHORT_APP_NAME }, and ${ LUMO_APP_NAME } with premium features": [
-        "${ CALENDAR_APP_NAME }, ${ DRIVE_SHORT_APP_NAME }, ${ PASS_SHORT_APP_NAME }, ${ VPN_SHORT_APP_NAME }, ${ MEET_SHORT_APP_NAME }, in ${ LUMO_APP_NAME } premijskimi funkcijami"
-      ],
       "${ CALENDAR_APP_NAME }, ${ DRIVE_SHORT_APP_NAME }, ${ PASS_SHORT_APP_NAME }, and ${ VPN_SHORT_APP_NAME } with premium features": [
         "${ CALENDAR_APP_NAME }, ${ DRIVE_SHORT_APP_NAME }, ${ PASS_SHORT_APP_NAME } in ${ VPN_SHORT_APP_NAME } s premijskimi funkcijami"
       ],
@@ -13281,12 +13068,6 @@
       ],
       "Version history": [
         "Zgodovina različic"
-      ],
-      "Video meetings, up to ${ PAID_PREMIUM_MAX_PARTICIPANTS } participant": [
-        "Video sestanki, ${ PAID_PREMIUM_MAX_PARTICIPANTS } udeleženec",
-        "Video sestanki, do ${ PAID_PREMIUM_MAX_PARTICIPANTS } udeleženca",
-        "Video sestanki, do ${ PAID_PREMIUM_MAX_PARTICIPANTS } udeleženci",
-        "Video sestanki, do ${ PAID_PREMIUM_MAX_PARTICIPANTS } udeležencev"
       ],
       "Watch the interview": [
         "Oglejte si intervju"
@@ -14207,9 +13988,6 @@
       "Find email or username": [
         "Najdi e-pošto ali uporabniško ime."
       ],
-      "Forgot recovery method": [
-        "Pozabljen način obnovitve"
-      ],
       "Gateway": [
         "Prehod"
       ],
@@ -14351,9 +14129,6 @@
       "No account information was found in any data breaches": [
         "Vaši podatki niso bili izpostavljeni nobenemu kršenju varstva podatkov"
       ],
-      "No recovery method": [
-        "Ni načina obnovitve"
-      ],
       "Open": [
         "Odpri"
       ],
@@ -14413,9 +14188,6 @@
       ],
       "Payment verification": [
         "Preverjanje plačila"
-      ],
-      "PayPal verification failed": [
-        "Preverjanje plačila s PayPal ni uspelo"
       ],
       "Phone": [
         "Telefon"
@@ -14946,9 +14718,6 @@
       "User declined invitation": [
         "Uporabnik je zavrnil vabilo"
       ],
-      "User is a group": [
-        "Uporabnik je skupina"
-      ],
       "Waiting for user to accept the invitation": [
         "Čakanje, da uporabnik sprejme povabilo"
       ]
@@ -15036,12 +14805,6 @@
       ],
       "Confirm all": [
         "Potrdi vse"
-      ],
-      "Could not automatically enable administrator access for ${ n } user, because their encryption keys have been updated in the meanwhile:": [
-        "Samodejna omogočitev skrbniškega dostopa za ${ n } uporabnika ni bila mogoča, ker so bili medtem posodobljeni njegovi šifrirni ključi:",
-        "Samodejna omogočitev skrbniškega dostopa za ${ n } uporabnika ni bila mogoča, ker so bili medtem posodobljeni njuni šifrirni ključi:",
-        "Samodejna omogočitev skrbniškega dostopa za ${ n } uporabnike ni bila mogoča, ker so bili medtem posodobljeni njihovi šifrirni ključi:",
-        "Samodejna omogočitev skrbniškega dostopa za ${ n } uporabnikov ni bila mogoča, ker so bili medtem posodobljeni njihovi šifrirni ključi:"
       ],
       "Enable manually": [
         "Omogoči ročno"

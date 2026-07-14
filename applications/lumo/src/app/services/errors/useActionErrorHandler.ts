@@ -5,6 +5,7 @@ import { useErrorHandler as useProtonErrorHandler } from '@proton/components';
 import { useLumoPlan } from '../../providers/LumoPlanProvider';
 import { useLumoDispatch } from '../../redux/hooks';
 import { onComposerError } from '../../remote/nativeComposerBridgeHelpers';
+import { applyTierLimitRejectionFromApi } from '../../services/usageLimitsStore';
 import { type ErrorContext, LUMO_API_ERRORS } from '../../types';
 import { analyzeError } from './errorAnalyzer';
 import { handleGenerationError, handleTierError } from './errorHandling';
@@ -16,7 +17,7 @@ export const useActionErrorHandler = () => {
 
     const handleActionError = useCallback(
         (error: any, context: ErrorContext) => {
-            const analyzed = analyzeError(error, context);
+            const analyzed = analyzeError(error);
 
             // Don't show validation or abort errors to user
             if (!analyzed.shouldShowToUser) {
@@ -33,6 +34,7 @@ export const useActionErrorHandler = () => {
             switch (analyzed.category) {
                 case 'api':
                     if (analyzed.lumoErrorType === LUMO_API_ERRORS.TIER_LIMIT) {
+                        applyTierLimitRejectionFromApi();
                         dispatch(handleTierError(lumoUserType));
                     } else if (analyzed.lumoErrorType) {
                         dispatch(
@@ -65,7 +67,7 @@ export const useActionErrorHandler = () => {
 
                 default:
                     // Use fallback handler for unknown errors
-                    onComposerError('Unknown');
+                    onComposerError(LUMO_API_ERRORS.UNKNOWN);
                     handleError(error);
                     break;
             }

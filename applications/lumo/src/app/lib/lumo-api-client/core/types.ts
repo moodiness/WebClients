@@ -1,5 +1,4 @@
 /* eslint-disable no-duplicate-imports */
-
 /* Types for the lumo-api-client library.
  *
  * This file contains:
@@ -9,7 +8,6 @@
  *
  * Most types are re-exported to avoid breaking existing imports within the library.
  */
-
 import type { AesGcmCryptoKey } from '../../../crypto/types';
 import type { Base64, RequestId, Status } from '../../../types';
 import {
@@ -17,10 +15,14 @@ import {
     type ChatEndpointGenerationRequest,
     type Decrypted,
     type DecryptedImageDataMessage,
+    type DecryptedServerToolCallMessage,
+    type DecryptedServerToolResultMessage,
     type DecryptedTokenDataMessage,
     type DoneMessage,
     type Encrypted,
     type EncryptedImageDataMessage,
+    type EncryptedServerToolCallMessage,
+    type EncryptedServerToolResultMessage,
     type EncryptedTokenDataMessage,
     type EncryptedWireTurn,
     type ErrorMessage,
@@ -28,6 +30,7 @@ import {
     type GenerationResponseMessageDecrypted,
     type GenerationTarget,
     type HarmfulMessage,
+    type ImageAspectRatio,
     type ImageDataMessage,
     type IngestingMessage,
     type LumoApiGenerationRequest,
@@ -36,6 +39,8 @@ import {
     type RejectedMessage,
     type RequestableGenerationTarget,
     Role,
+    type ServerToolCallMessage,
+    type ServerToolResultMessage,
     type TimeoutMessage,
     type TokenDataMessage,
     type ToolName,
@@ -45,10 +50,14 @@ import {
 import {
     isDecrypted,
     isDecryptedImageDataMessage,
+    isDecryptedServerToolCallMessage,
+    isDecryptedServerToolResultMessage,
     isDecryptedTokenDataMessage,
     isDoneMessage,
     isEncrypted,
     isEncryptedImageDataMessage,
+    isEncryptedServerToolCallMessage,
+    isEncryptedServerToolResultMessage,
     isEncryptedTokenDataMessage,
     isErrorMessage,
     isGenerationResponseMessage,
@@ -58,6 +67,8 @@ import {
     isIngestingMessage,
     isQueuedMessage,
     isRejectedMessage,
+    isServerToolCallMessage,
+    isServerToolResultMessage,
     isTimeoutMessage,
     isTokenDataMessage,
 } from '../../../types-api';
@@ -68,16 +79,21 @@ export {
     type ChatEndpointGenerationRequest,
     type Decrypted,
     type DecryptedImageDataMessage,
+    type DecryptedServerToolCallMessage,
+    type DecryptedServerToolResultMessage,
     type DecryptedTokenDataMessage,
     type DoneMessage,
     type Encrypted,
     type EncryptedImageDataMessage,
+    type EncryptedServerToolCallMessage,
+    type EncryptedServerToolResultMessage,
     type EncryptedTokenDataMessage,
     type ErrorMessage,
     type GenerationResponseMessage,
     type GenerationResponseMessageDecrypted,
     type GenerationTarget,
     type HarmfulMessage,
+    type ImageAspectRatio,
     type ImageDataMessage,
     type IngestingMessage,
     type LumoApiGenerationRequest,
@@ -86,6 +102,8 @@ export {
     type RejectedMessage,
     type RequestableGenerationTarget,
     Role,
+    type ServerToolCallMessage,
+    type ServerToolResultMessage,
     type TimeoutMessage,
     type TokenDataMessage,
     type ToolName,
@@ -98,10 +116,14 @@ export type Turn = WireTurn;
 export {
     isDecrypted,
     isDecryptedImageDataMessage,
+    isDecryptedServerToolCallMessage,
+    isDecryptedServerToolResultMessage,
     isDecryptedTokenDataMessage,
     isDoneMessage,
     isEncrypted,
     isEncryptedImageDataMessage,
+    isEncryptedServerToolCallMessage,
+    isEncryptedServerToolResultMessage,
     isEncryptedTokenDataMessage,
     isErrorMessage,
     isGenerationResponseMessage,
@@ -111,6 +133,8 @@ export {
     isIngestingMessage,
     isQueuedMessage,
     isRejectedMessage,
+    isServerToolCallMessage,
+    isServerToolResultMessage,
     isTimeoutMessage,
     isTokenDataMessage,
 };
@@ -147,11 +171,13 @@ export interface AssistantCallOptions {
     enableExternalTools?: boolean;
     enableImageTools?: boolean;
     enableReasoning?: boolean;
+    modelTier?: 'auto' | 'lumo-lite' | 'lumo-max';
     enableSuggestedQuestions?: boolean;
     requestKey?: AesGcmCryptoKey;
     requestId?: RequestId;
     generateTitle?: boolean;
     autoGenerateEncryption?: boolean;
+    imageAspectRatio?: ImageAspectRatio;
 }
 
 /**

@@ -2330,20 +2330,11 @@
       "Input isn't a valid email or bitcoin address": [
         "L'entrée n'est pas une adresse e-mail ou Bitcoin valide."
       ],
-      "Invalid ${ name } code": [
-        "Le code ${ name } n'est pas valide."
-      ],
-      "Invalid card number": [
-        "Le numéro de carte n’est pas valide."
-      ],
       "Invalid code": [
         "Le code n'est pas valide."
       ],
       "Invalid coupon": [
         "Le code cadeau n'est pas valide."
-      ],
-      "Invalid expiration date": [
-        "La date d'expiration n’est pas valide."
       ],
       "Invalid IBAN": [
         "Cet IBAN n'est pas valide."
@@ -2477,6 +2468,9 @@
       "VAT number must start with ${ prefixes }": [
         "Le numéro de TVA doit commencer par ${ prefixes }."
       ],
+      "We couldn’t send a verification code using this method.": [
+        "Nous n'avons pas pu envoyer le code de vérification en utilisant cette méthode."
+      ],
       "Wrong billing address": [
         "L'adresse de facturation n'est pas correct."
       ]
@@ -2585,6 +2579,9 @@
       ],
       "Security key": [
         "Clé de sécurité"
+      ],
+      "Touch your security key.": [
+        "Touchez votre clé de sécurité."
       ]
     },
     "fido2: Label": {
@@ -3017,9 +3014,6 @@
       "Payments are protected with TLS encryption and Swiss privacy laws.": [
         "Les paiements sont protégés par le chiffrement TLS et par les lois suisses en matière de protection de la vie privée."
       ],
-      "Please authenticate your card in the verification tab.": [
-        "Authentifiez votre carte dans l'onglet de vérification."
-      ],
       "Please authenticate your payment in the verification tab.": [
         "Authentifiez votre paiement dans l'onglet de vérification."
       ],
@@ -3028,9 +3022,6 @@
       ],
       "Please try again using a different payment method, or contact your bank.": [
         "Nous vous invitons à réessayer en utilisant un autre moyen de paiement, ou bien à contacter votre banque."
-      ],
-      "Please try again, use a different payment method, or contact PayPal for assistance.": [
-        "Nous vous invitons à réessayer, à utiliser un autre moyen de paiement ou à contacter PayPal pour obtenir de l'aide."
       ],
       "Price includes all applicable cycle-based discounts and non-expired coupons saved to your account.": [
         "Le prix comprend toutes les réductions applicables et les codes promotionnels non expirés qui sont enregistrés sur votre compte."
@@ -3202,9 +3193,6 @@
       ],
       "You will lose access to ${ planTitle } features on this date.": [
         "À cette date, vous n'aurez plus accès aux fonctionnalités de ${ planTitle }."
-      ],
-      "You will soon be redirected to PayPal to verify your payment.": [
-        "Vous serez bientôt redirigé vers PayPal pour vérifier votre paiement."
       ],
       "You'll then be billed every ${ renewCycle } month at ${ renewAmountStr }. You can cancel at any time.": [
         "Vous serez ensuite facturé tous les ${ renewCycle } mois à ${ renewAmountStr }. Vous pouvez annuler à tout moment.",
@@ -5594,7 +5582,7 @@
         "La fonction ${ feature } est maintenant active."
       ],
       "${ LUMO_SHORT_APP_NAME } writing assistant": [
-        "Assistant d'écriture ${ LUMO_SHORT_APP_NAME }"
+        "Assistant conversationnel ${ LUMO_SHORT_APP_NAME }"
       ],
       "Account restricted": [
         "Compte restreint"
@@ -5718,9 +5706,6 @@
       ],
       "Payment verification": [
         "Vérification du paiement"
-      ],
-      "PayPal verification failed": [
-        "La vérification PayPal n'a pas abouti."
       ],
       "Processing...": [
         "Traitement en cours…"
@@ -5884,6 +5869,11 @@
       ],
       "The user must have an address to request data access": [
         "L'utilisateur doit disposer d'une adresse pour demander l'accès aux données."
+      ]
+    },
+    "user_modal": {
+      "You'll be able to assign roles once the user has accepted the invitation.": [
+        "Vous pourrez attribuer des rôles une fois l'invitation acceptée par l'utilisateur."
       ]
     },
     "Validation": {

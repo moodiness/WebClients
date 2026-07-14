@@ -319,8 +319,14 @@
       "Do not show again when I press": [
         "Bastığımda bir daha görüntülenmesin"
       ],
+      "Do not show this again": [
+        "Bunu bir daha gösterme"
+      ],
       "Don't show this again": [
         "Bunu yeniden gösterme"
+      ],
+      "Done": [
+        "Tamam"
       ],
       "Download this CSV template": [
         "Bu CSV kalıbını indir"
@@ -570,6 +576,12 @@
       ],
       "Regenerate": [
         "Yeniden üret"
+      ],
+      "Regex invalid": [
+        "Regex geçersiz"
+      ],
+      "Regex unsafe": [
+        "Regex güvenli değil"
       ],
       "Reject": [
         "Reddet"
@@ -1212,6 +1224,12 @@
       "Failed to set default mailbox": [
         "Varsayılan e-posta kutusu ayarlanamadı"
       ],
+      "Failed to start SSH agent: ${ errorMessage }": [
+        "SSH agent başlatılamadı: ${ errorMessage }"
+      ],
+      "Failed to stop SSH agent: ${ errorMessage }": [
+        "SSH agent durdurulamadı: ${ errorMessage }"
+      ],
       "Failed to sync aliases": [
         "Takma adlar eşitlenemedi"
       ],
@@ -1607,6 +1625,9 @@
       "${ PASS_APP_NAME } will only import logins, notes, credit cards and identities.": [
         "${ PASS_APP_NAME } yalnızca oturum açma, not, kredi kartı ve kimlik kayıtlarını içe aktarır."
       ],
+      "${ PASS_APP_NAME } will use the SSH keys saved in your vaults.": [
+        "${ PASS_APP_NAME } kasalarınızda kaydedilmiş SSH anahtarlarını kullanacaktır."
+      ],
       "${ PASS_SHORT_APP_NAME } offline mode enabled.": [
         "${ PASS_SHORT_APP_NAME } çevrim dışı kipi açıldı."
       ],
@@ -1986,6 +2007,9 @@
       "finance": [
         "finans"
       ],
+      "Find \"OpenSSH Authentication Agent\", right-click Properties.": [
+        "\"OpenSSH Authentication Agent\" hizmetini bulun ve üzerine sağ tıklayıp Özellikleri seçin."
+      ],
       "Follow those steps to import your data with a generic CSV:": [
         "Verilerinizi sıradan bir CSV dosyası ile içe aktarmak için şu adımları izleyin:"
       ],
@@ -2026,6 +2050,9 @@
       ],
       "Identity confirmed": [
         "Kimlik onaylandı"
+      ],
+      "If you do not plan to use the SSH agent on another paid account, remember to disable this setting before switching to that account.": [
+        "SSH agent'ı başka bir ücretli hesapta kullanmayı planlamıyorsanız o hesaba geçmeden önce bu ayarı devre dışı bırakmayı unutmayın."
       ],
       "Import the CSV file below.": [
         "Aşağıdan CSV dosyasını içe aktarın."
@@ -2136,6 +2163,9 @@
       "Low Priority": [
         "Düşük Öncelik"
       ],
+      "Make sure to keep ${ PASS_APP_NAME } running (can be minimized) for the SSH agent to stay active. SSH keys with passphrase are currently not supported.": [
+        "SSH agent'ın aktif kalması için ${ PASS_APP_NAME } uygulamasının çalışır durumda olduğundan emin olun (pencere küçültülmüş olabilir). Parola gerektiren SSH anahtarları şu anda desteklenmemektedir."
+      ],
       "Manager": [
         "Yönetici"
       ],
@@ -2165,7 +2195,8 @@
         "\"${ payload.content.name }\" içindeki tüm ögeler taşınıyor"
       ],
       "Moving an item to another vault will erase its secure links.": [
-        "Başka bir kasaya taşınan ögenin güvenli bağlantıları silinir."
+        "Bir ögeyi başka bir kasaya taşımak onun güvenli bağlantılarını siler.",
+        "Ögeleri başka bir kasaya taşımak onların güvenli bağlantılarını siler."
       ],
       "Moving items": [
         "Ögeler taşınıyor"
@@ -2200,6 +2231,9 @@
       "No network connection": [
         "Ağ bağlantısı yok"
       ],
+      "No SSH keys found in ${ PASS_SHORT_APP_NAME }. Create SSH key items to use with the agent.": [
+        "${ PASS_SHORT_APP_NAME } içinde SSH anahtarı bulunamadı. Aracı ile birlikte kullanmak üzere SSH anahtarı öğeleri oluşturun."
+      ],
       "No vaults available.": [
         "Kullanılabilecek bir kasa yok."
       ],
@@ -2223,6 +2257,9 @@
       ],
       "Only tokens that expired in the last 30 days are shown. Older tokens are automatically deleted.": [
         "Yalnızca son 30 gün içinde süresi dolan kodlar görüntülenir. Daha eski kodlar otomatik olarak silinir."
+      ],
+      "Open \"Services\" (you can use the Windows search bar or press Win+R and enter services.msc).": [
+        "\"Hizmetler\"i açın (Windows arama çubuğunu kullanabilir veya Win+R tuşlarına basıp services.msc yazabilirsiniz)."
       ],
       "Open your Safari settings for the extension and verify site permissions are enabled for ${ BRAND_NAME } domains": [
         "Eklenti için Safari ayarlarını açın ve site izinlerinin ${ BRAND_NAME } etki alanı için açık olduğunu doğrulayın"
@@ -2248,6 +2285,9 @@
       "Passwords older than ${ MAX_PASSWORD_HISTORY_RETENTION_WEEKS } week are automatically deleted from history.": [
         "${ MAX_PASSWORD_HISTORY_RETENTION_WEEKS } haftadan eski parolalar geçmişten otomatik olarak silinir.",
         "${ MAX_PASSWORD_HISTORY_RETENTION_WEEKS } haftadan eski parolalar geçmişten otomatik olarak silinir."
+      ],
+      "Paste the following command in your terminal:": [
+        "Aşağıdaki komutu terminalinize yapıştırın:"
       ],
       "Paused": [
         "Duraklatıldı"
@@ -2396,6 +2436,9 @@
       "Protected by ${ PROTON_SENTINEL_LINK }, our advanced account protection program": [
         "Gelişmiş hesap koruma programımız ${ PROTON_SENTINEL_LINK } tarafından korunuyor"
       ],
+      "Ranked by field (title first, then username or email, website, notes) and match precision (exact, starts with, contains).": [
+        "Alanlara göre (önce başlık, ardından kullanıcı adı veya e-posta adresi, web sitesi, notlar) ve eşleşme hassasiyetine göre (tam eşleşme, şununla başlar, içeriyor) sıralanmıştır."
+      ],
       "Read item": [
         "Öge okuma"
       ],
@@ -2476,6 +2519,9 @@
       ],
       "Session timed out": [
         "Oturum zaman aşımına uğradı"
+      ],
+      "Set \"Startup type\" to Disabled, click OK.": [
+        "\"Başlangıç türünü\" \"Devre Dışı\" olarak ayarlayın ve TAMAM'a tıklayın."
       ],
       "Set by your organization": [
         "Kuruluşunuz tarafından ayarlanmış"
@@ -2619,6 +2665,9 @@
       "This will reject the device **${ name }** that tried signing into your ${ BRAND_NAME } account on **${ date }**.": [
         "Bu işlem, **${ date }** tarihinde ${ BRAND_NAME } hesabınızda oturum açmayı deneyen **${ name }** aygıtına izin vermeyecek."
       ],
+      "Tip: add it to your .bashrc or .zshrc file so it runs automatically when you open the terminal.": [
+        "İpucu: Terminali açtığınızda otomatik olarak çalışması için bunu .bashrc veya .zshrc dosyanıza ekleyin."
+      ],
       "To keep receiving emails transfer these aliases to a different mailbox:": [
         "E-posta almayı sürdürmek için bu takma adları farklı bir e-posta kutusuna aktarın:"
       ],
@@ -2633,6 +2682,9 @@
       ],
       "To set up biometrics unlock, ${ PASS_APP_NAME } requires a new browser permission. After you accept it, the extension will reload. Please re-open this page afterwards.": [
         "Biyometri ile kilit açmak için ${ PASS_APP_NAME } uygulamasına yeni bir tarayıcı izni verilmesi gerekiyor. İzni verdikten sonra eklenti yeniden yüklenecek. Ardından bu sayfayı yeniden açın."
+      ],
+      "To use ${ PASS_APP_NAME } SSH agent on Windows, the OpenSSH service must be disabled.": [
+        "Windows'ta ${ PASS_APP_NAME } SSH agent kullanmak için OpenSSH hizmetinin devre dışı bırakılması gerekir."
       ],
       "Trusted by over 50,000 business users and 100 million accounts around the world.": [
         "Dünya çapında 50.000 üzerinde kurumsal kullanıcı ve 100 milyon hesap tarafından güveniliyor."
@@ -2660,9 +2712,6 @@
       ],
       "Unlock ${ PASS_SHORT_APP_NAME } with your second password": [
         "${ PASS_SHORT_APP_NAME } uygulamasının kilidini açmak için ikinci parolanızı kullanın"
-      ],
-      "Unlock with biometrics": [
-        "Kilidi biyometri ile aç"
       ],
       "Unpinning item...": [
         "Ögenin sabitlemesi kaldırılıyor..."
@@ -3025,6 +3074,9 @@
       "Address details": [
         "Adres bilgileri"
       ],
+      "Advanced": [
+        "Gelişmiş"
+      ],
       "Alias": [
         "Takma ad"
       ],
@@ -3070,6 +3122,9 @@
       "Bank Name": [
         "Banka adı"
       ],
+      "Basic": [
+        "Temel"
+      ],
       "Besides storing your logins, ${ PASS_APP_NAME } protects your identity with an integrated email alias feature. Whenever you sign up for a new online account, ${ PASS_APP_NAME } can automatically create an alias to keep your actual email address protected. ": [
         "Oturum açma bilgilerinizi saklamanın yanında ${ PASS_APP_NAME }, bütünleşik bir e-posta takma adı özelliği ile kimliğinizi korur. Yeni bir çevrim içi hesap açtığınızda, ${ PASS_APP_NAME } gerçek e-posta adresinizi korumak için otomatik olarak bir takma ad oluşturabilir. "
       ],
@@ -3102,6 +3157,9 @@
       ],
       "Catch-All": [
         "Tümünü toplama"
+      ],
+      "Check": [
+        "Kontrol et"
       ],
       "Checkbox": [
         "İşaret kutusu"
@@ -3267,6 +3325,12 @@
       ],
       "Enter email or username": [
         "E-posta adresi ya da kullanıcı adı yazın"
+      ],
+      "Exact host matching": [
+        "Tam ana bilgisayar eşleşmesi"
+      ],
+      "Exact URL matching": [
+        "Tam URL eşleşmesi"
       ],
       "Experimental": [
         "Deneysel"
@@ -3595,6 +3659,9 @@
       "Never": [
         "Asla"
       ],
+      "Never fill on this exact URL": [
+        "Bu URL'yi asla doldurma"
+      ],
       "New": [
         "Yeni"
       ],
@@ -3657,6 +3724,9 @@
       ],
       "Owner": [
         "Sahibi"
+      ],
+      "Parent domain and subdomains (default)": [
+        "Ana etki alanı ve alt etki alanları (varsayılan)"
       ],
       "Passkey": [
         "Geçiş anahtarı"
@@ -3768,6 +3838,12 @@
       ],
       "Reddit handle": [
         "Reddit takma adı"
+      ],
+      "Regular expression": [
+        "Düzenli ifade"
+      ],
+      "Relevant": [
+        "İlgili"
       ],
       "Remove link": [
         "Bağlantıyı kaldır"
@@ -3894,6 +3970,9 @@
       ],
       "SSN": [
         "SGN"
+      ],
+      "Starts with": [
+        "Şununla başlar"
       ],
       "State or province": [
         "İl ya da bölge"
@@ -4023,6 +4102,12 @@
       ],
       "Update": [
         "Güncelle"
+      ],
+      "URL wildcard pattern": [
+        "URL genel arama karakteri deseni"
+      ],
+      "Use ${ PASS_APP_NAME } as SSH agent": [
+        "SSH agent olarak ${ PASS_APP_NAME } kullanın"
       ],
       "Use for AI agent": [
         "Yapay zeka aracısı için kullan"
@@ -4160,6 +4245,24 @@
       "${ count } item": [
         "${ count } öge",
         "${ count } öge"
+      ],
+      "'Starts with' matching rule": [
+        "'Şununla başlayan' eşleştirme kuralı"
+      ],
+      "Exact (sub) domain matching rule": [
+        "Tam (alt) etki alanı eşleştirme kuralı"
+      ],
+      "Exact URL matching rule": [
+        "Tam URL eşleştirme kuralı"
+      ],
+      "Never fill with this exact URL": [
+        "Bu tam URL'yi asla doldurma"
+      ],
+      "Regular expression rule": [
+        "Düzenli ifade kuralı"
+      ],
+      "Wildcard pattern matching rule": [
+        "genel arama karakter deseni eşleştirme kuralı"
       ],
       "You can drag and drop the selected item to another vault": [
         "Seçilmiş ögeyi sürükleyip başka bir kasaya bırakabilirsiniz",
@@ -4460,6 +4563,23 @@
         "${ url } üzerinde kullanılmış"
       ]
     },
+    "Result": {
+      "Enter a URL to check to see if your current rule is matching the URL": [
+        "Mevcut kuralınızın bu URL ile eşleşip eşleşmediğini kontrol etmek için bir URL yazın"
+      ],
+      "The rule is matching this URL": [
+        "Kural bu URL ile eşleşiyor"
+      ],
+      "The rule is NOT matching this URL": [
+        "Kural bu URL ile EŞLEŞMİYOR"
+      ],
+      "This URL will be blocked from autofill": [
+        "Bu URL otomatik doldurma özelliğinden engellenecek"
+      ],
+      "This URL will NOT be blocked from autofill": [
+        "Bu URL otomatik doldurma özelliğinden engellenmeyecek"
+      ]
+    },
     "Security Center - Info": {
       "${ name } and ${ remainingCount } other potential leaks detected. Turn on ${ DARK_WEB_MONITORING_NAME } to view details. ${ link }": [
         "${ name } ve ${ remainingCount } diğer olası veri sızıntısı bulundu. Ayrıntıları görüntülemek için ${ DARK_WEB_MONITORING_NAME } özelliğini açın. ${ link }"
@@ -4611,6 +4731,12 @@
       "Random prefix generation successfully enabled": [
         "Rastgele ön ek oluşturma özelliği açıldı"
       ],
+      "SSH agent successfully started": [
+        "SSH agent başarıyla başlatıldı"
+      ],
+      "SSH agent successfully stopped": [
+        "SSH agent başarıyla durduruldu"
+      ],
       "Vaults can’t contain more than ${ targetMaxMembers } user.": [
         "Kasalarda ${ targetMaxMembers } taneden fazla kullanıcı bulunamaz.",
         "Kasalarda ${ targetMaxMembers } taneden fazla kullanıcı bulunamaz"
@@ -4657,6 +4783,9 @@
       ],
       "Add mailbox": [
         "E-posta kutusu ekle"
+      ],
+      "Adjust autofill behaviors to change where logins are suggested.": [
+        "Otomatik doldurma davranışlarını ayarlayarak oturum açma bilgilerinin önerileceği yerleri değiştirin."
       ],
       "Agent setup instructions": [
         "Aracı kurulum yönergeleri"
@@ -4857,6 +4986,9 @@
       "Last modified": [
         "Son değiştirilme"
       ],
+      "Learn more": [
+        "Ayrıntılı bilgi alın"
+      ],
       "Leave this item?": [
         "Bu ögeyi bırakmak istiyor musunuz?"
       ],
@@ -5017,6 +5149,9 @@
       "Review and share": [
         "Gözden geçirip paylaş"
       ],
+      "Screenshot of OpenSSH service on Windows": [
+        "Windows'ta OpenSSH hizmetinin ekran görüntüsü"
+      ],
       "Secure your data": [
         "Verilerinizi koruyun"
       ],
@@ -5038,6 +5173,9 @@
       "Settings": [
         "Ayarlar"
       ],
+      "Setup ${ PASS_APP_NAME } SSH Agent": [
+        "${ PASS_APP_NAME } SSH Agent'ı Kur"
+      ],
       "Setup offline mode": [
         "Çevrim dışı kipi kur"
       ],
@@ -5055,6 +5193,9 @@
       ],
       "SPF (Optional)": [
         "SPF (isteğe bağlı)"
+      ],
+      "SSH Agent": [
+        "SSH Agent"
       ],
       "Status": [
         "Durum"
@@ -5074,6 +5215,9 @@
       "Sync your aliases from SimpleLogin": [
         "Takma adlarınızı SimpleLogin ile eşitleyin"
       ],
+      "Test a URL against this rule": [
+        "Bir URL'yi bu kurala göre test et"
+      ],
       "Transfer ownership": [
         "Sahipliği aktar"
       ],
@@ -5088,6 +5232,9 @@
       ],
       "Update available": [
         "Güncelleme yayınlanmış"
+      ],
+      "URL matching": [
+        "URL eşleştirme"
       ],
       "Vault": [
         "Kasa"
@@ -5203,6 +5350,9 @@
     "Warning": {
       "${ BRAND_NAME } password is required": [
         "${ BRAND_NAME } parolası gereklidir"
+      ],
+      "${ modeLabelStong } provides powerful control, but a single error can cause autofill to match and fill data on fraudulent or phishing websites.": [
+        "${ modeLabelStong } güçlü bir kontrol sağlar ancak tek bir hata bile otomatik doldurma özelliğinin sahte veya kimlik avı amaçlı web sitelerindeki verilerle eşleşip bu verileri doldurmasına neden olabilir."
       ],
       "${ PASS_SHORT_APP_NAME } offline mode disabled.": [
         "${ PASS_SHORT_APP_NAME } çevrim dışı kipi kapatıldı."
@@ -5405,6 +5555,9 @@
       "Something went wrong while starting ${ PASS_APP_NAME }. Please try refreshing or reloading the extension": [
         "${ PASS_APP_NAME } başlatılırken bir sorun çıktı. Lütfen eklentiyi yenilemeyi ya da yeniden yüklemeyi deneyin"
       ],
+      "SSH agent requires using SSH keys, which is not available in your plan.": [
+        "SSH agent tarifenizde bulunmayan SSH anahtarlarının kullanılmasını gerektirir."
+      ],
       "The alias prefix cannot be longer than 40 characters": [
         "Takma ad ön ekiniz 40 karakterden uzun olamaz"
       ],
@@ -5413,6 +5566,9 @@
       ],
       "This email address will no longer be monitored for data breaches.": [
         "Bu e-posta adresi artık veri sızıntıları için izlenmeyecek."
+      ],
+      "This item can't be suggested for autofill due to the \"${ neverModeDescriptionStrong }\". Add another URL if you want this item to autofill.": [
+        "Bu öğe \"${ neverModeDescriptionStrong }\" nedeniyle otomatik doldurma için önerilemez. Bu öğenin otomatik olarak doldurulmasını istiyorsanız başka bir URL ekleyin."
       ],
       "This item is currently shared. Deleting it will remove access for all other users.": [
         "Bu öge şu anda paylaşılıyor. Silerseniz diğer kullanıcıların erişimi kaldırılacak."

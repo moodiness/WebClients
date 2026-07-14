@@ -470,6 +470,12 @@
       "Go to settings": [
         "Gå till inställningar"
       ],
+      "Go to the first available appointment": [
+        "Gå till första lediga tid"
+      ],
+      "Go to the next available appointment": [
+        "Gå till nästa lediga tid"
+      ],
       "Got it": [
         "Förstått"
       ],
@@ -1138,6 +1144,9 @@
       ],
       "Writing assistant": [
         "Skrivassistent"
+      ],
+      "Writing assistant seats": [
+        "Användarplatser för skrivassistent"
       ]
     },
     "Alarm notification": {
@@ -1983,6 +1992,12 @@
       ],
       "Unlimited favorites for quick access": [
         "Obegränsade favoriter för snabb åtkomst"
+      ],
+      "Upload and query multiple large files": [
+        "Ladda upp och sök i flera stora filer"
+      ],
+      "Upload and query small files": [
+        "Ladda upp och sök i små filer"
       ],
       "Web search access": [
         "Webbsökningsåtkomst"
@@ -3224,6 +3239,9 @@
       "Ensure you can still access your account and data even if you lose your ${ BRAND_NAME } password.": [
         "Se till att du fortfarande kan komma åt ditt konto och dina data även om du förlorar ditt ${ BRAND_NAME }-lösenord."
       ],
+      "For a seamless onboarding of your team to ${ BRAND_NAME }, import your data from Google, Outlook, and others.": [
+        "För en smidig introduktion av ditt team till ${ BRAND_NAME }, importera dina data från Google, Outlook och andra."
+      ],
       "Get notified if your password or other data was leaked from a third-party service.": [
         "Bli aviserad om ditt lösenord eller annan data har läckt från en tjänst från tredje part."
       ],
@@ -3846,12 +3864,6 @@
       "Interval cannot be empty": [
         "Intervall kan inte vara tomt"
       ],
-      "Invalid ${ name } code": [
-        "Ogiltig ${ name }-kod"
-      ],
-      "Invalid card number": [
-        "Ogiltigt kortnummer"
-      ],
       "Invalid code": [
         "Ogiltig kod"
       ],
@@ -3860,9 +3872,6 @@
       ],
       "Invalid email address": [
         "Ogiltig e-postadress"
-      ],
-      "Invalid expiration date": [
-        "Ogiltigt förfallodatum"
       ],
       "Invalid IBAN": [
         "Ogiltigt IBAN"
@@ -3878,6 +3887,9 @@
       ],
       "Invalid public key file": [
         "Ogiltig offentlig nyckelfil"
+      ],
+      "Invalid VAT number": [
+        "Ogiltigt momsregistreringsnummer"
       ],
       "Invalid verification code": [
         "Ogiltig verifieringskod"
@@ -3921,6 +3933,9 @@
       ],
       "Network error": [
         "Nätverksfel"
+      ],
+      "No booking page data received": [
+        "Ingen information om bokningssida har mottagits"
       ],
       "No calendars found to import": [
         "Inga kalendrar hittades att importera"
@@ -3986,6 +4001,12 @@
       ],
       "Please activate your search again": [
         "Aktivera din sökning igen"
+      ],
+      "Please check if your ABN is registered for cross-border VAT": [
+        "Vänligen kontrollera om ditt ABN är registrerat för gränsöverskridande moms"
+      ],
+      "Please complete the billing details": [
+        "Vänligen fyll i faktureringsdetaljerna"
       ],
       "Please configure a custom domain before adding addresses.": [
         "Konfigurera en anpassad domän innan du lägger till adresser."
@@ -4057,6 +4078,9 @@
       ],
       "Request timed out": [
         "Förfrågan gjorde timeout"
+      ],
+      "Reverse charge scheme is not supported for this plan": [
+        "Systemet med omvänd skattskyldighet stöds inte för detta paket"
       ],
       "Self invitation not allowed": [
         "Självinbjudan är inte tillåten"
@@ -4172,6 +4196,9 @@
       "Unexpected error, we can't import the contacts": [
         "Oväntat fel, vi kan inte importera kontakterna"
       ],
+      "Unexpected error, we can't import the files": [
+        "Oväntat fel, vi kan inte importera filerna"
+      ],
       "Unknown error": [
         "Okänt fel"
       ],
@@ -4186,6 +4213,12 @@
       ],
       "Validation error": [
         "Verifieringsfel"
+      ],
+      "VAT number must start with ${ prefixes }": [
+        "Momsregistreringsnumret måste börja med ${ prefixes }"
+      ],
+      "We couldn’t send a verification code using this method.": [
+        "Vi kunde inte skicka en verifieringskod med den här metoden."
       ],
       "Wrong billing address": [
         "Fel faktureringsadress"
@@ -4705,6 +4738,9 @@
       ],
       "Security key": [
         "Säkerhetsnyckel"
+      ],
+      "Touch your security key.": [
+        "Tryck din säkerhetsnyckel."
       ]
     },
     "fido2: Label": {
@@ -5240,6 +5276,12 @@
       "${ LUMO_APP_NAME } includes ${ BRAND_NAME } Scribe writing assistant": [
         "${ LUMO_APP_NAME } inkluderar ${ BRAND_NAME } Scribe-skrivassistent"
       ],
+      "${ MEET_APP_NAME } is an end-to-end encrypted video conferencing solution. Add it to your plan to host secure meetings.": [
+        "${ MEET_APP_NAME } är en end-to-end-krypterad videokonferenslösning. Lägg till det i ditt paket för att hålla säkra möten."
+      ],
+      "${ MEET_APP_NAME } seats": [
+        "${ MEET_APP_NAME }-användarplatser"
+      ],
       "${ MEET_APP_NAME } video call": [
         "${ MEET_APP_NAME } videosamtal"
       ],
@@ -5299,6 +5341,9 @@
       ],
       "${ VPN_APP_NAME } is masking your IP address, so websites can’t identify you.": [
         "${ VPN_APP_NAME } maskerar din IP-adress så webbplatser inte kan identifiera dig."
+      ],
+      "${ VPN_SHORT_APP_NAME } hides your traffic. ${ PASS_SHORT_APP_NAME } hides your identity\n— unlimited **hide-my-email aliases** and **dark-web alerts** if your data is ever leaked.": [
+        "${ VPN_SHORT_APP_NAME } döljer din trafik. ${ PASS_SHORT_APP_NAME } döljer din identitet\n— obegränsade **hide-my-email-alias** och **dark-web-varningar** om dina data någonsin läcks."
       ],
       "(${ memberCount } member)": [
         "(${ memberCount } medlem)",
@@ -5439,6 +5484,9 @@
       ],
       "Are you sure you want to discard your import?": [
         "Är du säker på att du vill kasta din import?"
+      ],
+      "Ask your admin to upgrade the plan or remove a page from the Booking pages sidebar.": [
+        "Be din admin att uppgradera ditt paket eller ta bort en sida från sidofältet för bokningssidor."
       ],
       "At least ${ BETTER_PASSWORD_LENGTH } characters": [
         "Minst ${ BETTER_PASSWORD_LENGTH } tecken"
@@ -5792,6 +5840,9 @@
       "If you don't find the email in your inbox, please check your spam folder.": [
         "Om du inte hittar e-postmeddelandet i din inkorg, kontrollera din skräppostmapp."
       ],
+      "If you lost access to your authenticator app, you can use 1 of the 16 backup recovery codes provided when your set up two-factor authentication. ${ learnMoreLink }": [
+        "Om du har förlorat åtkomsten till din autentiseringsapp kan du använda 1 av de 16 återställningskoderna för säkerhetskopiering som tillhandahölls när du konfigurerade tvåfaktorsautentisering. ${ learnMoreLink }"
+      ],
       "If you proceed with the downgrade, you will lose access to ${ MAIL_APP_NAME } and ${ VPN_APP_NAME } paid features.": [
         "Om du fortsätter med nedgraderingen förlorar du åtkomst till betalfunktioner för ${ MAIL_APP_NAME } och ${ VPN_APP_NAME }."
       ],
@@ -5955,6 +6006,12 @@
       "New": [
         "Ny"
       ],
+      "No appointments available": [
+        "Inga lediga tider tillgängliga"
+      ],
+      "No appointments available this week": [
+        "Inga lediga tider denna vecka"
+      ],
       "No calendar available; please delete the booking page.": [
         "Ingen kalender tillgänglig, ta bort bokningssidan."
       ],
@@ -5963,6 +6020,9 @@
       ],
       "No email address": [
         "Ingen e-postadress"
+      ],
+      "No future appointments available": [
+        "Inga framtida möten tillgängliga"
       ],
       "No group found": [
         "Ingen grupp hittades"
@@ -6054,9 +6114,6 @@
       "PGP/MIME automatically sends the message using the current composer mode.": [
         "PGP/MIME skickar automatiskt meddelandet med det aktuella kompositörsläget."
       ],
-      "Please authenticate your card in the verification tab.": [
-        "Autentisera ditt kort på verifieringsfliken."
-      ],
       "Please authenticate your payment in the verification tab.": [
         "Autentisera din betalning på verifieringsfliken."
       ],
@@ -6096,9 +6153,6 @@
       ],
       "Please try again using a different payment method, or contact your bank.": [
         "Försök igen med en annan betalningsmetod eller kontakta din bank."
-      ],
-      "Please try again, use a different payment method, or contact PayPal for assistance.": [
-        "Försök igen, använd en annan betalningsmetod eller kontakta PayPal för hjälp."
       ],
       "Please wait while we look for contacts that can be re-signed with the primary encryption key.": [
         "Vänta medan vi letar efter kontakter som kan signeras om med den primära krypteringsnyckeln."
@@ -6291,6 +6345,9 @@
       "This booking page cannot be edited, the associated calendar is disabled": [
         "Denna bokningssida kan inte redigeras, den associerade kalendern är inaktiverad"
       ],
+      "This booking was made via ${ CALENDAR_APP_NAME }, part of ${ BRAND_NAME }'s suite of privacy-first products.": [
+        "Denna bokning gjordes via ${ CALENDAR_APP_NAME }, en del av ${ BRAND_NAME }s serie med produkter som sätter integriteten främst."
+      ],
       "This event has been updated by the organizer. Would you like to change your answer only for this occurrence in this series?": [
         "Denna händelse har uppdaterats av organisatören. Vill du ändra ditt svar endast för denna förekomst i denna serie?"
       ],
@@ -6326,6 +6383,9 @@
       ],
       "To add a new booking page, ask your admin to upgrade your plan.": [
         "För att lägga till en ny bokningssida, be din administratör att uppgradera ditt paket."
+      ],
+      "To add a new booking page, remove an existing one from the Booking pages sidebar.": [
+        "För att lägga till en ny bokningssida, ta bort en befintlig från sidofältet för bokningssidor."
       ],
       "To add a new booking page, upgrade your plan.": [
         "För att lägga till en ny bokningssida, uppgradera ditt paket."
@@ -6453,6 +6513,9 @@
       "What do you want to call this booking page?": [
         "Vad vill du kalla denna bokningssida?"
       ],
+      "When can appointments be booked?": [
+        "När kan möten bokas?"
+      ],
       "When working remotely": [
         "När du arbetar på distans"
       ],
@@ -6516,6 +6579,9 @@
       "You are about to open your default browser and visit:": [
         "Du är på väg att öppna din standardwebbläsare och besöka:"
       ],
+      "You are currently signed in as ${ username } for ${ organizationName }.": [
+        "Du är för närvarande inloggad som ${ username } för (${ organizationName }."
+      ],
       "You are currently signed in as ${ username }.": [
         "Du är för närvarande inloggad som ${ username }."
       ],
@@ -6578,9 +6644,6 @@
       "You will lose all unsaved changes.": [
         "Du kommer att förlora alla osparade ändringar."
       ],
-      "You will soon be redirected to PayPal to verify your payment.": [
-        "Du kommer snart att omdirigeras till PayPal för att verifiera din betalning."
-      ],
       "You will update all the events in this series. Added and removed participants will be notified.": [
         "Du kommer att uppdatera alla händelser i denna serie. Tillagda och borttagna deltagare kommer att aviseras."
       ],
@@ -6602,6 +6665,13 @@
       "You won't be charged if you cancel before ${ trialEndsOnFormatted }.": [
         "Du kommer inte att debiteras om du avbryter före ${ trialEndsOnFormatted }."
       ],
+      "You'll receive the credit reward 1 month after your friend subscribes to a yearly plan, and 2 months after they subscribe to a monthly plan.": [
+        "Du får kreditbelöningen 1 månad efter att din vän har börjat prenumerera på ett årspaket, och 2 månader efter att de har börjat prenumerera på ett månadspaket."
+      ],
+      "You'll then be billed every ${ renewCycle } month at ${ renewAmountStr }. You can cancel at any time.": [
+        "Du kommer sedan att debiteras var ${ renewCycle } månad för ${ renewAmountStr }. Du kan avbryta när som helst.",
+        "Du kommer sedan att debiteras var ${ renewCycle } månad för ${ renewAmountStr }. Du kan avbryta när som helst."
+      ],
       "You've reached the maximum number of addresses in the contact group(s):": [
         "Du har nått det maximala antalet adresser i kontaktgruppen/kontaktgrupperna:"
       ],
@@ -6614,8 +6684,14 @@
       "Your ${ BRAND_NAME } account is currently suspended. After 28 days, emails will no longer be delivered to your inbox, your Drive sharing links will be blocked, and you will not be able to upload new files. To resume normal service, please pay any overdue invoices.": [
         "Ditt ${ BRAND_NAME }-konto är för närvarande avstängt. Efter 28 dagar kommer e-post inte längre att levereras till din inkorg, dina delade länkar från Drive kommer att blockeras och du kommer inte att kunna ladda upp nya filer. För att återuppta tjänsten som vanligt, betala eventuella förfallna fakturor."
       ],
+      "Your ${ plan } subscription will be replaced with ${ PASS_SHORT_APP_NAME } Lifetime. The remaining balance of your subscription will be added to your account. ${ PASS_SHORT_APP_NAME } lifetime deal has no renewal price, it's a one-time payment for lifetime access to ${ PASS_SHORT_APP_NAME }.": [
+        "Din prenumeration på ${ plan } kommer att ersättas med ${ PASS_SHORT_APP_NAME } Lifetime. Det återstående saldot på din prenumeration kommer att läggas till på ditt konto. Lifetime-erbjudandet för ${ PASS_SHORT_APP_NAME } har inget förnyelsepris – det är en engångsbetalning för att få livstids åtkomst till ${ PASS_SHORT_APP_NAME }."
+      ],
       "Your account has at least one overdue invoice. Your access will soon get restricted. ${ payInvoiceLink }": [
         "Ditt konto har minst en försenad faktura. Din åtkomst kommer snart att begränsas. ${ payInvoiceLink }"
+      ],
+      "Your account is currently configured to apply the reverse charge scheme. This is not supported for the selected plan. To proceed, either remove the VAT number from the billing address or select a different plan.": [
+        "Ditt konto är för närvarande konfigurerat för att tillämpa systemet med omvänd skattskyldighet. Detta stöds inte för det valda paketet. För att fortsätta kan du antingen ta bort momsregistreringsnumret från faktureringsadressen eller välja ett annat paket."
       ],
       "Your address is disabled. A cancellation email cannot be sent to the event participants. Would you like to delete all events in this series anyway?": [
         "Din adress är inaktiverad. Ett e-postmeddelande för avbokning av händelsen kan inte skickas till evenemangsdeltagarna. Vill du ändå ta bort alla händelser i denna serie?"
@@ -6704,6 +6780,9 @@
       ],
       "You’ll still be able to view your own account data, but all user accounts will be removed from your organization.": [
         "Du kommer fortfarande att kunna se dina egna kontodata, men alla användarkonton kommer att tas bort från din organisation."
+      ],
+      "You’ve reached the limit of booking slots (${ numberOfSlots }/${ MAX_BOOKING_SLOTS })": [
+        "Du har nått gränsen för antal bokningsbara tider (${ numberOfSlots }/${ MAX_BOOKING_SLOTS })"
       ]
     },
     "info": {
@@ -6804,6 +6883,9 @@
       ]
     },
     "Key badge": {
+      "Active Signer": [
+        "Aktiv undertecknare"
+      ],
       "Compromised": [
         "Läckt"
       ],
@@ -6877,6 +6959,9 @@
     "Keyboard shortcut section name": {
       "Basic actions": [
         "Grundläggande åtgärder"
+      ],
+      "Desktop app navigation": [
+        "Navigering i skrivbordsapp"
       ],
       "View options": [
         "Visa alternativ"
@@ -7117,6 +7202,9 @@
       "Every": [
         "Varje"
       ],
+      "Exact URL matching": [
+        "Exakt URL-matchning"
+      ],
       "Expires": [
         "Löper ut"
       ],
@@ -7210,6 +7298,9 @@
       "Main": [
         "Huvud"
       ],
+      "Main reason for cancelling": [
+        "Huvudsaklig anledning till att du avbryter"
+      ],
       "Manage categories": [
         "Hantera kategorier"
       ],
@@ -7227,6 +7318,9 @@
       ],
       "Navigation": [
         "Navigering"
+      ],
+      "Never fill on this exact URL": [
+        "Fyll aldrig på denna exakta URL"
       ],
       "New password": [
         "Nytt lösenord"
@@ -7257,6 +7351,9 @@
       ],
       "Organizer": [
         "Organisatör"
+      ],
+      "Parent domain and subdomains (default)": [
+        "Överordnad domän och underdomäner (standard)"
       ],
       "participant": [
         "deltagare",
@@ -7316,6 +7413,9 @@
       "Region": [
         "Region"
       ],
+      "Regular expression": [
+        "Vanligt uttryck"
+      ],
       "Remove ${ MEET_APP_NAME } video conference": [
         "Ta bort ${ MEET_APP_NAME }-videokonferens"
       ],
@@ -7354,6 +7454,9 @@
       ],
       "Start date": [
         "Startdatum"
+      ],
+      "Starts with": [
+        "Börjar med"
       ],
       "State": [
         "Delstat"
@@ -7471,8 +7574,14 @@
       "End time of the booking range": [
         "Sluttid för bokningsintervallet"
       ],
+      "How long should an appointment last?": [
+        "Hur långt ska ett möte vara?"
+      ],
       "Start time of the booking range": [
         "Starttid för bokningsintervallet"
+      ],
+      "What should people know about this appointment?": [
+        "Vad bör man veta om detta möte?"
       ]
     },
     "Label for contact group color": {
@@ -7745,6 +7854,13 @@
     "meet_2025: Addon": {
       "${ MEET_APP_NAME } license": [
         "${ MEET_APP_NAME }-licens"
+      ],
+      "${ MEET_APP_NAME } seats": [
+        "${ MEET_APP_NAME }-användarplatser"
+      ],
+      "${ seats } ${ MEET_APP_NAME } seat": [
+        "${ seats } ${ MEET_APP_NAME }-användarplats",
+        "${ seats } ${ MEET_APP_NAME }-användarplatser"
       ]
     },
     "meet_2025: Feature": {
@@ -7805,9 +7921,21 @@
         "Videomöten, ${ n } deltagare"
       ]
     },
+    "meet_2025: Info": {
+      "${ seats } seat included": [
+        "${ seats } användarplats ingår",
+        "${ seats } användarplatser ingår"
+      ],
+      "You can have up to ${ TRIAL_MAX_MEET_SEATS } ${ MEET_SHORT_APP_NAME } seats during the trial period.": [
+        "Du kan ha upp till ${ TRIAL_MAX_MEET_SEATS } ${ MEET_SHORT_APP_NAME }-användarplatser under provperioden."
+      ]
+    },
     "Message": {
       "Fw:": [
         "Vb:"
+      ],
+      "Never fill with this exact URL": [
+        "Fyll aldrig med denna exakta URL"
       ],
       "Re:": [
         "Svar:"
@@ -8229,6 +8357,13 @@
       "All basic ${ BRAND_NAME } services (${ MAIL_SHORT_APP_NAME }, ${ VPN_SHORT_APP_NAME }, ${ PASS_SHORT_APP_NAME })": [
         "Alla grundläggande tjänster för ${ BRAND_NAME } (${ MAIL_SHORT_APP_NAME }, ${ VPN_SHORT_APP_NAME }, ${ PASS_SHORT_APP_NAME })"
       ],
+      "Appointment scheduling": [
+        "Tidsbokning"
+      ],
+      "Appointment scheduling with ${ n } booking page": [
+        "Tidsbokning med ${ n } bokningssida",
+        "Tidsbokning med ${ n } bokningssidor"
+      ],
       "Auto-delete Spam and Trash": [
         "Ta automatiskt bort skräppost och papperskorg"
       ],
@@ -8279,6 +8414,9 @@
       ],
       "Data breach monitoring": [
         "Dataintrångsövervakning"
+      ],
+      "Data retention policies": [
+        "Policyer för datalagring"
       ],
       "Dedicated servers optimized for speed": [
         "Dedikerade servrar optimerade för hastighet"
@@ -9706,6 +9844,9 @@
       "VAT number": [
         "Momsnummer"
       ],
+      "VAT reverse charge mechanism applies.": [
+        "Mekanismen för omvänd skattskyldighet tillämpas."
+      ],
       "You already have a subscription to this plan.": [
         "Du har redan en prenumeration på detta paket."
       ],
@@ -9787,8 +9928,14 @@
       "Renewal price is dependent on the billing region and ABN.": [
         "Förnyelsepriset är beroende av faktureringsregion och ABN."
       ],
+      "Renewal price is dependent on the billing region and Business Number.": [
+        "Förnyelsepriset beror på faktureringsregion och företagsnummer."
+      ],
       "Renewal price is dependent on the billing region and EIN.": [
         "Förnyelsepriset är beroende av faktureringsregion och EIN."
+      ],
+      "Renewal price is dependent on the billing region and VAT number.": [
+        "Förnyelsepriset beror på faktureringsregion och momsregistreringsnummer."
       ]
     },
     "Payments.Saved payment method details": {
@@ -11099,6 +11246,9 @@
       ]
     },
     "Subscription reminder": {
+      "${ BRAND_NAME } Scribe writing assistant": [
+        "${ BRAND_NAME } Scribe skrivassistent"
+      ],
       "${ CALENDAR_APP_NAME }, ${ DRIVE_SHORT_APP_NAME }, ${ PASS_SHORT_APP_NAME }, ${ VPN_SHORT_APP_NAME }, ${ MEET_SHORT_APP_NAME }, and ${ LUMO_APP_NAME } with premium features": [
         "${ CALENDAR_APP_NAME }, ${ DRIVE_SHORT_APP_NAME }, ${ PASS_SHORT_APP_NAME }, ${ VPN_SHORT_APP_NAME }, ${ MEET_SHORT_APP_NAME } och ${ LUMO_APP_NAME } med premiumfunktioner"
       ],
@@ -11739,6 +11889,9 @@
       ]
     },
     "Text": {
+      "No bookings available.": [
+        "Inga bokningar tillgängliga."
+      ],
       "Please check the link and try again.": [
         "Kontrollera länken och försök igen."
       ],
@@ -11810,6 +11963,9 @@
       ],
       "${ feature } is now active": [
         "${ feature } är nu aktivt"
+      ],
+      "${ LUMO_SHORT_APP_NAME } writing assistant": [
+        "${ LUMO_SHORT_APP_NAME } skrivassistent"
       ],
       "Account recovery": [
         "Kontoåterställning"
@@ -12268,9 +12424,6 @@
       "Payment verification": [
         "Betalningsverifiering"
       ],
-      "PayPal verification failed": [
-        "Verifiering av PayPal misslyckades"
-      ],
       "Phone numbers": [
         "Telefonnummer"
       ],
@@ -12324,6 +12477,9 @@
       ],
       "Reshare your calendars": [
         "Dela dina kalendrar igen"
+      ],
+      "Reverse charge not supported": [
+        "Omvänd skattskyldighet stöds inte"
       ],
       "Save": [
         "Spara"
@@ -12577,6 +12733,26 @@
         "Välj ett nummer"
       ]
     },
+    "Title header for keys table": {
+      "Actions": [
+        "Åtgärder"
+      ],
+      "Created": [
+        "Skapad"
+      ],
+      "Expires": [
+        "Löper ut"
+      ],
+      "Fingerprint": [
+        "Fingeravtryck"
+      ],
+      "Status": [
+        "Status"
+      ],
+      "Type": [
+        "Typ"
+      ]
+    },
     "Title; create calendar modal": {
       "Create calendar": [
         "Skapa kalender"
@@ -12638,6 +12814,9 @@
       "If you purchased a gift code or received one from our support team, you can enter it here.": [
         "Om du har köpt en presentkod eller fått en från vårt supportteam kan du ange den här."
       ],
+      "Instant AI assistance, human expert on hand!": [
+        "Omedelbar AI-assistans, mänsklig expert nära till hands!"
+      ],
       "Load image": [
         "Ladda bild"
       ],
@@ -12670,6 +12849,9 @@
       ],
       "Upload a public key to enable sending end-to-end encrypted emails to this email": [
         "Ladda upp en offentlig nyckel för att aktivera sändning av end-to-end-krypterad e-post till denna e-post"
+      ],
+      "Version 6 OpenPGP key": [
+        "OpenPGP-nyckel version 6"
       ]
     },
     "tooltip": {
@@ -12708,6 +12890,11 @@
       ],
       "The user must have an address to request data access": [
         "Användaren måste ha en adress för att begära dataåtkomst"
+      ]
+    },
+    "user_modal": {
+      "You'll be able to assign roles once the user has accepted the invitation.": [
+        "Du kommer att kunna tilldela roller när användaren har accepterat inbjudan."
       ]
     },
     "Validation": {
@@ -12801,6 +12988,9 @@
       ],
       "Encrypted and secure ${ MAIL_APP_NAME } email address. You can easily send Bitcoin to anyone with just their ${ BRAND_NAME } name.": [
         "Krypterad och säker ${ MAIL_APP_NAME } e-postadress. Du kan enkelt skicka Bitcoin till vem som helst med bara deras ${ BRAND_NAME }-namn."
+      ],
+      "Securely exchange Bitcoin via email instead of complex, 26-character Bitcoin addresses that are prone to error": [
+        "Överför Bitcoin på ett säkert sätt via e-post istället för att använda komplexa Bitcoin-adresser med 26 tecken som är känsliga för fel"
       ]
     },
     "wallet_signup_2024:app-switcher": {

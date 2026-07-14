@@ -1,6 +1,6 @@
 {
     "name": "proton-pass-desktop",
-    "version": "1.37.2",
+    "version": "1.38.2",
     "description": "Proton Pass desktop application",
     "license": "GPL-3.0",
     "author": "Proton AG",
@@ -23,6 +23,7 @@
         "make": "electron-forge make --skip-package",
         "pretty": "prettier --write  $(find src/app -type f -name '*.js' -o -name '*.ts' -o -name '*.tsx')",
         "start": "cross-env-shell NODE_ENV=development API_ENV=proton.black 'electron-forge start'",
+        "start:prod": "cross-env-shell NODE_ENV=development 'electron-forge start'",
         "test": "jest",
         "test:ci": "jest --coverage --runInBand --ci --passWithNoTests",
         "test:watch": "jest --watch",
@@ -30,7 +31,8 @@
     },
     "dependencies": {
         "@proton/icons": "workspace:^",
-        "electron-log": "^5.4.3",
+        "browserslist": "^4.28.5",
+        "electron-log": "^5.4.4",
         "electron-store": "^8.2.0",
         "proton-pass-web": "workspace:applications/pass"
     },
@@ -50,19 +52,19 @@
         "@proton/i18n": "workspace:^",
         "@proton/pack": "workspace:^",
         "@proton/types": "workspace:^",
-        "@typescript/native-preview": "^7.0.0-0",
+        "@typescript/native-preview": "^7.0.0-dev.20260707.2",
         "@vercel/webpack-asset-relocator-loader": "1.7.3",
         "cross-env": "^10.1.0",
         "electron": "39.8.10",
-        "electron-builder": "26.8.1",
-        "eslint": "^9.39.4",
+        "electron-builder": "26.15.3",
+        "eslint": "^9.39.5",
         "jest": "^30.4.2",
         "node-loader": "^2.1.0",
-        "prettier": "^3.8.3",
-        "ts-loader": "^9.5.7",
+        "prettier": "^3.9.5",
+        "ts-loader": "^9.6.2",
         "ts-node": "^10.9.2",
         "typescript": "^6.0.2",
-        "webpack": "^5.106.2"
+        "webpack": "^5.108.4"
     },
     "productName": "Proton Pass"
 }

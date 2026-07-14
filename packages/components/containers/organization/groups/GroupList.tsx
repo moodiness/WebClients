@@ -9,18 +9,18 @@ import { Scroll } from '@proton/atoms/Scroll/Scroll';
 import { IcCross } from '@proton/icons/icons/IcCross';
 import { IcMagnifier } from '@proton/icons/icons/IcMagnifier';
 import { IcPlus } from '@proton/icons/icons/IcPlus';
-import type { Group } from '@proton/shared/lib/interfaces';
+import type { EnhancedGroup, Group } from '@proton/shared/lib/interfaces';
 
 import GroupItem from './GroupItem';
 import { useGroupsManagement } from './context/GroupsManagementContext';
 import useGroupAvailableAddressDomains from './hooks/useGroupAvailableAddressDomains';
-import { GROUPS_STATE } from './types';
+import { GROUPS_RESTRICTION_REASON, GROUPS_STATE, PANEL_HEADER_HEIGHT } from './types';
 
 // Sort by natural order e.g. [1, 10, 11, 2] -> [1, 2, 10, 11]
 const collator = new Intl.Collator(undefined, { numeric: true, sensitivity: 'base' });
 const compareGroupNames = (a: Group, b: Group) => collator.compare(a.Name, b.Name);
 
-const getSortedGroups = (input: string, groups: Group[]) => {
+const getSortedGroups = (input: string, groups: EnhancedGroup[]) => {
     return input
         ? groups
               .filter((group) => {
@@ -31,11 +31,16 @@ const getSortedGroups = (input: string, groups: Group[]) => {
 };
 
 const GroupList = () => {
-    const { isFrozen, uiState, groups, selectedGroup, actions, getSerializedGroup, groupRolesMap } =
-        useGroupsManagement();
+    const { restrictedBy, uiState, groups, selectedGroup, actions, getSerializedGroup } = useGroupsManagement();
     const { hasUsableDomain } = useGroupAvailableAddressDomains();
     const [permissions] = useOrgPermissions();
-    const canCreateGroup = !!permissions?.['account.group.create'] && hasUsableDomain && !isFrozen;
+    const canCreateGroup =
+        !!permissions?.['account.group.create'] &&
+        hasUsableDomain &&
+        [GROUPS_RESTRICTION_REASON.NONE, GROUPS_RESTRICTION_REASON.RESUMING_ROLE_ASSIGNMENT].includes(
+            restrictedBy.reason
+        );
+
     const [searchInput, setSearchInput] = useState<string>('');
     const [showSearchInput, setShowSearchInput] = useState(!canCreateGroup);
 
@@ -57,7 +62,7 @@ const GroupList = () => {
         <>
             <div
                 className="flex items-center gap-2 border-bottom pb-4 mb-4 shrink-0 flex-nowrap px-3 pt-4 h-custom"
-                style={{ '--h-custom': '5em' }}
+                style={{ '--h-custom': PANEL_HEADER_HEIGHT }}
             >
                 {showSearchInput ? (
                     <>
@@ -115,7 +120,6 @@ const GroupList = () => {
                         serializedGroup={serializedGroup?.payload.id === group.ID ? serializedGroup : undefined}
                         onClick={() => actions.onViewGroup(group)}
                         onDeleteGroup={actions.onDeleteGroup}
-                        groupOrganizationRoles={groupRolesMap[group.ID]}
                     />
                 ))}
             </Scroll>

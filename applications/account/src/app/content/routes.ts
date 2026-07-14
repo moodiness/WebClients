@@ -4,7 +4,6 @@ import { getCalendarAppRoutes } from '../containers/calendar/routes';
 import { getDocsAppRoutes } from '../containers/docs/routes';
 import { getDriveAppRoutes } from '../containers/drive/routes';
 import { getMailAppRoutes } from '../containers/mail/routes';
-import { getMeetAppRoutes } from '../containers/meet/routes';
 import { getMspAppRoutes } from '../containers/msp/routes';
 import { getOrganizationAppRoutes } from '../containers/organization/routes';
 import { getPassAppRoutes } from '../containers/pass/routes';
@@ -33,8 +32,7 @@ export const getRoutes = (params: AllRouterParams) => {
         organization: getOrganizationAppRoutes(organizationParams),
         msp: getMspAppRoutes(sharedSettings),
         vpn: getVpnAppRoutes(sharedSettings),
-        wallet: getWalletAppRoutes(),
-        meet: getMeetAppRoutes(),
+        wallet: getWalletAppRoutes(sharedSettings),
         authenticator: getAuthenticatorAppRoutes(sharedSettings),
     };
 };

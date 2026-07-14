@@ -24,7 +24,7 @@ const EMPTY_LOCATION_COUNT: SafeLabelCount = { LabelID: '', Total: 0, Unread: 0 
 export const useMailboxCounter = (): MailboxCounterReturn => {
     const [mailSettings] = useMailSettings();
 
-    const { categoryViewAccess } = useCategoriesView();
+    const { isCategoryViewEnabled } = useCategoriesView();
 
     const [labels, labelsLoading] = useLabels();
     const [folders, foldersLoading] = useFolders();
@@ -63,15 +63,15 @@ export const useMailboxCounter = (): MailboxCounterReturn => {
         disabledCategoryIDs,
     ]);
 
-    const getLocationCount = (labelID: string): SafeLabelCount => {
-        if (labelID === MAILBOX_LABEL_IDS.INBOX && categoryViewAccess) {
+    const getLocationCount = (labelID: string, options?: { ignoreCategories: boolean }): SafeLabelCount => {
+        if (labelID === MAILBOX_LABEL_IDS.INBOX && isCategoryViewEnabled && !options?.ignoreCategories) {
             return counterMap[MAILBOX_LABEL_IDS.CATEGORY_DEFAULT] ?? EMPTY_LOCATION_COUNT;
         }
         return counterMap[labelID] ?? EMPTY_LOCATION_COUNT;
     };
 
     const getCurrentLocationCount = (): SafeLabelCount => {
-        if (currentLabelID === MAILBOX_LABEL_IDS.INBOX && categoryViewAccess && categoryIDs.length > 0) {
+        if (currentLabelID === MAILBOX_LABEL_IDS.INBOX && isCategoryViewEnabled && categoryIDs.length > 0) {
             return counterMap[categoryIDs[0]] ?? EMPTY_LOCATION_COUNT;
         }
         return getLocationCount(currentLabelID);
@@ -79,7 +79,6 @@ export const useMailboxCounter = (): MailboxCounterReturn => {
 
     return {
         loading,
-        counterMap,
         getLocationCount,
         getCurrentLocationCount,
     };

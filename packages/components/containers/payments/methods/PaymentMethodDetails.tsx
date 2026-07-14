@@ -4,9 +4,10 @@ import { c } from 'ttag';
 
 import { SepaAuthorizationText } from '@proton/components/payments/chargebee/SepaAuthorizationText';
 import { formattedShortSavedSepaDetails } from '@proton/components/payments/client-extensions';
-import type { PayPalDetails, SavedCardDetails, SepaDetails } from '@proton/payments';
-import { PAYMENT_METHOD_TYPES, isPaypalDetails, isSavedCardDetails, isSepaDetails } from '@proton/payments';
-import { type CreditCardType, getBankSvg } from '@proton/payments/ui';
+import { PAYMENT_METHOD_TYPES } from '@proton/payments/core/constants';
+import type { PayPalDetails, SavedCardDetails, SepaDetails } from '@proton/payments/core/interface';
+import { isPaypalDetails, isSavedCardDetails, isSepaDetails } from '@proton/payments/core/type-guards';
+import { type CreditCardType, getBankSvg } from '@proton/payments/ui/helpers/credit-card-icons';
 
 import Bordered from '../../../components/container/Bordered';
 import useSvgGraphicsBbox from '../../../hooks/useSvgGraphicsBbox';
@@ -124,17 +125,16 @@ const PaymentMethodDetailsSepa = ({ details }: { details: SavedCardDetails | Pay
 
 interface Props {
     type:
-        | PAYMENT_METHOD_TYPES.CARD
-        | PAYMENT_METHOD_TYPES.PAYPAL
         | PAYMENT_METHOD_TYPES.CHARGEBEE_CARD
         | PAYMENT_METHOD_TYPES.CHARGEBEE_PAYPAL
         | PAYMENT_METHOD_TYPES.CHARGEBEE_SEPA_DIRECT_DEBIT
-        | PAYMENT_METHOD_TYPES.GOOGLE_PAY;
+        | PAYMENT_METHOD_TYPES.GOOGLE_PAY
+        | PAYMENT_METHOD_TYPES.APPLE_PAY;
     details: SavedCardDetails | PayPalDetails | SepaDetails;
 }
 
 const PaymentMethodDetails = ({ type, details }: Props) => {
-    if (type === PAYMENT_METHOD_TYPES.CARD || type === PAYMENT_METHOD_TYPES.CHARGEBEE_CARD) {
+    if (type === PAYMENT_METHOD_TYPES.CHARGEBEE_CARD) {
         if (!isSavedCardDetails(details)) {
             return null;
         }
@@ -142,7 +142,7 @@ const PaymentMethodDetails = ({ type, details }: Props) => {
         return <PaymentMethodDetailsCard details={details} />;
     }
 
-    if (type === PAYMENT_METHOD_TYPES.PAYPAL || type === PAYMENT_METHOD_TYPES.CHARGEBEE_PAYPAL) {
+    if (type === PAYMENT_METHOD_TYPES.CHARGEBEE_PAYPAL) {
         if (!isPaypalDetails(details)) {
             return null;
         }

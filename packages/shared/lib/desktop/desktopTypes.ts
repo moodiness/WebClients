@@ -8,6 +8,8 @@ import type { ThemeSetting } from '../themes/themes';
 import { type DailyStatsStored, zDailyStatsReport } from './DailyStats';
 import { type DefaultProtocol, zDefaultProtocol } from './DefaultProtocol';
 import type { AppVersion, DesktopVersion } from './DesktopVersion';
+import type { ProtocolSource } from './externalProtocols';
+import type { SerializedUrlRule } from './urls/builder';
 
 export type CHANGE_VIEW_TARGET = 'mail' | 'calendar' | 'account';
 export type ElectronNotification = {
@@ -47,7 +49,9 @@ export type IPCInboxDesktopFeature =
     | 'UserLogoutV2'
     | 'MailtoBannerPermanentDismiss'
     | 'OAuthPopupV2'
-    | 'SwitchViewShortcuts';
+    | 'SwitchViewShortcuts'
+    | 'SetAllowedProtocols'
+    | 'RegisterUrlRedirectRules';
 export type IPCInboxGetInfoMessage =
     | { type: 'theme'; result: ThemeSetting }
     | { type: 'latestVersion'; result: DesktopVersion | null }
@@ -99,7 +103,9 @@ export type IPCInboxClientUpdateMessage =
     | { type: 'togglePrintDialog'; payload: string }
     | { type: 'userLogoutV2'; payload: string }
     | { type: 'logoutAllUsers'; payload?: undefined }
-    | { type: 'setDefaultMailtoBannerDismissedPermanently'; payload?: undefined };
+    | { type: 'setDefaultMailtoBannerDismissedPermanently'; payload?: undefined }
+    | { type: 'setAllowedProtocols'; payload: { protocols: string[]; source: ProtocolSource } }
+    | { type: 'setUrlRedirectRules'; payload: { rules: SerializedUrlRule[] } };
 export type IPCInboxClientGetAsyncDataMessage = {
     type: 'getElectronLogs';
     args: [maxSize?: number];

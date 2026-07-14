@@ -39,14 +39,12 @@ export type AccountSettings = {
     showDriveDashboardVariant: DriveDashboardVariant | 'disabled' | undefined;
     showMeetDashboard: boolean;
     showMeetDashboardVariant: MeetDashboardVariant | 'disabled' | undefined;
+    showGenericDashboard: boolean;
     hasPendingInvitations: boolean;
 };
 
 // Define the feature flag that are used in the account app
 export type Flags = {
-    canDisplayB2BLogsPass?: boolean;
-    canDisplayB2BLogsVPN?: boolean;
-    canDisplayPassReports?: boolean;
     canDisplayNonPrivateEmailPhone?: boolean;
     isUserGroupsFeatureEnabled?: boolean;
     isUserGroupsNoCustomDomainEnabled?: boolean;
@@ -61,7 +59,6 @@ export type Flags = {
     isAuthenticatorAvailable?: boolean;
     isCategoryViewEnabled?: boolean;
     isRecoveryContactsEnabled?: boolean;
-    isRolesAndPermissionsEnabled?: boolean;
     isRecoverySettingsRedesignEnabled?: boolean;
     isMspEnabled?: boolean;
     isMnemonicAvailable?: boolean;

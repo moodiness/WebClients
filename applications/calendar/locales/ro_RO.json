@@ -3904,12 +3904,6 @@
       "Interval cannot be empty": [
         "Intervalul nu poate fi gol."
       ],
-      "Invalid ${ name } code": [
-        "Cod ${ name } nevalid."
-      ],
-      "Invalid card number": [
-        "Număr de card nevalid."
-      ],
       "Invalid code": [
         "Cod nevalid"
       ],
@@ -3918,9 +3912,6 @@
       ],
       "Invalid email address": [
         "Adresă de e-mail nevalidă."
-      ],
-      "Invalid expiration date": [
-        "Data expirării nu este validă."
       ],
       "Invalid IBAN": [
         "Acest IBAN nu este valid."
@@ -3992,6 +3983,9 @@
       ],
       "No contacts found to import": [
         "Nu s-au găsit contacte de importat."
+      ],
+      "No drive found to import": [
+        "Nu s-a găsit nici o unitate de importat."
       ],
       "No emails found to import - the account does not have an inbox": [
         "Nu s-au găsit mesaje de importat - contul nu are căsuță poștală."
@@ -4250,6 +4244,9 @@
       "Unexpected error, we can't import the contacts": [
         "Eroare neașteptată. Nu se pot importa contactele."
       ],
+      "Unexpected error, we can't import the files": [
+        "Eroare neașteptată. Fișierele nu se pot importa."
+      ],
       "Unknown error": [
         "Eroare necunoscută"
       ],
@@ -4267,6 +4264,9 @@
       ],
       "VAT number must start with ${ prefixes }": [
         "Valoarea TVA trebuie să înceapă cu ${ prefixes }."
+      ],
+      "We couldn’t send a verification code using this method.": [
+        "Nu s-a putut trimite un cod de verificare folosind această metodă."
       ],
       "Wrong billing address": [
         "Adresă de facturare incorectă."
@@ -4791,6 +4791,9 @@
       ],
       "Security key": [
         "Cheie de securitate"
+      ],
+      "Touch your security key.": [
+        "Atingeți cheia de securitate."
       ]
     },
     "fido2: Label": {
@@ -5677,7 +5680,7 @@
         "Continuare"
       ],
       "Copy the link to clipboard": [
-        "Copiați legătura în memorie"
+        "Copiere legătură web în memorie"
       ],
       "Copy your referral link": [
         "Copiere legătură web de recomandare"
@@ -5872,6 +5875,9 @@
       ],
       "Failed to update meeting schedule": [
         "Actualizarea planificării conferinței a eșuat."
+      ],
+      "Files only (no photos, ${ DOCS_APP_NAME } or ${ SHEETS_APP_NAME }) - up to 100 GB total, 100,000 files, and 50 GB per file": [
+        "Doar fișiere (fără fotografii, ${ DOCS_APP_NAME } sau ${ SHEETS_APP_NAME }) - până la 100 GiB total, 100.000 de fișiere și 50 GiB per fișier."
       ],
       "finance": [
         "finanțe"
@@ -6205,9 +6211,6 @@
       "PGP/MIME automatically sends the message using the current composer mode.": [
         "PGP/MIME trimite automat mesajul folosind modul curent de compunere."
       ],
-      "Please authenticate your card in the verification tab.": [
-        "Autentificați cardul în fila de verificare."
-      ],
       "Please authenticate your payment in the verification tab.": [
         "Autentificați plata în fila de verificare."
       ],
@@ -6248,9 +6251,6 @@
       ],
       "Please try again using a different payment method, or contact your bank.": [
         "Reîncercați folosind o metodă de plată diferită sau contactați-vă banca."
-      ],
-      "Please try again, use a different payment method, or contact PayPal for assistance.": [
-        "Mai încercați. Folosiți o metodă de plată diferită sau contactați PayPal pentru asistență."
       ],
       "Please wait while we look for contacts that can be re-signed with the primary encryption key.": [
         "Așteptați până se caută contactele care pot fi resemnate cu cheia de criptare primară."
@@ -6679,6 +6679,9 @@
       "You are about to open your default browser and visit:": [
         "Urmează să deschideți navigatorul web implicit și să vizitați:"
       ],
+      "You are currently signed in as ${ username } for ${ organizationName }.": [
+        "V-ați conectat cu ${ username } pentru (${ organizationName }."
+      ],
       "You are currently signed in as ${ username }.": [
         "V-ați conectat cu ${ username }."
       ],
@@ -6742,9 +6745,6 @@
       ],
       "You will lose all unsaved changes.": [
         "Veți pierde toate modificările nesalvate."
-      ],
-      "You will soon be redirected to PayPal to verify your payment.": [
-        "Pentru verificarea plății se va deschide o filă către PayPal."
       ],
       "You will update all the events in this series. Added and removed participants will be notified.": [
         "Veţi actualiza toate evenimentele din această serie. Participanţii adăugați şi eliminaţi vor fi notificați."
@@ -7311,6 +7311,12 @@
       "Every": [
         "La fiecare"
       ],
+      "Exact host matching": [
+        "Potrivire exactă gazdă"
+      ],
+      "Exact URL matching": [
+        "Potrivire exactă URL"
+      ],
       "Expires": [
         "Expirare"
       ],
@@ -7425,6 +7431,9 @@
       "Navigation": [
         "Navigare"
       ],
+      "Never fill on this exact URL": [
+        "La exact acest URL nu se completează"
+      ],
       "New password": [
         "Parola nouă"
       ],
@@ -7454,6 +7463,9 @@
       ],
       "Organizer": [
         "Organizator"
+      ],
+      "Parent domain and subdomains (default)": [
+        "Domeniu părinte și subdomeniu (implicit)"
       ],
       "participant": [
         "participant",
@@ -7514,6 +7526,9 @@
       "Region": [
         "Județ"
       ],
+      "Regular expression": [
+        "Expresie regulată"
+      ],
       "Remove ${ MEET_APP_NAME } video conference": [
         "Eliminare conferință video ${ MEET_APP_NAME }"
       ],
@@ -7552,6 +7567,9 @@
       ],
       "Start date": [
         "Dată început"
+      ],
+      "Starts with": [
+        "Începe cu"
       ],
       "State": [
         "Județ/Stat"
@@ -7600,6 +7618,9 @@
       ],
       "URL": [
         "Adresa URL"
+      ],
+      "URL wildcard pattern": [
+        "Model URL cu caractere generice"
       ],
       "Username": [
         "Nume utilizator"
@@ -8038,11 +8059,29 @@
       ]
     },
     "Message": {
+      "'Starts with' matching rule": [
+        "Regulă de potrivire „Începe cu”"
+      ],
+      "Exact (sub) domain matching rule": [
+        "Regulă de potrivire exactă (sub) domeniu"
+      ],
+      "Exact URL matching rule": [
+        "Regulă de potrivire exactă URL"
+      ],
       "Fw:": [
         "Rd:"
       ],
+      "Never fill with this exact URL": [
+        "La exact acest URL nu se completează"
+      ],
       "Re:": [
         "Rs:"
+      ],
+      "Regular expression rule": [
+        "Regulă expresie regulată"
+      ],
+      "Wildcard pattern matching rule": [
+        "Regulă de potrivire model caractere generice"
       ],
       "Your free trial has ended. ${ nonAutoRenewalAction }": [
         "Perioada de evaluare gratuită s-a încheiat. ${ nonAutoRenewalAction }"
@@ -11270,7 +11309,7 @@
     },
     "storage_split: feature": {
       "Storage for data generated by ${ BRAND_NAME } ${ MAIL_SHORT_APP_NAME }, ${ CALENDAR_SHORT_APP_NAME }, ${ CONTACTS_SHORT_APP_NAME }, and ${ PASS_SHORT_APP_NAME }": [
-        "Spațiu de stocare pentru date generate de ${ BRAND_NAME } ${ MAIL_SHORT_APP_NAME }, ${ CALENDAR_SHORT_APP_NAME }, ${ CONTACTS_SHORT_APP_NAME }, și ${ PASS_SHORT_APP_NAME }."
+        "Spațiu de stocare pentru datele generate de ${ BRAND_NAME } ${ MAIL_SHORT_APP_NAME }, ${ CALENDAR_SHORT_APP_NAME }, ${ CONTACTS_SHORT_APP_NAME }, și ${ PASS_SHORT_APP_NAME }."
       ],
       "Up to ${ totalStorageSize } Drive storage": [
         "Până la ${ totalStorageSize } spațiu în Drive"
@@ -12642,9 +12681,6 @@
       "Payment verification": [
         "Verificare plată"
       ],
-      "PayPal verification failed": [
-        "Verificarea PayPal a eșuat"
-      ],
       "Phone numbers": [
         "Numere de telefon"
       ],
@@ -12954,6 +12990,26 @@
         "Alegeți un număr"
       ]
     },
+    "Title header for keys table": {
+      "Actions": [
+        "Acțiuni"
+      ],
+      "Created": [
+        "Creat"
+      ],
+      "Expires": [
+        "Expiră"
+      ],
+      "Fingerprint": [
+        "Amprenta"
+      ],
+      "Status": [
+        "Stare"
+      ],
+      "Type": [
+        "Tip"
+      ]
+    },
     "Title; create calendar modal": {
       "Create calendar": [
         "Creare calendar"
@@ -13050,6 +13106,9 @@
       ],
       "Upload a public key to enable sending end-to-end encrypted emails to this email": [
         "Încărcați o cheie publică pentru a activa trimiterea mesajelor criptate bilateral la această adresă."
+      ],
+      "Version 6 OpenPGP key": [
+        "Cheie PGP versiunea 6"
       ]
     },
     "tooltip": {
@@ -13088,6 +13147,11 @@
       ],
       "The user must have an address to request data access": [
         "Utilizatorul trebuie să aibă o adresă pentru a solicita acces la date."
+      ]
+    },
+    "user_modal": {
+      "You'll be able to assign roles once the user has accepted the invitation.": [
+        "Vei putea atribui roluri după ce utilizatorul a acceptat invitația."
       ]
     },
     "Validation": {
@@ -13215,6 +13279,9 @@
       ],
       "${ BRAND_NAME } will transfer as much data as possible, starting with your most recent messages.": [
         "${ BRAND_NAME } va transfera cât mai multe date posibil, începând cu cele mai recente mesaje."
+      ],
+      "${ modeLabelStong } provides powerful control, but a single error can cause autofill to match and fill data on fraudulent or phishing websites.": [
+        "${ modeLabelStong } oferă un control puternic, dar o singură eroare poate determina completarea automată să se potrivească și să completeze datele pe site-uri web frauduloase sau de înșelăciune."
       ],
       "Are you sure you want to permanently delete ${ count } contact?": [
         "Contacte care vor fi șterse definitiv: ${ count }. Confirmați ștergerea?",

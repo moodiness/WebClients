@@ -1,117 +1,67 @@
-import { c } from 'ttag';
-
-import type { CategoryLabelID } from '@proton/shared/lib/constants';
-import { MAILBOX_LABEL_IDS } from '@proton/shared/lib/constants';
+import { CategoriesOnboardingFlags } from '@proton/mail/features/categoriesView/categoriesOnboarding';
 import { hasBit } from '@proton/shared/lib/helpers/bitset';
 
-import {
-    AudienceType,
-    B2B_CATEGORIES_MAPPING,
-    B2C_CATEGORIES_MAPPING,
-    CategoriesOnboardingFlags,
-    FeatureValueDefault,
-} from './onboardingInterface';
+import type { CategorizeStepLocation } from './onboardingInterface';
+import { OnboardingFlow, OnboardingStep } from './onboardingInterface';
 
-export const hasSeeFullDisplay = (flagValue: number): boolean => {
-    if (flagValue === FeatureValueDefault) {
-        return true;
+/**
+ * The B2C onboarding is a linear sequence: each step is unlocked only once the
+ * previous one has been completed, and its bit is set when the user moves past
+ * it. The whole progression is therefore described by this ordered table, and
+ * the "active step" is simply the first step whose bit has not been set yet.
+ */
+const B2C_ONBOARDING_SEQUENCE: { step: OnboardingStep; flag: CategoriesOnboardingFlags }[] = [
+    { step: OnboardingStep.INITIAL_MODAL, flag: CategoriesOnboardingFlags.INITIAL_MODAL },
+    { step: OnboardingStep.MESSAGE, flag: CategoriesOnboardingFlags.SPOTLIGHT_MESSAGE },
+    { step: OnboardingStep.CATEGORIZE, flag: CategoriesOnboardingFlags.SPOTLIGHT_CATEGORIZE },
+    { step: OnboardingStep.CUSTOMIZE, flag: CategoriesOnboardingFlags.SPOTLIGHT_CUSTOMIZE },
+];
+
+export const hasSeenOnboardingModal = (flagValue: number): boolean => {
+    return hasBit(flagValue, CategoriesOnboardingFlags.INITIAL_MODAL);
+};
+
+export const getB2COnboardingStep = (flagValue: number): OnboardingStep => {
+    const nextStep = B2C_ONBOARDING_SEQUENCE.find(({ flag }) => !hasBit(flagValue, flag));
+    return nextStep?.step ?? OnboardingStep.DONE;
+};
+
+export const hasSeenAllOnboarding = (onboardingFlow: OnboardingFlow, flagValue: number): boolean => {
+    if (onboardingFlow === OnboardingFlow.B2C) {
+        return B2C_ONBOARDING_SEQUENCE.every(({ flag }) => hasBit(flagValue, flag));
     }
 
-    return hasBit(flagValue, CategoriesOnboardingFlags.FULL_DISPLAY);
-};
-
-export const hasSeeSocial = (flagValue: number): boolean => {
-    return hasBit(flagValue, CategoriesOnboardingFlags.SOCIAL);
-};
-
-export const hasSeePromotion = (flagValue: number): boolean => {
-    return hasBit(flagValue, CategoriesOnboardingFlags.PROMOTION);
-};
-
-export const hasSeeNewsletter = (flagValue: number): boolean => {
-    return hasBit(flagValue, CategoriesOnboardingFlags.NEWSLETTER);
-};
-
-export const hasSeeTransaction = (flagValue: number): boolean => {
-    return hasBit(flagValue, CategoriesOnboardingFlags.TRANSACTION);
-};
-
-export const hasSeeUpdate = (flagValue: number): boolean => {
-    return hasBit(flagValue, CategoriesOnboardingFlags.UPDATE);
-};
-
-export const hasSeenCategoryCard = (
-    audience: AudienceType,
-    categoryID: CategoryLabelID,
-    flagValue: number
-): boolean => {
-    if (flagValue === FeatureValueDefault) {
-        return true;
-    }
-
-    if (audience === AudienceType.B2C) {
-        const config = B2C_CATEGORIES_MAPPING[categoryID];
-        if (!config) {
-            return false;
-        }
-
-        return config.checker(flagValue);
-    }
-
-    if (audience === AudienceType.B2B) {
-        const config = B2B_CATEGORIES_MAPPING[categoryID];
-        if (!config) {
-            return false;
-        }
-
-        return config.checker(flagValue);
+    if (onboardingFlow === OnboardingFlow.B2B) {
+        return hasSeenOnboardingModal(flagValue);
     }
 
     return false;
 };
 
-export const getOnboardingCardCopy = (audience: AudienceType, categoryID: CategoryLabelID) => {
-    if (audience === AudienceType.B2C) {
-        switch (categoryID) {
-            case MAILBOX_LABEL_IDS.CATEGORY_SOCIAL:
-                return c('Info').t`Includes updates from social networks and media-sharing sites.`;
-            case MAILBOX_LABEL_IDS.CATEGORY_PROMOTIONS:
-                return c('Info').t`Includes marketing emails like offers and product announcements.`;
-            case MAILBOX_LABEL_IDS.CATEGORY_NEWSLETTERS:
-                return c('Info').t`Includes news recaps and other non-promotional content. `;
-            case MAILBOX_LABEL_IDS.CATEGORY_TRANSACTIONS:
-                return c('Info').t`Includes bills, receipts, orders, and bookings.`;
-        }
-    }
-
-    if (audience === AudienceType.B2B) {
-        switch (categoryID) {
-            case MAILBOX_LABEL_IDS.CATEGORY_TRANSACTIONS:
-                return c('Info').t`Includes invoices, purchase orders, and payment confirmations.`;
-            case MAILBOX_LABEL_IDS.CATEGORY_UPDATES:
-                return c('Info').t`Includes marketing emails and non-urgent app notifications.`;
-            case MAILBOX_LABEL_IDS.CATEGORY_NEWSLETTERS:
-                return c('Info').t`Includes news recaps and other non-promotional content. `;
-        }
-    }
-
-    return '';
+export const hasSeenFreeUserSpotlight = (flagValue: number): boolean => {
+    return hasBit(flagValue, CategoriesOnboardingFlags.SPOTLIGHT_FREE_USERS);
 };
 
-export const hasSeenAllOnboarding = (audience: AudienceType, flagValue: number): boolean => {
-    if (audience === AudienceType.B2C) {
-        return (
-            hasSeeFullDisplay(flagValue) &&
-            hasSeeSocial(flagValue) &&
-            hasSeePromotion(flagValue) &&
-            hasSeeNewsletter(flagValue) &&
-            hasSeeTransaction(flagValue)
-        );
+export const getSocialTabSpotlightStep = (
+    activeStep: OnboardingStep,
+    categorizeStepLocation: CategorizeStepLocation
+): OnboardingStep | undefined => {
+    if (activeStep === OnboardingStep.MESSAGE || activeStep === OnboardingStep.FREE_USERS_SPOTLIGHT) {
+        return activeStep;
     }
 
-    if (audience === AudienceType.B2B) {
-        return hasSeeFullDisplay(flagValue) && hasSeeUpdate(flagValue) && hasSeeTransaction(flagValue);
+    if (activeStep === OnboardingStep.CATEGORIZE && categorizeStepLocation === 'tab') {
+        return OnboardingStep.CATEGORIZE;
     }
 
-    return false;
+    return undefined;
+};
+
+export const getListSpotlightStep = (
+    activeStep: OnboardingStep,
+    categorizeStepLocation: CategorizeStepLocation
+): OnboardingStep | undefined => {
+    return activeStep === OnboardingStep.CATEGORIZE && categorizeStepLocation === 'list'
+        ? OnboardingStep.CATEGORIZE
+        : undefined;
 };

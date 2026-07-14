@@ -119,7 +119,7 @@ type NonSavablePaymentMethods = 'bitcoin' | 'cash' | 'token';
  *
  * @see confluence.md for full documentation of payment methods
  */
-export type TelemetryPaymentMethod = SavablePaymentMethods | SavedPaymentMethods | NonSavablePaymentMethods;
+type TelemetryPaymentMethod = SavablePaymentMethods | SavedPaymentMethods | NonSavablePaymentMethods;
 
 /**
  * Maps internal payment method types to telemetry-friendly strings.
@@ -136,11 +136,8 @@ const PAYMENT_METHOD_MAPPING = {
     [PAYMENT_METHOD_TYPES.APPLE_PAY]: 'apple_pay',
     [PAYMENT_METHOD_TYPES.GOOGLE_PAY]: 'google_pay',
     [PAYMENT_METHOD_TYPES.CHARGEBEE_PAYPAL]: 'paypal',
-    [PAYMENT_METHOD_TYPES.PAYPAL]: 'paypal',
     [PAYMENT_METHOD_TYPES.CHARGEBEE_CARD]: 'card',
-    [PAYMENT_METHOD_TYPES.CARD]: 'card',
     [PAYMENT_METHOD_TYPES.CHARGEBEE_BITCOIN]: 'bitcoin',
-    [PAYMENT_METHOD_TYPES.BITCOIN]: 'bitcoin',
     [PAYMENT_METHOD_TYPES.CASH]: 'cash',
     [PAYMENT_METHOD_TYPES.CHARGEBEE_SEPA_DIRECT_DEBIT]: 'sepa',
     [PAYMENT_METHOD_TYPES.TOKEN]: 'token',

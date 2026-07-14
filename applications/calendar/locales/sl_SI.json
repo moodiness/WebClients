@@ -359,6 +359,9 @@
       "Expand video conferencing widget": [
         "Razširi gradnik za videokonference"
       ],
+      "Explore ${ MEET_SHORT_APP_NAME }": [
+        "Raziščite ${ MEET_SHORT_APP_NAME }"
+      ],
       "Export": [
         "Izvozi"
       ],
@@ -2156,6 +2159,9 @@
       "Canada": [
         "Kanada"
       ],
+      "Canary Islands": [
+        "Kanarski otoki"
+      ],
       "Cape Verde": [
         "Zelenortski otoki"
       ],
@@ -3107,6 +3113,9 @@
       "We've started importing your emails from Gmail. We'll let you know when it's done.": [
         "Začeli smo uvažati vašo e-pošto iz Gmaila. Obvestili vas bomo, ko bo končano."
       ],
+      "We’re sorry to see you go. If you have a moment, we’d really appreciate hearing why you’d like to cancel. Your feedback helps us make ${ BRAND_NAME } better for everyone.": [
+        "Žal nam je, da odhajate. Če imate trenutek časa, bi bili zelo hvaležni, če bi nam povedali, zakaj želite prekiniti naročnino. Vaša povratna informacija nam pomaga izboljševati ${ BRAND_NAME } za vse."
+      ],
       "With contact groups, you can send emails to everyone in the group with one click.": [
         "S skupinami stikov lahko pošljete e-pošto vsem v skupini z enim klikom."
       ],
@@ -3616,12 +3625,6 @@
       "Interval cannot be empty": [
         "Interval ne more biti prazen"
       ],
-      "Invalid ${ name } code": [
-        "Neveljavna koda ${ name }"
-      ],
-      "Invalid card number": [
-        "Neveljavna številka kartice"
-      ],
       "Invalid code": [
         "Neveljavna koda"
       ],
@@ -3630,9 +3633,6 @@
       ],
       "Invalid email address": [
         "Neveljaven e-poštni naslov"
-      ],
-      "Invalid expiration date": [
-        "Neveljaven datum poteka veljavnosti"
       ],
       "Invalid IBAN": [
         "Neveljaven IBAN"
@@ -3963,6 +3963,9 @@
       ],
       "VAT number must start with ${ prefixes }": [
         "Davčna številka se mora začeti z ${ prefixes }"
+      ],
+      "We couldn’t send a verification code using this method.": [
+        "S to metodo nam ni uspelo poslati potrditvenega kode."
       ],
       "Wrong billing address": [
         "Napačen naslov za izstavitev računa"
@@ -5045,6 +5048,9 @@
         "${ groupCounts } najdene skupine",
         "${ groupCounts } najdenih skupin"
       ],
+      "${ MEET_APP_NAME } seats": [
+        "${ MEET_APP_NAME } uporabniška mesta"
+      ],
       "${ PASS_SHORT_APP_NAME } lifetime deal has no renewal price, it's a one-time payment for lifetime access to ${ PASS_SHORT_APP_NAME }. Your ${ planTitle } subscription renewal price and date remain unchanged.": [
         "${ PASS_SHORT_APP_NAME } doživljenjska ponudba nima cene za podaljšanje, gre za enkratno plačilo za doživljenjski dostop do ${ PASS_SHORT_APP_NAME }. Cena in datum podaljšanja vaše naročnine ${ planTitle } ostaneta nespremenjena."
       ],
@@ -5129,6 +5135,9 @@
       "**Kill switch**: Stops data leaks by blocking your internet if the VPN drops unexpectedly.": [
         "**Stikalo za odklop**: Ustavi uhajanje podatkov tako, da blokira vašo internetno povezavo, če VPN nepričakovano preneha delovati."
       ],
+      "**They get ${ refereeRewardAmount }** in credits if they subscribe.": [
+        "**Pridobijo ${ refereeRewardAmount }** v dobroimetju, če se naročijo."
+      ],
       "+${ bonusSpace } bonus storage": [
         "+${ bonusSpace } dodaten prostor za shranjevanje"
       ],
@@ -5173,6 +5182,9 @@
       ],
       "Ad targeting": [
         "Ciljno oglaševanje"
+      ],
+      "Add ${ BRAND_NAME } ${ PASS_SHORT_APP_NAME }": [
+        "Dodaj ${ BRAND_NAME } ${ PASS_SHORT_APP_NAME }"
       ],
       "Add ${ PLAN_NAMES[PLANS.MEET_BUSINESS] }": [
         "Dodaj ${ PLAN_NAMES[PLANS.MEET_BUSINESS] }"
@@ -5804,9 +5816,6 @@
       "PGP/MIME automatically sends the message using the current composer mode.": [
         "PGP/MIME samodejno pošlje sporočilo z uporabo trenutnega načina skladanja."
       ],
-      "Please authenticate your card in the verification tab.": [
-        "Prosim, potrdite svojo kartico na zavihku za preverjanje."
-      ],
       "Please authenticate your payment in the verification tab.": [
         "Prosim, potrdite vaše plačilo na zavihku za preverjanje."
       ],
@@ -5845,9 +5854,6 @@
       ],
       "Please try again using a different payment method, or contact your bank.": [
         "Prosimo, poskusite znova z uporabo drugega načina plačila ali se obrnite na vašo banko."
-      ],
-      "Please try again, use a different payment method, or contact PayPal for assistance.": [
-        "Poskusite znova, uporabite drug način plačila ali se za pomoč obrnite na PayPal."
       ],
       "Please wait while we look for contacts that can be re-signed with the primary encryption key.": [
         "Počakajte, da poiščemo stike, ki jih je mogoče ponovno podpisati s primarnim šifrirnim ključem."
@@ -6059,6 +6065,9 @@
       "To fight spam and abuse, please verify you are human.": [
         "Zaradi boja proti neželeni vsebini in zlorabam najprej potrdite, da ste človek."
       ],
+      "To help you remember your password, we'll ask you to enter it periodically. We ask you less over time.": [
+        "Da si boste lažje zapomnili geslo, vas bomo občasno prosili, da ga vnesete. Sčasoma vas bomo za to prosili vse redkeje."
+      ],
       "To import events, first create a calendar in ${ CALENDAR_APP_NAME }. This is where the events will appear after the import.": [
         "Za uvoz dogodkov najprej ustvarite koledar v aplikaciji ${ CALENDAR_APP_NAME }. Tam se bodo dogodki po uvozu prikazali."
       ],
@@ -6085,6 +6094,9 @@
       ],
       "Tracking": [
         "Sledenje"
+      ],
+      "Trust the \"${ activeSignerText }\" key to verify new messages from this contact.": [
+        "Zaupaj ključu \"${ activeSignerText }\", da boš lahko preverjal nova sporočila od tega stika."
       ],
       "Try new ${ BRAND_NAME } features, updates and products before they are released to the public. This will reload the application": [
         "Preizkusite nove zmožnosti, posodobitve in izdelke ${ BRAND_NAME }, preden postanejo dostopni širši javnosti. Aplikacija se bo znova naložila."
@@ -6221,6 +6233,9 @@
       "You are about to open your default browser and visit:": [
         "Odprli boste svoj privzeti brskalnik in obiskali:"
       ],
+      "You are currently signed in as ${ username } for ${ organizationName }.": [
+        "Trenutno ste prijavljeni kot ${ username } v (${ organizationName }."
+      ],
       "You are currently signed in as ${ username }.": [
         "Trenutno ste prijavljeni kot ${ username }."
       ],
@@ -6286,9 +6301,6 @@
       ],
       "You will lose all unsaved changes.": [
         "Izgubili boste vse neshranjene spremembe."
-      ],
-      "You will soon be redirected to PayPal to verify your payment.": [
-        "Za preverjanje plačila boste kmalu preusmerjeni na spletno mesto PayPal."
       ],
       "You will update all the events in this series. Added and removed participants will be notified.": [
         "Posodobili boste vse dogodke v tej seriji. Obveščeni bodo dodani in odstranjeni udeleženci."
@@ -6577,6 +6589,11 @@
         "Tedenski pogled"
       ]
     },
+    "Keyboard shortcut name, switch to Calendar": {
+      "Switch to ${ CALENDAR_APP_NAME }": [
+        "Preklopi na ${ CALENDAR_APP_NAME }"
+      ]
+    },
     "Keyboard shortcut name, switch to Mail": {
       "Switch to ${ MAIL_APP_NAME }": [
         "Preklopi na ${ MAIL_APP_NAME }"
@@ -6706,6 +6723,9 @@
       ],
       "Colors": [
         "Barve"
+      ],
+      "Command line interface (CLI)": [
+        "Ukazna vrstica (CLI)"
       ],
       "Company": [
         "Podjetje"
@@ -7431,6 +7451,9 @@
       "60 minutes per meeting": [
         "60 minut na sestanek"
       ],
+      "Meeting recording": [
+        "Snemanje seje"
+      ],
       "One active meeting at a time": [
         "En aktivni sestanek naenkrat"
       ],
@@ -7905,6 +7928,9 @@
       "99.95% SLA": [
         "99,95 % SLA"
       ],
+      "Access all countries": [
+        "Dostop do vseh držav"
+      ],
       "Ad-blocker and malware protection": [
         "Prepoved oglasov in zaščita pred zlonamerno programsko opremo"
       ],
@@ -7988,6 +8014,9 @@
       ],
       "Data retention policies": [
         "Pravilniki hrambe podatkov"
+      ],
+      "Dedicated servers optimized for speed": [
+        "Namenski strežniki, optimizirani za hitrost"
       ],
       "Desktop app": [
         "Namizna aplikacija"
@@ -8207,6 +8236,9 @@
       ],
       "Unlimited volume/bandwidth": [
         "Neomejena količina/pretočnost podatkov"
+      ],
+      "Unlock streaming": [
+        "Odkleni pretakanje"
       ],
       "Up to ${ n } user": [
         "Do ${ n } uporabnika",
@@ -11842,9 +11874,6 @@
       "Payment verification": [
         "Preverjanje plačila"
       ],
-      "PayPal verification failed": [
-        "Preverjanje plačila s PayPal ni uspelo"
-      ],
       "Phone numbers": [
         "Telefonske številke"
       ],
@@ -12046,6 +12075,9 @@
       "Verification failed": [
         "Preverjanje ni uspelo"
       ],
+      "Verify your password": [
+        "Preverite geslo"
+      ],
       "Verifying your card...": [
         "Preverjanje vaše kartice ..."
       ],
@@ -12119,6 +12151,11 @@
     "Title (number of minutes/hours/days/weeks)": {
       "Choose a number": [
         "Izberite številko"
+      ]
+    },
+    "Title header for keys table": {
+      "Type": [
+        "Vrsta"
       ]
     },
     "Title; create calendar modal": {

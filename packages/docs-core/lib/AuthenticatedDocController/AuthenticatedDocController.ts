@@ -31,7 +31,7 @@ import { decompressDocumentUpdate, isCompressedDocumentUpdate } from '../utils/d
 import { WebsocketConnectionEvent } from '../Realtime/WebsocketEvent/WebsocketConnectionEvent'
 import type { WebsocketConnectionEventPayloads } from '../Realtime/WebsocketEvent/WebsocketConnectionEventPayloads'
 import { obfuscateUpdate } from 'yjs'
-import { downloadUpdateTimeline } from '../utils/create-update-timeline'
+import { downloadUpdateTimeline, getUpdateTimeline } from '../utils/create-update-timeline'
 import { getBufferHash } from '../utils/hash'
 
 // This is part of a hack to make sure the name in the document sharing modal is updated when the document name changes.
@@ -112,7 +112,7 @@ export class AuthenticatedDocController implements AuthenticatedDocControllerInt
     return updates.length > 0 ? new NativeVersionHistory(updates, this.documentType) : undefined
   }
 
-  async downloadAllUpdatesAsZip(): Promise<void> {
+  async getAllUpdatesAsZip(): Promise<Blob> {
     const JSZip = (await import('jszip')).default
     const zip = new JSZip()
 
@@ -134,6 +134,11 @@ export class AuthenticatedDocController implements AuthenticatedDocControllerInt
     }
 
     const zipBlob = await zip.generateAsync({ type: 'blob' })
+    return zipBlob
+  }
+
+  async downloadAllUpdatesAsZip(): Promise<void> {
+    const zipBlob = await this.getAllUpdatesAsZip()
     const zipUrl = URL.createObjectURL(zipBlob)
     const zipLink = document.createElement('a')
     zipLink.href = zipUrl
@@ -443,6 +448,15 @@ export class AuthenticatedDocController implements AuthenticatedDocControllerInt
     }
   }
 
+  public markAsTrashed() {
+    this.documentState.setProperty('documentTrashState', 'trashed')
+    this.didTrashDocInCurrentSession = true
+  }
+
+  public markAsRestored() {
+    this.documentState.setProperty('documentTrashState', 'not_trashed')
+  }
+
   public async restoreDocument(): Promise<void> {
     this.documentState.setProperty('documentTrashState', 'restoring')
 
@@ -489,6 +503,11 @@ export class AuthenticatedDocController implements AuthenticatedDocControllerInt
 
   public openMoveToFolderModal() {
     void this.driveCompat.openMoveToFolderModal(this.documentState.getProperty('entitlements').nodeMeta)
+  }
+
+  public async getUpdatesInformationAsJsonFile(ydoc?: unknown) {
+    const baseCommit = this.documentState.getProperty('baseCommit')
+    return getUpdateTimeline([...(baseCommit?.messages ?? []), ...this.receivedOrSentDUs], ydoc)
   }
 
   public async downloadUpdatesInformation(ydoc?: unknown) {

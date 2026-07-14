@@ -1,0 +1,76 @@
+@use '~@proton/styles/scss/lib/config' as *;
+@use '~@proton/styles/scss/lib/rem' as *;
+@use '~@proton/styles/scss/lib/include-media' as im;
+
+im.$breakpoints: $breakpoints-product;
+im.$media-expressions: $media-expressions;
+
+.lumo-cat-animation {
+	position: relative;
+	overflow: visible;
+	inline-size: rem(200);
+	block-size: rem(159);
+	margin-block: rem(-59) rem(24);
+	flex-shrink: 0;
+
+	--lumo-cat-hint-arrow-color: #6d4aff;
+
+	&--clickable {
+		cursor: pointer;
+
+		&:hover .lumo-cat-animation__hint,
+		&:focus-visible .lumo-cat-animation__hint {
+			opacity: 1;
+			visibility: visible;
+		}
+	}
+
+	&__lottie {
+		position: absolute;
+		inset: 0;
+		inline-size: 100%;
+		block-size: 100%;
+	}
+
+	&__hint {
+		position: absolute;
+		inset-block-start: rem(20);
+		inset-inline: rem(12) auto;
+		inline-size: rem(150);
+		opacity: 0;
+		visibility: hidden;
+		transition:
+			opacity 0.15s ease,
+			visibility 0.15s ease;
+		pointer-events: none;
+		z-index: 1;
+	}
+
+	&__hint-text {
+		margin-block: rem(-10) rem(6);
+		margin-inline: rem(-10) rem(-20);
+		font-family: 'Segoe Script', 'Bradley Hand', 'Apple Chancery', cursive;
+		font-size: rem(18);
+		line-height: 1.15;
+		color: var(--lumo-welcome-text, var(--text-norm));
+		text-align: start;
+		white-space: nowrap;
+		transform: rotate(333deg);
+		transform-origin: 40% 100%;
+	}
+
+	&__hint-arrow {
+		position: absolute;
+		inline-size: rem(21);
+		block-size: rem(20);
+		color: var(--lumo-cat-hint-arrow-color);
+		inset-block-start: rem(42);
+		inset-inline: rem(36) auto;
+		transform: scaleX(-1) rotate(6deg);
+		transform-origin: top left;
+	}
+}
+
+body:has(#lumo-light-theme) .lumo-cat-animation {
+	--lumo-cat-hint-arrow-color: var(-#6d4aff);
+}

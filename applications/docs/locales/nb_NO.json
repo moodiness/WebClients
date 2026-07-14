@@ -336,6 +336,9 @@
       "Download anyway": [
         "Last ned uansett"
       ],
+      "Download debug information": [
+        "Last ned feilsøkingsinformasjon"
+      ],
       "Download logs": [
         "Last ned logger"
       ],
@@ -378,11 +381,20 @@
       "Export contact group": [
         "Eksporter kontaktgruppe"
       ],
+      "Export editor state for version": [
+        "Eksporter redigeringsstatus for versjon"
+      ],
       "Export selection as .vcf": [
         "Eksporter utvalg som .vcf"
       ],
+      "Export this version (as docx)": [
+        "Eksporter denne versjonen (som docx)"
+      ],
       "Export this version (as xlsx)": [
         "Eksporter denne versjonen (som xlsx)"
+      ],
+      "Export YJS state for version": [
+        "Eksporter YJS-status for versjon"
       ],
       "Forgot password?": [
         "Glemt passord?"
@@ -636,6 +648,9 @@
       "Reload": [
         "Last inn på nytt"
       ],
+      "Reload spreadsheet": [
+        "Last inn regneark på nytt"
+      ],
       "Remove": [
         "Fjern"
       ],
@@ -665,6 +680,9 @@
       ],
       "Report a problem": [
         "Rapporter et problem"
+      ],
+      "Report issue": [
+        "Rapporter problem"
       ],
       "Request a call": [
         "Be om en samtale"
@@ -969,23 +987,23 @@
         "${ LUMO_APP_NAME } KI-lisens"
       ],
       "${ LUMO_APP_NAME } seats": [
-        "${ LUMO_APP_NAME }-lisenser"
+        "${ LUMO_APP_NAME } seter"
       ],
       "${ seats } ${ LUMO_APP_NAME } AI license": [
         "${ seats } ${ LUMO_APP_NAME } KI-lisens",
         "${ seats } ${ LUMO_APP_NAME } KI-lisenser"
       ],
       "${ seats } ${ LUMO_APP_NAME } seat": [
-        "${ seats } ${ LUMO_APP_NAME } lisens",
-        "${ seats } ${ LUMO_APP_NAME } lisenser"
+        "${ seats } ${ LUMO_APP_NAME } sete",
+        "${ seats } ${ LUMO_APP_NAME } seter"
       ],
       "${ seats } ${ MEET_APP_NAME } license": [
-        "${ seats } ${ MEET_APP_NAME }-lisens",
-        "${ seats } ${ MEET_APP_NAME }-lisenser"
+        "${ seats } ${ MEET_APP_NAME } sete",
+        "${ seats } ${ MEET_APP_NAME } seter"
       ],
       "${ seats } writing assistant seat": [
-        "${ seats } skriveassistentlisens",
-        "${ seats } skriveassistentlisenser"
+        "${ seats } skriveassistentsete",
+        "${ seats } skriveassistentseter"
       ],
       "${ users } user": [
         "${ users } bruker",
@@ -1007,7 +1025,7 @@
         "Skriveassistent"
       ],
       "Writing assistant seats": [
-        "Skriveassistentlisenser"
+        "Skriveassistentseter"
       ]
     },
     "Alert": {
@@ -1282,7 +1300,7 @@
         "Ikke aktivert"
       ],
       "Organization does not have enough seats available": [
-        "Organisasjonen har ikke nok ledige lisenser"
+        "Organisasjonen har ikke nok ledige seter"
       ],
       "Organization does not have enough storage available": [
         "Organisasjonen har ikke nok lagringsplass tilgjengelig"
@@ -3141,9 +3159,6 @@
       "Failed to load 'My files' folder": [
         "Kunne ikke laste inn mappen \"Mine filer\""
       ],
-      "Failed to load document details": [
-        "Kunne ikke laste inn dokumentdetaljer"
-      ],
       "Failed to load recent documents": [
         "Kunne ikke laste inn nylige dokumenter"
       ],
@@ -3156,11 +3171,17 @@
       "Failed to remove older revisions": [
         "Fjerning av eldre revisjoner mislyktes"
       ],
+      "Failed to rename document": [
+        "Kunne ikke endre navn på dokumentet"
+      ],
       "Failed to rename document. Please try again later.": [
         "Kunne ikke endre navn på dokumentet. Prøv igjen senere."
       ],
       "Failed to resend invitation": [
         "Kunne ikke sende invitasjonen på nytt"
+      ],
+      "Failed to trash document.": [
+        "Kunne ikke legge dokumentet i papirkurven."
       ],
       "Failed to unshare node": [
         "Kunne ikke oppheve deling av node"
@@ -3249,6 +3270,9 @@
       ],
       "No contacts found to import": [
         "Fant ingen kontakter å importere"
+      ],
+      "No drive found to import": [
+        "Ingen disker å importere funnet"
       ],
       "No emails found to import - the account does not have an inbox": [
         "Fant ingen e-poster å importere - kontoen har ikke en innboks"
@@ -3479,6 +3503,9 @@
       "Unexpected error, we can't import the contacts": [
         "Uventet feil, vi kan ikke importere kontaktene"
       ],
+      "Unexpected error, we can't import the files": [
+        "Uventet feil, vi kan ikke importere filene"
+      ],
       "Unknown error": [
         "Ukjent feil"
       ],
@@ -3508,6 +3535,9 @@
       ],
       "We couldn’t import this file into ${ SHEETS_APP_NAME }. You can try to copy and paste the contents into a new ${ SHEETS_APP_NAME }.": [
         "Vi kunne ikke importere denne filen til ${ SHEETS_APP_NAME }. Du kan prøve å kopiere og lime inn innholdet i en ny ${ SHEETS_APP_NAME }."
+      ],
+      "We couldn’t send a verification code using this method.": [
+        "Vi kunne ikke sende en bekreftelseskode med denne metoden."
       ],
       "Wrong billing address": [
         "Feil faktureringsadresse"
@@ -3942,6 +3972,9 @@
       ],
       "Security key": [
         "Sikkerhetsnøkkel"
+      ],
+      "Touch your security key.": [
+        "Berør sikkerhetsnøkkelen din."
       ]
     },
     "fido2: Label": {
@@ -4472,10 +4505,6 @@
         "${ selectedContactsLength }/${ contactsLength } kontakt valgt",
         "${ selectedContactsLength }/${ contactsLength } kontakter valgt"
       ],
-      "${ selectedCount } selected": [
-        "${ selectedCount } valgt",
-        "${ selectedCount } valgt"
-      ],
       "${ selectedFoldersCountLocalized } folder selected": [
         "${ selectedFoldersCountLocalized } mappe valgt",
         "${ selectedFoldersCountLocalized } mapper valgt"
@@ -4873,6 +4902,9 @@
       "File will not be updated": [
         "Filen blir ikke oppdatert"
       ],
+      "Files only (no photos, ${ DOCS_APP_NAME } or ${ SHEETS_APP_NAME }) - up to 100 GB total, 100,000 files, and 50 GB per file": [
+        "Bare filer (ingen bilder, ${ DOCS_APP_NAME } eller ${ SHEETS_APP_NAME }) – opptil 100 GB totalt, 100 000 filer og 50 GB per fil"
+      ],
       "finance": [
         "finans"
       ],
@@ -4912,8 +4944,14 @@
       "Governments and ISPs can monitor your online activity. By hiding your real IP and encrypting your activity your browsing becomes private.": [
         "Myndigheter og Internett-leverandører kan overvåke nettaktiviteten din. Ved å skjule din virkelige IP og kryptere aktiviteten din blir surfingen privat."
       ],
+      "Help us improve this experience by reporting the issue. If you’re comfortable sharing spreadsheet content, attach the debug information below to your report.": [
+        "Hjelp oss med å forbedre denne opplevelsen ved å rapportere problemet. Hvis du føler deg komfortabel med å dele regnearkinnhold, kan du legge ved feilsøkingsinformasjonen nedenfor i rapporten din."
+      ],
       "here": [
         "her"
+      ],
+      "Hide table of contents": [
+        "Skjul innholdsfortegnelse"
       ],
       "High Priority": [
         "Høy prioritet"
@@ -5139,6 +5177,9 @@
       "Only the people with the link and the password can access this folder.": [
         "Kun personer med koblingen og passordet har tilgang til denne mappen."
       ],
+      "Oops! This spreadsheet can’t save your most recent edits, so we’ve paused editing to prevent you from losing your work.": [
+        "Beklager! Dette regnearket kan ikke lagre de nyeste redigeringene dine, så vi har satt redigeringen på pause for å hindre at du mister arbeidet ditt."
+      ],
       "Open the guide for recommended actions and helpful links.": [
         "Åpne veiledningen for anbefalte handlinger og nyttige koblinger."
       ],
@@ -5313,6 +5354,9 @@
       ],
       "Shared on": [
         "Delt den"
+      ],
+      "Show table of contents": [
+        "Vis innholdsfortegnelse"
       ],
       "Signature cannot be validated due to network error, please try again later.": [
         "Signaturen kan ikke valideres på grunn av nettverksfeil, prøv igjen senere."
@@ -5623,6 +5667,9 @@
       ],
       "You are about to open your default browser and visit:": [
         "Du er i ferd med å åpne standardnettleseren din og besøke:"
+      ],
+      "You are currently signed in as ${ username } for ${ organizationName }.": [
+        "Du er for øyeblikket pålogget som ${ username } for (${ organizationName }."
       ],
       "You are currently signed in as ${ username }.": [
         "Du er for øyeblikket pålogget som ${ username }."
@@ -6041,6 +6088,9 @@
       "Download anyway": [
         "Last ned uansett"
       ],
+      "Drive": [
+        "Drive"
+      ],
       "Duplicate found": [
         "Duplikat funnet"
       ],
@@ -6085,6 +6135,12 @@
       ],
       "Erase this link and remove everyone with access": [
         "Slett denne koblingen og fjern alle med tilgang"
+      ],
+      "Exact host matching": [
+        "Nøyaktig vertsmatching"
+      ],
+      "Exact URL matching": [
+        "Nøyaktig URL-samsvar"
       ],
       "Expiry": [
         "Utløp"
@@ -6206,6 +6262,9 @@
       "Navigation": [
         "Navigasjon"
       ],
+      "Never fill on this exact URL": [
+        "Fyll aldri på denne nøyaktige nettadressen"
+      ],
       "New password": [
         "Nytt passord"
       ],
@@ -6226,6 +6285,9 @@
       ],
       "Optional": [
         "Valgfritt"
+      ],
+      "Parent domain and subdomains (default)": [
+        "Overordnet domene og underdomener (standard)"
       ],
       "Password": [
         "Passord"
@@ -6266,6 +6328,9 @@
       "Region": [
         "Region"
       ],
+      "Regular expression": [
+        "Regulært uttrykk"
+      ],
       "Replace existing file": [
         "Erstatt eksisterende fil"
       ],
@@ -6302,6 +6367,9 @@
       "Skip folder": [
         "Hopp over mappe"
       ],
+      "Starts with": [
+        "Begynner med"
+      ],
       "Stop sharing": [
         "Avslutt deling"
       ],
@@ -6329,8 +6397,14 @@
       "Trash": [
         "Papirkurv"
       ],
+      "Unknown user": [
+        "Ukjent bruker"
+      ],
       "Upload picture": [
         "Last opp bilde"
+      ],
+      "URL wildcard pattern": [
+        "URL-jokertegnmønster"
       ],
       "Username": [
         "Brukernavn"
@@ -6600,11 +6674,11 @@
         "${ MEET_APP_NAME }-tilgang"
       ],
       "${ MEET_APP_NAME } seats": [
-        "${ MEET_APP_NAME }-tilganger"
+        "${ MEET_APP_NAME } seter"
       ],
       "${ seats } ${ MEET_APP_NAME } seat": [
-        "${ seats } ${ MEET_APP_NAME }-tilgang",
-        "${ seats } ${ MEET_APP_NAME }-tilganger"
+        "${ seats } ${ MEET_APP_NAME } sete",
+        "${ seats } ${ MEET_APP_NAME } seter"
       ]
     },
     "meet_2025: Feature": {
@@ -6666,6 +6740,24 @@
       ]
     },
     "Message": {
+      "'Starts with' matching rule": [
+        "\"Begynner med\"-samsvarsregel"
+      ],
+      "Exact (sub) domain matching rule": [
+        "Regel for nøyaktig (under)domenesamsvar"
+      ],
+      "Exact URL matching rule": [
+        "Regel for nøyaktig URL-samsvar"
+      ],
+      "Never fill with this exact URL": [
+        "Fyll aldri med denne nøyaktige nettadressen"
+      ],
+      "Regular expression rule": [
+        "Regel for regulært uttrykk"
+      ],
+      "Wildcard pattern matching rule": [
+        "Regel for samsvar med jokertegnmønster"
+      ],
       "Your free trial has ended. ${ nonAutoRenewalAction }": [
         "Din gratis prøveperiode er over. ${ nonAutoRenewalAction }"
       ],
@@ -8026,6 +8118,15 @@
       "Device renamed": [
         "Enhet byttet navn"
       ],
+      "Document failed to be restored from trash": [
+        "Kunne ikke gjenopprette dokumentet fra papirkurven"
+      ],
+      "Document moved to trash": [
+        "Dokument flyttet til papirkurven"
+      ],
+      "Document restored from trash": [
+        "Dokument gjenopprettet fra papirkurven"
+      ],
       "External invitation removed from the share": [
         "Ekstern invitasjon fjernet fra delingen"
       ],
@@ -8041,8 +8142,14 @@
       "Failed to load invitation details": [
         "Kunne ikke laste inn invitasjonsdetaljer"
       ],
+      "Failed to load sharing details": [
+        "Kunne ikke laste inn delingsdetaljene"
+      ],
       "Failed to reject share invitation": [
         "Kunne ikke avvise delingsinvitasjon"
+      ],
+      "Failed to rename document": [
+        "Kunne ikke endre navn på dokumentet"
       ],
       "Failed to upload files: ${ err }": [
         "Kunne ikke laste opp filer: ${ err }"
@@ -9957,6 +10064,9 @@
         "${ emailsCount } e-postadresse",
         "${ emailsCount } e-postadresser"
       ],
+      "${ LUMO_SHORT_APP_NAME } writing assistant": [
+        "${ LUMO_SHORT_APP_NAME }-skriveassistent"
+      ],
       "Account recovery": [
         "Kontogjenoppretting"
       ],
@@ -10187,6 +10297,9 @@
       ],
       "Edit image": [
         "Rediger bilde"
+      ],
+      "Editing paused": [
+        "Redigering satt på pause"
       ],
       "Email addresses": [
         "E-postadresser"
@@ -10577,6 +10690,26 @@
         "Din eksponerte informasjon"
       ]
     },
+    "Title header for keys table": {
+      "Actions": [
+        "Handlinger"
+      ],
+      "Created": [
+        "Opprettet"
+      ],
+      "Expires": [
+        "Utløper"
+      ],
+      "Fingerprint": [
+        "Fingeravtrykk"
+      ],
+      "Status": [
+        "Status"
+      ],
+      "Type": [
+        "Type"
+      ]
+    },
     "Today icon tooltip in mini calendar": {
       "Today": [
         "I dag"
@@ -10625,6 +10758,9 @@
       "Gmail automatically categorizes some emails like Social or Promotions. You can select where to import these emails to.": [
         "Gmail kategoriserer automatisk noen e-poster som 'sosialt' eller 'kampanjer'. Du kan velge hvor du vil importere disse e-postene til."
       ],
+      "Instant AI assistance, human expert on hand!": [
+        "Øyeblikkelig KI-assistanse, menneskelig ekspert er klar!"
+      ],
       "Load image": [
         "Last inn bilde"
       ],
@@ -10658,6 +10794,9 @@
       "Upload a public key to enable sending end-to-end encrypted emails to this email": [
         "Last opp en offentlig nøkkel for å aktivere sending av ende-til-ende-krypterte e-postmeldinger til denne e-posten."
       ],
+      "Version 6 OpenPGP key": [
+        "Versjon 6 OpenPGP-nøkkel"
+      ],
       "We have sent them an invite to access the item.": [
         "Vi har sendt dem en invitasjon til å få tilgang til elementet."
       ]
@@ -10690,6 +10829,11 @@
       ],
       "The user must have an address to request data access": [
         "Brukeren må ha en adresse for å be om datatilgang"
+      ]
+    },
+    "user_modal": {
+      "You'll be able to assign roles once the user has accepted the invitation.": [
+        "Du vil kunne tildele roller når brukeren har godtatt invitasjonen."
       ]
     },
     "Validation": {
@@ -10808,6 +10952,9 @@
       ],
       "${ BRAND_NAME } will transfer as much data as possible, starting with your most recent messages.": [
         "${ BRAND_NAME } vil overføre så mye data som mulig, og starter med de nyeste meldingene dine."
+      ],
+      "${ modeLabelStong } provides powerful control, but a single error can cause autofill to match and fill data on fraudulent or phishing websites.": [
+        "${ modeLabelStong } gir kraftig kontroll, men én enkelt feil kan føre til at autofyll samsvarer med og fyller ut data på svindel- eller nettfisking-nettsteder."
       ],
       "Are you sure you want to permanently delete ${ count } contact?": [
         "Er du sikker på at du ønsker å slette ${ count } kontakt permanent?",

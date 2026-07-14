@@ -10,14 +10,16 @@ import {
     ModalTwoFooter,
     ModalTwoHeader,
     TextAreaTwo,
-    Toggle,
+    useModalStateObject,
 } from '@proton/components';
 import type { ModalStateProps } from '@proton/components';
-import { IcCross } from '@proton/icons/icons/IcCross';
 import { LUMO_SHORT_APP_NAME } from '@proton/shared/lib/constants';
 
+import { LumoIcon } from '../../components/LumoIcon/LumoIcon';
+import { useCustomAgentLimit } from '../../hooks/useCustomAgentLimit';
 import { useCustomAgents } from '../../hooks/useCustomAgents';
 import { IconPicker } from '../projects/components/IconPicker';
+import { CustomAgentLimitModal } from './CustomAgentLimitModal';
 import {
     AGENT_INSTRUCTIONS_MAX_LENGTH,
     CONVERSATION_STARTER_MAX_LENGTH,
@@ -35,6 +37,8 @@ interface AgentModalProps extends ModalStateProps {
 
 export const AgentModal = ({ agentId, onAgentCreated, ...modalProps }: AgentModalProps) => {
     const { getAgent, createAgent, updateAgent, deleteAgent } = useCustomAgents();
+    const { canCreateCustomAgent } = useCustomAgentLimit();
+    const customAgentLimitModal = useModalStateObject();
     const existing = getAgent(agentId);
 
     const [name, setName] = useState('');
@@ -90,6 +94,11 @@ export const AgentModal = ({ agentId, onAgentCreated, ...modalProps }: AgentModa
     };
 
     const handleSave = () => {
+        if (!existing && !canCreateCustomAgent) {
+            customAgentLimitModal.openModal(true);
+            return;
+        }
+
         const draft = { name, description, instructions, icon: selectedIcon, hidden, conversationStarters };
         if (existing) {
             updateAgent(existing.id, draft);
@@ -101,138 +110,130 @@ export const AgentModal = ({ agentId, onAgentCreated, ...modalProps }: AgentModa
     };
 
     const isSaveDisabled = !name.trim();
-    const title = existing ? c('collider_2025:Title').t`Edit agent` : c('collider_2025:Title').t`Create agent`;
+    const title = existing
+        ? c('collider_2025:Title').t`Edit custom ${LUMO_SHORT_APP_NAME}`
+        : c('collider_2025:Title').t`Create a custom ${LUMO_SHORT_APP_NAME}`;
 
     return (
-        <ModalTwo {...modalProps} onClose={handleClose} size="large">
-            <ModalTwoHeader
-                title={title}
-                subline={c('collider_2025:Subline')
-                    .t`Agents turn a chat into a focused assistant with its own instructions. Pick one from the composer to start a conversation with it.`}
-            />
-            <ModalTwoContent>
-                <div className="flex flex-column gap-4">
-                    <div className="flex flex-nowrap items-center border border-weak rounded-lg p-1">
-                        <IconPicker selectedIcon={selectedIcon} onSelectIcon={handleIconSelect} />
-                        <InputFieldTwo
-                            id="agent-name"
-                            placeholder={c('collider_2025:Placeholder').t`Account recovery assistant`}
-                            value={name}
-                            onValue={setName}
-                            maxLength={100}
-                            unstyled
-                            className="flex-1 unstyled-field"
-                            dense
-                        />
-                    </div>
+        <>
+            <ModalTwo {...modalProps} onClose={handleClose} size="large">
+                <ModalTwoHeader
+                    title={title}
+                    subline={c('collider_2025:Subline')
+                        .t`Custom ${LUMO_SHORT_APP_NAME}s turn a chat into a focused assistant with its own instructions. Pick one from the composer to start a conversation with it.`}
+                />
+                <ModalTwoContent>
+                    <div className="flex flex-column gap-4">
+                        <div className="flex flex-nowrap items-center border border-weak rounded-lg p-1">
+                            <IconPicker selectedIcon={selectedIcon} onSelectIcon={handleIconSelect} />
+                            <InputFieldTwo
+                                id="agent-name"
+                                placeholder={c('collider_2025:Placeholder').t`Fluffy McFluff Face`}
+                                value={name}
+                                onValue={setName}
+                                maxLength={100}
+                                unstyled
+                                className="flex-1 unstyled-field"
+                                dense
+                            />
+                        </div>
 
-                    <div>
-                        <label htmlFor="agent-description" className="block text-semibold text-sm color-norm mb-2">
-                            {c('collider_2025:Label').t`Description (optional)`}
-                        </label>
-                        <InputFieldTwo
-                            id="agent-description"
-                            placeholder={c('collider_2025:Placeholder')
-                                .t`Help with login, password and recovery issues.`}
-                            value={description}
-                            onValue={setDescription}
-                            maxLength={120}
-                            className="border border-weak rounded-lg"
-                            dense
-                        />
-                    </div>
+                        <div>
+                            <label htmlFor="agent-description" className="block text-semibold text-sm color-norm mb-2">
+                                {c('collider_2025:Label').t`Description (optional)`}
+                            </label>
+                            <InputFieldTwo
+                                id="agent-description"
+                                placeholder={c('collider_2025:Placeholder')
+                                    .t`Help with login, password and recovery issues.`}
+                                value={description}
+                                onValue={setDescription}
+                                maxLength={120}
+                                className="border border-weak rounded-lg"
+                                dense
+                            />
+                        </div>
 
-                    <div>
-                        <label htmlFor="agent-instructions" className="block text-semibold text-sm color-norm mb-2">
-                            {c('collider_2025:Label').t`Instructions`}
-                        </label>
-                        <TextAreaTwo
-                            id="agent-instructions"
-                            placeholder={c('collider_2025:Placeholder')
-                                .t`Describe the role, scope, and behavior you want ${LUMO_SHORT_APP_NAME} to adopt for this agent.`}
-                            value={instructions}
-                            className="border border-weak rounded-lg"
-                            onValue={setInstructions}
-                            maxLength={AGENT_INSTRUCTIONS_MAX_LENGTH}
-                            rows={10}
-                        />
-                    </div>
+                        <div>
+                            <label htmlFor="agent-instructions" className="block text-semibold text-sm color-norm mb-2">
+                                {c('collider_2025:Label').t`Instructions`}
+                            </label>
+                            <TextAreaTwo
+                                id="agent-instructions"
+                                placeholder={c('collider_2025:Placeholder')
+                                    .t`Describe the role, scope, and behavior you want ${LUMO_SHORT_APP_NAME} to adopt.`}
+                                value={instructions}
+                                className="border border-weak rounded-lg"
+                                onValue={setInstructions}
+                                maxLength={AGENT_INSTRUCTIONS_MAX_LENGTH}
+                                rows={10}
+                            />
+                        </div>
 
-                    <div>
-                        <label className="block text-semibold text-sm color-norm mb-1">
-                            {c('collider_2025:Label').t`Conversation starters (optional)`}
-                        </label>
-                        <p className="text-sm color-weak mt-0 mb-2">
-                            {c('collider_2025:Info')
-                                .t`Example prompts shown when a conversation with this agent begins.`}
-                        </p>
-                        <div className="flex flex-column gap-2">
-                            {starterFields.map((starter, index) => {
-                                const isFilled = index < conversationStarters.length;
-                                return (
-                                    <div key={index} className="flex flex-nowrap items-center gap-2">
-                                        <InputFieldTwo
-                                            placeholder={c('collider_2025:Placeholder').t`Add a conversation starter`}
-                                            value={starter}
-                                            onValue={(value: string) => handleStarterChange(index, value)}
-                                            maxLength={CONVERSATION_STARTER_MAX_LENGTH}
-                                            className="border border-weak rounded-lg"
-                                            dense
-                                            assistContainerClassName="hidden"
-                                        />
-                                        <Button
-                                            icon
-                                            shape="ghost"
-                                            size="small"
-                                            className={isFilled ? 'shrink-0' : 'shrink-0 visibility-hidden'}
-                                            disabled={!isFilled}
-                                            onClick={() => handleStarterRemove(index)}
-                                            title={c('collider_2025:Action').t`Remove`}
-                                            aria-label={c('collider_2025:Action').t`Remove`}
-                                        >
-                                            <IcCross size={4} />
-                                        </Button>
-                                    </div>
-                                );
-                            })}
+                        <div>
+                            <label className="block text-semibold text-sm color-norm mb-1">
+                                {c('collider_2025:Label').t`Conversation starters (optional)`}
+                            </label>
+                            <p className="text-sm color-weak mt-0 mb-2">
+                                {c('collider_2025:Info').t`Example prompts shown when a conversation begins.`}
+                            </p>
+                            <div className="flex flex-column gap-2">
+                                {starterFields.map((starter, index) => {
+                                    const isFilled = index < conversationStarters.length;
+                                    return (
+                                        <div key={index} className="flex flex-nowrap items-center gap-2">
+                                            <InputFieldTwo
+                                                placeholder={c('collider_2025:Placeholder')
+                                                    .t`Add a conversation starter`}
+                                                value={starter}
+                                                onValue={(value: string) => handleStarterChange(index, value)}
+                                                maxLength={CONVERSATION_STARTER_MAX_LENGTH}
+                                                className="border border-weak rounded-lg"
+                                                dense
+                                                assistContainerClassName="hidden"
+                                            />
+                                            <Button
+                                                icon
+                                                shape="ghost"
+                                                size="small"
+                                                className={isFilled ? 'shrink-0' : 'shrink-0 visibility-hidden'}
+                                                disabled={!isFilled}
+                                                onClick={() => handleStarterRemove(index)}
+                                                title={c('collider_2025:Action').t`Remove`}
+                                                aria-label={c('collider_2025:Action').t`Remove`}
+                                            >
+                                                <LumoIcon name="X" size={16} />
+                                            </Button>
+                                        </div>
+                                    );
+                                })}
+                            </div>
                         </div>
                     </div>
-
-                    <div className="flex flex-nowrap items-center justify-space-between gap-2">
-                        <label htmlFor="agent-hidden" className="flex flex-column">
-                            <span className="text-semibold text-sm color-norm">
-                                {c('collider_2025:Label').t`Hide from list`}
-                            </span>
-                            <span className="text-sm color-weak">
-                                {c('collider_2025:Info')
-                                    .t`Keep this agent out of the picker. It can still be opened with a shared link.`}
-                            </span>
-                        </label>
-                        <Toggle id="agent-hidden" checked={hidden} onChange={() => setHidden((prev) => !prev)} />
-                    </div>
-                </div>
-            </ModalTwoContent>
-            <ModalTwoFooter>
-                {existing ? (
-                    <Button
-                        onClick={() => {
-                            deleteAgent(existing.id);
-                            handleClose();
-                        }}
-                        color="danger"
-                        shape="outline"
-                    >
-                        {c('collider_2025:Button').t`Delete`}
+                </ModalTwoContent>
+                <ModalTwoFooter>
+                    {existing ? (
+                        <Button
+                            onClick={() => {
+                                deleteAgent(existing.id);
+                                handleClose();
+                            }}
+                            color="danger"
+                            shape="outline"
+                        >
+                            {c('collider_2025:Button').t`Delete`}
+                        </Button>
+                    ) : (
+                        <Button onClick={handleClose} color="weak">
+                            {c('collider_2025:Button').t`Cancel`}
+                        </Button>
+                    )}
+                    <Button onClick={handleSave} color="norm" disabled={isSaveDisabled}>
+                        {existing ? c('collider_2025:Button').t`Save` : c('collider_2025:Button').t`Create`}
                     </Button>
-                ) : (
-                    <Button onClick={handleClose} color="weak">
-                        {c('collider_2025:Button').t`Cancel`}
-                    </Button>
-                )}
-                <Button onClick={handleSave} color="norm" disabled={isSaveDisabled}>
-                    {existing ? c('collider_2025:Button').t`Save` : c('collider_2025:Button').t`Create agent`}
-                </Button>
-            </ModalTwoFooter>
-        </ModalTwo>
+                </ModalTwoFooter>
+            </ModalTwo>
+            {customAgentLimitModal.render && <CustomAgentLimitModal {...customAgentLimitModal.modalProps} />}
+        </>
     );
 };

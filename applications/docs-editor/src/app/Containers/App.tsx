@@ -37,7 +37,6 @@ import {
 import { useCallback, useEffect, useRef, useState } from 'react'
 import { useSyncedState } from '../Hooks/useSyncedState'
 import config from '../config'
-import clsx from '@proton/utils/clsx'
 import debounce from 'lodash/debounce'
 import locales from '../locales'
 import noop from '@proton/utils/noop'
@@ -57,6 +56,8 @@ import { ErrorBoundary } from '@proton/components'
 import type { OpenLinkEventData } from './Spreadsheet/constants'
 import { OPEN_LINK_EVENT } from './Spreadsheet/constants'
 import { useStore } from 'zustand'
+import DocsLayout from './DocsLayout'
+import SheetsLayout from './SheetsLayout'
 
 type AppProps = {
   documentType: DocumentType
@@ -94,6 +95,7 @@ export function App({ documentType, systemMode, bridgeState }: AppProps) {
   const [clonedEditorState, setClonedEditorState] = useState<EditorState>()
   const [isEditorRefReady, setIsEditorRefReady] = useState(false)
   const scrollPositionBeforePreview = useRef<number | null>(null)
+  const [tableOfContentsVisibleState, setTableOfContentsVisibleState] = useState(false)
 
   useEffect(() => {
     if (userMode !== EditorUserMode.Preview) {
@@ -491,6 +493,10 @@ export function App({ documentType, systemMode, bridgeState }: AppProps) {
           spreadsheetRef.current.applyPatches(patches)
         }
       },
+
+      async setTableOfContentsVisible(visible: boolean) {
+        setTableOfContentsVisibleState(visible)
+      },
     }
 
     application.logger.info('Setting request handler for bridge')
@@ -652,54 +658,53 @@ export function App({ documentType, systemMode, bridgeState }: AppProps) {
   }
 
   const isPreviewMode = systemMode === EditorSystemMode.Edit && userMode === EditorUserMode.Preview
+  const showPreviewModeEditor = isPreviewMode && clonedEditorState
 
-  return (
-    <div
-      className={clsx('relative grid h-full w-full overflow-hidden bg-[white]', isSuggestionMode && 'suggestion-mode')}
-      style={{
-        '--comments-width': 'max(20.5vw, 300px)',
-        gridTemplateRows: 'min-content 1fr',
-        gridTemplateColumns: '3fr var(--comments-width)',
-      }}
-    >
-      {documentType === 'doc' ? (
-        <>
-          {isPreviewMode && clonedEditorState && (
-            <div style={{ display: 'contents' }}>
-              <PreviewModeEditor
-                clonedEditorState={clonedEditorState}
-                role={application.getRole()}
-                onUserModeChange={onUserModeChange}
-                clientInvoker={bridge.getClientInvoker()}
-                initialScrollTop={scrollPositionBeforePreview.current}
-              />
-            </div>
-          )}
-          <div style={{ display: isPreviewMode ? 'none' : 'contents' }}>
-            <Editor
-              clientInvoker={bridge.getClientInvoker()}
-              docMap={docMap}
-              docState={docState}
-              documentId={editorConfig.current.documentId}
-              editingLocked={editingLocked || userMode === EditorUserMode.Preview}
-              editorInitializationConfig={editorConfig.current.editorInitializationConfig}
-              hidden={editorHidden}
-              isSuggestionsFeatureEnabled={suggestionsEnabled}
-              lexicalError={editorError}
-              logger={application.logger}
-              onEditorError={onEditorError}
-              onEditorLoadResult={onEditorLoadResult}
-              onUserModeChange={onUserModeChange}
-              role={application.getRole()}
-              setEditorRef={setEditorRef}
-              showTreeView={showTreeView}
-              systemMode={systemMode}
-              userMode={userMode}
-              userAddress={editorConfig.current.userAddress}
-            />
-          </div>
-        </>
-      ) : (
+  if (documentType === 'doc') {
+    return (
+      <DocsLayout.Container isSuggestionMode={isSuggestionMode} tableOfContentsVisible={tableOfContentsVisibleState}>
+        {showPreviewModeEditor && (
+          <PreviewModeEditor
+            clonedEditorState={clonedEditorState}
+            role={application.getRole()}
+            onUserModeChange={onUserModeChange}
+            clientInvoker={bridge.getClientInvoker()}
+            initialScrollTop={scrollPositionBeforePreview.current}
+            tableOfContentsVisible={tableOfContentsVisibleState}
+          />
+        )}
+
+        <div style={{ display: isPreviewMode ? 'none' : 'contents' }}>
+          <Editor
+            clientInvoker={bridge.getClientInvoker()}
+            docMap={docMap}
+            docState={docState}
+            documentId={editorConfig.current.documentId}
+            editingLocked={editingLocked || userMode === EditorUserMode.Preview}
+            editorInitializationConfig={editorConfig.current.editorInitializationConfig}
+            hidden={editorHidden}
+            isSuggestionsFeatureEnabled={suggestionsEnabled}
+            lexicalError={editorError}
+            logger={application.logger}
+            onEditorError={onEditorError}
+            onEditorLoadResult={onEditorLoadResult}
+            onUserModeChange={onUserModeChange}
+            role={application.getRole()}
+            setEditorRef={setEditorRef}
+            showTreeView={showTreeView}
+            systemMode={systemMode}
+            userMode={userMode}
+            userAddress={editorConfig.current.userAddress}
+            tableOfContentsVisible={tableOfContentsVisibleState}
+          />
+        </div>
+      </DocsLayout.Container>
+    )
+  }
+
+  if (documentType === 'sheet') {
+    return (
+      <SheetsLayout>
         <ErrorBoundary
           onError={(error) => {
             reportErrorToSentry(error)
@@ -722,7 +727,9 @@ export function App({ documentType, systemMode, bridgeState }: AppProps) {
             />
           </SpreadsheetProvider>
         </ErrorBoundary>
-      )}
-    </div>
-  )
+      </SheetsLayout>
+    )
+  }
+
+  return null
 }

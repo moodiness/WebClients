@@ -6,25 +6,23 @@ import { c } from 'ttag';
 import { SidebarItem } from './SidebarItem';
 
 interface Props {
-    showText: boolean;
     onItemClick: () => void;
 }
 
-export const GallerySidebarButton = ({ showText, onItemClick }: Props) => {
+export const GallerySidebarButton = ({ onItemClick }: Props) => {
     const history = useHistory();
-    const isActive = useRouteMatch('/gallery');
+    const isActive = useRouteMatch('/images');
 
     const handleClick = useCallback(() => {
-        history.push('/gallery');
+        history.push('/images');
         onItemClick();
     }, [history, onItemClick]);
 
     return (
         <SidebarItem
-            icon="image"
-            label={c('collider_2025:Button').t`Gallery`}
+            icon="Images"
+            label={c('collider_2025:Button').t`Images`}
             onClick={handleClick}
-            showText={showText}
             className={isActive ? 'sidebar-item--active' : undefined}
         />
     );

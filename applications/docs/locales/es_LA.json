@@ -91,7 +91,7 @@
         "Aplicar"
       ],
       "Ask me next time": [
-        "Preguntarme después"
+        "Preguntarme la próxima vez"
       ],
       "At most ${ maxContacts } contact is allowed per contact group": [
         "Se permite como máximo ${ maxContacts } contacto por grupo de contactos.",
@@ -336,6 +336,9 @@
       "Download anyway": [
         "Descargar de todos modos"
       ],
+      "Download debug information": [
+        "Descargar información de depuración"
+      ],
       "Download logs": [
         "Descargar los registros"
       ],
@@ -378,11 +381,20 @@
       "Export contact group": [
         "Exportar grupo de contactos"
       ],
+      "Export editor state for version": [
+        "Exportar estado del editor para la versión"
+      ],
       "Export selection as .vcf": [
         "Exportar la selección en formato *.vcf"
       ],
+      "Export this version (as docx)": [
+        "Exportar esta versión (como docx)"
+      ],
       "Export this version (as xlsx)": [
         "Exportar esta versión (como xlsx)"
+      ],
+      "Export YJS state for version": [
+        "Exportar estado YJS para la versión"
       ],
       "Forgot password?": [
         "¿Olvidó su contraseña?"
@@ -639,6 +651,9 @@
       "Reload": [
         "Recargar"
       ],
+      "Reload spreadsheet": [
+        "Recargar hoja de cálculo"
+      ],
       "Remove": [
         "Eliminar"
       ],
@@ -668,6 +683,9 @@
       ],
       "Report a problem": [
         "Reportar un problema"
+      ],
+      "Report issue": [
+        "Reportar problema"
       ],
       "Request a call": [
         "Solicitar una llamada"
@@ -709,7 +727,7 @@
         "Guardar los cambios"
       ],
       "Save preferences": [
-        "Guardar preferencias"
+        "Guardar las preferencias"
       ],
       "Search": [
         "Buscar"
@@ -3144,9 +3162,6 @@
       "Failed to load 'My files' folder": [
         "Error al cargar la carpeta «Mis archivos»"
       ],
-      "Failed to load document details": [
-        "Error al cargar los detalles de documento"
-      ],
       "Failed to load recent documents": [
         "Error al cargar los documentos recientes"
       ],
@@ -3159,11 +3174,17 @@
       "Failed to remove older revisions": [
         "Ocurrió un error al borrar revisiones anteriores"
       ],
+      "Failed to rename document": [
+        "Error al cambiar el nombre del documento"
+      ],
       "Failed to rename document. Please try again later.": [
         "Error al renombrar el documento. Inténtelo de nuevo más tarde."
       ],
       "Failed to resend invitation": [
         "Error al reenviar la invitación"
+      ],
+      "Failed to trash document.": [
+        "Error al enviar el documento a la papelera."
       ],
       "Failed to unshare node": [
         "Error al dejar de compartir el nodo"
@@ -3252,6 +3273,9 @@
       ],
       "No contacts found to import": [
         "No se encontraron contactos para importar"
+      ],
+      "No drive found to import": [
+        "No se encontró ninguna unidad para importar"
       ],
       "No emails found to import - the account does not have an inbox": [
         "No se encontraron correos para importar, la cuenta no tiene un buzón"
@@ -3482,6 +3506,9 @@
       "Unexpected error, we can't import the contacts": [
         "Error inesperado, no podemos importar los contactos"
       ],
+      "Unexpected error, we can't import the files": [
+        "Error inesperado, no se pueden importar los archivos"
+      ],
       "Unknown error": [
         "Error desconocido"
       ],
@@ -3511,6 +3538,9 @@
       ],
       "We couldn’t import this file into ${ SHEETS_APP_NAME }. You can try to copy and paste the contents into a new ${ SHEETS_APP_NAME }.": [
         "No pudimos importar este archivo a ${ SHEETS_APP_NAME }. Puede intentar copiar y pegar el contenido en una ${ SHEETS_APP_NAME } nueva."
+      ],
+      "We couldn’t send a verification code using this method.": [
+        "No pudimos enviar un código de verificación usando este método."
       ],
       "Wrong billing address": [
         "Dirección de facturación incorrecta"
@@ -3945,6 +3975,9 @@
       ],
       "Security key": [
         "Clave de seguridad"
+      ],
+      "Touch your security key.": [
+        "Toque su llave de seguridad."
       ]
     },
     "fido2: Label": {
@@ -4475,10 +4508,6 @@
         "${ selectedContactsLength }/${ contactsLength } contacto seleccionado",
         "${ selectedContactsLength }/${ contactsLength } contactos seleccionados"
       ],
-      "${ selectedCount } selected": [
-        "${ selectedCount } seleccionado",
-        "${ selectedCount } seleccionados"
-      ],
       "${ selectedFoldersCountLocalized } folder selected": [
         "${ selectedFoldersCountLocalized } carpeta seleccionada",
         "${ selectedFoldersCountLocalized } carpeta seleccionada"
@@ -4678,7 +4707,7 @@
         "Continuar"
       ],
       "Converting document...": [
-        "Convirtiendo documento..."
+        "Convirtiendo el documento..."
       ],
       "Copied to clipboard": [
         "Copiado al portapapeles"
@@ -4730,7 +4759,7 @@
         "Creando enlace a la carpeta"
       ],
       "Creating new document...": [
-        "Creando nuevo documento..."
+        "Creando el documento..."
       ],
       "Current plan": [
         "Plan actual"
@@ -4835,10 +4864,10 @@
         "Ingrese su propia contraseña (como contacto de confianza)."
       ],
       "Error converting document: ${ errorMessage }": [
-        "Error al convertir documento: ${ errorMessage }"
+        "Error al convertir el documento: ${ errorMessage }"
       ],
       "Error loading document: ${ errorDetail }": [
-        "Error al cargar documento: ${ errorDetail }"
+        "Error al cargar el documento: ${ errorDetail }"
       ],
       "Error Syncing": [
         "Error al sincronizar"
@@ -4876,6 +4905,9 @@
       "File will not be updated": [
         "El archivo no se actualizará"
       ],
+      "Files only (no photos, ${ DOCS_APP_NAME } or ${ SHEETS_APP_NAME }) - up to 100 GB total, 100,000 files, and 50 GB per file": [
+        "Solo archivos (sin fotos, ${ DOCS_APP_NAME } ni ${ SHEETS_APP_NAME }) hasta 100 GB en total, 100 000 archivos y 50 GB por archivo"
+      ],
       "finance": [
         "finanzas"
       ],
@@ -4907,7 +4939,7 @@
         "Obtenga un correo electrónico profesional @su-negocio.com, 1TB de almacenamiento seguro por usuario, videollamadas más largas, y más con ${ BRAND_NAME } Workspace."
       ],
       "Get email updates for comments and suggestions added to your documents.": [
-        "Obtenga actualizaciones por correo electrónico sobre sugerencias y comentarios agregados a sus documentos."
+        "Obtenga actualizaciones por correo electrónico sobre sugerencias y comentarios añadidos a sus documentos."
       ],
       "Get Notified About Comments": [
         "Recibir notificaciones de los comentarios"
@@ -4915,8 +4947,14 @@
       "Governments and ISPs can monitor your online activity. By hiding your real IP and encrypting your activity your browsing becomes private.": [
         "Los gobiernos y los proveedores de servicios de internet pueden monitorear su actividad en línea. Ocultando su IP real y cifrando su actividad de navegación se vuelve privada."
       ],
+      "Help us improve this experience by reporting the issue. If you’re comfortable sharing spreadsheet content, attach the debug information below to your report.": [
+        "Ayúdenos a mejorar esta experiencia informando del problema. Si está de acuerdo en compartir el contenido de la hoja de cálculo, adjunte la información de depuración que aparece a continuación a su informe."
+      ],
       "here": [
         "aquí"
+      ],
+      "Hide table of contents": [
+        "Ocultar tabla de contenidos"
       ],
       "High Priority": [
         "Prioridad alta"
@@ -5142,6 +5180,9 @@
       "Only the people with the link and the password can access this folder.": [
         "Solo las personas con el enlace y la contraseña pueden acceder a esta carpeta."
       ],
+      "Oops! This spreadsheet can’t save your most recent edits, so we’ve paused editing to prevent you from losing your work.": [
+        "¡Ups! Esta hoja de cálculo no puede guardar sus últimas ediciones así que hemos pausado la edición para evitar que pierda su trabajo."
+      ],
       "Open the guide for recommended actions and helpful links.": [
         "Abra la guía para ver las acciones recomendadas y los enlaces útiles."
       ],
@@ -5316,6 +5357,9 @@
       ],
       "Shared on": [
         "Compartido el"
+      ],
+      "Show table of contents": [
+        "Mostrar tabla de contenidos"
       ],
       "Signature cannot be validated due to network error, please try again later.": [
         "No se pudo validar la firma por problemas de red. Intente de nuevo más tarde."
@@ -5626,6 +5670,9 @@
       ],
       "You are about to open your default browser and visit:": [
         "Está a punto de abrir su navegador por defecto y consultar:"
+      ],
+      "You are currently signed in as ${ username } for ${ organizationName }.": [
+        "Actualmente inició sesión como ${ username } en (${ organizationName }."
       ],
       "You are currently signed in as ${ username }.": [
         "Actualmente inició sesión como ${ username }."
@@ -6044,6 +6091,9 @@
       "Download anyway": [
         "Descargar de todos modos"
       ],
+      "Drive": [
+        "Drive"
+      ],
       "Duplicate found": [
         "Duplicado encontrado"
       ],
@@ -6088,6 +6138,12 @@
       ],
       "Erase this link and remove everyone with access": [
         "Eliminar este enlace y quitar a todos con acceso"
+      ],
+      "Exact host matching": [
+        "Coincidencia de host exacta"
+      ],
+      "Exact URL matching": [
+        "Coincidencia de URL exacta"
       ],
       "Expiry": [
         "Vencimiento"
@@ -6138,7 +6194,7 @@
         "Incluir registros de la aplicación en el informe de errores"
       ],
       "Include document name in notification": [
-        "Incluir nombre de documento en notificaciones"
+        "Incluir el nombre del documento en las notificaciones"
       ],
       "Include message and file name in invite email": [
         "Incluir el mensaje y nombre del archivo en el correo de invitación"
@@ -6209,6 +6265,9 @@
       "Navigation": [
         "Navegación"
       ],
+      "Never fill on this exact URL": [
+        "Nunca completar esta URL exacta"
+      ],
       "New password": [
         "Contraseña nueva"
       ],
@@ -6229,6 +6288,9 @@
       ],
       "Optional": [
         "Opcional"
+      ],
+      "Parent domain and subdomains (default)": [
+        "Dominio principal y subdominios (por defecto)"
       ],
       "Password": [
         "Contraseña"
@@ -6269,6 +6331,9 @@
       "Region": [
         "Estado"
       ],
+      "Regular expression": [
+        "Expresión regular"
+      ],
       "Replace existing file": [
         "Reemplazar archivo existente"
       ],
@@ -6305,6 +6370,9 @@
       "Skip folder": [
         "Omitir carpeta"
       ],
+      "Starts with": [
+        "Comienza con"
+      ],
       "Stop sharing": [
         "Dejar de compartir"
       ],
@@ -6332,8 +6400,14 @@
       "Trash": [
         "Papelera"
       ],
+      "Unknown user": [
+        "Usuario desconocido"
+      ],
       "Upload picture": [
         "Cargar imagen"
+      ],
+      "URL wildcard pattern": [
+        "Patrón comodín de URL"
       ],
       "Username": [
         "Nombre de usuario"
@@ -6669,6 +6743,24 @@
       ]
     },
     "Message": {
+      "'Starts with' matching rule": [
+        "Regla de coincidencia «Comienza con»"
+      ],
+      "Exact (sub) domain matching rule": [
+        "Regla de coincidencia de (sub)dominio exacto"
+      ],
+      "Exact URL matching rule": [
+        "Regla de coincidencia de URL exacta"
+      ],
+      "Never fill with this exact URL": [
+        "Nunca completar con esta URL exacta"
+      ],
+      "Regular expression rule": [
+        "Regla de expresión regular"
+      ],
+      "Wildcard pattern matching rule": [
+        "Regla de coincidencia de patrón comodín"
+      ],
       "Your free trial has ended. ${ nonAutoRenewalAction }": [
         "Su prueba gratuita ha finalizado. ${ nonAutoRenewalAction }"
       ],
@@ -8029,6 +8121,15 @@
       "Device renamed": [
         "Dispositivo renombrado"
       ],
+      "Document failed to be restored from trash": [
+        "Error al restaurar el documento de la papelera"
+      ],
+      "Document moved to trash": [
+        "Documento movido a la papelera"
+      ],
+      "Document restored from trash": [
+        "Documento restaurado de la papelera"
+      ],
       "External invitation removed from the share": [
         "Se eliminó la invitación externa de los elementos compartidos."
       ],
@@ -9204,7 +9305,7 @@
     },
     "sheets_2025:Info": {
       "Creating new spreadsheet...": [
-        "Creando nueva hoja de cálculo..."
+        "Creando una hoja de cálculo..."
       ],
       "Detect automatically": [
         "Detectar automáticamente"
@@ -10197,6 +10298,9 @@
       "Edit image": [
         "Editar imagen"
       ],
+      "Editing paused": [
+        "Edición pausada"
+      ],
       "Email addresses": [
         "Direcciones de correo"
       ],
@@ -10586,6 +10690,26 @@
         "Sus datos expuestos"
       ]
     },
+    "Title header for keys table": {
+      "Actions": [
+        "Acciones"
+      ],
+      "Created": [
+        "Creada"
+      ],
+      "Expires": [
+        "Expira"
+      ],
+      "Fingerprint": [
+        "Huella digital"
+      ],
+      "Status": [
+        "Estado"
+      ],
+      "Type": [
+        "Tipo"
+      ]
+    },
     "Today icon tooltip in mini calendar": {
       "Today": [
         "Hoy"
@@ -10635,7 +10759,7 @@
         "Gmail asigna categorías automáticamente a algunos correos como redes sociales o promociones. Puede seleccionar adónde importar estos correos."
       ],
       "Instant AI assistance, human expert on hand!": [
-        "Asistencia IA inmediata, experto humano a su disposición!"
+        "¡Asistencia IA inmediata, experto humano a su disposición!"
       ],
       "Load image": [
         "Cargar imagen"
@@ -10670,6 +10794,9 @@
       "Upload a public key to enable sending end-to-end encrypted emails to this email": [
         "Cargue una clave pública para permitir el envío de correos electrónicos cifrados de extremo a extremo a este correo electrónico"
       ],
+      "Version 6 OpenPGP key": [
+        "Clave OpenPGP versión 6"
+      ],
       "We have sent them an invite to access the item.": [
         "Hemos enviado una invitación para acceder al elemento."
       ]
@@ -10702,6 +10829,11 @@
       ],
       "The user must have an address to request data access": [
         "El usuario debe tener una dirección para solicitar acceso a los datos"
+      ]
+    },
+    "user_modal": {
+      "You'll be able to assign roles once the user has accepted the invitation.": [
+        "Podrá asignar roles una vez que el usuario haya aceptado la invitación."
       ]
     },
     "Validation": {
@@ -10820,6 +10952,9 @@
       ],
       "${ BRAND_NAME } will transfer as much data as possible, starting with your most recent messages.": [
         "${ BRAND_NAME } transferirá tanta información posible, comenzando con los mensajes más recientes."
+      ],
+      "${ modeLabelStong } provides powerful control, but a single error can cause autofill to match and fill data on fraudulent or phishing websites.": [
+        "${ modeLabelStong } brinda un control potente, pero un solo error puede provocar que la función de autocompletar coincida con datos de sitios web fraudulentos o de suplantación y los complete automáticamente."
       ],
       "Are you sure you want to permanently delete ${ count } contact?": [
         "¿Está seguro de que quiere eliminar permanentemente ${ count } contacto?",

@@ -782,6 +782,9 @@
       "Re-index": [
         "Reindexar"
       ],
+      "Re-indexing in progress": [
+        "Nova indexação em andamento"
+      ],
       "Re-sign": [
         "Assinar novamente"
       ],
@@ -856,6 +859,9 @@
       ],
       "Report a problem": [
         "Relatar um problema"
+      ],
+      "Report abuse": [
+        "Reportar abuso"
       ],
       "Report an issue": [
         "Reportar um problema"
@@ -956,6 +962,12 @@
       "Select country": [
         "Selecionar país"
       ],
+      "Select rating ${ n } out of ${ to }": [
+        "Selecionar avaliação ${ n } de ${ to }"
+      ],
+      "Send Feedback": [
+        "Enviar comentários"
+      ],
       "Set as album cover": [
         "Definir como capa do álbum"
       ],
@@ -1036,6 +1048,9 @@
       ],
       "Sign up": [
         "Registre-se"
+      ],
+      "Skip": [
+        "Ignorar"
       ],
       "Skip verification": [
         "Pular verificação"
@@ -1135,6 +1150,9 @@
       ],
       "Upload and share files": [
         "Enviar e compartilhar arquivo"
+      ],
+      "Upload anyway": [
+        "Enviar assim mesmo"
       ],
       "Upload file": [
         "Enviar arquivo"
@@ -3052,6 +3070,9 @@
       "Ensure you can still access your account and data even if you lose your ${ BRAND_NAME } password.": [
         "Garanta que você ainda possa acessar sua conta e seus dados, mesmo que perca sua senha do ${ BRAND_NAME }."
       ],
+      "For a seamless onboarding of your team to ${ BRAND_NAME }, import your data from Google, Outlook, and others.": [
+        "Para uma integração perfeita da sua equipe ao ${ BRAND_NAME }, importe seus dados do Google, Outlook e outros."
+      ],
       "Get notified if your password or other data was leaked from a third-party service.": [
         "Seja notificado caso sua senha ou outros dados sejam vazados de um serviço de terceiros."
       ],
@@ -3641,12 +3662,6 @@
       "Incorrect username": [
         "Nome de usuário incorreto"
       ],
-      "Invalid ${ name } code": [
-        "O código ${ name } não é válido."
-      ],
-      "Invalid card number": [
-        "O número do cartão não é válido."
-      ],
       "Invalid code": [
         "O código não é válido."
       ],
@@ -3655,9 +3670,6 @@
       ],
       "Invalid email address": [
         "O endereço de e-mail não é válido."
-      ],
-      "Invalid expiration date": [
-        "A data de validade não é válida."
       ],
       "Invalid IBAN": [
         "IBAN inválido"
@@ -3711,6 +3723,9 @@
       "No contacts found to import": [
         "Nenhum contato encontrado para importação"
       ],
+      "No drive found to import": [
+        "Não encontrou nenhuma unidade para importar"
+      ],
       "No emails found to import - the account does not have an inbox": [
         "Nenhum e-mail encontrado para importação - a conta não possui uma caixa de entrada."
       ],
@@ -3760,6 +3775,9 @@
       ],
       "Please activate your search again": [
         "Ative a pesquisa novamente."
+      ],
+      "Please check if your ABN is registered for cross-border VAT": [
+        "Por favor, verifique se o seu ABN está registrado para IVA transfronteiriço"
       ],
       "Please complete the billing details": [
         "Complete os detalhes de faturamento"
@@ -3829,6 +3847,9 @@
       "Request timed out": [
         "A solicitação expirou"
       ],
+      "Reverse charge scheme is not supported for this plan": [
+        "O regime de reverse charge não é suportado para este plano"
+      ],
       "Search failed": [
         "Erro de pesquisa"
       ],
@@ -3867,6 +3888,9 @@
       ],
       "Something went wrong with search. Please try again later.": [
         "Ocorreu um erro com a pesquisa. Tente novamente mais tarde."
+      ],
+      "Something went wrong with search: Not enough storage space.": [
+        "Ocorreu um erro com a pesquisa: espaço de armazenamento insuficiente."
       ],
       "Something went wrong. Please try again.": [
         "Ocorreu um erro. Tente novamente."
@@ -3952,6 +3976,9 @@
       "Unexpected error, we can't import the contacts": [
         "Erro inesperado, não podemos importar os contatos"
       ],
+      "Unexpected error, we can't import the files": [
+        "Erro inesperado, não podemos importar os arquivos"
+      ],
       "Unknown conflict strategy: ${ strategy }": [
         "Estratégia de conflito desconhecida: ${ strategy }"
       ],
@@ -3980,10 +4007,13 @@
         "Erro de validação"
       ],
       "VAT number must start with ${ prefixes }": [
-        "O número de IVA deve começar por ${ prefixes }"
+        "O número de IVA deve começar com ${ prefixes }"
       ],
       "We cannot retrieve this item": [
         "Não foi possível recuperar este item"
+      ],
+      "We couldn’t send a verification code using this method.": [
+        "Não conseguimos enviar um código de verificação usando este método."
       ],
       "We were not able to load some invitations": [
         "Não foi possível carregar alguns convites"
@@ -4469,6 +4499,9 @@
       ],
       "Security key": [
         "Chave de segurança"
+      ],
+      "Touch your security key.": [
+        "Toque na sua chave de segurança."
       ]
     },
     "fido2: Label": {
@@ -4959,6 +4992,9 @@
       "${ BRAND_NAME } Scribe writing assistant": [
         "Assistente de escrita ${ BRAND_NAME } Scribe"
       ],
+      "${ BRAND_NAME } Workspace empowers your team to collaborate efficiently without ever putting your company's data at risk.": [
+        "O ${ BRAND_NAME } Workspace capacita sua equipe a colaborar de forma eficiente sem colocar em risco os dados de sua empresa."
+      ],
       "${ BRAND_NAME }'s encryption technology means that nobody can access your password - not even us.": [
         "A tecnologia de criptografia da ${ BRAND_NAME } significa que ninguém pode acessar sua senha - nem mesmo nós."
       ],
@@ -5000,6 +5036,9 @@
       ],
       "${ DOCS_APP_NAME } and ${ SHEETS_APP_NAME } files cannot be downloaded directly and will not be included in this download. You can download the other files by clicking 'Continue downloading'.": [
         "Os arquivos do ${ DOCS_APP_NAME } e ${ SHEETS_APP_NAME } não podem ser baixados diretamente e não serão incluídos neste download. Você pode baixar os outros arquivos clicando em 'Continuar baixando'."
+      ],
+      "${ DRIVE_APP_NAME } detected that the local search index is corrupted and can no longer be used. Rebuild the index to restore search.": [
+        "O ${ DRIVE_APP_NAME } detectou que o índice de pesquisa local está corrompido e não pode mais ser usado. Recompile o índice para restaurar a pesquisa."
       ],
       "${ DRIVE_APP_NAME } on App Store": [
         "${ DRIVE_APP_NAME } na App Store"
@@ -5204,6 +5243,9 @@
       ],
       "AI powered assistant to help you craft better emails, quickly and effortlessly.": [
         "Assistente com tecnologia de IA para ajudar você a criar e-mails melhores, com rapidez e facilidade."
+      ],
+      "Album": [
+        "Álbum"
       ],
       "All (${ totalFoldersCount } folder)": [
         "Tudo (${ totalFoldersCount } pasta)",
@@ -5475,6 +5517,10 @@
       "Do you remember your password? ${ verifyButton }": [
         "Você lembra sua senha ? ${ verifyButton }"
       ],
+      "Do you still want to upload it?": [
+        "Você ainda quer enviá-lo?",
+        "Você ainda quer enviá-los?"
+      ],
       "Done": [
         "Concluído"
       ],
@@ -5674,6 +5720,9 @@
       "How does encrypted search work?": [
         "Como a pesquisa criptografada funciona?"
       ],
+      "I hereby confirm, in good faith, that the information and statements contained in the report are correct and complete.": [
+        "Confirmo, por meio deste e de boa-fé, que as informações e declarações contidas no relatório estão corretas e completas."
+      ],
       "If those files are not fully downloaded locally on ${ deviceName } you will lose access to them.": [
         "Se esses arquivos não forem totalmente baixados localmente em ${ deviceName }, você perderá o acesso a eles."
       ],
@@ -5703,6 +5752,9 @@
       ],
       "If you proceed with the downgrade, you will lose access to ${ VPN_APP_NAME } paid features.": [
         "Se você prosseguir com o downgrade, perderá o acesso aos recursos pagos do ${ VPN_APP_NAME }."
+      ],
+      "If you remove yourself, you’ll lose access to \"${ fileName }\" and won’t be able to open it again unless the owner shares it with you.": [
+        "Se você se remover, perderá o acesso a \"${ fileName }\" e não poderá abri-lo novamente, a menos que o proprietário o compartilhe com você."
       ],
       "Import ${ calendarCount } of ${ totalCalendarsCount } calendar": [
         "Importar ${ calendarCount } de ${ totalCalendarsCount } calendário",
@@ -5749,6 +5801,9 @@
       ],
       "Indexed ${ first }, ${ second }, ${ third } and ${ fourth }": [
         "Indexado ${ first }, ${ second }, ${ third } e ${ fourth }"
+      ],
+      "Indexing hit an unexpected state and cannot continue. Rebuild the index to recover.": [
+        "A indexação atingiu um estado inesperado e não pode continuar. Recompile o índice para recuperar."
       ],
       "Indexing in progress": [
         "Indexação em progresso"
@@ -5961,6 +6016,9 @@
       "No payment is required at this time.": [
         "Neste momento, não é necessário pagamento."
       ],
+      "No populator states found.": [
+        "Nenhum estado do populador foi encontrado."
+      ],
       "No results found": [
         "Nenhum resultado encontrado"
       ],
@@ -6079,9 +6137,6 @@
       "Please ask the owner to directly invite you to the document.": [
         "Solicite ao proprietário para convidá-lo diretamente para o documento."
       ],
-      "Please authenticate your card in the verification tab.": [
-        "Autentique seu cartão na guia de verificação."
-      ],
       "Please authenticate your payment in the verification tab.": [
         "Autentique seu pagamento na guia de verificação."
       ],
@@ -6109,6 +6164,9 @@
       "Please select the folders you would like to import:": [
         "Selecione as pastas que deseja importar:"
       ],
+      "Please select the labels you would like to import:": [
+        "Selecione os marcadores que você deseja importar:"
+      ],
       "Please select which email address or addresses to add to ${ groupCount } group.": [
         "Selecione qual endereço de e-mail ou endereços adicionar ao grupo ${ groupCount }.",
         "Selecione qual endereço de e-mail ou endereços adicionar aos grupos ${ groupCount }."
@@ -6121,9 +6179,6 @@
       ],
       "Please try again using a different payment method, or contact your bank.": [
         "Tente novamente com outro método de pagamento ou entre em contato com seu banco."
-      ],
-      "Please try again, use a different payment method, or contact PayPal for assistance.": [
-        "Tente novamente, use um método de pagamento diferente ou entre em contato com seu banco."
       ],
       "Please use another browser or download the file.": [
         "Use outro navegador ou baixe o arquivo."
@@ -6139,6 +6194,12 @@
       ],
       "Preparing": [
         "Preparando"
+      ],
+      "Preparing download": [
+        "Preparando para baixar"
+      ],
+      "Preparing…": [
+        "Preparando…"
       ],
       "Preview failed to be loaded": [
         "Não foi possível carregar a pré-visualização."
@@ -6175,6 +6236,9 @@
       ],
       "Public sharing of documents is not yet supported.": [
         "O compartilhamento público de documentos ainda não é suportado."
+      ],
+      "Re-indexing in progress": [
+        "Nova indexação em andamento"
       ],
       "Ready to add some photos?": [
         "Vamos adicionar algumas fotos?"
@@ -6241,6 +6305,9 @@
       ],
       "Search enabled. You may now close this dialogue and search for files and folders.": [
         "Pesquisa ativada. Agora você pode fechar esta caixa de diálogo e procurar arquivos e pastas."
+      ],
+      "Search encountered an internal error. Rebuild the index to recover.": [
+        "A pesquisa encontrou um erro interno. Recompile o índice para recuperar."
       ],
       "Search engine error": [
         "Erro no motor de pesquisa"
@@ -6402,6 +6469,9 @@
       "The owner of this address has disabled end-to-end encryption. To be able to send encrypted emails to this address, the owner must re-enable end-to-end encryption.": [
         "O proprietário deste endereço desativou a criptografia de ponta a ponta. Para poder enviar e-mails criptografados para este endereço, o proprietário deve reativar a criptografia de ponta a ponta."
       ],
+      "The search engine encountered an internal error. Rebuild the index to recover.": [
+        "O mecanismo de pesquisa encontrou um erro interno. Recompile o índice para recuperar."
+      ],
       "The verification process will open a new browser tab. Please disable any active pop-up blockers.": [
         "O processo de verificação abrirá uma nova guia do navegador. Desative todos os bloqueadores de pop-up ativos."
       ],
@@ -6422,6 +6492,10 @@
       ],
       "This can NOT be undone. Please enter the device name to confirm removal.": [
         "Isso NÃO pode ser desfeito. Digite o nome do dispositivo para confirmar a remoção."
+      ],
+      "This file appears to be empty:": [
+        "Este arquivo parece estar vazio:",
+        "Estes arquivos parecem estar vazios:"
       ],
       "This file is too large to preview": [
         "Este arquivo é muito grande para visualizar"
@@ -6512,7 +6586,7 @@
         "Para ajudar a te proteger, o ${ DRIVE_APP_NAME } pode escanear seus arquivos de uma forma que preserve a privacidade e bloquear arquivos maliciosos. No entanto, ainda é melhor baixar arquivos somente de fontes confiáveis. "
       ],
       "To help you remember your password, we'll ask you to enter it periodically. We ask you less over time.": [
-        "Para ajudar você a lembrar sua senha, pediremos que você a digite periodicamente. Com o passar do tempo, iremos solicitar isso com menos frequência."
+        "Para ajudar você a lembrar sua senha, pediremos que você a insira periodicamente. Com o passar do tempo, iremos solicitar isso com menos frequência."
       ],
       "To import events, first create a calendar in ${ CALENDAR_APP_NAME }. This is where the events will appear after the import.": [
         "Para importar eventos, primeiro crie um calendário em ${ CALENDAR_APP_NAME }. Aqui que os eventos aparecerão após a importação."
@@ -6610,6 +6684,9 @@
       "Uploaded": [
         "Enviado"
       ],
+      "Uploaded - file is empty": [
+        "Enviado - o arquivo está vazio"
+      ],
       "Uploading": [
         "Enviando"
       ],
@@ -6665,6 +6742,9 @@
         "Não foi possível salvar esta foto no seu Drive",
         "Não foi possível salvar várias fotos no seu Drive"
       ],
+      "We couldn't verify ${ nameAuthor } uploaded ${ nodeName }. The following may have been tampered with: file data order. Only open if you trust it.": [
+        "Não foi possível verificar se ${ nameAuthor } enviou ${ nodeName }. Os seguintes dados podem ter sido adulterados: ordem dos dados do arquivo. Abra somente se você confiar no conteúdo."
+      ],
       "We couldn’t process your payment.": [
         "Não foi possível realizar o pagamento."
       ],
@@ -6677,6 +6757,10 @@
       "We use 3-D Secure to protect your payments": [
         "Usamos 3-D Secure para proteger seus pagamentos"
       ],
+      "We were not able to add this photo to your album": [
+        "Não foi possível adicionar esta foto ao seu álbum",
+        "Não foi possível adicionar algumas fotos ao seu álbum"
+      ],
       "We will redirect you to PayPal in a new browser tab to complete this transaction. If you use any pop-up blockers, please disable them to continue.": [
         "Vamos redirecioná-lo para o PayPal em uma nova guia do navegador para concluir esta transação. Desative qualquer bloqueador de pop-ups que estiver usando."
       ],
@@ -6685,6 +6769,9 @@
       ],
       "We'll notify you when the import is done.": [
         "Nós te avisaremos quando a importação estiver concluída."
+      ],
+      "We'll remind you to verify your password again later": [
+        "Lembriremos você de verificar sua senha novamente mais tarde"
       ],
       "We'll send a new verification code to ${ strong }": [
         "Enviaremos um novo código de verificação para ${ strong }"
@@ -6759,6 +6846,9 @@
       "You are about to open your default browser and visit:": [
         "Você está prestes a abrir seu navegador padrão e visitar:"
       ],
+      "You are currently signed in as ${ username } for ${ organizationName }.": [
+        "Você está atualmente com sessão iniciada como ${ username } para ${ organizationName }."
+      ],
       "You are currently signed in as ${ username }.": [
         "Você está atualmente iniciado sessão como ${ username }."
       ],
@@ -6829,11 +6919,11 @@
         "Você precisará salvá-lo novamente na página do link público.",
         "Você precisará salvá-los novamente na página do link público."
       ],
-      "You will soon be redirected to PayPal to verify your payment.": [
-        "Em breve você será redirecionado para o PayPal para verificar seu pagamento."
-      ],
       "You won't be charged if you cancel before ${ trialEndsOnFormatted }.": [
         "Você não será cobrado se cancelar antes de ${ trialEndsOnFormatted }."
+      ],
+      "You won’t be able to share \"${ fileName }\" after changing access to viewer. Only the owner can change your access again.": [
+        "Você não poderá compartilhar \"${ fileName }\" depois de alterar o acesso para visualizador. Somente o proprietário poderá alterar seu acesso novamente."
       ],
       "You'll receive the credit reward 1 month after your friend subscribes to a yearly plan, and 2 months after they subscribe to a monthly plan.": [
         "Você receberá a recompensa em créditos 1 mês após seu amigo(a) assinar um plano anual e 2 meses após ele (ela) assinar um plano mensal."
@@ -6866,6 +6956,12 @@
       "Your account has at least one overdue invoice. Your access will soon get restricted. ${ payInvoiceLink }": [
         "Sua conta tem pelo menos uma fatura vencida. O seu acesso será restringido em breve. ${ payInvoiceLink }"
       ],
+      "Your account is currently configured to apply the reverse charge scheme. This is not supported for the selected plan. To proceed, either remove the VAT number from the billing address or select a different plan.": [
+        "Sua conta está configurada atualmente para aplicar o regime de reverse charge. Isso não é suportado para o plano selecionado. Para prosseguir, remova o número de IVA do endereço de faturamento ou selecione um plano diferente."
+      ],
+      "Your browser ran out of space while indexing files for search. Free up storage, then rebuild the index.": [
+        "Seu navegador ficou sem espaço ao indexar arquivos para a pesquisa. Libere espaço de armazenamento e recompile o índice."
+      ],
       "Your data is ready to import from ${ importedEmailAddressStrong } to your ${ BRAND_NAME } account.": [
         "Seus dados estão prontos para importação de ${ importedEmailAddressStrong } para sua conta da ${ BRAND_NAME }."
       ],
@@ -6877,6 +6973,9 @@
       ],
       "Your email will only be used for this one-time verification.": [
         "Seu e-mail só será usado para essa verificação única."
+      ],
+      "Your files are being re-indexed. You can keep searching - results may be incomplete until it finishes. We'll let you know when it's done.": [
+        "Seus arquivos estão sendo indexados novamente. Você pode continuar pesquisando — os resultados podem estar incompletos até que o processo termine. Avisaremos você quando terminar."
       ],
       "Your files are no longer accessible due to a password reset. Re-upload the old encryption key to regain the access. ${ KeyReactivationButton }": [
         "Seus arquivos não estão mais acessíveis devido a uma redefinição de senha. Envie a chave de criptografia antiga para recuperar o acesso. ${ KeyReactivationButton }"
@@ -6995,6 +7094,9 @@
       ]
     },
     "Key badge": {
+      "Active Signer": [
+        "Signatário ativo"
+      ],
       "Compromised": [
         "Comprometida"
       ],
@@ -7349,6 +7451,9 @@
       "Extended address": [
         "Endereço completo"
       ],
+      "Extremely Satisfied": [
+        "Extremamente satisfeito"
+      ],
       "File": [
         "Arquivo"
       ],
@@ -7409,8 +7514,8 @@
       "Index kinds": [
         "Tipos de índice"
       ],
-      "Initial indexing": [
-        "Indexação inicial"
+      "Indexing": [
+        "Indexando"
       ],
       "Integrated 2FA authenticator": [
         "Autenticador A2F integrado"
@@ -7580,6 +7685,9 @@
       "Region": [
         "Estado"
       ],
+      "Regular expression": [
+        "Expressão regular"
+      ],
       "Replace existing folder or file": [
         "Substituir pasta ou arquivo existente"
       ],
@@ -7655,6 +7763,9 @@
       "Start date": [
         "Data de início"
       ],
+      "Starts with": [
+        "Iniciar com"
+      ],
       "State": [
         "Estado"
       ],
@@ -7681,6 +7792,9 @@
       ],
       "System information": [
         "Informações do sistema"
+      ],
+      "Tell us more about your experience": [
+        "Conte-nos mais sobre sua experiência"
       ],
       "Theme": [
         "Tema"
@@ -7726,6 +7840,9 @@
       ],
       "Verification code": [
         "Código de verificação"
+      ],
+      "Very Dissatisfied": [
+        "Muito insatisfeito"
       ],
       "Viewer": [
         "Visualizador"
@@ -8116,6 +8233,9 @@
       ]
     },
     "Message": {
+      "Regular expression rule": [
+        "Regra de expressão regular"
+      ],
       "Your free trial has ended. ${ nonAutoRenewalAction }": [
         "Sua avaliação gratuita terminou. ${ nonAutoRenewalAction }"
       ],
@@ -9041,6 +9161,11 @@
         "Seu plano atual está com um preço promocional. Se fizer o downgrade da sua conta, você perderá seu preço promocional, o qual não estará mais disponível se você tentar assinar novamente."
       ]
     },
+    "new_plans: label": {
+      "We're always striving to make ${ config.appName } better. How satisfied are you with your experience?": [
+        "Estamos sempre nos esforçando para tornar o ${ config.appName } melhor. Qual seu nível de satisfação com sua experiência?"
+      ]
+    },
     "new_plans: Subtext": {
       "Starting from ${ priceLine }": [
         "A partir de ${ priceLine }"
@@ -9474,6 +9599,10 @@
       "${ reason } has been enabled": [
         "${ reason } foi ativado"
       ],
+      "${ removed } photo have been removed from \"${ albumName }\"": [
+        "${ removed } foto foi removida de \"${ albumName }\"",
+        "${ removed } fotos foram removidas de \"${ albumName }\""
+      ],
       "Access for the member removed": [
         "Acesso do membro removido"
       ],
@@ -9485,9 +9614,6 @@
       ],
       "All items deleted permanently from trash": [
         "Todos os itens excluídos permanentemente da lixeira"
-      ],
-      "An invitation has been sent": [
-        "Um convite foi enviado"
       ],
       "Cannot load link": [
         "Não foi possível carregar o link"
@@ -9525,14 +9651,11 @@
       "Failed to accept share invitation": [
         "Falha ao aceitar convite de compartilhamento"
       ],
-      "Failed to convert external invitation": [
-        "Falha ao converter convite externo"
+      "Failed to load sharing details": [
+        "Falha ao carregar os detalhes de compartilhamento"
       ],
       "Failed to move, please try again": [
         "Erro ao mover. Tente novamente"
-      ],
-      "Failed to open document": [
-        "Falha ao abrir o documento"
       ],
       "Failed to reject share invitation": [
         "Falha ao rejeitar convite de compartilhamento"
@@ -10270,6 +10393,9 @@
       "VAT number": [
         "Número de IVA"
       ],
+      "VAT reverse charge mechanism applies.": [
+        "O mecanismo de reverse charge de IVA se aplica."
+      ],
       "You already have a subscription to this plan.": [
         "Você já assina este plano."
       ],
@@ -10424,6 +10550,9 @@
       "External key automatically fetched via WKD.": [
         "Chave externa obtida automaticamente via WKD."
       ],
+      "This contact currently signs messages with this key": [
+        "Este contato assina atualmente as mensagens com esta chave"
+      ],
       "This key is used for message verification": [
         "Essa chave já foi usado para verificação por mensagem"
       ],
@@ -10517,6 +10646,9 @@
       ],
       "New name": [
         "Novo nome"
+      ],
+      "Optional feedback": [
+        "Feedback opcional"
       ],
       "Organization name": [
         "Nome da organização"
@@ -12208,6 +12340,9 @@
       "${ freeUploadLength } of free uploads.": [
         "${ freeUploadLength } de envios gratuitos."
       ],
+      "${ LUMO_SHORT_APP_NAME } writing assistant": [
+        "Assistente de escrita do ${ LUMO_SHORT_APP_NAME }"
+      ],
       "Account recovery": [
         "Recuperação de conta"
       ],
@@ -12467,6 +12602,18 @@
       ],
       "Digital signature partially verified. This folder was uploaded using a publicly accessible share link by a user without a ${ BRAND_NAME } account, so their identity cannot be verified.": [
         "Assinatura digital parcialmente verificada. Esta pasta foi enviada usando um link de compartilhamento acessível publicamente por um usuário sem uma conta da ${ BRAND_NAME }, então sua identidade não pode ser verificada."
+      ],
+      "Digital signature verified. This file was securely created by ${ author }.": [
+        "Assinatura digital verificada. Este arquivo foi criado com segurança por ${ author }."
+      ],
+      "Digital signature verified. This file was securely uploaded by ${ author }.": [
+        "Assinatura digital verificada. Este arquivo foi enviado com segurança por ${ author }."
+      ],
+      "Digital signature verified. This folder was securely created by ${ author }.": [
+        "Assinatura digital verificada. Esta pasta foi criada com segurança por ${ author }."
+      ],
+      "Digital signature verified. This folder was securely uploaded by ${ author }.": [
+        "Assinatura digital verificada. Esta pasta foi enviada com segurança por ${ author }."
       ],
       "Discard": [
         "Descartar"
@@ -12812,9 +12959,6 @@
       "Payment verification": [
         "Verificação de pagamento"
       ],
-      "PayPal verification failed": [
-        "Ocorreu um erro na verificação do PayPal"
-      ],
       "Phone numbers": [
         "Números de telefone"
       ],
@@ -13074,6 +13218,9 @@
       "Upload and share files": [
         "Enviar e compartilhar arquivo"
       ],
+      "Upload empty file?": [
+        "Enviar arquivo vazio?"
+      ],
       "Uploaded": [
         "Enviado"
       ],
@@ -13104,6 +13251,18 @@
       "Warning: suspected fake website": [
         "Aviso: Site suspeito de ser falso"
       ],
+      "We couldn’t verify that ${ author } created this file.": [
+        "Não pudemos verificar que ${ author } criou este arquivo."
+      ],
+      "We couldn’t verify that ${ author } created this folder.": [
+        "Não pudemos verificar que ${ author } criou esta pasta."
+      ],
+      "We couldn’t verify that ${ author } uploaded this file.": [
+        "Não pudemos verificar que ${ author } enviou este arquivo."
+      ],
+      "We couldn’t verify that ${ author } uploaded this folder.": [
+        "Não pudemos verificar que ${ author } enviou esta pasta."
+      ],
       "We couldn’t verify that an anonymous user created this file.": [
         "Não pudemos verificar que um usuário anônimo criou este arquivo."
       ],
@@ -13118,6 +13277,15 @@
       ],
       "We weren’t able to confirm that the file content was uploaded by ${ claimedContentAuthor }. The reason is: ${ activeRevision.contentAuthor.error.error }": [
         "Não foi possível confirmar que o conteúdo do arquivo foi enviado por ${ claimedContentAuthor }. O motivo é: ${ activeRevision.contentAuthor.error.error }"
+      ],
+      "We weren’t able to confirm that the name was created or modified by ${ claimedNameAuthor }. The reason is: ${ node.nameAuthor.error.error }": [
+        "Não foi possível confirmar que o nome foi criado ou modificado por ${ claimedNameAuthor }. O motivo é: ${ node.nameAuthor.error.error }"
+      ],
+      "We weren’t able to confirm that the node was created by ${ claimedKeyAuthor }. The reason is: ${ node.keyAuthor.error.error }": [
+        "Não foi possível confirmar que o nó foi criado por ${ claimedKeyAuthor }. O motivo é: ${ node.keyAuthor.error.error }"
+      ],
+      "We'd love to hear from you!": [
+        "Adoraríamos ouvir você!"
       ],
       "Welcome offer": [
         "Oferta de boas-vindas"
@@ -13178,6 +13346,26 @@
       ],
       "You’ve got 5 GB of storage": [
         "Você tem 5 GB de armazenamento"
+      ]
+    },
+    "Title header for keys table": {
+      "Actions": [
+        "Ações"
+      ],
+      "Created": [
+        "Criada"
+      ],
+      "Expires": [
+        "Expira"
+      ],
+      "Fingerprint": [
+        "Impressão digital"
+      ],
+      "Status": [
+        "Status"
+      ],
+      "Type": [
+        "Tipo"
       ]
     },
     "Today icon tooltip in mini calendar": {
@@ -13275,6 +13463,9 @@
       ],
       "Upload a public key to enable sending end-to-end encrypted emails to this email": [
         "Carregue uma chave pública para permitir o envio de e-mails criptografados de ponta a ponta para este e-mail"
+      ],
+      "Version 6 OpenPGP key": [
+        "Chave OpenPGP versão 6"
       ],
       "We have sent them an invite to access the item.": [
         "Enviamos um convite para acessar o item."

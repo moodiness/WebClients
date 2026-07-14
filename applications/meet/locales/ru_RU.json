@@ -62,8 +62,14 @@
       "Copy link": [
         "Копировать ссылку"
       ],
+      "Copy link and close": [
+        "Скопировать ссылку и закрыть"
+      ],
       "Copy meeting link": [
         "Скопировать ссылку на встречу"
+      ],
+      "Create a free account": [
+        "Создать бесплатный аккаунт"
       ],
       "Create a room": [
         "Создать комнату"
@@ -82,6 +88,9 @@
       ],
       "Disable camera": [
         "Отключить камеру"
+      ],
+      "Discard": [
+        "Сбросить"
       ],
       "Dismiss": [
         "Отклонить"
@@ -118,9 +127,6 @@
       ],
       "Enable camera": [
         "Включить камеру"
-      ],
-      "Enable video": [
-        "Включить видео"
       ],
       "End meeting": [
         "Завершить встречу"
@@ -203,6 +209,9 @@
       "Open link": [
         "Открыть ссылку"
       ],
+      "Pause": [
+        "Пауза"
+      ],
       "Previous month": [
         "Предыдущий месяц"
       ],
@@ -230,6 +239,9 @@
       "Rejoin meeting": [
         "Снова присоединиться к встрече"
       ],
+      "Reply": [
+        "Ответить"
+      ],
       "Report a problem": [
         "Сообщить о проблеме"
       ],
@@ -244,6 +256,12 @@
       ],
       "Resend code": [
         "Повторно отправить код"
+      ],
+      "Resume": [
+        "Возобновить"
+      ],
+      "Retry": [
+        "Повторить"
       ],
       "Room": [
         "Комната"
@@ -271,6 +289,9 @@
       ],
       "Settings": [
         "Настройки"
+      ],
+      "Show options": [
+        "Показать параметры"
       ],
       "Show participants": [
         "Показать участников"
@@ -340,6 +361,9 @@
       ],
       "Upgrade": [
         "Улучшить"
+      ],
+      "Upgrade now": [
+        "Улучшить сейчас"
       ],
       "Use authentication code": [
         "Использовать код аутентификации"
@@ -467,8 +491,14 @@
       ]
     },
     "Bug category": {
+      "${ LUMO_SHORT_APP_NAME } problem": [
+        "Проблема с ${ LUMO_SHORT_APP_NAME }"
+      ],
       "Application problem": [
         "Проблема в приложении"
+      ],
+      "Authenticator problem": [
+        "Проблема с аутентификатором"
       ],
       "Bridge problem": [
         "Проблема Bridge"
@@ -505,6 +535,9 @@
       ],
       "Manual setup problem": [
         "Проблема при ручной установке"
+      ],
+      "Meet problem": [
+        "Проблема с Meet"
       ],
       "Other": [
         "Другая"
@@ -1115,6 +1148,9 @@
       "North Korea": [
         "Северная Корея"
       ],
+      "North Macedonia": [
+        "Северная Македония"
+      ],
       "Northern Mariana Islands": [
         "Северные Марианские Острова"
       ],
@@ -1390,6 +1426,11 @@
         "Обновление группового ключа шифрования для максимальной безопасности"
       ]
     },
+    "emergency_access": {
+      "Trusted contact": [
+        "Доверенный контакт"
+      ]
+    },
     "Error": {
       "Domain not available, try again later": [
         "Домен недоступен, повторите попытку позже"
@@ -1414,6 +1455,9 @@
       ],
       "Failed to create personal meeting, please refresh the page": [
         "Не удалось создать личную встречу, обновите страницу"
+      ],
+      "Failed to decrypt session key": [
+        "Не удалось расшифровать ключ сеанса"
       ],
       "Failed to delete event": [
         "Не удалось удалить событие"
@@ -1513,6 +1557,9 @@
       ],
       "Username must end with a letter or digit": [
         "Имя пользователя должно заканчиваться буквой или цифрой"
+      ],
+      "We couldn’t send a verification code using this method.": [
+        "Нам не удалось отправить код подтверждения этим способом."
       ]
     },
     "Error message": {
@@ -1546,9 +1593,20 @@
         "Изображение не выбрано"
       ]
     },
+    "fido2: Error": {
+      "Something went wrong authenticating with your security key. Please try again.": [
+        "Не удалось выполнить аутентификацию с помощью ключа безопасности. Пожалуйста, попробуйте еще раз."
+      ]
+    },
     "fido2: Info": {
+      "Insert a security key linked to your ${ BRAND_NAME } Account.": [
+        "Вставьте ключ безопасности, связанный с вашим аккаунтом ${ BRAND_NAME }."
+      ],
       "Security key": [
         "Ключ безопасности"
+      ],
+      "Touch your security key.": [
+        "Коснитесь своего ключа безопасности."
       ]
     },
     "fido2: Label": {
@@ -1777,6 +1835,12 @@
       "Do you want people to ${ deviceContentType } you in the meeting?": [
         "Хотите, чтобы люди могли ${ deviceContentType } вас на встрече?"
       ],
+      "Download current logs": [
+        "Скачать текущие журналы"
+      ],
+      "Each code can only be used once": [
+        "Каждый код можно использовать только один раз"
+      ],
       "Edit email address": [
         "Изменить адрес электронной почты"
       ],
@@ -1789,14 +1853,29 @@
       "End-to-end encryption is active for this chat.": [
         "Для этого чата активно сквозное шифрование."
       ],
+      "Enter code": [
+        "Введите код"
+      ],
       "Enter the code from your authenticator app": [
         "Введите код из приложения-аутентификатора"
       ],
       "Enter the verification code that was sent to ${ destinationText }.": [
         "Введите код подтверждения, отправленный на ${ destinationText }."
       ],
+      "Enter verification code. Digit ${ digit }.": [
+        "Введите код подтверждения. Цифра ${ digit }."
+      ],
       "Enter your own password (as organization admin).": [
         "Введите свой пароль как администратора организации."
+      ],
+      "Enter your own password (as trusted contact).": [
+        "Введите собственный пароль (как доверенный контакт)."
+      ],
+      "Failed to update meeting name": [
+        "Не удалось обновить название встречи"
+      ],
+      "Failed to update meeting password": [
+        "Не удалось обновить пароль встречи"
       ],
       "Failed to update meeting schedule": [
         "Не удалось обновить расписание встречи"
@@ -1819,6 +1898,9 @@
       "Go to about:config, search for media.peerconnection.enabled, and set it to true.": [
         "Перейдите на страницу about:config, найдите media.peerconnection.enabled и установите для него значение true."
       ],
+      "Host": [
+        "Организатор"
+      ],
       "Host your own secure meeting. Start a call in ${ MEET_APP_NAME } and share the link to invite anyone to join. Simple, secure, and free.": [
         "Проведите собственную безопасную встречу. Начните звонок в ${ MEET_APP_NAME } и поделитесь ссылкой, чтобы пригласить любого пользователя. Просто, безопасно и бесплатно."
       ],
@@ -1827,6 +1909,9 @@
       ],
       "If you don't find the email in your inbox, please check your spam folder.": [
         "Если сообщения нет в папке Входящие, проверьте, не попало ли оно в папку Спам."
+      ],
+      "If you lost access to your authenticator app, you can use 1 of the 16 backup recovery codes provided when your set up two-factor authentication. ${ learnMoreLink }": [
+        "Если вы потеряли доступ к своему приложению для аутентификации, вы можете использовать 1 из 16 резервных кодов восстановления, предоставленных при настройке двухфакторной аутентификации. ${ learnMoreLink }"
       ],
       "If you’re using Firefox, make sure PeerConnection is enabled.": [
         "Если вы используете Firefox, убедитесь, что PeerConnection включено."
@@ -2077,6 +2162,9 @@
       "Video effects": [
         "Эффекты видео"
       ],
+      "Warning": [
+        "Предупреждение"
+      ],
       "We'll send a new verification code to ${ strong }": [
         "Мы отправим новый код подтверждения на ${ strong }"
       ],
@@ -2193,6 +2281,9 @@
       "Delete recovery-related information.": [
         "Удалите информацию, связанную с восстановлением."
       ],
+      "Disabled": [
+        "Отключено"
+      ],
       "Does not repeat": [
         "Не повторять"
       ],
@@ -2234,6 +2325,9 @@
       ],
       "Identity": [
         "Личные данные"
+      ],
+      "Include application logs in bug report": [
+        "Включить журналы приложения в отчет об ошибке"
       ],
       "Last used": [
         "В последний раз использовано"
@@ -2312,6 +2406,9 @@
       ],
       "Your password (admin)": [
         "Ваш пароль (admin)"
+      ],
+      "Your password (trusted contact)": [
+        "Ваш пароль (доверенный контакт)"
       ]
     },
     "Link": {
@@ -2429,6 +2526,9 @@
       "E.g., ": [
         "Например, "
       ],
+      "Enter passphrase": [
+        "Ввести кодовую фразу"
+      ],
       "Enter time": [
         "Введите время"
       ],
@@ -2446,6 +2546,9 @@
       ],
       "Please describe the problem and include any error messages": [
         "Пожалуйста, опишите проблему и добавьте все возникавшие сообщения об ошибках"
+      ],
+      "Reply...": [
+        "Ответить..."
       ],
       "Schedule in ${ CALENDAR_APP_NAME }": [
         "Запланировать в ${ CALENDAR_APP_NAME }"
@@ -2583,6 +2686,9 @@
       "Account restricted": [
         "Аккаунт ограничен"
       ],
+      "Account temporarily locked": [
+        "Аккаунт временно заблокирован"
+      ],
       "Activity events": [
         "События активности"
       ],
@@ -2682,6 +2788,9 @@
       "Minicalendar": [
         "Миникалендарь"
       ],
+      "No results found": [
+        "Результатов не найдено"
+      ],
       "Participants": [
         "Участники"
       ],
@@ -2717,9 +2826,6 @@
       ],
       "Settings": [
         "Настройки"
-      ],
-      "Show duration": [
-        "Показать длительность"
       ],
       "Sign out": [
         "Выйти"
@@ -2760,6 +2866,9 @@
     "Tooltip": {
       "Background blur is not supported on your browser": [
         "Размытие фона не поддерживается в вашем браузере"
+      ],
+      "Instant AI assistance, human expert on hand!": [
+        "Мгновенная помощь ИИ, специалист всегда на связи!"
       ],
       "Recurring meeting": [
         "Повторяющаяся встреча"

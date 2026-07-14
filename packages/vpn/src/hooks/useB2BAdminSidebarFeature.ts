@@ -14,6 +14,7 @@ import { useConfig } from '@proton/components/index';
 import { applyPrefix } from '@proton/nav/api/applyPrefix';
 import { defineSearchOptions } from '@proton/nav/api/defineSearchOptions';
 import { defineSidebar } from '@proton/nav/api/defineSidebar';
+import type { NavResolved } from '@proton/nav/types/nav';
 import type { SidebarTree } from '@proton/nav/types/sidebar';
 import { telemetry } from '@proton/shared/lib/telemetry';
 import { useFlag } from '@proton/unleash/useFlag';
@@ -59,6 +60,7 @@ export const useB2BAdminSidebarFeature = ({
 }: Args):
     | {
           enabled: true;
+          nav: NavResolved;
           routes: SidebarTree;
           settings: ReturnType<typeof defineSearchOptions>;
           sidebar: SidebarControls;
@@ -81,7 +83,6 @@ export const useB2BAdminSidebarFeature = ({
 
     const { sidebar, spotlight } = useSidebarFeature();
 
-    const B2BLogsVPN = useFlag('B2BLogsVPN');
     const SsoForPbs = useFlag('SsoForPbs');
 
     const ZoomIntegrationDisabled = useFlag('ZoomIntegrationDisabled');
@@ -118,7 +119,6 @@ export const useB2BAdminSidebarFeature = ({
         organization,
         notifications: { recovery: recoveryNotification?.color },
         flags: {
-            B2BLogsVPN,
             SsoForPbs,
             ZoomIntegrationDisabled,
             NewScheduleOption,
@@ -131,6 +131,7 @@ export const useB2BAdminSidebarFeature = ({
     return {
         enabled: true,
         loading: false,
+        nav: prefixedNavigation,
         routes: defineSidebar(prefixedNavigation),
         settings: defineSearchOptions(prefixedNavigation),
         sidebar,

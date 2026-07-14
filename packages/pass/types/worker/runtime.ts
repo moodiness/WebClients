@@ -1,10 +1,10 @@
 import type { AuthSession } from '@proton/pass/lib/auth/session';
 import type { ConnectivityStatus } from '@proton/pass/lib/network/connectivity.utils';
+import type { ParsedUrl } from '@proton/pass/lib/urls/types';
 import type { ProxiedSettings } from '@proton/pass/store/reducers/settings';
 import type { FeatureFlagState } from '@proton/pass/store/reducers/user';
 import type { Maybe, MaybeNull } from '@proton/pass/types/utils';
 import type { AppState } from '@proton/pass/types/worker/state';
-import type { ParsedUrl } from '@proton/pass/utils/url/types';
 
 export type ClientEndpoint =
     | 'popup'
@@ -25,6 +25,8 @@ export type EndpointContext = {
     /** Parsed URL of the current endpoint. In iframe contexts, this represents
      * the iframe's URL. Use `tabUrl` to access the top-level frame's tab URL. */
     frameUrl: MaybeNull<ParsedUrl>;
+    /** Title of the top-level browser tab (`tabs.Tab.title`). */
+    tabTitle: MaybeNull<string>;
     /** Origin of the top-level tab frame. In non-iframe contexts, this
      * matches `url`. */
     tabUrl: MaybeNull<ParsedUrl>;

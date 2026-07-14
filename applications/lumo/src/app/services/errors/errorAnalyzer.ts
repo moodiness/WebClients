@@ -1,8 +1,10 @@
 // utils/errorAnalyzer.ts
 import { getApiError } from '@proton/shared/lib/api/helpers/apiErrorHelper';
-import { API_CUSTOM_ERROR_CODES } from '@proton/shared/lib/errors';
+import { API_CUSTOM_ERROR_CODES, HTTP_ERROR_CODES } from '@proton/shared/lib/errors';
 
-import { type ErrorContext, LUMO_API_ERRORS } from '../../types';
+import { getTerminalTypeFromApiError } from '../../lib/lumo-api-client/core/generation-terminal';
+import { LUMO_API_ERRORS } from '../../types';
+import { getErrorTypeFromMessage } from './errorHandling';
 
 export interface AnalyzedError {
     category: 'api' | 'network' | 'abort' | 'validation' | 'unknown';
@@ -11,8 +13,8 @@ export interface AnalyzedError {
     lumoErrorType?: LUMO_API_ERRORS;
 }
 
-export function analyzeError(error: any, context: ErrorContext): AnalyzedError {
-    const { code } = getApiError(error);
+export function analyzeError(error: any): AnalyzedError {
+    const { code, status } = getApiError(error);
 
     // Abort errors - user initiated
     if (error.name === 'AbortError' || error.code === 'AbortError') {
@@ -33,8 +35,19 @@ export function analyzeError(error: any, context: ErrorContext): AnalyzedError {
         };
     }
 
-    // Tier limit error - from jails
-    if (code === API_CUSTOM_ERROR_CODES.BANNED) {
+    // Terminal generation failures from /chat/completions HTTP responses (pre-stream).
+    const terminalType = getTerminalTypeFromApiError(error);
+    if (terminalType) {
+        return {
+            category: 'api',
+            isRetryable: true,
+            shouldShowToUser: true,
+            lumoErrorType: getErrorTypeFromMessage(terminalType),
+        };
+    }
+
+    // Tier limit error - from jails or HTTP 429 when limits are exhausted
+    if (code === API_CUSTOM_ERROR_CODES.BANNED || status === HTTP_ERROR_CODES.TOO_MANY_REQUESTS) {
         return {
             category: 'api',
             isRetryable: false,

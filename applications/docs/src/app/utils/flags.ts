@@ -3,12 +3,10 @@ import { isDevOrBlack } from '@proton/utils/env'
 
 /*
 DocsSharingModalDriveSDK - no dependencies
-
 DocsLoadRecentsWithDriveSDK - no dependencies
 DocsDocumentViewerEventsSDK - no dependencies
-
+DocsTrashWithDriveSDK - no dependencies
 DocsRenameWithDriveSDK - needs DocsLoadRecentsWithDriveSDK and DocsDocumentViewerEventsSDK for the events
-
 DocsMoveModalDriveSDK - needs DocsRenameWithDriveSDK because SDK rename updates cache (+ events)
 */
 
@@ -24,12 +22,20 @@ export function useDocsDocumentViewerEventsSDK() {
   return useFlag('DocsDocumentViewerEventsSDK')
 }
 
+export function useTrashWithSDK() {
+  return useFlag('DocsTrashWithDriveSDK') || isDevOrBlack()
+}
+
 export function useRenameWithSDK() {
   return useFlag('DocsRenameWithDriveSDK')
 }
 
 export function useMoveModalDriveSdkEnabled() {
   return useFlag('DocsMoveModalDriveSDK')
+}
+
+export function useIsTableOfContentsEnabled() {
+  return useFlag('DocsTableOfContents') || isDevOrBlack()
 }
 
 /**

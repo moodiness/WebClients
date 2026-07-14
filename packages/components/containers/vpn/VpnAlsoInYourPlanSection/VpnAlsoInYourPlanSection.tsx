@@ -19,23 +19,19 @@ import MailLogo from '@proton/components/components/logo/MailLogo';
 import PassLogo from '@proton/components/components/logo/PassLogo';
 import { getSimplePriceString } from '@proton/components/components/price/helper';
 import getBoldFormattedText from '@proton/components/helpers/getBoldFormattedText';
+import { getTelemetryUserTier } from '@proton/components/helpers/getTelemetryUserTier';
+import useApi from '@proton/components/hooks/useApi';
 import useConfig from '@proton/components/hooks/useConfig';
 import useDashboardPaymentFlow from '@proton/components/hooks/useDashboardPaymentFlow';
 import useLoad from '@proton/components/hooks/useLoad';
 import { IcArrowRight } from '@proton/icons/icons/IcArrowRight';
-import {
-    CYCLE,
-    FREE_PLAN,
-    type FreePlanDefault,
-    PLANS,
-    PLAN_NAMES,
-    type Plan,
-    getPlanByName,
-    getPlansMap,
-    getPricePerCycle,
-    getSubscriptionPlanTitle,
-    isManagedExternally,
-} from '@proton/payments';
+import { CYCLE, PLANS, PLAN_NAMES } from '@proton/payments/core/constants';
+import type { FreePlanDefault, Plan } from '@proton/payments/core/plan/interface';
+import { getPricePerCycle } from '@proton/payments/core/price-helpers';
+import { FREE_PLAN } from '@proton/payments/core/subscription/freePlans';
+import { getSubscriptionPlanTitle, isManagedExternally } from '@proton/payments/core/subscription/helpers';
+import { getPlanByName, getPlansMap } from '@proton/payments/core/subscription/plans-map-wrapper';
+import { TelemetryAccountDashboardEvents, TelemetryMeasurementGroups } from '@proton/shared/lib/api/telemetry';
 import { getExploreText } from '@proton/shared/lib/apps/i18n';
 import type { APP_NAMES } from '@proton/shared/lib/constants';
 import {
@@ -47,6 +43,7 @@ import {
     VPN_APP_NAME,
 } from '@proton/shared/lib/constants';
 import humanSize from '@proton/shared/lib/helpers/humanSize';
+import { sendTelemetryReport } from '@proton/shared/lib/helpers/metrics';
 import { goToPlanOrAppNameText } from '@proton/shared/lib/i18n/ttag';
 import { getSpace } from '@proton/shared/lib/user/storage';
 
@@ -169,6 +166,7 @@ const cards = ({ plan, space, freePlan }: CardProps): Card[] => {
 };
 
 export const VpnAlsoInYourPlanSection = ({ app }: { app: APP_NAMES }) => {
+    const api = useApi();
     const [user] = useUser();
     const { APP_NAME } = useConfig();
     const [subscription, loadingSubscription] = useSubscription();
@@ -237,6 +235,20 @@ export const VpnAlsoInYourPlanSection = ({ app }: { app: APP_NAMES }) => {
         });
     };
 
+    const onCardClick = (product: APP_NAMES) => {
+        void sendTelemetryReport({
+            api,
+            delay: false,
+            event: TelemetryAccountDashboardEvents.crossProductClick,
+            measurementGroup: TelemetryMeasurementGroups.accountDashboard,
+            dimensions: {
+                app,
+                product,
+                user_tier: getTelemetryUserTier(user),
+            },
+        });
+    };
+
     return (
         <>
             <DashboardGrid columns={filteredCards.length}>
@@ -266,6 +278,7 @@ export const VpnAlsoInYourPlanSection = ({ app }: { app: APP_NAMES }) => {
                                 )}
                                 <footer className="mt-auto pt-2">
                                     <ButtonLike
+                                        onAppClick={() => onCardClick(card.app)}
                                         as={ProductLink}
                                         ownerApp={APP_NAME}
                                         appToLinkTo={card.app}

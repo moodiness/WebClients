@@ -1,9 +1,9 @@
 import type { Tabs } from 'webextension-polyfill';
 
 import browser from '@proton/pass/lib/globals/browser';
+import { parseUrl } from '@proton/pass/lib/urls/utils/parser';
 import type { Maybe } from '@proton/pass/types/utils/index';
 import type { EndpointContext, FrameId } from '@proton/pass/types/worker/runtime';
-import { parseUrl } from '@proton/pass/utils/url/parser';
 
 export const resolveEndpointContext = async (tab: Maybe<Tabs.Tab>, frameId: FrameId): Promise<EndpointContext> => {
     if (tab?.id === undefined) throw new Error('Invalid sender tab');
@@ -16,9 +16,9 @@ export const resolveEndpointContext = async (tab: Maybe<Tabs.Tab>, frameId: Fram
         const result = await browser.webNavigation.getFrame({ frameId, tabId });
         if (!result) throw new Error('Invalid sender frame');
         const frameUrl = parseUrl(result.url);
-        return { tabId, frameUrl, tabUrl, senderTabId: tabId, frameId };
+        return { tabId, frameUrl, tabUrl, tabTitle: tab.title?.trim() || null, senderTabId: tabId, frameId };
     }
 
     /** For main frame: url and tabUrl are the same */
-    return { tabId, senderTabId: tabId, frameUrl: tabUrl, tabUrl, frameId };
+    return { tabId, senderTabId: tabId, frameUrl: tabUrl, tabUrl, tabTitle: tab.title?.trim() || null, frameId };
 };

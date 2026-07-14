@@ -3,7 +3,8 @@ import React, { useEffect, useState } from 'react';
 import { c } from 'ttag';
 
 import { Tooltip } from '@proton/atoms/Tooltip/Tooltip';
-import { IcChevronDown } from '@proton/icons/icons/IcChevronDown';
+
+import { LumoIcon } from '../../../LumoIcon/LumoIcon';
 
 import './ScrollToBottomButton.scss';
 
@@ -65,10 +66,10 @@ export const ScrollToBottomButton = ({
                     className="scroll-to-bottom-button shadow-lifted hover:shadow-norm flex items-center justify-center cursor-pointer rounded-50 border border-weak bg-norm color-norm"
                     aria-label={c('Action').t`Scroll to bottom`}
                     style={{
-                        pointerEvents: 'auto',
+                        pointerEvents: show ? 'auto' : 'none',
                     }}
                 >
-                    <IcChevronDown />
+                    <LumoIcon name="ChevronDown" />
                 </button>
             </Tooltip>
         </div>

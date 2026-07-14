@@ -12,7 +12,7 @@ import { Icon } from '../ui'
 import * as Ariakit from '@ariakit/react'
 import * as UI from '../ui'
 import type { IconName } from '@proton/icons/types'
-import clsx from '@proton/utils/clsx'
+import clsx from 'clsx'
 import { createStringifier } from '../../stringifier'
 import { c } from 'ttag'
 import { createComponent, useEvent } from '../utils'
@@ -21,6 +21,8 @@ import type { ProtonSheetsUIState } from '../../ui-state'
 import { getStringifiedColor } from '@rowsncolumns/spreadsheet'
 import { ColorPicker } from '../shared/ColorPicker'
 import { SheetStatus } from './SheetStatus'
+import { useIsSheetsStatusBarEnabled } from '../../feature-flags'
+import type { EditorRequiresClientMethods } from '@proton/docs-shared'
 
 const { s } = createStringifier(strings)
 
@@ -341,9 +343,13 @@ const NewSheetButton = memo(function NewSheetButton() {
   )
 })
 
-export interface BottomBarProps extends ComponentPropsWithoutRef<'div'> {}
+export interface BottomBarProps extends ComponentPropsWithoutRef<'div'> {
+  clientInvoker: EditorRequiresClientMethods
+}
 
-export const BottomBar = memo(function BottomBar(props: BottomBarProps) {
+export const BottomBar = memo(function BottomBar({ clientInvoker, ...props }: BottomBarProps) {
+  const isSheetsStatusBarEnabled = useIsSheetsStatusBarEnabled(clientInvoker)
+
   return (
     <div
       {...props}
@@ -355,9 +361,11 @@ export const BottomBar = memo(function BottomBar(props: BottomBarProps) {
         <NewSheetButton />
       </div>
 
-      <div className="ml-auto shrink-0">
-        <SheetStatus />
-      </div>
+      {isSheetsStatusBarEnabled && (
+        <div className="ml-auto shrink-0">
+          <SheetStatus />
+        </div>
+      )}
     </div>
   )
 })

@@ -782,6 +782,9 @@
       "Re-index": [
         "Ré-indexer"
       ],
+      "Re-indexing in progress": [
+        "Ré-indexation en cours"
+      ],
       "Re-sign": [
         "Signer à nouveau"
       ],
@@ -856,6 +859,9 @@
       ],
       "Report a problem": [
         "Signaler un bug"
+      ],
+      "Report abuse": [
+        "Signaler un abus"
       ],
       "Report an issue": [
         "Signaler un bug"
@@ -956,6 +962,12 @@
       "Select country": [
         "Sélectionnez un pays."
       ],
+      "Select rating ${ n } out of ${ to }": [
+        "Choisir une note entre ${ n } et ${ to }"
+      ],
+      "Send Feedback": [
+        "Envoyer un commentaire"
+      ],
       "Set as album cover": [
         "Définir en tant que couverture d'album"
       ],
@@ -1036,6 +1048,9 @@
       ],
       "Sign up": [
         "S'inscrire"
+      ],
+      "Skip": [
+        "Ignorer"
       ],
       "Skip verification": [
         "Ignorer la vérification"
@@ -1135,6 +1150,9 @@
       ],
       "Upload and share files": [
         "Importer et partager des fichiers"
+      ],
+      "Upload anyway": [
+        "Importer quand même"
       ],
       "Upload file": [
         "Importer un fichier"
@@ -3656,12 +3674,6 @@
       "Incorrect username": [
         "Le nom d'utilisateur n'est pas correct."
       ],
-      "Invalid ${ name } code": [
-        "Le code ${ name } n'est pas valide."
-      ],
-      "Invalid card number": [
-        "Le numéro de carte n’est pas valide."
-      ],
       "Invalid code": [
         "Le code n'est pas valide."
       ],
@@ -3670,9 +3682,6 @@
       ],
       "Invalid email address": [
         "L'adresse e-mail n'est pas valide."
-      ],
-      "Invalid expiration date": [
-        "La date d'expiration n’est pas valide."
       ],
       "Invalid IBAN": [
         "Cet IBAN n'est pas valide."
@@ -3727,7 +3736,7 @@
         "Aucun contact n'a été trouvé pour l'importation."
       ],
       "No drive found to import": [
-        "Aucun lecteur détecté pour l'importation"
+        "Aucun disque à importer détecté"
       ],
       "No emails found to import - the account does not have an inbox": [
         "Aucun message n'a été trouvé pour l'importation, le compte n'a pas de boite de réception."
@@ -3740,9 +3749,6 @@
       ],
       "Not a valid number": [
         "Le numéro n'est pas valide."
-      ],
-      "Not enough storage space in your ${ DRIVE_APP_NAME }": [
-        "Espace de stockage insuffisant dans votre ${ DRIVE_APP_NAME }"
       ],
       "One of the contacts has no email address: ${ noEmailsContactNamesList }": [
         "L'un des contacts n'a pas d'adresse e-mail : ${ noEmailsContactNamesList }",
@@ -3983,7 +3989,7 @@
         "Une erreur inattendue s'est produite. Les contacts n'ont pas pu être importés."
       ],
       "Unexpected error, we can't import the files": [
-        "Une erreur inattendue s'est produite. Les fichiers n'ont pas pu être importés."
+        "Une erreur inattendue est survenue, les fichiers n'ont pas pu être importés"
       ],
       "Unknown conflict strategy: ${ strategy }": [
         "Conflit de stratégie inconnu : ${ strategy }"
@@ -4017,6 +4023,9 @@
       ],
       "We cannot retrieve this item": [
         "Cet élément n'a pas pu être récupéré."
+      ],
+      "We couldn’t send a verification code using this method.": [
+        "Nous n'avons pas pu envoyer le code de vérification en utilisant cette méthode."
       ],
       "We were not able to load some invitations": [
         "Nous n'avons pas pu charger certaines invitations."
@@ -4502,6 +4511,9 @@
       ],
       "Security key": [
         "Clé de sécurité"
+      ],
+      "Touch your security key.": [
+        "Touchez votre clé de sécurité."
       ]
     },
     "fido2: Label": {
@@ -5244,6 +5256,9 @@
       "AI powered assistant to help you craft better emails, quickly and effortlessly.": [
         "L'assistant qui grâce à l'IA vous permet de rédiger des e-mails de meilleure qualité, rapidement et sans effort."
       ],
+      "Album": [
+        "Album"
+      ],
       "All (${ totalFoldersCount } folder)": [
         "Tous (${ totalFoldersCount } dossier)",
         "Tous (${ totalFoldersCount } dossiers)"
@@ -5514,6 +5529,10 @@
       "Do you remember your password? ${ verifyButton }": [
         "Vous souvenez-vous de votre mot de passe ? ${ verifyButton }"
       ],
+      "Do you still want to upload it?": [
+        "Voulez-vous quand même l'importer ?",
+        "Voulez-vous quand même les importer ?"
+      ],
       "Done": [
         "Terminé"
       ],
@@ -5660,7 +5679,7 @@
         "Les dossiers et fichiers partagés avec vous par d'autres utilisateurs s'afficheront ici."
       ],
       "Files only (no photos, ${ DOCS_APP_NAME } or ${ SHEETS_APP_NAME }) - up to 100 GB total, 100,000 files, and 50 GB per file": [
-        "Fichiers uniquement (pas de photos, ni ${ DOCS_APP_NAME } ni ${ SHEETS_APP_NAME }), jusqu'à 100 Go au total, 100 000 fichiers et 50 Go par fichier"
+        "Fichiers uniquement (pas de photos, ${ DOCS_APP_NAME } ou ${ SHEETS_APP_NAME }), jusqu'à 100 Go au total, 100 000 fichiers et 50 Go par fichier"
       ],
       "finance": [
         "finance"
@@ -5715,6 +5734,9 @@
       ],
       "How does encrypted search work?": [
         "Comment fonctionne la recherche chiffrée ?"
+      ],
+      "I hereby confirm, in good faith, that the information and statements contained in the report are correct and complete.": [
+        "Je confirme par la présente, en toute bonne foi, que les informations et les déclarations contenues dans le rapport sont exactes et complètes."
       ],
       "If those files are not fully downloaded locally on ${ deviceName } you will lose access to them.": [
         "Si ces fichiers ne sont pas entièrement téléchargés localement sur ${ deviceName }, vous n'y aurez plus accès."
@@ -6130,9 +6152,6 @@
       "Please ask the owner to directly invite you to the document.": [
         "Veuillez demander au propriétaire de vous inviter directement au document."
       ],
-      "Please authenticate your card in the verification tab.": [
-        "Authentifiez votre carte dans l'onglet de vérification."
-      ],
       "Please authenticate your payment in the verification tab.": [
         "Authentifiez votre paiement dans l'onglet de vérification."
       ],
@@ -6176,9 +6195,6 @@
       "Please try again using a different payment method, or contact your bank.": [
         "Nous vous invitons à réessayer en utilisant un autre moyen de paiement, ou bien à contacter votre banque."
       ],
-      "Please try again, use a different payment method, or contact PayPal for assistance.": [
-        "Nous vous invitons à réessayer, à utiliser un autre moyen de paiement ou à contacter PayPal pour obtenir de l'aide."
-      ],
       "Please use another browser or download the file.": [
         "Nous vous invitons à utiliser un autre navigateur ou à télécharger le fichier."
       ],
@@ -6193,6 +6209,12 @@
       ],
       "Preparing": [
         "Préparation en cours"
+      ],
+      "Preparing download": [
+        "Préparation du téléchargement"
+      ],
+      "Preparing…": [
+        "Préparation en cours…"
       ],
       "Preview failed to be loaded": [
         "L'aperçu n'a pas pu être chargé."
@@ -6229,6 +6251,9 @@
       ],
       "Public sharing of documents is not yet supported.": [
         "Le partage public de documents n'est pas encore pris en charge."
+      ],
+      "Re-indexing in progress": [
+        "Ré-indexation en cours"
       ],
       "Ready to add some photos?": [
         "Prêt à ajouter des photos ?"
@@ -6483,6 +6508,10 @@
       "This can NOT be undone. Please enter the device name to confirm removal.": [
         "Cette action ne peut pas être annulée. Saisissez le nom de l'appareil pour confirmer le retrait."
       ],
+      "This file appears to be empty:": [
+        "Ce fichier semble être vide :",
+        "Ces fichiers semblent être vides :"
+      ],
       "This file is too large to preview": [
         "Ce fichier est trop volumineux pour afficher un aperçu."
       ],
@@ -6670,6 +6699,9 @@
       "Uploaded": [
         "Importé"
       ],
+      "Uploaded - file is empty": [
+        "Le fichier a été importé, il est vide."
+      ],
       "Uploading": [
         "Chargement en cours"
       ],
@@ -6829,6 +6861,9 @@
       "You are about to open your default browser and visit:": [
         "Vous allez ouvrir votre navigateur par défaut et consulter :"
       ],
+      "You are currently signed in as ${ username } for ${ organizationName }.": [
+        "Vous êtes actuellement connecté en tant que ${ username } pour ${ organizationName }."
+      ],
       "You are currently signed in as ${ username }.": [
         "Vous êtes actuellement connecté en tant que ${ username }."
       ],
@@ -6899,9 +6934,6 @@
         "Vous devrez l'enregistrer à nouveau depuis la page du lien public.",
         "Vous devrez les enregistrer à nouveau depuis la page du lien public."
       ],
-      "You will soon be redirected to PayPal to verify your payment.": [
-        "Vous serez bientôt redirigé vers PayPal pour vérifier votre paiement."
-      ],
       "You won't be charged if you cancel before ${ trialEndsOnFormatted }.": [
         "Vous ne serez pas facturé si vous annulez avant le ${ trialEndsOnFormatted }."
       ],
@@ -6956,6 +6988,9 @@
       ],
       "Your email will only be used for this one-time verification.": [
         "Votre adresse e-mail ne sera utilisée que pour cette vérification unique."
+      ],
+      "Your files are being re-indexed. You can keep searching - results may be incomplete until it finishes. We'll let you know when it's done.": [
+        "Vos fichiers sont en cours de ré-indexation. Vous pouvez continuer à chercher ; les résultats peuvent être incomplets jusqu'à la fin du processus. Nous vous préviendrons quand il sera terminé."
       ],
       "Your files are no longer accessible due to a password reset. Re-upload the old encryption key to regain the access. ${ KeyReactivationButton }": [
         "Vos fichiers ne sont plus accessibles suite à une réinitialisation du mot de passe. Rechargez l'ancienne clé de chiffrement pour retrouver l'accès. ${ KeyReactivationButton }"
@@ -7413,6 +7448,12 @@
       "Environment compatible": [
         "Environnement compatible"
       ],
+      "Exact host matching": [
+        "Correspondance exacte de l'hôte"
+      ],
+      "Exact URL matching": [
+        "Correspondance exacte d'URL"
+      ],
       "Expired": [
         "Expiré"
       ],
@@ -7430,6 +7471,9 @@
       ],
       "Extended address": [
         "Complément d’adresse"
+      ],
+      "Extremely Satisfied": [
+        "Extrêmement satisfait"
       ],
       "File": [
         "Fichier"
@@ -7491,8 +7535,8 @@
       "Index kinds": [
         "Types d'index"
       ],
-      "Initial indexing": [
-        "Indexation initiale"
+      "Indexing": [
+        "Indexation en cours"
       ],
       "Integrated 2FA authenticator": [
         "Authentification à deux facteurs (A2F) intégrée"
@@ -7575,6 +7619,9 @@
       "Never expires": [
         "N'expire jamais"
       ],
+      "Never fill on this exact URL": [
+        "Ne saisissez jamais cette URL exacte"
+      ],
       "New password": [
         "Nouveau mot de passe"
       ],
@@ -7607,6 +7654,9 @@
       ],
       "Outdated version": [
         "Version obsolète"
+      ],
+      "Parent domain and subdomains (default)": [
+        "Domaine parent et sous-domaines (par défaut)"
       ],
       "Password": [
         "Mot de passe"
@@ -7661,6 +7711,9 @@
       ],
       "Region": [
         "Région"
+      ],
+      "Regular expression": [
+        "Expression régulière"
       ],
       "Replace existing folder or file": [
         "Remplacer le dossier ou le fichier existant"
@@ -7737,6 +7790,9 @@
       "Start date": [
         "Date de début"
       ],
+      "Starts with": [
+        "Commence par"
+      ],
       "State": [
         "État"
       ],
@@ -7763,6 +7819,9 @@
       ],
       "System information": [
         "Informations système"
+      ],
+      "Tell us more about your experience": [
+        "Faites-nous part de votre expérience"
       ],
       "Theme": [
         "Thème"
@@ -7800,6 +7859,9 @@
       "Uploaded by": [
         "Importé par"
       ],
+      "URL wildcard pattern": [
+        "Modèle d'URL avec caractères génériques"
+      ],
       "User opted in": [
         "L'utilisateur a accepté"
       ],
@@ -7808,6 +7870,9 @@
       ],
       "Verification code": [
         "Code de vérification"
+      ],
+      "Very Dissatisfied": [
+        "Très insatisfaisant"
       ],
       "Viewer": [
         "Lecteur"
@@ -8198,6 +8263,24 @@
       ]
     },
     "Message": {
+      "'Starts with' matching rule": [
+        "Règle de correspondance « commence par »"
+      ],
+      "Exact (sub) domain matching rule": [
+        "Règle de correspondance exacte des (sous-)domaines"
+      ],
+      "Exact URL matching rule": [
+        "Règle de correspondance exacte d'URL"
+      ],
+      "Never fill with this exact URL": [
+        "Ne saisissez jamais cette URL exacte"
+      ],
+      "Regular expression rule": [
+        "Règle d'expression régulière"
+      ],
+      "Wildcard pattern matching rule": [
+        "Règle de correspondance avec des caractères génériques"
+      ],
       "Your free trial has ended. ${ nonAutoRenewalAction }": [
         "Votre essai gratuit est terminé. ${ nonAutoRenewalAction }"
       ],
@@ -9129,6 +9212,11 @@
         "Vous bénéficiez d'un tarif promotionnel sur votre abonnement actuel. En choisissant un compte avec moins de fonctionnalités, vous perdrez ce tarif et il ne sera plus disponible si vous voulez vous réabonner."
       ]
     },
+    "new_plans: label": {
+      "We're always striving to make ${ config.appName } better. How satisfied are you with your experience?": [
+        "Nous nous efforçons toujours d'améliorer ${ config.appName }. Dans quelle mesure êtes-vous satisfait de votre expérience ?"
+      ]
+    },
     "new_plans: Subtext": {
       "Starting from ${ priceLine }": [
         "À partir de ${ priceLine }"
@@ -9578,9 +9666,6 @@
       "All items deleted permanently from trash": [
         "Tous les éléments ont été définitivement supprimés du dossier Corbeille."
       ],
-      "An invitation has been sent": [
-        "Une invitation a été envoyée."
-      ],
       "Cannot load link": [
         "Impossible de charger le lien"
       ],
@@ -9617,17 +9702,11 @@
       "Failed to accept share invitation": [
         "L'invitation au partage n'a pas pu être acceptée."
       ],
-      "Failed to convert external invitation": [
-        "L'invitation externe n'a pas pu être convertie."
-      ],
       "Failed to load sharing details": [
         "Les informations du partage n'ont pas pu être chargés"
       ],
       "Failed to move, please try again": [
         "Le déplacement n'a pas abouti, réessayez."
-      ],
-      "Failed to open document": [
-        "L'ouverture du document n'a pas abouti."
       ],
       "Failed to reject share invitation": [
         "L'invitation au partage n'a pas pu être refusée."
@@ -10612,6 +10691,9 @@
       ],
       "New name": [
         "Nouveau nom"
+      ],
+      "Optional feedback": [
+        "Commentaire facultatif"
       ],
       "Organization name": [
         "Nom de l'organisation"
@@ -12304,7 +12386,7 @@
         "${ freeUploadLength } d'importations gratuites."
       ],
       "${ LUMO_SHORT_APP_NAME } writing assistant": [
-        "Assistant d'écriture ${ LUMO_SHORT_APP_NAME }"
+        "Assistant conversationnel ${ LUMO_SHORT_APP_NAME }"
       ],
       "Account recovery": [
         "Récupération du compte"
@@ -12922,9 +13004,6 @@
       "Payment verification": [
         "Vérification du paiement"
       ],
-      "PayPal verification failed": [
-        "La vérification PayPal n'a pas abouti."
-      ],
       "Phone numbers": [
         "Numéros de téléphone"
       ],
@@ -13184,6 +13263,9 @@
       "Upload and share files": [
         "Importer et partager des fichiers"
       ],
+      "Upload empty file?": [
+        "Importer un fichier vide ?"
+      ],
       "Uploaded": [
         "Importé"
       ],
@@ -13247,6 +13329,9 @@
       "We weren’t able to confirm that the node was created by ${ claimedKeyAuthor }. The reason is: ${ node.keyAuthor.error.error }": [
         "Nous n'avons pas pu confirmer que le nœud a été créé par ${ claimedKeyAuthor }. La raison est la suivante : ${ node.keyAuthor.error.error }"
       ],
+      "We'd love to hear from you!": [
+        "N'hésitez pas à nous donner votre avis !"
+      ],
       "Welcome offer": [
         "Offre de bienvenue"
       ],
@@ -13306,6 +13391,26 @@
       ],
       "You’ve got 5 GB of storage": [
         "Vous avez 5 Go d'espace de stockage."
+      ]
+    },
+    "Title header for keys table": {
+      "Actions": [
+        "Actions"
+      ],
+      "Created": [
+        "Créé"
+      ],
+      "Expires": [
+        "Expire"
+      ],
+      "Fingerprint": [
+        "Empreinte digitale"
+      ],
+      "Status": [
+        "Statut"
+      ],
+      "Type": [
+        "Type"
       ]
     },
     "Today icon tooltip in mini calendar": {
@@ -13404,6 +13509,9 @@
       "Upload a public key to enable sending end-to-end encrypted emails to this email": [
         "Chargez une clé publique pour activer l'envoi de messages chiffrés de bout en bout à destination de cette adresse e-mail."
       ],
+      "Version 6 OpenPGP key": [
+        "Clé OpenPGP version 6"
+      ],
       "We have sent them an invite to access the item.": [
         "Nous leur avons envoyé une invitation pour accéder à l'élément."
       ]
@@ -13446,6 +13554,11 @@
     "Upsell": {
       "Get Drive for Business": [
         "Obtenir Drive for Business"
+      ]
+    },
+    "user_modal": {
+      "You'll be able to assign roles once the user has accepted the invitation.": [
+        "Vous pourrez attribuer des rôles une fois l'invitation acceptée par l'utilisateur."
       ]
     },
     "Validation": {
@@ -13564,6 +13677,9 @@
       ],
       "${ BRAND_NAME } will transfer as much data as possible, starting with your most recent messages.": [
         "${ BRAND_NAME } transférera autant de données que possible, en commençant par vos messages les plus récents."
+      ],
+      "${ modeLabelStong } provides powerful control, but a single error can cause autofill to match and fill data on fraudulent or phishing websites.": [
+        "${ modeLabelStong } offre un contrôle très efficace, mais une seule erreur peut entraîner la saisie automatique de données sur des sites frauduleux ou d'hameçonnage."
       ],
       "Are you sure you want to permanently delete ${ count } contact?": [
         "Voulez-vous vraiment supprimer définitivement ${ count } contact ?",

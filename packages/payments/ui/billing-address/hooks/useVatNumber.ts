@@ -25,9 +25,9 @@ import { getIsB2BAudienceFromPlan } from '../../../core/plan/helpers';
 import { countriesWithVatNumberOnSignup } from './countriesWithVatId';
 import type { TaxCountryHook } from './useTaxCountry';
 import { getVatFormErrors } from './useVatFormValidation';
-import { getVatPrefix } from './vatPrefixHelper';
+import { cleanVatNumber, getVatPrefix } from './vatPrefixHelper';
 
-export type FullBillingAddressWithoutCountry = Omit<FullBillingAddressFlat, 'CountryCode' | 'State' | 'ZipCode'>;
+type FullBillingAddressWithoutCountry = Omit<FullBillingAddressFlat, 'CountryCode' | 'State' | 'ZipCode'>;
 
 interface VatNumberHookProps {
     selectedPlanName: PLANS | ADDON_NAMES | undefined;
@@ -147,7 +147,7 @@ export const useVatNumber = ({
         const vatFormErrors = getVatFormErrors(fullBillingAddress, showExtendedBillingAddressForm);
 
         if (!vatFormErrors.hasErrors) {
-            onVatChange?.(newVatNumber);
+            onVatChange?.(cleanVatNumber(newVatNumber, taxCountry.selectedCountryCode));
         }
     };
 
@@ -157,7 +157,7 @@ export const useVatNumber = ({
             State: taxCountry.federalStateCode,
             ZipCode: taxCountry.zipCode,
             ...billingAddressExtraProperties,
-            VatId: vatNumber,
+            VatId: cleanVatNumber(vatNumber, taxCountry.selectedCountryCode),
         };
 
         const vatFormErrors = getVatFormErrors(fullBillingAddress, showExtendedBillingAddressForm);
@@ -223,7 +223,7 @@ export const useVatNumber = ({
         updateBillingAddressFields(fullBillingAddress.BillingAddress);
         handleVatNumberChange(newVatNumber);
         if (isAuthenticated) {
-            await onVatUpdated?.(newVatNumber);
+            await onVatUpdated?.(cleanVatNumber(newVatNumber, fullBillingAddress.BillingAddress.CountryCode));
         }
     };
 
@@ -252,6 +252,8 @@ export const useVatNumber = ({
         setCity: (value: string) => updateBillingAddressField('City', value),
         loadingBillingDetails,
         vatNumber,
+        // Cleaned value for submission/estimation: empty when `vatNumber` holds only a bare prefix.
+        vatNumberToSubmit: cleanVatNumber(vatNumber, taxCountry.selectedCountryCode),
         setVatNumber: handleVatNumberChange,
         enableVatNumber,
         renderVatNumberInput,

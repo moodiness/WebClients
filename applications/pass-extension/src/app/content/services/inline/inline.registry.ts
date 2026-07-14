@@ -4,6 +4,7 @@ import { withContext } from 'proton-pass-extension/app/content/context/context';
 import { PassThemeOption } from '@proton/pass/components/Layout/Theme/types';
 import { matchDarkTheme } from '@proton/pass/components/Layout/Theme/utils';
 import { PASS_DEFAULT_THEME } from '@proton/pass/constants';
+import { resolveSubdomain } from '@proton/pass/lib/urls/utils/utils';
 import type { PassElementsConfig } from '@proton/pass/types/utils/dom';
 import type { Callback, MaybeNull } from '@proton/pass/types/utils/index';
 import { type CustomElementRef, createCustomElement } from '@proton/pass/utils/dom/create-element';
@@ -11,7 +12,6 @@ import { POPOVER_SUPPORTED, getActiveModal, getClosestModal } from '@proton/pass
 import { safeCall } from '@proton/pass/utils/fp/safe-call';
 import { createListenerStore } from '@proton/pass/utils/listener/factory';
 import { logger } from '@proton/pass/utils/logger';
-import { resolveSubdomain } from '@proton/pass/utils/url/utils';
 
 import { PASS_ELEMENT_THEME } from './custom-elements/ProtonPassElement';
 import type { ProtonPassRoot } from './custom-elements/ProtonPassRoot';
@@ -71,15 +71,19 @@ export const createInlineRegistry = (elements: PassElementsConfig) => {
         const service = state.apps[id];
         if (!service) return;
 
-        const port = ctx?.getExtensionContext()?.port;
-        const url = ctx?.getExtensionContext()?.frameUrl;
+        const ext = ctx?.getExtensionContext();
+        const port = ext?.port;
+        const url = ext?.frameUrl;
 
-        if (url && port && service.getState().port !== port) {
+        if (ctx && url && port && service.getState().port !== port) {
             const settings = ctx.getSettings();
 
             service.init(port, () => ({
                 appState: ctx.getState(),
                 domain: resolveSubdomain(url) ?? '',
+                /** Top-level tab title from the worker — not `document.title`, which
+                 * reflects the current frame (eg. payment/login iframes). */
+                title: ext?.tabTitle ?? null,
                 features: ctx.getFeatureFlags(),
                 settings: ctx.getSettings(),
                 theme: getIFrameTheme(settings.theme),

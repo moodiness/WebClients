@@ -15,34 +15,32 @@ import type { ChargebeeCardProcessorHook } from '@proton/components/payments/rea
 import type { ChargebeePaypalProcessorHook } from '@proton/components/payments/react-extensions/useChargebeePaypal';
 import type { ChargebeeDirectDebitProcessorHook } from '@proton/components/payments/react-extensions/useSepaDirectDebit';
 import { useStableLoading } from '@proton/hooks';
-import {
-    type AvailablePaymentMethod,
-    type Currency,
-    type FreeSubscription,
-    PAYMENT_METHOD_TYPES,
-    type PaymentMethodFlow,
-    type PaymentMethodType,
-    type PaymentProcessorHook,
-    type PlainPaymentMethodType,
-    type SavedPaymentMethod,
-    type SavedPaymentMethodExternal,
-    type SavedPaymentMethodInternal,
-    type Subscription,
-    savedMethodRequires3DS,
-    type useSepaCurrencyOverride,
-} from '@proton/payments';
 import { getMinCreditAmount, getMinDonationAmount } from '@proton/payments/core/amount-limits';
 import type { BillingAddressStatus } from '@proton/payments/core/billing-address/billing-address';
+import { PAYMENT_METHOD_TYPES } from '@proton/payments/core/constants';
+import { savedMethodRequires3DS } from '@proton/payments/core/createPaymentToken';
+import type {
+    AvailablePaymentMethod,
+    Currency,
+    FreeSubscription,
+    PaymentMethodFlow,
+    PaymentMethodType,
+    PlainPaymentMethodType,
+    SavedPaymentMethod,
+} from '@proton/payments/core/interface';
+import type { useSepaCurrencyOverride } from '@proton/payments/core/payment-methods/useSepaCurrencyOverride';
+import type { PaymentProcessorHook } from '@proton/payments/core/payment-processors/interface';
+import type { Subscription } from '@proton/payments/core/subscription/interface';
+import { TaxFields } from '@proton/payments/ui/billing-address/components/TaxFields';
+import type { TaxCountryHook } from '@proton/payments/ui/billing-address/hooks/useTaxCountry';
+import type { VatNumberHook } from '@proton/payments/ui/billing-address/hooks/useVatNumber';
+import type { CbIframeHandles } from '@proton/payments/ui/components/ChargebeeIframe';
+import type { ChargebeePaypalButtonProps } from '@proton/payments/ui/components/ChargebeePaypalButton';
 import {
-    type CbIframeHandles,
     type ChargebeeCardWrapperProps,
     ChargebeeCreditCardWrapper,
-    type ChargebeePaypalButtonProps,
     ChargebeeSavedCardWrapper,
-    type TaxCountryHook,
-    type VatNumberHook,
-} from '@proton/payments/ui';
-import { TaxFields } from '@proton/payments/ui/billing-address/components/TaxFields';
+} from '@proton/payments/ui/components/ChargebeeWrapper';
 import type { User } from '@proton/shared/lib/interfaces';
 import { isBilledUser } from '@proton/shared/lib/interfaces';
 import clsx from '@proton/utils/clsx';
@@ -80,8 +78,7 @@ export interface Props {
     allMethods: ViewPaymentMethod[];
     isAuthenticated: boolean;
     loading: boolean;
-    savedMethodInternal?: SavedPaymentMethodInternal;
-    savedMethodExternal?: SavedPaymentMethodExternal;
+    savedMethod?: SavedPaymentMethod;
     currency: Currency;
     amount: number;
     paymentComponentLoaded: () => void;
@@ -114,8 +111,7 @@ export const PaymentsNoApi = ({
     allMethods,
     isAuthenticated,
     loading,
-    savedMethodInternal,
-    savedMethodExternal,
+    savedMethod,
     hideFirstLabel,
     hideSavedMethodsDetails,
     defaultMethod,
@@ -223,8 +219,6 @@ export const PaymentsNoApi = ({
         directDebit,
         onInitialized: onChargebeeInitialized,
     };
-
-    const savedMethod = savedMethodInternal ?? savedMethodExternal;
 
     const isPaypalMethod = method === PAYMENT_METHOD_TYPES.CHARGEBEE_PAYPAL;
     const showPaypalView = isPaypalMethod && !isSingleSignup;

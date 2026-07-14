@@ -1,23 +1,28 @@
 import { NavLink } from 'react-router-dom';
 
 import { clsx } from 'clsx';
-import { c, msgid } from 'ttag';
 
 import useEventManager from '@proton/components/hooks/useEventManager';
 import useLoading from '@proton/hooks/useLoading';
 import { CategoryIcon } from '@proton/mail/features/categoriesView/CategoryIcon';
 import type { CategoryTab } from '@proton/mail/features/categoriesView/categoriesConstants';
-import { getLabelFromCategoryId } from '@proton/mail/features/categoriesView/categoriesStringHelpers';
+import {
+    getLabelFromCategoryId,
+    getTitleFromCategoryId,
+} from '@proton/mail/features/categoriesView/categoriesStringHelpers';
 import { useCategoriesTelemetry } from '@proton/mail/features/categoriesView/useCategoriesTelemetry';
-import { useMailSettings } from '@proton/mail/store/mailSettings/hooks';
+import { updateLastSeenEventId } from '@proton/mail/store/labels/actions';
+import { useDispatch } from '@proton/redux-shared-store/sharedProvider';
+import { MAILBOX_LABEL_IDS } from '@proton/shared/lib/constants';
 import { wait } from '@proton/shared/lib/helpers/promise';
-import { VIEW_MODE } from '@proton/shared/lib/mail/mailSettings';
 
 import { setCategoryInUrl } from 'proton-mail/helpers/mailboxUrl';
-import { selectLabelIDUnreadCount } from 'proton-mail/hooks/mailboxCounter/useMaiboxCounter.selector';
-import { useMailSelector } from 'proton-mail/store/hooks';
 
+import { useCategoriesOnboarding } from '../categoriesOnboarding/CategoriesOnboardingContext';
+import { OnboardingStep } from '../categoriesOnboarding/onboardingInterface';
+import { TabBadge } from './TabBadge';
 import { TabState, categoryColorClassName } from './tabsInterface';
+import { useCategoriesBadge } from './useCategoriesBadge';
 
 interface Props {
     category: CategoryTab;
@@ -32,16 +37,29 @@ const navClasses: Record<TabState, string> = {
 };
 
 export const Tab = ({ category, tabState }: Props) => {
-    const [mailSettings] = useMailSettings();
-
+    const dispatch = useDispatch();
     const { call } = useEventManager();
 
-    const count = useMailSelector((state) => selectLabelIDUnreadCount(state, category.id));
+    const { shouldShowCounter, shouldShowNewBadge, count } = useCategoriesBadge({ tabState, category });
+    const { activeStep, userIsInB2COnboardingFlow } = useCategoriesOnboarding();
+
+    const onboardingOverride =
+        activeStep === OnboardingStep.MESSAGE && category.id === MAILBOX_LABEL_IDS.CATEGORY_SOCIAL;
+
+    // During the message onboarding step, the social tab must always show a "new" badge
+    const showNewBadge = onboardingOverride || shouldShowNewBadge;
+
     const { sendReportCategoriesNav } = useCategoriesTelemetry();
 
     const [refreshing, withRefreshing] = useLoading(false);
 
-    const handleClick = () => {
+    const handleClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+        // We prevent the user from navigating during the onboarding
+        if (userIsInB2COnboardingFlow) {
+            e.preventDefault();
+            return;
+        }
+
         if (tabState === TabState.ACTIVE && !refreshing) {
             void withRefreshing(Promise.all([call(), wait(1000)]));
         }
@@ -49,10 +67,11 @@ export const Tab = ({ category, tabState }: Props) => {
         if (tabState !== TabState.ACTIVE) {
             sendReportCategoriesNav('tab', category.id);
         }
+
+        void dispatch(updateLastSeenEventId({ labelID: category.id }));
     };
 
     const navigateTo = setCategoryInUrl(category.id);
-    const unreadCount = count > 999 ? '999+' : count;
 
     return (
         <NavLink
@@ -63,49 +82,33 @@ export const Tab = ({ category, tabState }: Props) => {
             )}
             role="tab"
             aria-selected={tabState === TabState.ACTIVE}
-            title={getLabelFromCategoryId(category.id)}
+            title={getTitleFromCategoryId(category.id)}
             aria-label={getLabelFromCategoryId(category.id)}
             data-testid={`category-tab-${category.id}`}
-            data-color={category.colorShade}
+            data-color={tabState === TabState.ACTIVE ? category.colorShade : undefined}
             onClick={handleClick}
             draggable={false}
         >
-            <CategoryIcon
-                categoryId={category.id}
-                variant="filled"
-                className={clsx('shrink-0', tabState === TabState.ACTIVE && categoryColorClassName)}
-            />
-            <span
-                title={getLabelFromCategoryId(category.id)}
-                className={clsx(
-                    'tag-label text-sm truncate min-w-0',
-                    tabState === TabState.ACTIVE ? 'color-norm' : 'color-weak'
-                )}
-            >
-                {getLabelFromCategoryId(category.id)}
+            <span className="tab-icon relative shrink-0 flex">
+                <CategoryIcon
+                    categoryId={category.id}
+                    variant="filled"
+                    className={clsx('shrink-0', tabState === TabState.ACTIVE && categoryColorClassName)}
+                />
+                {showNewBadge && <span className="tab-new-dot color-blue-500" aria-hidden="true" />}
             </span>
-
-            {count > 0 && (
+            <span className="flex flex-column justify-center min-w-0">
                 <span
-                    aria-label={
-                        mailSettings.ViewMode === VIEW_MODE.GROUP
-                            ? c('Label').ngettext(
-                                  msgid`${count} unread conversation`,
-                                  `${count} unread conversations`,
-                                  count
-                              )
-                            : c('Label').ngettext(msgid`${count} unread message`, `${count} unread messages`, count)
-                    }
                     className={clsx(
-                        'tag-count shrink-0 px-1.5 py-0.5 text-sm',
-                        tabState === TabState.ACTIVE
-                            ? 'mail-category-color mail-category-count-bg'
-                            : 'bg-weak color-weak'
+                        'tab-label text-sm text-ellipsis min-w-0',
+                        tabState === TabState.ACTIVE ? 'color-norm' : 'color-weak'
                     )}
                 >
-                    {unreadCount}
+                    {getLabelFromCategoryId(category.id)}
                 </span>
-            )}
+            </span>
+
+            <TabBadge count={count} tabState={tabState} shouldShowCounter={shouldShowCounter} />
         </NavLink>
     );
 };

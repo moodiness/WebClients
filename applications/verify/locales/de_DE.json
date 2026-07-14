@@ -908,6 +908,9 @@
       ],
       "Username must end with a letter or digit": [
         "Der Benutzername muss mit einem Buchstaben oder einer Ziffer enden."
+      ],
+      "We couldn’t send a verification code using this method.": [
+        "Wir konnten mit dieser Methode keinen Bestätigungscode senden."
       ]
     },
     "Error message": {
@@ -935,6 +938,9 @@
       ],
       "Security key": [
         "Sicherheitsschlüssel"
+      ],
+      "Touch your security key.": [
+        "Deinen Sicherheitsschlüssel berühren."
       ]
     },
     "fido2: Label": {
@@ -1050,7 +1056,7 @@
         "Code eingeben"
       ],
       "Enter the code from your authenticator app": [
-        "Code aus deiner Authentifizierungs-App ein eingeben"
+        "Code aus deiner Authentifizierungs-App eingeben"
       ],
       "Enter the verification code that was sent to ${ destinationText }.": [
         "Gib den an ${ destinationText } gesendeten Verifizierungscode ein."

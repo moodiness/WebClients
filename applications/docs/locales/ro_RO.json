@@ -339,6 +339,9 @@
       "Download anyway": [
         "Descărcare așa"
       ],
+      "Download debug information": [
+        "Descărcare informații de depanare"
+      ],
       "Download logs": [
         "Jurnal descărcare"
       ],
@@ -381,11 +384,20 @@
       "Export contact group": [
         "Exportare grup de contacte"
       ],
+      "Export editor state for version": [
+        "Exportare stare editor pentru control versiune"
+      ],
       "Export selection as .vcf": [
         "Exportare selecție ca .vcf"
       ],
+      "Export this version (as docx)": [
+        "Exportare această versiune (ca docx)"
+      ],
       "Export this version (as xlsx)": [
         "Exportare această versiune (ca xlsx)"
+      ],
+      "Export YJS state for version": [
+        "Exportare stare YJS pentru control versiune"
       ],
       "Forgot password?": [
         "Ați uitat parola?"
@@ -639,6 +651,9 @@
       "Reload": [
         "Reîncărcare"
       ],
+      "Reload spreadsheet": [
+        "Reîncărcare foaie de calcul"
+      ],
       "Remove": [
         "Eliminare"
       ],
@@ -667,6 +682,9 @@
         "înlocuiți fişierul"
       ],
       "Report a problem": [
+        "Raportare problemă"
+      ],
+      "Report issue": [
         "Raportare problemă"
       ],
       "Request a call": [
@@ -1188,7 +1206,7 @@
     },
     "BF2025: Deal details": {
       "2 TB data storage": [
-        "2 TiB spațiu total"
+        "2 TiB spațiu de stocare"
       ],
       "3 TB data storage": [
         "3 TiB spațiu de stocare"
@@ -3163,9 +3181,6 @@
       "Failed to load 'My files' folder": [
         "Nu s-a putut încărca folderul „Fișierele mele”"
       ],
-      "Failed to load document details": [
-        "Încărcarea detaliilor documentului a eșuat."
-      ],
       "Failed to load recent documents": [
         "Încărcarea documentelor recente a eșuat."
       ],
@@ -3178,11 +3193,17 @@
       "Failed to remove older revisions": [
         "Eroare la eliminarea reviziilor mai vechi."
       ],
+      "Failed to rename document": [
+        "Redenumirea documentului a eșuat."
+      ],
       "Failed to rename document. Please try again later.": [
         "Redenumirea documentului nu a reușit. Reîncercați mai târziu."
       ],
       "Failed to resend invitation": [
         "Eșuare retrimitere invitație."
+      ],
+      "Failed to trash document.": [
+        "Documentul nu a putut fi mutat în gunoi."
       ],
       "Failed to unshare node": [
         "Eșuare anulare partajare nod."
@@ -3272,6 +3293,9 @@
       ],
       "No contacts found to import": [
         "Nu s-au găsit contacte de importat."
+      ],
+      "No drive found to import": [
+        "Nu s-a găsit nici o unitate de importat."
       ],
       "No emails found to import - the account does not have an inbox": [
         "Nu s-au găsit mesaje de importat - contul nu are căsuță poștală."
@@ -3506,6 +3530,9 @@
       "Unexpected error, we can't import the contacts": [
         "Eroare neașteptată. Nu se pot importa contactele."
       ],
+      "Unexpected error, we can't import the files": [
+        "Eroare neașteptată. Fișierele nu se pot importa."
+      ],
       "Unknown error": [
         "Eroare necunoscută"
       ],
@@ -3535,6 +3562,9 @@
       ],
       "We couldn’t import this file into ${ SHEETS_APP_NAME }. You can try to copy and paste the contents into a new ${ SHEETS_APP_NAME }.": [
         "Nu s-a putut importa acest fișier în ${ SHEETS_APP_NAME }. Puteți încerca să copiați și să inserați conținutul într-un fișier ${ SHEETS_APP_NAME } nou."
+      ],
+      "We couldn’t send a verification code using this method.": [
+        "Nu s-a putut trimite un cod de verificare folosind această metodă."
       ],
       "Wrong billing address": [
         "Adresă de facturare incorectă."
@@ -3972,6 +4002,9 @@
       ],
       "Security key": [
         "Cheie de securitate"
+      ],
+      "Touch your security key.": [
+        "Atingeți cheia de securitate."
       ]
     },
     "fido2: Label": {
@@ -4529,11 +4562,6 @@
         "Contacte selectate: ${ selectedContactsLength }/${ contactsLength }",
         "Contacte selectate: ${ selectedContactsLength }/${ contactsLength }"
       ],
-      "${ selectedCount } selected": [
-        "${ selectedCount } selectat",
-        "${ selectedCount } selectate",
-        "${ selectedCount } selectate"
-      ],
       "${ selectedFoldersCountLocalized } folder selected": [
         "Foldere selectate: ${ selectedFoldersCountLocalized }",
         "Foldere selectate: ${ selectedFoldersCountLocalized }",
@@ -4748,7 +4776,7 @@
         "Copiat în memorie."
       ],
       "Copy the link to clipboard": [
-        "Copiați legătura în memorie"
+        "Copiere legătură web în memorie"
       ],
       "Copy your referral link": [
         "Copiere legătură web de recomandare"
@@ -4941,6 +4969,9 @@
       "File will not be updated": [
         "Fișierul nu va fi actualizat."
       ],
+      "Files only (no photos, ${ DOCS_APP_NAME } or ${ SHEETS_APP_NAME }) - up to 100 GB total, 100,000 files, and 50 GB per file": [
+        "Doar fișiere (fără fotografii, ${ DOCS_APP_NAME } sau ${ SHEETS_APP_NAME }) - până la 100 GiB total, 100.000 de fișiere și 50 GiB per fișier."
+      ],
       "finance": [
         "finanțe"
       ],
@@ -4980,8 +5011,14 @@
       "Governments and ISPs can monitor your online activity. By hiding your real IP and encrypting your activity your browsing becomes private.": [
         "Guvernele și ISP-urile vă pot monitoriza activitatea online. Ascunzându-vă adresa IP reală și criptându-vă activitatea, navigarea devine privată."
       ],
+      "Help us improve this experience by reporting the issue. If you’re comfortable sharing spreadsheet content, attach the debug information below to your report.": [
+        "Ajutați-ne să îmbunătățim această experiență raportând problema. Dacă nu vă deranjează să partajați conținutul din foaia de calcul, atașați informațiile de depanare de mai jos la raport."
+      ],
       "here": [
         "aici"
+      ],
+      "Hide table of contents": [
+        "Ascundere cuprins"
       ],
       "High Priority": [
         "Prioritate înaltă"
@@ -5209,6 +5246,9 @@
       "Only the people with the link and the password can access this folder.": [
         "Numai persoanele care au legătura și parola pot accesa acest folder."
       ],
+      "Oops! This spreadsheet can’t save your most recent edits, so we’ve paused editing to prevent you from losing your work.": [
+        "Hopa! Această foaie de calcul nu poate salva cele mai recente modificări, așa că s-a întrerupt editarea pentru a nu vă pierde munca."
+      ],
       "Open the guide for recommended actions and helpful links.": [
         "Deschideți ghidul pentru acțiuni recomandate și legături web utile."
       ],
@@ -5384,6 +5424,9 @@
       ],
       "Shared on": [
         "Partajat"
+      ],
+      "Show table of contents": [
+        "Afișare cuprins"
       ],
       "Signature cannot be validated due to network error, please try again later.": [
         "Semnătura nu poate fi validată din cauza unei erori de rețea. Reîncercați mai târziu."
@@ -5695,6 +5738,9 @@
       ],
       "You are about to open your default browser and visit:": [
         "Urmează să deschideți navigatorul web implicit și să vizitați:"
+      ],
+      "You are currently signed in as ${ username } for ${ organizationName }.": [
+        "V-ați conectat cu ${ username } pentru (${ organizationName }."
       ],
       "You are currently signed in as ${ username }.": [
         "V-ați conectat cu ${ username }."
@@ -6168,6 +6214,12 @@
       "Erase this link and remove everyone with access": [
         "Ștergere legătură și eliminare toate persoanele cu acces"
       ],
+      "Exact host matching": [
+        "Potrivire exactă gazdă"
+      ],
+      "Exact URL matching": [
+        "Potrivire exactă URL"
+      ],
       "Expiry": [
         "Expirare"
       ],
@@ -6288,6 +6340,9 @@
       "Navigation": [
         "Navigare"
       ],
+      "Never fill on this exact URL": [
+        "La exact acest URL nu se completează"
+      ],
       "New password": [
         "Parola nouă"
       ],
@@ -6308,6 +6363,9 @@
       ],
       "Optional": [
         "Opțional"
+      ],
+      "Parent domain and subdomains (default)": [
+        "Domeniu părinte și subdomeniu (implicit)"
       ],
       "Password": [
         "Parola"
@@ -6348,6 +6406,9 @@
       "Region": [
         "Județ"
       ],
+      "Regular expression": [
+        "Expresie regulată"
+      ],
       "Replace existing file": [
         "Înlocuire fișier existent"
       ],
@@ -6384,6 +6445,9 @@
       "Skip folder": [
         "Omitere folder"
       ],
+      "Starts with": [
+        "Începe cu"
+      ],
       "Stop sharing": [
         "Oprire partajare"
       ],
@@ -6411,8 +6475,14 @@
       "Trash": [
         "Gunoi"
       ],
+      "Unknown user": [
+        "Utilizator necunoscut"
+      ],
       "Upload picture": [
         "Încărcare imagine"
+      ],
+      "URL wildcard pattern": [
+        "Model URL cu caractere generice"
       ],
       "Username": [
         "Nume utilizator"
@@ -6759,6 +6829,24 @@
       ]
     },
     "Message": {
+      "'Starts with' matching rule": [
+        "Regulă de potrivire „Începe cu”"
+      ],
+      "Exact (sub) domain matching rule": [
+        "Regulă de potrivire exactă (sub) domeniu"
+      ],
+      "Exact URL matching rule": [
+        "Regulă de potrivire exactă URL"
+      ],
+      "Never fill with this exact URL": [
+        "La exact acest URL nu se completează"
+      ],
+      "Regular expression rule": [
+        "Regulă expresie regulată"
+      ],
+      "Wildcard pattern matching rule": [
+        "Regulă de potrivire model caractere generice"
+      ],
       "Your free trial has ended. ${ nonAutoRenewalAction }": [
         "Perioada de evaluare gratuită s-a încheiat. ${ nonAutoRenewalAction }"
       ],
@@ -8102,6 +8190,15 @@
       "Device renamed": [
         "Dispozitivul a fost redenumit."
       ],
+      "Document failed to be restored from trash": [
+        "Documentul nu a putut fi restaurat din gunoi."
+      ],
+      "Document moved to trash": [
+        "Documentul a fost mutat în gunoi."
+      ],
+      "Document restored from trash": [
+        "Documentul a fost restaurat din gunoi."
+      ],
       "External invitation removed from the share": [
         "Invitația externă a fost eliminată din partajare."
       ],
@@ -8122,6 +8219,9 @@
       ],
       "Failed to reject share invitation": [
         "Eșuare refuzare invitație la partajare."
+      ],
+      "Failed to rename document": [
+        "Redenumirea documentului a eșuat."
       ],
       "Failed to upload files: ${ err }": [
         "Nu s-a reușit încărcarea fișierelor: ${ err }"
@@ -9653,7 +9753,7 @@
     },
     "storage_split: feature": {
       "Storage for data generated by ${ BRAND_NAME } ${ MAIL_SHORT_APP_NAME }, ${ CALENDAR_SHORT_APP_NAME }, ${ CONTACTS_SHORT_APP_NAME }, and ${ PASS_SHORT_APP_NAME }": [
-        "Spațiu de stocare pentru date generate de ${ BRAND_NAME } ${ MAIL_SHORT_APP_NAME }, ${ CALENDAR_SHORT_APP_NAME }, ${ CONTACTS_SHORT_APP_NAME }, și ${ PASS_SHORT_APP_NAME }."
+        "Spațiu de stocare pentru datele generate de ${ BRAND_NAME } ${ MAIL_SHORT_APP_NAME }, ${ CALENDAR_SHORT_APP_NAME }, ${ CONTACTS_SHORT_APP_NAME }, și ${ PASS_SHORT_APP_NAME }."
       ],
       "Up to ${ totalStorageSize } Drive storage": [
         "Până la ${ totalStorageSize } spațiu în Drive"
@@ -10330,6 +10430,9 @@
       "Edit image": [
         "Editare imagine"
       ],
+      "Editing paused": [
+        "Editare suspendată"
+      ],
       "Email addresses": [
         "Adrese de e-mail"
       ],
@@ -10720,6 +10823,26 @@
         "Informații expuse"
       ]
     },
+    "Title header for keys table": {
+      "Actions": [
+        "Acțiuni"
+      ],
+      "Created": [
+        "Creat"
+      ],
+      "Expires": [
+        "Expiră"
+      ],
+      "Fingerprint": [
+        "Amprenta"
+      ],
+      "Status": [
+        "Stare"
+      ],
+      "Type": [
+        "Tip"
+      ]
+    },
     "Today icon tooltip in mini calendar": {
       "Today": [
         "Astăzi"
@@ -10804,6 +10927,9 @@
       "Upload a public key to enable sending end-to-end encrypted emails to this email": [
         "Încărcați o cheie publică pentru a activa trimiterea mesajelor criptate bilateral la această adresă."
       ],
+      "Version 6 OpenPGP key": [
+        "Cheie PGP versiunea 6"
+      ],
       "We have sent them an invite to access the item.": [
         "Li s-a trimis o invitație pentru a accesa articolul."
       ]
@@ -10836,6 +10962,11 @@
       ],
       "The user must have an address to request data access": [
         "Utilizatorul trebuie să aibă o adresă pentru a solicita acces la date."
+      ]
+    },
+    "user_modal": {
+      "You'll be able to assign roles once the user has accepted the invitation.": [
+        "Vei putea atribui roluri după ce utilizatorul a acceptat invitația."
       ]
     },
     "Validation": {
@@ -10968,6 +11099,9 @@
       ],
       "${ BRAND_NAME } will transfer as much data as possible, starting with your most recent messages.": [
         "${ BRAND_NAME } va transfera cât mai multe date posibil, începând cu cele mai recente mesaje."
+      ],
+      "${ modeLabelStong } provides powerful control, but a single error can cause autofill to match and fill data on fraudulent or phishing websites.": [
+        "${ modeLabelStong } oferă un control puternic, dar o singură eroare poate determina completarea automată să se potrivească și să completeze datele pe site-uri web frauduloase sau de înșelăciune."
       ],
       "Are you sure you want to permanently delete ${ count } contact?": [
         "Contacte care vor fi șterse definitiv: ${ count }. Confirmați ștergerea?",

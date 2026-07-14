@@ -120,30 +120,36 @@ export type ChatCompletionsTool = {
 export type ChatCompletionsTextPart = {
     type: 'text';
     text: string;
+    encrypted?: boolean;
 };
 
 export type ChatCompletionsImagePart = {
     type: 'image_url';
     image_url: {
-        /**
-         * A `data:<mime>;base64,...` URL. When the message is encrypted (see the
-         * message-level `encrypted` flag), the base64 payload is U2L ciphertext
-         * wrapped with a generic MIME type rather than real image bytes.
-         */
         url: string;
         detail?: 'auto' | 'low' | 'high';
+        encrypted?: boolean;
     };
 };
 
 export type ChatCompletionsContentPart = ChatCompletionsTextPart | ChatCompletionsImagePart;
 
 export type ChatCompletionsMessage = {
-    role: 'system' | 'user' | 'assistant' | 'tool';
+    /**
+     * `lumo_tool_call` is a non-standard Lumo extension role. The OpenAI schema
+     * carries tool calls in an assistant message's `tool_calls` array with the
+     * name/arguments in cleartext, which is incompatible with U2L encryption
+     * (only `content` is encrypted). Lumo instead sends each tool call as its
+     * own message with this role and the canonical `{"name","arguments"}` JSON
+     * (encrypted in production) in `content`. The scheduler converts it back to
+     * a structured `assistant` `tool_calls` message before reaching vLLM.
+     */
+    role: 'system' | 'user' | 'assistant' | 'tool' | 'lumo_tool_call';
     content?: string | ChatCompletionsContentPart[];
     /**
-     * Lumo extension: marks `content` as U2L-encrypted ciphertext. Applies to both
-     * string content and multimodal content-part arrays (text parts hold ciphertext
-     * and image `url`s carry ciphertext wrapped as a `data:` URL).
+     * Lumo extension: marks string `content` as U2L-encrypted ciphertext.
+     * Only valid when `content` is a plain string. For parts-content messages,
+     * each part carries its own `encrypted` flag as a sibling to the sensitive field.
      */
     encrypted?: boolean;
 };
@@ -155,12 +161,35 @@ export type ChatCompletionsLumoExtension = {
     target?: LumoCompletionTarget;
     request_key?: string;
     request_id?: string;
+    image_aspect_ratio?: ImageAspectRatio;
+};
+
+export type ChatCompletionsStreamOptions = {
+    include_usage?: boolean;
+};
+
+export type LumoRemainingLimits = {
+    lite?: number;
+    max?: number;
+    images?: number;
+};
+
+export type LumoUsageLimitsResponse = {
+    limits: LumoRemainingLimits;
+};
+
+export type LumoStreamUsage = {
+    completion_tokens?: number;
+    remaining_limits?: LumoRemainingLimits;
+    applied_limit_category?: string;
+    image_limit_applied?: boolean;
 };
 
 export type ChatCompletionsRequest = {
     model: string;
     messages: ChatCompletionsMessage[];
     stream: boolean;
+    stream_options?: ChatCompletionsStreamOptions;
     reasoning_effort?: 'none' | 'high';
     tools?: ChatCompletionsTool[];
     tool_choice?: 'auto' | 'none' | 'required';
@@ -174,10 +203,13 @@ export type ChatEndpointGenerationRequest = {
     Prompt: LumoApiGenerationRequest;
 };
 
+export type ImageAspectRatio = '1:1' | '2:3' | '3:2' | '9:16' | '16:9';
+
 export type Options = {
     tools?: ToolName[] | boolean;
     reasoning?: boolean;
     suggested_questions?: boolean;
+    image_aspect_ratio?: ImageAspectRatio;
 };
 
 // *** Utility types for encryption state ***
@@ -209,14 +241,15 @@ export type TimeoutMessage = { type: 'timeout' };
 export type ErrorMessage = { type: 'error' };
 export type RejectedMessage = { type: 'rejected' };
 export type HarmfulMessage = { type: 'harmful' };
+export type UsageMessage = { type: 'usage'; usage: LumoStreamUsage };
 
 /*
- * Structured tool/upstream error emitted mid-stream. The backend forwards the
- * upstream provider error verbatim. The most important case for the client is
- * `code === 'context_length_exceeded'`, which triggers context compaction.
+ * Context-window overflow surfaced mid-stream. The chat-completions adapter maps
+ * the normalised OpenAI error shape to this legacy message for compaction:
+ *   data:{"error":{"code":"context_length_exceeded","type":"invalid_request_error",...}}
  *
- * Wire shape:
- *   data:{"type":"tool-error","error":{"code":"context_length_exceeded","message":"<verbatim upstream body>"}}
+ * Legacy wire shape (still accepted):
+ *   data:{"type":"tool-error","error":{"code":"context_length_exceeded","message":"..."}}
  */
 export type ToolErrorMessage = {
     type: 'tool-error';
@@ -228,21 +261,47 @@ export type ToolErrorMessage = {
 
 export const CONTEXT_LENGTH_EXCEEDED_CODE = 'context_length_exceeded';
 
+// Server-side tool call dispatched by the scheduler (chat.tool_call SSE chunk).
+// Emitted twice: announce (arguments absent) then dispatch (arguments present).
+export type ServerToolCallMessage = {
+    type: 'server_tool_call';
+    call_id: string;
+    name: string;
+    arguments?: string;
+    encrypted?: boolean;
+};
+
+// Server-side tool result returned after execution (chat.tool_result SSE chunk).
+export type ServerToolResultMessage = {
+    type: 'server_tool_result';
+
+    call_id: string;
+    content: string;
+    encrypted?: boolean;
+};
+
 export type EncryptedTokenDataMessage = Encrypted<TokenDataMessage>;
 export type DecryptedTokenDataMessage = Decrypted<TokenDataMessage>;
 export type EncryptedImageDataMessage = Encrypted<ImageDataMessage>;
 export type DecryptedImageDataMessage = Decrypted<ImageDataMessage>;
+export type EncryptedServerToolCallMessage = Encrypted<ServerToolCallMessage>;
+export type DecryptedServerToolCallMessage = Decrypted<ServerToolCallMessage>;
+export type EncryptedServerToolResultMessage = Encrypted<ServerToolResultMessage>;
+export type DecryptedServerToolResultMessage = Decrypted<ServerToolResultMessage>;
 
 export type GenerationResponseMessage =
     | QueuedMessage
     | IngestingMessage
     | TokenDataMessage
     | ImageDataMessage
+    | ServerToolCallMessage
+    | ServerToolResultMessage
     | DoneMessage
     | TimeoutMessage
     | ErrorMessage
     | RejectedMessage
     | HarmfulMessage
+    | UsageMessage
     | ToolErrorMessage;
 
 export type GenerationResponseMessageDecrypted =
@@ -250,11 +309,14 @@ export type GenerationResponseMessageDecrypted =
     | IngestingMessage
     | DecryptedTokenDataMessage
     | DecryptedImageDataMessage
+    | DecryptedServerToolCallMessage
+    | DecryptedServerToolResultMessage
     | DoneMessage
     | TimeoutMessage
     | ErrorMessage
     | RejectedMessage
     | HarmfulMessage
+    | UsageMessage
     | ToolErrorMessage;
 
 // *** Type Guards ***
@@ -321,6 +383,16 @@ export function isHarmfulMessage(obj: any): obj is HarmfulMessage {
     return typeof obj === 'object' && obj !== null && obj.type === 'harmful';
 }
 
+export function isUsageMessage(obj: any): obj is UsageMessage {
+    return (
+        typeof obj === 'object' &&
+        obj !== null &&
+        obj.type === 'usage' &&
+        typeof obj.usage === 'object' &&
+        obj.usage !== null
+    );
+}
+
 export function isToolErrorMessage(obj: any): obj is ToolErrorMessage {
     return (
         typeof obj === 'object' &&
@@ -366,17 +438,59 @@ export function isDecryptedImageDataMessage(obj: any): obj is DecryptedImageData
     return isDecrypted(obj, isImageDataMessage);
 }
 
+export function isServerToolCallMessage(obj: any): obj is ServerToolCallMessage {
+    return (
+        typeof obj === 'object' &&
+        obj !== null &&
+        obj.type === 'server_tool_call' &&
+        typeof obj.call_id === 'string' &&
+        typeof obj.name === 'string' &&
+        (!('arguments' in obj) || typeof obj.arguments === 'string') &&
+        (!('encrypted' in obj) || typeof obj.encrypted === 'boolean')
+    );
+}
+
+export function isServerToolResultMessage(obj: any): obj is ServerToolResultMessage {
+    return (
+        typeof obj === 'object' &&
+        obj !== null &&
+        obj.type === 'server_tool_result' &&
+        typeof obj.call_id === 'string' &&
+        typeof obj.content === 'string' &&
+        (!('encrypted' in obj) || typeof obj.encrypted === 'boolean')
+    );
+}
+
+export function isEncryptedServerToolCallMessage(obj: any): obj is EncryptedServerToolCallMessage {
+    return isEncrypted(obj, isServerToolCallMessage);
+}
+
+export function isDecryptedServerToolCallMessage(obj: any): obj is DecryptedServerToolCallMessage {
+    return isDecrypted(obj, isServerToolCallMessage);
+}
+
+export function isEncryptedServerToolResultMessage(obj: any): obj is EncryptedServerToolResultMessage {
+    return isEncrypted(obj, isServerToolResultMessage);
+}
+
+export function isDecryptedServerToolResultMessage(obj: any): obj is DecryptedServerToolResultMessage {
+    return isDecrypted(obj, isServerToolResultMessage);
+}
+
 export function isGenerationResponseMessage(obj: any): obj is GenerationResponseMessage {
     return (
         isQueuedMessage(obj) ||
         isIngestingMessage(obj) ||
         isTokenDataMessage(obj) ||
         isImageDataMessage(obj) ||
+        isServerToolCallMessage(obj) ||
+        isServerToolResultMessage(obj) ||
         isDoneMessage(obj) ||
         isTimeoutMessage(obj) ||
         isErrorMessage(obj) ||
         isRejectedMessage(obj) ||
         isHarmfulMessage(obj) ||
+        isUsageMessage(obj) ||
         isToolErrorMessage(obj)
     );
 }

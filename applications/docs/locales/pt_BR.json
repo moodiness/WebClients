@@ -378,11 +378,20 @@
       "Export contact group": [
         "Exportar grupo de contato"
       ],
+      "Export editor state for version": [
+        "Exportar estado do editor YJS para a versão"
+      ],
       "Export selection as .vcf": [
         "Exportar seleção como .vcf"
       ],
+      "Export this version (as docx)": [
+        "Exportar essa versão (como docx)"
+      ],
       "Export this version (as xlsx)": [
         "Exportar essa versão (como xlsx)"
+      ],
+      "Export YJS state for version": [
+        "Exportar estado YJS para a versão"
       ],
       "Forgot password?": [
         "Esqueceu sua senha?"
@@ -639,6 +648,9 @@
       "Reload": [
         "Recarregar"
       ],
+      "Reload spreadsheet": [
+        "Recarregar planilha"
+      ],
       "Remove": [
         "Remover"
       ],
@@ -668,6 +680,9 @@
       ],
       "Report a problem": [
         "Relatar um problema"
+      ],
+      "Report issue": [
+        "Reportar problema"
       ],
       "Request a call": [
         "Solicitar uma chamada"
@@ -2637,6 +2652,9 @@
       "Ensure you can still access your account and data even if you lose your ${ BRAND_NAME } password.": [
         "Garanta que você ainda possa acessar sua conta e seus dados, mesmo que perca sua senha do ${ BRAND_NAME }."
       ],
+      "For a seamless onboarding of your team to ${ BRAND_NAME }, import your data from Google, Outlook, and others.": [
+        "Para uma integração perfeita da sua equipe ao ${ BRAND_NAME }, importe seus dados do Google, Outlook e outros."
+      ],
       "Get notified if your password or other data was leaked from a third-party service.": [
         "Seja notificado caso sua senha ou outros dados sejam vazados de um serviço de terceiros."
       ],
@@ -3126,6 +3144,12 @@
       "Failed to fetch sharing info": [
         "Erro ao obter as informações para compartilhar"
       ],
+      "Failed to load 'My files' folder": [
+        "Falha ao carregar a pasta 'Meus arquivos'"
+      ],
+      "Failed to load recent documents": [
+        "Falha ao carregar os documentos recentes"
+      ],
       "Failed to load subscription data. Please try again later.": [
         "Falha ao carregar os dados da assinatura. Tente novamente mais tarde."
       ],
@@ -3134,6 +3158,9 @@
       ],
       "Failed to remove older revisions": [
         "Falha ao remover revisões antigas"
+      ],
+      "Failed to rename document": [
+        "Falha ao renomear o documento"
       ],
       "Failed to rename document. Please try again later.": [
         "A renomeação do documento falhou, tente novamente mais tarde"
@@ -3229,6 +3256,9 @@
       "No contacts found to import": [
         "Nenhum contato encontrado para importação"
       ],
+      "No drive found to import": [
+        "Não encontrou nenhuma unidade para importar"
+      ],
       "No emails found to import - the account does not have an inbox": [
         "Nenhum e-mail encontrado para importação - a conta não possui uma caixa de entrada."
       ],
@@ -3316,6 +3346,9 @@
       ],
       "Request timed out": [
         "A solicitação expirou"
+      ],
+      "Reverse charge scheme is not supported for this plan": [
+        "O regime de reverse charge não é suportado para este plano"
       ],
       "Search failed": [
         "Erro de pesquisa"
@@ -3452,6 +3485,9 @@
       "Unexpected error, we can't import the contacts": [
         "Erro inesperado, não podemos importar os contatos"
       ],
+      "Unexpected error, we can't import the files": [
+        "Erro inesperado, não podemos importar os arquivos"
+      ],
       "Unknown error": [
         "Erro desconhecido"
       ],
@@ -3481,6 +3517,9 @@
       ],
       "We couldn’t import this file into ${ SHEETS_APP_NAME }. You can try to copy and paste the contents into a new ${ SHEETS_APP_NAME }.": [
         "Não foi possível importar este arquivo para o ${ SHEETS_APP_NAME }. Você pode tentar copiar e colar o conteúdo em um novo ${ SHEETS_APP_NAME }."
+      ],
+      "We couldn’t send a verification code using this method.": [
+        "Não conseguimos enviar um código de verificação usando este método."
       ],
       "Wrong billing address": [
         "Endereço de cobrança incorreto"
@@ -3915,6 +3954,9 @@
       ],
       "Security key": [
         "Chave de segurança"
+      ],
+      "Touch your security key.": [
+        "Toque na sua chave de segurança."
       ]
     },
     "fido2: Label": {
@@ -4445,10 +4487,6 @@
         "${ selectedContactsLength }/${ contactsLength } contato selecionado",
         "${ selectedContactsLength }/${ contactsLength } contatos selecionados"
       ],
-      "${ selectedCount } selected": [
-        "${ selectedCount } selecionados",
-        "${ selectedCount } selecionados"
-      ],
       "${ selectedFoldersCountLocalized } folder selected": [
         "${ selectedFoldersCountLocalized } pasta selecionada",
         "${ selectedFoldersCountLocalized } pastas selecionadas"
@@ -4873,6 +4911,9 @@
       "Geoblocking": [
         "Bloqueio geográfico"
       ],
+      "Get a professional @your-company.com email, 1 TB of secure storage per user, longer video calls, and more with ${ BRAND_NAME } Workspace.": [
+        "Obtenha um endereço de e-mail profissional @sua-empresa.com, 1 TB de armazenamento seguro por usuário, videochamadas mais longas e muito mais com a ${ BRAND_NAME } Workspace."
+      ],
       "Get email updates for comments and suggestions added to your documents.": [
         "Receba atualizações por e-mail para comentários e sugestões adicionados nos seus documentos."
       ],
@@ -4884,6 +4925,9 @@
       ],
       "here": [
         "aqui"
+      ],
+      "Hide table of contents": [
+        "Ocultar tabela de conteúdos"
       ],
       "High Priority": [
         "Alta prioridade"
@@ -4911,6 +4955,9 @@
       ],
       "If you proceed with the downgrade, you will lose access to ${ VPN_APP_NAME } paid features.": [
         "Se você prosseguir com o downgrade, perderá o acesso aos recursos pagos do ${ VPN_APP_NAME }."
+      ],
+      "If you remove yourself, you’ll lose access to \"${ fileName }\" and won’t be able to open it again unless the owner shares it with you.": [
+        "Se você se remover, perderá o acesso a \"${ fileName }\" e não poderá abri-lo novamente, a menos que o proprietário o compartilhe com você."
       ],
       "Import ${ calendarCount } of ${ totalCalendarsCount } calendar": [
         "Importar ${ calendarCount } de ${ totalCalendarsCount } calendário",
@@ -5169,6 +5216,9 @@
       "Please select the folders you would like to import:": [
         "Selecione as pastas que deseja importar:"
       ],
+      "Please select the labels you would like to import:": [
+        "Selecione os marcadores que você deseja importar:"
+      ],
       "Please select which email address or addresses to add to ${ groupCount } group.": [
         "Selecione qual endereço de e-mail ou endereços adicionar ao grupo ${ groupCount }.",
         "Selecione qual endereço de e-mail ou endereços adicionar aos grupos ${ groupCount }."
@@ -5278,6 +5328,9 @@
       "Shared on": [
         "Compartilhado em"
       ],
+      "Show table of contents": [
+        "Mostrar tabela de conteúdos"
+      ],
       "Signature cannot be validated due to network error, please try again later.": [
         "Não é possível validar a assinatura devido a um erro de rede. Tente novamente mais tarde.."
       ],
@@ -5353,9 +5406,6 @@
       ],
       "The owner of this address has disabled end-to-end encryption. To be able to send encrypted emails to this address, the owner must re-enable end-to-end encryption.": [
         "O proprietário deste endereço desativou a criptografia de ponta a ponta. Para poder enviar e-mails criptografados para este endereço, o proprietário deve reativar a criptografia de ponta a ponta."
-      ],
-      "The URL you entered seems to have been copied from Slack incorrectly. When copying long links from Slack, right click the link, then choose \"Copy link\" rather than copying the truncated URL text directly.": [
-        "O URL que você inseriu parece ter sido copiado incorretamente do Slack. Ao copiar links longos do Slack, clique com o botão direito no link e selecione \"Copiar o link\" em vez de copiar o texto do URL truncado diretamente."
       ],
       "There are no documents in the trash.": [
         "Não há documentos na lixeira."
@@ -5439,7 +5489,7 @@
         "Para combater o spam e/ou abuso, verifique se você é humano."
       ],
       "To help you remember your password, we'll ask you to enter it periodically. We ask you less over time.": [
-        "Para ajudar você a lembrar sua senha, pediremos que você a digite periodicamente. Com o passar do tempo, iremos solicitar isso com menos frequência."
+        "Para ajudar você a lembrar sua senha, pediremos que você a insira periodicamente. Com o passar do tempo, iremos solicitar isso com menos frequência."
       ],
       "To import events, first create a calendar in ${ CALENDAR_APP_NAME }. This is where the events will appear after the import.": [
         "Para importar eventos, primeiro crie um calendário em ${ CALENDAR_APP_NAME }. Aqui que os eventos aparecerão após a importação."
@@ -5534,6 +5584,9 @@
       "We'll notify you when the import is done.": [
         "Nós te avisaremos quando a importação estiver concluída."
       ],
+      "We'll remind you to verify your password again later": [
+        "Lembriremos você de verificar sua senha novamente mais tarde"
+      ],
       "We'll send a new verification code to ${ strong }": [
         "Enviaremos um novo código de verificação para ${ strong }"
       ],
@@ -5584,6 +5637,9 @@
       ],
       "You are about to open your default browser and visit:": [
         "Você está prestes a abrir seu navegador padrão e visitar:"
+      ],
+      "You are currently signed in as ${ username } for ${ organizationName }.": [
+        "Você está atualmente com sessão iniciada como ${ username } para ${ organizationName }."
       ],
       "You are currently signed in as ${ username }.": [
         "Você está atualmente iniciado sessão como ${ username }."
@@ -5637,6 +5693,9 @@
       ],
       "You won't be charged if you cancel before ${ trialEndsOnFormatted }.": [
         "Você não será cobrado se cancelar antes de ${ trialEndsOnFormatted }."
+      ],
+      "You won’t be able to share \"${ fileName }\" after changing access to viewer. Only the owner can change your access again.": [
+        "Você não poderá compartilhar \"${ fileName }\" depois de alterar o acesso para visualizador. Somente o proprietário poderá alterar seu acesso novamente."
       ],
       "You'll receive the credit reward 1 month after your friend subscribes to a yearly plan, and 2 months after they subscribe to a monthly plan.": [
         "Você receberá a recompensa em créditos 1 mês após seu amigo(a) assinar um plano anual e 2 meses após ele (ela) assinar um plano mensal."
@@ -5810,6 +5869,9 @@
       ]
     },
     "Key badge": {
+      "Active Signer": [
+        "Signatário ativo"
+      ],
       "Compromised": [
         "Comprometida"
       ],
@@ -6224,6 +6286,9 @@
       "Region": [
         "Estado"
       ],
+      "Regular expression": [
+        "Expressão regular"
+      ],
       "Replace existing file": [
         "Substituir pasta existente"
       ],
@@ -6260,6 +6325,9 @@
       "Skip folder": [
         "Pular Pasta"
       ],
+      "Starts with": [
+        "Iniciar com"
+      ],
       "Stop sharing": [
         "Parar de compartilhar"
       ],
@@ -6286,6 +6354,9 @@
       ],
       "Trash": [
         "Lixeira"
+      ],
+      "Unknown user": [
+        "Usuário desconhecido"
       ],
       "Upload picture": [
         "Carregar imagem"
@@ -6624,6 +6695,9 @@
       ]
     },
     "Message": {
+      "Regular expression rule": [
+        "Regra de expressão regular"
+      ],
       "Your free trial has ended. ${ nonAutoRenewalAction }": [
         "Sua avaliação gratuita terminou. ${ nonAutoRenewalAction }"
       ],
@@ -7978,6 +8052,12 @@
       "Device renamed": [
         "Dispositivo renomeado"
       ],
+      "Document moved to trash": [
+        "Documento movido para a lixeira"
+      ],
+      "Document restored from trash": [
+        "Documento restaurado da lixeira"
+      ],
       "External invitation removed from the share": [
         "Convite externo removido dos compartilhados"
       ],
@@ -7992,6 +8072,9 @@
       ],
       "Failed to load invitation details": [
         "Erro ao carregar os detalhes do convite"
+      ],
+      "Failed to load sharing details": [
+        "Falha ao carregar os detalhes de compartilhamento"
       ],
       "Failed to reject share invitation": [
         "Falha ao rejeitar convite de compartilhamento"
@@ -8468,6 +8551,9 @@
       ],
       "External key automatically fetched via WKD.": [
         "Chave externa obtida automaticamente via WKD."
+      ],
+      "This contact currently signs messages with this key": [
+        "Este contato assina atualmente as mensagens com esta chave"
       ],
       "This key is used for message verification": [
         "Essa chave já foi usado para verificação por mensagem"
@@ -9906,6 +9992,9 @@
         "${ emailsCount } endereço de e-mail",
         "${ emailsCount } endereços de e-mail"
       ],
+      "${ LUMO_SHORT_APP_NAME } writing assistant": [
+        "Assistente de escrita do ${ LUMO_SHORT_APP_NAME }"
+      ],
       "Account recovery": [
         "Recuperação de conta"
       ],
@@ -10136,6 +10225,9 @@
       ],
       "Edit image": [
         "Editar imagem"
+      ],
+      "Editing paused": [
+        "Edição pausada"
       ],
       "Email addresses": [
         "Endereços de e-mail"
@@ -10526,6 +10618,26 @@
         "Sua informação exposta"
       ]
     },
+    "Title header for keys table": {
+      "Actions": [
+        "Ações"
+      ],
+      "Created": [
+        "Criada"
+      ],
+      "Expires": [
+        "Expira"
+      ],
+      "Fingerprint": [
+        "Impressão digital"
+      ],
+      "Status": [
+        "Status"
+      ],
+      "Type": [
+        "Tipo"
+      ]
+    },
     "Today icon tooltip in mini calendar": {
       "Today": [
         "Hoje"
@@ -10609,6 +10721,9 @@
       ],
       "Upload a public key to enable sending end-to-end encrypted emails to this email": [
         "Carregue uma chave pública para permitir o envio de e-mails criptografados de ponta a ponta para este e-mail"
+      ],
+      "Version 6 OpenPGP key": [
+        "Chave OpenPGP versão 6"
       ],
       "We have sent them an invite to access the item.": [
         "Enviamos um convite para acessar o item."

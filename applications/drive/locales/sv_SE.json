@@ -782,6 +782,9 @@
       "Re-index": [
         "Indexera igen"
       ],
+      "Re-indexing in progress": [
+        "Omindexering pågår"
+      ],
       "Re-sign": [
         "Återsignera"
       ],
@@ -856,6 +859,9 @@
       ],
       "Report a problem": [
         "Rapportera ett problem"
+      ],
+      "Report abuse": [
+        "Rapportera missbruk"
       ],
       "Report an issue": [
         "Rapportera ett problem"
@@ -956,6 +962,12 @@
       "Select country": [
         "Välj land"
       ],
+      "Select rating ${ n } out of ${ to }": [
+        "Välj betyg ${ n } av ${ to }"
+      ],
+      "Send Feedback": [
+        "Skicka feedback"
+      ],
       "Set as album cover": [
         "Ställ in som albumomslag"
       ],
@@ -1036,6 +1048,9 @@
       ],
       "Sign up": [
         "Registrera"
+      ],
+      "Skip": [
+        "Hoppa över"
       ],
       "Skip verification": [
         "Hoppa över verifiering"
@@ -1135,6 +1150,9 @@
       ],
       "Upload and share files": [
         "Ladda upp och dela filer"
+      ],
+      "Upload anyway": [
+        "Ladda upp ändå"
       ],
       "Upload file": [
         "Ladda upp fil"
@@ -1312,6 +1330,9 @@
       ],
       "Writing assistant": [
         "Skrivassistent"
+      ],
+      "Writing assistant seats": [
+        "Användarplatser för skrivassistent"
       ]
     },
     "Alert": {
@@ -1930,6 +1951,12 @@
       ],
       "Unlimited favorites for quick access": [
         "Obegränsade favoriter för snabb åtkomst"
+      ],
+      "Upload and query multiple large files": [
+        "Ladda upp och sök i flera stora filer"
+      ],
+      "Upload and query small files": [
+        "Ladda upp och sök i små filer"
       ],
       "Web search access": [
         "Webbsökningsåtkomst"
@@ -3049,6 +3076,9 @@
       "Ensure you can still access your account and data even if you lose your ${ BRAND_NAME } password.": [
         "Se till att du fortfarande kan komma åt ditt konto och dina data även om du förlorar ditt ${ BRAND_NAME }-lösenord."
       ],
+      "For a seamless onboarding of your team to ${ BRAND_NAME }, import your data from Google, Outlook, and others.": [
+        "För en sömlös introduktion av ditt team till ${ BRAND_NAME }, importera din data från Google, Outlook och andra."
+      ],
       "Get notified if your password or other data was leaked from a third-party service.": [
         "Bli aviserad om ditt lösenord eller annan data har läckt från en tjänst från tredje part."
       ],
@@ -3638,12 +3668,6 @@
       "Incorrect username": [
         "Felaktigt användarnamn"
       ],
-      "Invalid ${ name } code": [
-        "Ogiltig ${ name }-kod"
-      ],
-      "Invalid card number": [
-        "Ogiltigt kortnummer"
-      ],
       "Invalid code": [
         "Ogiltig kod"
       ],
@@ -3652,9 +3676,6 @@
       ],
       "Invalid email address": [
         "Ogiltig e-postadress"
-      ],
-      "Invalid expiration date": [
-        "Ogiltigt förfallodatum"
       ],
       "Invalid IBAN": [
         "Ogiltigt IBAN"
@@ -3670,6 +3691,9 @@
       ],
       "Invalid public key file": [
         "Ogiltig offentlig nyckelfil"
+      ],
+      "Invalid VAT number": [
+        "Ogiltigt momsregistreringsnummer"
       ],
       "Invalid verification code": [
         "Ogiltig verifieringskod"
@@ -3755,6 +3779,12 @@
       "Please activate your search again": [
         "Aktivera din sökning igen"
       ],
+      "Please check if your ABN is registered for cross-border VAT": [
+        "Kontrollera om ditt ABN är registrerat för moms vid gränsöverskridande handel"
+      ],
+      "Please complete the billing details": [
+        "Vänligen fyll i faktureringsdetaljer"
+      ],
       "Please configure a custom domain before adding addresses.": [
         "Konfigurera en anpassad domän innan du lägger till adresser."
       ],
@@ -3820,6 +3850,9 @@
       "Request timed out": [
         "Förfrågan gjorde timeout"
       ],
+      "Reverse charge scheme is not supported for this plan": [
+        "System för omvänd skattskyldighet stöds inte för detta paket"
+      ],
       "Search failed": [
         "Sökning misslyckades"
       ],
@@ -3849,6 +3882,9 @@
       ],
       "Some of your label names exceed ${ MAIL_APP_NAME }'s maximum character limit. Please customize the import to edit these names.": [
         "Vissa av dina etikettnamn överskrider ${ MAIL_APP_NAME }s maximalt antal tillåtna tecken. Anpassa importen för att redigera dessa namn."
+      ],
+      "Something went wrong during folder listing": [
+        "Något gick fel när mappen skulle listas"
       ],
       "Something went wrong while fetching available domains": [
         "Något gick fel vid hämtning av tillgängliga domäner"
@@ -3943,6 +3979,9 @@
       "Unexpected error, we can't import the contacts": [
         "Oväntat fel, vi kan inte importera kontakterna"
       ],
+      "Unexpected error, we can't import the files": [
+        "Oväntat fel, vi kan inte importera filerna"
+      ],
       "Unknown conflict strategy: ${ strategy }": [
         "Okänd konfliktstrategi: ${ strategy }"
       ],
@@ -3970,8 +4009,14 @@
       "Validation error": [
         "Verifieringsfel"
       ],
+      "VAT number must start with ${ prefixes }": [
+        "Momsregistreringsnummer måste börja med ${ prefixes }"
+      ],
       "We cannot retrieve this item": [
         "Vi kan inte hämta detta objekt"
+      ],
+      "We couldn’t send a verification code using this method.": [
+        "Vi kunde inte skicka en verifieringskod med den här metoden."
       ],
       "We were not able to load some invitations": [
         "Vi kunde inte ladda några inbjudningar"
@@ -4027,6 +4072,12 @@
       ],
       "Your import will not be processed.": [
         "Din import kommer inte att bearbetas."
+      ],
+      "⚠️ Undecryptable device": [
+        "⚠️ Okrypterbar enhet"
+      ],
+      "⚠️ Undecryptable name": [
+        "⚠️ Odekrypterbart namn"
       ]
     },
     "error": {
@@ -4451,6 +4502,9 @@
       ],
       "Security key": [
         "Säkerhetsnyckel"
+      ],
+      "Touch your security key.": [
+        "Tryck din säkerhetsnyckel."
       ]
     },
     "fido2: Label": {
@@ -4941,6 +4995,9 @@
       "${ BRAND_NAME } Scribe writing assistant": [
         "${ BRAND_NAME } Scribe skrivassistent"
       ],
+      "${ BRAND_NAME } Workspace empowers your team to collaborate efficiently without ever putting your company's data at risk.": [
+        "${ BRAND_NAME } Workspace ger ditt team möjlighet att samarbeta effektivt utan att någonsin riskera ditt företags data."
+      ],
       "${ BRAND_NAME }'s encryption technology means that nobody can access your password - not even us.": [
         "${ BRAND_NAME }s krypteringsteknologi innebär att ingen kan få åtkomst till dina lösenord - inte ens vi."
       ],
@@ -4983,6 +5040,9 @@
       "${ DOCS_APP_NAME } and ${ SHEETS_APP_NAME } files cannot be downloaded directly and will not be included in this download. You can download the other files by clicking 'Continue downloading'.": [
         "${ DOCS_APP_NAME } och ${ SHEETS_APP_NAME }-filer kan inte laddas ner direkt och kommer inte att inkluderas i denna nedladdning. Du kan ladda ner de andra filerna genom att klicka på 'Fortsätt nedladdning'."
       ],
+      "${ DRIVE_APP_NAME } detected that the local search index is corrupted and can no longer be used. Rebuild the index to restore search.": [
+        "${ DRIVE_APP_NAME } upptäckte att det lokala sökindexet är skadat och inte längre kan användas. Bygg om indexet för att återställa sökfunktionen."
+      ],
       "${ DRIVE_APP_NAME } on App Store": [
         "${ DRIVE_APP_NAME } på App Store"
       ],
@@ -5016,6 +5076,12 @@
       ],
       "${ LUMO_APP_NAME } includes ${ BRAND_NAME } Scribe writing assistant": [
         "${ LUMO_APP_NAME } inkluderar ${ BRAND_NAME } Scribe-skrivassistent"
+      ],
+      "${ MEET_APP_NAME } is an end-to-end encrypted video conferencing solution. Add it to your plan to host secure meetings.": [
+        "${ MEET_APP_NAME } är en end-to-end-krypterad lösning för videokonferenser. Lägg till den i ditt paket för att hålla säkra möten."
+      ],
+      "${ MEET_APP_NAME } seats": [
+        "Användarplatserför ${ MEET_APP_NAME }"
       ],
       "${ normalizedProgress }% completed": [
         "${ normalizedProgress } % slutfört"
@@ -5075,6 +5141,9 @@
         "${ selectedFoldersCountLocalized } etikett vald",
         "${ selectedFoldersCountLocalized } etiketter valda"
       ],
+      "${ state.result.entries.length } entries": [
+        "${ state.result.entries.length } poster"
+      ],
       "${ storage } storage": [
         "${ storage } lagringsutrymme"
       ],
@@ -5091,6 +5160,9 @@
       ],
       "${ VPN_APP_NAME } is masking your IP address, so websites can’t identify you.": [
         "${ VPN_APP_NAME } maskerar din IP-adress så webbplatser inte kan identifiera dig."
+      ],
+      "${ VPN_SHORT_APP_NAME } hides your traffic. ${ PASS_SHORT_APP_NAME } hides your identity\n— unlimited **hide-my-email aliases** and **dark-web alerts** if your data is ever leaked.": [
+        "${ VPN_SHORT_APP_NAME } döljer din trafik. ${ PASS_SHORT_APP_NAME } döljer din identitet\n— obegränsade **hide-my-email-alias** och **varningar om dark web** om dina uppgifter någonsin läcker."
       ],
       "(${ memberCount } member)": [
         "(${ memberCount } medlem)",
@@ -5174,6 +5246,9 @@
       ],
       "AI powered assistant to help you craft better emails, quickly and effortlessly.": [
         "AI-driven assistent som hjälper dig att skapa bättre e-post, snabbt och enkelt."
+      ],
+      "Album": [
+        "Album"
       ],
       "All (${ totalFoldersCount } folder)": [
         "Alla (${ totalFoldersCount } mapp)",
@@ -5445,6 +5520,10 @@
       "Do you remember your password? ${ verifyButton }": [
         "Kommer du ihåg ditt lösenord? ${ verifyButton }"
       ],
+      "Do you still want to upload it?": [
+        "Vill du fortfarande ladda upp den?",
+        "Vill du fortfarande ladda upp dem?"
+      ],
       "Done": [
         "Klar"
       ],
@@ -5644,6 +5723,9 @@
       "How does encrypted search work?": [
         "Hur fungerar krypterad sökning?"
       ],
+      "I hereby confirm, in good faith, that the information and statements contained in the report are correct and complete.": [
+        "Jag bekräftar härmed på heder och samvete att informationen och uttalandena i rapporten är korrekta och fullständiga."
+      ],
       "If those files are not fully downloaded locally on ${ deviceName } you will lose access to them.": [
         "Om dessa filer inte är fullständigt nedladdade lokalt på ${ deviceName } kommer du förlora åtkomst till dem."
       ],
@@ -5662,6 +5744,9 @@
       "If you have one of these, continue to ${ BRAND_NAME } Account setting to start the unblock process.": [
         "Om du har en av dessa, fortsätt till ${ BRAND_NAME }-kontoinställning för att starta avblockeringsprocessen."
       ],
+      "If you lost access to your authenticator app, you can use 1 of the 16 backup recovery codes provided when your set up two-factor authentication. ${ learnMoreLink }": [
+        "Om du har förlorat åtkomsten till din autentiseringsapp kan du använda 1 av de 16 återställningskoderna för säkerhetskopiering som tillhandahölls när du konfigurerade tvåfaktorsautentisering. ${ learnMoreLink }"
+      ],
       "If you proceed with the downgrade, you will lose access to ${ MAIL_APP_NAME } and ${ VPN_APP_NAME } paid features.": [
         "Om du fortsätter med nedgraderingen förlorar du åtkomst till betalfunktioner för ${ MAIL_APP_NAME } och ${ VPN_APP_NAME }."
       ],
@@ -5670,6 +5755,9 @@
       ],
       "If you proceed with the downgrade, you will lose access to ${ VPN_APP_NAME } paid features.": [
         "Om du fortsätter med nedgraderingen förlorar du åtkomst till betalda funktioner i ${ VPN_APP_NAME }."
+      ],
+      "If you remove yourself, you’ll lose access to \"${ fileName }\" and won’t be able to open it again unless the owner shares it with you.": [
+        "Om du tar bort dig själv förlorar du åtkomst till “${ fileName }“ och kommer inte kunna öppna det igen om inte ägaren delar det med dig."
       ],
       "Import ${ calendarCount } of ${ totalCalendarsCount } calendar": [
         "Importera ${ calendarCount } av ${ totalCalendarsCount } kalender",
@@ -5716,6 +5804,9 @@
       ],
       "Indexed ${ first }, ${ second }, ${ third } and ${ fourth }": [
         "Indexerade ${ first }, ${ second }, ${ third } och ${ fourth }"
+      ],
+      "Indexing hit an unexpected state and cannot continue. Rebuild the index to recover.": [
+        "Indexeringen stötte på ett oväntat tillstånd och kan inte fortsätta. Bygg om indexet för att återställa."
       ],
       "Indexing in progress": [
         "Indexering pågår"
@@ -5928,6 +6019,9 @@
       "No payment is required at this time.": [
         "Ingen betalning krävs just nu."
       ],
+      "No populator states found.": [
+        "Inga populator-tillstånd hittades."
+      ],
       "No results found": [
         "Inga resultat hittades"
       ],
@@ -5969,6 +6063,9 @@
       ],
       "On public WiFi networks": [
         "På offentliga WiFi-nätverk"
+      ],
+      "One encrypted suite. Full business protection.": [
+        "En krypterad svit. Fullt företagsskydd."
       ],
       "One of your encrypted drives is locked. This is most likely due to a recent password reset.": [
         "En av dina krypterade diskar är låst. Det mest sannolika är att det beror på att lösenordet nyligen återställts."
@@ -6043,9 +6140,6 @@
       "Please ask the owner to directly invite you to the document.": [
         "Be ägaren att direkt bjuda in dig till dokumentet."
       ],
-      "Please authenticate your card in the verification tab.": [
-        "Autentisera ditt kort på verifieringsfliken."
-      ],
       "Please authenticate your payment in the verification tab.": [
         "Autentisera din betalning på verifieringsfliken."
       ],
@@ -6089,9 +6183,6 @@
       "Please try again using a different payment method, or contact your bank.": [
         "Försök igen med en annan betalningsmetod eller kontakta din bank."
       ],
-      "Please try again, use a different payment method, or contact PayPal for assistance.": [
-        "Försök igen, använd en annan betalningsmetod eller kontakta PayPal för hjälp."
-      ],
       "Please use another browser or download the file.": [
         "Använd en annan webbläsare eller ladda ner filen."
       ],
@@ -6106,6 +6197,12 @@
       ],
       "Preparing": [
         "Förbereder"
+      ],
+      "Preparing download": [
+        "Förbereder nedladdning"
+      ],
+      "Preparing…": [
+        "Förbereder …"
       ],
       "Preview failed to be loaded": [
         "Förhandsgranskning misslyckades att laddas"
@@ -6142,6 +6239,9 @@
       ],
       "Public sharing of documents is not yet supported.": [
         "Offentlig delning av dokument stöds ännu inte."
+      ],
+      "Re-indexing in progress": [
+        "Omindexering pågår"
       ],
       "Ready to add some photos?": [
         "Redo att lägga till några foton?"
@@ -6396,6 +6496,10 @@
       "This can NOT be undone. Please enter the device name to confirm removal.": [
         "Detta kan INTE ångras. Ange enhetens namn för att bekräfta borttagning."
       ],
+      "This file appears to be empty:": [
+        "Denna fil verkar vara tom:",
+        "Dessa filer verkar vara tomma:"
+      ],
       "This file is too large to preview": [
         "Denna fil är för stor för att förhandsgranska"
       ],
@@ -6474,6 +6578,9 @@
       ],
       "To enable truly private search, we need to index your files locally. You can still use ${ DRIVE_APP_NAME } normally - we’ll let you know when indexing is done.": [
         "För att möjliggöra en verkligt privat sökfunktion så behöver vi indexera dina filer lokalt. Du kan fortfarande använda ${ DRIVE_APP_NAME } som vanligt - vi informerar dig när indexeringen är färdig."
+      ],
+      "To enable truly search, we need to index your files locally. You can still use ${ DRIVE_APP_NAME } normally - we'll let you know when indexing is done.": [
+        "För att aktivera en verkligt privat sökfunktion behöver vi indexera dina filer lokalt. Du kan fortfarande använda ${ DRIVE_APP_NAME } som vanligt - vi meddelar dig när indexeringen är klar."
       ],
       "To fight spam and abuse, please verify you are human.": [
         "För att bekämpa skräppost och missbruk, verifiera att du är människa."
@@ -6580,6 +6687,9 @@
       "Uploaded": [
         "Uppladdad"
       ],
+      "Uploaded - file is empty": [
+        "Uppladdad – fil är tom"
+      ],
       "Uploading": [
         "Laddar upp"
       ],
@@ -6635,6 +6745,9 @@
         "Vi kunde inte spara detta foto till din Drive",
         "Vi kunde inte spara flera foton till din Drive"
       ],
+      "We couldn't verify ${ nameAuthor } uploaded ${ nodeName }. The following may have been tampered with: file data order. Only open if you trust it.": [
+        "Vi kunde inte verifiera att ${ nameAuthor } laddade upp ${ nodeName }. Följande kan ha blivit manipulerat: filernas ordning. Öppna endast om du litar på det."
+      ],
       "We couldn’t process your payment.": [
         "Vi kunde inte behandla din betalning."
       ],
@@ -6668,6 +6781,9 @@
       ],
       "Week": [
         "Vecka"
+      ],
+      "Welcome to ${ DRIVE_APP_NAME }, for the first 10 minutes, any files you upload don't count toward your storage quota.": [
+        "Välkommen till ${ DRIVE_APP_NAME }, under de första 10 minuterna räknas inte filer som du laddar upp mot din kvot för lagringsutrymme."
       ],
       "What do you want to do?": [
         "Vad vill du göra?"
@@ -6732,6 +6848,9 @@
       ],
       "You are about to open your default browser and visit:": [
         "Du är på väg att öppna din standardwebbläsare och besöka:"
+      ],
+      "You are currently signed in as ${ username } for ${ organizationName }.": [
+        "Du är för närvarande inloggad som ${ username } för (${ organizationName }."
       ],
       "You are currently signed in as ${ username }.": [
         "Du är för närvarande inloggad som ${ username }."
@@ -6803,11 +6922,18 @@
         "Du måste spara det igen från den offentliga länksidan.",
         "Du måste spara dem igen från den offentliga länksidan"
       ],
-      "You will soon be redirected to PayPal to verify your payment.": [
-        "Du kommer snart att omdirigeras till PayPal för att verifiera din betalning."
-      ],
       "You won't be charged if you cancel before ${ trialEndsOnFormatted }.": [
         "Du kommer inte att debiteras om du avbryter före ${ trialEndsOnFormatted }."
+      ],
+      "You won’t be able to share \"${ fileName }\" after changing access to viewer. Only the owner can change your access again.": [
+        "Du kommer inte att kunna dela \"${ fileName }\" efter att du har ändrat behörighet till visare. Endast ägaren kan ändra din behörighet igen."
+      ],
+      "You'll receive the credit reward 1 month after your friend subscribes to a yearly plan, and 2 months after they subscribe to a monthly plan.": [
+        "Du får kreditbelöningen 1 månad efter att din vän har börjat prenumerera på ett årspaket, och 2 månader efter att de har börjat prenumerera på ett månadspaket."
+      ],
+      "You'll then be billed every ${ renewCycle } month at ${ renewAmountStr }. You can cancel at any time.": [
+        "Du kommer sedan att faktureras varje ${ renewCycle } månad med ${ renewAmountStr }. Du kan avbryt när som helst.",
+        "Du kommer sedan att faktureras var ${ renewCycle }:e månad med ${ renewAmountStr }. Du kan avbryt när som helst."
       ],
       "You're about to decline the invitation to join the ${ invitationName } album. If you proceed, you won't be able to access it unless the owner invites you again. Are you sure you want to continue?": [
         "Du är på väg att avböja inbjudan att gå med i albumet ${ invitationName }. Om du fortsätter kommer du inte att kunna komma åt det om inte ägaren bjuder in dig igen. Är du säker på att du vill fortsätta?"
@@ -6827,8 +6953,17 @@
       "Your ${ BRAND_NAME } account is currently suspended. After 28 days, emails will no longer be delivered to your inbox, your Drive sharing links will be blocked, and you will not be able to upload new files. To resume normal service, please pay any overdue invoices.": [
         "Ditt ${ BRAND_NAME }-konto är för närvarande avstängt. Efter 28 dagar kommer e-post inte längre att levereras till din inkorg, dina delade länkar från Drive kommer att blockeras och du kommer inte att kunna ladda upp nya filer. För att återuppta tjänsten som vanligt, betala eventuella förfallna fakturor."
       ],
+      "Your ${ plan } subscription will be replaced with ${ PASS_SHORT_APP_NAME } Lifetime. The remaining balance of your subscription will be added to your account. ${ PASS_SHORT_APP_NAME } lifetime deal has no renewal price, it's a one-time payment for lifetime access to ${ PASS_SHORT_APP_NAME }.": [
+        "Din prenumeration på ${ plan } kommer att ersättas med ${ PASS_SHORT_APP_NAME } Lifetime. Det återstående saldot på din prenumeration kommer att läggas till på ditt konto. Lifetime-erbjudandet för ${ PASS_SHORT_APP_NAME } har inget förnyelsepris – det är en engångsbetalning för att få livstids åtkomst till ${ PASS_SHORT_APP_NAME }."
+      ],
       "Your account has at least one overdue invoice. Your access will soon get restricted. ${ payInvoiceLink }": [
         "Ditt konto har minst en försenad faktura. Din åtkomst kommer snart att begränsas. ${ payInvoiceLink }"
+      ],
+      "Your account is currently configured to apply the reverse charge scheme. This is not supported for the selected plan. To proceed, either remove the VAT number from the billing address or select a different plan.": [
+        "Ditt konto är för närvarande konfigurerat för att tillämpa systemet för omvänd skattskyldighet. Detta stöds inte för det valda paketet. För att fortsätta, ta antingen bort momsregistreringsnumret från faktureringsadressen eller välj ett annat paket."
+      ],
+      "Your browser ran out of space while indexing files for search. Free up storage, then rebuild the index.": [
+        "Din webbläsare fick slut på utrymme vid indexering av filer för sökning. Frigör lagringsutrymme och bygg sedan om indexet."
       ],
       "Your data is ready to import from ${ importedEmailAddressStrong } to your ${ BRAND_NAME } account.": [
         "Din data är redo att importeras från ${ importedEmailAddressStrong } till ditt ${ BRAND_NAME }-konto."
@@ -6841,6 +6976,9 @@
       ],
       "Your email will only be used for this one-time verification.": [
         "Din e-post kommer endast användas för denna engångsverifiering."
+      ],
+      "Your files are being re-indexed. You can keep searching - results may be incomplete until it finishes. We'll let you know when it's done.": [
+        "Dina filer håller på att omindexeras. Du kan fortsätta söka - resultaten kan dock vara ofullständiga tills det är klart. Vi meddelar dig när det är färdigt."
       ],
       "Your files are no longer accessible due to a password reset. Re-upload the old encryption key to regain the access. ${ KeyReactivationButton }": [
         "Dina filer är inte längre åtkomliga på grund av en lösenordsåterställning. Ladda upp den gamla krypteringsnyckeln igen för att återfå åtkomsten. ${ KeyReactivationButton }"
@@ -6959,6 +7097,9 @@
       ]
     },
     "Key badge": {
+      "Active Signer": [
+        "Aktiv undertecknare"
+      ],
       "Compromised": [
         "Läckt"
       ],
@@ -7068,6 +7209,9 @@
       ],
       "App password": [
         "Applösenord"
+      ],
+      "Applications in a business setting": [
+        "Applikationer i en affärsmiljö"
       ],
       "Apply to all duplicated files": [
         "Tillämpa till alla duplicerade filer"
@@ -7289,6 +7433,9 @@
       "Environment compatible": [
         "Miljökompatibel"
       ],
+      "Exact URL matching": [
+        "Exakt URL-matchning"
+      ],
       "Expired": [
         "Löpt ut"
       ],
@@ -7306,6 +7453,9 @@
       ],
       "Extended address": [
         "Utökad adress"
+      ],
+      "Extremely Satisfied": [
+        "Extremt nöjd"
       ],
       "File": [
         "Fil"
@@ -7367,8 +7517,8 @@
       "Index kinds": [
         "Indextyper"
       ],
-      "Initial indexing": [
-        "Initial indexering"
+      "Indexing": [
+        "Indexerar"
       ],
       "Integrated 2FA authenticator": [
         "Integrerad 2FA-autentisering"
@@ -7412,6 +7562,9 @@
       "Main": [
         "Huvud"
       ],
+      "Main reason for cancelling": [
+        "Huvudsaklig anledning till att avbryta"
+      ],
       "Malware": [
         "Skadlig kod"
       ],
@@ -7448,8 +7601,14 @@
       "Never expires": [
         "Löper aldrig ut"
       ],
+      "Never fill on this exact URL": [
+        "Fyll aldrig på denna exakta URL"
+      ],
       "New password": [
         "Nytt lösenord"
+      ],
+      "Non-consensual intimate imagery": [
+        "Icke-konsensuella intima bilder"
       ],
       "Not active": [
         "Inte aktiv"
@@ -7477,6 +7636,9 @@
       ],
       "Outdated version": [
         "Föråldrad version"
+      ],
+      "Parent domain and subdomains (default)": [
+        "Överordnad domän och underdomäner (standard)"
       ],
       "Password": [
         "Lösenord"
@@ -7531,6 +7693,9 @@
       ],
       "Region": [
         "Region"
+      ],
+      "Regular expression": [
+        "Vanligt uttryck"
       ],
       "Replace existing folder or file": [
         "Ersätt befintlig mapp eller fil"
@@ -7607,6 +7772,9 @@
       "Start date": [
         "Startdatum"
       ],
+      "Starts with": [
+        "Börjar med"
+      ],
       "State": [
         "Delstat"
       ],
@@ -7633,6 +7801,9 @@
       ],
       "System information": [
         "Systeminformation"
+      ],
+      "Tell us more about your experience": [
+        "Berätta mer om din upplevelse"
       ],
       "Theme": [
         "Tema"
@@ -7678,6 +7849,9 @@
       ],
       "Verification code": [
         "Verifieringskod"
+      ],
+      "Very Dissatisfied": [
+        "Väldigt missnöjd"
       ],
       "Viewer": [
         "Visare"
@@ -7991,6 +8165,13 @@
     "meet_2025: Addon": {
       "${ MEET_APP_NAME } license": [
         "${ MEET_APP_NAME }-licens"
+      ],
+      "${ MEET_APP_NAME } seats": [
+        "${ MEET_APP_NAME }-användarplatser"
+      ],
+      "${ seats } ${ MEET_APP_NAME } seat": [
+        "${ seats } ${ MEET_APP_NAME }-användarplats",
+        "${ seats } ${ MEET_APP_NAME }-användarplatser"
       ]
     },
     "meet_2025: Feature": {
@@ -8051,7 +8232,19 @@
         "Videomöten, ${ n } deltagare"
       ]
     },
+    "meet_2025: Info": {
+      "${ seats } seat included": [
+        "${ seats } användarplats inkluderad",
+        "${ seats } användarplatser inkluderade"
+      ],
+      "You can have up to ${ TRIAL_MAX_MEET_SEATS } ${ MEET_SHORT_APP_NAME } seats during the trial period.": [
+        "Du kan ha upp till ${ TRIAL_MAX_MEET_SEATS } ${ MEET_SHORT_APP_NAME }-användarplatser under provperioden."
+      ]
+    },
     "Message": {
+      "Never fill with this exact URL": [
+        "Fyll aldrig med denna exakta URL"
+      ],
       "Your free trial has ended. ${ nonAutoRenewalAction }": [
         "Din gratis provperiod har slutat. ${ nonAutoRenewalAction }"
       ],
@@ -8536,6 +8729,13 @@
       "All basic ${ BRAND_NAME } services (${ MAIL_SHORT_APP_NAME }, ${ VPN_SHORT_APP_NAME }, ${ PASS_SHORT_APP_NAME })": [
         "Alla grundläggande tjänster för ${ BRAND_NAME } (${ MAIL_SHORT_APP_NAME }, ${ VPN_SHORT_APP_NAME }, ${ PASS_SHORT_APP_NAME })"
       ],
+      "Appointment scheduling": [
+        "Mötesbokning"
+      ],
+      "Appointment scheduling with ${ n } booking page": [
+        "Mötesbokning med ${ n } bokningssida",
+        "Mötesbokning med ${ n } bokningssidor"
+      ],
       "Auto-delete Spam and Trash": [
         "Ta automatiskt bort skräppost och papperskorg"
       ],
@@ -8586,6 +8786,9 @@
       ],
       "Data breach monitoring": [
         "Dataintrångsövervakning"
+      ],
+      "Data retention policies": [
+        "Policy för datalagring"
       ],
       "Dedicated servers optimized for speed": [
         "Dedikerade servrar optimerade för hastighet"
@@ -8971,6 +9174,11 @@
       ],
       "You’re enjoying a promotional price on your current plan. If you downgrade your account, you will lose your promotional price and it won’t be available if you try to subscribe again.": [
         "Du har ett kampanjpris på ditt nuvarande paket. Om du nedgraderar ditt konto kommer du förlora ditt kampanjpris och det blir inte tillgängligt om du försöker prenumerera igen."
+      ]
+    },
+    "new_plans: label": {
+      "We're always striving to make ${ config.appName } better. How satisfied are you with your experience?": [
+        "Vi strävar alltid efter att göra ${ config.appName } bättre. Hur nöjd är du med din upplevelse?"
       ]
     },
     "new_plans: Subtext": {
@@ -9422,9 +9630,6 @@
       "All items deleted permanently from trash": [
         "Alla objekt borttagna permanent från papperskorg"
       ],
-      "An invitation has been sent": [
-        "En inbjudan har skickats"
-      ],
       "Cannot load link": [
         "Kan inte ladda länk"
       ],
@@ -9461,17 +9666,11 @@
       "Failed to accept share invitation": [
         "Misslyckades att acceptera delningsinbjudan"
       ],
-      "Failed to convert external invitation": [
-        "Misslyckades att konvertera extern inbjudan"
-      ],
       "Failed to load sharing details": [
         "Misslyckades att ladda delningsdetaljer"
       ],
       "Failed to move, please try again": [
         "Misslyckades att flytta, försök igen"
-      ],
-      "Failed to open document": [
-        "Misslyckades att öppna dokument"
       ],
       "Failed to reject share invitation": [
         "Misslyckades att avvisa delningsinbjudan"
@@ -9793,6 +9992,12 @@
       ],
       "Faster uploads for large or multiple files": [
         "Snabbare uppladdningar för stora eller flera filer"
+      ],
+      "Files uploaded during this time won’t count towards your storage limit.": [
+        "Filer som laddas upp under denna tid kommer inte att räknas av mot din gräns för lagringsutrymme."
+      ],
+      "Files uploaded now will not count towards your storage limit": [
+        "Filer som laddas upp nu räknas inte av mot din gräns för lagringsutrymme"
       ],
       "Final approval in progress": [
         "Slutligt godkännande pågår"
@@ -10203,6 +10408,9 @@
       "VAT number": [
         "Momsnummer"
       ],
+      "VAT reverse charge mechanism applies.": [
+        "Mekanism för omvänd moms-skattskyldighet tillämpas."
+      ],
       "You already have a subscription to this plan.": [
         "Du har redan en prenumeration på detta paket."
       ],
@@ -10284,8 +10492,14 @@
       "Renewal price is dependent on the billing region and ABN.": [
         "Förnyelsepriset är beroende av faktureringsregion och ABN."
       ],
+      "Renewal price is dependent on the billing region and Business Number.": [
+        "Förnyelsepriset är beroende av faktureringsregion och företagsnummer."
+      ],
       "Renewal price is dependent on the billing region and EIN.": [
         "Förnyelsepriset är beroende av faktureringsregion och EIN."
+      ],
+      "Renewal price is dependent on the billing region and VAT number.": [
+        "Förnyelsepriset är beroende av faktureringsregion och momsregistreringsnummer."
       ]
     },
     "Payments.Saved payment method details": {
@@ -10447,6 +10661,9 @@
       ],
       "New name": [
         "Nytt namn"
+      ],
+      "Optional feedback": [
+        "Valfri feedback"
       ],
       "Organization name": [
         "Organisationsnamn"
@@ -11500,6 +11717,9 @@
       ]
     },
     "Subscription reminder": {
+      "${ BRAND_NAME } Scribe writing assistant": [
+        "${ BRAND_NAME } Scribe skrivassistent"
+      ],
       "${ CALENDAR_APP_NAME }, ${ DRIVE_SHORT_APP_NAME }, ${ PASS_SHORT_APP_NAME }, ${ VPN_SHORT_APP_NAME }, ${ MEET_SHORT_APP_NAME }, and ${ LUMO_APP_NAME } with premium features": [
         "${ CALENDAR_APP_NAME }, ${ DRIVE_SHORT_APP_NAME }, ${ PASS_SHORT_APP_NAME }, ${ VPN_SHORT_APP_NAME }, ${ MEET_SHORT_APP_NAME } och ${ LUMO_APP_NAME } med premiumfunktioner"
       ],
@@ -12135,6 +12355,9 @@
       "${ freeUploadLength } of free uploads.": [
         "${ freeUploadLength } av gratis uppladdningar."
       ],
+      "${ LUMO_SHORT_APP_NAME } writing assistant": [
+        "${ LUMO_SHORT_APP_NAME } skrivassistent"
+      ],
       "Account recovery": [
         "Kontoåterställning"
       ],
@@ -12238,6 +12461,9 @@
       ],
       "Card verification": [
         "Kortverifiering"
+      ],
+      "Change access to viewer?": [
+        "Ändra behörighet till visare?"
       ],
       "Change layout": [
         "Ändra layout"
@@ -12580,6 +12806,9 @@
       "Import your data to ${ BRAND_NAME }": [
         "Importera din data till ${ BRAND_NAME }"
       ],
+      "Index populators": [
+        "Index-populatorer"
+      ],
       "Information exposed in breach": [
         "Information exponerad vid intrång"
       ],
@@ -12745,9 +12974,6 @@
       "Payment verification": [
         "Betalningsverifiering"
       ],
-      "PayPal verification failed": [
-        "Verifiering av PayPal misslyckades"
-      ],
       "Phone numbers": [
         "Telefonnummer"
       ],
@@ -12823,6 +13049,9 @@
       ],
       "Restore your files": [
         "Återställ dina filer"
+      ],
+      "Reverse charge not supported": [
+        "Omvänd skattskyldighet stöds inte"
       ],
       "Save it for later in ${ DRIVE_APP_NAME }": [
         "Spara det till senare i ${ DRIVE_APP_NAME }"
@@ -13004,6 +13233,9 @@
       "Upload and share files": [
         "Ladda upp och dela filer"
       ],
+      "Upload empty file?": [
+        "Ladda upp tom fil?"
+      ],
       "Uploaded": [
         "Uppladdat"
       ],
@@ -13067,6 +13299,9 @@
       "We weren’t able to confirm that the node was created by ${ claimedKeyAuthor }. The reason is: ${ node.keyAuthor.error.error }": [
         "Vi kunde inte bekräfta att noden skapades av ${ claimedKeyAuthor }. Orsaken är: ${ node.keyAuthor.error.error }"
       ],
+      "We'd love to hear from you!": [
+        "Vi vill gärna att du hör av dig!"
+      ],
       "Welcome offer": [
         "Välkomsterbjudande"
       ],
@@ -13128,6 +13363,26 @@
         "Du har fått 5 GB lagringsutrymme"
       ]
     },
+    "Title header for keys table": {
+      "Actions": [
+        "Åtgärder"
+      ],
+      "Created": [
+        "Skapad"
+      ],
+      "Expires": [
+        "Löper ut"
+      ],
+      "Fingerprint": [
+        "Fingeravtryck"
+      ],
+      "Status": [
+        "Status"
+      ],
+      "Type": [
+        "Typ"
+      ]
+    },
     "Today icon tooltip in mini calendar": {
       "Today": [
         "Idag"
@@ -13142,6 +13397,9 @@
       ],
       "Automatically switch between your preferred themes for day and night in sync with your system’s day and night modes": [
         "Växla automatiskt mellan dina föredragna teman för dag och natt i synk med ditt systems dag- och nattlägen"
+      ],
+      "Change shared item settings": [
+        "Ändra inställningar för delat objekt"
       ],
       "Customize import to reduce the number of folders": [
         "Anpassa import för att minska antalet mappar"
@@ -13178,6 +13436,9 @@
       ],
       "If you purchased a gift code or received one from our support team, you can enter it here.": [
         "Om du har köpt en presentkod eller fått en från vårt supportteam kan du ange den här."
+      ],
+      "Instant AI assistance, human expert on hand!": [
+        "Omedelbar AI-assistans, mänsklig expert nära till hands!"
       ],
       "Load image": [
         "Ladda bild"
@@ -13217,6 +13478,9 @@
       ],
       "Upload a public key to enable sending end-to-end encrypted emails to this email": [
         "Ladda upp en offentlig nyckel för att aktivera sändning av end-to-end-krypterad e-post till denna e-post"
+      ],
+      "Version 6 OpenPGP key": [
+        "OpenPGP-nyckel version 6"
       ],
       "We have sent them an invite to access the item.": [
         "Vi har skickat dem en inbjudan att komma åt objektet."
@@ -13260,6 +13524,11 @@
     "Upsell": {
       "Get Drive for Business": [
         "Skaffa Drive for Business"
+      ]
+    },
+    "user_modal": {
+      "You'll be able to assign roles once the user has accepted the invitation.": [
+        "Du kommer att kunna tilldela roller när användaren har accepterat inbjudan."
       ]
     },
     "Validation": {
@@ -13357,6 +13626,9 @@
       ],
       "Encrypted and secure ${ MAIL_APP_NAME } email address. You can easily send Bitcoin to anyone with just their ${ BRAND_NAME } name.": [
         "Krypterad och säker ${ MAIL_APP_NAME } e-postadress. Du kan enkelt skicka Bitcoin till vem som helst med bara deras ${ BRAND_NAME }-namn."
+      ],
+      "Securely exchange Bitcoin via email instead of complex, 26-character Bitcoin addresses that are prone to error": [
+        "Överför Bitcoin på ett säkert sätt via e-post istället för att använda komplexa Bitcoin-adresser med 26 tecken som är känsliga för fel"
       ]
     },
     "wallet_signup_2024:app-switcher": {

@@ -8,17 +8,14 @@ import { withRevalidate } from '@proton/pass/store/request/enhancers';
 import { selectOrganizationState, selectPassPlan, selectUser, selectUserPlan } from '@proton/pass/store/selectors';
 import type { MaybeNull } from '@proton/pass/types';
 import type { OrganizationSettings } from '@proton/pass/types/data/organization';
-import { PLANS } from '@proton/payments/index';
+import { PLANS } from '@proton/payments/core/constants';
 import type { Organization } from '@proton/shared/lib/interfaces';
 import { isAdmin } from '@proton/shared/lib/user/helpers';
 
 export type OrganizationContextValue = {
     organization: Organization;
     b2bAdmin: boolean;
-    settings: OrganizationSettings & {
-        enabled: boolean;
-        sync: () => void;
-    };
+    settings: OrganizationSettings & { enabled: boolean };
 };
 
 const OrganizationContext = createContext<MaybeNull<OrganizationContextValue>>(null);
@@ -26,8 +23,6 @@ const OrganizationContext = createContext<MaybeNull<OrganizationContextValue>>(n
 /** Organization context will always be `null` for
  * users which do not belong to an organization. */
 export const OrganizationProvider: FC<PropsWithChildren> = ({ children }) => {
-    const dispatch = useDispatch();
-
     const passPlan = useSelector(selectPassPlan);
     const userPlan = useSelector(selectUserPlan);
     const user = useSelector(selectUser);
@@ -42,11 +37,7 @@ export const OrganizationProvider: FC<PropsWithChildren> = ({ children }) => {
                 ? {
                       b2bAdmin,
                       organization: org.organization,
-                      settings: {
-                          ...org.settings,
-                          enabled: org.canUpdate,
-                          sync: () => dispatch(withRevalidate(getOrganizationSettings.intent())),
-                      },
+                      settings: { ...org.settings, enabled: org.canUpdate },
                   }
                 : null,
         [b2bAdmin, org]
@@ -61,11 +52,12 @@ type Props = {
 };
 
 export const useOrganization = (options?: Props) => {
+    const dispatch = useDispatch();
     const context = useContext(OrganizationContext);
 
     useEffect(() => {
         if (options?.sync) {
-            context?.settings.sync();
+            dispatch(withRevalidate(getOrganizationSettings.intent()));
         }
     }, [options?.sync]);
 

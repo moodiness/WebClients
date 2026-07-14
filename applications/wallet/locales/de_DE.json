@@ -2330,20 +2330,11 @@
       "Input isn't a valid email or bitcoin address": [
         "Die Eingabe ist keine gültige E-Mail-Adresse oder Bitcoin-Adresse"
       ],
-      "Invalid ${ name } code": [
-        "Ungültiger ${ name }-Code"
-      ],
-      "Invalid card number": [
-        "Kartennummer ungültig"
-      ],
       "Invalid code": [
         "Ungültiger Code"
       ],
       "Invalid coupon": [
         "Ungültiger Gutschein"
-      ],
-      "Invalid expiration date": [
-        "Ungültiges Ablaufdatum"
       ],
       "Invalid IBAN": [
         "Ungültige IBAN"
@@ -2477,6 +2468,9 @@
       "VAT number must start with ${ prefixes }": [
         "MWST-Nummer muss mit ${ prefixes } beginnen"
       ],
+      "We couldn’t send a verification code using this method.": [
+        "Wir konnten mit dieser Methode keinen Bestätigungscode senden."
+      ],
       "Wrong billing address": [
         "Ungültige Rechnungsadresse"
       ]
@@ -2585,6 +2579,9 @@
       ],
       "Security key": [
         "Sicherheitsschlüssel"
+      ],
+      "Touch your security key.": [
+        "Deinen Sicherheitsschlüssel berühren."
       ]
     },
     "fido2: Label": {
@@ -2898,7 +2895,7 @@
         "Code eingeben"
       ],
       "Enter the code from your authenticator app": [
-        "Code aus deiner Authentifizierungs-App ein eingeben"
+        "Code aus deiner Authentifizierungs-App eingeben"
       ],
       "Enter the verification code that was sent to ${ destinationText }.": [
         "Gib den an ${ destinationText } gesendeten Verifizierungscode ein."
@@ -3017,9 +3014,6 @@
       "Payments are protected with TLS encryption and Swiss privacy laws.": [
         "Zahlungen sind durch TLS-Verschlüsselung und Schweizer Datenschutzgesetze geschützt."
       ],
-      "Please authenticate your card in the verification tab.": [
-        "Bitte authentifiziere deine Karte im Verifikationstab."
-      ],
       "Please authenticate your payment in the verification tab.": [
         "Bitte authentifiziere deine Zahlung im Verifikationstab."
       ],
@@ -3028,9 +3022,6 @@
       ],
       "Please try again using a different payment method, or contact your bank.": [
         "Bitte versuche es mit einer anderen Zahlungsmethode erneut oder kontaktiere deine Bank."
-      ],
-      "Please try again, use a different payment method, or contact PayPal for assistance.": [
-        "Bitte versuche es erneut, verwende eine andere Zahlungsmethode oder wende dich an PayPal, um Hilfe zu erhalten."
       ],
       "Price includes all applicable cycle-based discounts and non-expired coupons saved to your account.": [
         "Der Preis beinhaltet alle anwendbaren zyklusbasierten Rabatte und nicht abgelaufenen Coupons, die auf deinem Konto gespeichert sind."
@@ -3202,9 +3193,6 @@
       ],
       "You will lose access to ${ planTitle } features on this date.": [
         "An diesem Datum verlierst du den Zugang zu ${ planTitle }-Funktionen."
-      ],
-      "You will soon be redirected to PayPal to verify your payment.": [
-        "Du wirst in Kürze zu PayPal weitergeleitet, um deine Zahlung zu bestätigen."
       ],
       "You'll then be billed every ${ renewCycle } month at ${ renewAmountStr }. You can cancel at any time.": [
         "Du erhältst dann aller ${ renewCycle } Monat eine Rechnung über ${ renewAmountStr }. Eine Kündigung ist jederzeit möglich.",
@@ -5593,6 +5581,9 @@
       "${ feature } is now active": [
         "${ feature } ist jetzt aktiv"
       ],
+      "${ LUMO_SHORT_APP_NAME } writing assistant": [
+        "${ LUMO_SHORT_APP_NAME } Schreibassistent"
+      ],
       "Account restricted": [
         "Konto eingeschränkt"
       ],
@@ -5715,9 +5706,6 @@
       ],
       "Payment verification": [
         "Zahlungsbestätigung"
-      ],
-      "PayPal verification failed": [
-        "PayPal-Verifizierung fehlgeschlagen"
       ],
       "Processing...": [
         "Wird verarbeitet..."
@@ -5881,6 +5869,11 @@
       ],
       "The user must have an address to request data access": [
         "Der Nutzer muss über eine Adresse verfügen, um den Datenzugang zu beantragen"
+      ]
+    },
+    "user_modal": {
+      "You'll be able to assign roles once the user has accepted the invitation.": [
+        "Sobald der Benutzer die Einladung angenommen hat, kannst du ihm Rollen zuweisen."
       ]
     },
     "Validation": {

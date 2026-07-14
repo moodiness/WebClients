@@ -78,9 +78,6 @@ export { default as QuickSettingsButton } from './components/drawer/views/quickS
 export { default as QuickSettingsButtonSection } from './components/drawer/views/quickSettings/QuickSettingsButtonSection';
 export { QuickSettingsRequestNotifications } from './components/drawer/views/quickSettings/QuickSettingsRequestNotifications';
 export { default as QuickSettingsSectionRow } from './components/drawer/views/quickSettings/QuickSettingsSectionRow';
-export { startAccountSecurityListener } from './components/drawer/views/SecurityCenter/AccountSecurity/slice/accountSecurityListener';
-export { securityCenterReducer } from './components/drawer/views/SecurityCenter/AccountSecurity/slice/accountSecuritySlice';
-export { breachesCountReducer } from './components/drawer/views/SecurityCenter/BreachAlerts/slice/breachNotificationsSlice';
 export { DRAWER_PASS_ALIASES_CREATE_ALIAS_MODAL_CTA_ID } from './components/drawer/views/SecurityCenter/constants';
 export { default as CreatePassAliasesForm } from './components/drawer/views/SecurityCenter/PassAliases/modals/CreatePassAliasesForm/CreatePassAliasesForm';
 export { default as PassAliasesUpsellModal } from './components/drawer/views/SecurityCenter/PassAliases/modals/PassAliasesUpsellModal';
@@ -677,9 +674,7 @@ export { default as CycleSelector } from './containers/payments/CycleSelector';
 export { default as GiftCodeSection } from './containers/payments/GiftCodeSection';
 export { default as PaymentMethodSelector } from './containers/payments/methods/PaymentMethodSelector';
 export { default as PaymentMethodsSection } from './containers/payments/methods/PaymentMethodsSection';
-export { default as PayPalButton } from './containers/payments/PayPalButton';
 export { default as PlansSection } from './containers/payments/PlansSection';
-export { default as StyledPayPalButton } from './containers/payments/StyledPayPalButton';
 export { default as AssistantIncompatibleBrowserModal } from './containers/payments/subscription/assistant/AssistantIncompatibleBrowserModal';
 export { default as AssistantIncompatibleHardwareModal } from './containers/payments/subscription/assistant/AssistantIncompatibleHardwareModal';
 export { default as AssistantToggle } from './containers/payments/subscription/assistant/AssistantToggle';
@@ -730,7 +725,6 @@ export { default as SMTPSubmissionSection } from './containers/smtp/SMTPSubmissi
 export { default as TrialEndedModal } from './containers/subscription/TrialEndedModal';
 export { default as AuthenticatedBugModal } from './containers/support/AuthenticatedBugModal';
 export { default as BugModal, type BugModalMode } from './containers/support/BugModal';
-export { default as FreeUserLiveChatModal } from './containers/support/FreeUserLiveChatModal';
 export { default as ThemeCard } from './containers/themes/ThemeCard';
 export { default as ThemeCards } from './containers/themes/ThemeCards';
 export { DrawerThemeInjector } from './containers/themes/ThemeInjector';

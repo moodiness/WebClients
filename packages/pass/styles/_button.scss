@@ -57,6 +57,15 @@ a {
 	}
 }
 
+.button-ghost-norm,
+.button-ghost-weak,
+.button-ghost-danger,
+.button-solid-success {
+	&.button-xs {
+		block-size: 1.5rem;
+	}
+}
+
 .button-for-icon {
 	padding: 0.5rem;
 

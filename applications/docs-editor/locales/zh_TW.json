@@ -215,9 +215,6 @@
       "Submit": [
         "送出"
       ],
-      "Table of contents": [
-        "目錄"
-      ],
       "Table options": [
         "表格選項"
       ],
@@ -504,9 +501,6 @@
       "Font size": [
         "字型大小"
       ],
-      "Headings you add to the document will appear here.": [
-        "您在文件中新增的標題將在此顯示。"
-      ],
       "Highlight": [
         "強調"
       ],
@@ -703,6 +697,9 @@
       "Download": [
         "下載"
       ],
+      "Help": [
+        "說明"
+      ],
       "Make a copy": [
         "製作一個副本"
       ],
@@ -752,6 +749,26 @@
       ],
       "right": [
         "右"
+      ]
+    },
+    "sheets_2025:Spreadsheet editor menubar title": {
+      "Data": [
+        "資料"
+      ],
+      "Edit": [
+        "編輯"
+      ],
+      "File": [
+        "檔案"
+      ],
+      "Format": [
+        "格式"
+      ],
+      "Insert": [
+        "插入"
+      ],
+      "View": [
+        "檢視"
       ]
     },
     "sheets_2025:Spreadsheet editor menubar view menu (freeze submenu)": {

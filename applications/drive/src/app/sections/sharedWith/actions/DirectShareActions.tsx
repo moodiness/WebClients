@@ -1,25 +1,27 @@
 import { useEffect, useState } from 'react';
 
+import { useUser } from '@proton/account/user/hooks';
 import { Vr } from '@proton/atoms/Vr/Vr';
 import { ContextSeparator } from '@proton/components';
 import type { useConfirmActionModal } from '@proton/components';
-import { MemberRole, getDrivePerNodeType, splitNodeUid } from '@proton/drive';
+import { MemberRole, getDrivePerNodeType } from '@proton/drive';
 import type { useSharingModal } from '@proton/drive/modals/sharingModal';
 import { getNodeEffectiveRole } from '@proton/drive/modules/nodes';
 import { isProtonDocsDocument, isProtonDocsSpreadsheet } from '@proton/shared/lib/helpers/mimetype';
 import { isPreviewAvailable } from '@proton/shared/lib/helpers/preview';
 
-import { useOpenInDocs } from '../../../legacy/store/_documents';
 import type { useDetailsModal } from '../../../modals/DetailsModal';
 import type { useFilesDetailsModal } from '../../../modals/FilesDetailsModal';
+import type { useReportAbuseModal } from '../../../modals/ReportAbuseModal';
 import type { useDrivePreviewModal } from '../../../modals/preview';
 import { downloadManager } from '../../../modules/download/DownloadManager';
-import { downloadDocument, openDocsOrSheetsDocument } from '../../../utils/docs/openInDocs';
+import { downloadDocument, getOpenInDocsInfo, openDocsOrSheetsDocument } from '../../../utils/docs/openInDocs';
 import { isPreviewOrFallbackAvailable } from '../../../utils/isPreviewOrFallbackAvailable';
 import { DetailsButton } from '../../commonButtons/DetailsButton';
 import { DownloadButton } from '../../commonButtons/DownloadButton';
 import { OpenInDocsOrSheetsButton } from '../../commonButtons/OpenInDocsOrSheetsButton';
 import { PreviewButton } from '../../commonButtons/PreviewButton';
+import { ReportAbuseButton } from '../../commonButtons/ReportAbuseButton';
 import { ShareButton } from '../../commonButtons/ShareButton';
 import { CopyButton } from '../../folders/buttons/CopyButton';
 import { RemoveMeButton } from '../buttons/RemoveMeButton';
@@ -34,6 +36,7 @@ interface BaseDirectShareActionsProps {
     showFilesDetailsModal: ReturnType<typeof useFilesDetailsModal>['showFilesDetailsModal'];
     showCopyModal: (items: DirectShareItem[]) => void;
     showSharingModal: ReturnType<typeof useSharingModal>['showSharingModal'];
+    showReportAbuseModal: ReturnType<typeof useReportAbuseModal>['showReportAbuseModal'];
 }
 
 interface ContextMenuDirectShareActionsProps extends BaseDirectShareActionsProps {
@@ -56,12 +59,13 @@ export const DirectShareActions = ({
     showFilesDetailsModal,
     showCopyModal,
     showSharingModal,
+    showReportAbuseModal,
     close,
     buttonType,
 }: DirectShareActionsProps) => {
     const itemChecker = createItemChecker(selectedItems);
     const singleItem = selectedItems.at(0);
-
+    const [user] = useUser();
     const copyAction = () => showCopyModal(selectedItems);
 
     const downloadItems = () => {
@@ -87,16 +91,7 @@ export const DirectShareActions = ({
         void downloadManager.download(selectedItems.map((item) => item.nodeUid));
     };
 
-    const openInDocs = useOpenInDocs(
-        singleItem
-            ? {
-                  linkId: splitNodeUid(singleItem.nodeUid).nodeId,
-                  mimeType: singleItem.mediaType || '',
-                  parentLinkId: '', // No parentLinkId on shared with me item
-                  rootShareId: singleItem.shareId ?? '',
-              }
-            : undefined
-    );
+    const openInDocsInfo = singleItem?.mediaType ? getOpenInDocsInfo(singleItem.mediaType) : undefined;
 
     // Items in "shared with me" section can only be re-shared if the user has admin rights
     const [hasAdminRole, setHasAdminRole] = useState(false);
@@ -143,15 +138,15 @@ export const DirectShareActions = ({
                     {...(buttonType === 'contextMenu' ? { close, buttonType } : { buttonType })}
                 />
             )}
-            {itemChecker.isOnlyOneFile && openInDocs.canOpen && (
+            {itemChecker.isOnlyOneFile && openInDocsInfo && (
                 <OpenInDocsOrSheetsButton
-                    isNative={openInDocs.isNative}
-                    type={openInDocs.type}
+                    isNative={openInDocsInfo.isNative}
+                    type={openInDocsInfo.type}
                     onClick={() =>
                         openDocsOrSheetsDocument({
                             uid: singleItem.nodeUid,
-                            isNative: openInDocs.isNative,
-                            type: openInDocs.type,
+                            isNative: openInDocsInfo.isNative,
+                            type: openInDocsInfo.type,
                             openBehavior: 'tab',
                         })
                     }
@@ -203,6 +198,18 @@ export const DirectShareActions = ({
                         nodeUid={singleItem.nodeUid}
                         type={singleItem.type}
                         showConfirmModal={showConfirmModal}
+                        {...(buttonType === 'contextMenu' ? { close, buttonType } : { buttonType })}
+                    />
+                    <ReportAbuseButton
+                        onClick={() => {
+                            showReportAbuseModal({
+                                drive: getDrivePerNodeType(singleItem.type),
+                                nodeUid: singleItem.nodeUid,
+                                prefilled: {
+                                    email: user.Email,
+                                },
+                            });
+                        }}
                         {...(buttonType === 'contextMenu' ? { close, buttonType } : { buttonType })}
                     />
                 </>

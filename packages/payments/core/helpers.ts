@@ -1,27 +1,7 @@
 import { capturePaymentMessage } from '../sentry/capture';
 import { PLANS, signupFlows } from './constants';
-import type { Invoice, PaymentMethodFlow, PlainPaymentMethodType, PlanIDs } from './interface';
+import type { Invoice, PaymentMethodFlow, PlanIDs } from './interface';
 import { getPlanNameFromIDs } from './plan/helpers';
-
-export function isChargebeePaymentMethod(paymentMethodType: PlainPaymentMethodType | undefined) {
-    if (!paymentMethodType) {
-        return false;
-    }
-
-    switch (paymentMethodType) {
-        case 'card':
-        case 'paypal':
-        case 'bitcoin':
-        case 'cash':
-        case 'token':
-            return false;
-
-        case 'chargebee-bitcoin':
-        case 'chargebee-card':
-        case 'chargebee-paypal':
-            return true;
-    }
-}
 
 export function isSignupFlow(flow: PaymentMethodFlow): boolean {
     return signupFlows.includes(flow);
@@ -33,7 +13,7 @@ export function isCreditNoteInvoice(invoice: Pick<Invoice, 'ID'>): boolean {
 }
 
 const CURRENCY_CONVERSION_PREFIX = 'CC';
-export function isCurrencyConversionInvoice(invoice: Pick<Invoice, 'ID'>): boolean {
+function isCurrencyConversionInvoice(invoice: Pick<Invoice, 'ID'>): boolean {
     return invoice.ID.startsWith(CURRENCY_CONVERSION_PREFIX);
 }
 

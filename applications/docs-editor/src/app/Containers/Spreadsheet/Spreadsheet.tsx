@@ -11,9 +11,6 @@ import type {
 } from '@proton/docs-shared'
 import { EditorSystemMode, SheetImportDestination, SheetImportEvent, TranslatedResult } from '@proton/docs-shared'
 import { SupportedProtonDocsMimeTypes } from '@proton/shared/lib/drive/constants'
-import { isDevOrBlack } from '@proton/utils/env'
-import { stringToUint8Array } from '@proton/shared/lib/helpers/encoding'
-import { splitExtension } from '@proton/shared/lib/helpers/file'
 import { functions } from '@rowsncolumns/functions'
 import { createCSVFromSheetData, createExcelFile, createODSFile } from '@rowsncolumns/toolkit'
 import type { ForwardedRef } from 'react'
@@ -39,10 +36,12 @@ import { useFocusSheet } from '@rowsncolumns/spreadsheet'
 import { useActiveBreakpoint } from '@proton/components'
 import { EditingDisabledDialog } from './components/misc/EditingDisabledDialog'
 import type { SpreadsheetConversionType } from '@proton/shared/lib/docs/constants'
-import { CircleLoader } from '@proton/atoms/CircleLoader/CircleLoader'
+import { CircleLoader } from './components/CircleLoader/CircleLoader'
 import { c } from 'ttag'
+
 import type { SpreadsheetLocalYjsUpdateAuditResult } from './yjs-local-update-audit'
 import { reportErrorToSentry } from '../../Utils/errorMessage'
+import { isDevOrBlack } from '@proton/utils/env'
 
 export type SpreadsheetRef = {
   exportData: (format: DataTypesThatDocumentCanBeExportedAs) => Promise<Uint8Array<ArrayBuffer>>
@@ -50,6 +49,14 @@ export type SpreadsheetRef = {
   focusSheet: (() => void) | undefined
   generatePatches: () => Promise<unknown>
   applyPatches: (patches: unknown) => void
+}
+
+const splitExtension = (filename = '') => {
+  const endIdx = filename.lastIndexOf('.')
+  if (endIdx === -1) {
+    return [filename, '']
+  }
+  return [filename.slice(0, endIdx), filename.slice(endIdx + 1)]
 }
 
 export type SpreadsheetProps = {
@@ -92,14 +99,15 @@ export const Spreadsheet = forwardRef(function Spreadsheet(
 
   const isCreationOrConversion = !!editorInitializationConfig
   const canRunMigration = !isRevisionMode && canEdit && !isCreationOrConversion
+
   const handleYjsDriftDetected = useCallback(
-    (result: SpreadsheetLocalYjsUpdateAuditResult) => {
+    (result: SpreadsheetLocalYjsUpdateAuditResult, driftLogDetails: Record<string, unknown>) => {
       for (const difference of result.differences) {
         void clientInvoker.reportSheetsYjsDriftDetected(difference.reason)
       }
       const error = new Error(
         c('Error')
-          .t`This spreadsheet detected a local syncing inconsistency. Please reload the document before continuing.`,
+          .t`This spreadsheet detected a local syncing inconsistency. Editing has been disabled to prevent data loss. Please file a report and if you are okay with sharing the contents, download and include the debug information from below.`,
       )
       reportErrorToSentry(error, undefined, {
         driftResult: {
@@ -107,13 +115,20 @@ export const Spreadsheet = forwardRef(function Spreadsheet(
           observedYjsKeys: result.observedYjsKeys,
         },
       })
-      void clientInvoker.reportUserInterfaceError(error, { irrecoverable: false, lockEditor: true })
+      void clientInvoker.showYjsDriftDetectedErrorModal(driftLogDetails)
     },
     [clientInvoker],
   )
 
   const pushPatches = useMemo(() => clientInvoker.storeSpreadsheetPatches.bind(clientInvoker), [clientInvoker])
   const hasBasePatchesStored = useMemo(() => clientInvoker.hasBasePatchesStored.bind(clientInvoker), [clientInvoker])
+  const [isPatchesStorageEnabled, setIsPatchesStorageEnabled] = useState(false)
+  useEffect(() => {
+    void clientInvoker
+      .checkIfFeatureFlagIsEnabled('SheetsPatchesStorageEnabled')
+      .then((enabled) => setIsPatchesStorageEnabled(enabled))
+      .catch(console.error)
+  }, [clientInvoker])
   // On dev/black the detector is always on (like other Sheets features); in prod it is gated by
   // the SheetsDriftDetectionEnabled flag.
   const [isDriftDetectionEnabled, setIsDriftDetectionEnabled] = useState(isDevOrBlack())
@@ -131,6 +146,7 @@ export const Spreadsheet = forwardRef(function Spreadsheet(
     isConversionFlow: editorInitializationConfig?.mode === 'conversion',
     pushPatches,
     hasBasePatchesStored,
+    isPatchesStorageEnabled,
     isDriftDetectionEnabled,
     onYjsDriftDetected: handleYjsDriftDetected,
   })
@@ -186,13 +202,13 @@ export const Spreadsheet = forwardRef(function Spreadsheet(
     }
     if (format === 'csv') {
       const csv = createCSVFromSheetData(state.sheetData[state.activeSheetId], state.sharedStrings)
-      return stringToUint8Array(csv)
+      return new TextEncoder().encode(csv)
     }
     if (format === 'tsv') {
       const tsv = createCSVFromSheetData(state.sheetData[state.activeSheetId], state.sharedStrings, {
         delimiter: '\t',
       })
-      return stringToUint8Array(tsv)
+      return new TextEncoder().encode(tsv)
     }
     throw new Error(`Spreadsheet cannot be exported to format ${format}`)
   }
@@ -425,7 +441,7 @@ function UI({ hidden, isRevisionMode, clientInvoker, isPublicMode }: UIProps) {
           <div className="isolate z-10 flex h-full min-h-0 grow flex-col">
             {!isRevisionMode && <Toolbar className="m-2 max-sm:m-0" clientInvoker={clientInvoker} />}
             <LegacyGrid />
-            <BottomBar />
+            <BottomBar clientInvoker={clientInvoker} />
             <Dialogs />
             <EditingDisabledDialog clientInvoker={clientInvoker} />
           </div>

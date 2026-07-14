@@ -2330,20 +2330,11 @@
       "Input isn't a valid email or bitcoin address": [
         "Invoer is geen geldig e-mailadres of bitcoin-adres"
       ],
-      "Invalid ${ name } code": [
-        "Ongeldig ${ name } code"
-      ],
-      "Invalid card number": [
-        "Ongeldig creditcardnummer"
-      ],
       "Invalid code": [
         "Ongeldige code"
       ],
       "Invalid coupon": [
         "Ongeldige kortingscode"
-      ],
-      "Invalid expiration date": [
-        "Ongeldige vervaldatum"
       ],
       "Invalid IBAN": [
         "Ongeldige IBAN"
@@ -2477,6 +2468,9 @@
       "VAT number must start with ${ prefixes }": [
         "BTW-nummer moet beginnen met ${ prefixes }"
       ],
+      "We couldn’t send a verification code using this method.": [
+        "We konden via deze methode geen verificatiecode verzenden."
+      ],
       "Wrong billing address": [
         "Verkeerd factuuradres"
       ]
@@ -2585,6 +2579,9 @@
       ],
       "Security key": [
         "Beveiligingssleutel"
+      ],
+      "Touch your security key.": [
+        "Raak uw beveiligingssleutel aan."
       ]
     },
     "fido2: Label": {
@@ -3017,9 +3014,6 @@
       "Payments are protected with TLS encryption and Swiss privacy laws.": [
         "Betalingen worden beschermd met TLS-encryptie en Zwitserse privacywetten."
       ],
-      "Please authenticate your card in the verification tab.": [
-        "Authenticeer uw kaart in het verificatietabblad."
-      ],
       "Please authenticate your payment in the verification tab.": [
         "Authenticeer uw betaling in het verificatietabblad."
       ],
@@ -3028,9 +3022,6 @@
       ],
       "Please try again using a different payment method, or contact your bank.": [
         "Probeer opnieuw met een andere betalingsmethode, of neem contact op met uw bank."
-      ],
-      "Please try again, use a different payment method, or contact PayPal for assistance.": [
-        "Probeer het opnieuw, gebruik een andere betaalmethode, of neem contact op met PayPal voor hulp."
       ],
       "Price includes all applicable cycle-based discounts and non-expired coupons saved to your account.": [
         "De prijs is inclusief alle toepasselijke cyclusgebonden kortingen en geldige coupons die in uw account zijn opgeslagen."
@@ -3202,9 +3193,6 @@
       ],
       "You will lose access to ${ planTitle } features on this date.": [
         "U verliest toegang tot ${ planTitle } functies op deze datum."
-      ],
-      "You will soon be redirected to PayPal to verify your payment.": [
-        "Binnenkort wordt u doorverwezen naar PayPal om uw betaling te verifiëren."
       ],
       "You'll then be billed every ${ renewCycle } month at ${ renewAmountStr }. You can cancel at any time.": [
         "U wordt dan elke ${ renewCycle } maand voor ${ renewAmountStr } gefactureerd. U kunt op elk moment annuleren.",
@@ -5438,7 +5426,7 @@
         "${ planMaxSpace } opslagruimte per gebruiker"
       ],
       "${ planName } gives you all apps, all features, early access to new releases, and everything you need to be in control of your data and its security.": [
-        "${ planName } geeft u alle apps, alle functies, vroegtijdige toegang tot nieuwe releases, en alles wat u nodig heeft om de controle over de veiligheid van de veiligheid te hebben."
+        "${ planName } geeft u alle apps, alle functies, vroegtijdige toegang tot nieuwe releases, en alles wat u nodig heeft om de controle over uw gegevens en de beveiliging daarvan te hebben."
       ],
       "${ planNumberOfDomains } custom email domain": [
         "${ planNumberOfDomains } eigen e-maildomein",
@@ -5716,9 +5704,6 @@
       "Payment verification": [
         "Betalingsverificatie"
       ],
-      "PayPal verification failed": [
-        "PayPal verificatie mislukt"
-      ],
       "Processing...": [
         "Wordt verwerkt..."
       ],
@@ -5820,6 +5805,9 @@
     "Tooltip": {
       "If you purchased a gift code or received one from our support team, you can enter it here.": [
         "Als u een geschenkcode heeft gekocht of een heeft ontvangen van ons supportteam, kunt u deze hier invoeren."
+      ],
+      "Instant AI assistance, human expert on hand!": [
+        "Directe AI-ondersteuning, menselijke expert binnen handbereik!"
       ],
       "The new subscription cycle starts on ${ formattedTime }": [
         "De nieuwe abonnementscyclus start op ${ formattedTime }"

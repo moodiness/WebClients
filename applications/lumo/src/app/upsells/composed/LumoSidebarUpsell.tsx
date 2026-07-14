@@ -1,30 +1,42 @@
-import { LUMO_UPSELL_PATHS } from '@proton/shared/lib/constants';
+import { c } from 'ttag';
 
-import { SidebarUpsellButton } from '../primitives/SidebarUpsellButton';
-import useLumoPlusUpsellConfig from '../useLumoPlusUpsellButtonConfig';
+import { LUMO_SHORT_APP_NAME, LUMO_UPSELL_PATHS } from '@proton/shared/lib/constants';
 
-export const LumoSidebarUpsell = ({ collapsed = false, feature = LUMO_UPSELL_PATHS.SIDEBAR_BUTTON }) => {
-    // Fallback to regular Lumo Plus upsell config
-    const lumoPlusConfig = useLumoPlusUpsellConfig(feature);
-    // Fallback to regular Lumo Plus upsell
-    if (!lumoPlusConfig || !lumoPlusConfig.showInSidebar) return null;
+import { SidebarUpsellSection } from '../../layouts/sidebar/components/SidebarUpsellSection';
+import { useLumoPlan } from '../../providers/LumoPlanProvider';
+import GetLumoPlusButton from '../primitives/GetLumoPlusButton';
+import useLumoPlusUpsellButtonConfig from '../useLumoPlusUpsellButtonConfig';
+
+export const LumoSidebarUpsell = ({ feature = LUMO_UPSELL_PATHS.SIDEBAR_BUTTON }) => {
+    const lumoPlusConfig = useLumoPlusUpsellButtonConfig(feature);
+    const { canShowTalkToAdminLumoUpsell, hasLumoPlus } = useLumoPlan();
+
+    if (hasLumoPlus || (!canShowTalkToAdminLumoUpsell && (!lumoPlusConfig || !lumoPlusConfig.showInSidebar))) {
+        return null;
+    }
+
+    const description = canShowTalkToAdminLumoUpsell
+        ? c('collider_2025: Upsell')
+              .t`Your chat history is limited to 7 days. Talk to your admin for unlimited chat history and other premium features.`
+        : c('collider_2025: Upsell')
+              .t`Your chat history is limited to 7 days. Upgrade to ${LUMO_SHORT_APP_NAME} Plus for unlimited history and other premium features.`;
 
     return (
-        <>
-            <SidebarUpsellButton
-                collapsed={collapsed}
-                path={lumoPlusConfig.path}
-                onClick={lumoPlusConfig.onUpgrade}
-                className={lumoPlusConfig?.className}
-            />
-            {/* {lumoPlusConfig.modal?.render && (
-                <LumoPlusUpsellModal
-                    modalProps={lumoPlusConfig.modal.modalProps}
-                    upsellRef={lumoPlusConfig.modal.upsellRef}
-                    specialBackdrop
+        <SidebarUpsellSection
+            upsellId="chat-history"
+            title={c('collider_2025: Upsell').t`Keep your chat history`}
+            description={description}
+        >
+            {!canShowTalkToAdminLumoUpsell && lumoPlusConfig && (
+                <GetLumoPlusButton
+                    path={lumoPlusConfig.path}
+                    onClick={lumoPlusConfig.onUpgrade}
+                    shape="solid"
+                    color="norm"
+                    className={lumoPlusConfig.className}
                 />
-            )} */}
-        </>
+            )}
+        </SidebarUpsellSection>
     );
 };
 

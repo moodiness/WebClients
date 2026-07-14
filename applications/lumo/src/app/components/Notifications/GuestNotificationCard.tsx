@@ -2,12 +2,21 @@ import { useCallback, useState } from 'react';
 
 import { c } from 'ttag';
 
-import { IcHeart } from '@proton/icons/icons/IcHeart';
-
+import { useChatLimitGate } from '../../hooks/useChatLimitGate';
 import { useIsLumoSmallScreen } from '../../hooks/useIsLumoSmallScreen';
+import { useLumoPlan } from '../../hooks/useLumoPlan';
+import { useMaxModelAvailability } from '../../hooks/useMaxModelAvailability';
+import { useTierErrors } from '../../hooks/useTierErrors';
+import { getSelectedModelTier, useOptionalModelTier } from '../../providers/ModelTierProvider';
+import {
+    shouldShowModelSwitchSuggestion,
+    shouldShowWeeklyLimitUpsell,
+    useRemainingLimits,
+} from '../../services/usageLimitsStore';
 import type { Message } from '../../types';
 import { sendGuestNotificationCtaClickedEvent, sendGuestNotificationDismissedEvent } from '../../util/telemetry';
 import { CreateFreeAccountButton } from '../Guest/CreateFreeAccountLink/CreateFreeAccountLink';
+import { LumoIcon } from '../LumoIcon/LumoIcon';
 import { ComposerNotificationCard } from './ComposerNotificationCard';
 
 import './GuestNotificationCard.scss';
@@ -15,7 +24,7 @@ import './GuestNotificationCard.scss';
 const HeartIcon = () => {
     return (
         <div className="guest-notification-heart-icon inline-flex items-center justify-center shrink-0 rounded-full">
-            <IcHeart size={5} color="#7F77DD" />
+            <LumoIcon name="Heart" size={20} color="#7F77DD" />
         </div>
     );
 };
@@ -28,6 +37,25 @@ interface GuestNotificationCardProps {
 // Only shown for medium and larger screens
 export const GuestNotificationCard = ({ messageChain, isGenerating = false }: GuestNotificationCardProps) => {
     const { isSmallScreen } = useIsLumoSmallScreen();
+    const { isBlocked: isChatLimitBlocked } = useChatLimitGate();
+    const { hasTierErrors } = useTierErrors();
+    const { hasLumoPlus } = useLumoPlan();
+    const { isMaxAvailableByFlag } = useMaxModelAvailability();
+    const remainingLimits = useRemainingLimits();
+    const weeklyLimitUpsellVisible = shouldShowWeeklyLimitUpsell(remainingLimits, hasTierErrors, hasLumoPlus);
+    const modelTierContext = useOptionalModelTier();
+    const selectedModelTier = modelTierContext ? getSelectedModelTier(modelTierContext.modelTier) : undefined;
+    const modelSwitchSuggestionVisible =
+        selectedModelTier !== undefined &&
+        shouldShowModelSwitchSuggestion({
+            hasLumoPlus,
+            selectedModelTier,
+            remainingLimits,
+            weeklyLimitUpsellVisible,
+            messageCount: messageChain.length,
+            isGenerating,
+            isMaxAvailableByFlag,
+        });
     const [dismissed, setDismissed] = useState(false);
     const [dismissedAtMessageCount, setDismissedAtMessageCount] = useState(-1);
 
@@ -37,6 +65,9 @@ export const GuestNotificationCard = ({ messageChain, isGenerating = false }: Gu
     const hasCompletedExchange = messageChain.length >= 2;
 
     const shouldShow =
+        !weeklyLimitUpsellVisible &&
+        !modelSwitchSuggestionVisible &&
+        !isChatLimitBlocked &&
         hasCompletedExchange &&
         !isGenerating &&
         (!dismissed || (dismissed && messageChain.length > dismissedAtMessageCount && messageChain.length % 2 === 0));

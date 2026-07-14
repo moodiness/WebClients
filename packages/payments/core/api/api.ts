@@ -27,9 +27,7 @@ import type {
     TokenPayment,
     TokenPaymentMethod,
     V5PaymentToken,
-    WrappedCardPayment,
     WrappedCryptoPayment,
-    WrappedPaypalPayment,
 } from '../interface';
 import { formatPaymentMethods } from '../methods';
 import { normalizePaymentMethodStatus } from '../payment-status';
@@ -252,9 +250,7 @@ export const validateCredit = (data: ValidateCreditData, version: PaymentsVersio
 
 export type CreateBitcoinTokenData = AmountAndCurrency & WrappedCryptoPayment;
 
-export type CreateTokenData =
-    | ((AmountAndCurrency | {}) & (WrappedPaypalPayment | WrappedCardPayment | ExistingPayment))
-    | CreateBitcoinTokenData;
+export type CreateTokenData = ((AmountAndCurrency | {}) & ExistingPayment) | CreateBitcoinTokenData;
 
 export const createToken = (data: CreateTokenData, version: PaymentsVersion) => ({
     url: `payments/${version}/tokens`,
@@ -456,15 +452,6 @@ export const getChargebeeConfiguration = () => ({
     method: 'get',
 });
 
-export type GetSubscriptionResponse = {
-    Subscription: Subscription;
-    UpcomingSubscription?: Subscription;
-};
-
-export type GetPaymentMethodsResponse = {
-    PaymentMethods: SavedPaymentMethod[];
-};
-
 export interface QueryTransactionsParams {
     Page: number;
     PageSize: number;
@@ -528,7 +515,7 @@ const addSubscriptionPlan = (subscription: Subscription): Subscription => {
     };
 };
 
-export const querySubscriptionV5DynamicPlans = () => ({
+const querySubscriptionV5DynamicPlans = () => ({
     url: `payments/v5/subscription?no-redirect=1`,
     method: 'get',
 });

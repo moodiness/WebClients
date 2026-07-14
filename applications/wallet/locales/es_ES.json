@@ -2321,26 +2321,20 @@
       "Error connecting to the Bitcoin API.": [
         "Se ha producido un error al conectar a la API de Bitcoin."
       ],
+      "Failed to load subscription data. Please try again later.": [
+        "Error al cargar los datos de la suscripción. Inténtalo de nuevo más tarde."
+      ],
       "Incorrect username": [
         "El nombre de usuario no es correcto."
       ],
       "Input isn't a valid email or bitcoin address": [
         "La entrada no es una dirección de correo electrónico o de Bitcoin válida"
       ],
-      "Invalid ${ name } code": [
-        "Código de ${ name } no válido"
-      ],
-      "Invalid card number": [
-        "Número de tarjeta no válido"
-      ],
       "Invalid code": [
         "Código no válido"
       ],
       "Invalid coupon": [
         "Cupón no válido"
-      ],
-      "Invalid expiration date": [
-        "Fecha de expiración no válida"
       ],
       "Invalid IBAN": [
         "El IBAN no es válido."
@@ -2474,6 +2468,9 @@
       "VAT number must start with ${ prefixes }": [
         "El número de IVA debe empezar por ${ prefixes }."
       ],
+      "We couldn’t send a verification code using this method.": [
+        "No hemos podido enviar un código de verificación con este método."
+      ],
       "Wrong billing address": [
         "Dirección de facturación incorrecta"
       ]
@@ -2571,9 +2568,20 @@
         "Velocidades ultrarrápidas"
       ]
     },
+    "fido2: Error": {
+      "Something went wrong authenticating with your security key. Please try again.": [
+        "Algo salió mal al autenticar con tu clave de seguridad. Inténtalo de nuevo."
+      ]
+    },
     "fido2: Info": {
+      "Insert a security key linked to your ${ BRAND_NAME } Account.": [
+        "Inserta una clave de seguridad asociada con tu cuenta de ${ BRAND_NAME }."
+      ],
       "Security key": [
         "Clave de seguridad"
+      ],
+      "Touch your security key.": [
+        "Toca tu llave de seguridad."
       ]
     },
     "fido2: Label": {
@@ -2868,6 +2876,9 @@
       "Download your favorite app today and take privacy with you everywhere you go.": [
         "Descarga hoy tu aplicación favorita y lleva la privacidad contigo donde quieras que vayas."
       ],
+      "Each code can only be used once": [
+        "Cada código solo se puede usar una vez"
+      ],
       "Edit email address": [
         "Editar la dirección de correo electrónico"
       ],
@@ -3003,9 +3014,6 @@
       "Payments are protected with TLS encryption and Swiss privacy laws.": [
         "Los pagos están protegidos con cifrado TLS y por las leyes de privacidad suizas."
       ],
-      "Please authenticate your card in the verification tab.": [
-        "Autentica tu tarjeta en la pestaña de verificación."
-      ],
       "Please authenticate your payment in the verification tab.": [
         "Autentica tu pago en la pestaña de verificación."
       ],
@@ -3014,9 +3022,6 @@
       ],
       "Please try again using a different payment method, or contact your bank.": [
         "Inténtalo de nuevo con otro método de pago o ponte en contacto con tu banco."
-      ],
-      "Please try again, use a different payment method, or contact PayPal for assistance.": [
-        "Inténtalo de nuevo. Utiliza un método de pago diferente o ponte en contacto con PayPal para obtener ayuda."
       ],
       "Price includes all applicable cycle-based discounts and non-expired coupons saved to your account.": [
         "El precio incluye todos los descuentos aplicables según el ciclo de facturación y cupones sin expirar guardados en tu cuenta."
@@ -3188,9 +3193,6 @@
       ],
       "You will lose access to ${ planTitle } features on this date.": [
         "Perderás el acceso a las funciones de ${ planTitle } en esta fecha."
-      ],
-      "You will soon be redirected to PayPal to verify your payment.": [
-        "Pronto serás redirigido a PayPal para verificar tu pago."
       ],
       "You'll then be billed every ${ renewCycle } month at ${ renewAmountStr }. You can cancel at any time.": [
         "A continuación, se te cobrarán ${ renewAmountStr } cada ${ renewCycle } mes. Puedes cancelar en cualquier momento.",
@@ -4738,6 +4740,9 @@
       "During this time, you will not be able to modify or cancel your subscription. Please wait until your payment is completed before attempting any changes. Thank you for your patience.": [
         "Durante este tiempo no podrás modificar o cancelar tu suscripción. Espera hasta que tu pago se complete antes de intentar cualquier cambio. Gracias por tu paciencia."
       ],
+      "Edit billing address": [
+        "Editar dirección de facturación"
+      ],
       "Got it": [
         "Entiendo"
       ],
@@ -5572,9 +5577,6 @@
       "${ feature } is now active": [
         "La funcionalidad ${ feature } ya está activada."
       ],
-      "${ LUMO_SHORT_APP_NAME } writing assistant": [
-        "Asistente de escritura de ${ LUMO_SHORT_APP_NAME }"
-      ],
       "Account restricted": [
         "Cuenta restringida"
       ],
@@ -5697,9 +5699,6 @@
       ],
       "Payment verification": [
         "Verificación del pago"
-      ],
-      "PayPal verification failed": [
-        "Error con la verificación de PayPal"
       ],
       "Processing...": [
         "Procesando..."
@@ -5863,6 +5862,11 @@
       ],
       "The user must have an address to request data access": [
         "El usuario debe tener una dirección para solicitar acceso a los datos"
+      ]
+    },
+    "user_modal": {
+      "You'll be able to assign roles once the user has accepted the invitation.": [
+        "Podrás asignar roles una vez que el usuario haya aceptado la invitación."
       ]
     },
     "Validation": {

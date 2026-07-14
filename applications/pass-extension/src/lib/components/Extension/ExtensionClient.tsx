@@ -19,7 +19,6 @@ import { clientErrored } from '@proton/pass/lib/client';
 import { telemetryBool } from '@proton/pass/lib/telemetry/utils';
 import { lock, signoutIntent } from '@proton/pass/store/actions/creators/auth';
 import { syncIntent } from '@proton/pass/store/actions/creators/client';
-import { SyncType } from '@proton/pass/store/sagas/client/sync';
 import { TelemetryEventName } from '@proton/pass/types/data/telemetry';
 import type { MaybeNull } from '@proton/pass/types/utils/index';
 import { AppStatus } from '@proton/pass/types/worker/state';
@@ -45,7 +44,7 @@ type Props = {
 export const ExtensionClient: FC<Props> = ({ children, onWorkerMessage }) => {
     const core = usePassCore();
     const config = usePassConfig();
-    const { frameUrl, port, senderTabId } = useExtensionContext();
+    const { frameUrl, port, senderTabId, tabTitle } = useExtensionContext();
 
     const activityProbe = useExtensionActivityProbe();
     const dispatch = useDispatch();
@@ -89,7 +88,7 @@ export const ExtensionClient: FC<Props> = ({ children, onWorkerMessage }) => {
             setupIgnore: () => false,
         });
 
-        core.setExtensionClientState?.({ url: frameUrl, tabId: senderTabId, port: port.name });
+        core.setExtensionClientState?.({ url: frameUrl, title: tabTitle, tabId: senderTabId, port: port.name });
 
         if (onWorkerMessage) {
             const listener = (message: unknown) => isExtensionMessage(message) && onWorkerMessage(message);
@@ -114,7 +113,7 @@ export const ExtensionClient: FC<Props> = ({ children, onWorkerMessage }) => {
                 AppStateManager.reset();
                 dispatch(signoutIntent({ soft }));
             },
-            sync: () => dispatch(syncIntent(SyncType.FULL)),
+            sync: () => dispatch(syncIntent()),
         }),
         []
     );

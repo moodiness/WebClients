@@ -15,8 +15,21 @@ import {
     isVideo,
 } from '@proton/shared/lib/helpers/mimetype';
 
-import type { ModelTier } from '../providers/ModelTierProvider';
+import {
+    DEFAULT_MODEL_TIER,
+    DEFAULT_RESPONSE_MODE,
+    type ModelTier,
+    type ResponseMode,
+    getSelectedModelTier,
+} from '../providers/ModelTierProvider';
 import { LUMO_API_ERRORS } from '../types';
+
+/**
+ * Legacy model tier vocabulary kept for already-released native clients that
+ * predate the model/mode split. Newer clients read `model` + `responseMode`
+ * instead; this field exists so old clients can still decode the bridge state.
+ */
+export type LegacyModelTier = 'auto' | 'fast' | 'thinking';
 
 /**
  * Native Composer Bridge
@@ -76,9 +89,51 @@ export interface EditMode {
     active: boolean;
 }
 
+/**
+ * Display-only projection of a Custom Lumo (internally an "agent") for the native
+ * bridge. Deliberately excludes `instructions`/`conversationStarters` — those are only
+ * used server-side on web and would bloat every state push. From native's point of
+ * view this is the whole concept: there is no fuller variant it ever sees.
+ */
+export interface CustomLumo {
+    /** Stable id. Pass this straight back into `selectCustomLumo`. */
+    id: string;
+    /** Display name, shown as the primary label in the picker. */
+    name: string;
+    /**
+     * One of the (web-only, freely growing) `AGENT_ICONS` ids, always populated —
+     * never missing (`toCustomLumos` falls back to `DEFAULT_AGENT_ICON`, same as every
+     * other web render site). Native parses it into its own statically-bundled icon
+     * enum, defaulting on any string it doesn't recognize yet — so this stays a plain
+     * `string` here rather than a closed union: the bridge doesn't need to know which
+     * icons native has shipped assets for, and web never needs updating when native's
+     * coverage grows or when a new icon is added to the picker.
+     */
+    icon: string;
+    /**
+     * Short one-line byline, already derived server-side from the explicit description
+     * or (falling back) a snippet of `instructions` — the same text the web picker
+     * shows under the name. Omitted when there's nothing to show; render nothing rather
+     * than inventing a placeholder.
+     */
+    description?: string;
+    /** Whether the user authored this themselves, or it's a Proton-published/shared one — surface e.g. a "Built-in" badge for non-personal entries, matching the web picker. */
+    source: 'personal' | 'published' | 'shared';
+}
+
 export interface State {
     lumoMode: LumoMode;
-    modelTier: ModelTier;
+    /** Legacy field for old native clients; derived from `responseMode`. */
+    modelTier: LegacyModelTier;
+    /** Selectable model for new clients (the web's `auto` collapses to lite). */
+    model: Exclude<ModelTier, 'auto'>;
+    /**
+     * Whether the Max model can currently be selected. `false` when Max is
+     * temporarily unavailable (e.g. high load) for the current user segment;
+     * native greys out the row and shows a "High load" badge.
+     */
+    isMaxModelAvailable: boolean;
+    responseMode: ResponseMode;
     isGhostModeEnabled: boolean;
     isWebSearchEnabled: boolean;
     isCreateImageEnabled: boolean;
@@ -89,6 +144,13 @@ export interface State {
     attachedFiles: LumoFile[];
     featureFlags: FeatureFlags;
     editMode: EditMode;
+    customLumos: CustomLumo[];
+    /**
+     * The full active Custom Lumo, or `null`. Sent as the full object (rather than
+     * just its id) so native can render "what's currently selected" — e.g. a badge —
+     * without needing the whole `customLumos` list in scope to look it up.
+     */
+    selectedCustomLumo: CustomLumo | null;
 }
 
 /**
@@ -212,7 +274,10 @@ class NativeComposerApi {
     private state: State = {
         isGhostModeEnabled: false,
         lumoMode: LumoMode.Idle,
-        modelTier: 'auto',
+        modelTier: 'thinking',
+        model: getSelectedModelTier(DEFAULT_MODEL_TIER),
+        isMaxModelAvailable: true,
+        responseMode: DEFAULT_RESPONSE_MODE,
         isCreateImageEnabled: false,
         attachedFiles: [],
         isWebSearchEnabled: false,
@@ -229,6 +294,8 @@ class NativeComposerApi {
             isToolsEnabled: true,
         },
         editMode: { active: false },
+        customLumos: [],
+        selectedCustomLumo: null,
     };
 
     constructor() {
@@ -369,7 +436,51 @@ class NativeComposerApi {
 
     public setNativeModelTier(modelTier: ModelTier): void {
         console.log(`NativeComposerApi: Setting model type to ${modelTier}`);
-        this.updateState({ modelTier: modelTier });
+        this.updateState({ model: getSelectedModelTier(modelTier) });
+    }
+
+    public setCustomLumos(list: CustomLumo[]): void {
+        console.log(`NativeComposerApi: Setting custom lumos list (${list.length} items)`);
+        this.updateState({ customLumos: list });
+    }
+
+    public setSelectedCustomLumo(lumo: CustomLumo | null): void {
+        console.log(`NativeComposerApi: Setting selected custom lumo to`, lumo);
+        this.updateState({ selectedCustomLumo: lumo });
+    }
+
+    public async selectCustomLumo(id: string): Promise<any> {
+        console.log('NativeComposerApi: Select custom lumo', { id });
+        const event = new CustomEvent('lumo:selectCustomLumo', {
+            detail: { id },
+        });
+        window.dispatchEvent(event);
+
+        // Return success (the actual API call will be handled by the web app)
+        return { success: true };
+    }
+
+    public async clearCustomLumo(): Promise<any> {
+        console.log('NativeComposerApi: Clear custom lumo');
+        const event = new CustomEvent('lumo:clearCustomLumo', {
+            detail: null,
+        });
+        window.dispatchEvent(event);
+
+        // Return success (the actual API call will be handled by the web app)
+        return { success: true };
+    }
+
+    public setMaxModelAvailable(available: boolean): void {
+        console.log(`NativeComposerApi: Setting max model available to ${available}`);
+        this.updateState({ isMaxModelAvailable: available });
+    }
+
+    public setNativeResponseMode(responseMode: ResponseMode): void {
+        console.log(`NativeComposerApi: Setting response mode to ${responseMode}`);
+        // Keep the legacy `modelTier` field in sync so already-released native
+        // clients still reflect the fast/thinking choice.
+        this.updateState({ responseMode, modelTier: responseMode === 'thinking' ? 'thinking' : 'fast' });
     }
 
     public setWebSearch(enabled: boolean): void {
@@ -405,6 +516,17 @@ class NativeComposerApi {
         console.log(`NativeComposerApi: Change model`);
         const event = new CustomEvent('lumo:changeModelTier', {
             detail: { source: 'nativeComposer', modelTier: modelTier },
+        });
+        window.dispatchEvent(event);
+
+        // Return success (the actual API call will be handled by the web app)
+        return { success: true };
+    }
+
+    public async changeResponseMode(responseMode: ResponseMode): Promise<any> {
+        console.log(`NativeComposerApi: Change response mode`);
+        const event = new CustomEvent('lumo:changeResponseMode', {
+            detail: { source: 'nativeComposer', responseMode: responseMode },
         });
         window.dispatchEvent(event);
 
@@ -530,7 +652,7 @@ class NativeComposerApi {
         injectImageGenerationHelperPrompt(prompt);
     }
 
-    public onComposerError(error: string): void {
+    public onComposerError(error: LUMO_API_ERRORS): void {
         console.log(`Native Composer Bridge: on composer error: ${error}`);
         sendResultToNative('', { status: 'error', error: error });
     }
@@ -622,6 +744,14 @@ try {
         setCreateImage: createNativeWrapper('setCreateImage'),
         toggleCreateImage: createNativeWrapper('toggleCreateImage'),
         changeModelTier: createNativeWrapper('changeModelTier'),
+        changeResponseMode: createNativeWrapper('changeResponseMode'),
+
+        // Custom Lumos. Note: setCustomLumos/setSelectedCustomLumo are deliberately NOT
+        // exposed here (mirrors setNativeModelTier/setNativeResponseMode above) — they
+        // must only ever be pushed by web, never written by native, or the write would
+        // be silently clobbered by the next real state push.
+        selectCustomLumo: createNativeWrapper('selectCustomLumo'),
+        clearCustomLumo: createNativeWrapper('clearCustomLumo'),
 
         // Actions
         uploadFiles: createNativeWrapper('uploadFiles'),

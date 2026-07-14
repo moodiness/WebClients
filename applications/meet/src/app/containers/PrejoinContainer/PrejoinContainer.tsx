@@ -4,7 +4,6 @@ import { c } from 'ttag';
 
 import { Href } from '@proton/atoms/Href/Href';
 import { useMeetDispatch, useMeetSelector } from '@proton/meet/store/hooks';
-import { setInitialAudioState, setInitialCameraState } from '@proton/meet/store/slices/deviceManagementSlice';
 import {
     selectCameras,
     selectInitialAudioState,
@@ -48,8 +47,6 @@ interface PrejoinContainerProps {
     setDisplayName: (displayName: string) => void;
     isInstantJoin: boolean;
     userId?: string;
-    isPersonalRoom?: boolean;
-    isLoadingMeetings?: boolean;
     joiningLoaderHeader?: string;
     joiningLoaderSubtitle?: string;
 }
@@ -67,8 +64,6 @@ export const PrejoinContainer = ({
     setDisplayName,
     isInstantJoin,
     userId,
-    isPersonalRoom = false,
-    isLoadingMeetings = false,
     joiningLoaderHeader,
     joiningLoaderSubtitle,
 }: PrejoinContainerProps) => {
@@ -149,7 +144,10 @@ export const PrejoinContainer = ({
             <div className="w-full meet-container-padding-x shrink-0">
                 <PageHeader showAppSwitcher={false} isInstantJoin={isInstantJoin} />
             </div>
-            <div className="prejoin-container flex flex-column md:flex-row md:items-center md:justify-center w-full meet-container-padding-x">
+            <main
+                id="main-content"
+                className="prejoin-container flex flex-column md:flex-row md:items-center md:justify-center w-full meet-container-padding-x"
+            >
                 <div
                     className={clsx(
                         'prejoin-container-content w-full md:w-custom xl:w-custom flex flex-column flex-nowrap lg:flex-row gap-2 *:min-size-auto md:items-center px-2 md:px-4',
@@ -161,8 +159,6 @@ export const PrejoinContainer = ({
                         <DeviceSettings
                             isCameraEnabled={initialCameraState}
                             isMicrophoneEnabled={initialAudioState}
-                            onCameraToggle={() => dispatch(setInitialCameraState(!initialCameraState))}
-                            onMicrophoneToggle={() => dispatch(setInitialAudioState(!initialAudioState))}
                             selectedCameraId={currentSelectedCamera}
                             selectedMicrophoneId={currentSelectedMicrophone}
                             selectedAudioOutputDeviceId={currentSelectedAudioOutputDevice}
@@ -193,14 +189,12 @@ export const PrejoinContainer = ({
                             keepDisplayName={hasStoredDisplayName}
                             onDisplayNameChange={setDisplayName}
                             onJoinMeeting={handleJoinMeeting}
-                            isPersonalRoom={isPersonalRoom}
                             shareLink={shareLink}
                             instantMeeting={instantMeeting}
-                            isLoadingMeetings={isLoadingMeetings}
                         />
                     )}
                 </div>
-            </div>
+            </main>
             <div className="prejoin-footer text-sm color-hint text-center py-3 px-4 shrink-0">
                 {(() => {
                     const termsLink = (

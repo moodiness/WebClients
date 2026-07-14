@@ -32,7 +32,12 @@ describe('local Yjs update drift detection', () => {
     const result = detectLocalYjsUpdateDrift({
       doc,
       getLocalState: () => localState,
-      patches: [[{ sharedStrings: { patches: [{ op: 'add', path: ['string-id'], value: 'value' }], inversePatches: [] } }, null]],
+      patches: [
+        [
+          { sharedStrings: { patches: [{ op: 'add', path: ['string-id'], value: 'value' }], inversePatches: [] } },
+          null,
+        ],
+      ],
     })
 
     expect(result.observedYjsKeys).toEqual(['sharedStrings'])
@@ -50,7 +55,12 @@ describe('local Yjs update drift detection', () => {
     const result = detectLocalYjsUpdateDrift({
       doc,
       getLocalState: () => localState,
-      patches: [[{ sharedStrings: { patches: [{ op: 'add', path: ['string-id'], value: 'value' }], inversePatches: [] } }, null]],
+      patches: [
+        [
+          { sharedStrings: { patches: [{ op: 'add', path: ['string-id'], value: 'value' }], inversePatches: [] } },
+          null,
+        ],
+      ],
     })
 
     expect(result.differences).toEqual([])
@@ -65,7 +75,9 @@ describe('local Yjs update drift detection', () => {
     const result = detectLocalYjsUpdateDrift({
       doc,
       getLocalState: () => createAuditState({ sharedStrings: new Map() }),
-      patches: [[{ sheetData: { patches: [{ op: 'replace', path: ['1', '1'], value: {} }], inversePatches: [] } }, null]],
+      patches: [
+        [{ sheetData: { patches: [{ op: 'replace', path: ['1', '1'], value: {} }], inversePatches: [] } }, null],
+      ],
     })
 
     expect(result.localChangedKeys).toEqual(['sharedStrings'])
@@ -81,7 +93,9 @@ describe('local Yjs update drift detection', () => {
     const result = detectLocalYjsUpdateDrift({
       doc,
       getLocalState: () => createAuditState({ sharedStrings: new Map([['string-id', 'value']]) }),
-      patches: [[{ sheetData: { patches: [{ op: 'replace', path: ['1', '1'], value: {} }], inversePatches: [] } }, null]],
+      patches: [
+        [{ sheetData: { patches: [{ op: 'replace', path: ['1', '1'], value: {} }], inversePatches: [] } }, null],
+      ],
     })
 
     expect(result.differences).toEqual([])
@@ -104,7 +118,9 @@ describe('local Yjs update drift detection', () => {
     const related = detectLocalYjsUpdateDrift({
       doc,
       getLocalState: () => createAuditState({ sharedStrings: new Map() }),
-      patches: [[{ sheetData: { patches: [{ op: 'replace', path: ['1', '1'], value: {} }], inversePatches: [] } }, null]],
+      patches: [
+        [{ sheetData: { patches: [{ op: 'replace', path: ['1', '1'], value: {} }], inversePatches: [] } }, null],
+      ],
     })
     expect(related.differences).toHaveLength(1)
     expect(related.differences[0]).toMatchObject({ key: 'sharedStrings', reason: 'local-change-not-observed-by-yjs' })
@@ -116,11 +132,7 @@ describe('local Yjs update drift detection', () => {
     doc.getMap('sheetDataV2').set('1', [null, { values: [null, { v: 'current patch row' }] }])
     const localState = createAuditState({
       sheetData: {
-        1: [
-          null,
-          { values: [null, { v: 'current patch row' }] },
-          { values: [null, { v: 'later chunk row' }] },
-        ],
+        1: [null, { values: [null, { v: 'current patch row' }] }, { values: [null, { v: 'later chunk row' }] }],
       } as unknown as SpreadsheetLocalYjsUpdateAuditState['sheetData'],
     })
 

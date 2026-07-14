@@ -19,49 +19,47 @@ import useCancellationFlow from '@proton/components/containers/payments/subscrip
 import { useCurrencies } from '@proton/components/payments/client-extensions/useCurrencies';
 import { IcInfoCircle } from '@proton/icons/icons/IcInfoCircle';
 import { IcPlus } from '@proton/icons/icons/IcPlus';
+import { CYCLE, PLANS } from '@proton/payments/core/constants';
+import { getFallbackCurrency, isRegionalCurrency } from '@proton/payments/core/currencies';
+import type {
+    Currency,
+    Cycle,
+    FreeSubscription,
+    PaymentStatus,
+    PaymentsApi,
+    PlanIDs,
+} from '@proton/payments/core/interface';
+import { getPlanFeatureLimit } from '@proton/payments/core/plan/feature-limits';
+import { getIsB2BAudienceFromPlan, isPlan } from '@proton/payments/core/plan/helpers';
+import type { FreePlanDefault, Plan, PlansMap } from '@proton/payments/core/plan/interface';
+import { switchPlan } from '@proton/payments/core/planIDs';
+import { getIpPricePerMonth } from '@proton/payments/core/price-helpers';
+import { Renew } from '@proton/payments/core/subscription/constants';
+import { FREE_PLAN } from '@proton/payments/core/subscription/freePlans';
 import {
-    CYCLE,
-    type Currency,
-    type Cycle,
-    FREE_PLAN,
-    type FreePlanDefault,
-    type FreeSubscription,
-    PLANS,
-    type PaymentStatus,
-    type PaymentsApi,
-    type Plan,
-    type PlanIDs,
-    type PlansMap,
-    Renew,
-    type Subscription,
+    getAutoCoupon,
     getBundleProPlanToUse,
     getCanAccessFamilyPlans,
     getCanSubscriptionAccessDuoPlan,
-    getFallbackCurrency,
-    getIpPricePerMonth,
-    getIsB2BAudienceFromPlan,
     getIsB2BAudienceFromSubscription,
-    isFreeSubscription as getIsFreeSubscription,
     getMaximumCycleForApp,
     getPlan,
-    getPlanFeatureLimit,
-    getPlansMap,
     hasLumoAddon,
+    hasMeet,
+    hasMeetBusiness,
     hasPass,
     hasPassFamily,
     hasSomeAddonOrPlan,
     hasVisionary,
     isAnyManagedExternally,
-    isFreeSubscription,
-    isPlan,
-    isRegionalCurrency,
     isSubscriptionCheckForbidden,
     isTrial,
     notHigherThanAvailableOnBackend,
-    switchPlan,
-} from '@proton/payments';
-import { getAutoCoupon, hasMeet, hasMeetBusiness } from '@proton/payments/core/subscription/helpers';
-import { OfferPrice } from '@proton/payments/ui';
+} from '@proton/payments/core/subscription/helpers';
+import type { Subscription } from '@proton/payments/core/subscription/interface';
+import { getPlansMap } from '@proton/payments/core/subscription/plans-map-wrapper';
+import { isFreeSubscription as getIsFreeSubscription, isFreeSubscription } from '@proton/payments/core/type-guards';
+import { OfferPrice } from '@proton/payments/ui/components/OfferPrice';
 import type { ProductParam } from '@proton/shared/lib/apps/product';
 import { APPS } from '@proton/shared/lib/constants';
 import { selectPlanOrAppNameText } from '@proton/shared/lib/i18n/ttag';
@@ -234,6 +232,7 @@ export function useAccessiblePlans({
     const isWalletSettingsApp = app === APPS.PROTONWALLET;
     const isLumoSettingsApp = app === APPS.PROTONLUMO;
     const isMeetSettingsApp = app === APPS.PROTONMEET;
+    const isGenericSettingsApp = app === APPS.PROTONACCOUNT;
     const isNewB2BPlanEnabled = useFlag('NewProtonBusinessBundlePlans');
     const isPassSimpleLoginLifetimeEnabled = useFlag('PassSimpleLoginLifetimeOffer');
 
@@ -242,13 +241,11 @@ export function useAccessiblePlans({
     const canAccessDuoPlan = getCanSubscriptionAccessDuoPlan(subscription);
     const { getAvailableCurrencies } = useCurrencies();
 
-    const enabledProductB2CPlanNames = [
-        PLANS.MAIL,
-        PLANS.VPN2024,
-        PLANS.DRIVE,
-        !user.hasPassLifetime && PLANS.PASS,
-        PLANS.LUMO,
-    ]
+    const enabledProductB2CPlanNames = (
+        isGenericSettingsApp
+            ? []
+            : [PLANS.MAIL, PLANS.VPN2024, PLANS.DRIVE, !user.hasPassLifetime && PLANS.PASS, PLANS.LUMO]
+    )
         .filter(isTruthy)
         .filter(excludingPlansWithAllChecksFordidden(subscription, plansMap));
 
@@ -270,7 +267,13 @@ export function useAccessiblePlans({
     const walletIndividualPlans = filterPlans([hasFreePlan ? FREE_PLAN : null, plansMap[PLANS.VISIONARY]]);
     const isWalletIndividualPlans = isWalletSettingsApp && walletIndividualPlans.length !== 0;
 
-    if (isWalletIndividualPlans) {
+    if (isGenericSettingsApp) {
+        IndividualPlans = filterPlans([
+            plansMap[PLANS.BUNDLE],
+            canAccessDuoPlan ? plansMap[PLANS.DUO] : null,
+            plansMap[PLANS.FAMILY],
+        ]);
+    } else if (isWalletIndividualPlans) {
         IndividualPlans = walletIndividualPlans;
     } else if (isMeetSettingsApp) {
         IndividualPlans = filterPlans([
@@ -300,7 +303,7 @@ export function useAccessiblePlans({
         hasPassFamily(subscription);
 
     let FamilyPlans: Plan[] = [];
-    if (getCanAccessFamilyPlans(subscription) && !isMeetSettingsApp) {
+    if (getCanAccessFamilyPlans(subscription) && !isMeetSettingsApp && !isGenericSettingsApp) {
         FamilyPlans = filterPlans([
             hasFreePlan ? FREE_PLAN : null,
             canAccessDuoPlan && !canAccessPassFamilyPlan ? plansMap[PLANS.DUO] : null,
@@ -342,6 +345,9 @@ export function useAccessiblePlans({
         isNewB2BPlanEnabled ? plansMap[PLANS.BUNDLE_BIZ_2025] : null,
     ]);
 
+    // Workspace Standard and Workspace Premium
+    const genericB2BPlans = filterPlans([plansMap[PLANS.BUNDLE_PRO_2024], plansMap[PLANS.BUNDLE_BIZ_2025]]);
+
     /**
      * The VPN B2B plans should be displayed only in the ProtonVPN Settings app (protonvpn.com).
      *
@@ -354,6 +360,7 @@ export function useAccessiblePlans({
     const isWalletB2BPlans = isWalletSettingsApp && walletB2BPlans.length !== 0;
     const isLumoB2BPlans = isLumoSettingsApp && lumoB2BPlans.length !== 0;
     const isMeetB2BPlans = isMeetSettingsApp && meetB2BPlans.length !== 0;
+    const isGenericB2BPlans = isGenericSettingsApp && genericB2BPlans.length !== 0;
 
     const B2BPlans: (Plan | ShortPlanLike)[] = (() => {
         // In the realm of multi-subs, if user has any subscription managed exteranlly, we don't display the B2B plans
@@ -380,6 +387,8 @@ export function useAccessiblePlans({
             return lumoB2BPlans;
         } else if (isMeetB2BPlans) {
             return meetB2BPlans;
+        } else if (isGenericB2BPlans) {
+            return genericB2BPlans;
         }
 
         const plans = isNewB2BPlanEnabled

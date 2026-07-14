@@ -547,6 +547,12 @@
       "Regenerate": [
         "Regenera"
       ],
+      "Regex invalid": [
+        "Expressió regular no vàlida"
+      ],
+      "Regex unsafe": [
+        "Expressió regular no segura"
+      ],
       "Reject": [
         "Rebutja"
       ],
@@ -669,9 +675,6 @@
       ],
       "Skip": [
         "Omet"
-      ],
-      "Someone shared an item with you on ${ PASS_APP_NAME }.": [
-        "Algú ha posat un element compartit a la vostra disposició a ${ PASS_APP_NAME }."
       ],
       "Sort vault items": [
         "Ordena els elements de la caixa forta"
@@ -1165,6 +1168,12 @@
       "Failed to set default mailbox": [
         "No s'ha pogut establir la bústia de correu per defecte."
       ],
+      "Failed to start SSH agent: ${ errorMessage }": [
+        "No s'ha pogut iniciar l'agent SSH: ${ errorMessage }"
+      ],
+      "Failed to stop SSH agent: ${ errorMessage }": [
+        "No s'ha pogut aturar l'agent SSH: ${ errorMessage }"
+      ],
       "Failed to sync aliases": [
         "No s'han pogut sincronitzar els àlies."
       ],
@@ -1326,9 +1335,6 @@
       ],
       "Trashing item failed": [
         "No s'ha pogut moure l'element a la paperera"
-      ],
-      "Try reaching out to the link owner.": [
-        "Intenteu contactar el propietari de l'enllaç."
       ],
       "Unable to generate an OTP code for this item": [
         "No s'ha pogut generar un codi OTP per a aquest element"
@@ -1534,6 +1540,9 @@
       ],
       "${ PASS_APP_NAME } will only import logins, notes, credit cards and identities.": [
         "${ PASS_APP_NAME } només importarà inicis de sessió, notes, targetes de crèdit i identitats."
+      ],
+      "${ PASS_APP_NAME } will use the SSH keys saved in your vaults.": [
+        "${ PASS_APP_NAME } utilitzarà les claus SSH desades a les vostres caixes fortes."
       ],
       "${ PASS_SHORT_APP_NAME } offline mode enabled.": [
         "S'ha habilitat el mode fora de línia de ${ PASS_SHORT_APP_NAME }."
@@ -2090,8 +2099,7 @@
         "S'estan movent tots els elements de «${ payload.content.name }»"
       ],
       "Moving an item to another vault will erase its secure links.": [
-        "Si moveu un element a una altra caixa forta, se n'esborrarà els enllaces segurs.",
-        "Si moveu els elements a una altra caixa forta, se n'esborrarà els enllaces segurs."
+        "Si moveu un element a una altra caixa forta, se n'esborraran els enllaços segurs."
       ],
       "Moving items": [
         "S'estan movent elements"
@@ -2122,6 +2130,9 @@
       ],
       "No network connection": [
         "No hi ha connexió de xarxa."
+      ],
+      "No SSH keys found in ${ PASS_SHORT_APP_NAME }. Create SSH key items to use with the agent.": [
+        "No s'ha trobat cap clau SSH a ${ PASS_SHORT_APP_NAME }. Creeu elements de clau SSH per utilitzar-los amb l'agent."
       ],
       "No vaults available.": [
         "No hi ha cap caixa forta disponible."
@@ -2318,6 +2329,9 @@
       ],
       "Protected by ${ PROTON_SENTINEL_LINK }, our advanced account protection program": [
         "Protegit per ${ PROTON_SENTINEL_LINK }, el nostre programa avançat de protecció del compte"
+      ],
+      "Ranked by field (title first, then username or email, website, notes) and match precision (exact, starts with, contains).": [
+        "Ordenat per camp (primer el títol, després el nom d'usuari o correu electrònic, el lloc web i les notes) i per la precisió de la coincidència (exacta, comença per, conté)."
       ],
       "Read item": [
         "Llegir l'element"
@@ -2586,9 +2600,6 @@
       ],
       "Unlock ${ PASS_SHORT_APP_NAME } with your second password": [
         "Desbloquegeu ${ PASS_SHORT_APP_NAME } amb la segona contrasenya"
-      ],
-      "Unlock with biometrics": [
-        "Desbloquegeu-ho amb dades biomètriques"
       ],
       "Unpinning item...": [
         "S'està desfixant l'element..."
@@ -2942,6 +2953,9 @@
       "Address details": [
         "Detalls de l'adreça"
       ],
+      "Advanced": [
+        "Avançat"
+      ],
       "Alias": [
         "Àlies"
       ],
@@ -2987,6 +3001,9 @@
       "Bank Name": [
         "Nom del banc"
       ],
+      "Basic": [
+        "Bàsic"
+      ],
       "Beta Access": [
         "Accés Beta"
       ],
@@ -3019,6 +3036,9 @@
       ],
       "Catch-All": [
         "Capturar-ho tot"
+      ],
+      "Check": [
+        "Comprova"
       ],
       "Checkbox": [
         "Casella de selecció"
@@ -3175,6 +3195,12 @@
       ],
       "Enter email or username": [
         "Introduïu el correu electrònic o el nom d’usuari"
+      ],
+      "Exact host matching": [
+        "Coincidència exacta d'amfitrió"
+      ],
+      "Exact URL matching": [
+        "Coincidència exacta d'URL"
       ],
       "Expiration date": [
         "Data de caducitat"
@@ -3491,6 +3517,9 @@
       "Never": [
         "Mai"
       ],
+      "Never fill on this exact URL": [
+        "No empleneu mai en aquest URL exacte"
+      ],
       "New email": [
         "Nou correu electrònic"
       ],
@@ -3550,6 +3579,9 @@
       ],
       "Owner": [
         "Propietari"
+      ],
+      "Parent domain and subdomains (default)": [
+        "Domini principal i subdominis (per defecte)"
       ],
       "Passkey": [
         "Clau d'accés"
@@ -3652,6 +3684,12 @@
       ],
       "Reddit handle": [
         "Nom d'usuari del Reddit"
+      ],
+      "Regular expression": [
+        "Expressió regular"
+      ],
+      "Relevant": [
+        "Rellevant"
       ],
       "Remove link": [
         "Esborra l'enllaç"
@@ -3767,6 +3805,9 @@
       "SSN": [
         "Número de la seguretat social"
       ],
+      "Starts with": [
+        "Comença amb"
+      ],
       "State or province": [
         "Estat o província"
       ],
@@ -3814,9 +3855,6 @@
       ],
       "Theme": [
         "Tema"
-      ],
-      "This item is accessible until ${ date } or until the view limit is reached.": [
-        "Aquest element és accessible fins a ${ date } o fins que s'arribi al límit de visualitzacions."
       ],
       "Tier/Level": [
         "Nivell"
@@ -3892,6 +3930,12 @@
       ],
       "Update": [
         "Actualitza"
+      ],
+      "URL wildcard pattern": [
+        "Patró de comodí d'URL"
+      ],
+      "Use ${ PASS_APP_NAME } as SSH agent": [
+        "Utilitzeu ${ PASS_APP_NAME } com a agent SSH"
       ],
       "Use for AI agent": [
         "Per a ús de l'agent d'IA"
@@ -4012,6 +4056,24 @@
       "${ count } item": [
         "${ count } element",
         "${ count } elements"
+      ],
+      "'Starts with' matching rule": [
+        "Regla de coincidència «Comença amb»"
+      ],
+      "Exact (sub) domain matching rule": [
+        "Regla de coincidència exacta de (sub)domini"
+      ],
+      "Exact URL matching rule": [
+        "Regla de coincidència exacta d'URL"
+      ],
+      "Never fill with this exact URL": [
+        "No ho emplenis mai amb aquest URL exacte"
+      ],
+      "Regular expression rule": [
+        "Regla d'expressió regular"
+      ],
+      "Wildcard pattern matching rule": [
+        "Regla de coincidència de patró de comodí"
       ],
       "You can drag and drop the selected item to another vault": [
         "Podeu arrossegar i deixar anar l'element seleccionat a una altra caixa forta.",
@@ -4312,6 +4374,23 @@
         "Utilitzada a ${ url }"
       ]
     },
+    "Result": {
+      "Enter a URL to check to see if your current rule is matching the URL": [
+        "Introduïu un URL per comprovar si la vostra regla actual coincideix amb l'URL"
+      ],
+      "The rule is matching this URL": [
+        "La regla coincideix amb aquest URL"
+      ],
+      "The rule is NOT matching this URL": [
+        "La regla NO coincideix amb aquest URL"
+      ],
+      "This URL will be blocked from autofill": [
+        "Aquest URL es bloquejarà per l'emplenament automàtic"
+      ],
+      "This URL will NOT be blocked from autofill": [
+        "Aquest URL NO es bloquejarà per l'emplenament automàtic"
+      ]
+    },
     "Security Center - Info": {
       "${ name } and ${ remainingCount } other potential leaks detected. Turn on ${ DARK_WEB_MONITORING_NAME } to view details. ${ link }": [
         "S'han detectat ${ name } i ${ remainingCount } altres fuites potencials. Activeu ${ DARK_WEB_MONITORING_NAME } per a veure'n els detalls. ${ link }"
@@ -4463,6 +4542,12 @@
       "Random prefix generation successfully enabled": [
         "S'ha activat la generació aleatòria de prefixos."
       ],
+      "SSH agent successfully started": [
+        "S'ha iniciat correctament l'agent SSH"
+      ],
+      "SSH agent successfully stopped": [
+        "S'ha aturat correctament l'agent SSH"
+      ],
       "Vaults can’t contain more than ${ targetMaxMembers } user.": [
         "Les caixes fortes no poden contenir més d'${ targetMaxMembers } usuari.",
         "Les caixes fortes no poden contenir més de ${ targetMaxMembers } usuaris."
@@ -4509,6 +4594,9 @@
       ],
       "Add mailbox": [
         "Afegeix una bústia de correu"
+      ],
+      "Adjust autofill behaviors to change where logins are suggested.": [
+        "Ajusta els comportaments de l'emplenament automàtic per canviar on se suggereixen els inicis de sessió."
       ],
       "Agent setup instructions": [
         "Instruccions de configuració de l'agent"
@@ -4709,6 +4797,9 @@
       "Last modified": [
         "Última modificació"
       ],
+      "Learn more": [
+        "Saber-ne més"
+      ],
       "Leave this item?": [
         "Voleu deixar aquest element?"
       ],
@@ -4908,6 +4999,9 @@
       "SPF (Optional)": [
         "SPF (opcional)"
       ],
+      "SSH Agent": [
+        "Agent SSH"
+      ],
       "Status": [
         "Estat"
       ],
@@ -4926,6 +5020,9 @@
       "Sync your aliases from SimpleLogin": [
         "Sincronitzeu els vostres àlies de SimpleLogin"
       ],
+      "Test a URL against this rule": [
+        "Comproveu un URL amb aquesta regla"
+      ],
       "Transfer ownership": [
         "Transfereix la propietat"
       ],
@@ -4940,6 +5037,9 @@
       ],
       "Update available": [
         "Hi ha una actualització disponible"
+      ],
+      "URL matching": [
+        "Coincidència d'URL"
       ],
       "Vault": [
         "Caixa forta"
@@ -5055,6 +5155,9 @@
     "Warning": {
       "${ BRAND_NAME } password is required": [
         "Es requereix la contrasenya de ${ BRAND_NAME }."
+      ],
+      "${ modeLabelStong } provides powerful control, but a single error can cause autofill to match and fill data on fraudulent or phishing websites.": [
+        "${ modeLabelStong } proporciona un control potent, però un sol error pot fer que l'emplenament automàtic coincideixi i empleni dades a llocs web fraudulents o de suplantació de credencials."
       ],
       "${ PASS_SHORT_APP_NAME } offline mode disabled.": [
         "S'ha deshabilitat el mode fora de línia de ${ PASS_SHORT_APP_NAME }."
@@ -5254,6 +5357,9 @@
       "Something went wrong while starting ${ PASS_APP_NAME }. Please try refreshing or reloading the extension": [
         "Alguna cosa ha anat malament en iniciar ${ PASS_APP_NAME }. Proveu de refrescar o tornar a carregar l'extensió"
       ],
+      "SSH agent requires using SSH keys, which is not available in your plan.": [
+        "L'agent SSH requereix l'ús de claus SSH que no estan incloses en el vostre pla."
+      ],
       "The alias prefix cannot be longer than 40 characters": [
         "El prefix de l'àlies no pot tenir més de 40 caràcters"
       ],
@@ -5262,6 +5368,9 @@
       ],
       "This email address will no longer be monitored for data breaches.": [
         "Aquesta adreça de correu electrònic ja no es controlarà per detectar infraccions de dades."
+      ],
+      "This item can't be suggested for autofill due to the \"${ neverModeDescriptionStrong }\". Add another URL if you want this item to autofill.": [
+        "Aquest element no es pot suggerir per a l'emplenament automàtic a causa de «${ neverModeDescriptionStrong }». Afegiu un altre URL si voleu que aquest element s'empleni automàticament."
       ],
       "This item is currently shared. Deleting it will remove access for all other users.": [
         "Aquest element està compartit actualment. Eliminar-ho eliminarà l'accés per a tots els altres usuaris."

@@ -44,16 +44,10 @@ export const useCategoriesTelemetry = () => {
         });
     };
 
-    const sendReportCloseCategoryCard = (categoryID: CategoryLabelID) => {
-        sendReport(TelemetryCategoriesOnboardingEvents.onboarding_card_close, {
-            categoryID,
-        });
-    };
-
-    const sendReportCategoriesNav = (navSource: CategoriesClickSource, categoryID: CategoryLabelID) => {
+    const sendReportCategoriesNav = (navSource: CategoriesClickSource, categoryId: CategoryLabelID) => {
         sendReport(TelemetryCategoriesOnboardingEvents.category_nav, {
             navSource,
-            categoryID,
+            categoryId,
         });
     };
 
@@ -63,30 +57,30 @@ export const useCategoriesTelemetry = () => {
         });
     };
 
-    const sendReportToggleCategory = (categoryID: CategoryLabelID, newValue: boolean) => {
+    const sendReportToggleCategory = (categoryId: CategoryLabelID, newValue: boolean) => {
         sendReport(TelemetryCategoriesOnboardingEvents.settings_toggle_category, {
-            categoryID,
+            categoryId,
             newValue: newValue ? 'true' : 'false',
         });
     };
 
-    const sendReportToggleNotification = (categoryID: CategoryLabelID, newValue: boolean) => {
+    const sendReportToggleNotification = (categoryId: CategoryLabelID, newValue: boolean) => {
         sendReport(TelemetryCategoriesOnboardingEvents.settings_toggle_notification, {
-            categoryID,
+            categoryId,
             newValue: newValue ? 'true' : 'false',
         });
     };
 
     const sendReportRecategorizeEmail = (
         recategorizeSource: RecategorizeSource,
-        sourceLabelID: CategoryLabelID,
-        destinationLabelID: string,
+        sourceLabelId: CategoryLabelID,
+        destinationLabelId: string,
         elementsNumber: number
     ) => {
         sendReport(TelemetryCategoriesOnboardingEvents.recategorize_email, {
             recategorizeSource,
-            sourceLabelID,
-            destinationLabelID,
+            sourceLabelId,
+            destinationLabelId,
             elementsNumber: elementsNumber.toString(),
         });
     };
@@ -94,7 +88,6 @@ export const useCategoriesTelemetry = () => {
     return {
         sendEventOnboardingAccept,
         sendEventOnboardingDismiss,
-        sendReportCloseCategoryCard,
         sendReportRecategorizeEmail,
         sendReportToggleCategory,
         sendReportToggleNotification,

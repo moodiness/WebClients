@@ -552,22 +552,22 @@
         "试用期于 ${ formattedDate1 } 结束后，将转为每月自动续费的付费订阅。若在 ${ formattedDate2 } 之前取消，则不会被收费。"
       ],
       "You can have up to ${ TRIAL_MAX_DEDICATED_IPS } dedicated server during the trial period.": [
-        "您在试用期内最多可拥有 ${ TRIAL_MAX_DEDICATED_IPS } 个专用服务器。"
+        "试用期间，最多可拥有 ${ TRIAL_MAX_DEDICATED_IPS } 台专用服务器"
       ],
       "You can have up to ${ TRIAL_MAX_LUMO_SEATS } ${ LUMO_SHORT_APP_NAME } seats during the trial period.": [
-        "您在试用期内最多可拥有 ${ TRIAL_MAX_LUMO_SEATS } 个 ${ LUMO_SHORT_APP_NAME } 席位"
+        "试用期间，最多可拥有 ${ TRIAL_MAX_LUMO_SEATS } 个 ${ LUMO_SHORT_APP_NAME } 席位"
       ],
       "You can have up to ${ TRIAL_MAX_SCRIBE_SEATS } Scribe seats during the trial period.": [
-        "您在试用期内可以使用到达${ TRIAL_MAX_SCRIBE_SEATS }个Scribe席位。"
+        "试用期间，最多可拥有 ${ TRIAL_MAX_SCRIBE_SEATS } 个 Scribe 席位"
       ],
       "You can have up to ${ TRIAL_MAX_USERS } users during the trial period.": [
-        "您在试用期内最多可拥有 ${ TRIAL_MAX_USERS } 位用户"
+        "试用期间，您最多可以拥有 ${ TRIAL_MAX_USERS } 位用户。"
       ],
       "You cannot add custom domains during the trial period.": [
-        "您在试用期内无法添加自定义域名"
+        "试用期内无法添加自定义域名！"
       ],
       "You have reached the trial limit.": [
-        "您已达到试用上限。"
+        "您已达到试用限制！"
       ]
     },
     "b2b_trials_Action": {
@@ -878,7 +878,7 @@
         "应用程序问题"
       ],
       "Authenticator problem": [
-        "验证器问题"
+        "验证问题"
       ],
       "Bridge problem": [
         "Bridge 问题"
@@ -917,7 +917,7 @@
         "手动设置问题"
       ],
       "Meet problem": [
-        "遇到问题"
+        "Meet 问题"
       ],
       "Other": [
         "其他"
@@ -1114,7 +1114,7 @@
         "支持大文件上传"
       ],
       "Limited daily chats": [
-        "每日聊天次数有限"
+        "每日有限聊天次数"
       ],
       "Limited favorites": [
         "收藏数量有限"
@@ -1135,7 +1135,7 @@
         "上传并查询小型文件"
       ],
       "Web search access": [
-        "网页搜索访问权限"
+        "网页搜索访问"
       ],
       "Zero-access encryption": [
         "零访问加密"
@@ -1143,7 +1143,7 @@
     },
     "collider_2025: Info": {
       "${ LUMO_APP_NAME } is a privacy-first AI that helps you get more done while keeping your data secure. Unlock its full potential and enjoy early access to new features as they’re introduced.": [
-        "${ LUMO_APP_NAME } 是一款隐私优先的 AI，帮助您提高效率，同时保障数据安全。解锁其全部潜能，并享受新功能的早期访问权限。"
+        "${ LUMO_APP_NAME } 是一款以隐私为先的 AI，帮助您在保障数据安全的同时提高工作效率。解锁其全部潜力，并在新功能推出时抢先体验。"
       ],
       "Add ${ LUMO_APP_NAME }": [
         "添加 ${ LUMO_APP_NAME }"
@@ -1155,7 +1155,7 @@
         "高速聊天和高级 AI 功能"
       ],
       "Private video calls for the conversations that matter.": [
-        "私密视频通话，用于重要的对话。"
+        "私密视频通话，用于重要会话。"
       ]
     },
     "color": {
@@ -2317,20 +2317,11 @@
       "Input isn't a valid email or bitcoin address": [
         "输入的不是有效的邮箱地址或比特币地址"
       ],
-      "Invalid ${ name } code": [
-        "${ name } 码不正确"
-      ],
-      "Invalid card number": [
-        "卡号无效"
-      ],
       "Invalid code": [
         "无效代码"
       ],
       "Invalid coupon": [
-        "优惠券无效"
-      ],
-      "Invalid expiration date": [
-        "有效期不正确"
+        "无效优惠券"
       ],
       "Invalid IBAN": [
         "无效IBAN"
@@ -2375,7 +2366,7 @@
         "请检查您的 ABN 是否已注册跨境增值税"
       ],
       "Please complete the billing details": [
-        "请填写账单信息"
+        "请完善账单信息"
       ],
       "Please enter a valid postal code": [
         "请输入有效的邮政编码"
@@ -2464,6 +2455,9 @@
       "VAT number must start with ${ prefixes }": [
         "增值税号必须以 ${ prefixes } 开头"
       ],
+      "We couldn’t send a verification code using this method.": [
+        "我们无法通过此类方式发送验证码。"
+      ],
       "Wrong billing address": [
         "错误的账单地址"
       ]
@@ -2482,7 +2476,7 @@
         "在浏览器中打开"
       ],
       "Please refresh the page or try again later.": [
-        "请刷新页面或稍后重试。"
+        "请刷新或稍后重试！"
       ],
       "Something went wrong": [
         "出错了"
@@ -2572,6 +2566,9 @@
       ],
       "Security key": [
         "安全密钥"
+      ],
+      "Touch your security key.": [
+        "请触碰您的安全密钥！"
       ]
     },
     "fido2: Label": {
@@ -2813,7 +2810,7 @@
         "国家/地区代码"
       ],
       "Create a secure cloud for ${ memberCount } member": [
-        "为 ${ memberCount } 位成员创建安全云空间"
+        "为 ${ memberCount } 位成员创建安全云端"
       ],
       "Credit for the unused portion of your previous plan subscription": [
         "根据当前账户等级的剩余有效时间折算返还的余额"
@@ -2894,7 +2891,7 @@
         "一切尽在 ${ planOrAppName }"
       ],
       "Everything in ${ planOrAppName }, plus:": [
-        "包含 ${ planOrAppName } 所有功能，外加:"
+        "包含 ${ planOrAppName } 所有功能，外加："
       ],
       "Expired": [
         "已过期"
@@ -2995,9 +2992,6 @@
       "Payments are protected with TLS encryption and Swiss privacy laws.": [
         "支付安全由 TLS 加密和瑞士隐私法律保障。"
       ],
-      "Please authenticate your card in the verification tab.": [
-        "请在验证页面完成银行卡核验。"
-      ],
       "Please authenticate your payment in the verification tab.": [
         "请在验证页面确认支付。"
       ],
@@ -3006,9 +3000,6 @@
       ],
       "Please try again using a different payment method, or contact your bank.": [
         "请尝试用其他方式支付，或联系您的发卡银行。"
-      ],
-      "Please try again, use a different payment method, or contact PayPal for assistance.": [
-        "请用其他方式支付，或联系 PayPal 寻求帮助。"
       ],
       "Price includes all applicable cycle-based discounts and non-expired coupons saved to your account.": [
         "价格已经考虑各种能用得上的周期计费优惠，以及账户中未过期的优惠券。"
@@ -3178,11 +3169,8 @@
       "You will lose access to ${ planTitle } features on this date.": [
         "您将在该日期失去对 ${ planTitle } 功能的访问权限。"
       ],
-      "You will soon be redirected to PayPal to verify your payment.": [
-        "即将为您转至 PayPal 确认支付。"
-      ],
       "You'll then be billed every ${ renewCycle } month at ${ renewAmountStr }. You can cancel at any time.": [
-        "此后每 ${ renewCycle } 个月按 ${ renewAmountStr } 收费。您可以随时取消。"
+        "之后每 ${ renewCycle } 个月按 ${ renewAmountStr } 收费，您可以随时取消。"
       ],
       "Your ${ BRAND_NAME } account is currently suspended. After 28 days, emails will no longer be delivered to your inbox, your Drive sharing links will be blocked, and you will not be able to upload new files. To resume normal service, please pay any overdue invoices.": [
         "您的 ${ BRAND_NAME } 账户已被停用，28 天后将无法收取新邮件，并且网盘分享链接将失效，新文件将无法上传。如需恢复账户正常功能，请付清逾期账单。"
@@ -3250,7 +3238,7 @@
         "${ n } 个月"
       ],
       "${ value.length }/${ maxLength } characters": [
-        "${ value.length }/${ maxLength } 个字符"
+        "${ value.length } / ${ maxLength } 个字符"
       ],
       "Access ${ PASS_APP_NAME } securely from the terminal, ideal for scripting, automation, and development workflows.": [
         "通过终端安全访问 ${ PASS_APP_NAME }，是脚本、自动化和开发工作流程的理想选择"
@@ -3611,21 +3599,21 @@
     },
     "meet_2025: Addon": {
       "${ MEET_APP_NAME } license": [
-        "${ MEET_APP_NAME } 许可证"
+        "${ MEET_APP_NAME } 许可"
       ],
       "${ MEET_APP_NAME } seats": [
         "${ MEET_APP_NAME } 席位"
       ],
       "${ seats } ${ MEET_APP_NAME } seat": [
-        "${ seats } ${ MEET_APP_NAME } 席位"
+        "${ seats } 个 ${ MEET_APP_NAME } 席位"
       ]
     },
     "meet_2025: Feature": {
       "${ MEET_APP_NAME }: Confidential video conferencing for the conversations that matter": [
-        "${ MEET_APP_NAME }：用于重要对话的保密视频会议"
+        "${ MEET_APP_NAME }：为重要会话打造的保密视频会议"
       ],
       "${ n } active meeting at a time": [
-        "同时进行 ${ n } 场活跃会议"
+        "同时进行 ${ n } 场会议"
       ],
       "${ n } participant": [
         "${ n } 位参与者"
@@ -3655,13 +3643,13 @@
         "会议录制"
       ],
       "One active meeting at a time": [
-        "同时只能进行一场活跃会议"
+        "同时只能进行一场会议"
       ],
       "Screen-sharing": [
         "屏幕共享"
       ],
       "Unlimited meetings per day": [
-        "每日不限会议次数"
+        "每日会议不限次数"
       ],
       "Up to ${ n } meeting per day": [
         "每天最多 ${ n } 场会议"
@@ -3678,7 +3666,7 @@
         "包含 ${ seats } 个席位"
       ],
       "You can have up to ${ TRIAL_MAX_MEET_SEATS } ${ MEET_SHORT_APP_NAME } seats during the trial period.": [
-        "试用期间，您最多可以拥有 ${ TRIAL_MAX_MEET_SEATS } 个 ${ MEET_SHORT_APP_NAME } 席位。"
+        "试用期间，最多可拥有 ${ TRIAL_MAX_MEET_SEATS } 个 ${ MEET_SHORT_APP_NAME } 席位"
       ]
     },
     "New Label form": {
@@ -3841,7 +3829,7 @@
         "预约安排"
       ],
       "Appointment scheduling with ${ n } booking page": [
-        "使用 ${ n } 个预约页面进行日程安排"
+        "通过 ${ n } 个预约页面安排日程"
       ],
       "Auto-delete Spam and Trash": [
         "自动清理垃圾邮件和回收站"
@@ -4132,10 +4120,10 @@
         "密码分享（最多 ${ n } 个人）"
       ],
       "Vault sharing with up to ${ n } person": [
-        "与多至 ${ n } 个人分享保险库"
+        "与最多 ${ n } 人共享保险库"
       ],
       "VPN with ad-blocker and malware protection": [
-        "具备广告拦截器和恶意软件防护功能的 VPN"
+        "具备广告拦截与恶意软件防护功能的 VPN"
       ],
       "We scan the dark web to check if your ${ BRAND_NAME } addresses or aliases have been leaked and alert you immediately if we find anything.": [
         "我们会扫描暗网，检查您的 ${ BRAND_NAME } 地址或别名是否被泄露，一旦发现任何情况，我们会立即提醒您。"
@@ -4603,7 +4591,7 @@
         "高级账户保护"
       ],
       "File attachments (up to 10GB)": [
-        "文件附件（最高 10GB）"
+        "文件附件 (最大 10 GB)"
       ],
       "Team policies": [
         "团队政策"
@@ -4665,7 +4653,7 @@
     },
     "Payments": {
       "${ formattedPrice } (excl. tax)": [
-        "${ formattedPrice }（不含税）"
+        "${ formattedPrice } (不含税)"
       ],
       "${ rate }% tax: ${ taxAmountElement }": [
         "${ rate }% 税费：${ taxAmountElement }"
@@ -4674,7 +4662,7 @@
         "${ rate }% 税费：${ taxAmountElement }"
       ],
       "Amount due after trial on ${ formattedDate }": [
-        "试用期结束后 ${ formattedDate } 的应付金额"
+        "试用期结束后于 ${ formattedDate } 应付金额"
       ],
       "Billing Country": [
         "计费国家/地区"
@@ -4740,19 +4728,19 @@
         "服务条款"
       ],
       "The discount is valid for ${ renewalsWithCoupon } renewal.": [
-        "此折扣适用于 ${ renewalsWithCoupon } 次续订。"
+        "该折扣适用于 ${ renewalsWithCoupon } 次续订"
       ],
       "The specially discounted price is valid for ${ couponRedemptions } month. Then it will automatically be renewed at ${ renewPriceStr } for 1 month. You can cancel at any time.": [
-        "此特惠价格有效期 ${ couponRedemptions } 个月，之后将自动以 ${ renewPriceStr } 每月续订。您可以随时取消。"
+        "特惠价格在 ${ couponRedemptions } 个月内有效，之后将以每月 ${ renewPriceStr } 续订，您可以随时取消。"
       ],
       "The specially discounted price is valid for the first ${ subscriptionLength } month.": [
-        "特惠价格仅限前 ${ subscriptionLength } 个月有效。"
+        "特惠价格仅在前 ${ subscriptionLength } 个月内有效"
       ],
       "The specially discounted price is valid for the first month. Then it will automatically be renewed at ${ renewPriceStr } every month. You can cancel at any time.": [
-        "特别优惠价仅在首月有效。之后将每月自动以${ renewPriceStr }的价格续订。您可以随时取消。"
+        "特惠价格仅限首月有效，之后将以每月 ${ renewPriceStr } 续订，您可以随时取消。"
       ],
       "The specially discounted price of ${ priceWithDiscount } is valid for ${ couponRedemptions } month. Then it will automatically be renewed at ${ renewPriceStr } for 1 month. You can cancel at any time.": [
-        "${ priceWithDiscount } 的特惠价格有效期 ${ couponRedemptions } 个月，之后将自动以 ${ renewPriceStr } 每月续订。您可以随时取消。"
+        "特惠价格 ${ priceWithDiscount } 在 ${ couponRedemptions } 个月内有效，之后将以每月 ${ renewPriceStr } 续订，您可以随时取消。"
       ],
       "The specially discounted price of ${ priceWithDiscount } is valid for the first ${ subscriptionLength } month.": [
         "Proton 用户的专属优惠：${ priceWithDiscount }特惠价格仅限订阅前${ subscriptionLength }个月有效。"
@@ -4800,7 +4788,7 @@
         "您的付款正在处理中"
       ],
       "Your subscription currently has an existing discount. Moving to this new promotion means that the existing discount will no longer be applied.": [
-        "您当前的订阅已享有一个现有折扣，转用此新促销意味着现有折扣将不再适用。"
+        "您当前的订阅已享有折扣优惠，转用新的促销意味着现有折扣将不再适用。"
       ]
     },
     "Payments.Error": {
@@ -4833,15 +4821,15 @@
         "您先前套餐订阅未使用部分的抵扣金额"
       ],
       "Credits will be added to your balance": [
-        "积分将添加到您的账户余额"
+        "积分将添加到账户余额"
       ]
     },
     "Payments.ModificationWarning": {
       "Are you sure you want to proceed?": [
-        "您确定要继续操作吗？"
+        "您确定要继续吗？"
       ],
       "If you choose to modify your ${ planTitle } plan, you may lose access to some features.": [
-        "如果您选择修改您的 ${ planTitle } 套餐，可能会失去某些功能的访问权限。"
+        "如果您选择修改 ${ planTitle } 套餐，可能会无法使用部分功能。"
       ],
       "Keep ${ planTitle }": [
         "保留 ${ planTitle }"
@@ -4860,16 +4848,16 @@
     },
     "Payments.Renewal price dependent on VAT number": {
       "Renewal price is dependent on the billing region and ABN.": [
-        "续订价格取决于账单地区和 ABN。"
+        "续订价格取决于账单地区和 ABN！"
       ],
       "Renewal price is dependent on the billing region and Business Number.": [
-        "续订价格取决于账单地区和商业编号。"
+        "续订价格取决于账单地区和商业编号！"
       ],
       "Renewal price is dependent on the billing region and EIN.": [
-        "续订价格取决于账单地区和 EIN。"
+        "续订价格取决于账单地区和 EIN！"
       ],
       "Renewal price is dependent on the billing region and VAT number.": [
-        "续订价格取决于账单地区和增值税号。"
+        "续订价格取决于账单地区和增值税号！"
       ]
     },
     "Payments.Saved payment method details": {
@@ -5265,7 +5253,7 @@
         "用于所有 ${ BRAND_NAME } 服务"
       ],
       "Storage used": [
-        "已用存储空间"
+        "存储空间已使用"
       ],
       "We’ll add the credits for the remaining time to your ${ BRAND_NAME } Account.": [
         "我们会将剩余时间的点数计入您的 ${ BRAND_NAME } 账户。"
@@ -5623,7 +5611,7 @@
         "验证码无效"
       ],
       "Migrate your organization to ${ BRAND_NAME }": [
-        "将您的组织迁移到 ${ BRAND_NAME }"
+        "将您的组织迁移至 ${ BRAND_NAME }"
       ],
       "Minicalendar": [
         "迷你日历"
@@ -5636,9 +5624,6 @@
       ],
       "Payment verification": [
         "支付验证"
-      ],
-      "PayPal verification failed": [
-        "PayPal 验证失败"
       ],
       "Processing...": [
         "正在处理..."
@@ -5802,6 +5787,11 @@
       ],
       "The user must have an address to request data access": [
         "用户必须有地址才能申请访问数据"
+      ]
+    },
+    "user_modal": {
+      "You'll be able to assign roles once the user has accepted the invitation.": [
+        "用户接受邀请后，您即可为其分配角色。"
       ]
     },
     "Validation": {

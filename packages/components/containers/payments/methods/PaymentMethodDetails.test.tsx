@@ -1,7 +1,8 @@
 import { render, screen, waitFor } from '@testing-library/react';
 
 import { getSepaAuthorizationText } from '@proton/components/payments/chargebee/SepaAuthorizationText';
-import { PAYMENT_METHOD_TYPES, type PayPalDetails, type SavedCardDetails, type SepaDetails } from '@proton/payments';
+import { PAYMENT_METHOD_TYPES } from '@proton/payments/core/constants';
+import type { PayPalDetails, SavedCardDetails, SepaDetails } from '@proton/payments/core/interface';
 
 import PaymentMethodDetails from './PaymentMethodDetails';
 
@@ -29,7 +30,7 @@ describe('PaymentMethodDetails', () => {
     };
 
     it('renders card details correctly', async () => {
-        render(<PaymentMethodDetails type={PAYMENT_METHOD_TYPES.CARD} details={mockCardDetails} />);
+        render(<PaymentMethodDetails type={PAYMENT_METHOD_TYPES.CHARGEBEE_CARD} details={mockCardDetails} />);
 
         await waitFor(() => {
             expect(screen.getByAltText('Visa')).toBeInTheDocument();
@@ -39,7 +40,7 @@ describe('PaymentMethodDetails', () => {
     });
 
     it('renders PayPal details correctly', () => {
-        render(<PaymentMethodDetails type={PAYMENT_METHOD_TYPES.PAYPAL} details={mockPayPalDetails} />);
+        render(<PaymentMethodDetails type={PAYMENT_METHOD_TYPES.CHARGEBEE_PAYPAL} details={mockPayPalDetails} />);
 
         expect(screen.getByAltText('PayPal')).toBeInTheDocument();
         expect(screen.getByText('johndoe@example.com')).toBeInTheDocument();
@@ -111,7 +112,7 @@ describe('PaymentMethodDetails', () => {
     });
 
     it('does not render SEPA authorization text for non-SEPA methods', () => {
-        render(<PaymentMethodDetails type={PAYMENT_METHOD_TYPES.CARD} details={mockCardDetails} />);
+        render(<PaymentMethodDetails type={PAYMENT_METHOD_TYPES.CHARGEBEE_CARD} details={mockCardDetails} />);
 
         expect(screen.queryByText(/By confirming this payment, you authorize/)).not.toBeInTheDocument();
     });

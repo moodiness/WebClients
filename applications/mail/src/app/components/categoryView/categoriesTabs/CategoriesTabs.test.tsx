@@ -1,3 +1,5 @@
+import type { PropsWithChildren } from 'react';
+
 import { screen } from '@testing-library/react';
 
 import { CATEGORIES_COLOR_SHADES } from '@proton/mail/features/categoriesView/categoriesConstants';
@@ -14,6 +16,24 @@ jest.mock('../useCategoriesView', () => ({
     useCategoriesView: jest.fn(() => ({
         categoriesStore: [],
         activeCategoriesTabs: mockActiveCategoriesData,
+    })),
+}));
+
+jest.mock('./useCategoriesBadge', () => ({
+    useCategoriesBadge: jest.fn(() => ({
+        shouldShowCounter: false,
+        shouldShowNewBadge: false,
+    })),
+}));
+
+jest.mock('../categoriesOnboarding/CategoriesOnboardingSpotlights', () => ({
+    CategoriesOnboardingSpotlight: ({ children }: PropsWithChildren) => <>{children}</>,
+}));
+
+jest.mock('../categoriesOnboarding/CategoriesOnboardingContext', () => ({
+    useCategoriesOnboarding: jest.fn(() => ({
+        activeStep: 6, // OnboardingStep.DONE
+        userIsInB2COnboardingFlow: false,
     })),
 }));
 

@@ -2744,9 +2744,6 @@
       "Unlock it with your PIN to access the settings": [
         "Desbloqueie com seu código PIN para acessar as configurações"
       ],
-      "Unlock with biometrics": [
-        "Desbloquear com a biometria"
-      ],
       "Unpinning item...": [
         "Desafiando item..."
       ],
@@ -3117,6 +3114,9 @@
       "Address details": [
         "Detalhes do endereço"
       ],
+      "Advanced": [
+        "Avançado"
+      ],
       "Alias": [
         "Alias"
       ],
@@ -3179,6 +3179,9 @@
       ],
       "Bank Name": [
         "Nome do banco"
+      ],
+      "Basic": [
+        "Básico"
       ],
       "Basic Auth autofill": [
         "Preenchimento automático básico de credenciais"
@@ -3828,6 +3831,12 @@
       "Reddit handle": [
         "Usuário no Reddit"
       ],
+      "Regular expression": [
+        "Expressão regular"
+      ],
+      "Relevant": [
+        "Relevante"
+      ],
       "Remove link": [
         "Remover link"
       ],
@@ -3935,6 +3944,9 @@
       ],
       "SSN": [
         "SSN"
+      ],
+      "Starts with": [
+        "Iniciar com"
       ],
       "State or province": [
         "Estado ou município"
@@ -4155,6 +4167,9 @@
       "${ count } item": [
         "${ count } item",
         "${ count } itens"
+      ],
+      "Regular expression rule": [
+        "Regra de expressão regular"
       ],
       "You can drag and drop the selected item to another vault": [
         "Você pode arrastar e soltar o item selecionado para outro cofre",
@@ -4876,6 +4891,9 @@
       "Last modified": [
         "Última modificação"
       ],
+      "Learn more": [
+        "Saiba mais"
+      ],
       "Leave this item?": [
         "Deixar este item?"
       ],
@@ -5110,6 +5128,9 @@
       ],
       "Update available": [
         "Atualização disponível"
+      ],
+      "URL matching": [
+        "Correspondência de URL"
       ],
       "Use my email": [
         "Usar meu e-mail"

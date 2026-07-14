@@ -6,11 +6,13 @@ import { usePaymentsApiWithCheckFallback } from '@proton/components/payments/rea
 import { FeatureCode } from '@proton/features/interface';
 import useFeature from '@proton/features/useFeature';
 import useLoading from '@proton/hooks/useLoading';
-import { COUPON_CODES, CYCLE, PLANS, getPlanName, getPlansMap } from '@proton/payments';
-import type { Currency } from '@proton/payments';
 import type { PaymentsCheckoutUI } from '@proton/payments/core/checkout';
 import { getCheckoutUi } from '@proton/payments/core/checkout';
-import { isDangerouslyAllowedSubscriptionEstimation } from '@proton/payments/core/subscription/helpers';
+import { COUPON_CODES, CYCLE, PLANS } from '@proton/payments/core/constants';
+import type { Currency } from '@proton/payments/core/interface';
+import { getPlanName, isDangerouslyAllowedSubscriptionEstimation } from '@proton/payments/core/subscription/helpers';
+import { getPlansMap } from '@proton/payments/core/subscription/plans-map-wrapper';
+import { getPrice } from '@proton/payments/core/price-helpers';
 
 const SUPPORTED_PLANS = new Set([PLANS.MAIL, PLANS.BUNDLE]);
 
@@ -18,6 +20,7 @@ export interface OfferCheckResult {
     offerIsAvailable: boolean;
     isLoading: boolean;
     checkout: PaymentsCheckoutUI | undefined;
+    yearlyRenewalPrice: number | undefined;
     planName: PLANS | undefined;
     cycle: CYCLE;
     currency: Currency;
@@ -31,6 +34,7 @@ export const useCancellationOffer = (): OfferCheckResult => {
     const [isLoading, withIsLoading] = useLoading(true);
     const [offerIsAvailable, setOfferIsAvailable] = useState(false);
     const [checkout, setCheckout] = useState<PaymentsCheckoutUI | undefined>();
+    const [yearlyRenewalPrice, setYearlyRenewalPrice] = useState<number | undefined>();
     const { feature, loading } = useFeature(FeatureCode.CanUseFeedbackFirstCancellationOffer);
 
     const planName = getPlanName(subscription);
@@ -85,6 +89,7 @@ export const useCancellationOffer = (): OfferCheckResult => {
 
                 setOfferIsAvailable(true);
                 setCheckout(checkoutResult);
+                setYearlyRenewalPrice(getPrice(planIDs, CYCLE.YEARLY, plansMap));
             } catch {
                 setOfferIsAvailable(false);
             }
@@ -97,6 +102,7 @@ export const useCancellationOffer = (): OfferCheckResult => {
         offerIsAvailable,
         isLoading,
         checkout,
+        yearlyRenewalPrice,
         planName,
         cycle,
         currency,

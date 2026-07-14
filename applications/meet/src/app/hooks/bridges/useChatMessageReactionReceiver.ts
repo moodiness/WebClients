@@ -6,19 +6,26 @@ import type { RemoteParticipant } from 'livekit-client';
 import { useMeetErrorReporting } from '@proton/meet/hooks/useMeetErrorReporting';
 import { useMeetDispatch } from '@proton/meet/store/hooks';
 import { toggleChatMessageReaction } from '@proton/meet/store/slices/chatAndReactionsSlice';
-import { stringToUint8Array } from '@proton/shared/lib/helpers/encoding';
+import { binaryStringToUint8Array } from '@proton/shared/lib/helpers/encoding';
+import { useFlag } from '@proton/unleash/useFlag';
 
-import { useMLSContext } from '../../contexts/MLSContext';
+import { useMeetCoreClient } from '../../contexts/MeetCoreClientContext';
 import { PublishableDataTypes } from '../../types';
 
+/**
+ * Legacy chat reaction receiver (MeetNewChatHandling disabled). When the new chat
+ * handling is enabled, reactions are decoded and dispatched from `useChat` instead.
+ */
 export const useChatMessageReactionReceiver = () => {
     const room = useRoomContext();
     const dispatch = useMeetDispatch();
-    const mls = useMLSContext();
+    const meetCoreClient = useMeetCoreClient();
     const { reportMeetError } = useMeetErrorReporting();
 
+    const isNewChatHandling = useFlag('MeetNewChatHandling');
+
     useEffect(() => {
-        if (!room || !mls) {
+        if (isNewChatHandling || !room) {
             return;
         }
 
@@ -34,7 +41,7 @@ export const useChatMessageReactionReceiver = () => {
 
             try {
                 const decoded = JSON.parse(new TextDecoder().decode(payload));
-                const decrypted = await mls.decryptMessage(stringToUint8Array(decoded.message));
+                const decrypted = await meetCoreClient.decryptMessage(binaryStringToUint8Array(decoded.message));
                 if (!decrypted) {
                     return;
                 }
@@ -109,5 +116,5 @@ export const useChatMessageReactionReceiver = () => {
         return () => {
             room.off('dataReceived', handleDataReceived);
         };
-    }, [room, mls, dispatch, reportMeetError]);
+    }, [room, meetCoreClient, dispatch, reportMeetError, isNewChatHandling]);
 };

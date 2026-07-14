@@ -3938,12 +3938,6 @@
       "Interval cannot be empty": [
         "Interval nemôže byť prázdny"
       ],
-      "Invalid ${ name } code": [
-        "Neplatný kód ${ name }"
-      ],
-      "Invalid card number": [
-        "Neplatné číslo karty"
-      ],
       "Invalid code": [
         "Neplatný kód"
       ],
@@ -3952,9 +3946,6 @@
       ],
       "Invalid email address": [
         "Neplatná emailová adresa"
-      ],
-      "Invalid expiration date": [
-        "Neplatný koniec platnosti"
       ],
       "Invalid IBAN": [
         "Neplatný IBAN"
@@ -4027,6 +4018,9 @@
       ],
       "No contacts found to import": [
         "Neboli nájdené žiadne kontakty na import"
+      ],
+      "No drive found to import": [
+        "Nenašiel sa žiadny disk na import"
       ],
       "No emails found to import - the account does not have an inbox": [
         "Neboli nájdené žiadne emaily na import - účet nemá priečinok Doručená pošta"
@@ -4289,6 +4283,9 @@
       "Unexpected error, we can't import the contacts": [
         "Neočakávaná chyba, nemôžeme importovať kontakty"
       ],
+      "Unexpected error, we can't import the files": [
+        "Neočakávaná chyba, nemôžeme importovať súbory"
+      ],
       "Unknown error": [
         "Neznáma chyba"
       ],
@@ -4306,6 +4303,9 @@
       ],
       "VAT number must start with ${ prefixes }": [
         "Číslo DIČ musí začínať predponami ${ prefixes }"
+      ],
+      "We couldn’t send a verification code using this method.": [
+        "Touto metódou sa nám nepodarilo odoslať overovací kód."
       ],
       "Wrong billing address": [
         "Nesprávna fakturačná adresa"
@@ -4835,6 +4835,9 @@
       ],
       "Security key": [
         "Bezpečnostný kľúč"
+      ],
+      "Touch your security key.": [
+        "Dotknite sa svojho bezpečnostného kľúča."
       ]
     },
     "fido2: Label": {
@@ -5957,6 +5960,9 @@
       "Failed to update meeting schedule": [
         "Nepodarilo sa aktualizovať rozvrh schôdzky"
       ],
+      "Files only (no photos, ${ DOCS_APP_NAME } or ${ SHEETS_APP_NAME }) - up to 100 GB total, 100,000 files, and 50 GB per file": [
+        "Iba súbory (bez fotografií, ${ DOCS_APP_NAME } alebo ${ SHEETS_APP_NAME }) – celkovo až 100 GB, 100 000 súborov a 50 GB na jeden súbor"
+      ],
       "finance": [
         "financie"
       ],
@@ -6290,9 +6296,6 @@
       "PGP/MIME automatically sends the message using the current composer mode.": [
         "PGP/MIME automaticky odošle správu pomocou aktuálneho režimu písania správ."
       ],
-      "Please authenticate your card in the verification tab.": [
-        "Overte svoju kartu v okne overenia."
-      ],
       "Please authenticate your payment in the verification tab.": [
         "Overte svoju platbu v okne overenia."
       ],
@@ -6334,9 +6337,6 @@
       ],
       "Please try again using a different payment method, or contact your bank.": [
         "Skúste to znova pomocou iného spôsobu platby, alebo kontaktujte svoju banku."
-      ],
-      "Please try again, use a different payment method, or contact PayPal for assistance.": [
-        "Skúste to znova, použite iný spôsob platby, alebo požiadajte o pomoc PayPal."
       ],
       "Please wait while we look for contacts that can be re-signed with the primary encryption key.": [
         "Prosím počkajte akonáhle vyhľadáme kontakty, ktoré môžu byť znova prihlásené so základným šifrovacím kľúčom."
@@ -6767,6 +6767,9 @@
       "You are about to open your default browser and visit:": [
         "Chystáte sa otvoriť váš predvolený prehliadač a navštíviť:"
       ],
+      "You are currently signed in as ${ username } for ${ organizationName }.": [
+        "Momentálne ste prihlásený ako ${ username } v (${ organizationName }."
+      ],
       "You are currently signed in as ${ username }.": [
         "V súčasnosti používate účet ako ${ username }."
       ],
@@ -6832,9 +6835,6 @@
       ],
       "You will lose all unsaved changes.": [
         "Stratíte všetky neuložené zmeny."
-      ],
-      "You will soon be redirected to PayPal to verify your payment.": [
-        "Za účelom overenia platby budete presmerovaný na PayPal."
       ],
       "You will update all the events in this series. Added and removed participants will be notified.": [
         "Aktualizujete všetky udalosti v tejto sérii. Pridaní a odobraní účastníci budú oboznámení."
@@ -7408,6 +7408,12 @@
       "Every": [
         "Každý"
       ],
+      "Exact host matching": [
+        "Presná zhoda hostiteľa"
+      ],
+      "Exact URL matching": [
+        "Presná zhoda URL"
+      ],
       "Expires": [
         "Exspiruje"
       ],
@@ -7522,6 +7528,9 @@
       "Navigation": [
         "Navigácia"
       ],
+      "Never fill on this exact URL": [
+        "Nikdy nevypĺňať túto presnú URL adresu"
+      ],
       "New password": [
         "Nové heslo"
       ],
@@ -7551,6 +7560,9 @@
       ],
       "Organizer": [
         "Organizátor"
+      ],
+      "Parent domain and subdomains (default)": [
+        "Nadradená doména a subdomény (predvolené nastavenie)"
       ],
       "participant": [
         "účastník",
@@ -7612,6 +7624,9 @@
       "Region": [
         "Kraj"
       ],
+      "Regular expression": [
+        "Regulárny výraz"
+      ],
       "Remove ${ MEET_APP_NAME } video conference": [
         "Odstrániť videokonferenciu ${ MEET_APP_NAME }"
       ],
@@ -7650,6 +7665,9 @@
       ],
       "Start date": [
         "Dátum začiatku"
+      ],
+      "Starts with": [
+        "Začína s"
       ],
       "State": [
         "Štát"
@@ -7698,6 +7716,9 @@
       ],
       "URL": [
         "Odkaz"
+      ],
+      "URL wildcard pattern": [
+        "Vzor so zástupnými znakmi v URL"
       ],
       "Username": [
         "Používateľské meno"
@@ -8148,11 +8169,29 @@
       ]
     },
     "Message": {
+      "'Starts with' matching rule": [
+        "Pravidlo porovnávania „začína na“"
+      ],
+      "Exact (sub) domain matching rule": [
+        "Pravidlo presnej zhody (pod)domén"
+      ],
+      "Exact URL matching rule": [
+        "Pravidlo presnej zhody URL"
+      ],
       "Fw:": [
         "Fw:"
       ],
+      "Never fill with this exact URL": [
+        "Nikdy nevypĺňať presne túto URL adresu"
+      ],
       "Re:": [
         "Re:"
+      ],
+      "Regular expression rule": [
+        "Pravidlo regulárneho výrazu"
+      ],
+      "Wildcard pattern matching rule": [
+        "Pravidlo porovnávania vzorov so zástupnými znakmi"
       ],
       "Your free trial has ended. ${ nonAutoRenewalAction }": [
         "Vaša bezplatná skúšobná verzia skončila. ${ nonAutoRenewalAction }"
@@ -12404,6 +12443,9 @@
       "${ feature } is now active": [
         "${ feature } je teraz aktívna"
       ],
+      "${ LUMO_SHORT_APP_NAME } writing assistant": [
+        "${ LUMO_SHORT_APP_NAME } asistenta písania"
+      ],
       "Account recovery": [
         "Obnovenie účtu"
       ],
@@ -12869,9 +12911,6 @@
       "Payment verification": [
         "Overenie platby"
       ],
-      "PayPal verification failed": [
-        "Overenie platby PayPal zlyhalo"
-      ],
       "Phone numbers": [
         "Telefónne čísla"
       ],
@@ -13181,6 +13220,26 @@
         "Vyberte číslo"
       ]
     },
+    "Title header for keys table": {
+      "Actions": [
+        "Akcie"
+      ],
+      "Created": [
+        "Vytvorené"
+      ],
+      "Expires": [
+        "Vyprší"
+      ],
+      "Fingerprint": [
+        "Odtlačok prsta"
+      ],
+      "Status": [
+        "Stav"
+      ],
+      "Type": [
+        "Typ"
+      ]
+    },
     "Title; create calendar modal": {
       "Create calendar": [
         "Vytvoriť kalendár"
@@ -13277,6 +13336,9 @@
       ],
       "Upload a public key to enable sending end-to-end encrypted emails to this email": [
         "Pre zasielanie emailov s koncovým šifrovaním na túto emailovú adresu, nahrajte prosím verejný kľúč"
+      ],
+      "Version 6 OpenPGP key": [
+        "Kľúč OpenPGP verzie 6"
       ]
     },
     "tooltip": {
@@ -13315,6 +13377,11 @@
       ],
       "The user must have an address to request data access": [
         "Používateľ musí mať adresu, aby mohol požiadať o prístup k údajom"
+      ]
+    },
+    "user_modal": {
+      "You'll be able to assign roles once the user has accepted the invitation.": [
+        "Akonáhle používateľ prijme pozvánku, budete môcť priradiť pozície."
       ]
     },
     "Validation": {
@@ -13455,6 +13522,9 @@
       ],
       "${ BRAND_NAME } will transfer as much data as possible, starting with your most recent messages.": [
         "Tento import môže prekročiť kapacitu úložiska, ktorá je momentálne k dispozícii vo vašom ${ BRAND_NAME } účte. Zvážte prosím prispôsobenie importu."
+      ],
+      "${ modeLabelStong } provides powerful control, but a single error can cause autofill to match and fill data on fraudulent or phishing websites.": [
+        "Funkcia ${ modeLabelStong } ponúka rozsiahle možnosti ovládania, avšak už jediná chyba môže spôsobiť, že funkcia automatického vypĺňania bude na podvodných alebo phishingových webových stránkach vyhľadávať a vypĺňať údaje."
       ],
       "Are you sure you want to permanently delete ${ count } contact?": [
         "Naozaj chcete natrvalo vymazať ${ count } kontakt?",

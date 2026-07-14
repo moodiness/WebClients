@@ -3870,12 +3870,6 @@
       "Interval cannot be empty": [
         "Το μεσοδιάστημα δεν μπορεί να είναι κενό"
       ],
-      "Invalid ${ name } code": [
-        "Μη έγκυρο ${ name } κωδικός"
-      ],
-      "Invalid card number": [
-        "Μη έγκυρος αριθμός κάρτας"
-      ],
       "Invalid code": [
         "Μη έγκυρος κωδικός"
       ],
@@ -3884,9 +3878,6 @@
       ],
       "Invalid email address": [
         "Μη έγκυρη διεύθυνση email"
-      ],
-      "Invalid expiration date": [
-        "Μη έγκυρη ημερομηνία λήξης"
       ],
       "Invalid IBAN": [
         "Μη έγκυρο IBAN"
@@ -3957,6 +3948,9 @@
       ],
       "No contacts found to import": [
         "Δεν βρέθηκαν επαφές προς εισαγωγή"
+      ],
+      "No drive found to import": [
+        "Δε βρέθηκε drive για εισαγωγή"
       ],
       "No emails found to import - the account does not have an inbox": [
         "Δεν βρέθηκαν μηνύματα προς εισαγωγή - ο λογαριασμός δεν διαθέτει εισερχόμενα"
@@ -4211,6 +4205,9 @@
       "Unexpected error, we can't import the contacts": [
         "Μη αναμενόμενο σφάλμα, δεν είναι δυνατή η εισαγωγή των επαφών"
       ],
+      "Unexpected error, we can't import the files": [
+        "Μη αναμενόμενο σφάλμα, δεν είναι δυνατή η εισαγωγή των αρχείων"
+      ],
       "Unknown error": [
         "Άγνωστο σφάλμα"
       ],
@@ -4228,6 +4225,9 @@
       ],
       "VAT number must start with ${ prefixes }": [
         "Ο αριθμός ΦΠΑ πρέπει να ξεκινά με ${ prefixes }"
+      ],
+      "We couldn’t send a verification code using this method.": [
+        "Δεν μπορέσαμε να αποστείλουμε κωδικό επιβεβαίωσης με αυτήν τη μέθοδο."
       ],
       "Wrong billing address": [
         "Λανθασμένη διεύθυνσης χρέωσης"
@@ -4747,6 +4747,9 @@
       ],
       "Security key": [
         "Κλειδί ασφαλείας"
+      ],
+      "Touch your security key.": [
+        "Αγγίξτε το κλειδί ασφαλείας σας."
       ]
     },
     "fido2: Label": {
@@ -5789,6 +5792,9 @@
       "Failed to update meeting schedule": [
         "Αποτυχία ενημέρωσης του προγράμματος σύσκεψης"
       ],
+      "Files only (no photos, ${ DOCS_APP_NAME } or ${ SHEETS_APP_NAME }) - up to 100 GB total, 100,000 files, and 50 GB per file": [
+        "Μόνο αρχεία (όχι φωτογραφίες, ${ DOCS_APP_NAME } ή ${ SHEETS_APP_NAME }) - έως 100 GB συνολικά, 100.000 αρχεία και 50 GB ανά αρχείο"
+      ],
       "finance": [
         "οικονομικά"
       ],
@@ -6120,9 +6126,6 @@
       "PGP/MIME automatically sends the message using the current composer mode.": [
         "PGP/MIME στέλνει αυτόματα το μήνυμα με την παρούσα λειτουργία συνθέτη."
       ],
-      "Please authenticate your card in the verification tab.": [
-        "Επαληθεύστε την ταυτότητά σας στην καρτέλα επαλήθευσης."
-      ],
       "Please authenticate your payment in the verification tab.": [
         "Επαληθεύστε την πληρωμή σας στην καρτέλα επαλήθευσης."
       ],
@@ -6162,9 +6165,6 @@
       ],
       "Please try again using a different payment method, or contact your bank.": [
         "Δοκιμάστε ξανά χρησιμοποιώντας διαφορετικό τρόπο πληρωμής ή επικοινωνήστε με την τράπεζά σας."
-      ],
-      "Please try again, use a different payment method, or contact PayPal for assistance.": [
-        "Παρακαλώ προσπαθήστε ξανά, χρησιμοποιείστε ένα διαφορετικό τρόπο πληρωμής, ή επικοινωνήστε με το Paypal για περαιτέρω βοήθεια."
       ],
       "Please wait while we look for contacts that can be re-signed with the primary encryption key.": [
         "Παρακαλούμε περιμένετε όσο αναζητούμε επαφές που μπορούν να επανυπογραφούν με το πρωτεύον κλειδί κρυπτογράφησης."
@@ -6591,6 +6591,9 @@
       "You are about to open your default browser and visit:": [
         "Πρόκειται να ανοίξετε το προεπιλεγμένο πρόγραμμα περιήγησής σας και να επισκεφθείτε:"
       ],
+      "You are currently signed in as ${ username } for ${ organizationName }.": [
+        "Αυτήν τη στιγμή είστε συνδεδεμένοι ως ${ username } για το ${ organizationName }."
+      ],
       "You are currently signed in as ${ username }.": [
         "Είστε συνδεδεμένος/η ως ${ username }."
       ],
@@ -6652,9 +6655,6 @@
       ],
       "You will lose all unsaved changes.": [
         "Θα χάσετε όλες τις αλλαγές που δεν έχετε αποθηκεύσει."
-      ],
-      "You will soon be redirected to PayPal to verify your payment.": [
-        "Θα ανακατευθυνθείτε σύντομα στο Paypal, για να επαληθεύσετε την πληρωμή σας."
       ],
       "You will update all the events in this series. Added and removed participants will be notified.": [
         "Θα ενημερώσετε όλες τις εκδηλώσεις αυτής της σειράς. Οι συμμετέχοντες που έχουν προστεθεί και αφαιρεθεί θα ειδοποιηθούν."
@@ -7214,6 +7214,12 @@
       "Every": [
         "Κάθε"
       ],
+      "Exact host matching": [
+        "Ακριβής αντιστοίχιση κεντρικού υπολογιστή"
+      ],
+      "Exact URL matching": [
+        "Ακριβής αντιστοίχιση URL"
+      ],
       "Expires": [
         "Λήγει"
       ],
@@ -7328,6 +7334,9 @@
       "Navigation": [
         "Πλοήγηση"
       ],
+      "Never fill on this exact URL": [
+        "Ποτέ μη συμπληρώνετε αυτήν ακριβώς τη διεύθυνση URL"
+      ],
       "New password": [
         "Νέος κωδικός"
       ],
@@ -7357,6 +7366,9 @@
       ],
       "Organizer": [
         "Διοργανωτής"
+      ],
+      "Parent domain and subdomains (default)": [
+        "Γονικός τομέας και υποτομείς (προεπιλογή)"
       ],
       "participant": [
         "συμμετέχων",
@@ -7416,6 +7428,9 @@
       "Region": [
         "Περιοχή"
       ],
+      "Regular expression": [
+        "Κανονική έκφραση"
+      ],
       "Remove ${ MEET_APP_NAME } video conference": [
         "Κατάργηση τηλεδιάσκεψης ${ MEET_APP_NAME }"
       ],
@@ -7454,6 +7469,9 @@
       ],
       "Start date": [
         "Ημερομηνία Έναρξης"
+      ],
+      "Starts with": [
+        "Ξεκινάει με"
       ],
       "State": [
         "Πολιτεία"
@@ -7502,6 +7520,9 @@
       ],
       "URL": [
         "Διεύθυνση URL"
+      ],
+      "URL wildcard pattern": [
+        "Πρότυπο μπαλαντέρ URL"
       ],
       "Username": [
         "Όνομα Χρήστη"
@@ -7928,11 +7949,29 @@
       ]
     },
     "Message": {
+      "'Starts with' matching rule": [
+        "Κανόνας αντιστοίχισης 'Ξεκινά με'"
+      ],
+      "Exact (sub) domain matching rule": [
+        "Ακριβής κανόνας αντιστοίχισης (υπο) τομέα"
+      ],
+      "Exact URL matching rule": [
+        "Κανόνας αντιστοίχισης ακριβούς διεύθυνσης URL"
+      ],
       "Fw:": [
         "Προώθ:"
       ],
+      "Never fill with this exact URL": [
+        "Ποτέ μην συμπληρώνετε με αυτήν ακριβώς τη διεύθυνση URL"
+      ],
       "Re:": [
         "Απ:"
+      ],
+      "Regular expression rule": [
+        "Κανόνας κανονικής έκφρασης"
+      ],
+      "Wildcard pattern matching rule": [
+        "Κανόνας αντιστοίχισης μοτίβου μπαλαντέρ"
       ],
       "Your free trial has ended. ${ nonAutoRenewalAction }": [
         "Η δωρεάν δοκιμή σας έχει λήξει. ${ nonAutoRenewalAction }"
@@ -12412,9 +12451,6 @@
       "Payment verification": [
         "Επαλήθευση Πληρωμής"
       ],
-      "PayPal verification failed": [
-        "Η επαλήθευση PayPal απέτυχε"
-      ],
       "Phone numbers": [
         "Αριθμοί Τηλεφώνου"
       ],
@@ -12724,6 +12760,26 @@
         "Επιλέξτε έναν αριθμό"
       ]
     },
+    "Title header for keys table": {
+      "Actions": [
+        "Ενέργειες"
+      ],
+      "Created": [
+        "Δημιουργήθηκε"
+      ],
+      "Expires": [
+        "Λήγει"
+      ],
+      "Fingerprint": [
+        "Δακτυλικό αποτύπωμα"
+      ],
+      "Status": [
+        "Κατάσταση"
+      ],
+      "Type": [
+        "Τύπος"
+      ]
+    },
     "Title; create calendar modal": {
       "Create calendar": [
         "Δημιουργία ημερολογίου"
@@ -12820,6 +12876,9 @@
       ],
       "Upload a public key to enable sending end-to-end encrypted emails to this email": [
         "Για ενεργοποίηση της αποστολής διατερματικά κρυπτογραφημένων μηνυμάτων προς αυτήν τη διεύθυνση, ανεβάστε ένα δημόσιο κλειδί"
+      ],
+      "Version 6 OpenPGP key": [
+        "Κλειδί OpenPGP έκδοσης 6"
       ]
     },
     "tooltip": {
@@ -12858,6 +12917,11 @@
       ],
       "The user must have an address to request data access": [
         "Ο χρήστης πρέπει να έχει μια διεύθυνση για να ζητήσει πρόσβαση στα δεδομένα"
+      ]
+    },
+    "user_modal": {
+      "You'll be able to assign roles once the user has accepted the invitation.": [
+        "Θα μπορείτε να αναθέσετε ρόλους μόλις ο χρήστης αποδεχτεί την πρόσκληση."
       ]
     },
     "Validation": {
@@ -12972,6 +13036,9 @@
       ],
       "${ BRAND_NAME } will transfer as much data as possible, starting with your most recent messages.": [
         "Η ${ BRAND_NAME } θα μεταφέρει όσο το δυνατόν περισσότερα δεδομένα, ξεκινώντας από τα πιο πρόσφατα μηνύματά σας."
+      ],
+      "${ modeLabelStong } provides powerful control, but a single error can cause autofill to match and fill data on fraudulent or phishing websites.": [
+        "Το ${ modeLabelStong } παρέχει ισχυρό έλεγχο, αλλά ένα μόνο σφάλμα μπορεί να προκαλέσει την αντιστοίχιση και συμπλήρωση δεδομένων από την αυτόματη συμπλήρωση σε δόλιες ιστοσελίδες ή ιστοσελίδες ηλεκτρονικού \"ψαρέματος\" (phishing)."
       ],
       "Are you sure you want to permanently delete ${ count } contact?": [
         "Είστε βέβαιοι ότι θέλετε να διαγράψετε οριστικά ${ count } επαφή;",

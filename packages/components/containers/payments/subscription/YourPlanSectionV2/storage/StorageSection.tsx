@@ -9,8 +9,15 @@ import type { ThemeColor } from '@proton/colors/types';
 import AppsLogos from '@proton/components/components/appsLogos/AppsLogos';
 import Info from '@proton/components/components/link/Info';
 import getBoldFormattedText from '@proton/components/helpers/getBoldFormattedText';
-import type { FreeSubscription } from '@proton/payments';
-import { type Subscription, hasAllProductsB2CPlan, hasDrive, hasDrive1TB, hasFree, hasMail } from '@proton/payments';
+import type { FreeSubscription } from '@proton/payments/core/interface';
+import {
+    hasAllProductsB2CPlan,
+    hasDrive,
+    hasDrive1TB,
+    hasFree,
+    hasMail,
+} from '@proton/payments/core/subscription/helpers';
+import type { Subscription } from '@proton/payments/core/subscription/interface';
 import {
     APPS,
     type APP_NAMES,
@@ -224,7 +231,8 @@ export function getDashboardStorageSections(
                 text: mailText,
                 label: getAppStorageUsed(MAIL_SHORT_APP_NAME),
                 graphColor: SpaceStateThemeColorMap[spaceDetails.base.type],
-                shouldRender: (app) => app === APPS.PROTONMAIL || app === APPS.PROTONCALENDAR,
+                shouldRender: (app) =>
+                    app === APPS.PROTONMAIL || app === APPS.PROTONCALENDAR || app === APPS.PROTONACCOUNT,
             },
             {
                 usedSpace: spaceDetails.drive.percentage,
@@ -238,7 +246,7 @@ export function getDashboardStorageSections(
                 text: driveText,
                 label: getAppStorageUsed(DRIVE_SHORT_APP_NAME),
                 graphColor: SpaceStateThemeColorMap[spaceDetails.drive.type],
-                shouldRender: (app) => app === APPS.PROTONDRIVE,
+                shouldRender: (app) => app === APPS.PROTONDRIVE || app === APPS.PROTONACCOUNT,
             },
         ];
     } else {

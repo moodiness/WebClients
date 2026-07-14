@@ -3,8 +3,8 @@ import { useEffect, useLayoutEffect, useMemo } from 'react';
 import type { ConnectionState } from 'livekit-client';
 
 import { useMeetDispatch, useMeetSelector } from '@proton/meet/store/hooks';
+import { resetMeetingState } from '@proton/meet/store/resetMeetingState';
 import {
-    resetMeetingInfo,
     setMeetingInfo,
     startMeetingDurationTimer,
     stopMeetingDurationTimer,
@@ -14,6 +14,7 @@ import { isSafari } from '@proton/shared/lib/helpers/browser';
 
 import { AutoCloseMeetingModal } from '../components/AutoCloseMeetingModal/AutoCloseMeetingModal';
 import { DebugOverlay, useDebugOverlay } from '../components/DebugOverlay/DebugOverlay';
+import { MeetingAnnouncer } from '../components/MeetingAnnouncer/MeetingAnnouncer';
 import { MeetingBody } from '../components/MeetingBody/MeetingBody';
 import { DebugOverlayContext } from '../contexts/DebugOverlayContext';
 import { MeetContext } from '../contexts/MeetContext';
@@ -134,7 +135,7 @@ export const MeetContainer = ({
 
     useEffect(() => {
         return () => {
-            dispatch(resetMeetingInfo());
+            dispatch(resetMeetingState());
         };
     }, [dispatch]);
 
@@ -195,31 +196,45 @@ export const MeetContainer = ({
         ]
     );
 
+    const debugOverlayValue = useMemo(
+        () => ({ isEnabled: debugOverlay.isEnabled, open: debugOverlay.open }),
+        [debugOverlay.isEnabled, debugOverlay.open]
+    );
+
     return (
-        <DebugOverlayContext.Provider value={{ isEnabled: debugOverlay.isEnabled, open: debugOverlay.open }}>
+        <DebugOverlayContext.Provider value={debugOverlayValue}>
             <div className="w-full h-full flex flex-col flex-nowrap items-center justify-center">
-                <MeetContext.Provider value={meetContextValue}>
-                    {debugOverlay.isOpen && (
-                        <DebugOverlay
-                            isOpen={debugOverlay.isOpen}
-                            onClose={debugOverlay.close}
-                            onSimulateReconnection={onSimulateReconnection}
+                <MeetingAnnouncer
+                    isReconnecting={isReconnecting}
+                    mlsRetrying={mlsRetrying}
+                    isDisconnected={isDisconnected}
+                    liveKitConnectionState={liveKitConnectionState}
+                    showReconnectedMessage={showReconnectedMessage}
+                    isUsingTurnRelay={isUsingTurnRelay}
+                >
+                    <MeetContext.Provider value={meetContextValue}>
+                        {debugOverlay.isOpen && (
+                            <DebugOverlay
+                                isOpen={debugOverlay.isOpen}
+                                onClose={debugOverlay.close}
+                                onSimulateReconnection={onSimulateReconnection}
+                            />
+                        )}
+                        <MeetingBody
+                            screenShareTrack={screenShareTrack}
+                            screenShareParticipant={screenShareParticipant}
+                            isUsingTurnRelay={isUsingTurnRelay}
+                            liveKitConnectionState={liveKitConnectionState}
+                            showReconnectedMessage={showReconnectedMessage}
+                            setShowReconnectedMessage={setShowReconnectedMessage}
+                            setLiveKitConnectionState={setLiveKitConnectionState}
+                            isDisconnected={isDisconnected}
+                            isReconnecting={isReconnecting}
+                            mlsRetrying={mlsRetrying}
                         />
-                    )}
-                    <MeetingBody
-                        screenShareTrack={screenShareTrack}
-                        screenShareParticipant={screenShareParticipant}
-                        isUsingTurnRelay={isUsingTurnRelay}
-                        liveKitConnectionState={liveKitConnectionState}
-                        showReconnectedMessage={showReconnectedMessage}
-                        setShowReconnectedMessage={setShowReconnectedMessage}
-                        setLiveKitConnectionState={setLiveKitConnectionState}
-                        isDisconnected={isDisconnected}
-                        isReconnecting={isReconnecting}
-                        mlsRetrying={mlsRetrying}
-                    />
-                </MeetContext.Provider>
-                <AutoCloseMeetingModal participantCount={totalParticipantCount} onLeave={handleLeave} />
+                    </MeetContext.Provider>
+                    <AutoCloseMeetingModal participantCount={totalParticipantCount} onLeave={handleLeave} />
+                </MeetingAnnouncer>
             </div>
         </DebugOverlayContext.Provider>
     );

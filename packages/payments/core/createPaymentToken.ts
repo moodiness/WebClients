@@ -13,7 +13,6 @@ import {
     type BackendPaymentIntent,
     type CreatePaymentIntentData,
     type CreateTokenData,
-    type FetchPaymentIntentV5Response,
     createTokenV4,
     fetchPaymentIntentForExistingV5,
     fetchPaymentIntentV5,
@@ -22,7 +21,6 @@ import { PAYMENT_METHOD_TYPES, PAYMENT_TOKEN_STATUS } from './constants';
 import type {
     AmountAndCurrency,
     AuthorizedV5PaymentToken,
-    CardPayment,
     ChargeablePaymentToken,
     ChargeableV5PaymentToken,
     ChargebeeFetchedPaymentToken,
@@ -35,11 +33,9 @@ import type {
     NonChargeableV5PaymentToken,
     PaymentMethodType,
     PaymentTokenResult,
-    PaypalPayment,
     PlainPaymentMethodType,
     RemoveEventListener,
     V5PaymentToken,
-    WrappedCardPayment,
 } from './interface';
 import { toV5PaymentToken } from './utils';
 
@@ -51,7 +47,7 @@ import { toV5PaymentToken } from './utils';
  * @param amountAndCurrency
  */
 const fetchPaymentToken = async (
-    params: WrappedCardPayment | ExistingPayment,
+    params: ExistingPayment,
     api: Api,
     amountAndCurrency?: AmountAndCurrency
 ): Promise<PaymentTokenResult> => {
@@ -63,7 +59,7 @@ const fetchPaymentToken = async (
     });
 };
 
-export const formatToken = (
+const formatToken = (
     { Token, Status, ApprovalURL, ReturnHost }: PaymentTokenResult,
     type: PlainPaymentMethodType,
     amountAndCurrency?: AmountAndCurrency
@@ -88,15 +84,6 @@ export const formatToken = (
             returnHost: ReturnHost,
         } as NonChargeablePaymentToken;
     }
-};
-
-export const createPaymentTokenForCard = async (
-    params: WrappedCardPayment,
-    api: Api,
-    amountAndCurrency?: AmountAndCurrency
-): Promise<ChargeablePaymentToken | NonChargeablePaymentToken> => {
-    const paymentTokenResult = await fetchPaymentToken(params, api, amountAndCurrency);
-    return formatToken(paymentTokenResult, PAYMENT_METHOD_TYPES.CARD, amountAndCurrency);
 };
 
 export function convertPaymentIntentData(paymentIntentData: BackendPaymentIntent): PaymentIntent;
@@ -131,8 +118,8 @@ export function convertPaymentIntentData(paymentIntentData: BackendPaymentIntent
 export const createPaymentTokenForExistingPayment = async (
     PaymentMethodID: ExistingPaymentMethod,
     type:
-        | PAYMENT_METHOD_TYPES.CARD
-        | PAYMENT_METHOD_TYPES.PAYPAL
+        | PAYMENT_METHOD_TYPES.CHARGEBEE_CARD
+        | PAYMENT_METHOD_TYPES.CHARGEBEE_PAYPAL
         | PAYMENT_METHOD_TYPES.CHARGEBEE_SEPA_DIRECT_DEBIT
         | PAYMENT_METHOD_TYPES.APPLE_PAY
         | PAYMENT_METHOD_TYPES.GOOGLE_PAY,
@@ -152,7 +139,6 @@ export const createPaymentTokenForExistingPayment = async (
 
 export type PaymentVerificator = (params: {
     addCardMode?: boolean;
-    Payment?: CardPayment | PaypalPayment;
     Token: string;
     ApprovalURL?: string;
     ReturnHost?: string;
@@ -423,24 +409,6 @@ export async function createPaymentTokenV5Paypal(
     };
 }
 
-export const formatTokenV5 = (
-    { Token, Status }: FetchPaymentIntentV5Response,
-    type: PAYMENT_METHOD_TYPES.CHARGEBEE_CARD | PAYMENT_METHOD_TYPES.CHARGEBEE_PAYPAL,
-    amountAndCurrency: AmountAndCurrency
-): ChargeableV5PaymentToken | NonChargeableV5PaymentToken => {
-    const chargeable = Status === PAYMENT_TOKEN_STATUS.CHARGEABLE;
-    const paymentToken = toV5PaymentToken(Token);
-
-    const base: ChargeableV5PaymentToken | NonChargeableV5PaymentToken = {
-        ...paymentToken,
-        ...amountAndCurrency,
-        chargeable,
-        type,
-    };
-
-    return base;
-};
-
 export function savedMethodRequires3DS(type: PAYMENT_METHOD_TYPES): boolean {
     return (
         type === PAYMENT_METHOD_TYPES.CHARGEBEE_CARD ||
@@ -455,8 +423,6 @@ export const createPaymentTokenForExistingChargebeePayment = async (
     type:
         | PAYMENT_METHOD_TYPES.CHARGEBEE_CARD
         | PAYMENT_METHOD_TYPES.CHARGEBEE_PAYPAL
-        | PAYMENT_METHOD_TYPES.CARD
-        | PAYMENT_METHOD_TYPES.PAYPAL
         | PAYMENT_METHOD_TYPES.CHARGEBEE_SEPA_DIRECT_DEBIT
         | PAYMENT_METHOD_TYPES.APPLE_PAY
         | PAYMENT_METHOD_TYPES.GOOGLE_PAY,
@@ -503,25 +469,10 @@ export const createPaymentTokenForExistingChargebeePayment = async (
 
     const chargeable = Status === PAYMENT_TOKEN_STATUS.CHARGEABLE;
 
-    let convertedType:
-        | PAYMENT_METHOD_TYPES.CHARGEBEE_CARD
-        | PAYMENT_METHOD_TYPES.CHARGEBEE_PAYPAL
-        | PAYMENT_METHOD_TYPES.CHARGEBEE_SEPA_DIRECT_DEBIT
-        | PAYMENT_METHOD_TYPES.APPLE_PAY
-        | PAYMENT_METHOD_TYPES.GOOGLE_PAY;
-
-    if (type === PAYMENT_METHOD_TYPES.CARD) {
-        convertedType = PAYMENT_METHOD_TYPES.CHARGEBEE_CARD;
-    } else if (type === PAYMENT_METHOD_TYPES.PAYPAL) {
-        convertedType = PAYMENT_METHOD_TYPES.CHARGEBEE_PAYPAL;
-    } else {
-        convertedType = type;
-    }
-
     return {
         ...amountAndCurrency,
         ...authorizedStatus,
-        type: convertedType,
+        type,
         v: 5,
         PaymentToken,
         chargeable,

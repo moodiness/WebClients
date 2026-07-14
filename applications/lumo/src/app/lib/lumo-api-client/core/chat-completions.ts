@@ -1,4 +1,3 @@
-import type { LumoModelId } from '../../../features/api-docs/lumoApiDocs.config';
 import type {
     ChatCompletionsContentPart,
     ChatCompletionsImagePart,
@@ -15,30 +14,45 @@ import type {
 import { Role } from '../../../types-api';
 
 export const DEFAULT_CHAT_MODEL = 'lumo';
-export const DEFAULT_REASONING_MODEL: LumoModelId = 'lumo-plus-v1';
+export const LUMO_LITE_MODEL = 'lumo-lite';
+export const LUMO_MAX_MODEL = 'lumo-max';
+
+export type LumoApiModelTier = 'auto' | 'lumo-lite' | 'lumo-max';
 
 export type ToChatCompletionsOptions = {
     enableReasoning?: boolean;
     model?: string;
-    reasoningModel?: string;
+    modelTier?: LumoApiModelTier;
     target?: LumoCompletionTarget;
 };
+
+export function resolveChatModel(modelTier: LumoApiModelTier = 'auto', model?: string): string {
+    if (model) {
+        return model;
+    }
+
+    switch (modelTier) {
+        case 'lumo-lite':
+            return LUMO_LITE_MODEL;
+        case 'lumo-max':
+            return LUMO_MAX_MODEL;
+        default:
+            return DEFAULT_CHAT_MODEL;
+    }
+}
 
 export function toChatCompletionsBody(
     request: LumoApiGenerationRequest,
     options: ToChatCompletionsOptions = {}
 ): ChatCompletionsRequest {
-    const {
-        enableReasoning = Boolean(request.options?.reasoning),
-        model = DEFAULT_CHAT_MODEL,
-        reasoningModel = DEFAULT_REASONING_MODEL,
-    } = options;
+    const { enableReasoning = Boolean(request.options?.reasoning), model, modelTier = 'auto' } = options;
 
     const tools = normalizeTools(request.options?.tools);
     const body: ChatCompletionsRequest = {
-        model: enableReasoning ? reasoningModel : model,
+        model: resolveChatModel(modelTier, model),
         messages: serializeMessages(request.turns),
         stream: true,
+        stream_options: { include_usage: true },
         reasoning_effort: enableReasoning ? 'high' : 'none',
     };
 
@@ -73,6 +87,10 @@ function buildLumoExtension(
         );
     }
 
+    if (request.options?.image_aspect_ratio) {
+        lumo.image_aspect_ratio = request.options.image_aspect_ratio;
+    }
+
     return lumo;
 }
 
@@ -94,43 +112,47 @@ function serializeMessages(turns: WireTurn[]): ChatCompletionsMessage[] {
             return message;
         }
 
-        // Multimodal messages use OpenAI's content-parts array. Encryption stays
-        // at the message level (mirroring the text-only case): the `encrypted`
-        // flag marks the whole message, and the text/image parts carry ciphertext
-        // (the image ciphertext wrapped as a `data:` URL, see `toImagePart`).
+        // Multimodal messages use OpenAI's content-parts array. Each part carries
+        // its own `encrypted` flag as a sibling to the sensitive field.
+        // Normally, message.encrypted is not necessary. However,
+        // for temporary backward compatibility reason, we also set a
+        // message-level `encrypted` flag for the parts-content form.
         const parts: ChatCompletionsContentPart[] = [];
 
         if (turn.content) {
-            parts.push({ type: 'text', text: turn.content });
+            const textPart: ChatCompletionsContentPart = { type: 'text', text: turn.content };
+            if (turn.encrypted) {
+                textPart.encrypted = true;
+            }
+            parts.push(textPart);
         }
 
         for (const image of turn.images!) {
             parts.push(toImagePart(image));
         }
 
-        const message: ChatCompletionsMessage = { role, content: parts };
-        if (turn.encrypted) {
-            message.encrypted = true;
-        }
-        return message;
+        // Compat: set encrypted at the message level too.
+        const encrypted = turn.images!.some((im) => im.encrypted);
+
+        return { role, content: parts, ...(encrypted ? { encrypted: true } : {}) };
     });
 }
 
 /**
  * Convert a WireImage into an OpenAI `image_url` content part.
  *
- * The `url` is always a `data:<mime>;base64,...` URL. For an unencrypted image the
- * MIME type is inferred from the payload's magic bytes. For an encrypted image the
- * payload is U2L ciphertext (not real image bytes), so a generic
- * `application/octet-stream` MIME is used; the backend strips the prefix and
- * decrypts the bytes at the worker boundary. Encryption is signalled by the
- * message-level `encrypted` flag, not per part.
+ * The `url` is always a `data:<mime>;base64,...` URL. For an encrypted image the
+ * payload is U2L ciphertext so a generic `application/octet-stream` MIME is used;
+ * encryption is additionally signalled by `image_url.encrypted` as a sibling to `url`.
  */
 function toImagePart(image: WireImage): ChatCompletionsImagePart {
     const mimeType = image.encrypted ? 'application/octet-stream' : inferImageMimeType(image.data);
     return {
         type: 'image_url',
-        image_url: { url: `data:${mimeType};base64,${image.data}` },
+        image_url: {
+            url: `data:${mimeType};base64,${image.data}`,
+            ...(image.encrypted ? { encrypted: true } : {}),
+        },
     };
 }
 
@@ -159,7 +181,11 @@ function toOpenAiRole(role: Role): ChatCompletionsMessage['role'] {
         case Role.ToolResult:
             return 'tool';
         case Role.ToolCall:
-            return 'assistant';
+            // Non-standard Lumo role: keeps the tool call's canonical JSON in
+            // `content` so it can be U2L-encrypted. The scheduler re-emits it as
+            // a structured `assistant` `tool_calls` message for vLLM. Using
+            // `assistant` here would leak the raw JSON to the model as text.
+            return 'lumo_tool_call';
         default:
             return 'user';
     }

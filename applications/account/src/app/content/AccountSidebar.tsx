@@ -22,6 +22,7 @@ import { useB2BAdminNavigation, useNavigationRef } from '@proton/vpn/contexts/na
 
 import SidebarListWrapper from '../containers/SidebarListWrapper';
 import CalendarSettingsSidebar from '../containers/calendar/CalendarSettingsSidebar';
+import SidebarAppsList from './SidebarAppsList';
 import type { Routes } from './routes';
 
 interface AccountSidebarProps {
@@ -60,7 +61,7 @@ const AccountSidebar = ({ app, appSlug, logo, expanded, onToggleExpand, routes }
 
     const backButtonText = backButtonCopy[app as keyof typeof backButtonCopy];
     const backButtonTitle = backButtonCopyTitle[app as keyof typeof backButtonCopyTitle];
-    const prefix = `/${appSlug}`;
+    const prefix = appSlug ? `/${appSlug}` : '';
 
     const {
         passOnboardingSpotlights: { startUsingPassSpotlight },
@@ -77,6 +78,7 @@ const AccountSidebar = ({ app, appSlug, logo, expanded, onToggleExpand, routes }
 
     const { pathname } = useLocation();
 
+    const sidebarFooterVariant = app === APPS.PROTONVPN_SETTINGS ? 'minimal' : 'full';
     return (
         <Sidebar
             app={app}
@@ -102,10 +104,12 @@ const AccountSidebar = ({ app, appSlug, logo, expanded, onToggleExpand, routes }
             logo={logo}
             expanded={expanded}
             onToggleExpand={onToggleExpand}
+            preFooter={app === APPS.PROTONACCOUNT ? <SidebarAppsList /> : undefined}
             version={<AppVersion />}
             wide={isAdminSidebarEnabled}
             data-testid="account:sidebar"
             navigationRef={isAdminSidebarEnabled ? navigationRef : null}
+            footerVariant={sidebarFooterVariant}
         >
             {adminSidebar?.loading ? (
                 <Loader />
@@ -125,7 +129,6 @@ const AccountSidebar = ({ app, appSlug, logo, expanded, onToggleExpand, routes }
                             {app === APPS.PROTONPASS && <SidebarListWrapper prefix={prefix} {...routes.pass} />}
                             {app === APPS.PROTONDOCS && <SidebarListWrapper prefix={prefix} {...routes.docs} />}
                             {app === APPS.PROTONWALLET && <SidebarListWrapper prefix={prefix} {...routes.wallet} />}
-                            {app === APPS.PROTONMEET && <SidebarListWrapper prefix={prefix} {...routes.meet} />}
                             {app === APPS.PROTONAUTHENTICATOR && (
                                 <SidebarListWrapper prefix={prefix} {...routes.authenticator} />
                             )}

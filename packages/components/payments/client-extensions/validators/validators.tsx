@@ -8,27 +8,22 @@ import Loader from '@proton/components/components/loader/Loader';
 import useConfig from '@proton/components/hooks/useConfig';
 import useModals from '@proton/components/hooks/useModals';
 import useNotifications from '@proton/components/hooks/useNotifications';
-import {
-    type ApplePayModalHandles,
-    type CardPayment,
-    type ChargebeeIframeHandles,
-    type ChargebeePaypalModalHandles,
-    type FreeSubscription,
-    type GooglePayModalHandles,
-    PAYMENT_METHOD_TYPES,
-    type PaymentVerificator,
-    type PaymentVerificatorV5,
-    type PaymentVerificatorV5Params,
-    type Subscription,
-    type SubscriptionEstimation,
-    type V5PaymentToken,
-    ensureTokenChargeableV5,
-    toV5PaymentToken,
-} from '@proton/payments';
+import type {
+    PaymentVerificator,
+    PaymentVerificatorV5,
+    PaymentVerificatorV5Params,
+} from '@proton/payments/core/createPaymentToken';
+import { ensureTokenChargeableV5 } from '@proton/payments/core/ensureTokenChargeable';
+import type { ChargebeeIframeHandles, FreeSubscription, V5PaymentToken } from '@proton/payments/core/interface';
+import type { ChargebeePaypalModalHandles } from '@proton/payments/core/payment-processors/chargebeePaypalPayment';
+import type { ApplePayModalHandles } from '@proton/payments/core/payment-processors/useApplePay';
+import type { GooglePayModalHandles } from '@proton/payments/core/payment-processors/useGooglePay';
+import type { Subscription, SubscriptionEstimation } from '@proton/payments/core/subscription/interface';
+import { toV5PaymentToken } from '@proton/payments/core/utils';
 import type { PaymentTelemetryContext } from '@proton/payments/telemetry/helpers';
 import type { PaymentStage } from '@proton/payments/telemetry/shared-checkout-telemetry';
 import { checkoutTelemetry } from '@proton/payments/telemetry/telemetry';
-import { getChargebeeErrorMessage } from '@proton/payments/ui';
+import { getChargebeeErrorMessage } from '@proton/payments/ui/components/ChargebeeIframe';
 import type { ProductParam } from '@proton/shared/lib/apps/product';
 import type { Api, User } from '@proton/shared/lib/interfaces';
 import { useFlag } from '@proton/unleash/useFlag';
@@ -58,7 +53,6 @@ import PaymentVerificationModal from './PaymentVerificationModal';
 export const getDefaultVerifyPayment = (createModal: (modal: JSX.Element) => void, api: Api): PaymentVerificator =>
     async function verify({
         addCardMode,
-        Payment,
         Token,
         ApprovalURL,
         ReturnHost,
@@ -67,7 +61,6 @@ export const getDefaultVerifyPayment = (createModal: (modal: JSX.Element) => voi
             createModal(
                 <PaymentVerificationModal
                     isAddCard={addCardMode}
-                    payment={Payment as CardPayment}
                     onSubmit={() => resolve(toV5PaymentToken(Token))}
                     onClose={reject}
                     onProcess={() => {
@@ -87,42 +80,6 @@ export const getDefaultVerifyPayment = (createModal: (modal: JSX.Element) => voi
             );
         });
     };
-
-/**
- * This function is very similar to {@link getDefaultVerifyPayment}, but it's used for PayPal.
- * There are differences in the configuration, but the overall idea and behavior is the same.
- * @returns
- */
-export const getDefaultVerifyPaypal = (createModal: (modal: JSX.Element) => void, api: Api): PaymentVerificator => {
-    return async function verify({ Token, ApprovalURL, ReturnHost }) {
-        const paymentToken = await new Promise<V5PaymentToken>((resolve, reject) => {
-            const onProcess = () => {
-                const abort = new AbortController();
-                return {
-                    promise: ensureTokenChargeable({
-                        Token,
-                        api,
-                        ReturnHost,
-                        ApprovalURL,
-                        signal: abort.signal,
-                    }),
-                    abort,
-                };
-            };
-            createModal(
-                <PaymentVerificationModal
-                    onSubmit={() => resolve(toV5PaymentToken(Token))}
-                    onClose={reject}
-                    type={PAYMENT_METHOD_TYPES.PAYPAL}
-                    onProcess={onProcess}
-                    initialProcess={onProcess()}
-                />
-            );
-        });
-
-        return paymentToken;
-    };
-};
 
 type Dependencies = {
     user?: User;
@@ -240,7 +197,7 @@ export const useChargebeeCardVerifyPayment = (
     return verifyChargebee;
 };
 
-export const PendingValidationModal = ({
+const PendingValidationModal = ({
     type,
     ...props
 }: Omit<ModalOwnProps, 'children'> & {

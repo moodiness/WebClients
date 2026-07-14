@@ -266,17 +266,18 @@ export function isCryptocurrencyArguments(args: unknown): args is Cryptocurrency
     );
 }
 
-export type ToolResultData = WebSearchToolResultData | ToolResultError;
+export type ToolResultData = WebSourceToolResultData | ToolResultError;
 
 export function isToolResultData(data: unknown): data is ToolResultData {
-    return isWebSearchToolResultData(data) || isToolResultError(data);
+    return isWebSourceToolResultData(data) || isToolResultError(data);
 }
 
-export type WebSearchToolResultData = {
+// Shared result shape returned by web_search and web_extract tool calls.
+export type WebSourceToolResultData = {
     results: SearchItem[];
 };
 
-export function isWebSearchToolResultData(data: unknown): data is WebSearchToolResultData {
+export function isWebSourceToolResultData(data: unknown): data is WebSourceToolResultData {
     // prettier-ignore
     return (
         typeof data === 'object' &&
@@ -317,16 +318,66 @@ export function isToolResultError(data: unknown): data is ToolResultError {
     return typeof data === 'object' && data !== null && 'error' in data && typeof data.error === 'boolean';
 }
 
+/**
+ * Normalize legacy / OpenAI-adapted tool call payloads into the shape expected by
+ * {@link isToolCallData}. The chat-completions stream adapter can emit `parameters`
+ * (legacy delta path) or `arguments` (server-side tool calls), and arguments may be a
+ * partial JSON string while streaming.
+ *
+ * It also lets the "announce" chunk of a server-side tool call render an in-progress
+ * state: a name-only `web_search`/`web_extract` payload is given an empty `query` so it
+ * validates before the arguments arrive. Other tools (weather, stock, ...) require
+ * specific arguments, so their announce chunk still renders nothing until the matching
+ * "dispatch" chunk replaces it — that's an accepted, minor limitation, not a bug.
+ */
+function normalizeToolCallPayload(parsed: unknown): unknown {
+    if (typeof parsed !== 'object' || parsed === null) {
+        return parsed;
+    }
+
+    const obj = parsed as Record<string, unknown>;
+    const name = obj.name;
+    if (typeof name !== 'string') {
+        return parsed;
+    }
+
+    let args: unknown = obj.arguments ?? obj.parameters ?? {};
+    if (typeof args === 'string' && args.length > 0) {
+        try {
+            args = JSON.parse(args);
+        } catch {
+            // Keep streaming partial argument fragments as-is.
+        }
+    }
+
+    if (typeof args === 'object' && args !== null) {
+        const argsObj = args as Record<string, unknown>;
+        if (name === 'web_search' || name === 'web_extract') {
+            if (typeof argsObj.query !== 'string') {
+                const query =
+                    typeof argsObj.search_term === 'string'
+                        ? argsObj.search_term
+                        : typeof argsObj.q === 'string'
+                          ? argsObj.q
+                          : '';
+                args = { ...argsObj, query };
+            }
+        }
+    } else if (name === 'web_search' || name === 'web_extract') {
+        args = { query: '' };
+    }
+
+    return { name, arguments: args };
+}
+
 export function tryParseToolCall(toolCall: string): ToolCallData | null {
     if (!toolCall) {
         return null;
     }
     try {
-        console.log('Trying to parse tool call:', toolCall);
-        const parsed = JSON.parse(toolCall);
+        const parsed = normalizeToolCallPayload(JSON.parse(toolCall));
         return isToolCallData(parsed) ? parsed : null;
-    } catch (e) {
-        console.log('Failed to parse tool call: ', e);
+    } catch {
         return null;
     }
 }
@@ -336,11 +387,9 @@ export function tryParseToolResult(toolResult: string): ToolResultData | null {
         return null;
     }
     try {
-        console.log('Trying to parse tool result: ', toolResult);
         const parsed = JSON.parse(toolResult);
         return isToolResultData(parsed) ? parsed : null;
-    } catch (e) {
-        console.log('Failed to parse tool result: ', e);
+    } catch {
         return null;
     }
 }

@@ -15,15 +15,16 @@ import useFormErrors from '@proton/components/components/v2/useFormErrors';
 import useNotifications from '@proton/components/hooks/useNotifications';
 import { usePaymentsApi } from '@proton/components/payments/react-extensions/usePaymentsApi';
 import { useLoading } from '@proton/hooks';
-import type { Invoice } from '@proton/payments';
 import type { FullBillingAddress } from '@proton/payments/core/billing-address/billing-address';
 import { zipCodeValidator } from '@proton/payments/core/billing-address/billing-address';
 import { isCountryWithRequiredPostalCode } from '@proton/payments/core/countries';
 import type { BillingAddressValidationResult } from '@proton/payments/core/errors';
 import { WrongBillingAddressError, backendBillingAddressFieldError } from '@proton/payments/core/errors';
-import { getVatNumberName } from '@proton/payments/ui';
+import type { Invoice } from '@proton/payments/core/interface';
+import { getVatNumberName } from '@proton/payments/ui/billing-address/components/VatNumberInput';
 import { getVatFormErrors } from '@proton/payments/ui/billing-address/hooks/useVatFormValidation';
 import { useVatPrefixSync } from '@proton/payments/ui/billing-address/hooks/useVatPrefixSync';
+import { cleanBillingAddressVat } from '@proton/payments/ui/billing-address/hooks/vatPrefixHelper';
 import { useFlag } from '@proton/unleash/useFlag';
 
 export type EditInvoiceModalInputs = {
@@ -78,9 +79,11 @@ export const EditInvoiceModal = (props: Props) => {
 
         setBackendErrors(null);
 
+        const submittedBillingAddress = cleanBillingAddressVat(invoiceBillingAddress);
+
         void withLoading(async () => {
             try {
-                await paymentsApi.updateInvoiceBillingAddress(props.invoice.ID, invoiceBillingAddress);
+                await paymentsApi.updateInvoiceBillingAddress(props.invoice.ID, submittedBillingAddress);
                 onResolve?.();
                 createNotification({ text: c('Success').t`Billing details updated` });
             } catch (error: any) {

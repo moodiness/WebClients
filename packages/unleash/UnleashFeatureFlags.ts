@@ -7,7 +7,6 @@ export enum CommonFeatureFlag {
     ForceReload = 'ForceReload',
     ColorPerEventWeb = 'ColorPerEventWeb',
     CollectLogs = 'CollectLogs',
-    AutoReloadPage = 'AutoReloadPage',
     DisableElectronMail = 'DisableElectronMail',
     // Whether to show Docs in the app switcher. NOT whether the docs homepage is enabled (that's `DocsHomepageEnabled` instead).
     // We'll clean up the naming of this flag in the future, if we don't remove it before then.
@@ -20,6 +19,7 @@ export enum CommonFeatureFlag {
     InboxDesktopMultiAccountSupport = 'InboxDesktopMultiAccountSupport',
     InboxDesktopThemeSelection = 'InboxDesktopThemeSelection',
     InboxDesktopManualUpdateBannerDisabled = 'InboxDesktopManualUpdateBannerDisabled',
+    InboxDesktopCategoryViewSettingsToggleReloadDisabled = 'InboxDesktopCategoryViewSettingsToggleReloadDisabled',
     BreachAlertsNotificationsCommon = 'BreachAlertsNotificationsCommon',
     WalletAutoSetup = 'WalletAutoSetup',
     InboxDesktopWinLinNewAppSwitcher = 'InboxDesktopWinLinNewAppSwitcher',
@@ -38,10 +38,10 @@ export enum CommonFeatureFlag {
     InboxDesktopAppSessionCacheDisabled = 'InboxDesktopAppSessionCacheDisabled',
     InboxDesktopBugReportLogAttachmentDisabled = 'InboxDesktopBugReportLogAttachmentDisabled',
     InboxDesktopSaveAsPdfPrintDialogDisabled = 'InboxDesktopSaveAsPdfPrintDialogDisabled',
-    // Monthly subscriber nudge feature flags
-    SubscriberNudgeBundleMonthly = 'SubscriberNudgeBundleMonthly',
-    SubscriberNudgeMailMonthly = 'SubscriberNudgeMailMonthly',
-    SubscriberNudgeDriveMonthly = 'SubscriberNudgeDriveMonthly',
+    // Monthly subscriber nudge kill switches (default off; enable to hide the nudge)
+    SubscriberNudgeBundleMonthlyDisabled = 'SubscriberNudgeBundleMonthlyDisabled',
+    SubscriberNudgeMailMonthlyDisabled = 'SubscriberNudgeMailMonthlyDisabled',
+    SubscriberNudgeDriveMonthlyDisabled = 'SubscriberNudgeDriveMonthlyDisabled',
     B2BOnboarding = 'B2BOnboarding',
     InboxBringYourOwnEmail = 'InboxBringYourOwnEmail',
     InboxBringYourOwnEmailClient = 'InboxBringYourOwnEmailClient',
@@ -65,7 +65,6 @@ export enum CommonFeatureFlag {
     OlesM1 = 'OlesM1',
     OrganizationLevelEasySwitch = 'OrganizationLevelEasySwitch',
     WebNPSModal = 'WebNPSModal',
-    MeetAddonCustomizer = 'MeetAddonCustomizer',
     WebApiRateLimiter = 'WebApiRateLimiter',
     PassSimpleLoginLifetimeOffer = 'PassSimpleLoginLifetimeOffer',
     MaxContactsImport = 'MaxContactsImport',
@@ -87,28 +86,17 @@ enum AccountFlag {
     MaintenanceImporter = 'MaintenanceImporter',
     VisionarySignup = 'VisionarySignup',
     NewCancellationFlow = 'NewCancellationFlow',
-    B2BLogsPass = 'B2BLogsPass',
-    B2BLogsVPN = 'B2BLogsVPN',
     VpnOrganizationLogRelayGatewayCreationMultiIp = 'VpnOrganizationLogRelayGatewayCreationMultiIp',
     VpnOrganizationLogRelayGatewayUpdateMultiIp = 'VpnOrganizationLogRelayGatewayUpdateMultiIp',
-    B2BOrganizationMonitor = 'B2BOrganizationMonitor',
     B2BNonPrivateEmailPhone = 'B2BNonPrivateEmailPhone',
     B2BDarkWebMonitoring = 'B2BDarkWebMonitoring',
+    B2BAlwaysOnEnabled = 'B2BAlwaysOnEnabled',
     UserGroupsPermissionCheck = 'UserGroupsPermissionCheck',
     UserGroupsGroupOwner = 'UserGroupsGroupOwner',
     EasySwitchOutlookSelectAccountDisabled = 'EasySwitchOutlookSelectAccountDisabled',
     EduGainSSO = 'EduGainSSO',
-    PassB2BPasswordGenerator = 'PassB2BPasswordGenerator',
     SharedServerFeature = 'SharedServerFeature',
-    PassB2BVaultCreation = 'PassB2BVaultCreation',
-    PassB2BVaultCreationV2 = 'PassB2BVaultCreationV2',
-    PassB2BItemSharing = 'PassB2BItemSharing',
-    PassB2BSecureLinkSharing = 'PassB2BSecureLinkSharing',
-    PassB2BAliasCreation = 'PassB2BAliasCreation',
     CryptoPostQuantumOptIn = 'CryptoPostQuantumOptIn',
-    PassB2BReports = 'PassB2BReports',
-    PassB2BPauseList = 'PassB2BPauseList',
-    DeleteAccountMergeReason = 'DeleteAccountMergeReason',
     VPNDashboard = 'VPNDashboard',
     SsoForPbs = 'SsoForPbs',
     DataRetentionPolicy = 'DataRetentionPolicy',
@@ -123,23 +111,22 @@ enum AccountFlag {
     ShowLiteAppCheckoutV2 = 'ShowLiteAppCheckoutV2',
     AdminRoleMVP = 'AdminRoleMVP',
     MspEnabled = 'MspEnabled',
-    UseZendeskV2 = 'UseZendeskV2',
+    MspCostsTableEnabled = 'MspCostsTableEnabled',
     PurchaseAttributionSurveyEnabled = 'PurchaseAttributionSurveyEnabled',
     CancellationFlowFeedbackFirst = 'CancellationFlowFeedbackFirst',
     B2BSidebarRefreshEnabled = 'B2BSidebarRefreshEnabled',
     RecoverySettingsRedesign = 'RecoverySettingsRedesign',
     SystemGroupFlag = 'SystemGroupFlag',
-    UnauthLost2FA = 'UnauthLost2FA',
     VPNReferralWithoutTrial = 'VPNReferralWithoutTrial',
     UserGroupsScimGroups = 'UserGroupsScimGroups',
     EnableZenDeskAIAgent = 'EnableZenDeskAIAgent',
-    PasswordReminderASR = 'PasswordReminderASR',
+    RecoveryFileShareEnabled = 'RecoveryFileShareEnabled',
+    GenericUserSettings = 'GenericUserSettings',
 }
 
 enum PaymentsFlag {
     SepaPayments = 'SepaPayments',
     SepaPaymentsB2C = 'SepaPaymentsB2C',
-    TransactionsView = 'TransactionsView',
     NewProtonBusinessBundlePlans = 'NewProtonBusinessBundlePlans',
     GooglePay = 'GooglePay',
     RegionalCurrenciesBatch3 = 'RegionalCurrenciesBatch3',
@@ -147,7 +134,6 @@ enum PaymentsFlag {
     PaypalKrw = 'PaypalKrw',
     GreenlandOfferRegionalPaymentBlock = 'GreenlandOfferRegionalPaymentBlock',
     PaymentsValidateBillingAddress = 'PaymentsValidateBillingAddress',
-    HideLumoAddonForVpn2024 = 'HideLumoAddonForVpn2024',
     DomainVpnBiz2023 = 'DomainVpnBiz2023',
     Vpn2024AddonsExperiment = 'Vpn2024AddonsExperiment',
 }
@@ -157,6 +143,7 @@ export enum CalendarFeatureFlag {
     EditSingleOccurrenceWeb = 'EditSingleOccurrenceWeb',
     CalendarMetrics = 'CalendarMetrics',
     RsvpCommentWeb = 'RsvpCommentWeb',
+    AutoAddDisabledE2EEAttendees = 'AutoAddDisabledE2EEAttendees',
 }
 
 export enum CalendarKillSwitchFlag {
@@ -186,6 +173,7 @@ enum DriveFeatureFlag {
     DriveWebRecoveryASV = 'DriveWebRecoveryASV',
     DriveWebSDKMismatchDetection = 'DriveWebSDKMismatchDetection',
     DriveWebEncryptedThumbnailCache = 'DriveWebEncryptedThumbnailCache',
+    DriveWebReportAbuseDirectShare = 'DriveWebReportAbuseDirectShare',
     // SDK rollouts — names should match @protontech/drive-sdk FeatureFlags enum, or have a manual mapping
     DriveCryptoEncryptBlocksWithPgpAead = 'DriveCryptoEncryptBlocksWithPgpAead',
     DriveSmallFileUpload = 'DriveSmallFileUpload',
@@ -198,6 +186,7 @@ enum DocsFeatureFlag {
     DocsAppSwitcher = 'DocsAppSwitcher',
     DocsPublicEditing = 'DocsPublicEditing',
     DriveWebTextFileEdit = 'DriveWebTextFileEdit',
+    DocsTableOfContents = 'DocsTableOfContents',
     // Comments
     DocsEnableNotificationsOnNewComment = 'DocsEnableNotificationsOnNewComment',
     // Homepage
@@ -214,6 +203,10 @@ enum DocsFeatureFlag {
     SheetsODSImportEnabled = 'SheetsODSImportEnabled',
     SheetsODSExportEnabled = 'SheetsODSExportEnabled',
     SheetsDriftDetectionEnabled = 'SheetsDriftDetectionEnabled',
+    SheetsPatchesStorageEnabled = 'SheetsPatchesStorageEnabled',
+    SheetsStatusBarEnabled = 'SheetsStatusBarEnabled',
+    SheetsCustomNumberFormatEnabled = 'SheetsCustomNumberFormatEnabled',
+    SheetsCustomDateTimeFormatEnabled = 'SheetsCustomDateTimeFormatEnabled',
     // Update compression and chunking
     DocsUpdateCompressionEnabled = 'DocsUpdateCompressionEnabled',
     DocsUpdateChunkingEnabled = 'DocsUpdateChunkingEnabled',
@@ -228,6 +221,7 @@ enum DocsFeatureFlag {
     DocsLoadRecentsWithDriveSDK = 'DocsLoadRecentsWithDriveSDK',
     DocsDocumentViewerEventsSDK = 'DocsDocumentViewerEventsSDK',
     DocsRenameWithDriveSDK = 'DocsRenameWithDriveSDK',
+    DocsTrashWithDriveSDK = 'DocsTrashWithDriveSDK',
     DocsMoveModalDriveSDK = 'DocsMoveModalDriveSDK',
 }
 
@@ -238,10 +232,10 @@ export enum MailFeatureFlag {
     ReplayOnboardingModal = 'ReplayOnboardingModal',
     MailMetrics = 'MailMetrics',
     MailWebListTelemetry = 'MailWebListTelemetry',
-    SubscriberNudgeMailMonthly = 'SubscriberNudgeMailMonthly',
     RemoveReplyStyles = 'RemoveReplyStyles',
     // Category view flags, used to control the whole category view
     CategoryView = 'CategoryView',
+    CategoriesUnseenBadge = 'CategoriesUnseenBadge',
     // Attempt to fix the unability to save/send drafts on huge accounts
     PreventEventLoopCallOnCompose = 'PreventEventLoopCallOnCompose',
     MailStoreDebugMode = 'MailStoreDebugMode',
@@ -250,6 +244,8 @@ export enum MailFeatureFlag {
     LumoSieveHelper = 'LumoSieveHelper',
     ScribeToLumo = 'ScribeToLumo',
     OneTimePasscode = 'OneTimePasscode',
+    // reworked local search using foundation search
+    ContentSearch = 'ContentSearch',
 }
 
 enum MailKillSwitchFlag {
@@ -288,6 +284,7 @@ enum MeetFeatureFlag {
     PersonalMeetingRotation = 'PersonalMeetingRotation',
     MeetPromptOnTabClose = 'MeetPromptOnTabClose',
     MeetSoundNotificationsEnabled = 'MeetSoundNotificationsEnabled',
+    MeetNewChatHandling = 'MeetNewChatHandling',
     MeetNewJoinType = 'MeetNewJoinType',
     MeetNewSwitchJoinType = 'MeetNewSwitchJoinType',
     MeetSwitchJoinType = 'MeetSwitchJoinType',
@@ -324,10 +321,15 @@ enum MeetFeatureFlag {
     MeetDynacast = 'MeetDynacast',
     MeetSimulcast = 'MeetSimulcast',
     MeetMeetingTimeout = 'MeetMeetingTimeout',
-    MeetUseSimpleSegmentation = 'MeetUseSimpleSegmentation',
     MeetCoreWorker = 'MeetCoreWorker',
     MeetEnableScreenShareAudio = 'MeetEnableScreenShareAudio',
     EnableAccessibilityAnnouncements = 'EnableAccessibilityAnnouncements',
+    MeetWaitingRoom = 'MeetWaitingRoom',
+    MeetDtlnPerfMonitor = 'MeetDtlnPerfMonitor',
+    MeetBlurPersonConfidenceBoost = 'MeetBlurPersonConfidenceBoost',
+    MeetBlurMulticlassPersonConfidenceBoost = 'MeetBlurMulticlassPersonConfidenceBoost',
+    MeetUseNewBackgroundBlurVersion = 'MeetUseNewBackgroundBlurVersion',
+    MeetChatThreads = 'MeetChatThreads',
 }
 
 enum LumoFeatureFlag {
@@ -348,6 +350,10 @@ enum LumoFeatureFlag {
     LumoMeowmory = 'LumoMeowmory',
     LumoNativeAuth = 'LumoNativeAuth',
     LumoCustomAgents = 'LumoCustomAgents',
+    LumoAiPaperTrail = 'LumoAiPaperTrail',
+    LumoMaxAvailableGuest = 'LumoMaxAvailableGuest',
+    LumoMaxAvailableFree = 'LumoMaxAvailableFree',
+    WhatsNewV2 = 'WhatsNewV2',
 }
 
 export type FeatureFlag =

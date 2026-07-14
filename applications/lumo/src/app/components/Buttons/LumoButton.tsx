@@ -1,24 +1,22 @@
 import { clsx } from 'clsx';
 
 import { Button } from '@proton/atoms/Button/Button';
+import type { ButtonProps } from '@proton/atoms/Button/Button';
 import type { ButtonLikeSize } from '@proton/atoms/Button/ButtonLike';
 import { Tooltip } from '@proton/atoms/Tooltip/Tooltip';
 import type { PopperPlacement } from '@proton/components/index';
-import { Icon } from '@proton/components/index';
-import type { IconName, IconSize } from '@proton/icons/types';
 
-interface LumoButtonProps {
+import { type IconName, LumoIcon } from '../LumoIcon/LumoIcon';
+
+interface LumoButtonProps extends Omit<ButtonProps, 'ref' | 'title'> {
     iconName: IconName;
     title: string;
     alt?: string;
     isActive?: boolean;
-    onClick?: () => void;
     tooltipPlacement?: PopperPlacement;
     size?: ButtonLikeSize;
-    disabled?: boolean;
     buttonRef?: React.MutableRefObject<HTMLButtonElement | null>;
-    className?: string;
-    iconSize?: IconSize;
+    iconSize?: number;
 }
 
 const LumoButton = ({
@@ -32,21 +30,26 @@ const LumoButton = ({
     disabled,
     buttonRef,
     className,
-    iconSize = 4,
+    iconSize = 16,
+    shape = 'solid',
+    color = 'weak',
+    ...rest
 }: LumoButtonProps) => {
     return (
         <Tooltip title={title} originalPlacement={tooltipPlacement || 'right'}>
             <Button
                 icon
-                shape="ghost"
+                shape={shape}
+                color={color}
                 className={clsx('shrink-0', className, isActive && 'is-active bg-transparent')}
                 onClick={onClick}
                 size={size || 'small'}
                 disabled={disabled}
                 ref={buttonRef}
                 aria-pressed={isActive}
+                {...rest}
             >
-                <Icon name={iconName} alt={alt} size={iconSize} />
+                <LumoIcon name={iconName} aria-label={alt} size={iconSize} />
             </Button>
         </Tooltip>
     );

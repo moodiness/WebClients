@@ -1,54 +1,45 @@
 import { useMemo, useRef } from 'react';
 
 import useConfig from '@proton/components/hooks/useConfig';
+import { type PaymentsVersion, buyCredit, payInvoice, setPaymentMethodV5 } from '@proton/payments/core/api/api';
+import { createPaymentSubscription } from '@proton/payments/core/api/createPaymentSubscription';
+import type { BillingAddress } from '@proton/payments/core/billing-address/billing-address';
+import { type ADDON_NAMES, PAYMENT_METHOD_TYPES, type PLANS } from '@proton/payments/core/constants';
+import type { PaymentVerificator, PaymentVerificatorV5 } from '@proton/payments/core/createPaymentToken';
 import type {
-    ADDON_NAMES,
     AmountAndCurrency,
-    ApplePayModalHandles,
     AvailablePaymentMethod,
     ChargeablePaymentParameters,
     ChargebeeIframeEvents,
     ChargebeeIframeHandles,
-    ChargebeePaypalModalHandles,
     Currency,
     Cycle,
     FreeSubscription,
-    GooglePayModalHandles,
-    PLANS,
     PaymentMethodFlow,
     PaymentMethodType,
-    PaymentProcessorType,
     PaymentStatus,
-    PaymentVerificator,
-    PaymentVerificatorV5,
     PlainPaymentMethodType,
     PlanIDs,
     SavedPaymentMethod,
-    Subscription,
-} from '@proton/payments';
-import {
-    PAYMENT_METHOD_TYPES,
-    isExistingPaymentMethod,
-    useApplePay,
-    useGooglePay,
-    useSepaCurrencyOverride,
-} from '@proton/payments';
-import { type PaymentsVersion, buyCredit, payInvoice, setPaymentMethodV5 } from '@proton/payments/core/api/api';
-import { createPaymentSubscription } from '@proton/payments/core/api/createPaymentSubscription';
-import type { BillingAddress } from '@proton/payments/core/billing-address/billing-address';
+} from '@proton/payments/core/interface';
+import { useSepaCurrencyOverride } from '@proton/payments/core/payment-methods/useSepaCurrencyOverride';
+import type { ChargebeePaypalModalHandles } from '@proton/payments/core/payment-processors/chargebeePaypalPayment';
+import type { PaymentProcessorType } from '@proton/payments/core/payment-processors/interface';
+import { type ApplePayModalHandles, useApplePay } from '@proton/payments/core/payment-processors/useApplePay';
+import { type GooglePayModalHandles, useGooglePay } from '@proton/payments/core/payment-processors/useGooglePay';
+import type { Subscription } from '@proton/payments/core/subscription/interface';
+import { isExistingPaymentMethod } from '@proton/payments/core/type-guards';
 import type { PaymentTelemetryContext } from '@proton/payments/telemetry/helpers';
 import type { ProductParam } from '@proton/shared/lib/apps/product';
 import type { APP_NAMES } from '@proton/shared/lib/constants';
 import type { Api, User } from '@proton/shared/lib/interfaces';
 
 import useBitcoin from './useBitcoin';
-import { useCard } from './useCard';
 import { useChargebeeCard } from './useChargebeeCard';
 import { useChargebeePaypal } from './useChargebeePaypal';
 import type { OnMethodChangedHandler } from './useMethods';
 import { useMethods } from './useMethods';
 import { usePaymentsApi } from './usePaymentsApi';
-import { usePaypal } from './usePaypal';
 import { useSavedChargebeeMethod } from './useSavedChargebeeMethod';
 import { useSavedMethod } from './useSavedMethod';
 import { useSepaDirectDebit } from './useSepaDirectDebit';
@@ -63,7 +54,7 @@ export interface OperationsSubscriptionData {
     vatNumber?: string;
 }
 
-export interface OperationsInvoiceData {
+interface OperationsInvoiceData {
     invoiceId: string;
 }
 
@@ -276,7 +267,6 @@ export const usePaymentFacade = (
         api,
         isAuthenticated,
         verifyPayment,
-        verifyPaymentPaypal,
         verifyPaymentChargebeeCard,
         chargebeeHandles,
         chargebeeEvents,
@@ -287,7 +277,6 @@ export const usePaymentFacade = (
         api: Api;
         isAuthenticated: boolean;
         verifyPayment: PaymentVerificator;
-        verifyPaymentPaypal: PaymentVerificator;
         verifyPaymentChargebeeCard: PaymentVerificatorV5;
         chargebeeHandles: ChargebeeIframeHandles;
         chargebeeEvents: ChargebeeIframeEvents;
@@ -404,61 +393,6 @@ export const usePaymentFacade = (
         }
     );
 
-    const card = useCard(
-        {
-            amountAndCurrency,
-            onChargeable: (params) =>
-                onChargeable(
-                    getOperations(api, params, paymentContext.getOperationsData(), {
-                        paymentsVersion: 'v4',
-                        paymentMethodValue: PAYMENT_METHOD_TYPES.CARD,
-                        ...operationProps,
-                    }),
-                    {
-                        chargeablePaymentParameters: params,
-                        source: PAYMENT_METHOD_TYPES.CARD,
-                        sourceType: params.type,
-                        context: paymentContext.getOperationsData(),
-                        paymentsVersion: 'v4',
-                        paymentProcessorType: card.meta.type,
-                    }
-                ),
-            verifyOnly: flow === 'add-card',
-        },
-        {
-            api,
-            verifyPayment,
-        }
-    );
-
-    const paypalIgnoreAmountCheck = flow === 'invoice';
-    const paypal = usePaypal(
-        {
-            amountAndCurrency,
-            onChargeable: (params) =>
-                onChargeable(
-                    getOperations(api, params, paymentContext.getOperationsData(), {
-                        paymentsVersion: 'v4',
-                        paymentMethodValue: PAYMENT_METHOD_TYPES.PAYPAL,
-                        ...operationProps,
-                    }),
-                    {
-                        chargeablePaymentParameters: params,
-                        source: PAYMENT_METHOD_TYPES.PAYPAL,
-                        sourceType: params.type,
-                        context: paymentContext.getOperationsData(),
-                        paymentsVersion: 'v4',
-                        paymentProcessorType: paypal.meta.type,
-                    }
-                ),
-            ignoreAmountCheck: paypalIgnoreAmountCheck,
-        },
-        {
-            api,
-            verifyPayment: verifyPaymentPaypal,
-        }
-    );
-
     const chargebeeCard = useChargebeeCard(
         {
             amountAndCurrency,
@@ -521,31 +455,6 @@ export const usePaymentFacade = (
     );
 
     const paymentMethodValue: PaymentMethodType | undefined = methods.selectedMethod?.value;
-    const bitcoinInhouse = useBitcoin({
-        api,
-        Amount: amount,
-        Currency: currency,
-        enablePolling: paymentMethodValue === PAYMENT_METHOD_TYPES.BITCOIN,
-        paymentsVersion: 'v4',
-        onTokenValidated: (params: ChargeablePaymentParameters) => {
-            return onChargeable(
-                getOperations(api, params, paymentContext.getOperationsData(), {
-                    paymentsVersion: 'v4',
-                    paymentMethodValue: PAYMENT_METHOD_TYPES.BITCOIN,
-                    ...operationProps,
-                }),
-                {
-                    chargeablePaymentParameters: params,
-                    source: PAYMENT_METHOD_TYPES.BITCOIN,
-                    sourceType: params.type,
-                    context: paymentContext.getOperationsData(),
-                    paymentsVersion: 'v4',
-                    paymentProcessorType: bitcoinInhouse.meta.type,
-                }
-            );
-        },
-    });
-
     const bitcoinChargebee = useBitcoin({
         api,
         Amount: amount,
@@ -675,24 +584,12 @@ export const usePaymentFacade = (
             }
         }
 
-        if (paymentMethodValue === PAYMENT_METHOD_TYPES.CARD) {
-            return card;
-        }
-
-        if (paymentMethodValue === PAYMENT_METHOD_TYPES.PAYPAL) {
-            return paypal;
-        }
-
         if (paymentMethodValue === PAYMENT_METHOD_TYPES.CHARGEBEE_CARD) {
             return chargebeeCard;
         }
 
         if (paymentMethodValue === PAYMENT_METHOD_TYPES.CHARGEBEE_PAYPAL) {
             return chargebeePaypal;
-        }
-
-        if (paymentMethodValue === PAYMENT_METHOD_TYPES.BITCOIN) {
-            return bitcoinInhouse;
         }
 
         if (paymentMethodValue === PAYMENT_METHOD_TYPES.CHARGEBEE_BITCOIN) {
@@ -713,9 +610,7 @@ export const usePaymentFacade = (
     }, [
         paymentMethodValue,
         paymentMethodType,
-        card,
         savedMethod,
-        paypal,
         savedChargebeeMethod,
         chargebeeCard,
         chargebeePaypal,
@@ -729,11 +624,8 @@ export const usePaymentFacade = (
         [
             savedMethod,
             savedChargebeeMethod,
-            card,
-            paypal,
             chargebeeCard,
             chargebeePaypal,
-            bitcoinInhouse,
             bitcoinChargebee,
             directDebit,
             applePay,
@@ -750,13 +642,10 @@ export const usePaymentFacade = (
     return {
         methods,
         savedMethod,
-        card,
-        paypal,
         chargebeeCard,
         chargebeePaypal,
         applePay,
         googlePay,
-        bitcoinInhouse,
         bitcoinChargebee,
         selectedProcessor,
         flow,

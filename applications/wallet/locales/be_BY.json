@@ -2356,20 +2356,11 @@
       "Input isn't a valid email or bitcoin address": [
         "Уведзены няправільны адрас электроннай пошты або адрас Bitcoin"
       ],
-      "Invalid ${ name } code": [
-        "Памылковы код ${ name }"
-      ],
-      "Invalid card number": [
-        "Памылковы нумар карткі"
-      ],
       "Invalid code": [
         "Памылковы код"
       ],
       "Invalid coupon": [
         "Памылковы купон"
-      ],
-      "Invalid expiration date": [
-        "Памылковая дата завяршэння тэрміну дзеяння"
       ],
       "Invalid IBAN": [
         "Памылковы IBAN"
@@ -2503,6 +2494,9 @@
       "VAT number must start with ${ prefixes }": [
         "Нумар ПДВ павінен пачынацца з ${ prefixes }"
       ],
+      "We couldn’t send a verification code using this method.": [
+        "Немагчыма адправіць код спраўджання з дапамогай гэтага спосабу."
+      ],
       "Wrong billing address": [
         "Няправільны плацежны адрас"
       ]
@@ -2611,6 +2605,9 @@
       ],
       "Security key": [
         "Ключ бяспекі"
+      ],
+      "Touch your security key.": [
+        "Дакраніцеся да свайго ключа бяспекі."
       ]
     },
     "fido2: Label": {
@@ -3061,9 +3058,6 @@
       "Payments are protected with TLS encryption and Swiss privacy laws.": [
         "Плацяжы абаронены шыфраваннем TLS і швейцарскімі законамі аб прыватнасці."
       ],
-      "Please authenticate your card in the verification tab.": [
-        "Прайдзіце аўтэнтыфікацыю са сваёй карткай на ўкладцы праверкі."
-      ],
       "Please authenticate your payment in the verification tab.": [
         "Прайдзіце аўтэнтыфікацыю свайго плацяжу на ўкладцы спраўджання."
       ],
@@ -3072,9 +3066,6 @@
       ],
       "Please try again using a different payment method, or contact your bank.": [
         "Паспрабуйце яшчэ раз, скарыстайцеся іншым спосабам аплаты або звярніцеся ў службу падтрымкі вашага банка."
-      ],
-      "Please try again, use a different payment method, or contact PayPal for assistance.": [
-        "Паспрабуйце яшчэ раз, скарыстайцеся іншым спосабам аплаты або звярніцеся ў службу падтрымкі PayPal."
       ],
       "Price includes all applicable cycle-based discounts and non-expired coupons saved to your account.": [
         "Кошт уключае ўсе падыходзячыя (не пратэрмінаваныя) купоны, якія захаваны ў вашым уліковым запісе."
@@ -3252,9 +3243,6 @@
       ],
       "You will lose access to ${ planTitle } features on this date.": [
         "Вы страціце доступ да функцый тарыфнага плана ${ planTitle } пасля гэтай даты."
-      ],
-      "You will soon be redirected to PayPal to verify your payment.": [
-        "Неўзабаве вы будзеце перанакіраваны на сайт PayPal для спраўджання плацяжу."
       ],
       "You'll then be billed every ${ renewCycle } month at ${ renewAmountStr }. You can cancel at any time.": [
         "Пасля гэтага вам будзе выстаўляцца рахунак кожны ${ renewCycle } месяц у памеры ${ renewAmountStr }. Скасаваць можна ў любы час.",
@@ -5883,9 +5871,6 @@
       "Payment verification": [
         "Праверка плацяжу"
       ],
-      "PayPal verification failed": [
-        "Не ўдалося ажыццявіць праверку PayPal"
-      ],
       "Processing...": [
         "Апрацоўка..."
       ],
@@ -5988,6 +5973,9 @@
       "If you purchased a gift code or received one from our support team, you can enter it here.": [
         "Калі вы купілі падарункавы код або атрымалі яго ад нашай каманды падтрымкі, то яго можна ўвесці тут."
       ],
+      "Instant AI assistance, human expert on hand!": [
+        "Імгненная дапамога ШІ, эксперт-чалавек заўсёды напагатове!"
+      ],
       "The new subscription cycle starts on ${ formattedTime }": [
         "Новы перыяд аплаты пачнецца ў ${ formattedTime }"
       ]
@@ -6045,6 +6033,11 @@
       ],
       "The user must have an address to request data access": [
         "Карыстальнік павінен мець адрас, каб запытаць доступ да даных"
+      ]
+    },
+    "user_modal": {
+      "You'll be able to assign roles once the user has accepted the invitation.": [
+        "Вы зможаце прызначаць ролі, як толькі карыстальнік прыме запрашэнне."
       ]
     },
     "Validation": {

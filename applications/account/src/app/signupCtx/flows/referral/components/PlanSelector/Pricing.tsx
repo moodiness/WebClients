@@ -2,8 +2,8 @@ import merge from 'lodash/merge';
 import { c } from 'ttag';
 
 import { Price, SkeletonLoader } from '@proton/components';
-import type { PLANS } from '@proton/payments';
-import { usePaymentOptimistic } from '@proton/payments/ui';
+import type { PLANS } from '@proton/payments/core/constants';
+import { usePaymentOptimistic } from '@proton/payments/ui/context/PaymentContextOptimistic';
 
 import { useIsVPNPlanWithoutTrialVariant } from '../../helpers/useIsVPNPlanWithoutTrialVariant';
 
@@ -30,7 +30,7 @@ const Pricing = ({ plan }: { plan: PLANS }) => {
     );
 
     return pricingInitialized ? (
-        <span className="color-weak text-sm">
+        <span className="color-weak text-sm" data-testid="referral:pricing">
             {isVPNPlanWithoutTrial ? c('Signup').jt`From ${priceElement}` : c('Signup').jt`Then ${priceElement}`}
         </span>
     ) : (

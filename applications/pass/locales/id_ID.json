@@ -652,9 +652,6 @@
       "Skip": [
         "Lewati"
       ],
-      "Someone shared an item with you on ${ PASS_APP_NAME }.": [
-        "Seseorang membagikan item kepada Anda di ${ PASS_APP_NAME }."
-      ],
       "Sort vault items": [
         "Urutkan item brankas"
       ],
@@ -990,6 +987,9 @@
       "Error reporting problem": [
         "Terjadi masalah saat melaporkan kesalahan"
       ],
+      "Failed loading group members": [
+        "Gagal memuat anggota grup"
+      ],
       "Failed removing the invite.": [
         "Gagal menghapus undangan."
       ],
@@ -1214,9 +1214,6 @@
       ],
       "Trashing item failed": [
         "Item gagal dibuang"
-      ],
-      "Try reaching out to the link owner.": [
-        "Cobalah untuk menghubungi pemilik tautan."
       ],
       "Unable to generate an OTP code for this item": [
         "Tidak dapat membuat kode OTP untuk item ini"
@@ -1691,6 +1688,9 @@
       ],
       "Enter the address you want to email.": [
         "Masukkan alamat yang ingin Anda kirimi email."
+      ],
+      "Enter verification code. Digit ${ digit }.": [
+        "Masukkan kode verifikasi. Digit ${ digit }."
       ],
       "Enter your extra password": [
         "Masukkan kata sandi tambahan Anda"
@@ -2617,6 +2617,9 @@
       "Address details": [
         "Rincian alamat"
       ],
+      "Advanced": [
+        "Lanjutan"
+      ],
       "Alias": [
         "Alias"
       ],
@@ -2850,6 +2853,9 @@
       ],
       "Expired": [
         "Kedaluwarsa"
+      ],
+      "Expires in": [
+        "Kedaluwarsa dalam"
       ],
       "Expiry Date": [
         "Tanggal Kedaluwarsa"
@@ -3478,9 +3484,6 @@
       "Theme": [
         "Tema"
       ],
-      "This item is accessible until ${ date } or until the view limit is reached.": [
-        "Item ini dapat diakses hingga ${ date } atau hingga batas jumlah tampilannya tercapai."
-      ],
       "Tier/Level": [
         "Tingkat/Level"
       ],
@@ -3868,6 +3871,9 @@
       ],
       "Coupon": [
         "Kupon"
+      ],
+      "e.g. My automation script": [
+        "mis. Skrip otomatisasi saya"
       ],
       "E.g., ": [
         "Mis., "

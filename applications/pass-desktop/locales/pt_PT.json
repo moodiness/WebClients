@@ -163,6 +163,9 @@
       "Continue offline": [
         "Continuar offline"
       ],
+      "Copy": [
+        "Copiar"
+      ],
       "Copy and close": [
         "Copiar e fechar"
       ],
@@ -262,6 +265,9 @@
       "Dismiss": [
         "Descartar"
       ],
+      "Done": [
+        "Feito"
+      ],
       "Download this CSV template": [
         "Transfere este modelo CSV"
       ],
@@ -324,6 +330,9 @@
       ],
       "Get Started": [
         "Começar"
+      ],
+      "Hide": [
+        "Ocultar"
       ],
       "How do I export my data from ${ PROVIDER_INFO_MAP[form.values.provider].title }?": [
         "Como exporto os meus dados do ${ PROVIDER_INFO_MAP[form.values.provider].title }?"
@@ -1365,6 +1374,9 @@
       ],
       "Password ends with": [
         "A palavra-passe termina com"
+      ],
+      "Username": [
+        "Nome de utilizador"
       ]
     },
     "Info": {
@@ -1697,6 +1709,9 @@
       "Enter the address you want to email.": [
         "Introduza o endereço para o qual deseja enviar um e-mail."
       ],
+      "Enter verification code. Digit ${ digit }.": [
+        "Introduza o código de verificação. Dígito ${ digit }."
+      ],
       "Enter your extra password": [
         "Introduza a sua palavra-passe adicional"
       ],
@@ -1889,6 +1904,10 @@
       ],
       "Moving all items from \"${ payload.content.name }\"": [
         "Movendo todos os itens de \"${ payload.content.name }\""
+      ],
+      "Moving an item to another vault will erase its secure links.": [
+        "Mover um item para outro cofre apagará as suas ligações seguras.",
+        "Mover itens para outro cofre apagará as suas ligações seguras."
       ],
       "Moving items": [
         "A mover itens"
@@ -2608,6 +2627,9 @@
       "Address details": [
         "Detalhes do endereço"
       ],
+      "Advanced": [
+        "Avançado"
+      ],
       "Alias": [
         "Alias"
       ],
@@ -2844,6 +2866,9 @@
       ],
       "Expired": [
         "Expirado"
+      ],
+      "Expires in": [
+        "Expira em"
       ],
       "Expiry Date": [
         "Data de expiração"
@@ -3898,6 +3923,9 @@
       ],
       "Coupon": [
         "Cupão"
+      ],
+      "e.g. My automation script": [
+        "p. ex., O meu script de automatização"
       ],
       "E.g., ": [
         "Ex., "

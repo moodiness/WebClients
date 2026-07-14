@@ -2,11 +2,10 @@ import type { KeyboardEvent } from 'react';
 import { useEffect, useState } from 'react';
 
 import { Form, FormikProvider } from 'formik';
-import isEmpty from 'lodash/isEmpty';
 import { c } from 'ttag';
 
+import { getIsScimGroup } from '@proton/account/groups/groupFlags';
 import { useOrganization } from '@proton/account/organization/hooks';
-import { useOrganizationRoles } from '@proton/account/organizationRoles/hooks';
 import { Button } from '@proton/atoms/Button/Button';
 import { CircleLoader } from '@proton/atoms/CircleLoader/CircleLoader';
 import InputFieldStacked from '@proton/components/components/inputFieldStacked/InputFieldStacked';
@@ -20,7 +19,7 @@ import InputFieldTwo from '@proton/components/components/v2/field/InputField';
 import TextAreaTwo from '@proton/components/components/v2/input/TextArea';
 import ModalHeaderWithTabs from '@proton/components/containers/members/rolesAndPermissions/ModalHeaderWithTabs';
 import RolesAndPermissionsTab from '@proton/components/containers/members/rolesAndPermissions/RolesAndPermissionsTab';
-import { useLoading } from '@proton/hooks';
+import useLoading from '@proton/hooks/useLoading';
 import { KEY_FLAG } from '@proton/shared/lib/constants';
 import { hasBit } from '@proton/shared/lib/helpers/bitset';
 import { stripWhitespace } from '@proton/shared/lib/helpers/string';
@@ -50,7 +49,6 @@ const EditGroupModal = () => {
     } = useGroupsManagement();
 
     const { dirty, values: formValues, setFieldValue, isValid, errors } = form;
-    const hasErrors = !isEmpty(errors);
     const { primarySuggestion } = useGroupAvailableAddressDomains();
 
     const [discardChangesModalProps, setDiscardChangesModal, renderDiscardChangesModal] = useModalState();
@@ -58,11 +56,9 @@ const EditGroupModal = () => {
     const [loading, withLoading] = useLoading();
     const [organization] = useOrganization();
 
-    const [selectedRoles, setSelectedRoles] = useState<Set<string>>(
-        () => new Set(groupData?.GroupOrganizationRoles?.map(({ Role }) => Role.OrganizationRoleID) ?? [])
-    );
-    const [organizationRoles, loadingRoles] = useOrganizationRoles();
     const showRolesTab = useFlag('AdminRoleMVP');
+
+    const isScimGroup = getIsScimGroup(groupData);
 
     const onCancel = () => {
         if (dirty) {
@@ -71,9 +67,14 @@ const EditGroupModal = () => {
             actions.onDiscardChanges();
         }
     };
+
+    const [activeTabIndex, setActiveTabIndex] = useState(0);
+
     const onSave = () => {
         if (isValid) {
             void withLoading(actions.onSaveGroup());
+        } else {
+            setActiveTabIndex(0);
         }
     };
 
@@ -133,6 +134,7 @@ const EditGroupModal = () => {
                                     }
                                 }}
                                 error={errors.name}
+                                disabled={isScimGroup}
                             />
                         </InputFieldStacked>
                         <InputFieldStacked isGroupElement icon="text-align-left">
@@ -195,6 +197,7 @@ const EditGroupModal = () => {
                                     as={SelectTwo}
                                     unstyled
                                     className="rounded-none"
+                                    caretClassName="mr-5"
                                     name="permissions"
                                     placeholder={c('placeholder').t`Members`}
                                     value={formValues.permissions}
@@ -223,18 +226,21 @@ const EditGroupModal = () => {
             <ModalTwo size="large" open onClose={onCancel}>
                 <ModalHeaderWithTabs
                     title={modalTitle}
+                    tabIndex={activeTabIndex}
+                    onChangeTabIndex={setActiveTabIndex}
                     tabs={[
-                        { title: c('group_modal').t`General`, content: formContent },
+                        {
+                            title: c('group_modal').t`General`,
+                            content: formContent,
+                        },
                         ...(showRolesTab
                             ? [
                                   {
                                       title: c('group_modal').t`Roles and permissions`,
                                       content: (
                                           <RolesAndPermissionsTab
-                                              selectedRoles={selectedRoles}
-                                              onChange={setSelectedRoles}
-                                              organizationRoles={organizationRoles}
-                                              loadingRoles={loadingRoles}
+                                              selectedRoles={new Set(formValues.adminRoles)}
+                                              onChange={(roles) => setFieldValue('adminRoles', Array.from(roles))}
                                               isGroupContext
                                           />
                                       ),
@@ -242,12 +248,13 @@ const EditGroupModal = () => {
                               ]
                             : []),
                     ]}
+                    style={{ minBlockSize: '22rem' }}
                 />
                 <ModalTwoFooter>
                     <Button color="weak" onClick={onCancel}>
                         {c('Action').t`Cancel`}
                     </Button>
-                    <Button color="norm" disabled={!dirty || hasErrors} loading={loading} onClick={onSave}>
+                    <Button color="norm" disabled={!dirty} loading={loading} onClick={onSave}>
                         {c('Action').t`Save`}
                     </Button>
                 </ModalTwoFooter>

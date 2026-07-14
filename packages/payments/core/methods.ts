@@ -1,4 +1,3 @@
-import { isSafari } from '@proton/shared/lib/helpers/browser';
 import type { Api, User } from '@proton/shared/lib/interfaces';
 import { isDelinquent } from '@proton/shared/lib/user/helpers';
 import orderBy from '@proton/utils/orderBy';
@@ -11,23 +10,24 @@ import {
 } from './amount-limits';
 import { getPaymentMethods } from './api/api';
 import type { BillingAddress } from './billing-address/billing-address';
-import { isExpired as getIsExpired } from './cardDetails';
-import { type ADDON_NAMES, MethodStorage, PAYMENT_METHOD_TYPES, PLANS } from './constants';
+import { isCardExpired as getIsExpired } from './cardDetails';
+import { type ADDON_NAMES, PAYMENT_METHOD_TYPES, PLANS } from './constants';
 import { isSignupFlow } from './helpers';
 import type {
     AvailablePaymentMethod,
     Currency,
     FreeSubscription,
     PaymentMethodApplePay,
+    PaymentMethodCardDetails,
     PaymentMethodFlow,
     PaymentMethodGooglePay,
+    PaymentMethodPaypal,
     PaymentMethodSepa,
     PaymentStatus,
     PaymentsApi,
     PlainPaymentMethodType,
     PlanIDs,
     SavedPaymentMethod,
-    SavedPaymentMethodExternal,
 } from './interface';
 import { getIsB2BAudienceFromPlan } from './plan/helpers';
 import { getHas2025OfferCoupon } from './subscription/helpers';
@@ -52,6 +52,14 @@ function isSavedPaymentMethodGooglePay(obj: any): obj is PaymentMethodGooglePay 
     return (obj.Type === 'googlepay' || obj.Type === PAYMENT_METHOD_TYPES.GOOGLE_PAY) && !!obj.Details;
 }
 
+function isSavedPaymentMethodPaypal(obj: any): obj is PaymentMethodPaypal {
+    return (obj.Type === 'paypal' || obj.Type === PAYMENT_METHOD_TYPES.CHARGEBEE_PAYPAL) && !!obj.Details;
+}
+
+function isSavedPaymentMethodCard(obj: any): obj is PaymentMethodCardDetails {
+    return (obj.Type === 'card' || obj.Type === PAYMENT_METHOD_TYPES.CHARGEBEE_CARD) && !!obj.Details;
+}
+
 export function formatPaymentMethod(method: SavedPaymentMethod): SavedPaymentMethod {
     if (isSavedPaymentMethodSepa(method)) {
         return {
@@ -74,9 +82,24 @@ export function formatPaymentMethod(method: SavedPaymentMethod): SavedPaymentMet
         } as PaymentMethodGooglePay;
     }
 
+    if (isSavedPaymentMethodPaypal(method)) {
+        return {
+            ...method,
+            Type: PAYMENT_METHOD_TYPES.CHARGEBEE_PAYPAL,
+        } as PaymentMethodPaypal;
+    }
+
+    if (isSavedPaymentMethodCard(method)) {
+        return {
+            ...method,
+            Type: PAYMENT_METHOD_TYPES.CHARGEBEE_CARD,
+        } as PaymentMethodCardDetails;
+    }
+
     return method;
 }
-export function markDefaultPaymentMethod(paymentMethods: SavedPaymentMethod[]): SavedPaymentMethod[] {
+
+function markDefaultPaymentMethod(paymentMethods: SavedPaymentMethod[]): SavedPaymentMethod[] {
     if (!paymentMethods || paymentMethods.length === 0) {
         return paymentMethods;
     }
@@ -96,7 +119,7 @@ export function formatPaymentMethods(paymentMethods: SavedPaymentMethod[]): Save
     return markDefaultPaymentMethod(paymentMethods.map(formatPaymentMethod));
 }
 
-export interface PaymentMethodsParameters {
+interface PaymentMethodsParameters {
     paymentStatus: PaymentStatus;
     paymentMethods: SavedPaymentMethod[];
     amount: number;
@@ -305,14 +328,8 @@ export class PaymentMethods {
     getUsedMethods(): AvailablePaymentMethod[] {
         const usedMethods: AvailablePaymentMethod[] = this.paymentMethods
             .filter((paymentMethod) => {
-                const isExistingCard =
-                    paymentMethod.Type === PAYMENT_METHOD_TYPES.CARD && this.paymentStatus.VendorStates.Card;
-
                 const isExistingChargebeeCard =
                     paymentMethod.Type === PAYMENT_METHOD_TYPES.CHARGEBEE_CARD && this.paymentStatus.VendorStates.Card;
-
-                const isExistingPaypal =
-                    paymentMethod.Type === PAYMENT_METHOD_TYPES.PAYPAL && this.paymentStatus.VendorStates.Paypal;
 
                 const isExistingChargebeePaypal =
                     paymentMethod.Type === PAYMENT_METHOD_TYPES.CHARGEBEE_PAYPAL &&
@@ -332,8 +349,6 @@ export class PaymentMethods {
                 // Only Paypal and Card can be saved/used payment methods.
                 // E.g. it's not possible to make Bitcoin/Cash a saved payment method.
                 return (
-                    isExistingCard ||
-                    isExistingPaypal ||
                     isExistingChargebeeCard ||
                     isExistingChargebeePaypal ||
                     isExistingChargebeeSepaDirectDebit ||
@@ -343,7 +358,9 @@ export class PaymentMethods {
             })
             .map((paymentMethod) => {
                 const isExpired =
-                    paymentMethod.Type === PAYMENT_METHOD_TYPES.CARD ? getIsExpired(paymentMethod.Details) : false;
+                    paymentMethod.Type === PAYMENT_METHOD_TYPES.CHARGEBEE_CARD
+                        ? getIsExpired(paymentMethod.Details)
+                        : false;
 
                 const method: AvailablePaymentMethod = {
                     type: paymentMethod.Type,
@@ -368,24 +385,12 @@ export class PaymentMethods {
     getNewMethods(): AvailablePaymentMethod[] {
         const methods: AvailablePaymentMethod[] = [
             {
-                available: this.isCardAvailable(),
-                type: PAYMENT_METHOD_TYPES.CARD,
-            },
-            {
                 available: this.isChargebeeCardAvailable(),
                 type: PAYMENT_METHOD_TYPES.CHARGEBEE_CARD,
             },
             {
-                available: this.isPaypalAvailable(),
-                type: PAYMENT_METHOD_TYPES.PAYPAL,
-            },
-            {
                 available: this.isChargebeePaypalAvailable(),
                 type: PAYMENT_METHOD_TYPES.CHARGEBEE_PAYPAL,
-            },
-            {
-                available: this.isBitcoinAvailable(),
-                type: PAYMENT_METHOD_TYPES.BITCOIN,
             },
             {
                 available: this.isChargebeeBitcoinAvailable(),
@@ -425,12 +430,6 @@ export class PaymentMethods {
 
     isMethodTypeEnabled(methodType: PlainPaymentMethodType): boolean {
         switch (methodType) {
-            case PAYMENT_METHOD_TYPES.CARD:
-                return this.isCardAvailable();
-            case PAYMENT_METHOD_TYPES.PAYPAL:
-                return this.isPaypalAvailable();
-            case PAYMENT_METHOD_TYPES.BITCOIN:
-                return this.isBitcoinAvailable();
             case PAYMENT_METHOD_TYPES.CHARGEBEE_BITCOIN:
                 return this.isChargebeeBitcoinAvailable();
             case PAYMENT_METHOD_TYPES.CASH:
@@ -483,10 +482,6 @@ export class PaymentMethods {
         );
     }
 
-    private isBitcoinAvailable(): boolean {
-        return false;
-    }
-
     private isChargebeeBitcoinAvailable(): boolean {
         return this.commonBtcConditions();
     }
@@ -523,23 +518,13 @@ export class PaymentMethods {
         );
     }
 
-    private isCardAvailable(): boolean {
-        return false;
-    }
-
     private isChargebeeCardAvailable(): boolean {
         const cardAvailable = this.paymentStatus.VendorStates.Card;
         return cardAvailable;
     }
 
-    private isPaypalAvailable(): boolean {
-        return false;
-    }
-
     private isChargebeePaypalAvailable(): boolean {
-        const alreadyHasPayPal = this.paymentMethods.some(
-            ({ Type }) => Type === PAYMENT_METHOD_TYPES.PAYPAL || Type === PAYMENT_METHOD_TYPES.CHARGEBEE_PAYPAL
-        );
+        const alreadyHasPayPal = this.paymentMethods.some(({ Type }) => Type === PAYMENT_METHOD_TYPES.CHARGEBEE_PAYPAL);
 
         const isPaypalAmountValid = this.amount >= getMinPaypalAmountChargebee(this.currency);
         const isInvoice = this.flow === 'invoice';
@@ -582,7 +567,6 @@ export class PaymentMethods {
             isApplePayAmountValid &&
             isAllowedFlow &&
             this.canUseApplePay &&
-            isSafari() &&
             !this.isTrial
         );
     }
@@ -676,27 +660,9 @@ export async function initializePaymentMethods({
         paymentMethodsPromise,
     ]);
 
-    const mappedMethods = paymentMethods.map(formatPaymentMethod).map((it: SavedPaymentMethod) => {
-        if (it.External !== MethodStorage.EXTERNAL) {
-            return it;
-        }
-
-        let Type = it.Type;
-        if (Type === PAYMENT_METHOD_TYPES.CARD) {
-            Type = PAYMENT_METHOD_TYPES.CHARGEBEE_CARD;
-        } else if (Type === PAYMENT_METHOD_TYPES.PAYPAL) {
-            Type = PAYMENT_METHOD_TYPES.CHARGEBEE_PAYPAL;
-        }
-
-        return {
-            ...it,
-            Type,
-        } as SavedPaymentMethodExternal;
-    });
-
     return new PaymentMethods({
         paymentStatus: paymentMethodStatus,
-        paymentMethods: mappedMethods,
+        paymentMethods,
         ...props,
     });
 }

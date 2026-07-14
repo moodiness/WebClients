@@ -1,46 +1,40 @@
+import type { RefObject } from 'react';
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 
 import { clsx } from 'clsx';
 import { c } from 'ttag';
 
-import { InlineLinkButton } from '@proton/atoms/InlineLinkButton/InlineLinkButton';
 import lumoImageLight from '@proton/styles/assets/img/lumo/lumo-image-light.svg';
+import lumojiCreateDark from '@proton/styles/assets/img/lumo/lumoji-create-dark.svg';
+import lumojiCreateLight from '@proton/styles/assets/img/lumo/lumoji-create-light.svg';
 
 import { ComposerComponent } from '../../components/Composer/ComposerComponent';
 import { useFileHandling } from '../../components/Composer/hooks/useFileHandling';
 import { useNativeComposerVisibilityApi } from '../../components/Composer/hooks/useNativeComposerVisibilityApi';
+import { FilesManagementView } from '../../components/Files';
 import { GuestSignInState } from '../../components/Guest/GuestSignInState/GuestSignInState';
 import { LazyLottie } from '../../components/LazyLottie';
 import type { DrawingMode } from '../../features/drawingcanvas/types';
-import type { HandleSendMessage } from '../../hooks/useLumoActions';
-import { useLumoNavigate as useNavigate } from '../../hooks/useLumoNavigate';
-import { HeaderWrapper } from '../../layouts/header/HeaderWrapper';
+// import { useLumoNavigate as useNavigate } from '../../hooks/useLumoNavigate';
+import { LumoLayoutWithDrawer } from '../../layouts/LumoLayout';
+import { useLumoTheme } from '../../providers';
+import { useConversationActions } from '../../providers/ConversationActionsProvider';
 import { useIsGuest } from '../../providers/IsGuestProvider';
 import { useSidebar } from '../../providers/SidebarProvider';
 import { injectNativeImageGenerationHelper } from '../../remote/nativeComposerBridgeHelpers';
 import { ComposerMode } from '../../types';
 import { base64ToFile } from '../../util/imageHelpers';
 import { CreatedGrid } from './CreatedGrid';
-import { InspirationPanel } from './InspirationPanel';
+import { ExploreGalleryGrid } from './ExploreGalleryGrid';
+import { GalleryImageLimitUpsell } from './GalleryImageLimitUpsell';
 import { useGeneratedGalleryImages } from './hooks/useGeneratedGalleryImages';
 import { useNativeComposerImageGenerationStateApi } from './hooks/useNativeComposerImageGenerationStateApi';
-import type { GalleryPromptSuggestion } from './promptSuggestions';
 
 import './GalleryView.scss';
 
-type GalleryTab = 'gallery' | 'inspiration';
+type GalleryTab = 'create' | 'gallery';
 
-interface GalleryEmptyProps {
-    onInspirationClick: () => void;
-}
-
-const GalleryEmpty = ({ onInspirationClick }: GalleryEmptyProps) => {
-    const link = (
-        <InlineLinkButton key="inspiration-link" type="button" onClick={onInspirationClick}>
-            {c('collider_2025:Action').t`here`}
-        </InlineLinkButton>
-    );
-
+const GalleryEmpty = () => {
     return (
         <div className="gallery-empty">
             <LazyLottie
@@ -49,43 +43,209 @@ const GalleryEmpty = ({ onInspirationClick }: GalleryEmptyProps) => {
                 autoplay
                 className="gallery-empty__lottie"
             />
-            <div className="gallery-empty-container flex flex-column items-center justify-center gap-2 mt-6 text-center">
-                <p className="text-xl color-norm text-semibold m-0">
-                    {c('collider_2025:Title').t`Get started by generating an image`}
+            <div className="gallery-empty-container flex flex-column items-center justify-center gap-2 mt-4 text-center">
+                <p className="text-lg color-norm text-semibold m-0">
+                    {c('collider_2025:Title').t`Your image gallery is empty`}
                 </p>
-                <p className="color-weak m-0">
-                    {c('collider_2025:Info')
-                        .jt`Generate images, apply styles, and sketch ideas. For inspiration, click ${link}.`}
-                </p>
+                {/* <p className="color-weak text-sm m-0">
+                    {c('collider_2025:Info').t`Generate images, apply styles, and sketch ideas.`}
+                </p> */}
+            </div>
+        </div>
+    );
+};
+
+interface GalleryComposerPanelProps {
+    isSmallScreen: boolean;
+    handleSendMessage: ReturnType<typeof useConversationActions>['handleSendMessage'];
+    isProcessingAttachment: boolean;
+    composerPrefill: string | undefined;
+    gallerySketchTrigger: boolean;
+    onShowDriveBrowser: () => void;
+}
+
+const GalleryComposerPanel = ({
+    isSmallScreen,
+    handleSendMessage,
+    isProcessingAttachment,
+    composerPrefill,
+    gallerySketchTrigger,
+    onShowDriveBrowser,
+}: GalleryComposerPanelProps) => {
+    return (
+        <div className={clsx('gallery-bottom w-full', !isSmallScreen && 'absolute')}>
+            <div className="gallery-inner">
+                <GalleryImageLimitUpsell />
+                <div className="gallery-composer-wrapper">
+                    <ComposerComponent
+                        composerMode={ComposerMode.GALLERY}
+                        handleSendMessage={handleSendMessage}
+                        isProcessingAttachment={isProcessingAttachment}
+                        prefillQuery={composerPrefill}
+                        autoOpenSketch={gallerySketchTrigger}
+                        onShowDriveBrowser={onShowDriveBrowser}
+                        placeholder={c('collider_2025:Placeholder').t`Describe your image...`}
+                    />
+                </div>
+            </div>
+        </div>
+    );
+};
+
+interface GalleryTabContentProps {
+    hasImages: boolean;
+    createdScrollRef: RefObject<HTMLDivElement>;
+    galleryImages: ReturnType<typeof useGeneratedGalleryImages>;
+    handleSketchEditExport: (imageData: string, mode: DrawingMode, description: string) => Promise<void>;
+    isSmallScreen: boolean;
+    handleSendMessage: ReturnType<typeof useConversationActions>['handleSendMessage'];
+    isProcessingAttachment: boolean;
+    composerPrefill: string | undefined;
+    gallerySketchTrigger: boolean;
+    onTryPrompt: (prompt: string) => void;
+    onShowDriveBrowser: () => void;
+}
+
+const GalleryTabContent = ({
+    hasImages,
+    createdScrollRef,
+    galleryImages,
+    handleSketchEditExport,
+    isSmallScreen,
+    handleSendMessage,
+    isProcessingAttachment,
+    composerPrefill,
+    gallerySketchTrigger,
+    onTryPrompt,
+    onShowDriveBrowser,
+}: GalleryTabContentProps) => {
+    const itemCount = galleryImages.sections.reduce((n, s) => n + s.items.length, 0);
+    const showExplore = !hasImages || (galleryImages.status === 'loaded' && itemCount <= 10);
+    const scrollPbStyle = !isSmallScreen ? ({ '--gallery-scroll-pb': '8rem' } as React.CSSProperties) : undefined;
+
+    const composerPanel = (
+        <GalleryComposerPanel
+            isSmallScreen={isSmallScreen}
+            handleSendMessage={handleSendMessage}
+            isProcessingAttachment={isProcessingAttachment}
+            composerPrefill={composerPrefill}
+            gallerySketchTrigger={gallerySketchTrigger}
+            onShowDriveBrowser={onShowDriveBrowser}
+        />
+    );
+
+    if (!hasImages) {
+        return (
+            <>
+                <div ref={createdScrollRef} className="gallery-created-scroll" style={scrollPbStyle}>
+                    <GalleryEmpty />
+                    <div className="gallery-inner max-w-full">
+                        <ExploreGalleryGrid onTryPrompt={onTryPrompt} />
+                    </div>
+                </div>
+                {composerPanel}
+            </>
+        );
+    }
+
+    return (
+        <>
+            <div
+                ref={createdScrollRef}
+                className="gallery-created-scroll"
+                style={showExplore ? scrollPbStyle : undefined}
+            >
+                <div className="gallery-inner max-w-full">
+                    <CreatedGrid
+                        sections={galleryImages.sections}
+                        status={galleryImages.status}
+                        hasMore={galleryImages.hasMore}
+                        loadMore={galleryImages.loadMore}
+                        onExport={handleSketchEditExport}
+                    />
+                    {showExplore && <ExploreGalleryGrid onTryPrompt={onTryPrompt} />}
+                </div>
+            </div>
+            {composerPanel}
+        </>
+    );
+};
+
+interface CreateTabContentProps {
+    handleSendMessage: ReturnType<typeof useConversationActions>['handleSendMessage'];
+    isProcessingAttachment: boolean;
+    composerPrefill: string | undefined;
+    gallerySketchTrigger: boolean;
+    onShowDriveBrowser: () => void;
+    // onSuggestionClick: (suggestion: GalleryPromptSuggestion) => void;
+}
+
+const CreateTabContent = ({
+    handleSendMessage,
+    isProcessingAttachment,
+    composerPrefill,
+    gallerySketchTrigger,
+    onShowDriveBrowser,
+    // onSuggestionClick,
+}: CreateTabContentProps) => {
+    const { isDarkLumoTheme } = useLumoTheme();
+    return (
+        <div className="main-container-component rounded-xl flex flex-column flex-nowrap flex-1">
+            <div
+                className="flex *:min-size-auto flex-column flex-nowrap flex-1 mx-auto justify-center items-center w-full md:max-w-custom lg:max-w-custom pt-0 main-container-content"
+                style={{
+                    '--md-max-w-custom': '90%',
+                    '--lg-max-w-custom': '43rem',
+                }}
+            >
+                <div className="lumo-welcome-section flex flex-column items-center text-center w-full">
+                    <img src={isDarkLumoTheme ? lumojiCreateDark : lumojiCreateLight} alt="" className={'pb-4'} />
+                    <h1 className="main-text lh100 text-wrap-balance text-center mb-8 relative z-10">
+                        {c('collider_2025:Title').t`What do you want to create today?`}
+                    </h1>
+                </div>
+                <div className="composer-container md:px-4 w-full">
+                    <GalleryImageLimitUpsell />
+                    <ComposerComponent
+                        composerMode={ComposerMode.GALLERY}
+                        handleSendMessage={handleSendMessage}
+                        isProcessingAttachment={isProcessingAttachment}
+                        prefillQuery={composerPrefill}
+                        autoOpenSketch={gallerySketchTrigger}
+                        onShowDriveBrowser={onShowDriveBrowser}
+                        placeholder={c('collider_2025:Placeholder').t`Describe your image...`}
+                        className="main-container fixed bottom-0 md:static w-full z-20"
+                    />
+                </div>
+                {/* <DiscoverList onSuggestionClick={onSuggestionClick} /> */}
             </div>
         </div>
     );
 };
 
 export interface GalleryViewProps {
-    handleSendMessage: HandleSendMessage;
     isProcessingAttachment: boolean;
     prefillQuery?: string;
 }
 
-export const GalleryView = ({
-    handleSendMessage,
-    isProcessingAttachment,
-    prefillQuery: externalPrefill,
-}: GalleryViewProps) => {
+export const GalleryView = ({ isProcessingAttachment, prefillQuery: externalPrefill }: GalleryViewProps) => {
+    const { handleSendMessage } = useConversationActions();
     const { isSmallScreen } = useSidebar();
     const isGuest = useIsGuest();
-    const navigate = useNavigate();
+    // const navigate = useNavigate();
 
     const { handleFilesSelected } = useFileHandling({ messageChain: [] });
     const editImageFileRef = useRef<HTMLInputElement>(null);
     const createdScrollRef = useRef<HTMLDivElement>(null);
+    const filesContainerRef = useRef<HTMLDivElement>(null);
+    const [showDriveBrowser, setShowDriveBrowser] = useState(false);
     const pendingEditPromptRef = useRef<string>('');
     const [composerPrefill, setComposerPrefill] = useState<string | undefined>(externalPrefill);
-    const [gallerySketchTrigger, setGallerySketchTrigger] = useState(false);
-    const nativeComposerVisibilityApi = useNativeComposerVisibilityApi();
+    const [gallerySketchTrigger] = useState(false);
+    // Guests see only the sign-in state (no composer), so block the native
+    // composer while mounted as a guest. Visibility is restored on unmount.
+    const nativeComposerVisibilityApi = useNativeComposerVisibilityApi({ isBlocking: isGuest });
 
-    // Hoisted gallery data — used to decide default tab and passed to CreatedGrid
     const galleryImages = useGeneratedGalleryImages();
     const hasImages = useMemo(
         () =>
@@ -95,36 +255,51 @@ export const GalleryView = ({
         [galleryImages.sections, galleryImages.status]
     );
 
-    const [activeTab, setActiveTab] = useState<GalleryTab>(() => (hasImages ? 'gallery' : 'inspiration'));
+    const [activeTab, setActiveTab] = useState<GalleryTab>('gallery');
 
     const handleSketchEditExport = useCallback(
         async (imageData: string, _mode: DrawingMode, description: string) => {
             const file = base64ToFile(imageData, `edited-image-${Date.now()}.png`);
             handleFilesSelected([file]);
-            setComposerPrefill(description || c('collider_2025:Prefill').t`Edit this image:`);
+            const prompt = description || c('collider_2025:Prefill').t`Edit this image:`;
+            setComposerPrefill(prompt);
+            injectNativeImageGenerationHelper(prompt);
         },
         [handleFilesSelected]
     );
 
-    const handleSuggestionClick = useCallback(
-        (suggestion: GalleryPromptSuggestion) => {
-            if (suggestion.action === 'sketch') {
-                if (nativeComposerVisibilityApi.showWebComposer()) {
-                    setComposerPrefill(suggestion.prompt);
-                }
-                pendingEditPromptRef.current = suggestion.prompt;
-                setGallerySketchTrigger(true);
-                setTimeout(() => setGallerySketchTrigger(false), 0);
-                injectNativeImageGenerationHelper(pendingEditPromptRef.current);
-            } else if (suggestion.action === 'edit_image') {
-                pendingEditPromptRef.current = suggestion.prompt;
-                editImageFileRef.current?.click();
-            } else {
-                navigate(`/?q=${encodeURIComponent(suggestion.prompt)}`);
-            }
-        },
-        [navigate]
-    );
+    // const handleSuggestionClick = useCallback(
+    //     (suggestion: GalleryPromptSuggestion) => {
+    //         if (suggestion.action === 'sketch') {
+    //             if (nativeComposerVisibilityApi.showWebComposer()) {
+    //                 setComposerPrefill(suggestion.getPrompt());
+    //             }
+    //             pendingEditPromptRef.current = suggestion.getPrompt();
+    //             setGallerySketchTrigger(true);
+    //             setTimeout(() => setGallerySketchTrigger(false), 0);
+    //             injectNativeImageGenerationHelper(pendingEditPromptRef.current);
+    //         } else if (suggestion.action === 'edit_image') {
+    //             pendingEditPromptRef.current = suggestion.getPrompt();
+    //             editImageFileRef.current?.click();
+    //         } else {
+    //             navigate(`/?q=${encodeURIComponent(suggestion.getPrompt())}`);
+    //         }
+    //     },
+    //     [navigate, nativeComposerVisibilityApi]
+    // );
+
+    const handleTryPrompt = useCallback((prompt: string) => {
+        setComposerPrefill(prompt);
+        setActiveTab('create');
+    }, []);
+
+    const handleShowDriveBrowser = useCallback(() => {
+        setShowDriveBrowser(true);
+    }, []);
+
+    const handleCloseDriveBrowser = useCallback(() => {
+        setShowDriveBrowser(false);
+    }, []);
 
     // Suppress hover overlays while the created section is scrolling
     useEffect(() => {
@@ -154,113 +329,97 @@ export const GalleryView = ({
             injectNativeImageGenerationHelper(pendingEditPromptRef.current);
             e.target.value = '';
         },
-        [handleFilesSelected]
+        [handleFilesSelected, nativeComposerVisibilityApi]
     );
 
     useNativeComposerImageGenerationStateApi();
 
     if (isGuest) {
         return (
-            <div className="gallery-view">
-                {isSmallScreen && (
-                    <HeaderWrapper>
-                        <div />
-                    </HeaderWrapper>
-                )}
-                <GuestSignInState
-                    image={lumoImageLight}
-                    imageAlt=""
-                    title={c('collider_2025:Title').t`Sign in to build your gallery`}
-                    description={c('collider_2025:Info')
-                        .t`Create images, apply styles, and sketch ideas. Sign in or create a free account to save your creations.`}
-                />
-            </div>
+            <LumoLayoutWithDrawer drawer={{ disabled: true }}>
+                <div className="gallery-view">
+                    <GuestSignInState
+                        image={lumoImageLight}
+                        imageAlt=""
+                        title={c('collider_2025:Title').t`Sign in to build your gallery`}
+                        description={c('collider_2025:Info')
+                            .t`Create images, apply styles, and sketch ideas. Sign in or create a free account to save your creations.`}
+                    />
+                </div>
+            </LumoLayoutWithDrawer>
         );
     }
 
     return (
-        <div className="gallery-view">
-            <input
-                ref={editImageFileRef}
-                type="file"
-                accept="image/*"
-                multiple
-                className="sr-only"
-                onChange={handleEditImageFileChange}
-            />
-
-            {isSmallScreen && (
-                <HeaderWrapper>
-                    <div />
-                </HeaderWrapper>
-            )}
-
-            {/* Tab toggle */}
-            <div className="gallery-tab-bar">
-                <div className="gallery-tab-toggle">
-                    <button
-                        className={`gallery-tab-toggle__btn${activeTab === 'inspiration' ? ' gallery-tab-toggle__btn--active' : ''}`}
-                        onClick={() => setActiveTab('inspiration')}
-                        type="button"
-                    >
-                        {c('collider_2025:Tab').t`Create`}
-                    </button>
-                    <button
-                        className={`gallery-tab-toggle__btn${activeTab === 'gallery' ? ' gallery-tab-toggle__btn--active' : ''}`}
-                        onClick={() => setActiveTab('gallery')}
-                        type="button"
-                    >
-                        {c('collider_2025:Tab').t`Gallery`}
-                    </button>
-                </div>
-            </div>
-
-            {/* Main scrollable area — switches between Gallery and Inspiration */}
-            {/* eslint-disable-next-line no-nested-ternary */}
-            {activeTab === 'gallery' ? (
-                hasImages ? (
-                    <div ref={createdScrollRef} className="gallery-created-scroll">
-                        <div className="gallery-inner max-w-full">
-                            <CreatedGrid
-                                // sections={FAKE_GALLERY_SECTIONS}
-                                sections={galleryImages.sections}
-                                status={galleryImages.status}
-                                hasMore={galleryImages.hasMore}
-                                loadMore={galleryImages.loadMore}
-                                onExport={handleSketchEditExport}
-                            />
+        <LumoLayoutWithDrawer
+            drawer={{ disabled: true }}
+            header={{
+                component: (
+                    <div className="gallery-tab-bar">
+                        <div className="gallery-tab-toggle">
+                            <button
+                                className={`gallery-tab-toggle__btn${activeTab === 'create' ? ' gallery-tab-toggle__btn--active' : ''}`}
+                                onClick={() => setActiveTab('create')}
+                                type="button"
+                            >
+                                {c('collider_2025:Tab').t`Create`}
+                            </button>
+                            <button
+                                className={`gallery-tab-toggle__btn${activeTab === 'gallery' ? ' gallery-tab-toggle__btn--active' : ''}`}
+                                onClick={() => setActiveTab('gallery')}
+                                type="button"
+                            >
+                                {c('collider_2025:Tab').t`Gallery`}
+                            </button>
                         </div>
                     </div>
-                ) : (
-                    <GalleryEmpty onInspirationClick={() => setActiveTab('inspiration')} />
-                )
-            ) : (
-                <div className="gallery-inspiration-scroll flex">
-                    <InspirationPanel onSuggestionClick={handleSuggestionClick} />
-                    {/* <DiscoverPanel onSuggestionClick={handleSuggestionClick} /> */}
-                </div>
-            )}
-
-            {/* Bottom panel — composer only, always visible */}
-            <div
-                className={clsx(
-                    'gallery-bottom w-full',
-                    !isSmallScreen && activeTab === 'gallery' && hasImages && 'absolute'
+                ),
+            }}
+        >
+            <div className="gallery-view">
+                <input
+                    ref={editImageFileRef}
+                    type="file"
+                    accept="image/*"
+                    multiple
+                    className="sr-only"
+                    onChange={handleEditImageFileChange}
+                />
+                {activeTab === 'create' && (
+                    <CreateTabContent
+                        handleSendMessage={handleSendMessage}
+                        isProcessingAttachment={isProcessingAttachment}
+                        composerPrefill={composerPrefill}
+                        gallerySketchTrigger={gallerySketchTrigger}
+                        onShowDriveBrowser={handleShowDriveBrowser}
+                        // onSuggestionClick={handleSuggestionClick}
+                    />
                 )}
-            >
-                <div className="gallery-inner">
-                    <div className="gallery-composer-wrapper">
-                        <ComposerComponent
-                            composerMode={ComposerMode.GALLERY}
-                            handleSendMessage={handleSendMessage}
-                            isProcessingAttachment={isProcessingAttachment}
-                            prefillQuery={composerPrefill}
-                            autoOpenSketch={gallerySketchTrigger}
-                            placeholder={c('collider_2025:Placeholder').t`Describe your image...`}
-                        />
-                    </div>
-                </div>
+                {activeTab === 'gallery' && (
+                    <GalleryTabContent
+                        hasImages={hasImages}
+                        createdScrollRef={createdScrollRef}
+                        galleryImages={galleryImages}
+                        handleSketchEditExport={handleSketchEditExport}
+                        isSmallScreen={isSmallScreen}
+                        handleSendMessage={handleSendMessage}
+                        isProcessingAttachment={isProcessingAttachment}
+                        composerPrefill={composerPrefill}
+                        gallerySketchTrigger={gallerySketchTrigger}
+                        onTryPrompt={handleTryPrompt}
+                        onShowDriveBrowser={handleShowDriveBrowser}
+                    />
+                )}
+                {showDriveBrowser && (
+                    <FilesManagementView
+                        messageChain={[]}
+                        filesContainerRef={filesContainerRef}
+                        onClose={handleCloseDriveBrowser}
+                        initialShowDriveBrowser
+                        forceModal
+                    />
+                )}
             </div>
-        </div>
+        </LumoLayoutWithDrawer>
     );
 };

@@ -1,14 +1,13 @@
 import { c } from 'ttag';
 
 import type { SectionConfig } from '@proton/components';
-import { hasAnyB2bBundle, hasPassBusiness, hasVPNPassProfessional } from '@proton/payments';
+import { hasAnyB2bBundle, hasPassBusiness, hasVPNPassProfessional } from '@proton/payments/core/subscription/helpers';
 import { APPS, PASS_APP_NAME } from '@proton/shared/lib/constants';
 import { hasOrganizationSetup, hasOrganizationSetupWithKeys } from '@proton/shared/lib/helpers/organization';
 
 import type { OrganizationRouterParams } from '../../content/router-params';
 
-export const getPassAppRoutes = ({ app, user, organization, subscription, flags }: OrganizationRouterParams) => {
-    const { canDisplayB2BLogsPass = false, canDisplayPassReports = false } = flags;
+export const getPassAppRoutes = ({ app, user, organization, subscription }: OrganizationRouterParams) => {
     const isAdmin = user.isAdmin && user.isSelf;
     const canHaveOrganization = !user.isMember && !!organization && isAdmin;
     const hasOrganizationKey = hasOrganizationSetupWithKeys(organization);
@@ -18,7 +17,7 @@ export const getPassAppRoutes = ({ app, user, organization, subscription, flags 
         hasPassBusiness(subscription) || hasAnyB2bBundle(subscription) || hasVPNPassProfessional(subscription);
 
     return <const>{
-        available: app === APPS.PROTONPASS,
+        available: app === APPS.PROTONPASS || app === APPS.PROTONACCOUNT,
         header: PASS_APP_NAME,
         routes: {
             downloads: {
@@ -37,11 +36,7 @@ export const getPassAppRoutes = ({ app, user, organization, subscription, flags 
                 text: c('Link').t`Activity log`,
                 to: '/activity-log',
                 icon: 'text-title',
-                available:
-                    canDisplayB2BLogsPass &&
-                    hasPassOrBundleB2B &&
-                    canHaveOrganization &&
-                    (hasOrganizationKey || hasOrganization),
+                available: hasPassOrBundleB2B && canHaveOrganization && (hasOrganizationKey || hasOrganization),
                 subsections: [
                     {
                         id: 'activity-log',
@@ -65,8 +60,7 @@ export const getPassAppRoutes = ({ app, user, organization, subscription, flags 
                 text: c('Title').t`Reports`,
                 to: '/reports',
                 icon: 'chart-line',
-                available:
-                    canDisplayPassReports && (hasOrganizationKey || hasOrganization) && isAdmin && hasPassOrBundleB2B,
+                available: (hasOrganizationKey || hasOrganization) && isAdmin && hasPassOrBundleB2B,
                 subsections: [
                     {
                         id: 'reports',

@@ -9,6 +9,7 @@ import {
     assignMemberRoles,
     classifyRoleChange,
     editMember,
+    getAssignRolesInvitationText,
     getMemberAddresses,
     getMemberEditPayload,
     getPrivateAdminError,
@@ -17,7 +18,6 @@ import {
 import { useOrganization } from '@proton/account/organization/hooks';
 import { getStorageRange, getTotalStorage } from '@proton/account/organization/storage';
 import { useOrganizationKey } from '@proton/account/organizationKey/hooks';
-import { useOrganizationRoles } from '@proton/account/organizationRoles/hooks';
 import useBYOEFeatureStatus from '@proton/activation/src/hooks/useBYOEFeatureStatus';
 import { Button } from '@proton/atoms/Button/Button';
 import { Tooltip } from '@proton/atoms/Tooltip/Tooltip';
@@ -175,7 +175,6 @@ const SubUserEditModal = ({
     const [selectedRoles, setSelectedRoles] = useState<Set<string>>(
         () => new Set(member.UserOrganizationRoles?.map(({ Role }) => Role.OrganizationRoleID) ?? [])
     );
-    const [organizationRoles, loadingRoles] = useOrganizationRoles();
     const showRolesTab = useFlag('AdminRoleMVP');
     const { feature: adminRolesModalFeature, loading: adminRolesModalLoading } = useFeature(
         FeatureCode.AdminRolesOnboardingModal
@@ -192,6 +191,7 @@ const SubUserEditModal = ({
 
     const hasVPN = Boolean(organization?.MaxVPN);
     const unprivatization = getMemberUnprivatizationMode(member);
+    const isPendingMagicLinkInvite = unprivatization.mode === MemberUnprivatizationMode.MagicLinkInvite;
 
     const isSelf = Boolean(member.Self);
 
@@ -506,6 +506,8 @@ const SubUserEditModal = ({
         </>
     );
 
+    const [activeTabIndex, setActiveTabIndex] = useState(0);
+
     return (
         <>
             {renderConfirmUnprivatization && (
@@ -612,6 +614,7 @@ const SubUserEditModal = ({
                     event.stopPropagation();
 
                     if (!onFormSubmit(event.currentTarget)) {
+                        setActiveTabIndex(0);
                         return;
                     }
 
@@ -638,8 +641,14 @@ const SubUserEditModal = ({
             >
                 <ModalHeaderWithTabs
                     title={c('Title').t`Edit user`}
+                    tabIndex={activeTabIndex}
+                    onChangeTabIndex={setActiveTabIndex}
+                    style={{ minBlockSize: '50rem' }}
                     tabs={[
-                        { title: c('user_modal').t`General`, content: generalTabContent },
+                        {
+                            title: c('user_modal').t`General`,
+                            content: generalTabContent,
+                        },
                         ...(showRolesTab
                             ? [
                                   {
@@ -663,9 +672,12 @@ const SubUserEditModal = ({
                                           <RolesAndPermissionsTab
                                               selectedRoles={selectedRoles}
                                               onChange={setSelectedRoles}
-                                              organizationRoles={organizationRoles}
-                                              loadingRoles={loadingRoles}
                                               userRoles={member.UserOrganizationRoles}
+                                              isEditingSelf={isSelf}
+                                              disabled={isPendingMagicLinkInvite}
+                                              banner={
+                                                  isPendingMagicLinkInvite ? getAssignRolesInvitationText() : undefined
+                                              }
                                           />
                                       ),
                                   },

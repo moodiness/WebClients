@@ -52,12 +52,19 @@ jest.mock('@proton/account/retentionPolicies/hooks', () => ({
     useRetentionPolicies: jest.fn(() => [[], false]),
 }));
 
+jest.mock('../categoryView/categoriesOnboarding/CategoriesOnboardingContext', () => ({
+    useCategoriesOnboarding: jest.fn(() => ({
+        userIsInB2COnboardingFlow: false,
+    })),
+}));
+
 describe('MailHeader', () => {
     let props: ReturnType<typeof getProps>;
 
     const setup = async () => {
         minimalCache();
         addApiMock('payments/v5/plans', () => ({ Plans: [] }));
+        addApiMock('payments/v4/plans', () => ({ Plans: [] }));
         addApiMock('contacts/v4/contacts', () => ({ Contacts: [] }));
         addApiMock('payments/v5/subscription/latest', () => ({}));
 

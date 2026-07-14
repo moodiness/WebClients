@@ -10,12 +10,14 @@ import { ProtonPlanCustomizer, getHasPlanCustomizer } from '@proton/components/c
 import { usePaymentFacade } from '@proton/components/payments/client-extensions';
 import { IcArrowLeft } from '@proton/icons/icons/IcArrowLeft';
 import { IcShield } from '@proton/icons/icons/IcShield';
-import { PAYMENT_METHOD_TYPES, PLANS, getPlanFromPlanIDs } from '@proton/payments';
 import { getPaymentsVersion } from '@proton/payments/core/api/api';
 import { getBillingAddressFromPaymentStatus } from '@proton/payments/core/billing-address/billing-address-from-payments-status';
+import { PAYMENT_METHOD_TYPES, PLANS } from '@proton/payments/core/constants';
+import { getPlanFromPlanIDs } from '@proton/payments/core/plan/helpers';
 import { tracePaymentError } from '@proton/payments/sentry/capture';
-import { PayButton, usePaymentOptimistic } from '@proton/payments/ui';
 import { useBillingAddress } from '@proton/payments/ui/billing-address/hooks/useBillingAddress';
+import { PayButton } from '@proton/payments/ui/components/PayButton';
+import { usePaymentOptimistic } from '@proton/payments/ui/context/PaymentContextOptimistic';
 import { APPS, PASS_APP_NAME } from '@proton/shared/lib/constants';
 import { Audience } from '@proton/shared/lib/interfaces';
 
@@ -123,7 +125,7 @@ export const PaymentStep: FC<Props> = ({ onContinue, onBack }) => {
         onBack();
     };
 
-    const methodsAllowed: string[] = [PAYMENT_METHOD_TYPES.CARD, PAYMENT_METHOD_TYPES.CHARGEBEE_CARD];
+    const methodsAllowed: string[] = [PAYMENT_METHOD_TYPES.CHARGEBEE_CARD];
     const showAlert3ds = methodsAllowed.includes(paymentFacade.selectedMethodType ?? '');
 
     const months = getMonths(payments.checkoutUi.cycle);

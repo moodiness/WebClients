@@ -1,15 +1,6 @@
 import { useEffect, useState } from 'react';
 
 import { useLoading } from '@proton/hooks';
-import {
-    type AmountAndCurrency,
-    type ChargeablePaymentParameters,
-    PAYMENT_METHOD_TYPES,
-    PAYMENT_TOKEN_STATUS,
-    type TokenPaymentMethod,
-    isTokenPaymentMethod,
-} from '@proton/payments';
-import type { Currency, PaymentProcessorHook } from '@proton/payments';
 import { getMaxBitcoinAmount, getMinBitcoinAmount } from '@proton/payments/core/amount-limits';
 import {
     type CreateBitcoinTokenData,
@@ -18,6 +9,9 @@ import {
     getTokenStatus,
 } from '@proton/payments/core/api/api';
 import type { BillingAddress } from '@proton/payments/core/billing-address/billing-address';
+import { PAYMENT_METHOD_TYPES, PAYMENT_TOKEN_STATUS } from '@proton/payments/core/constants';
+import type { AmountAndCurrency, ChargeablePaymentParameters, Currency } from '@proton/payments/core/interface';
+import type { PaymentProcessorHook } from '@proton/payments/core/payment-processors/interface';
 import { getSilentApi } from '@proton/shared/lib/api/helpers/customConfig';
 import { wait } from '@proton/shared/lib/helpers/promise';
 import type { Api } from '@proton/shared/lib/interfaces';
@@ -109,7 +103,7 @@ const useCheckStatus = ({
     };
 };
 
-export interface BitcoinTokenModel {
+interface BitcoinTokenModel {
     amountBitcoin: number;
     address: string;
     token: string | null;
@@ -120,22 +114,9 @@ export interface BitcoinTokenModel {
     zipCode: string | null;
 }
 
-export interface ValidatedBitcoinToken extends TokenPaymentMethod {
-    cryptoAmount: number;
-    cryptoAddress: string;
-}
-
-export function isValidatedBitcoinToken(paymentMethod: any): paymentMethod is ValidatedBitcoinToken {
-    return (
-        isTokenPaymentMethod(paymentMethod) &&
-        typeof (paymentMethod as any).cryptoAmount === 'number' &&
-        typeof (paymentMethod as any).cryptoAddress === 'string'
-    );
-}
-
 export type OnBitcoinTokenValidated = (data: ChargeablePaymentParameters) => Promise<any>;
 
-export type UseBitcoinParams = {
+type UseBitcoinParams = {
     api: Api;
     onTokenValidated: OnBitcoinTokenValidated;
     enablePolling: boolean;
@@ -197,7 +178,7 @@ const useBitcoin = ({
             const params: ChargeablePaymentParameters = {
                 Amount,
                 Currency,
-                type: paymentsVersion === 'v4' ? PAYMENT_METHOD_TYPES.BITCOIN : PAYMENT_METHOD_TYPES.CHARGEBEE_BITCOIN,
+                type: PAYMENT_METHOD_TYPES.CHARGEBEE_BITCOIN,
                 chargeable: true,
                 v: 5,
                 PaymentToken: token,

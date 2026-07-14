@@ -14,11 +14,10 @@ import SettingsParagraph from '@proton/components/containers/account/SettingsPar
 import SettingsSectionWide from '@proton/components/containers/account/SettingsSectionWide';
 import { useEventManagerV6 } from '@proton/components/containers/eventManager/EventManagerV6Provider';
 import useEventManager from '@proton/components/hooks/useEventManager';
-import { InvoiceOwner, InvoiceState } from '@proton/payments';
 import { InvoiceDocument } from '@proton/payments/core/api/api';
+import { InvoiceOwner, InvoiceState } from '@proton/payments/core/constants';
 import { useEditBillingAddressModal } from '@proton/payments/ui/billing-address/containers/useEditBillingAddressModal';
 import type { APP_NAMES } from '@proton/shared/lib/constants';
-import { useFlag } from '@proton/unleash/useFlag';
 import isTruthy from '@proton/utils/isTruthy';
 import noop from '@proton/utils/noop';
 
@@ -37,8 +36,6 @@ enum DocumentType {
 }
 
 const InvoicesSection = ({ app }: { app: APP_NAMES }) => {
-    const enableTransactions = useFlag('TransactionsView');
-
     const [user] = useUser();
     const [subscription] = useSubscription();
 
@@ -182,15 +179,13 @@ const InvoicesSection = ({ app }: { app: APP_NAMES }) => {
                                 >
                                     {c('Select invoice document').t`Currency conversion`}
                                 </Button>
-                                {enableTransactions && (
-                                    <Button
-                                        className={document === DocumentType.Transactions ? 'is-selected' : ''}
-                                        onClick={() => setDocument(DocumentType.Transactions)}
-                                        data-testid="transactions-tab"
-                                    >
-                                        {c('Select invoice document').t`Transactions`}
-                                    </Button>
-                                )}
+                                <Button
+                                    className={document === DocumentType.Transactions ? 'is-selected' : ''}
+                                    onClick={() => setDocument(DocumentType.Transactions)}
+                                    data-testid="transactions-tab"
+                                >
+                                    {c('Select invoice document').t`Transactions`}
+                                </Button>
                             </ButtonGroup>
                             {invoiceEditButtons}
                         </div>

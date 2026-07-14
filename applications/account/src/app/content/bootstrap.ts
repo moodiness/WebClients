@@ -34,10 +34,12 @@ import noop from '@proton/utils/noop';
 import locales from '../locales';
 import type { AccountState } from '../store/store';
 import { extendStore, setupStore } from '../store/store';
+import { maybeSetAppSubdomainFromRedirectUrl } from './setAppSubdomainFromRedirectUrl';
 
 export const bootstrapApp = async ({ config, signal }: { config: ProtonConfig; signal?: AbortSignal }) => {
-    const pathname = window.location.pathname;
-    const searchParams = new URLSearchParams(window.location.search);
+    const url = new URL(window.location.href);
+    const pathname = url.pathname;
+    const searchParams = url.searchParams;
     const api = createApi({ config });
     const silentApi = getSilentApi(api);
     const authentication = bootstrap.createAuthentication();
@@ -51,6 +53,10 @@ export const bootstrapApp = async ({ config, signal }: { config: ProtonConfig; s
 
     if (isElectronMail) {
         listenFreeTrialSessionExpiration(appName, authentication, api);
+
+        void import('@proton/shared/lib/desktop/bootstrapAccountInboxDesktop').then((module) => {
+            void module.bootstrapAccountInboxDesktop();
+        });
     }
 
     const run = async () => {
@@ -128,6 +134,8 @@ export const bootstrapApp = async ({ config, signal }: { config: ProtonConfig; s
 
         // postLoad needs everything to be loaded.
         await bootstrap.postLoad({ appName, authentication, ...userData, history });
+
+        maybeSetAppSubdomainFromRedirectUrl(url);
 
         const calendarModelEventManager = createCalendarModelEventManager({ api: silentApi });
 

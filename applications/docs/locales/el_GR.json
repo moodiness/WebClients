@@ -336,6 +336,9 @@
       "Download anyway": [
         "Λήψη οπωσδήποτε"
       ],
+      "Download debug information": [
+        "Λήψη πληροφοριών εντοπισμού σφαλμάτων"
+      ],
       "Download logs": [
         "Λήψη αρχείων καταγραφής"
       ],
@@ -378,11 +381,20 @@
       "Export contact group": [
         "Εξαγωγή ομάδας επαφών"
       ],
+      "Export editor state for version": [
+        "Εξαγωγή κατάστασης προγράμματος επεξεργασίας για την έκδοση"
+      ],
       "Export selection as .vcf": [
         "Εξαγωγή επιλογής ως .vcf"
       ],
+      "Export this version (as docx)": [
+        "Εξαγωγή αυτής της έκδοσης (ως docx)"
+      ],
       "Export this version (as xlsx)": [
         "Εξαγωγή αυτής της έκδοσης (ως xlsx)"
+      ],
+      "Export YJS state for version": [
+        "Εξαγωγή κατάστασης YJS για την έκδοση"
       ],
       "Forgot password?": [
         "Ξεχάσατε τον κωδικό πρόσβασης;"
@@ -636,6 +648,9 @@
       "Reload": [
         "Ανανέωση"
       ],
+      "Reload spreadsheet": [
+        "Επαναφόρτωση υπολογιστικού φύλλου"
+      ],
       "Remove": [
         "Αφαίρεση"
       ],
@@ -664,6 +679,9 @@
         "Αντικατάσταση αρχείου"
       ],
       "Report a problem": [
+        "Αναφορά προβλήματος"
+      ],
+      "Report issue": [
         "Αναφορά προβλήματος"
       ],
       "Request a call": [
@@ -3141,9 +3159,6 @@
       "Failed to load 'My files' folder": [
         "Αποτυχία φόρτωσης του φακέλου \"Τα αρχεία μου\""
       ],
-      "Failed to load document details": [
-        "Αποτυχία φόρτωσης λεπτομερειών εγγράφου"
-      ],
       "Failed to load recent documents": [
         "Αποτυχία φόρτωσης πρόσφατων εγγράφων"
       ],
@@ -3156,11 +3171,17 @@
       "Failed to remove older revisions": [
         "Αποτυχία κατάργησης παλαιότερων αναθεωρήσεων"
       ],
+      "Failed to rename document": [
+        "Αποτυχία μετονομασίας εγγράφου"
+      ],
       "Failed to rename document. Please try again later.": [
         "Αποτυχία μετονομασίας εγγράφου. Παρακαλούμε προσπαθήστε ξανά αργότερα."
       ],
       "Failed to resend invitation": [
         "Αποτυχία επαναποστολής πρόσκλησης"
+      ],
+      "Failed to trash document.": [
+        "Αποτυχία διαγραφής εγγράφου."
       ],
       "Failed to unshare node": [
         "Αποτυχία κατάργησης κοινοχρησίας κόμβου"
@@ -3249,6 +3270,9 @@
       ],
       "No contacts found to import": [
         "Δεν βρέθηκαν επαφές προς εισαγωγή"
+      ],
+      "No drive found to import": [
+        "Δε βρέθηκε drive για εισαγωγή"
       ],
       "No emails found to import - the account does not have an inbox": [
         "Δεν βρέθηκαν μηνύματα προς εισαγωγή - ο λογαριασμός δεν διαθέτει εισερχόμενα"
@@ -3479,6 +3503,9 @@
       "Unexpected error, we can't import the contacts": [
         "Μη αναμενόμενο σφάλμα, δεν είναι δυνατή η εισαγωγή των επαφών"
       ],
+      "Unexpected error, we can't import the files": [
+        "Μη αναμενόμενο σφάλμα, δεν είναι δυνατή η εισαγωγή των αρχείων"
+      ],
       "Unknown error": [
         "Άγνωστο σφάλμα"
       ],
@@ -3508,6 +3535,9 @@
       ],
       "We couldn’t import this file into ${ SHEETS_APP_NAME }. You can try to copy and paste the contents into a new ${ SHEETS_APP_NAME }.": [
         "Δεν ήταν δυνατή η εισαγωγή αυτού του αρχείου στο ${ SHEETS_APP_NAME }. Μπορείτε να δοκιμάσετε να αντιγράψετε και να επικολλήσετε το περιεχόμενο σε ένα νέο ${ SHEETS_APP_NAME }."
+      ],
+      "We couldn’t send a verification code using this method.": [
+        "Δεν μπορέσαμε να αποστείλουμε κωδικό επιβεβαίωσης με αυτήν τη μέθοδο."
       ],
       "Wrong billing address": [
         "Λανθασμένη διεύθυνσης χρέωσης"
@@ -3942,6 +3972,9 @@
       ],
       "Security key": [
         "Κλειδί ασφαλείας"
+      ],
+      "Touch your security key.": [
+        "Αγγίξτε το κλειδί ασφαλείας σας."
       ]
     },
     "fido2: Label": {
@@ -4472,10 +4505,6 @@
         "${ selectedContactsLength }/${ contactsLength } επιλεγμένη επαφή",
         "${ selectedContactsLength }/${ contactsLength } επιλεγμένες επαφές"
       ],
-      "${ selectedCount } selected": [
-        "${ selectedCount } επιλεγμένο",
-        "${ selectedCount } επιλεγμένα"
-      ],
       "${ selectedFoldersCountLocalized } folder selected": [
         "${ selectedFoldersCountLocalized } επιλεγμένος φάκελος",
         "${ selectedFoldersCountLocalized } επιλεγμένοι φάκελοι"
@@ -4873,6 +4902,9 @@
       "File will not be updated": [
         "Το αρχείο δεν θα ενημερωθεί"
       ],
+      "Files only (no photos, ${ DOCS_APP_NAME } or ${ SHEETS_APP_NAME }) - up to 100 GB total, 100,000 files, and 50 GB per file": [
+        "Μόνο αρχεία (όχι φωτογραφίες, ${ DOCS_APP_NAME } ή ${ SHEETS_APP_NAME }) - έως 100 GB συνολικά, 100.000 αρχεία και 50 GB ανά αρχείο"
+      ],
       "finance": [
         "οικονομικά"
       ],
@@ -4912,8 +4944,14 @@
       "Governments and ISPs can monitor your online activity. By hiding your real IP and encrypting your activity your browsing becomes private.": [
         "Οι κυβερνήσεις και οι ISP μπορούν να παρακολουθούν τη δραστηριότητά σας στο διαδίκτυο. Κρύβοντας την πραγματική σας IP και κρυπτογραφώντας τη δραστηριότητά σας, η περιήγησή σας γίνεται ιδιωτική."
       ],
+      "Help us improve this experience by reporting the issue. If you’re comfortable sharing spreadsheet content, attach the debug information below to your report.": [
+        "Βοηθήστε μας να βελτιώσουμε αυτήν την εμπειρία αναφέροντας το πρόβλημα. Εάν αισθάνεστε άνετα να κοινοποιείτε περιεχόμενο υπολογιστικού φύλλου, επισυνάψτε τις παρακάτω πληροφορίες εντοπισμού σφαλμάτων στην αναφορά σας."
+      ],
       "here": [
         "εδώ"
+      ],
+      "Hide table of contents": [
+        "Απόκρυψη πίνακα περιεχομένων"
       ],
       "High Priority": [
         "Υψηλή προτεραιότητα"
@@ -5139,6 +5177,9 @@
       "Only the people with the link and the password can access this folder.": [
         "Μόνο άτομα που έχουν τον σύνδεσμο και το συνθηματικό έχουν πρόσβαση σε αυτό το φάκελο."
       ],
+      "Oops! This spreadsheet can’t save your most recent edits, so we’ve paused editing to prevent you from losing your work.": [
+        "Ωχ! Αυτό το υπολογιστικό φύλλο δεν μπορεί να αποθηκεύσει τις πιο πρόσφατες επεξεργασίες σας, επομένως έχουμε διακόψει την επεξεργασία για να αποτρέψουμε την απώλεια της εργασίας σας."
+      ],
       "Open the guide for recommended actions and helpful links.": [
         "Ανοίξτε τον οδηγό για προτεινόμενες ενέργειες και χρήσιμους συνδέσμους."
       ],
@@ -5313,6 +5354,9 @@
       ],
       "Shared on": [
         "Κοινοποιήθηκε στις"
+      ],
+      "Show table of contents": [
+        "Εμφάνιση πίνακα περιεχομένων"
       ],
       "Signature cannot be validated due to network error, please try again later.": [
         "Η υπογραφή δεν μπορεί να επικυρωθεί λόγω σφάλματος δικτύου, δοκιμάστε ξανά αργότερα."
@@ -5623,6 +5667,9 @@
       ],
       "You are about to open your default browser and visit:": [
         "Πρόκειται να ανοίξετε το προεπιλεγμένο πρόγραμμα περιήγησής σας και να επισκεφθείτε:"
+      ],
+      "You are currently signed in as ${ username } for ${ organizationName }.": [
+        "Αυτήν τη στιγμή είστε συνδεδεμένοι ως ${ username } για το ${ organizationName }."
       ],
       "You are currently signed in as ${ username }.": [
         "Είστε συνδεδεμένος/η ως ${ username }."
@@ -6089,6 +6136,12 @@
       "Erase this link and remove everyone with access": [
         "Διαγραφή αυτού του συνδέσμου και κατάργηση όλων των ατόμων με πρόσβαση"
       ],
+      "Exact host matching": [
+        "Ακριβής αντιστοίχιση κεντρικού υπολογιστή"
+      ],
+      "Exact URL matching": [
+        "Ακριβής αντιστοίχιση URL"
+      ],
       "Expiry": [
         "Λήξη"
       ],
@@ -6209,6 +6262,9 @@
       "Navigation": [
         "Πλοήγηση"
       ],
+      "Never fill on this exact URL": [
+        "Ποτέ μη συμπληρώνετε αυτήν ακριβώς τη διεύθυνση URL"
+      ],
       "New password": [
         "Νέος κωδικός"
       ],
@@ -6229,6 +6285,9 @@
       ],
       "Optional": [
         "Προαιρετικό"
+      ],
+      "Parent domain and subdomains (default)": [
+        "Γονικός τομέας και υποτομείς (προεπιλογή)"
       ],
       "Password": [
         "Κωδικός πρόσβασης"
@@ -6269,6 +6328,9 @@
       "Region": [
         "Περιοχή"
       ],
+      "Regular expression": [
+        "Κανονική έκφραση"
+      ],
       "Replace existing file": [
         "Αντικατάσταση υπάρχοντος αρχείου"
       ],
@@ -6305,6 +6367,9 @@
       "Skip folder": [
         "Παράλειψη φακέλου"
       ],
+      "Starts with": [
+        "Ξεκινάει με"
+      ],
       "Stop sharing": [
         "Διακοπή κοινής χρήσης"
       ],
@@ -6332,8 +6397,14 @@
       "Trash": [
         "Διαγραμμένα"
       ],
+      "Unknown user": [
+        "Άγνωστος χρήστης"
+      ],
       "Upload picture": [
         "Ανέβασμα εικόνας"
+      ],
+      "URL wildcard pattern": [
+        "Πρότυπο μπαλαντέρ URL"
       ],
       "Username": [
         "Όνομα Χρήστη"
@@ -6669,6 +6740,24 @@
       ]
     },
     "Message": {
+      "'Starts with' matching rule": [
+        "Κανόνας αντιστοίχισης 'Ξεκινά με'"
+      ],
+      "Exact (sub) domain matching rule": [
+        "Ακριβής κανόνας αντιστοίχισης (υπο) τομέα"
+      ],
+      "Exact URL matching rule": [
+        "Κανόνας αντιστοίχισης ακριβούς διεύθυνσης URL"
+      ],
+      "Never fill with this exact URL": [
+        "Ποτέ μην συμπληρώνετε με αυτήν ακριβώς τη διεύθυνση URL"
+      ],
+      "Regular expression rule": [
+        "Κανόνας κανονικής έκφρασης"
+      ],
+      "Wildcard pattern matching rule": [
+        "Κανόνας αντιστοίχισης μοτίβου μπαλαντέρ"
+      ],
       "Your free trial has ended. ${ nonAutoRenewalAction }": [
         "Η δωρεάν δοκιμή σας έχει λήξει. ${ nonAutoRenewalAction }"
       ],
@@ -7972,6 +8061,15 @@
       "Device renamed": [
         "Η συσκευή μετονομάστηκε"
       ],
+      "Document failed to be restored from trash": [
+        "Η επαναφορά του εγγράφου από τον κάδο απορριμμάτων απέτυχε"
+      ],
+      "Document moved to trash": [
+        "Το έγγραφο μετακινήθηκε στα διαγραμμένα"
+      ],
+      "Document restored from trash": [
+        "Το έγγραφο επαναφέρθηκε από τα διαγραμμένα"
+      ],
       "External invitation removed from the share": [
         "Η εξωτερική πρόσκληση καταργήθηκε από το κοινόχρηστο στοιχείο"
       ],
@@ -7992,6 +8090,9 @@
       ],
       "Failed to reject share invitation": [
         "Αποτυχία απόρριψης πρόσκλησης κοινής χρήσης"
+      ],
+      "Failed to rename document": [
+        "Αποτυχία μετονομασίας εγγράφου"
       ],
       "Failed to upload files: ${ err }": [
         "Αποτυχία μεταφόρτωσης αρχείων: ${ err }"
@@ -10140,6 +10241,9 @@
       "Edit image": [
         "Επεξεργασία εικόνας"
       ],
+      "Editing paused": [
+        "Η επεξεργασία διακόπηκε προσωρινά"
+      ],
       "Email addresses": [
         "Διευθύνσεις Email"
       ],
@@ -10529,6 +10633,26 @@
         "Οι εκτεθειμένες πληροφορίες σας"
       ]
     },
+    "Title header for keys table": {
+      "Actions": [
+        "Ενέργειες"
+      ],
+      "Created": [
+        "Δημιουργήθηκε"
+      ],
+      "Expires": [
+        "Λήγει"
+      ],
+      "Fingerprint": [
+        "Δακτυλικό αποτύπωμα"
+      ],
+      "Status": [
+        "Κατάσταση"
+      ],
+      "Type": [
+        "Τύπος"
+      ]
+    },
     "Today icon tooltip in mini calendar": {
       "Today": [
         "Σήμερα"
@@ -10613,6 +10737,9 @@
       "Upload a public key to enable sending end-to-end encrypted emails to this email": [
         "Για ενεργοποίηση της αποστολής διατερματικά κρυπτογραφημένων μηνυμάτων προς αυτήν τη διεύθυνση, ανεβάστε ένα δημόσιο κλειδί"
       ],
+      "Version 6 OpenPGP key": [
+        "Κλειδί OpenPGP έκδοσης 6"
+      ],
       "We have sent them an invite to access the item.": [
         "Τους στείλαμε μια πρόσκληση για πρόσβαση στο στοιχείο."
       ]
@@ -10645,6 +10772,11 @@
       ],
       "The user must have an address to request data access": [
         "Ο χρήστης πρέπει να έχει μια διεύθυνση για να ζητήσει πρόσβαση στα δεδομένα"
+      ]
+    },
+    "user_modal": {
+      "You'll be able to assign roles once the user has accepted the invitation.": [
+        "Θα μπορείτε να αναθέσετε ρόλους μόλις ο χρήστης αποδεχτεί την πρόσκληση."
       ]
     },
     "Validation": {
@@ -10763,6 +10895,9 @@
       ],
       "${ BRAND_NAME } will transfer as much data as possible, starting with your most recent messages.": [
         "Η ${ BRAND_NAME } θα μεταφέρει όσο το δυνατόν περισσότερα δεδομένα, ξεκινώντας από τα πιο πρόσφατα μηνύματά σας."
+      ],
+      "${ modeLabelStong } provides powerful control, but a single error can cause autofill to match and fill data on fraudulent or phishing websites.": [
+        "Το ${ modeLabelStong } παρέχει ισχυρό έλεγχο, αλλά ένα μόνο σφάλμα μπορεί να προκαλέσει την αντιστοίχιση και συμπλήρωση δεδομένων από την αυτόματη συμπλήρωση σε δόλιες ιστοσελίδες ή ιστοσελίδες ηλεκτρονικού \"ψαρέματος\" (phishing)."
       ],
       "Are you sure you want to permanently delete ${ count } contact?": [
         "Είστε βέβαιοι ότι θέλετε να διαγράψετε οριστικά ${ count } επαφή;",

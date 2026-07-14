@@ -3233,6 +3233,9 @@
       "Ensure you can still access your account and data even if you lose your ${ BRAND_NAME } password.": [
         "Garanta que você ainda possa acessar sua conta e seus dados, mesmo que perca sua senha do ${ BRAND_NAME }."
       ],
+      "For a seamless onboarding of your team to ${ BRAND_NAME }, import your data from Google, Outlook, and others.": [
+        "Para uma integração perfeita da sua equipe ao ${ BRAND_NAME }, importe seus dados do Google, Outlook e outros."
+      ],
       "Get notified if your password or other data was leaked from a third-party service.": [
         "Seja notificado caso sua senha ou outros dados sejam vazados de um serviço de terceiros."
       ],
@@ -3855,12 +3858,6 @@
       "Interval cannot be empty": [
         "O intervalo não pode estar vazio"
       ],
-      "Invalid ${ name } code": [
-        "O código ${ name } não é válido."
-      ],
-      "Invalid card number": [
-        "O número do cartão não é válido."
-      ],
       "Invalid code": [
         "O código não é válido."
       ],
@@ -3869,9 +3866,6 @@
       ],
       "Invalid email address": [
         "O endereço de e-mail não é válido."
-      ],
-      "Invalid expiration date": [
-        "A data de validade não é válida."
       ],
       "Invalid IBAN": [
         "IBAN inválido"
@@ -3943,6 +3937,9 @@
       "No contacts found to import": [
         "Nenhum contato encontrado para importação"
       ],
+      "No drive found to import": [
+        "Não encontrou nenhuma unidade para importar"
+      ],
       "No emails found to import - the account does not have an inbox": [
         "Nenhum e-mail encontrado para importação - a conta não possui uma caixa de entrada."
       ],
@@ -4001,6 +3998,9 @@
       ],
       "Please activate your search again": [
         "Ative a pesquisa novamente."
+      ],
+      "Please check if your ABN is registered for cross-border VAT": [
+        "Por favor, verifique se seu ABN está registrado para IVA transfronteiriço"
       ],
       "Please complete the billing details": [
         "Complete os detalhes de faturamento"
@@ -4075,6 +4075,9 @@
       ],
       "Request timed out": [
         "A solicitação expirou"
+      ],
+      "Reverse charge scheme is not supported for this plan": [
+        "O regime de autoliquidação não é suportado por este plano"
       ],
       "Self invitation not allowed": [
         "Auto convite não permitido"
@@ -4190,6 +4193,9 @@
       "Unexpected error, we can't import the contacts": [
         "Erro inesperado, não podemos importar os contatos"
       ],
+      "Unexpected error, we can't import the files": [
+        "Erro inesperado, não podemos importar os arquivos"
+      ],
       "Unknown error": [
         "Erro desconhecido"
       ],
@@ -4207,6 +4213,9 @@
       ],
       "VAT number must start with ${ prefixes }": [
         "O número de IVA deve começar por ${ prefixes }"
+      ],
+      "We couldn’t send a verification code using this method.": [
+        "Não conseguimos enviar um código de verificação usando este método."
       ],
       "Wrong billing address": [
         "Endereço de cobrança incorreto"
@@ -4726,6 +4735,9 @@
       ],
       "Security key": [
         "Chave de segurança"
+      ],
+      "Touch your security key.": [
+        "Toque na sua chave de segurança."
       ]
     },
     "fido2: Label": {
@@ -6099,9 +6111,6 @@
       "PGP/MIME automatically sends the message using the current composer mode.": [
         "PGP/MIME automaticamente envia a mensagem usando o modo compositor atual."
       ],
-      "Please authenticate your card in the verification tab.": [
-        "Autentique seu cartão na guia de verificação."
-      ],
       "Please authenticate your payment in the verification tab.": [
         "Autentique seu pagamento na guia de verificação."
       ],
@@ -6126,6 +6135,9 @@
       "Please select the folders you would like to import:": [
         "Selecione as pastas que deseja importar:"
       ],
+      "Please select the labels you would like to import:": [
+        "Selecione os marcadores que você deseja importar:"
+      ],
       "Please select which email address or addresses to add to ${ groupCount } group.": [
         "Selecione qual endereço de e-mail ou endereços adicionar ao grupo ${ groupCount }.",
         "Selecione qual endereço de e-mail ou endereços adicionar aos grupos ${ groupCount }."
@@ -6138,9 +6150,6 @@
       ],
       "Please try again using a different payment method, or contact your bank.": [
         "Tente novamente com outro método de pagamento ou entre em contato com seu banco."
-      ],
-      "Please try again, use a different payment method, or contact PayPal for assistance.": [
-        "Tente novamente, use um método de pagamento diferente ou entre em contato com seu banco."
       ],
       "Please wait while we look for contacts that can be re-signed with the primary encryption key.": [
         "Aguarde enquanto procuramos contatos que podem ser reassinados com a chave de criptografia principal."
@@ -6486,6 +6495,9 @@
       "We'll notify you when the import is done.": [
         "Nós te avisaremos quando a importação estiver concluída."
       ],
+      "We'll remind you to verify your password again later": [
+        "Lembriremos você de verificar sua senha novamente mais tarde"
+      ],
       "We'll send a new verification code to ${ strong }": [
         "Enviaremos um novo código de verificação para ${ strong }"
       ],
@@ -6564,6 +6576,9 @@
       "You are about to open your default browser and visit:": [
         "Você está prestes a abrir seu navegador padrão e visitar:"
       ],
+      "You are currently signed in as ${ username } for ${ organizationName }.": [
+        "Você está atualmente com sessão iniciada como ${ username } para ${ organizationName }."
+      ],
       "You are currently signed in as ${ username }.": [
         "Você está atualmente iniciado sessão como ${ username }."
       ],
@@ -6626,9 +6641,6 @@
       "You will lose all unsaved changes.": [
         "Você perderá todas as alterações não salvas."
       ],
-      "You will soon be redirected to PayPal to verify your payment.": [
-        "Em breve você será redirecionado para o PayPal para verificar seu pagamento."
-      ],
       "You will update all the events in this series. Added and removed participants will be notified.": [
         "Você vai atualizar todos os eventos desta série. Os participantes adicionados e removidos serão notificados."
       ],
@@ -6674,6 +6686,9 @@
       ],
       "Your account has at least one overdue invoice. Your access will soon get restricted. ${ payInvoiceLink }": [
         "Sua conta tem pelo menos uma fatura vencida. O seu acesso será restringido em breve. ${ payInvoiceLink }"
+      ],
+      "Your account is currently configured to apply the reverse charge scheme. This is not supported for the selected plan. To proceed, either remove the VAT number from the billing address or select a different plan.": [
+        "Atualmente, sua conta está configurada para aplicar o regime de autoliquidação. Isso não é suportado para o plano selecionado. Para prosseguir, remova o número de IVA do endereço de faturamento ou selecione um plano diferente."
       ],
       "Your address is disabled. A cancellation email cannot be sent to the event participants. Would you like to delete all events in this series anyway?": [
         "Seu endereço está desativado. Não é possível enviar um e-mail de cancelamento aos participantes do evento. Gostaria de excluir todos os eventos desta série mesmo assim?"
@@ -6865,6 +6880,9 @@
       ]
     },
     "Key badge": {
+      "Active Signer": [
+        "Signatário ativo"
+      ],
       "Compromised": [
         "Comprometida"
       ],
@@ -7383,6 +7401,9 @@
       "Region": [
         "Estado"
       ],
+      "Regular expression": [
+        "Expressão regular"
+      ],
       "Remove ${ MEET_APP_NAME } video conference": [
         "Remover videoconferência do ${ MEET_APP_NAME }"
       ],
@@ -7421,6 +7442,9 @@
       ],
       "Start date": [
         "Data de início"
+      ],
+      "Starts with": [
+        "Iniciar com"
       ],
       "State": [
         "Estado"
@@ -7900,6 +7924,9 @@
       ],
       "Re:": [
         "Re:"
+      ],
+      "Regular expression rule": [
+        "Regra de expressão regular"
       ],
       "Your free trial has ended. ${ nonAutoRenewalAction }": [
         "Sua avaliação gratuita terminou. ${ nonAutoRenewalAction }"
@@ -9805,6 +9832,9 @@
       "VAT number": [
         "Número de IVA"
       ],
+      "VAT reverse charge mechanism applies.": [
+        "Aplica-se o mecanismo de autoliquidação de IVA."
+      ],
       "You already have a subscription to this plan.": [
         "Você já assina este plano."
       ],
@@ -9958,6 +9988,9 @@
       ],
       "External key automatically fetched via WKD.": [
         "Chave externa obtida automaticamente via WKD."
+      ],
+      "This contact currently signs messages with this key": [
+        "Este contato assina atualmente as mensagens com esta chave"
       ],
       "This key is used for message verification": [
         "Essa chave já foi usado para verificação por mensagem"
@@ -11919,6 +11952,9 @@
       "${ feature } is now active": [
         "O recurso ${ feature } agora está ativo."
       ],
+      "${ LUMO_SHORT_APP_NAME } writing assistant": [
+        "Assistente de escrita do ${ LUMO_SHORT_APP_NAME }"
+      ],
       "Account recovery": [
         "Recuperação de conta"
       ],
@@ -12376,9 +12412,6 @@
       "Payment verification": [
         "Verificação de pagamento"
       ],
-      "PayPal verification failed": [
-        "Ocorreu um erro na verificação do PayPal"
-      ],
       "Phone numbers": [
         "Números de telefone"
       ],
@@ -12688,6 +12721,26 @@
         "Escolha um número"
       ]
     },
+    "Title header for keys table": {
+      "Actions": [
+        "Ações"
+      ],
+      "Created": [
+        "Criada"
+      ],
+      "Expires": [
+        "Expira"
+      ],
+      "Fingerprint": [
+        "Impressão digital"
+      ],
+      "Status": [
+        "Status"
+      ],
+      "Type": [
+        "Tipo"
+      ]
+    },
     "Title; create calendar modal": {
       "Create calendar": [
         "Criar calendário"
@@ -12784,6 +12837,9 @@
       ],
       "Upload a public key to enable sending end-to-end encrypted emails to this email": [
         "Carregue uma chave pública para permitir o envio de e-mails criptografados de ponta a ponta para este e-mail"
+      ],
+      "Version 6 OpenPGP key": [
+        "Chave OpenPGP versão 6"
       ]
     },
     "tooltip": {

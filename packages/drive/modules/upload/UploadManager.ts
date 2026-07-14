@@ -8,9 +8,10 @@ import { UploadOrchestrator } from './orchestration/UploadOrchestrator';
 import { useUploadControllerStore } from './store/uploadController.store';
 import { useUploadQueueStore } from './store/uploadQueue.store';
 import type { UploadConflictType, UploadEventSubscriberCallback } from './types';
-import { type UploadConflictStrategy, UploadStatus } from './types';
+import { EmptyFileDecision, type UploadConflictStrategy, UploadStatus } from './types';
 import { type FolderNode, buildFolderStructure } from './utils/buildFolderStructure';
 import { hasFolderStructure } from './utils/hasFolderStructure';
+import { isEmptyFolderPlaceholder } from './utils/isEmptyFolderPlaceholder';
 import { isDataTransferList, processDroppedItems } from './utils/processDroppedItems';
 
 /**
@@ -21,6 +22,9 @@ export class UploadManager {
     private orchestrator = new UploadOrchestrator();
     private activeContexts = new Set<string>();
     private contextUnsubscribers = new Map<string, () => void>();
+    // A resolver to capture the user decision about uploading "zero bytes" files:
+    // Either skip them (and upload other non-zero files), upload anyway or cancel the whole upload operation.
+    private emptyFileResolver: ((fileNames: string[]) => Promise<EmptyFileDecision>) | undefined;
 
     /**
      *
@@ -48,6 +52,14 @@ export class UploadManager {
 
     removeConflictResolver(): void {
         this.orchestrator.removeConflictResolver();
+    }
+
+    setEmptyFileResolver(callback: (fileNames: string[]) => Promise<EmptyFileDecision>): void {
+        this.emptyFileResolver = callback;
+    }
+
+    removeEmptyFileResolver(): void {
+        this.emptyFileResolver = undefined;
     }
 
     /**
@@ -157,10 +169,29 @@ export class UploadManager {
             ? await processDroppedItems(filesOrDataTransfer, { skipEmptyFolders: isForPhotos })
             : Array.from(filesOrDataTransfer);
 
-        const hasStructure = hasFolderStructure(filesArray);
+        const isEmptyFile = (f: File) => f.size === 0 && !isEmptyFolderPlaceholder(f);
+        const emptyFiles = filesArray.filter(isEmptyFile);
+        const confirmedEmptyFiles = new Set<File>();
+        if (emptyFiles.length > 0 && this.emptyFileResolver) {
+            const result = await this.emptyFileResolver(emptyFiles.map((f) => f.name));
+            if (result === EmptyFileDecision.Cancel) {
+                return [];
+            }
+            if (result === EmptyFileDecision.Allow) {
+                emptyFiles.forEach((f) => confirmedEmptyFiles.add(f));
+            }
+        }
+        const filteredFilesArray = filesArray.filter((f) => {
+            if (isEmptyFile(f) && this.emptyFileResolver) {
+                return confirmedEmptyFiles.has(f);
+            }
+            return true;
+        });
+
+        const hasStructure = hasFolderStructure(filteredFilesArray);
         const queuedUploadIds = [];
         if (isForPhotos) {
-            for (const file of filesArray) {
+            for (const file of filteredFilesArray) {
                 const abortController = new AbortController();
                 const uploadId = queueStore.addItem({
                     type: NodeType.Photo,
@@ -171,6 +202,7 @@ export class UploadManager {
                     status: UploadStatus.Pending,
                     batchId,
                     isForPhotos,
+                    allowEmptyFile: confirmedEmptyFiles.has(file),
                 });
                 this.orchestrator.emitFileQueued(uploadId, true, abortController);
                 queuedUploadIds.push(uploadId);
@@ -181,7 +213,7 @@ export class UploadManager {
                 throw new Error('parentUid is mendatory for non-photos upload, you probably called wrong endpoint');
             }
             if (!hasStructure) {
-                for (const file of filesArray) {
+                for (const file of filteredFilesArray) {
                     const abortController = new AbortController();
                     const uploadId = queueStore.addItem({
                         type: NodeType.File,
@@ -192,12 +224,13 @@ export class UploadManager {
                         clearTextExpectedSize: file.size,
                         status: UploadStatus.Pending,
                         batchId,
+                        allowEmptyFile: confirmedEmptyFiles.has(file),
                     });
                     this.orchestrator.emitFileQueued(uploadId, false, abortController);
                     queuedUploadIds.push(uploadId);
                 }
             } else {
-                const { filesWithStructure, standaloneFiles } = this.separateFilesAndFolders(filesArray);
+                const { filesWithStructure, standaloneFiles } = this.separateFilesAndFolders(filteredFilesArray);
 
                 for (const file of standaloneFiles) {
                     const abortController = new AbortController();
@@ -210,6 +243,7 @@ export class UploadManager {
                         clearTextExpectedSize: file.size,
                         status: UploadStatus.Pending,
                         batchId,
+                        allowEmptyFile: confirmedEmptyFiles.has(file),
                     });
                     this.orchestrator.emitFileQueued(uploadId, false, abortController);
                     queuedUploadIds.push(uploadId);

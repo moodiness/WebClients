@@ -87,7 +87,6 @@ export enum UpsellRef {
     SECURE_LINKS = 'secure_links',
     SETTING = 'setting',
     PASS_MONITOR = 'pass_monitor',
-    PASS_BIOMETRICS = 'pass_biometrics',
     PASS_FAMILY_FREE_399 = 'pass_family_free_399',
     PASS_FAMILY_PLUS_399 = 'pass_family_plus_399',
     PASS_FAMILY_1LT_299 = 'pass_family_1lt_299',
@@ -104,6 +103,7 @@ export enum UpsellRef {
     UNLIMITED_PLAN_ONBOARDING = 'unlimited_plan_onboarding',
     AUTOTYPE = 'autotype',
     PAT = 'pat',
+    SSH_AGENT = 'ssh_agent',
 }
 
 export const MAX_LOCAL_STORAGE_SIZE = 5 * 1024 * 1024; /* 5MB */
@@ -127,11 +127,15 @@ export const DEFAULT_PASS_FEATURES: FeatureFlagState = {
     [PassFeature.PassExperimentalWebsiteRules]: false,
     [PassFeature.PassExtensionCustomTLDs]: false,
     [PassFeature.PassHideShowVault]: false,
+    [PassFeature.PassIFrameExtendedAutofill]: false,
     [PassFeature.PassIFrameKillswitch]: false,
     [PassFeature.PassItemCloning]: false,
+    [PassFeature.PassMLAutofill]: false,
     [PassFeature.PassProtonAnniversaryPromo2025]: false,
     [PassFeature.PassRenameAdminToManager]: false,
+    [PassFeature.PassUserEventsV1]: false,
     [PassFeature.PassWebInternalAlpha]: false,
+    [PassFeature.PassWebPrfUnlock]: false,
 };
 
 /** NOTE: Timeout mostly used to avoid Safari extension

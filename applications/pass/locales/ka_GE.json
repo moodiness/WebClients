@@ -661,9 +661,6 @@
       "Skip": [
         "გამოტოვება"
       ],
-      "Someone shared an item with you on ${ PASS_APP_NAME }.": [
-        "ვიღაცამ გაგიზიარათ ელემენტი ${ PASS_APP_NAME }-ზე."
-      ],
       "Sort vault items": [
         "საცავის ელემენტების დალაგება"
       ],
@@ -1234,9 +1231,6 @@
       "Trashing item failed": [
         "ელემენტის ნაგვის ყუთში გადატანის შეცდომა"
       ],
-      "Try reaching out to the link owner.": [
-        "სცადეთ, ბმულის ავტორს დაუკავშირდეთ."
-      ],
       "Unable to generate an OTP code for this item": [
         "ამ ელემენტისთვის OTP კოდის გენერაცია შეუძლებელია"
       ],
@@ -1737,6 +1731,9 @@
       "Enter the address you want to email.": [
         "შეიყვანეთ მისამართი, ვისთვისაც ელფოსტის მიწერა გნებავთ."
       ],
+      "Enter verification code. Digit ${ digit }.": [
+        "შეიყვანეთ დამოწმების კოდი. ციფრი ${ digit }."
+      ],
       "Enter your extra password": [
         "შეიყვანეთ თქვენი დაამატებითი პაროლი"
       ],
@@ -1926,10 +1923,6 @@
       ],
       "Moving all items from \"${ payload.content.name }\"": [
         "ყველა ელემენტის გადატანა \"${ payload.content.name }\"-დან"
-      ],
-      "Moving an item to another vault will erase its secure links.": [
-        "ელემენტის გადატანა სხვა საცავში მის დაცულ ბმულებს წაშლის.",
-        "ელემენტის გადატანა სხვა საცავში მის დაცულ ბმულებს წაშლის."
       ],
       "Moving items": [
         "მიმდინარეობს ელემენტების გადატანა"
@@ -2600,11 +2593,23 @@
         "${ years } წელი",
         "${ years } წელი"
       ],
+      "1 day": [
+        "1 დღე"
+      ],
       "1 hour": [
         "1 სთ"
       ],
       "1 minute": [
         "1 წუთი"
+      ],
+      "1 month": [
+        "1 თვე"
+      ],
+      "1 week": [
+        "1 კვირა"
+      ],
+      "1 year": [
+        "1 წელი"
       ],
       "10 minutes": [
         "10 წუთი"
@@ -2671,6 +2676,9 @@
       ],
       "Address details": [
         "მისამართის დეტალები"
+      ],
+      "Advanced": [
+        "დამატებით"
       ],
       "Alias": [
         "ფსევდონიმი"
@@ -2827,6 +2835,9 @@
       ],
       "Crypto Wallet": [
         "კრიპტო საფულე"
+      ],
+      "Custom": [
+        "მომხმარებლის"
       ],
       "Custom Items": [
         "მომხმარებლის ელემენტები"
@@ -3536,9 +3547,6 @@
       "Theme": [
         "თემა"
       ],
-      "This item is accessible until ${ date } or until the view limit is reached.": [
-        "ეს ელემენტი ხელმისაწვდომია ${ date }-მდე, ან, სანამ, ნახვების ლიმიტი არ მიიღწევა."
-      ],
       "Tier/Level": [
         "დონე"
       ],
@@ -3935,6 +3943,9 @@
       ],
       "e.g. 60": [
         "მაგ: 60"
+      ],
+      "e.g. My automation script": [
+        "მაგ. ჩემი ავტომატიზაციის სკრიპტი"
       ],
       "E.g., ": [
         "მაგ. "

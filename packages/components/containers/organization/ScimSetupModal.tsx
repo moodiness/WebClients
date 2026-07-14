@@ -4,7 +4,6 @@ import { c, msgid } from 'ttag';
 
 import { Avatar } from '@proton/atoms/Avatar/Avatar';
 import { Button } from '@proton/atoms/Button/Button';
-import Icon from '@proton/components/components/icon/Icon';
 import type { ModalProps } from '@proton/components/components/modalTwo/Modal';
 import ModalTwo from '@proton/components/components/modalTwo/Modal';
 import ModalTwoContent from '@proton/components/components/modalTwo/ModalContent';
@@ -12,14 +11,17 @@ import ModalTwoFooter from '@proton/components/components/modalTwo/ModalFooter';
 import ModalTwoHeader from '@proton/components/components/modalTwo/ModalHeader';
 import { IcArrowsRotate } from '@proton/icons/icons/IcArrowsRotate';
 import { IcCheckmarkCircleFilled } from '@proton/icons/icons/IcCheckmarkCircleFilled';
+import { IcChevronDown } from '@proton/icons/icons/IcChevronDown';
+import { IcChevronUp } from '@proton/icons/icons/IcChevronUp';
 import { IcInfoCircle } from '@proton/icons/icons/IcInfoCircle';
 import { IcKey } from '@proton/icons/icons/IcKey';
-import { IcShareNode } from '@proton/icons/icons/IcShareNode';
 import { BRAND_NAME, MEMBER_PRIVATE } from '@proton/shared/lib/constants';
 import { getInitials } from '@proton/shared/lib/helpers/string';
 import type { Group, MemberReadyForManualUnprivatization } from '@proton/shared/lib/interfaces';
 import type { GroupMember } from '@proton/shared/lib/interfaces/GroupMember';
 import { useFlag } from '@proton/unleash/useFlag';
+
+import GroupIcon from './groups/GroupIcon';
 
 import './ScimSetupModal.scss';
 
@@ -55,6 +57,7 @@ interface PendingGroupItem {
 interface Props extends ModalProps {
     users: PendingUserItem[];
     groups: PendingGroupItem[];
+    pendingMembers: Record<string, GroupMember[]>;
     phase: Phase;
     onFinish: () => void;
 }
@@ -128,6 +131,8 @@ const Section = ({
     onToggle: () => void;
     children: ReactNode;
 }) => {
+    const ChevronIcon = expanded ? IcChevronUp : IcChevronDown;
+
     return (
         <div className="border-bottom">
             <button
@@ -141,7 +146,7 @@ const Section = ({
                 </span>
                 <span className="flex items-center gap-2">
                     {!expanded && <StatusBadge status={sectionStatus} />}
-                    <Icon name={expanded ? 'chevron-up' : 'chevron-down'} className="shrink-0" />
+                    <ChevronIcon className="shrink-0" />
                 </span>
             </button>
             {expanded && <div className="pb-3">{children}</div>}
@@ -162,6 +167,8 @@ const GroupInfoRow = ({
     const memberCount = members.length;
     const hasMembers = memberCount > 0;
 
+    const ChevronIcon = expanded ? IcChevronUp : IcChevronDown;
+
     const header = (
         <>
             <span
@@ -172,7 +179,7 @@ const GroupInfoRow = ({
                     backgroundColor: 'var(--interaction-norm-minor-1)',
                 }}
             >
-                <IcShareNode className="m-auto color-primary shrink-0" size={4} />
+                <GroupIcon className="m-auto color-primary shrink-0" isScimGroup size={4} />
             </span>
             <span className="block flex-1 min-w-0">
                 <span className="block text-ellipsis text-bold" title={group.Name}>
@@ -192,7 +199,7 @@ const GroupInfoRow = ({
             </span>
             <span className="flex items-center gap-2">
                 {<StatusBadge status={status} />}
-                {hasMembers && <Icon name={expanded ? 'chevron-up' : 'chevron-down'} className="shrink-0" />}
+                {hasMembers && <ChevronIcon className="shrink-0" />}
             </span>
         </>
     );
@@ -233,7 +240,7 @@ const getSectionStatus = (statuses: ItemStatus[]): ItemStatus => {
     return ItemStatus.Unknown;
 };
 
-const ScimSetupModal = ({ users, groups, phase, onFinish, onClose, ...rest }: Props) => {
+const ScimSetupModal = ({ users, groups, pendingMembers, phase, onFinish, onClose, ...rest }: Props) => {
     const isUserGroupsScimGroupsEnabled = useFlag('UserGroupsScimGroups');
 
     const [usersExpanded, setUsersExpanded] = useState(false);
@@ -242,6 +249,15 @@ const ScimSetupModal = ({ users, groups, phase, onFinish, onClose, ...rest }: Pr
 
     const numberOfPendingUsers = users.length;
     const numberOfPendingGroups = groups.length;
+
+    const getGroupMemberItems = ({ group, members }: PendingGroupItem): PendingGroupMemberItem[] => {
+        const statusByMemberId = new Map(members.map(({ member, status }) => [member.ID, status]));
+
+        return (pendingMembers[group.ID] ?? []).map((member) => ({
+            member,
+            status: statusByMemberId.get(member.ID) ?? ItemStatus.Waiting,
+        }));
+    };
 
     if (!isUserGroupsScimGroupsEnabled || (!numberOfPendingUsers && !numberOfPendingGroups)) {
         return null;
@@ -299,6 +315,7 @@ const ScimSetupModal = ({ users, groups, phase, onFinish, onClose, ...rest }: Pr
                                 <GroupInfoRow
                                     key={groupItem.group.ID}
                                     {...groupItem}
+                                    members={getGroupMemberItems(groupItem)}
                                     expanded={!!expandedGroups[groupItem.group.ID]}
                                     onToggle={() =>
                                         setExpandedGroups((prev) => ({
@@ -312,11 +329,11 @@ const ScimSetupModal = ({ users, groups, phase, onFinish, onClose, ...rest }: Pr
                     )}
                 </div>
 
-                <div className="color-hint mt-4 flex flex-nowrap gap-2 items-start">
-                    <IcInfoCircle className="shrink-0 mt-1" />
+                <div className="color-hint mt-4 flex flex-nowrap gap-2">
+                    <IcInfoCircle className="shrink-0 mt-0.5" />
                     <span>
                         {c('scim')
-                            .t`Users that you have set to private need to accept the invite to finish setup. We'll send them an invite once you approve.`}
+                            .t`Users set to private need to accept the invite to finish setup. We'll send them an invite once you approve.`}
                     </span>
                 </div>
             </ModalTwoContent>
@@ -329,7 +346,7 @@ const ScimSetupModal = ({ users, groups, phase, onFinish, onClose, ...rest }: Pr
                     loading={phase === Phase.Working}
                     onClick={phase === Phase.Done ? onClose : onFinish}
                 >
-                    {phase === Phase.Done ? c('Action').t`Close` : c('Action').t`Finish`}
+                    {phase === Phase.Done ? c('Action').t`Close` : c('Action').t`Approve`}
                 </Button>
             </ModalTwoFooter>
         </ModalTwo>

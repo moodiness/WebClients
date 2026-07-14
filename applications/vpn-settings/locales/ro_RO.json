@@ -110,6 +110,9 @@
       "Apply": [
         "Aplicare"
       ],
+      "Approve": [
+        "Aprobare"
+      ],
       "Attach screenshot(s)": [
         "Atașare capturi de ecran"
       ],
@@ -226,9 +229,6 @@
       ],
       "Connected": [
         "Conectat"
-      ],
-      "Contact support": [
-        "Contactați asistența"
       ],
       "Contact Support Center": [
         "Contactați centrul de asistență"
@@ -503,9 +503,6 @@
       "Forgot password?": [
         "Ați uitat parola?"
       ],
-      "Forgot recovery method?": [
-        "Ați uitat metoda de recuperare?"
-      ],
       "Generate new recovery phrase": [
         "Generare frază de recuperare"
       ],
@@ -659,9 +656,6 @@
       "Load more": [
         "Încărcare mai multe"
       ],
-      "Loading verification": [
-        "În curs de verificare"
-      ],
       "Lost access to your 2FA device?": [
         "Ați pierdut accesul la dispozitivul pentru A2F?"
       ],
@@ -757,6 +751,9 @@
       ],
       "Organization": [
         "Organizația"
+      ],
+      "Pause": [
+        "Suspendare"
       ],
       "Pay": [
         "Plătire"
@@ -895,6 +892,9 @@
       ],
       "Review": [
         "Revizuire"
+      ],
+      "Review changes": [
+        "Revizuire modificări"
       ],
       "Revoke": [
         "Anulare"
@@ -1850,7 +1850,7 @@
     },
     "BF2025: Deal details": {
       "2 TB data storage": [
-        "2 TiB spațiu total"
+        "2 TiB spațiu de stocare"
       ],
       "3 TB data storage": [
         "3 TiB spațiu de stocare"
@@ -2246,7 +2246,7 @@
     },
     "BYOE": {
       "Duplicates from previous imports will be skipped. Undo or import older messages in ${ PRODUCT_NAMES.EASY_SWITCH } settings.": [
-        "Duplicatele din importurile anterioare vor fi omise. Anulați sau importați mesajele mai vechi în setările din ${ PRODUCT_NAMES.EASY_SWITCH }."
+        "Duplicatele din importările anterioare vor fi omise. Anulați sau importați mesajele mai vechi în setările din ${ PRODUCT_NAMES.EASY_SWITCH }."
       ]
     },
     "Cancellation upsell": {
@@ -3694,6 +3694,15 @@
       "No one in your organization can connect to shared servers.": [
         "Nu se poate conecta nimeni din organizație la serverele partajate."
       ],
+      "Note that emails sent to this address, even from other ${ BRAND_NAME } addresses, will no longer be end-to-end encrypted.": [
+        "Rețineți că mesajele trimise la această adresă, chiar și de la alte adrese ${ BRAND_NAME }, nu vor mai fi criptate bilateral."
+      ],
+      "Once disconnected and disabled, you will no longer be able to send or receive emails as ${ address.Email } in ${ BRAND_NAME }. Emails sent to this address will still arrive in Gmail, but not in ${ MAIL_APP_NAME }.": [
+        "După deconectare și dezactivare, nu veți mai putea trimite sau primi mesaje ca ${ address.Email } în ${ BRAND_NAME }. Mesajele trimise la această adresă vor ajunge în continuare în Gmail, dar nu și în ${ MAIL_APP_NAME }."
+      ],
+      "Once disconnected, you will no longer be able to send or receive emails as ${ address.Email } in ${ BRAND_NAME }. Emails sent to this address will still arrive in Gmail, but not in ${ MAIL_APP_NAME }.": [
+        "După deconectare, nu veți mai putea trimite sau primi mesaje ca ${ address.Email } în ${ BRAND_NAME }. Mesajele trimise la această adresă vor ajunge în continuare în Gmail, dar nu și în ${ MAIL_APP_NAME }."
+      ],
       "Read, reply, and stay on top of Gmail from within ${ MAIL_APP_NAME }": [
         "Citiți, răspundeți și rămâneți deasupra lui Gmail direct din ${ MAIL_APP_NAME }"
       ],
@@ -3751,7 +3760,7 @@
         "Importarea se va opri la 80% din spațiul de stocare pentru a rezerva spațiu pentru mesajele noi."
       ],
       "We'll import your old emails and sync new messages from Gmail going forward": [
-        "Se vor importa mesajele vechi și sincroniza mesajele noi din Gmail de acum încolo."
+        "Se vor importa mesajele vechi și de acum înainte se vor sincroniza mesajele noi din Gmail."
       ],
       "We've started importing your emails from Gmail. We'll let you know when it's done.": [
         "S-a început importarea mesajelor de pe Gmail. Vă vom anunța când va fi gata."
@@ -3776,6 +3785,9 @@
       ],
       "You can now send emails from ${ BRAND_NAME } using this address.": [
         "Puteți trimite acum mesaje de pe ${ BRAND_NAME } folosind această adresă."
+      ],
+      "You can reconnect this address at any time.": [
+        "Puteți reconecta această adresă oricând."
       ],
       "You're forwarding ${ numAddressesOrSync } Gmail address to ${ MAIL_APP_NAME }.": [
         "Transferați ${ numAddressesOrSync } adresă Gmail către ${ MAIL_APP_NAME }.",
@@ -4482,12 +4494,6 @@
       "Incorrect username": [
         "Nume de utilizator incorect."
       ],
-      "Invalid ${ name } code": [
-        "Cod ${ name } nevalid."
-      ],
-      "Invalid card number": [
-        "Număr de card nevalid."
-      ],
       "Invalid code": [
         "Cod nevalid"
       ],
@@ -4499,9 +4505,6 @@
       ],
       "Invalid email address": [
         "Adresă de e-mail nevalidă."
-      ],
-      "Invalid expiration date": [
-        "Data expirării nu este validă."
       ],
       "Invalid IBAN": [
         "Acest IBAN nu este valid."
@@ -4553,6 +4556,9 @@
       "No contacts found to import": [
         "Nu s-au găsit contacte de importat."
       ],
+      "No drive found to import": [
+        "Nu s-a găsit nici o unitate de importat."
+      ],
       "No emails found to import - the account does not have an inbox": [
         "Nu s-au găsit mesaje de importat - contul nu are căsuță poștală."
       ],
@@ -4564,6 +4570,9 @@
       ],
       "Not a valid number": [
         "Nu este un număr valid"
+      ],
+      "Only capitalization and punctuation (periods, hyphens, and underscores) can be changed for this address": [
+        "Pentru această adresă poate fi modificată doar scrierea cu majuscule și punctuația (puncte, cratime și caractere de subliniere)."
       ],
       "Organization key is not decrypted": [
         "Cheia organizației nu este decriptată."
@@ -4696,6 +4705,16 @@
       "Reverse charge scheme is not supported for this plan": [
         "Schema de taxare inversă nu este acceptată pentru acest plan."
       ],
+      "Role assignment could not be completed for ${ errors.length } member": [
+        "Membri pentru care nu s-a putut atribui rolul: ${ errors.length }",
+        "Membri pentru care nu s-a putut atribui rolul: ${ errors.length }",
+        "Membri pentru care nu s-a putut atribui rolul: ${ errors.length }"
+      ],
+      "Role assignment could not be completed for ${ failedGroupCount } group": [
+        "Grupuri pentru care nu s-a putut atribui rolul: ${ failedGroupCount }",
+        "Grupuri pentru care nu s-a putut atribui rolul: ${ failedGroupCount }",
+        "Grupuri pentru care nu s-a putut atribui rolul: ${ failedGroupCount }"
+      ],
       "Server not found": [
         "Server negăsit"
       ],
@@ -4822,6 +4841,9 @@
       "Unexpected error, we can't import the contacts": [
         "Eroare neașteptată. Nu se pot importa contactele."
       ],
+      "Unexpected error, we can't import the files": [
+        "Eroare neașteptată. Fișierele nu se pot importa."
+      ],
       "Unknown error": [
         "Eroare necunoscută"
       ],
@@ -4845,6 +4867,9 @@
       ],
       "Verification did not succeed, please try again in an hour.": [
         "Verificarea nu a reușit. Reîncercaţi într-o oră."
+      ],
+      "We couldn’t send a verification code using this method.": [
+        "Nu s-a putut trimite un cod de verificare folosind această metodă."
       ],
       "We stopped DKIM signing due to problems with your DNS configuration. Please follow the instructions below to resume signing.": [
         "Am oprit semnarea cu DKIM din cauza problemelor cu configurația DNS. Urmați instrucțiunile de mai jos pentru a relua semnarea."
@@ -5039,9 +5064,6 @@
       ]
     },
     "Error message": {
-      "Account is deleted or disabled": [
-        "Contul este șters sau dezactivat."
-      ],
       "App currently unavailable": [
         "Aplicație momentan indisponibilă"
       ],
@@ -5612,8 +5634,8 @@
       "Insert a security key linked to your ${ BRAND_NAME } Account.": [
         "Introduceți o cheie de securitate legată la contul ${ BRAND_NAME }."
       ],
-      "Insert your security key into your device's USB port.": [
-        "Introduceți cheia de securitate în portul USB al dispozitivului."
+      "Insert your security key into your device.": [
+        "Introduceți cheia de securitate în dispozitiv."
       ],
       "Security key": [
         "Cheie de securitate"
@@ -5626,6 +5648,9 @@
       ],
       "This will delete all security keys linked to your account.": [
         "Se vor șterge toate cheile de securitate asociate contului."
+      ],
+      "Touch your security key.": [
+        "Atingeți cheia de securitate."
       ],
       "Verify your identity with a physical U2F or FIDO2 security key": [
         "Vă verificați identitatea cu o cheie fizică U2F sau FIDO2."
@@ -5847,6 +5872,12 @@
       ],
       "General": [
         "Generale"
+      ],
+      "Manage users and groups, assign roles, and allocate licenses to members.": [
+        "Gestionați utilizatorii și grupurile, atribuiți roluri și alocați licențe membrilor."
+      ],
+      "Manages security settings and can view all event logs and user details.": [
+        "Gestionează setările de securitate și poate vizualiza toate jurnalele de evenimente și detaliile utilizatorului."
       ],
       "Roles and permissions": [
         "Roluri și permisiuni"
@@ -6339,10 +6370,7 @@
       "${ appName } needs your permission to ${ enableDesktopNotifications }.": [
         "${ appName } necesită permisiunea pentru ${ enableDesktopNotifications }."
       ],
-      "${ boldWarning } You will lose access to all current encrypted data in your account if you continue.": [
-        "${ boldWarning } Veți pierde accesul la toate datele actuale criptate din cont dacă continuați."
-      ],
-      "${ BRAND_NAME } Business plans gives your team all the collaboration tools they need to be productive and organized in their work, while safeguarding your business.": [
+      "${ BRAND_NAME } Business plans give your team all the collaboration tools they need to be productive and organized in their work, while safeguarding your business.": [
         "Planurile ${ BRAND_NAME } Business vă oferă echipei toate instrumentele de colaborare de care are nevoie pentru a fi productivă și organizată în activitatea sa, protejându-vă în același timp afacerea."
       ],
       "${ BRAND_NAME } is independently funded and operates without advertising. Below are examples of how this independence has been used in practice.": [
@@ -6389,6 +6417,11 @@
       ],
       "${ emailAddress } is invalid": [
         "${ emailAddress } nu este validă"
+      ],
+      "${ emails.length } member added to the group": [
+        "Membri adăugați la grup: ${ emails.length }",
+        "Membri adăugați la grup: ${ emails.length }",
+        "Membri adăugați la grup: ${ emails.length }"
       ],
       "${ fileName }: full-size image": [
         "${ fileName }: imagine completă"
@@ -6465,10 +6498,10 @@
       "${ PASS_SHORT_APP_NAME } lifetime deal has no renewal price, it's a one-time payment for lifetime access to ${ PASS_SHORT_APP_NAME }. Your ${ planTitle } subscription renewal price and date remain unchanged.": [
         "Oferta pe viață a ${ PASS_SHORT_APP_NAME } nu are preț de reînnoire, este o plată unică pentru acces pe viață la ${ PASS_SHORT_APP_NAME }. Prețul și data de reînnoire a abonamentului ${ planTitle } rămân neschimbate."
       ],
-      "${ pendingAdminMemberCount } new member added via your identity provider and pending review.": [
-        "Membri noi adăugați prin intermediul furnizorului de identitate care așteaptă revizuirea: ${ pendingAdminMemberCount }",
-        "Membri noi adăugați prin intermediul furnizorului de identitate care așteaptă revizuirea: ${ pendingAdminMemberCount }",
-        "Membri noi adăugați prin intermediul furnizorului de identitate care așteaptă revizuirea: ${ pendingAdminMemberCount }"
+      "${ pendingAdminApprovalCount } new member added via your identity provider and pending review.": [
+        "Membri noi adăugați prin intermediul furnizorului de identitate care așteaptă revizuirea: ${ pendingAdminApprovalCount }",
+        "Membri noi adăugați prin intermediul furnizorului de identitate care așteaptă revizuirea: ${ pendingAdminApprovalCount }",
+        "Membri noi adăugați prin intermediul furnizorului de identitate care așteaptă revizuirea: ${ pendingAdminApprovalCount }"
       ],
       "${ plan.Title } requires at least 1 dedicated server ${ serverPricePerMonth }": [
         "${ plan.Title } necesită cel puțin 1 server dedicat ${ serverPricePerMonth }"
@@ -6898,11 +6931,11 @@
       "Beta": [
         "Beta"
       ],
-      "Billed at ${ monthlyDiscountedPrice } for the first 6 months, renews at ${ monthlyRenewalPrice }.": [
-        "Facturat cu ${ monthlyDiscountedPrice } pentru primele 6 luni, se reînnoiește cu ${ monthlyRenewalPrice }."
+      "Billed at ${ monthlyDiscountedPriceElement } for the first 6 months, renews at ${ monthlyRenewalPriceElement }.": [
+        "Facturat cu ${ monthlyDiscountedPriceElement } pentru primele 6 luni, se reînnoiește cu ${ monthlyRenewalPriceElement }."
       ],
-      "Billed at ${ yearlyDiscountedPrice } for the first 12 months, renews at ${ yearlyRenewalPrice }.": [
-        "Facturat cu ${ yearlyDiscountedPrice } pentru primele 12 luni, se reînnoiește cu ${ yearlyRenewalPrice }."
+      "Billed at ${ yearlyDiscountedPriceElement } for the first 12 months, renews at ${ yearlyRenewalPriceElement }.": [
+        "Facturat cu ${ yearlyDiscountedPriceElement } pentru primele 12 luni, se reînnoiește cu ${ yearlyRenewalPriceElement }."
       ],
       "Billing cycle: ${ text }": [
         "Ciclu facturare: ${ text }"
@@ -6998,7 +7031,7 @@
         "Copiați și lipiți această adresă URL în câmpul ID-ului entității furnizorului de identitate."
       ],
       "Copy the suggested password to clipboard": [
-        "Copiați parola sugerată în memorie."
+        "Copiere parolă sugerată în memorie."
       ],
       "Copy your referral link": [
         "Copiere legătură web de recomandare"
@@ -7070,9 +7103,6 @@
       ],
       "Data locked": [
         "Date blocate"
-      ],
-      "Data recoverable on this device": [
-        "Datele recuperabile pe acest dispozitiv"
       ],
       "Data recoverable with recovery phrase": [
         "Date recuperabile cu fraza de recuperare"
@@ -7161,9 +7191,6 @@
       ],
       "Don't lose access to your premium features. Enable auto-renew today.": [
         "Nu pierdeți accesul la funcțiile premium. Activați reînnoirea automată astăzi."
-      ],
-      "Done! We sent a code to ${ destination }.": [
-        "Gata! S-a trimis un cod către ${ destination }."
       ],
       "Don’t know your recovery phrase?": [
         "Nu vă cunoașteți fraza de recuperare?"
@@ -7288,12 +7315,6 @@
       "Enter the code from your authenticator app": [
         "Introduceți codul din aplicația Authenticator."
       ],
-      "Enter the code sent to your phone number ${ phone }.": [
-        "Introduceți codul trimis la numărul de telefon ${ phone }."
-      ],
-      "Enter the code that was sent to ${ email }. If you can't find the message in your inbox, please check your spam folder.": [
-        "Introduceți codul de recuperare trimis la ${ email }. Dacă nu găsiți mesajul în mesajele primite, verificați în folderul cu mesaje nedorite."
-      ],
       "Enter the credentials of the email account you want to import from.": [
         "Introduceți datele de conectare a contului de e-mail din care doriți să importați."
       ],
@@ -7353,6 +7374,9 @@
       ],
       "Failed to fetch logs.": [
         "Eșuare preluare jurnale."
+      ],
+      "Files only (no photos, ${ DOCS_APP_NAME } or ${ SHEETS_APP_NAME }) - up to 100 GB total, 100,000 files, and 50 GB per file": [
+        "Doar fișiere (fără fotografii, ${ DOCS_APP_NAME } sau ${ SHEETS_APP_NAME }) - până la 100 GiB total, 100.000 de fișiere și 50 GiB per fișier."
       ],
       "Fill in user details": [
         "Completați detaliile utilizatorului"
@@ -7426,8 +7450,14 @@
       "Got it": [
         "Am înțeles"
       ],
+      "Group created": [
+        "Grup creat"
+      ],
       "Group deleted": [
         "Grupul s-a șters."
+      ],
+      "Group roles assigned": [
+        "Roluri de grup atribuite"
       ],
       "Groups": [
         "Grupuri"
@@ -7458,9 +7488,6 @@
       ],
       "If you are having trouble creating your account, please request an invitation and we will respond within one business day.": [
         "Dacă aveți probleme cu crearea contului, solicitați o invitație și vom răspunde în termen de o zi lucrătoare."
-      ],
-      "If you are signed in somewhere else, you may be able to ${ signedInPasswordResetLink }.": [
-        "Dacă v-ați conectat în altă parte, puteți să ${ signedInPasswordResetLink }."
       ],
       "If you are signed in to a ${ BRAND_NAME } web app in **another browser**, you may be able to perform a password reset from your active session.": [
         "Dacă v-ați conectat la o aplicație web ${ BRAND_NAME } într-un **alt navigator web**, este posibil să puteți reseta parola din sesiunea activă."
@@ -7745,6 +7772,9 @@
       "Make sure you ${ addARecoveryMethod } so that you can get back into your account if you forget your password.": [
         "Asigurați-vă că ați ${ addARecoveryMethod } astfel încât să puteți accesa contul chiar dacă uitați parola."
       ],
+      "Manage groups in your identity provider": [
+        "Gestionați grupurile în furnizorul de identitate"
+      ],
       "Manage which ${ BRAND_NAME } applications the members of your organization can access. If disabled, only administrators will have access.": [
         "Gestionați aplicațiile ${ BRAND_NAME } pe care membrii organizației proprii le pot accesa. Dacă este dezactivat, numai administratorii vor avea acces."
       ],
@@ -7874,8 +7904,8 @@
       "Once access to your account has been granted, they can access your **Recovery** settings and **change your ${ ACCOUNT_APP_NAME } password** for you.": [
         "După ce a fost acordat accesul la cont, aceștia vă pot accesa setările de **Recuperare** și vă **schimbe parola ${ ACCOUNT_APP_NAME }**."
       ],
-      "Once you reset your password:": [
-        "După ce veți reseta parola:"
+      "Only capitalization and punctuation (periods, hyphens, and underscores) can be changed here. To use a different address, add a new one.": [
+        "Doar scrierea cu majuscule și semnele de punctuație (puncte, cratime și sublinieri) pot fi modificate aici. Pentru a utiliza o adresă diferită, adăugați una nouă."
       ],
       "Open source": [
         "Cod sursă public"
@@ -7990,9 +8020,6 @@
       "Please ask the owner to directly invite you to the document.": [
         "Solicitați proprietarului să vă invite direct la document."
       ],
-      "Please authenticate your card in the verification tab.": [
-        "Autentificați cardul în fila de verificare."
-      ],
       "Please authenticate your payment in the verification tab.": [
         "Autentificați plata în fila de verificare."
       ],
@@ -8001,9 +8028,6 @@
       ],
       "Please check your file, or try using our ${ csvTemplateButton }.": [
         "Verificați fișierul sau încercați să folosiți ${ csvTemplateButton }."
-      ],
-      "Please enter the 12-word recovery phrase associated with your account.": [
-        "Introduceți fraza de recuperare de 12 cuvinte asociată acestui cont."
       ],
       "Please fill in all required fields.": [
         "Completați toate câmpurile obligatorii."
@@ -8028,9 +8052,6 @@
       ],
       "Please try again using a different payment method, or contact your bank.": [
         "Reîncercați folosind o metodă de plată diferită sau contactați-vă banca."
-      ],
-      "Please try again, use a different payment method, or contact PayPal for assistance.": [
-        "Mai încercați. Folosiți o metodă de plată diferită sau contactați PayPal pentru asistență."
       ],
       "Please use another browser or download the file.": [
         "Folosiți alt tip de navigator web sau descărcați fișierul."
@@ -8351,6 +8372,9 @@
       "Symbols (#$&)": [
         "Simboluri (#$&)"
       ],
+      "Synced from identity provider": [
+        "Sincronizat de la furnizorul de identitate"
+      ],
       "TechRadar Pro recommended with a rating of 4.2 out of 5 stars": [
         "TechRadar Pro l-a recomandat cu o evaluare de 4,2 din 5 stele"
       ],
@@ -8419,6 +8443,11 @@
       ],
       "The name will be visible to your users while they are signed in.": [
         "Numele va fi vizibil utilizatorilor când sunt conectați."
+      ],
+      "The process was interrupted for ${ pausedCount } group. Click Continue to resume assigning roles.": [
+        "Procesul a fost întrerupt pentru ${ pausedCount } grup. Faceți clic pe „Continuare” pentru a relua atribuirea rolurilor.",
+        "Procesul a fost întrerupt pentru ${ pausedCount } grupuri. Faceți clic pe „Continuare” pentru a relua atribuirea rolurilor.",
+        "Procesul a fost întrerupt pentru ${ pausedCount } de grupuri. Faceți clic pe „Continuare” pentru a relua atribuirea rolurilor."
       ],
       "The referral credit can be awarded up to 2 months after your friend's trial ended, only if your friend subscribed to a plan.": [
         "Creditul de recomandare poate fi acordat până la două luni după încheierea perioadei de evaluare pentru persoana recomandată și dacă aceasta s-a abonat la un plan."
@@ -8621,9 +8650,6 @@
       "Trial ends on ${ formattedPeriodEndDate }": [
         "Perioada de evaluare expiră la ${ formattedPeriodEndDate }"
       ],
-      "trusted device": [
-        "dispozitiv aprobat"
-      ],
       "Try ${ productName } totally risk free - if for any reason you change your mind, you'll receive a full refund. No questions asked.": [
         "Încercați ${ productName } fără riscuri - dacă din orice motiv vă răzgândiți, veți primi o rambursare completă. Fără întrebări."
       ],
@@ -8647,9 +8673,6 @@
       ],
       "Unfortunately there is no recovery method available for this account.": [
         "Din păcate nu există nicio metodă de recuperare disponibilă pentru acest cont."
-      ],
-      "Unfortunately there is no recovery method saved for this account.": [
-        "Din păcate nu există nicio metodă de recuperare salvată pentru acest cont."
       ],
       "Unique ID generated by your identity provider, usually in the form of a URL that contains the identity provider’s name within it (e.g. https://idp.example.com/XXXXX).": [
         "ID unic generat de furnizorul de identitate, de obicei sub forma unei adrese URL care conține numele furnizorului de identitate (ex. https://idp.exemplu.com/XXXX)."
@@ -8786,9 +8809,6 @@
       "Want to learn more?": [
         "Doriți să aflați mai multe?"
       ],
-      "Warning:": [
-        "Avertizare:"
-      ],
       "Warning: deleting your account is permanent.": [
         "Avertizare: ștergerea contului este permanentă."
       ],
@@ -8825,14 +8845,8 @@
       "We recommend notifying the organization members and asking them to set up 2FA for their accounts before enforcing the use of 2FA.": [
         "Se recomandă notificarea membrilor organizației și solicitarea ca aceștia să-ți activeze autentificarea cu doi factori înainte de forțarea utilizării acesteia."
       ],
-      "We recommend using your recovery phrase instead.": [
-        "Vă recomandăm să folosiți în schimb fraza de recuperare."
-      ],
       "We securely store recovery information on your trusted device to prevent you from losing your data": [
         "Stocăm în siguranță informațiile de recuperare pe dispozitivul dvs. de încredere pentru a preveni pierderea datelor."
-      ],
-      "We stored a backup file in this browser because you allowed data recovery on this ${ deviceLink }. If the backup file is valid, you will immediately regain complete or partial access to your encrypted data.": [
-        "Am stocat un fișier de conservare în acest navigator web, deoarece ați permis recuperarea datelor pe acest ${ deviceLink }. Dacă fișierul de conservare este valid, veți recăpăta imediat acces complet sau parțial la datele personale criptate."
       ],
       "We use 3-D Secure to protect your payments": [
         "Folosim 3-D Secure pentru a proteja plățile"
@@ -8866,12 +8880,6 @@
       ],
       "We’ll send a reset code to ${ boldValue }.": [
         "Veți primi un cod de resetare la ${ boldValue }."
-      ],
-      "We’ll send a reset code to the email address you provided for account recovery.": [
-        "Veți primi un cod de resetare la adresa de e-mail pe care ați furnizat-o pentru recuperarea contului."
-      ],
-      "We’ll send a reset code to the phone number you provided for account recovery.": [
-        "Veți primi un cod de resetare la numărul de telefon pe care l-ați furnizat pentru recuperarea contului."
       ],
       "When enabling SAML for ${ appName } in your identity provider, you might be prompted to use the callback (ACS) URL and issuer ID. Just copy-paste the data below into your identity provider fields.": [
         "Când activați SAML pentru ${ appName } în furnizorul de identitate, vi se poate solicita să utilizați adresa URL de apel invers (ACS) și ID-ul emitentului. Doar copiați și lipiți datele de mai jos în câmpurile furnizorului de identitate."
@@ -8932,6 +8940,9 @@
       ],
       "You already have a free account": [
         "Deja aveți un cont gratuit"
+      ],
+      "You are currently signed in as ${ username } for ${ organizationName }.": [
+        "V-ați conectat cu ${ username } pentru (${ organizationName }."
       ],
       "You are currently signed in as ${ username }.": [
         "V-ați conectat cu ${ username }."
@@ -9094,9 +9105,6 @@
       ],
       "You will regain complete or partial access to your encrypted data.": [
         "Veți recăpăta acces complet sau parțial la datele personale criptate."
-      ],
-      "You will soon be redirected to PayPal to verify your payment.": [
-        "Pentru verificarea plății se va deschide o filă către PayPal."
       ],
       "You won't be charged if you cancel before ${ trialEndsOnFormatted }.": [
         "Nu se va aplica taxa dacă anulați înainte de ${ trialEndsOnFormatted }."
@@ -9344,8 +9352,11 @@
       "Declined": [
         "Refuzată"
       ],
-      "Owner": [
-        "Proprietar"
+      "Group Owner": [
+        "Proprietar grup"
+      ],
+      "Invited": [
+        "Invitat"
       ],
       "Paused": [
         "Suspendată"
@@ -9621,9 +9632,6 @@
       ],
       "City": [
         "Oraş"
-      ],
-      "Code": [
-        "Cod"
       ],
       "Code is 6 digits without spaces": [
         "Codul este format din 6 cifre fără spații"
@@ -10083,8 +10091,8 @@
       "Password": [
         "Parola"
       ],
-      "Password reminders": [
-        "Mementouri parole"
+      "Password check-ins": [
+        "Verificări parolă"
       ],
       "Password strength": [
         "Dificultate parolă"
@@ -10501,9 +10509,6 @@
       ]
     },
     "Link": {
-      "Account recovery explained": [
-        "Recuperarea contului explicată"
-      ],
       "activity monitor": [
         "monitorizare activitate"
       ],
@@ -10539,9 +10544,6 @@
       ],
       "Details": [
         "Detalii"
-      ],
-      "Don't have access to your 2FA?": [
-        "Nu aveți acces la A2F?"
       ],
       "Encryption and keys": [
         "Criptare și chei"
@@ -10657,9 +10659,6 @@
       "Pay invoice": [
         "Plată factură"
       ],
-      "perform a password reset from your active session": [
-        "efectuați o resetare a parolei din sesiunea activă"
-      ],
       "Privacy policy": [
         "Politica de confidențialitate"
       ],
@@ -10715,20 +10714,6 @@
     "Link (Scribe)": {
       "Users and addresses": [
         "Utilizatori și adrese"
-      ]
-    },
-    "Live Chat Modal": {
-      "Live chat is available with ${ planName }": [
-        "Asistența live este disponibilă cu ${ planName }"
-      ],
-      "Open support form": [
-        "Deschidere formular de asistență"
-      ],
-      "Upgrade subscription": [
-        "Modificare abonament"
-      ],
-      "Upgrade to unlock chat support and other premium features, or use our free support form to report your issue.": [
-        "Modificați-vă planul pentru a debloca asistența live și alte funcții premium sau folosiți formularul de suport gratuit pentru a raporta o problemă."
       ]
     },
     "Loading info": {
@@ -11054,6 +11039,9 @@
       ],
       "Add address": [
         "Adăugare adresă"
+      ],
+      "Change backup password": [
+        "Modificare parolă de rezervă"
       ],
       "Change password": [
         "Modificare parolă"
@@ -13033,22 +13021,11 @@
       "Make sure you memorize or securely store your password as it's the key to decrypt your data.": [
         "Asigurați-vă că memorați sau stocați în siguranță parola, deoarece este cheia pentru decriptarea datelor."
       ],
-      "Turn off password reminders?": [
-        "Opriți mementourile pentru parolă?"
+      "Turn off check-ins": [
+        "Dezactivare verificări"
       ],
-      "Turn off reminders": [
-        "Oprire mementouri"
-      ]
-    },
-    "password_reset: info": {
-      "**All your existing data** (emails, events, contacts, files, ${ PASS_APP_NAME } entries, etc.) **will be locked** and can only be unlocked with your **old password**.": [
-        "**Toate datele existente** (e-mailuri, evenimente, contacte, fișiere, intrări ${ PASS_APP_NAME } etc.) **vor fi blocate** și pot fi deblocate numai cu **parola veche**."
-      ],
-      "**All your existing data** (emails, events, contacts, files, ${ PASS_APP_NAME } entries, etc.) **will be locked** and can only be unlocked with your **recovery phrase** or your **old password**.": [
-        "**Toate datele existente** (e-mailuri, evenimente, contacte, fișiere, intrări ${ PASS_APP_NAME } etc.) **vor fi blocate** și pot fi deblocate numai cu **expresia de recuperare** sau **parola veche**."
-      ],
-      "Any **two-factor authentication (2FA)** method on your account will be disabled.": [
-        "Orice metodă de **autentificare cu doi factori (A2F)** din cont va fi dezactivată."
+      "Turn off password check-ins?": [
+        "Dezactivați verificările parolei?"
       ]
     },
     "passwordless": {
@@ -14319,6 +14296,73 @@
         "Testare configurare SAML"
       ]
     },
+    "scim": {
+      "${ memberCount } new member": [
+        "Membri: ${ memberCount }",
+        "Membri: ${ memberCount }",
+        "Membri: ${ memberCount }"
+      ],
+      "${ numberOfPendingGroups } group synced": [
+        "Grupuri sincronizate: ${ numberOfPendingGroups }",
+        "Grupuri sincronizate: ${ numberOfPendingGroups }",
+        "Grupuri sincronizate: ${ numberOfPendingGroups }"
+      ],
+      "${ numberOfPendingUsers } user synced": [
+        "Utilizatori sincronizați: ${ numberOfPendingUsers }",
+        "Utilizatori sincronizați: ${ numberOfPendingUsers }",
+        "Utilizatori sincronizați: ${ numberOfPendingUsers }"
+      ],
+      "${ pendingGroupsCount } group": [
+        "${ pendingGroupsCount } grup",
+        "${ pendingGroupsCount } grupuri",
+        "${ pendingGroupsCount } de grupuri"
+      ],
+      "${ pendingGroupsCount } group synced.": [
+        "Grupuri sincronizate: ${ pendingGroupsCount }",
+        "Grupuri sincronizate: ${ pendingGroupsCount }",
+        "Grupuri sincronizate: ${ pendingGroupsCount }"
+      ],
+      "${ pendingUsersCount } user": [
+        "${ pendingUsersCount } utilizator",
+        "${ pendingUsersCount } utilizatori",
+        "${ pendingUsersCount } de utilizatori"
+      ],
+      "${ pendingUsersCount } user synced.": [
+        "Utilizatori sincronizați: ${ pendingUsersCount }",
+        "Utilizatori sincronizați: ${ pendingUsersCount }",
+        "Utilizatori sincronizați: ${ pendingUsersCount }"
+      ],
+      "${ usersText } and ${ groupsText } synced.": [
+        "S-au sincronizat ${ usersText } și ${ groupsText }"
+      ],
+      "Approve changes from your identity provider": [
+        "Aprobați modificările de la furnizorul de identitate"
+      ],
+      "Final approval needed to grant access across all ${ BRAND_NAME } services.": [
+        "Este necesară aprobarea finală pentru a acorda acces la toate serviciile ${ BRAND_NAME }."
+      ],
+      "From your identity provider": [
+        "De la furnizorul de identitate"
+      ],
+      "New": [
+        "Nou"
+      ],
+      "Once approved, they can access all ${ BRAND_NAME } services and share securely.": [
+        "După aprobare, aceștia pot accesa toate serviciile ${ BRAND_NAME } și pot partaja în siguranță."
+      ],
+      "Private user": [
+        "Utilizator privat"
+      ],
+      "Review users and groups before finishing setup": [
+        "Examinați utilizatorii și grupurile înainte de a finaliza configurarea"
+      ],
+      "Updated": [
+        "Actualizat"
+      ],
+      "Users set to private need to accept the invite to finish setup. We'll send them an invite once you approve.": [
+        "Utilizatorii setați ca privați trebuie să accepte invitația pentru a finaliza configurarea. Li se va trimite o invitație după ce o aprobați."
+      ]
+    },
     "scim: Action": {
       "Configure SCIM": [
         "Configurare SCIM"
@@ -15133,15 +15177,15 @@
         "Utilizatori detașați de la autentificarea unică (SSO): ${ n }",
         "Utilizatori detașați de la autentificarea unică (SSO): ${ n }"
       ],
-      "${ n } user has joined your organization through your Identity Provider. Review the account now:": [
-        "S-a alăturat organizației ${ n } utilizator prin furnizorul de identitate. Revizuiți-i contul acum:",
-        "S-au alăturat organizației ${ n } utilizatori prin furnizorul de identitate. Revizuiți-le contul acum:",
-        "S-au alăturat organizației ${ n } de utilizatori prin furnizorul de identitate. Revizuiți-le contul acum:"
+      "${ n } user has joined your organization through your identity provider": [
+        "Utilizatori care s-a alăturat organizației prin intermediul furnizorului de identitate: ${ n }",
+        "Utilizatori care s-a alăturat organizației prin intermediul furnizorului de identitate: ${ n }",
+        "Utilizatori care s-a alăturat organizației prin intermediul furnizorului de identitate: ${ n }"
       ],
-      "${ n } user is inactive. You can safely remove this user from your organization.": [
-        "${ n } utilizator nu este activ. Puteți să-l ștergeți în siguranță din organizație.",
-        "${ n } utilizatori nu sunt activi. Puteți să-i ștergeți în siguranță din organizație.",
-        "${ n } de utilizatori nu sunt activi. Puteți să-i ștergeți în siguranță din organizație."
+      "${ n } user is inactive.": [
+        "Utilizatori inactivi: ${ n }",
+        "Utilizatori inactivi: ${ n }",
+        "Utilizatori inactivi: ${ n }"
       ],
       "${ n } user is requesting your help to sign in to their ${ BRAND_NAME } Account with single sign-on.": [
         "${ n } utilizator vă solicită ajutorul să se conecteze la contul său ${ BRAND_NAME } folosind autentificarea unică (SSO).",
@@ -15406,6 +15450,17 @@
         "Vi se anulează abonamentul, așteptați."
       ]
     },
+    "Status": {
+      "... waiting": [
+        "...în așteptare"
+      ],
+      "completed": [
+        "finalizat"
+      ],
+      "finalizing": [
+        "se finalizează"
+      ]
+    },
     "Storage": {
       "Upgrade storage": [
         "Mărire spațiu"
@@ -15421,7 +15476,7 @@
     },
     "storage_split: feature": {
       "Storage for data generated by ${ BRAND_NAME } ${ MAIL_SHORT_APP_NAME }, ${ CALENDAR_SHORT_APP_NAME }, ${ CONTACTS_SHORT_APP_NAME }, and ${ PASS_SHORT_APP_NAME }": [
-        "Spațiu de stocare pentru date generate de ${ BRAND_NAME } ${ MAIL_SHORT_APP_NAME }, ${ CALENDAR_SHORT_APP_NAME }, ${ CONTACTS_SHORT_APP_NAME }, și ${ PASS_SHORT_APP_NAME }."
+        "Spațiu de stocare pentru datele generate de ${ BRAND_NAME } ${ MAIL_SHORT_APP_NAME }, ${ CALENDAR_SHORT_APP_NAME }, ${ CONTACTS_SHORT_APP_NAME }, și ${ PASS_SHORT_APP_NAME }."
       ],
       "Up to ${ totalStorageSize } Drive storage": [
         "Până la ${ totalStorageSize } spațiu în Drive"
@@ -16068,11 +16123,11 @@
       "Compare the key differences that matter for your business.": [
         "Comparați diferențele cheie care contează pentru afacerea proprie."
       ],
-      "Save 50% for 1 year, and keep full access": [
-        "Economisiți 50% pentru un an și păstrați accesul complet"
-      ],
       "Save 50% for 6 months, and keep full access": [
         "Economisiți 50% pentru 6 luni și păstrați accesul complet"
+      ],
+      "Save 50% for one year, and keep full access": [
+        "Economisiți 50% pentru un an și păstrați accesul complet"
       ],
       "See how ${ MAIL_APP_NAME } compares, and why our independence makes a difference.": [
         "Vedeți cum se compară ${ MAIL_APP_NAME } și de ce independența noastră face diferența."
@@ -16178,14 +16233,14 @@
       "Organization name updated": [
         "S-a actualizat numele organizației"
       ],
+      "Password check-ins disabled": [
+        "Verificări parolă dezactivate"
+      ],
+      "Password check-ins enabled": [
+        "Verificări parolă activate"
+      ],
       "Password copied to clipboard": [
         "Parola a fost copiată în memorie."
-      ],
-      "Password reminders disabled": [
-        "Mementouri pentru parolă dezactivate"
-      ],
-      "Password reminders enabled": [
-        "Mementouri pentru parolă activate"
       ],
       "Password updated": [
         "Parolă actualizată"
@@ -16673,11 +16728,17 @@
       "Apply gift code": [
         "Aplicare cod cadou"
       ],
+      "Approve changes": [
+        "Aprobare modificări"
+      ],
       "Are you already signed in to ${ BRAND_NAME } in a browser?": [
         "V-ați conectat deja la ${ BRAND_NAME } într-un navigator web?"
       ],
       "Are you sure you want to close the preview?": [
         "Închideți examinarea?"
+      ],
+      "Are you sure you want to disconnect and disable this address?": [
+        "Sigur doriți să vă deconectați și să dezactivați această adresă?"
       ],
       "Are you sure you want to disconnect this address?": [
         "Sigur doriți să deconectați această adresă?"
@@ -17069,9 +17130,6 @@
       "Find email or username": [
         "Căutare e-mail sau utilizator"
       ],
-      "Forgot recovery method": [
-        "Ați uitat metoda de recuperare"
-      ],
       "Free plan": [
         "Plan gratuit"
       ],
@@ -17125,6 +17183,9 @@
       ],
       "Gift code": [
         "Cod cadou"
+      ],
+      "Group role assignment paused": [
+        "Atribuirea rolului de grup a fost întreruptă"
       ],
       "Groups": [
         "Grupuri"
@@ -17257,9 +17318,6 @@
       "No events yet": [
         "Încă nu există evenimente"
       ],
-      "No recovery method": [
-        "Nu există metodă de recuperare"
-      ],
       "Open": [
         "Deschise"
       ],
@@ -17325,9 +17383,6 @@
       ],
       "Payment verification": [
         "Verificare plată"
-      ],
-      "PayPal verification failed": [
-        "Verificarea PayPal a eșuat"
       ],
       "Phone": [
         "Telefon"
@@ -18028,17 +18083,26 @@
       "Group membership paused": [
         "Apartenența la grup a fost suspendată"
       ],
+      "Resuming role assignment": [
+        "Reluare atribuire rol"
+      ],
+      "Role assignment paused": [
+        "Atribuirea rolului a fost suspendată"
+      ],
       "Sending member invitation": [
         "Se trimite invitația membrului"
       ],
       "User declined invitation": [
         "Utilizatorul a refuzat invitația"
       ],
-      "User is a group": [
-        "Utilizatorul este un grup"
+      "User is a group owner": [
+        "Utilizatorul este proprietar de grup"
       ],
       "via ${ groupNames }": [
         "via ${ groupNames }"
+      ],
+      "Waiting for admin approval": [
+        "Așteptare aprobare de la administrator"
       ],
       "Waiting for user to accept the invitation": [
         "Se așteaptă ca utilizatorul să accepte invitația"
@@ -18115,8 +18179,14 @@
       "Payment reversal": [
         "Anulare plată"
       ],
+      "Prepayment": [
+        "Plată în avans"
+      ],
       "Refund": [
         "Restituire"
+      ],
+      "Test credit": [
+        "Credit de test"
       ]
     },
     "Unlimited offer": {
@@ -18146,10 +18216,10 @@
       "Confirm all": [
         "Confirmare toate"
       ],
-      "Could not automatically enable administrator access for ${ n } user, because their encryption keys have been updated in the meanwhile:": [
-        "Nu s-a putut activa automat accesul de administrator pentru ${ n } utilizator, deoarece cheile sale de criptare au fost actualizate între timp:",
-        "Nu s-a putut activa automat accesul de administrator pentru ${ n } utilizatori, deoarece cheile lor de criptare au fost actualizate între timp:",
-        "Nu s-a putut activa automat accesul de administrator pentru ${ n } de utilizatori, deoarece cheile lor de criptare au fost actualizate între timp:"
+      "Could not enable admin access for ${ n } user": [
+        "Utilizatori pentru care nu s-a putut activa accesul de administrator: ${ n }",
+        "Utilizatori pentru care nu s-a putut activa accesul de administrator: ${ n }",
+        "Utilizatori pentru care nu s-a putut activa accesul de administrator: ${ n }"
       ],
       "Could not enable administrator access: ${ error }": [
         "Nu s-a putut activa accesul de administrator: ${ error }"
@@ -18178,6 +18248,11 @@
       "Request user permission for data access": [
         "Solicitare permisiune de la utilizator de a-i accesa datele"
       ],
+      "Review their account now.": [
+        "Revizuiți-i contul acum.",
+        "Revizuiți-le contul acum.",
+        "Revizuiți-le contul acum."
+      ],
       "Revoke access": [
         "Revocare acces"
       ],
@@ -18190,6 +18265,9 @@
       "The user must have an address to request data access": [
         "Utilizatorul trebuie să aibă o adresă pentru a solicita acces la date."
       ],
+      "Their encryption keys were updated while we were making changes.": [
+        "Cheile lor de criptare au fost actualizate în timp ce s-au efectuat modificări."
+      ],
       "This will cancel the pending request for administrator access to the user’s data or password reset.": [
         "Aceasta va anula solicitarea în așteptare pentru accesul de administrare a datelor utilizatorului sau de resetare a parolei."
       ],
@@ -18201,6 +18279,11 @@
       ],
       "To proceed, you'll need to request the user's permission to access their data or reset their password.": [
         "Pentru a continua, va trebui să solicitați permisiunea utilizatorului de a-i putea accesa datele sau de a-i reseta parola."
+      ],
+      "You can safely remove this user from your organization.": [
+        "Puteți elimina în siguranță acest utilizator din organizație.",
+        "Puteți elimina în siguranță acești utilizatori din organizație.",
+        "Puteți elimina în siguranță acești utilizatori din organizație."
       ]
     },
     "Upsell": {
@@ -18315,6 +18398,15 @@
       "Invitation email": [
         "E-mail de invitare"
       ],
+      "Manage all users, groups, security, billing, and system configurations.": [
+        "Gestionați toți utilizatorii, grupurile, securitatea, facturarea și configurările de sistem."
+      ],
+      "Manage users and groups, assign roles, and allocate licenses to members.": [
+        "Gestionați utilizatorii și grupurile, atribuiți roluri și alocați licențe membrilor."
+      ],
+      "Manages security settings and can view all event logs and user details.": [
+        "Gestionează setările de securitate și poate vizualiza toate jurnalele de evenimente și detaliile utilizatorului."
+      ],
       "Name": [
         "Nume"
       ],
@@ -18347,6 +18439,9 @@
       ],
       "Writing assistant": [
         "Asistent de scriere"
+      ],
+      "You'll be able to assign roles once the user has accepted the invitation.": [
+        "Vei putea atribui roluri după ce utilizatorul a acceptat invitația."
       ]
     },
     "Users table: badge": {

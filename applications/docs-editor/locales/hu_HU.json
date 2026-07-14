@@ -215,9 +215,6 @@
       "Submit": [
         "Küldés"
       ],
-      "Table of contents": [
-        "Tartalomjegyzék"
-      ],
       "Table options": [
         "Táblázat beállítások"
       ],
@@ -490,9 +487,6 @@
         "${ usersTranslation } épp ír",
         "${ usersTranslation } épp ír"
       ],
-      "Alpha only experimental feature": [
-        "Alfa, kísérleti funkció"
-      ],
       "Are you sure you want to delete this comment?": [
         "Biztos benne, hogy törölni akarja ezt a hozzászólást?"
       ],
@@ -510,9 +504,6 @@
       ],
       "Font size": [
         "Betűméret"
-      ],
-      "Headings you add to the document will appear here.": [
-        "A dokumentumhoz adott fejlécek itt jelennek meg."
       ],
       "Highlight": [
         "Kiemelés"
@@ -676,6 +667,9 @@
       "Download": [
         "Letöltés"
       ],
+      "Help": [
+        "Súgó"
+      ],
       "Make a copy": [
         "Másolat létrehozása"
       ],
@@ -690,6 +684,26 @@
       ],
       "See version history": [
         "Változatelőzmények megjelenítése"
+      ]
+    },
+    "sheets_2025:Spreadsheet editor menubar title": {
+      "Data": [
+        "Adatok"
+      ],
+      "Edit": [
+        "Szerkesztés"
+      ],
+      "File": [
+        "Fájl"
+      ],
+      "Format": [
+        "Formátum"
+      ],
+      "Insert": [
+        "Beszúrás"
+      ],
+      "View": [
+        "Nézet"
       ]
     },
     "Title": {

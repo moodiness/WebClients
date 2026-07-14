@@ -3870,12 +3870,6 @@
       "Interval cannot be empty": [
         "El intervalo no puede estar vacío"
       ],
-      "Invalid ${ name } code": [
-        "Código ${ name } inválido"
-      ],
-      "Invalid card number": [
-        "Número de tarjeta inválido"
-      ],
       "Invalid code": [
         "Código inválido"
       ],
@@ -3884,9 +3878,6 @@
       ],
       "Invalid email address": [
         "Dirección de correo inválida"
-      ],
-      "Invalid expiration date": [
-        "Fecha de expiración inválida"
       ],
       "Invalid IBAN": [
         "El IBAN no es válido."
@@ -3957,6 +3948,9 @@
       ],
       "No contacts found to import": [
         "No se encontraron contactos para importar"
+      ],
+      "No drive found to import": [
+        "No se encontró ninguna unidad para importar"
       ],
       "No emails found to import - the account does not have an inbox": [
         "No se encontraron correos para importar, la cuenta no tiene un buzón"
@@ -4211,6 +4205,9 @@
       "Unexpected error, we can't import the contacts": [
         "Error inesperado, no podemos importar los contactos"
       ],
+      "Unexpected error, we can't import the files": [
+        "Error inesperado, no se pueden importar los archivos"
+      ],
       "Unknown error": [
         "Error desconocido"
       ],
@@ -4228,6 +4225,9 @@
       ],
       "VAT number must start with ${ prefixes }": [
         "El número IVA debe comenzar con ${ prefixes }"
+      ],
+      "We couldn’t send a verification code using this method.": [
+        "No pudimos enviar un código de verificación usando este método."
       ],
       "Wrong billing address": [
         "Dirección de facturación incorrecta"
@@ -4747,6 +4747,9 @@
       ],
       "Security key": [
         "Clave de seguridad"
+      ],
+      "Touch your security key.": [
+        "Toque su llave de seguridad."
       ]
     },
     "fido2: Label": {
@@ -5789,6 +5792,9 @@
       "Failed to update meeting schedule": [
         "Error al actualizar el horario de la reunión"
       ],
+      "Files only (no photos, ${ DOCS_APP_NAME } or ${ SHEETS_APP_NAME }) - up to 100 GB total, 100,000 files, and 50 GB per file": [
+        "Solo archivos (sin fotos, ${ DOCS_APP_NAME } ni ${ SHEETS_APP_NAME }) hasta 100 GB en total, 100 000 archivos y 50 GB por archivo"
+      ],
       "finance": [
         "finanzas"
       ],
@@ -6120,9 +6126,6 @@
       "PGP/MIME automatically sends the message using the current composer mode.": [
         "PGP/MIME automáticamente envía el mensaje usando el modo de editor actual."
       ],
-      "Please authenticate your card in the verification tab.": [
-        "Autentique la tarjeta en la pestaña de verificación."
-      ],
       "Please authenticate your payment in the verification tab.": [
         "Autentique el pago en la pestaña de verificación."
       ],
@@ -6162,9 +6165,6 @@
       ],
       "Please try again using a different payment method, or contact your bank.": [
         "Intente de nuevo usando un método de pago diferente o contacte con el banco."
-      ],
-      "Please try again, use a different payment method, or contact PayPal for assistance.": [
-        "Intente de nuevo, use un método de pago diferente o contacte con PayPal por asistencia."
       ],
       "Please wait while we look for contacts that can be re-signed with the primary encryption key.": [
         "Espere mientras buscamos contactos que puedan ser refirmados con la clave de cifrado principal."
@@ -6591,6 +6591,9 @@
       "You are about to open your default browser and visit:": [
         "Está a punto de abrir su navegador por defecto y consultar:"
       ],
+      "You are currently signed in as ${ username } for ${ organizationName }.": [
+        "Actualmente inició sesión como ${ username } en (${ organizationName }."
+      ],
       "You are currently signed in as ${ username }.": [
         "Actualmente inició sesión como ${ username }."
       ],
@@ -6652,9 +6655,6 @@
       ],
       "You will lose all unsaved changes.": [
         "Perderá todos los cambios sin guardar."
-      ],
-      "You will soon be redirected to PayPal to verify your payment.": [
-        "Pronto será redirigido a PayPal para verificar el pago."
       ],
       "You will update all the events in this series. Added and removed participants will be notified.": [
         "Actualizará todos los eventos de esta serie. Se notificarán a los participantes agregados y eliminados."
@@ -7163,6 +7163,9 @@
       "Don't show this again": [
         "No mostrar esto de nuevo"
       ],
+      "Drive": [
+        "Drive"
+      ],
       "e.g., Amazon, eBay, Etsy": [
         "p. ej., Amazon, eBay, Mercado Libre"
       ],
@@ -7210,6 +7213,12 @@
       ],
       "Every": [
         "Cada"
+      ],
+      "Exact host matching": [
+        "Coincidencia de host exacta"
+      ],
+      "Exact URL matching": [
+        "Coincidencia de URL exacta"
       ],
       "Expires": [
         "Expira"
@@ -7325,6 +7334,9 @@
       "Navigation": [
         "Navegación"
       ],
+      "Never fill on this exact URL": [
+        "Nunca completar esta URL exacta"
+      ],
       "New password": [
         "Contraseña nueva"
       ],
@@ -7354,6 +7366,9 @@
       ],
       "Organizer": [
         "Organizador"
+      ],
+      "Parent domain and subdomains (default)": [
+        "Dominio principal y subdominios (por defecto)"
       ],
       "participant": [
         "participante",
@@ -7413,6 +7428,9 @@
       "Region": [
         "Estado"
       ],
+      "Regular expression": [
+        "Expresión regular"
+      ],
       "Remove ${ MEET_APP_NAME } video conference": [
         "Eliminar videoconferencia de ${ MEET_APP_NAME }"
       ],
@@ -7451,6 +7469,9 @@
       ],
       "Start date": [
         "Fecha inicial"
+      ],
+      "Starts with": [
+        "Comienza con"
       ],
       "State": [
         "Estado"
@@ -7499,6 +7520,9 @@
       ],
       "URL": [
         "URL"
+      ],
+      "URL wildcard pattern": [
+        "Patrón comodín de URL"
       ],
       "Username": [
         "Nombre de usuario"
@@ -7925,11 +7949,29 @@
       ]
     },
     "Message": {
+      "'Starts with' matching rule": [
+        "Regla de coincidencia «Comienza con»"
+      ],
+      "Exact (sub) domain matching rule": [
+        "Regla de coincidencia de (sub)dominio exacto"
+      ],
+      "Exact URL matching rule": [
+        "Regla de coincidencia de URL exacta"
+      ],
       "Fw:": [
         "Rv:"
       ],
+      "Never fill with this exact URL": [
+        "Nunca completar con esta URL exacta"
+      ],
       "Re:": [
         "Re:"
+      ],
+      "Regular expression rule": [
+        "Regla de expresión regular"
+      ],
+      "Wildcard pattern matching rule": [
+        "Regla de coincidencia de patrón comodín"
       ],
       "Your free trial has ended. ${ nonAutoRenewalAction }": [
         "Su prueba gratuita ha finalizado. ${ nonAutoRenewalAction }"
@@ -12409,9 +12451,6 @@
       "Payment verification": [
         "Verificación de pago"
       ],
-      "PayPal verification failed": [
-        "Error con la verificación de PayPal"
-      ],
       "Phone numbers": [
         "Números de teléfono"
       ],
@@ -12721,6 +12760,26 @@
         "Elija un número"
       ]
     },
+    "Title header for keys table": {
+      "Actions": [
+        "Acciones"
+      ],
+      "Created": [
+        "Creada"
+      ],
+      "Expires": [
+        "Expira"
+      ],
+      "Fingerprint": [
+        "Huella digital"
+      ],
+      "Status": [
+        "Estado"
+      ],
+      "Type": [
+        "Tipo"
+      ]
+    },
     "Title; create calendar modal": {
       "Create calendar": [
         "Crear calendario"
@@ -12783,7 +12842,7 @@
         "Si compó un código de regalo o recibió uno de nuestro equipo de soporte, puede ingresarlo aquí."
       ],
       "Instant AI assistance, human expert on hand!": [
-        "Asistencia IA inmediata, experto humano a su disposición!"
+        "¡Asistencia IA inmediata, experto humano a su disposición!"
       ],
       "Load image": [
         "Cargar imagen"
@@ -12817,6 +12876,9 @@
       ],
       "Upload a public key to enable sending end-to-end encrypted emails to this email": [
         "Cargue una clave pública para permitir el envío de correos electrónicos cifrados de extremo a extremo a este correo electrónico"
+      ],
+      "Version 6 OpenPGP key": [
+        "Clave OpenPGP versión 6"
       ]
     },
     "tooltip": {
@@ -12855,6 +12917,11 @@
       ],
       "The user must have an address to request data access": [
         "El usuario debe tener una dirección para solicitar acceso a los datos"
+      ]
+    },
+    "user_modal": {
+      "You'll be able to assign roles once the user has accepted the invitation.": [
+        "Podrá asignar roles una vez que el usuario haya aceptado la invitación."
       ]
     },
     "Validation": {
@@ -12969,6 +13036,9 @@
       ],
       "${ BRAND_NAME } will transfer as much data as possible, starting with your most recent messages.": [
         "${ BRAND_NAME } transferirá tanta información posible, comenzando con los mensajes más recientes."
+      ],
+      "${ modeLabelStong } provides powerful control, but a single error can cause autofill to match and fill data on fraudulent or phishing websites.": [
+        "${ modeLabelStong } brinda un control potente, pero un solo error puede provocar que la función de autocompletar coincida con datos de sitios web fraudulentos o de suplantación y los complete automáticamente."
       ],
       "Are you sure you want to permanently delete ${ count } contact?": [
         "¿Está seguro de que quiere eliminar permanentemente ${ count } contacto?",

@@ -90,9 +90,6 @@
       "Apply": [
         "Übernehmen"
       ],
-      "Ask me next time": [
-        "Nächstes Mal fragen"
-      ],
       "At most ${ maxContacts } contact is allowed per contact group": [
         "Pro Kontaktgruppe ist maximal ${ maxContacts } Kontakt erlaubt.",
         "Pro Kontaktgruppe sind maximal ${ maxContacts } Kontakte erlaubt."
@@ -336,6 +333,9 @@
       "Download anyway": [
         "Trotzdem herunterladen"
       ],
+      "Download debug information": [
+        "Debug-Informationen herunterladen"
+      ],
       "Download logs": [
         "Protokolle herunterladen"
       ],
@@ -378,11 +378,20 @@
       "Export contact group": [
         "Kontaktgruppe exportieren"
       ],
+      "Export editor state for version": [
+        "Bearbeiter-Status für Version exportieren"
+      ],
       "Export selection as .vcf": [
         "Auswahl im .vcf-Format exportieren"
       ],
+      "Export this version (as docx)": [
+        "Diese Version exportieren (als docx)"
+      ],
       "Export this version (as xlsx)": [
         "Diese Version exportieren (als xlsx)"
+      ],
+      "Export YJS state for version": [
+        "YJS-Status für Version exportieren"
       ],
       "Forgot password?": [
         "Passwort vergessen?"
@@ -636,6 +645,9 @@
       "Reload": [
         "Neu laden"
       ],
+      "Reload spreadsheet": [
+        "Tabelle neu laden"
+      ],
       "Remove": [
         "Entfernen"
       ],
@@ -665,6 +677,9 @@
       ],
       "Report a problem": [
         "Ein Problem melden"
+      ],
+      "Report issue": [
+        "Problem melden"
       ],
       "Request a call": [
         "Einen Anruf anfordern"
@@ -704,9 +719,6 @@
       ],
       "Save changes": [
         "Änderungen speichern"
-      ],
-      "Save preferences": [
-        "Einstellungen speichern"
       ],
       "Search": [
         "Suchen"
@@ -1218,6 +1230,12 @@
       ]
     },
     "BOSS": {
+      "Activated": [
+        "Aktiviert"
+      ],
+      "All": [
+        "Alle"
+      ],
       "Calendar": [
         "Kalender"
       ],
@@ -1232,6 +1250,9 @@
       ],
       "Emails": [
         "E-Mails"
+      ],
+      "Errors": [
+        "Fehler"
       ],
       "Estimated size": [
         "Geschätzte Größe"
@@ -1248,6 +1269,9 @@
       "Migrate": [
         "Migrieren"
       ],
+      "Migrated": [
+        "Migriert"
+      ],
       "Migration status": [
         "Migrationsstatus"
       ],
@@ -1257,14 +1281,29 @@
       "Missing organization public key": [
         "Öffentlicher Schlüssel der Organisation fehlt"
       ],
+      "No users to display": [
+        "Keine Benutzer vorhanden"
+      ],
+      "Not activated": [
+        "Nicht aktiviert"
+      ],
       "Organization does not have enough seats available": [
         "Organisation hat nicht genügend Lizenzen verfügbar"
       ],
       "Organization does not have enough storage available": [
         "Die Organisation hat nicht genügend Speicherplatz verfügbar"
       ],
+      "Pending": [
+        "Ausstehend"
+      ],
       "Select exactly what you'd like to migrate. It will apply to all organisation users.": [
         "Wähle genau aus, was du migrieren möchtest. Dies gilt für alle Benutzer der Organisation."
+      ],
+      "Select users to migrate": [
+        "Benutzer für die Übernahme auswählen"
+      ],
+      "Size": [
+        "Größe"
       ],
       "Status": [
         "Status"
@@ -1277,6 +1316,9 @@
       ],
       "What are you migrating?": [
         "Was übernimmst du?"
+      ],
+      "You": [
+        "Du"
       ]
     },
     "Browser": {
@@ -3105,9 +3147,6 @@
       "Failed to load 'My files' folder": [
         "Ordner „Meine Dateien“ konnte nicht geladen werden"
       ],
-      "Failed to load document details": [
-        "Dokumentdetails konnten nicht geladen werden"
-      ],
       "Failed to load recent documents": [
         "Neuste Dokumente konnten nicht geladen werden"
       ],
@@ -3120,11 +3159,17 @@
       "Failed to remove older revisions": [
         "Fehler beim Entfernen älterer Versionen"
       ],
+      "Failed to rename document": [
+        "Das Umbenennen des Dokuments ist fehlgeschlagen"
+      ],
       "Failed to rename document. Please try again later.": [
         "Fehler beim Umbenennen des Dokuments. Bitte versuche es später erneut."
       ],
       "Failed to resend invitation": [
         "Fehler beim erneuten Senden der Einladung"
+      ],
+      "Failed to trash document.": [
+        "Dokument konnte nicht in den Papierkorb verschoben werden"
       ],
       "Failed to unshare node": [
         "Fehler beim Zurücknehmen des freigegebenen Knotens"
@@ -3214,9 +3259,6 @@
       "No contacts found to import": [
         "Keine Kontakte zum Importieren vorhanden"
       ],
-      "No drive found to import": [
-        "Es wurde kein Laufwerk zum Importieren gefunden"
-      ],
       "No emails found to import - the account does not have an inbox": [
         "Keine E-Mails zum Importieren vorhanden — das Konto verfügt über keinen Posteingang"
       ],
@@ -3225,9 +3267,6 @@
       ],
       "Not a valid number": [
         "Keine gültige Zahl"
-      ],
-      "Not enough storage space in your ${ DRIVE_APP_NAME }": [
-        "Nicht genügend Speicherplatz in deinem ${ DRIVE_APP_NAME }"
       ],
       "One of the contacts has no email address: ${ noEmailsContactNamesList }": [
         "Einer der Kontakte hat keine E-Mail-Adresse: ${ noEmailsContactNamesList }",
@@ -3449,9 +3488,6 @@
       "Unexpected error, we can't import the contacts": [
         "Unerwarteter Fehler, wir können die Kontakte nicht importieren"
       ],
-      "Unexpected error, we can't import the files": [
-        "Unerwarteter Fehler, wir können die Dateien nicht importieren"
-      ],
       "Unknown error": [
         "Unbekannter Fehler"
       ],
@@ -3481,6 +3517,9 @@
       ],
       "We couldn’t import this file into ${ SHEETS_APP_NAME }. You can try to copy and paste the contents into a new ${ SHEETS_APP_NAME }.": [
         "Wir konnten diese Datei nicht in ${ SHEETS_APP_NAME } importieren. Du kannst versuchen, den Inhalt zu kopieren in ein neues ${ SHEETS_APP_NAME } einzufügen."
+      ],
+      "We couldn’t send a verification code using this method.": [
+        "Wir konnten mit dieser Methode keinen Bestätigungscode senden."
       ],
       "Wrong billing address": [
         "Ungültige Rechnungsadresse"
@@ -3915,6 +3954,9 @@
       ],
       "Security key": [
         "Sicherheitsschlüssel"
+      ],
+      "Touch your security key.": [
+        "Deinen Sicherheitsschlüssel berühren."
       ]
     },
     "fido2: Label": {
@@ -4445,10 +4487,6 @@
         "${ selectedContactsLength }/${ contactsLength } Kontakt ausgewählt",
         "${ selectedContactsLength }/${ contactsLength } Kontakte ausgewählt"
       ],
-      "${ selectedCount } selected": [
-        "${ selectedCount } ausgewählt",
-        "${ selectedCount } ausgewählt"
-      ],
       "${ selectedFoldersCountLocalized } folder selected": [
         "${ selectedFoldersCountLocalized } Ordner ausgewählt",
         "${ selectedFoldersCountLocalized } Ordner ausgewählt"
@@ -4647,9 +4685,6 @@
       "Continue": [
         "Fortfahren"
       ],
-      "Converting document...": [
-        "Dokument wird umgewandelt…"
-      ],
       "Copied to clipboard": [
         "In die Zwischenablage kopiert"
       ],
@@ -4698,9 +4733,6 @@
       ],
       "Creating link to folder": [
         "Link zum Ordner wird erstellt"
-      ],
-      "Creating new document...": [
-        "Neues Dokument wird erstellt..."
       ],
       "Current plan": [
         "Aktuelles Abonnement"
@@ -4787,7 +4819,7 @@
         "Passwort eingeben"
       ],
       "Enter the code from your authenticator app": [
-        "Code aus deiner Authentifizierungs-App ein eingeben"
+        "Code aus deiner Authentifizierungs-App eingeben"
       ],
       "Enter the credentials of the email account you want to import from.": [
         "Gib die Anmeldedaten des E-Mail-Kontos ein, aus dem du Daten importieren möchtest."
@@ -4803,12 +4835,6 @@
       ],
       "Enter your own password (as trusted contact).": [
         "Gib dein eigenes Passwort ein (als vertrauenswürdiger Kontakt)."
-      ],
-      "Error converting document: ${ errorMessage }": [
-        "Fehler beim Umwandeln des Dokuments: ${ errorMessage }"
-      ],
-      "Error loading document: ${ errorDetail }": [
-        "Fehler beim Laden des Dokuments: ${ errorDetail }"
       ],
       "Error Syncing": [
         "Fehler beim Synchronisieren"
@@ -4879,17 +4905,17 @@
       "Get a professional @your-company.com email, 1 TB of secure storage per user, longer video calls, and more with ${ BRAND_NAME } Workspace.": [
         "Mit ${ BRAND_NAME } Workspace erhältst du eine professionelle E-Mail-Adresse mit der Endung @deine-firma.com, 1 TB sicheren Speicherplatz pro Benutzer, längere Videoanrufe und vieles mehr."
       ],
-      "Get email updates for comments and suggestions added to your documents.": [
-        "E-Mail-Benachrichtigungen für Kommentare und Vorschläge erhalten, die zu deinen Dokumenten hinzugefügt wurden."
-      ],
-      "Get Notified About Comments": [
-        "Benachrichtigungen über Kommentare erhalten"
-      ],
       "Governments and ISPs can monitor your online activity. By hiding your real IP and encrypting your activity your browsing becomes private.": [
         "Regierungen und Internetdienstanbieter können deine Online-Aktivitäten überwachen. Indem du deine echte IP-Adresse verbirgst und deine Aktivitäten verschlüsselst, wird dein Surfverhalten privat."
       ],
+      "Help us improve this experience by reporting the issue. If you’re comfortable sharing spreadsheet content, attach the debug information below to your report.": [
+        "Hilf uns, diese Funktion zu verbessern, indem du das Problem meldest. Wenn du keine Bedenken hast, Inhalte der Tabelle weiterzugeben, füge deinem Bericht bitte die unten aufgeführten Fehlerbehebungsinformationen als Anhang bei."
+      ],
       "here": [
         "hier"
+      ],
+      "Hide table of contents": [
+        "Inhaltsverzeichnis ausblenden"
       ],
       "High Priority": [
         "Hohe Priorität"
@@ -5036,9 +5062,6 @@
       "Low Priority": [
         "Niedrige Priorität"
       ],
-      "Making a copy...": [
-        "Kopie wird erstellt..."
-      ],
       "Max ${ MAX_SHARED_URL_PASSWORD_LENGTH } character": [
         "Maximal ${ MAX_SHARED_URL_PASSWORD_LENGTH } Zeichen",
         "Maximal ${ MAX_SHARED_URL_PASSWORD_LENGTH } Zeichen"
@@ -5069,9 +5092,6 @@
       ],
       "No contacts added yet": [
         "Noch keine Kontakte hinzugefügt"
-      ],
-      "No document supplied in URL. Return to ${ DRIVE_APP_NAME } and select a document.": [
-        "Kein Dokument in der URL angegeben. Zu ${ DRIVE_APP_NAME } zurückkehren und ein Dokument auswählen."
       ],
       "No email address": [
         "Keine E-Mail-Adresse"
@@ -5114,6 +5134,9 @@
       ],
       "Only the people with the link and the password can access this folder.": [
         "Nur die Personen mit dem Link und dem Passwort können auf diesen Ordner zugreifen."
+      ],
+      "Oops! This spreadsheet can’t save your most recent edits, so we’ve paused editing to prevent you from losing your work.": [
+        "Hoppla! Diese Tabelle kann deine letzten Änderungen nicht speichern. Deshalb haben wir die Bearbeitung pausiert, damit deine Arbeit nicht verloren geht."
       ],
       "Open the guide for recommended actions and helpful links.": [
         "Öffne die Anleitung für empfohlene Aktionen und hilfreiche Links."
@@ -5290,6 +5313,9 @@
       "Shared on": [
         "Geteilt am"
       ],
+      "Show table of contents": [
+        "Inhaltsverzeichnis anzeigen"
+      ],
       "Signature cannot be validated due to network error, please try again later.": [
         "Die Signatur kann aufgrund eines Netzwerkfehlers nicht validiert werden, bitte versuche es später erneut."
       ],
@@ -5365,9 +5391,6 @@
       ],
       "The owner of this address has disabled end-to-end encryption. To be able to send encrypted emails to this address, the owner must re-enable end-to-end encryption.": [
         "Der Inhaber dieser E-Mail-Adresse hat die Ende-zu-Ende-Verschlüsselung deaktiviert. Um verschlüsselte E-Mails an diese Adresse senden zu können, muss der Besitzer die Ende-zu-Ende-Verschlüsselung wieder aktivieren."
-      ],
-      "The URL you entered seems to have been copied from Slack incorrectly. When copying long links from Slack, right click the link, then choose \"Copy link\" rather than copying the truncated URL text directly.": [
-        "Die von dir eingegebene URL scheint fehlerhaft von Slack kopiert worden zu sein. Wenn du lange Links von Slack kopierst, klicke mit der rechten Maustaste auf den Link und wähle dann \"Link kopieren\" anstatt den abgeschnittenen URL-Text direkt zu kopieren."
       ],
       "There are no documents in the trash.": [
         "Es befinden sich keine Dokumente im Papierkorb."
@@ -5599,6 +5622,9 @@
       ],
       "You are about to open your default browser and visit:": [
         "Du bist dabei, deinen Standardbrowser zu öffnen und folgende Seite zu besuchen:"
+      ],
+      "You are currently signed in as ${ username } for ${ organizationName }.": [
+        "Du bist derzeit al ${ username } für ${ organizationName } angemeldet."
       ],
       "You are currently signed in as ${ username }.": [
         "Du bist derzeit als „${ username }“ angemeldet."
@@ -6017,6 +6043,9 @@
       "Download anyway": [
         "Trotzdem herunterladen"
       ],
+      "Drive": [
+        "Drive"
+      ],
       "Duplicate found": [
         "Duplikat gefunden"
       ],
@@ -6052,9 +6081,6 @@
       ],
       "Emails (last month)": [
         "E-Mails (letzter Monat)"
-      ],
-      "Enable email notifications": [
-        "E-Mail-Benachrichtigungen aktivieren"
       ],
       "Encrypt emails": [
         "E-Mails verschlüsseln"
@@ -6109,9 +6135,6 @@
       ],
       "Include application logs in bug report": [
         "Anwendungsprotokolle im Fehlerbericht einschließen"
-      ],
-      "Include document name in notification": [
-        "Dokumentname in der Benachrichtigung einbeziehen"
       ],
       "Include message and file name in invite email": [
         "Nachricht und Dateiname in die Einladungs-E-Mail einfügen"
@@ -6304,6 +6327,9 @@
       ],
       "Trash": [
         "Papierkorb"
+      ],
+      "Unknown user": [
+        "Unbekannter Benutzer"
       ],
       "Upload picture": [
         "Bild hochladen"
@@ -8002,6 +8028,15 @@
       "Device renamed": [
         "Gerät umbenannt"
       ],
+      "Document failed to be restored from trash": [
+        "Dokument konnte nicht aus dem Papierkorb wiederhergestellt werden"
+      ],
+      "Document moved to trash": [
+        "Dokument in den Papierkorb verschoben"
+      ],
+      "Document restored from trash": [
+        "Dokument aus dem Papierkorb wiederhergestellt"
+      ],
       "External invitation removed from the share": [
         "Externe Einladung von der Freigabe entfernt."
       ],
@@ -8580,6 +8615,9 @@
       ],
       "Search for name or email": [
         "Nach Namen oder E-Mail-Adressen suchen"
+      ],
+      "Search for users or addresses": [
+        "Nach Benutzern oder Adressen suchen"
       ],
       "Search parent folder": [
         "Übergeordneten Ordner durchsuchen"
@@ -9173,9 +9211,6 @@
       ]
     },
     "sheets_2025:Info": {
-      "Creating new spreadsheet...": [
-        "Neue Tabelle wird erstellt..."
-      ],
       "Detect automatically": [
         "Automatisch erkennen"
       ],
@@ -9933,6 +9968,9 @@
         "${ emailsCount } E-Mail-Adresse",
         "${ emailsCount } E-Mail-Adressen"
       ],
+      "${ LUMO_SHORT_APP_NAME } writing assistant": [
+        "${ LUMO_SHORT_APP_NAME } Schreibassistent"
+      ],
       "Account recovery": [
         "Kontowiederherstellung"
       ],
@@ -10163,6 +10201,9 @@
       ],
       "Edit image": [
         "Bild bearbeiten"
+      ],
+      "Editing paused": [
+        "Bearbeitung pausiert"
       ],
       "Email addresses": [
         "E‐Mail‐Adressen"
@@ -10553,6 +10594,26 @@
         "Deine exponierten Informationen"
       ]
     },
+    "Title header for keys table": {
+      "Actions": [
+        "Aktionen"
+      ],
+      "Created": [
+        "Erstellt"
+      ],
+      "Expires": [
+        "Läuft ab"
+      ],
+      "Fingerprint": [
+        "Fingerabdruck"
+      ],
+      "Status": [
+        "Status"
+      ],
+      "Type": [
+        "Typ"
+      ]
+    },
     "Today icon tooltip in mini calendar": {
       "Today": [
         "Heute"
@@ -10637,6 +10698,9 @@
       "Upload a public key to enable sending end-to-end encrypted emails to this email": [
         "Lade einen öffentlichen Schlüssel hoch, um das Senden von Ende-zu-Ende-verschlüsselten Nachrichten an diese E-Mail-Adresse zu ermöglichen"
       ],
+      "Version 6 OpenPGP key": [
+        "Version 6 OpenPGP Schlüssel"
+      ],
       "We have sent them an invite to access the item.": [
         "Wir haben der Person eine Einladung zum Zugreifen auf den Eintrag gesendet."
       ]
@@ -10669,6 +10733,11 @@
       ],
       "The user must have an address to request data access": [
         "Der Nutzer muss über eine Adresse verfügen, um den Datenzugang zu beantragen"
+      ]
+    },
+    "user_modal": {
+      "You'll be able to assign roles once the user has accepted the invitation.": [
+        "Sobald der Benutzer die Einladung angenommen hat, kannst du ihm Rollen zuweisen."
       ]
     },
     "Validation": {

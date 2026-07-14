@@ -101,9 +101,6 @@
       "Connected": [
         "متصل"
       ],
-      "Contact support": [
-        "تماس با پشتیبانی"
-      ],
       "Contact us": [
         "تماس با ما"
       ],
@@ -302,9 +299,6 @@
       "Load more": [
         "بارگذاری بیشتر"
       ],
-      "Loading verification": [
-        "در حال بارگیری تایید"
-      ],
       "Manage addresses": [
         "مدیریت نشانی‌ها"
       ],
@@ -361,6 +355,9 @@
       ],
       "Organization": [
         "سازمان"
+      ],
+      "Pause": [
+        "توقف موقت"
       ],
       "Pay": [
         "پرداخت"
@@ -1967,6 +1964,11 @@
         "شما می‌توانید رویدادها را در قالب iCal وارد کنید (فایل ICS). اندازه فایل باید حداکثر ${ MAX_IMPORT_FILE_SIZE_STRING } و حداکثر ${ MAX_IMPORT_EVENTS_STRING } رویداد داشته باشد. اگر فایل شما بزرگتر است، لطفا آن را به فایل‌های کوچکتر تقسیم کنید."
       ]
     },
+    "description": {
+      "use the Easy Switch import assistant": [
+        "از دستیار واردسازی Easy Switch استفاده کنید"
+      ]
+    },
     "Description of the purpose of the import CSV modal": {
       "Also, we have automatically matched CSV fields with vCard fields. You can review and change this matching manually.": [
         "همچنین، ما زمینه‌های CSV را با زمینه‌های کارت ویزیت مجازی به طور خودکار مطابقت داده‌ایم. می‌توانید این تطابق را به صورت دستی بررسی و تغییر دهید."
@@ -2168,12 +2170,6 @@
       "Incorrect password": [
         "گذرواژه نادرست است"
       ],
-      "Invalid ${ name } code": [
-        "کد ${ name } نامعتبر است"
-      ],
-      "Invalid card number": [
-        "شماره کارت نامعتبر است"
-      ],
       "Invalid code": [
         "کد نامعتبر است"
       ],
@@ -2182,9 +2178,6 @@
       ],
       "Invalid email address": [
         "رایانشانی نامعتبر است"
-      ],
-      "Invalid expiration date": [
-        "تاریخ انقضا نامعتبر است"
       ],
       "Invalid invitation link": [
         "لینک دعوتنامه نامعتبر است"
@@ -3105,9 +3098,6 @@
       "${ appName } needs your permission to ${ enableDesktopNotifications }.": [
         "${ appName } به اجازه شما برای ${ enableDesktopNotifications } نیاز دارد."
       ],
-      "${ boldWarning } You will lose access to all current encrypted data in your account if you continue.": [
-        "${ boldWarning } اگر ادامه دهید تمام داده های رمزگذاری شده موجود در حساب خود را از دست میدهید."
-      ],
       "${ calendarsToBeCreatedCount } new calendar": [
         "${ calendarsToBeCreatedCount } تقویم جدید",
         "${ calendarsToBeCreatedCount } تقویم جدید"
@@ -3347,9 +3337,6 @@
         "دامنه استفاده شد",
         "دامنه استفاده شد"
       ],
-      "Done! We sent a code to ${ destination }.": [
-        "انجام شد! ما یک کد به ${ destination } ارسال کردیم."
-      ],
       "Downgrade": [
         "تنزل"
       ],
@@ -3382,12 +3369,6 @@
       ],
       "Enter the code from your authenticator app": [
         "کد سامانه تایید کننده را وارد نمایید"
-      ],
-      "Enter the code sent to your phone number ${ phone }.": [
-        "کدی که به شماره تلفن ${ phone } شما فرستاده شد را وارد کنید."
-      ],
-      "Enter the code that was sent to ${ email }. If you can't find the message in your inbox, please check your spam folder.": [
-        "کدی که به ${ email } فرستاده شد را وارد کنید. اگر نمی‌توانید پیام را در صندوق ورودی پیدا کنید، لطفا پوشه هرزنامه خود را بررسی کنید."
       ],
       "Enter the credentials of the email account you want to import from.": [
         "اعتبارنامه‌های حساب رایانامه‌ای که می‌خواهید از آن درون‌برد کنید را وارد نمایید."
@@ -3618,17 +3599,11 @@
       "per month, billed at ${ price }": [
         "به ازای هر ماه ${ price }"
       ],
-      "Please enter the 12-word recovery phrase associated with your account.": [
-        "لطفاً عبارت بازیابی ١٢ واژه‌ای مرتبط با حساب خود را وارد نمایید."
-      ],
       "Please keep it safe. You'll need it to access your account and decrypt your data in case of a password reset.": [
         "لطفاً از آن مکانی امن نگهداری کنید. اگر رمزعبور خود را بازیابی کنید، برای دسترسی به حساب خود و رمزگشایی اطلاعاتتان به آن نیاز خواهید داشت."
       ],
       "Please select the folders you would like to import:": [
         "لطفا پوشه‌‌هایی را که مایلید واردسازی کنید را انتخاب کنید:"
-      ],
-      "Please try again, use a different payment method, or contact PayPal for assistance.": [
-        "لطفا دوباره امتحان کنید، از روش پرداخت دیگری استفاده کنید یا برای دریافت کمک با پی‌پال تماس بگیرید."
       ],
       "Plus or Visionary subscription required": [
         "اشتراک Plus یا Visionary مورد نیاز است"
@@ -3845,9 +3820,6 @@
       "Unable to verify recovery file signature. Please contact support.": [
         "اعتبار سنجی امضای فایل بازیابی ممکن نیست. لطفا با پشتیبانی تماس بگیرید."
       ],
-      "Unfortunately there is no recovery method saved for this account.": [
-        "متاسفانه هیچ روش بازیابی برای این حساب ذخیره نشده است."
-      ],
       "Unless you sign out of your account or change your password, your session will remain active. Sessions expire after 60 days of inactivity.": [
         "تا زمانی که از حساب خود خارج نشوید یا گذرواژه خود را تغییر ندهید، نشست شما فعال خواهد ماند. نشست‌ها پس از 60 روز عدم فعالیت منقضی می‌شوند."
       ],
@@ -3890,14 +3862,8 @@
       "Want to learn more?": [
         "می‌خواهید بیشتر بدانید؟"
       ],
-      "Warning:": [
-        "هشدار:"
-      ],
       "We advise you to use official ${ VPN_APP_NAME } applications when possible.": [
         "توصیه میکنیم درصورت امکان از برنامه های رسمی ${ VPN_APP_NAME } استفاده کنید."
-      ],
-      "We recommend using your recovery phrase instead.": [
-        "پیشنهاد می‌کنیم به‌جای آن از عبارت بازیابی خود استفاده کنید."
       ],
       "We securely store recovery information on your trusted device to prevent you from losing your data": [
         "ما برای جلوگیری شما از از دست دادن داده های شما اطلاعات بازیابی را به طور ایمن بر روی دستگاه قابل اعتماد شما ذخیر می کنیم"
@@ -3919,12 +3885,6 @@
       ],
       "Welcome": [
         "خوش آمدید"
-      ],
-      "We’ll send a reset code to the email address you provided for account recovery.": [
-        "برای بازیابی حسابتان، ما یک کد بازنشانی به آدرس ایمیل بازیابی که ارائه کرده‌اید ارسال می‌کنیم."
-      ],
-      "We’ll send a reset code to the phone number you provided for account recovery.": [
-        "برای بازیابی حسابتان، ما یک کد بازنشانی به شماره تلفن بازیابی که ارائه کرده‌اید ارسال می‌کنیم."
       ],
       "When your subscription renews, we will apply any available credits before we charge the payment method above.": [
         "هنگامی که اشتراک شما تمدید می‌شود، قبل از اینکه روش پرداخت فوق را شارژ کنیم، اعتبارات موجود را اعمال خواهیم کرد."
@@ -3970,9 +3930,6 @@
       ],
       "You must have a credit card or bank account linked with your PayPal account in order to add it as a payment method.": [
         "شما باید یک کارت اعتباری یا حساب بانکی متصل به حساب PayPal خود داشته باشید تا بتوان آن را به‌عنوان یک روش پرداخت اضافه کنید."
-      ],
-      "You will soon be redirected to PayPal to verify your payment.": [
-        "به زودی برای تایید پرداخت به PayPal هدایت می‌شوید."
       ],
       "You won’t be able to recover locked data using your downloaded recovery files.": [
         "شما قادر نخواهید بود با استفاده از فایل های بازیابی دانلود شده داده های قفل شده را بازیابی کنید."
@@ -4223,9 +4180,6 @@
       ],
       "City": [
         "شهر"
-      ],
-      "Code": [
-        "کد"
       ],
       "Code is 6 digits without spaces": [
         "کد ۶ رقمی بدون فاصله می‌باشد"
@@ -4743,8 +4697,14 @@
       "Forgot username?": [
         "نام کاربریتان را فراموش کرده‌اید؟"
       ],
+      "Frequent sign-in problems": [
+        "مشکلات متداول ورود به حساب"
+      ],
       "Get ${ VPN_APP_NAME }": [
         "دریافت ${ VPN_APP_NAME }"
+      ],
+      "Get help from ${ LUMO_SHORT_APP_NAME }": [
+        "دریافت راهنمایی از ${ LUMO_SHORT_APP_NAME }"
       ],
       "Groups": [
         "گروه‌ها"
@@ -6991,9 +6951,6 @@
       "Next": [
         "بعدی"
       ],
-      "No recovery method": [
-        "هیچ روش بازیابی"
-      ],
       "Open": [
         "بازگشایی"
       ],
@@ -7023,9 +6980,6 @@
       ],
       "Payment verification": [
         "تایید پرداخت"
-      ],
-      "PayPal verification failed": [
-        "تایید PayPal ناموفق بود"
       ],
       "Phone": [
         "تلفن"

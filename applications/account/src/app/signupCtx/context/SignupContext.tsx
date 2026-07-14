@@ -6,21 +6,18 @@ import { shouldTraceError, useNotifyErrorHandler } from '@proton/components/hook
 import { useSilentApi } from '@proton/components/hooks/useSilentApi';
 import type { OnChargeable } from '@proton/components/payments/client-extensions';
 import metrics, { observeError } from '@proton/metrics/index';
-import {
-    type Cycle,
-    type ExtendedTokenPayment,
-    PLANS,
-    type PlanIDs,
-    SubscriptionMode,
-    type TokenPayment,
-    isTokenPayment,
-    isV5PaymentToken,
-    v5PaymentTokenToLegacyPaymentToken,
-} from '@proton/payments';
+import { PLANS } from '@proton/payments/core/constants';
+import type { Cycle, ExtendedTokenPayment, PlanIDs, TokenPayment } from '@proton/payments/core/interface';
+import { SubscriptionMode } from '@proton/payments/core/subscription/constants';
+import { isTokenPayment, isV5PaymentToken } from '@proton/payments/core/type-guards';
+import { v5PaymentTokenToLegacyPaymentToken } from '@proton/payments/core/utils';
 import type { PaymentTelemetryContext } from '@proton/payments/telemetry/helpers';
 import { checkoutTelemetry } from '@proton/payments/telemetry/telemetry';
-import type { PaymentsContextOptimisticType, PlanToCheck } from '@proton/payments/ui';
-import { usePaymentOptimistic } from '@proton/payments/ui';
+import type { PlanToCheck } from '@proton/payments/ui/context/PaymentContext';
+import {
+    type PaymentsContextOptimisticType,
+    usePaymentOptimistic,
+} from '@proton/payments/ui/context/PaymentContextOptimistic';
 import { getAllAddresses, updateAddress } from '@proton/shared/lib/api/addresses';
 import type { ProductParam } from '@proton/shared/lib/apps/product';
 import type { GetActiveSessionsResult } from '@proton/shared/lib/authentication/persistedSessionHelper';
@@ -32,6 +29,7 @@ import type { APP_NAMES } from '@proton/shared/lib/constants';
 import { captureMessage, traceError } from '@proton/shared/lib/helpers/sentry';
 import type { Optional, ReferralData } from '@proton/shared/lib/interfaces';
 import type { Unwrap } from '@proton/shared/lib/interfaces/utils';
+import { useFlag } from '@proton/unleash/useFlag';
 import noop from '@proton/utils/noop';
 
 import sendRecoveryPhrasePayloadHelper from '../../containers/recoveryPhrase/sendRecoveryPhrasePayload';
@@ -251,6 +249,7 @@ export const InnerSignupContextProvider = ({
     const setupUserResponseRef = useRef<Unwrap<ReturnType<typeof handleSetupUser>>>();
     const signupDataRef = useRef<SignupData>();
     const [recoveryPhraseData, setRecoveryPhraseData] = useState<DeferredMnemonicData | undefined>();
+    const isShareFeatureEnabled = useFlag('RecoveryFileShareEnabled');
 
     const updateSignupData = (partial: Partial<SignupData>) => {
         signupDataRef.current = { ...signupDataRef.current, ...partial };
@@ -518,6 +517,7 @@ export const InnerSignupContextProvider = ({
                 referralRegistrationPlan,
                 build: APP_NAME,
                 telemetryContext: paymentsContext.telemetryContext,
+                isShareFeatureEnabled,
             });
 
             setupUserResponseRef.current = setupUserResponse;

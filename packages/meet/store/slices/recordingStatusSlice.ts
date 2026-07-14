@@ -25,6 +25,10 @@ const slice = createSlice({
     reducers: {
         // Participants recording
         addParticipantRecording: (state, action: PayloadAction<string>) => {
+            if (state.participantsRecording.includes(action.payload)) {
+                return;
+            }
+
             state.participantsRecording = [...state.participantsRecording, action.payload];
         },
         removeParticipantRecording: (state, action: PayloadAction<string>) => {
@@ -40,6 +44,13 @@ const slice = createSlice({
         },
         setLocalRecordingTimer: (state, action: PayloadAction<number | null>) => {
             state.localRecordingTimer = action.payload;
+        },
+
+        // Internal use only, please use the resetRecordingStatus thunk instead
+        _resetRecordingStatus: (state) => {
+            state.localRecordingTime = 0;
+            state.localRecordingTimer = null;
+            state.participantsRecording = [];
         },
     },
 });
@@ -71,6 +82,12 @@ export const stopLocalRecordingTimer =
 
         dispatch(slice.actions.setLocalRecordingTimer(null));
         dispatch(slice.actions.resetLocalRecordingTime());
+    };
+
+export const resetRecordingStatus =
+    (): ThunkAction<void, MeetState, ProtonThunkArguments, UnknownAction> => (dispatch) => {
+        dispatch(stopLocalRecordingTimer());
+        dispatch(slice.actions._resetRecordingStatus());
     };
 
 export const selectParticipantsRecording = (state: MeetState) => state.recordingStatus.participantsRecording;

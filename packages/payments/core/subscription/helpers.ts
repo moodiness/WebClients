@@ -131,8 +131,6 @@ export type MaybeFreeSubscription = Subscription | FreeSubscription | undefined;
 
 export const getAddons = (subscription: Subscription | undefined) =>
     (subscription?.Plans || []).filter(({ Type }) => Type === PLAN_TYPES.ADDON);
-export const hasAddons = (subscription: Subscription | undefined) =>
-    (subscription?.Plans || []).some(({ Type }) => Type === PLAN_TYPES.ADDON);
 
 export const getPlanName = (subscription: MaybeFreeSubscription, service?: PLAN_SERVICES) => {
     const plan = getPlan(subscription, service);
@@ -144,7 +142,7 @@ export const getPlanTitle = (subscription: MaybeFreeSubscription) => {
     return hasLifetimeCoupon(subscription) ? LIFETIME_PLAN_TITLE : plan?.Title;
 };
 
-export const hasSomePlan = (subscription: MaybeFreeSubscription, planName: PLANS) => {
+const hasSomePlan = (subscription: MaybeFreeSubscription, planName: PLANS) => {
     if (isFreeSubscription(subscription)) {
         return false;
     }
@@ -244,6 +242,8 @@ export const hasFree = (subscription: MaybeFreeSubscription) => (subscription?.P
 export const hasAnyB2bBundle = (subscription: MaybeFreeSubscription) =>
     hasBundlePro(subscription) || hasBundlePro2024(subscription) || hasBundleBiz2025(subscription);
 
+export const hasMspEligiblePlan = (subscription: MaybeFreeSubscription) => hasPassBusiness(subscription);
+
 export const hasFreeOrPlus = (subscription: MaybeFreeSubscription) =>
     hasFree(subscription) ||
     hasMail(subscription) ||
@@ -269,7 +269,7 @@ const hasAIAssistantCondition = [
 export const hasAIAssistant = (subscription: MaybeFreeSubscription) =>
     hasSomeAddonOrPlan(subscription, hasAIAssistantCondition);
 
-export const PLANS_WITH_AI_INCLUDED = [PLANS.VISIONARY, PLANS.DUO, PLANS.FAMILY];
+const PLANS_WITH_AI_INCLUDED = [PLANS.VISIONARY, PLANS.DUO, PLANS.FAMILY];
 export const hasPlanWithAIAssistantIncluded = (subscription: MaybeFreeSubscription) =>
     hasSomeAddonOrPlan(subscription, PLANS_WITH_AI_INCLUDED);
 
@@ -343,18 +343,11 @@ export const getCanSubscriptionAccessDuoPlan = (subscription: MaybeFreeSubscript
     return hasFree(subscription) || subscription?.Plans?.some(({ Name }) => getCanAccessDuoPlanCondition.has(Name));
 };
 
-const getCanAccessPassFamilyPlanCondition: Set<PLANS | ADDON_NAMES> = new Set([PLANS.PASS]);
-export const getCanSubscriptionAccessPassFamilyPlan = (subscription: MaybeFreeSubscription) => {
-    return (
-        hasFree(subscription) || subscription?.Plans?.some(({ Name }) => getCanAccessPassFamilyPlanCondition.has(Name))
-    );
-};
-
 export const getIsB2BAudienceFromSubscription = (subscription: MaybeFreeSubscription) => {
     return !!subscription?.Plans?.some(({ Name }) => getIsB2BAudienceFromPlan(Name));
 };
 
-export const getIsFamilyAudienceFromSubscription = (subscription: MaybeFreeSubscription) => {
+const getIsFamilyAudienceFromSubscription = (subscription: MaybeFreeSubscription) => {
     return hasDuo(subscription) || hasFamily(subscription) || hasPassFamily(subscription);
 };
 
@@ -374,16 +367,6 @@ export const getHasVpnB2BPlan = (subscription: MaybeFreeSubscription) => {
 
 export const getHasVpnOnlyB2BPlan = (subscription: MaybeFreeSubscription) => {
     return hasVpnPro(subscription) || hasVpnBusiness(subscription);
-};
-
-export const getHasSomeVpnPlan = (subscription: MaybeFreeSubscription) => {
-    return (
-        hasDeprecatedVPN(subscription) ||
-        hasVPN2024(subscription) ||
-        hasVPNPassBundle(subscription) ||
-        hasVpnPro(subscription) ||
-        hasVpnBusiness(subscription)
-    );
 };
 
 export const getHasConsumerVpnPlan = (subscription: MaybeFreeSubscription) => {
@@ -560,29 +543,6 @@ export function getNormalCycleFromCustomCycle(cycle: CYCLE | undefined): CYCLE |
     return CYCLE.MONTHLY;
 }
 
-export function getLongerCycle(cycle: CYCLE): CYCLE;
-export function getLongerCycle(cycle: CYCLE | undefined): CYCLE | undefined {
-    if (!cycle) {
-        return undefined;
-    }
-    if (cycle === CYCLE.MONTHLY) {
-        return CYCLE.YEARLY;
-    }
-    if (cycle === CYCLE.YEARLY) {
-        return CYCLE.TWO_YEARS;
-    }
-
-    if (cycle === CYCLE.FIFTEEN || cycle === CYCLE.THIRTY) {
-        return CYCLE.TWO_YEARS;
-    }
-
-    return cycle;
-}
-
-export const getHasCoupon = (subscription: Subscription | undefined, coupon: string) => {
-    return [subscription?.CouponCode, subscription?.UpcomingSubscription?.CouponCode].includes(coupon);
-};
-
 export function isCancellableOnlyViaSupport(subscription: MaybeFreeSubscription) {
     if (isTrial(subscription)) {
         // Always allow canceling trials without contacting support
@@ -664,10 +624,6 @@ export const isAddonDowngrade = (current: Subscription, upcoming: Subscription |
     );
 };
 
-export const isAddonDowngradeOnSameCycle = (current: Subscription, upcoming: Subscription) => {
-    return isSameCycle(current, upcoming) && isAddonDowngrade(current, upcoming);
-};
-
 export function isUpcomingSubscriptionUnpaid(subscription: Subscription): boolean {
     return subscription.UpcomingSubscription?.IsPrepaid === false;
 }
@@ -747,62 +703,20 @@ export function isSubscriptionCheckForbiddenWithReason(
     subscription: Subscription | FreeSubscription | null | undefined,
     estimationParameters: SubscriptionCheckForbiddenEstimationParameters
 ): SubscriptionCheckForbiddenReason {
-    const { planIDs, cycle } = estimationParameters;
-
-    if (hasFreePlanIDs(planIDs)) {
-        return {
-            forbidden: true,
-            reason: 'paid-plan-required',
-        };
-    }
-
-    const codes: string[] = (() => {
-        if (estimationParameters.Codes) {
-            return estimationParameters.Codes;
-        }
-
-        if (estimationParameters.coupon) {
-            return [estimationParameters.coupon];
-        }
-
-        return [];
-    })();
-
-    if (!subscription) {
-        return { forbidden: false };
-    }
-
-    const selectedSameAsCurrent =
-        !!subscription && !isFreeSubscription(subscription)
-            ? isSubscriptionUnchanged(subscription, planIDs, cycle)
-            : false;
-
-    const upcoming = subscription.UpcomingSubscription;
-    const hasUpcomingSubscription = !!upcoming;
-    const selectedSameAsUpcoming = hasUpcomingSubscription ? isSubscriptionUnchanged(upcoming, planIDs, cycle) : false;
-
-    const variableCycleOffer = getIsVariableCycleOffer(subscription);
-
-    const hasScheduledUnpaidModification =
-        hasUpcomingSubscription && !variableCycleOffer && isUpcomingSubscriptionUnpaid(subscription);
-
-    const selectedSameAsCurrentIgnorringCycle =
-        !!subscription && !isFreeSubscription(subscription) ? isSubscriptionUnchanged(subscription, planIDs) : false;
-
-    const managedExternally = isManagedExternally(subscription);
-
     /**
      * Consider the table with possible cases:
      *
      * | Scenario                       | selectedSameAsCurrent | selectedSameAsUpcoming |
      * |--------------------------------|-----------------------|------------------------|
-     * | hasVariableCycleOffer          | check forbidden*      | check forbidden        |
-     * | hasUpcomingPrepaidSubscription | check forbidden*      | check forbidden        |
-     * | hasNoUpcomingSubscription      | check forbidden*      | n/a                    |
+     * | hasVariableCycleOffer          | check forbidden (1*)  | check forbidden        |
+     * | hasUpcomingPrepaidSubscription | check forbidden (1*)  | check forbidden        |
+     * | hasNoUpcomingSubscription      | check forbidden (1*)  | n/a                    |
      * | hasScheduledUnpaidDowncycling  | check allowed         | check forbidden        |
      *
-     * *unless a coupon/code is provided — in that case the check is allowed so the backend
-     *  can validate the coupon and return the discounted price. See P2-1927.
+     * (1*) - unless a NEW coupon/code is provided — one that differs from the coupon already applied to the active
+     *  subscription (or more than one code). In that case the check is allowed so the backend can validate the coupon
+     *  and return the discounted price. Re-supplying the coupon the subscription already has does not count as new and
+     *  stays "check forbidden". See P2-1927 and P2-2106.
      *
      * Please do not join this multi-line comment with others, I keep it separated to prevent some auto-formatting
      * tools from breaking this table.
@@ -810,6 +724,11 @@ export function isSubscriptionCheckForbiddenWithReason(
     /**
      * "check forbidden" means that the /check endpoint will return an error. "check allowed" means that the /check
      * endpoint will work as expected.
+     *
+     * Two branches short-circuit before the table above is reached:
+     *   - A free plan selection (`hasFreePlanIDs`) is always forbidden with reason 'paid-plan-required'. The /check
+     *     endpoint only estimates paid plans, so there's nothing to estimate for a free plan.
+     *   - No subscription at all (a new or free user) is always allowed.
      *
      * hasVariableCycleOffer - when user has an automatic scheduled unpaid subscription. For example, when user
      * subscribes to vpn2024 24m then the backend will create a scheduled 12m subscription.
@@ -825,43 +744,94 @@ export function isSubscriptionCheckForbiddenWithReason(
      * number of scribes.
      *
      * The four cases described above are handled by:
-     * `(selectedSameAsCurrent && !hasScheduledUnpaidModification && !codes.length) || selectedSameAsUpcoming`
+     * `(forbiddenWithoutNewCoupon && !hasNewCoupon) || selectedSameAsUpcoming`, where
+     * `forbiddenWithoutNewCoupon = selectedSameAsCurrent && !hasScheduledUnpaidModification`. When it matches, the
+     * function returns reason 'already-subscribed'.
      *
-     * The `!codes.length` part allows the /check call when a coupon or promo code is present, even if the plan and
+     * The `!hasNewCoupon` part allows the /check call when a NEW coupon or promo code is present, even if the plan and
      * cycle are the same as the current subscription. This is needed so the backend can validate the coupon and return
-     * the discounted price. The coupon exception intentionally does not apply to `selectedSameAsUpcoming`.
+     * the discounted price. In that case the function returns `{ forbidden: false, reason: 'possibly-invalid-coupon' }`
+     * (see {@link isDangerouslyAllowedSubscriptionEstimation}). A coupon counts as new only when it differs from the
+     * coupon already applied to the subscription (or when more than one code is supplied) — re-supplying the existing
+     * coupon stays 'already-subscribed', see P2-2106. The coupon exception intentionally does not apply to
+     * `selectedSameAsUpcoming`.
      *
      * The condition `selectedSameAsCurrentIgnorringCycle && managedExternally` is a special case for multi-subs. If
      * user has a mobile subscription (for example, Lumo) and selects the same plan on web (any cycle) then the check is
-     * forbidden. Users must not be able to modify the subscription that's managed externally. In some cases, they
-     * should be allowed to create a new one, and we call it multi-subs.
+     * forbidden (reason 'already-subscribed-externally'). Users must not be able to modify the subscription that's
+     * managed externally. In some cases, they should be allowed to create a new one, and we call it multi-subs.
      *
      * P2-634 is the relevant ticket.
      *
-     * Additionally, some modification can be forbidden according to the `isForbiddenModification` function. At the time
-     * of writing this comment, it was forbidden to buy multi-user personal plans (Duo, Family, etc) while having an
-     * externally managed Lumo subscription.
+     * Additionally, some modification can be forbidden according to the `isForbiddenModification` function (reason
+     * 'offer-not-available'). At the time of writing this comment, it was forbidden to buy multi-user personal plans
+     * (Duo, Family, etc) while having an externally managed Lumo subscription.
      *
      */
-    const forbiddenWithoutCoupon = selectedSameAsCurrent && !hasScheduledUnpaidModification;
-    if ((forbiddenWithoutCoupon && !codes.length) || selectedSameAsUpcoming) {
-        return { forbidden: true, reason: 'already-subscribed' };
+
+    const { planIDs, cycle } = estimationParameters;
+
+    if (hasFreePlanIDs(planIDs)) {
+        return {
+            forbidden: true,
+            reason: 'paid-plan-required',
+        };
     }
+
+    if (!subscription) {
+        return { forbidden: false };
+    }
+
+    const forbiddenModificationAttempt = isForbiddenModification(subscription, planIDs);
+    if (forbiddenModificationAttempt) {
+        return { forbidden: true, reason: 'offer-not-available' };
+    }
+
+    const selectedSameAsCurrentIgnorringCycle =
+        !!subscription && !isFreeSubscription(subscription) ? isSubscriptionUnchanged(subscription, planIDs) : false;
+
+    const managedExternally = isManagedExternally(subscription);
 
     if (selectedSameAsCurrentIgnorringCycle && managedExternally) {
         return { forbidden: true, reason: 'already-subscribed-externally' };
     }
 
-    const forbiddenModificationAttempt = isForbiddenModification(subscription, planIDs);
+    const codes: string[] = (() => {
+        if (estimationParameters.Codes) {
+            return estimationParameters.Codes;
+        }
 
-    if (forbiddenModificationAttempt) {
-        return { forbidden: true, reason: 'offer-not-available' };
+        if (estimationParameters.coupon) {
+            return [estimationParameters.coupon];
+        }
+
+        return [];
+    })();
+
+    const upcoming = subscription.UpcomingSubscription;
+    const hasUpcomingSubscription = !!upcoming;
+    const selectedSameAsUpcoming = hasUpcomingSubscription ? isSubscriptionUnchanged(upcoming, planIDs, cycle) : false;
+
+    const selectedSameAsCurrent =
+        !!subscription && !isFreeSubscription(subscription)
+            ? isSubscriptionUnchanged(subscription, planIDs, cycle)
+            : false;
+
+    const variableCycleOffer = getIsVariableCycleOffer(subscription);
+
+    const hasScheduledUnpaidModification =
+        hasUpcomingSubscription && !variableCycleOffer && isUpcomingSubscriptionUnpaid(subscription);
+
+    const forbiddenWithoutNewCoupon = selectedSameAsCurrent && !hasScheduledUnpaidModification;
+    const hasNewCoupon = !!codes.length && (codes.length >= 2 || codes[0] !== subscription.CouponCode);
+    if ((forbiddenWithoutNewCoupon && !hasNewCoupon) || selectedSameAsUpcoming) {
+        return { forbidden: true, reason: 'already-subscribed' };
     }
 
     /**
      * See comments for {@link isDangerouslyAllowedSubscriptionEstimation} for more details.
      */
-    if (forbiddenWithoutCoupon && codes.length) {
+    if (forbiddenWithoutNewCoupon && hasNewCoupon) {
         return { forbidden: false, reason: 'possibly-invalid-coupon' };
     }
 

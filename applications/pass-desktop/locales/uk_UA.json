@@ -151,6 +151,9 @@
       "Continue offline": [
         "Продовжити в автономному режимі"
       ],
+      "Copy": [
+        "Копіювати"
+      ],
       "Copy and close": [
         "Скопіювати та закрити"
       ],
@@ -247,6 +250,9 @@
       "Dismiss": [
         "Відхилити"
       ],
+      "Done": [
+        "Готово"
+      ],
       "Download this CSV template": [
         "Завантажте цей шаблон CSV"
       ],
@@ -309,6 +315,9 @@
       ],
       "Get Started": [
         "Розпочнімо"
+      ],
+      "Hide": [
+        "Сховати"
       ],
       "How do I export my data from ${ PROVIDER_INFO_MAP[form.values.provider].title }?": [
         "Як експортувати дані з ${ PROVIDER_INFO_MAP[form.values.provider].title }?"
@@ -921,6 +930,9 @@
       "Error reporting problem": [
         "Помилка під час надсилання повідомлення про проблему"
       ],
+      "Failed loading group members": [
+        "Не вдалося завантажити учасників групи"
+      ],
       "Failed removing the invite.": [
         "Помилка вилучення запрошення."
       ],
@@ -1000,7 +1012,7 @@
         "Не вдалося відновити елементи з кошика"
       ],
       "Failed to set default mailbox": [
-        "Не вдалося встановити поштову скриньку за замовчуванням"
+        "Не вдалося встановити типову поштову скриньку"
       ],
       "Failed to sync aliases": [
         "Не вдалося синхронізувати псевдоніми"
@@ -1015,7 +1027,7 @@
         "Не вдалося оновити налаштування перехоплення."
       ],
       "Failed to update default domain": [
-        "Не вдалося оновити домен за замовчуванням"
+        "Не вдалося оновити типовий домен"
       ],
       "Failed to update domain mailboxes.": [
         "Не вдалося оновити поштові скриньки домену."
@@ -1300,6 +1312,17 @@
         "Дуже маленький"
       ]
     },
+    "Header": {
+      "Domain": [
+        "Домен"
+      ],
+      "Password ends with": [
+        "Пароль закінчується на"
+      ],
+      "Username": [
+        "Ім'я користувача"
+      ]
+    },
     "Info": {
       "\"${ payload.itemName }\" item was dismissed": [
         "\"${ payload.itemName }\" елемент було відхилено"
@@ -1542,7 +1565,7 @@
         "Розшифрування ваших даних"
       ],
       "Default display name for aliases created with ${ domainDisplay } unless overwritten by the alias display name.": [
-        "Ім'я показу за замовчуванням для псевдонімів, створених за допомогою ${ domainDisplay }, якщо його не замінено ім'ям показу псевдоніма."
+        "Типова назва для псевдонімів, створених за допомогою ${ domainDisplay }, якщо його не замінено назвою псевдоніма."
       ],
       "Deleted items will be moved here first": [
         "Видалені елементи спочатку будуть переміщені сюди"
@@ -1621,6 +1644,9 @@
       ],
       "Enter the address you want to email.": [
         "Введіть адресу, на яку ви хочете надіслати листа."
+      ],
+      "Enter verification code. Digit ${ digit }.": [
+        "Введіть код підтвердження. Цифра ${ digit }."
       ],
       "Enter your extra password": [
         "Уведіть ваш додатковий пароль"
@@ -1750,6 +1776,9 @@
       ],
       "Latest breach on ${ formattedDate }": [
         "Останній витік у ${ formattedDate }"
+      ],
+      "Learn what to do ${ dataLeakedLink }": [
+        "Дізнайтеся, що робити, ${ dataLeakedLink }"
       ],
       "Leaving vault...": [
         "Покидання сховища..."
@@ -2256,7 +2285,7 @@
         "Ви досягли максимальної дозволеної кількості символів ${ maxLength }."
       ],
       "You will be able to customize your domain settings (catch-all email aliases, default display name for aliases etc...) after verifying your domain.": [
-        "Ви зможете налаштувати параметри вашого домену (псевдоніми електронної пошти, ім'я для показу за замовчуванням для псевдонімів тощо) після перевірки вашого домену."
+        "Ви зможете налаштувати параметри свого домену (універсальні поштові псевдоніми, типову назву для псевдонімів тощо...) після підтвердження вашого домену."
       ],
       "You will be logged out and need to log in again on all of your other devices.": [
         "Ви вийдете з системи, і вам потрібно буде увійти знову на всіх інших пристроях."
@@ -2458,6 +2487,9 @@
       "Address details": [
         "Деталі адреси"
       ],
+      "Advanced": [
+        "Розширено"
+      ],
       "Alias": [
         "Псевдонім"
       ],
@@ -2658,6 +2690,9 @@
       ],
       "Expired": [
         "Термін дії завершився"
+      ],
+      "Expires in": [
+        "Термін дії закінчується через"
       ],
       "Export": [
         "Експорт"
@@ -3351,6 +3386,9 @@
       "auto create rules ››": [
         "автоматичне створення правил ››"
       ],
+      "if your data is leaked": [
+        "якщо стався витік ваших даних"
+      ],
       "Learn more": [
         "Докладніше"
       ]
@@ -3394,6 +3432,9 @@
     "new_plans: feature": {
       "Require 2FA for organization": [
         "Вимагати двоетапну автентифікацію для організації"
+      ],
+      "SSO integration": [
+        "Інтеграція SSO"
       ]
     },
     "Notification": {
@@ -3509,6 +3550,9 @@
       ],
       "Coupon": [
         "Купон"
+      ],
+      "e.g. My automation script": [
+        "наприклад, Мій скрипт автоматизації"
       ],
       "E.g., ": [
         "Наприклад, "
@@ -3681,10 +3725,10 @@
         "Контакт успішно розблоковано"
       ],
       "Default domain successfully updated": [
-        "Домен за замовчуванням успішно оновлено"
+        "Типовий домен успішно оновлено"
       ],
       "Default mailbox successfully updated": [
-        "Поштову скриньку за замовчуванням успішно оновлено"
+        "Типову поштову скриньку успішно оновлено"
       ],
       "Display name successfully updated": [
         "Ім'я для показу оновлено"
@@ -3823,7 +3867,7 @@
         "Користувацькі електронні листи"
       ],
       "Default": [
-        "За замовчуванням"
+        "Типово"
       ],
       "Default Display Name": [
         "Типове ім'я для показу"
@@ -3896,6 +3940,9 @@
       ],
       "Inactive 2FA": [
         "Неактивна 2FA"
+      ],
+      "Information exposed in breach": [
+        "Інформація, розкрита під час витоку"
       ],
       "Install extension": [
         "Встановити розширення"
@@ -4060,7 +4107,7 @@
         "Захист ваших даних"
       ],
       "Select the default domain for aliases": [
-        "Виберіть домен за замовчуванням для псевдонімів"
+        "Виберіть типовий домен для псевдонімів"
       ],
       "Set access level": [
         "Задати рівень доступу"
@@ -4174,6 +4221,14 @@
     "Today icon tooltip in mini calendar": {
       "Today": [
         "Сьогодні"
+      ]
+    },
+    "Tooltip": {
+      "Not all information listed here was exposed for all users.": [
+        "Не вся перелічена тут інформація була розкрита для всіх користувачів."
+      ],
+      "Unless they are deciphered, encrypted passwords remain secure even if they are exposed.": [
+        "Якщо зашифровані паролі не розшифровано, вони залишаються безпечними, навіть якщо їх було розкрито."
       ]
     },
     "Validation": {

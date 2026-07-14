@@ -4,8 +4,8 @@ import DriveLogo from '@proton/components/components/logo/DriveLogo';
 import { useSubscriptionModal } from '@proton/components/containers/payments/subscription/SubscriptionModalProvider';
 import { SUBSCRIPTION_STEPS } from '@proton/components/containers/payments/subscription/constants';
 import useDashboardPaymentFlow from '@proton/components/hooks/useDashboardPaymentFlow';
-import { PLANS, PLAN_NAMES, hasFree } from '@proton/payments';
-import type { MaybeFreeSubscription } from '@proton/payments/core/subscription/helpers';
+import { PLANS, PLAN_NAMES } from '@proton/payments/core/constants';
+import { type MaybeFreeSubscription, hasFree } from '@proton/payments/core/subscription/helpers';
 import { APPS, DOCS_APP_NAME, DRIVE_APP_NAME } from '@proton/shared/lib/constants';
 
 import type { DashboardMoreInfoSection } from '../../../shared/DashboardMoreInfoSection/DashboardMoreInfoSection';
@@ -28,7 +28,7 @@ const DriveGetMoreSection = ({ subscription }: Props) => {
     const telemetryFlow = useDashboardPaymentFlow(APPS.PROTONDRIVE);
 
     const handleDrivePlusUpsell = () => {
-        openSubscriptionModal({
+        void openSubscriptionModal({
             step: SUBSCRIPTION_STEPS.CHECKOUT,
             plan: PLANS.DRIVE,
             telemetryFlow,
@@ -37,12 +37,15 @@ const DriveGetMoreSection = ({ subscription }: Props) => {
 
     const sections: DashboardMoreInfoSection[] = [
         {
+            id: 'create-edit-confidance',
             title: () => c('Blog').t`Create and edit with confidence`,
             description: () => c('Blog').t`Write, edit and collaborate on documents securely with ${DOCS_APP_NAME}.`,
             image: editDocuments,
             link: 'https://proton.me/drive/docs',
+            cardAction: 'external_link',
         },
         {
+            id: 'photos-out-of-ai-training',
             title: () => c('Blog').t`Keep your photos out of AI training`,
             tag: isFreeSubscription ? (
                 <DashboardMoreInfoSectionTag
@@ -57,14 +60,18 @@ const DriveGetMoreSection = ({ subscription }: Props) => {
                     : c('Blog').t`Backup, organize, and securely share a lifetime of memories.`,
             image: organizeMemories,
             onClick: isFreeSubscription ? () => handleDrivePlusUpsell() : undefined,
+            cardAction: isFreeSubscription ? 'upsell_modal' : undefined,
         },
         {
+            id: 'share-files-securely',
             title: () => c('Blog').t`Share files securely`,
             description: () => c('Blog').t`Send files via secure links or email, revoke access whenever needed.`,
             image: shareFiles,
             link: 'https://proton.me/drive/file-sharing',
+            cardAction: 'external_link',
         },
         {
+            id: 'safeguard-your-work',
             title: () => c('Blog').t`Safeguard your work`,
             tag: (
                 <DashboardMoreInfoSectionTag
@@ -78,10 +85,11 @@ const DriveGetMoreSection = ({ subscription }: Props) => {
                     .t`Keep your team’s files protected, accessible, and in sync with ${DRIVE_APP_NAME} for Business.`,
             image: safeguard,
             link: 'https://proton.me/business/drive',
+            cardAction: 'external_link',
         },
     ];
 
-    return <DashboardMoreInfoSections sections={sections} />;
+    return <DashboardMoreInfoSections sections={sections} app={APPS.PROTONDRIVE} />;
 };
 
 export default DriveGetMoreSection;

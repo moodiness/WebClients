@@ -319,8 +319,14 @@
       "Do not show again when I press": [
         "Пасля націску больш не паказваць"
       ],
+      "Do not show this again": [
+        "Больш не паказваць"
+      ],
       "Don't show this again": [
         "Больш не паказваць"
+      ],
+      "Done": [
+        "Гатова"
       ],
       "Download this CSV template": [
         "Спампаваць гэты шаблон CSV"
@@ -570,6 +576,12 @@
       ],
       "Regenerate": [
         "Згенерыраваць яшчэ раз"
+      ],
+      "Regex invalid": [
+        "Памылковы рэгулярны выраз"
+      ],
+      "Regex unsafe": [
+        "Небяспечны рэгулярны выраз"
       ],
       "Reject": [
         "Адхіліць"
@@ -1222,6 +1234,12 @@
       "Failed to set default mailbox": [
         "Не ўдалося задаць прадвызначаную паштовую скрыню"
       ],
+      "Failed to start SSH agent: ${ errorMessage }": [
+        "Не ўдалося запусціць агент SSH: ${ errorMessage }"
+      ],
+      "Failed to stop SSH agent: ${ errorMessage }": [
+        "Не ўдалося спыніць агент SSH: ${ errorMessage }"
+      ],
       "Failed to sync aliases": [
         "Не ўдалося сінхранізаваць псеўданімы"
       ],
@@ -1479,7 +1497,7 @@
         "Неабмежаваная колькасць псеўданімаў hide-my-email"
       ],
       "Vault sharing (up to ${ MAX_VAULT_MEMBERS } people)": [
-        "Абагуленне сховішча (максімальная колькасць карыстальнікаў: ${ MAX_VAULT_MEMBERS })"
+        "Абагульванне сховішча (максімальная колькасць карыстальнікаў: ${ MAX_VAULT_MEMBERS })"
       ]
     },
     "file size format": {
@@ -1642,6 +1660,9 @@
       ],
       "${ PASS_APP_NAME } will only import logins, notes, credit cards and identities.": [
         "${ PASS_APP_NAME } імпартуе толькі запісы ўваходу, нататкі, крэдытныя карткі і ідэнтычнасці."
+      ],
+      "${ PASS_APP_NAME } will use the SSH keys saved in your vaults.": [
+        "${ PASS_APP_NAME } будзе выкарыстоўваць ключы SSH захаваныя ў вашым сховішчы."
       ],
       "${ PASS_SHORT_APP_NAME } offline mode enabled.": [
         "Пазасеткавы рэжым у ${ PASS_SHORT_APP_NAME } уключаны."
@@ -2030,6 +2051,9 @@
       "finance": [
         "фінансы"
       ],
+      "Find \"OpenSSH Authentication Agent\", right-click Properties.": [
+        "Знайдзіце поле \"Агент аўтэнтыфікацыі OpenSSH\" і націсніце правай кнопкай мышы, каб выбраць \"Уласцівасці\"."
+      ],
       "Follow those steps to import your data with a generic CSV:": [
         "Выканайце наступныя дзеянні, каб імпартаваць свае даныя з агульнага CSV:"
       ],
@@ -2074,6 +2098,9 @@
       ],
       "Identity confirmed": [
         "Ідэнтычнасць пацверджана"
+      ],
+      "If you do not plan to use the SSH agent on another paid account, remember to disable this setting before switching to that account.": [
+        "Не забудзьце адключыць гэтую наладу перад пераключэннем на гэты ўліковы запіс, калі вы не плануеце выкарыстоўваць агент SSH на іншым платным уліковым запісе."
       ],
       "Import the CSV file below.": [
         "Імпартуйце файл CSV ніжэй."
@@ -2186,6 +2213,9 @@
       "Low Priority": [
         "Нізкі прыярытэт"
       ],
+      "Make sure to keep ${ PASS_APP_NAME } running (can be minimized) for the SSH agent to stay active. SSH keys with passphrase are currently not supported.": [
+        "Пераканайцеся, што ${ PASS_APP_NAME } застаўся запушчаным (можа быць згорнуты ў сістэмны латок) для таго, каб агент SSH заставаўся актыўным. Ключы SSH з парольнай фразай у цяперашні момант не падтрымліваюцца."
+      ],
       "Manager": [
         "Менеджар"
       ],
@@ -2215,6 +2245,12 @@
       ],
       "Moving all items from \"${ payload.content.name }\"": [
         "Перамяшчэнне ўсіх элементаў з \"${ payload.content.name }\""
+      ],
+      "Moving an item to another vault will erase its secure links.": [
+        "Перамяшчэнне элемента ў іншае сховішча прывядзе да сцірання яго бяспечных спасылак",
+        "Перамяшчэнне элементаў у іншае сховішча прывядзе да сцірання іх бяспечных спасылак.",
+        "Перамяшчэнне элементаў у іншае сховішча прывядзе да сцірання іх бяспечных спасылак.",
+        "Перамяшчэнне элементаў у іншае сховішча прывядзе да сцірання іх бяспечных спасылак."
       ],
       "Moving items": [
         "Перамяшчэнне элементаў"
@@ -2249,6 +2285,9 @@
       "No network connection": [
         "Адсутнічае падключэнне да сеткі"
       ],
+      "No SSH keys found in ${ PASS_SHORT_APP_NAME }. Create SSH key items to use with the agent.": [
+        "Ключы SSH не знойдзены ў ${ PASS_SHORT_APP_NAME }. Стварыце элементы ключа SSH, каб выкарыстоўваць з агентам."
+      ],
       "No vaults available.": [
         "Няма даступных сховішчаў."
       ],
@@ -2272,6 +2311,9 @@
       ],
       "Only tokens that expired in the last 30 days are shown. Older tokens are automatically deleted.": [
         "Паказаны толькі токены, якія пратэрмінаваны за апошнія 30 дзён. Больш старыя токены аўтаматычна выдалены."
+      ],
+      "Open \"Services\" (you can use the Windows search bar or press Win+R and enter services.msc).": [
+        "Адкрыйце \"Сэрвісы\" (вы можаце скарыстацца панэллю пошуку ў Windows або націснуць камбінацыю клавіш Win+R і ўвесці каманду services.msc)."
       ],
       "Open your Safari settings for the extension and verify site permissions are enabled for ${ BRAND_NAME } domains": [
         "Адкрыйце свае налады Safari для пашырэння і пераканайцеся, што дазволы вэб-сайта ўключаны для даменаў ${ BRAND_NAME }"
@@ -2299,6 +2341,9 @@
         "Паролі старэйшыя за ${ MAX_PASSWORD_HISTORY_RETENTION_WEEKS } тыдні будуць аўтаматычна выдаляцца з гісторыі.",
         "Паролі старэйшыя за ${ MAX_PASSWORD_HISTORY_RETENTION_WEEKS } тыдняў будуць аўтаматычна выдаляцца з гісторыі.",
         "Паролі старэйшыя за ${ MAX_PASSWORD_HISTORY_RETENTION_WEEKS } тыдняў будуць аўтаматычна выдаляцца з гісторыі."
+      ],
+      "Paste the following command in your terminal:": [
+        "Устаўце наступную каманду ў свой тэрмінал:"
       ],
       "Paused": [
         "Прыпынена"
@@ -2447,6 +2492,9 @@
       "Protected by ${ PROTON_SENTINEL_LINK }, our advanced account protection program": [
         "Абаронена з дапамогай ${ PROTON_SENTINEL_LINK }, якая з'яўляецца нашай перадавой праграмай абароны ўліковых запісаў"
       ],
+      "Ranked by field (title first, then username or email, website, notes) and match precision (exact, starts with, contains).": [
+        "Упарадкавана па полі (спачатку загаловак, потым імя карыстальніка або электронная пошта, вэб-сайт, нататкі) і адпавядае дакладнасці (дакладна, пачынаецца з, змяшчае)."
+      ],
       "Read item": [
         "Прачытаць элемент"
       ],
@@ -2505,7 +2553,7 @@
         "Выберыце сховішчы, якія можа прачытаць \"${ token.Name }\"."
       ],
       "Select vault to share": [
-        "Выберыце сховішча для абагулення"
+        "Выберыце сховішча для абагульвання"
       ],
       "Select where you want your imported vaults to be saved.": [
         "Выберыце куды вы хочаце захаваць свае імпартаваныя сховішчы."
@@ -2527,6 +2575,9 @@
       ],
       "Session timed out": [
         "Сеанс завяршыўся"
+      ],
+      "Set \"Startup type\" to Disabled, click OK.": [
+        "Задаць \"Тып запуску\" для \"Адключана\", націсніце OK."
       ],
       "Set by your organization": [
         "Зададзена вашай арганізацыяй"
@@ -2672,6 +2723,9 @@
       "This will reject the device **${ name }** that tried signing into your ${ BRAND_NAME } account on **${ date }**.": [
         "Гэта прывядзе да адхілення прылады з назвай **${ name }**, якая **${ date }** спрабавала ўвайсці ў ваш уліковы запіс ${ BRAND_NAME }"
       ],
+      "Tip: add it to your .bashrc or .zshrc file so it runs automatically when you open the terminal.": [
+        "Парада: дадайце яго ў свой файл .bashrc або .zshrc. Гэта дазволіць аўтаматычна запускаць яго пры адкрыцці тэрмінала."
+      ],
       "To keep receiving emails transfer these aliases to a different mailbox:": [
         "Перанясіце гэтыя псеўданімы ў іншую паштовую скрыню, каб працягваць атрымліваць лісты:"
       ],
@@ -2686,6 +2740,9 @@
       ],
       "To set up biometrics unlock, ${ PASS_APP_NAME } requires a new browser permission. After you accept it, the extension will reload. Please re-open this page afterwards.": [
         "${ PASS_APP_NAME } патрабуе новыя дазволы ад браўзера, каб наладзіць біяметрычную разблакіроўку. Пашырэнне будзе перазагружана, калі праграма атрымае адпаведныя дазволы."
+      ],
+      "To use ${ PASS_APP_NAME } SSH agent on Windows, the OpenSSH service must be disabled.": [
+        "Вам неабходна адключыць сэрвіс OpenSSH, каб выкарыстоўваць ${ PASS_APP_NAME } SSH у Windows."
       ],
       "Trusted by over 50,000 business users and 100 million accounts around the world.": [
         "Нам давяраюць больш за 50 000 карыстальнікаў у сферы бізнесу і 100 мільёнаў уліковых запісаў па ўсім свеце."
@@ -2713,9 +2770,6 @@
       ],
       "Unlock ${ PASS_SHORT_APP_NAME } with your second password": [
         "Разблакіраваць ${ PASS_SHORT_APP_NAME } з дапамогай другога пароля"
-      ],
-      "Unlock with biometrics": [
-        "Разблакіраваць з дапамогай біяметрыі"
       ],
       "Unpinning item...": [
         "Адмацаванне элемента..."
@@ -3114,6 +3168,9 @@
       "Address details": [
         "Звесткі аб адрасе"
       ],
+      "Advanced": [
+        "Дадаткова"
+      ],
       "Alias": [
         "Псеўданім"
       ],
@@ -3159,6 +3216,9 @@
       "Bank Name": [
         "Назва банка"
       ],
+      "Basic": [
+        "Асноўныя"
+      ],
       "Besides storing your logins, ${ PASS_APP_NAME } protects your identity with an integrated email alias feature. Whenever you sign up for a new online account, ${ PASS_APP_NAME } can automatically create an alias to keep your actual email address protected. ": [
         "${ PASS_APP_NAME } абараняе вашу ідэнтычнасць з дапамогай убудаванай функцыі псеўданіма электроннай пошты, а не толькі захоўвае вашы запісы ўваходу. Кожны раз, калі вы рэгіструеце новы ўліковы запіс у інтэрнэце, ${ PASS_APP_NAME } можа аўтаматычна ствараць псеўданім для захавання вашага сапраўднага адраса электроннай пошты ў абароненым стане. "
       ],
@@ -3191,6 +3251,9 @@
       ],
       "Catch-All": [
         "Уся пошта дамена"
+      ],
+      "Check": [
+        "Праверка"
       ],
       "Checkbox": [
         "Сцяжок"
@@ -3356,6 +3419,12 @@
       ],
       "Enter email or username": [
         "Увядзіце электронную пошту або імя карыстальніка"
+      ],
+      "Exact host matching": [
+        "Дакладнае супадзенне з вузлом"
+      ],
+      "Exact URL matching": [
+        "Дакладнае супадзенне URL-адраса"
       ],
       "Experimental": [
         "Эксперыментальная"
@@ -3747,6 +3816,9 @@
       "Owner": [
         "Уладальнік"
       ],
+      "Parent domain and subdomains (default)": [
+        "Бацькоўскі дамен і паддамены (прадвызначана)"
+      ],
       "Passkey": [
         "Ключ доступу"
       ],
@@ -3857,6 +3929,12 @@
       ],
       "Reddit handle": [
         "Ідэнтыфікатар Reddit"
+      ],
+      "Regular expression": [
+        "Рэгулярны выраз"
+      ],
+      "Relevant": [
+        "Рэлевантныя"
       ],
       "Remove link": [
         "Выдаліць спасылку"
@@ -3983,6 +4061,9 @@
       ],
       "SSN": [
         "Нумар сацыяльнага страхавання"
+      ],
+      "Starts with": [
+        "Пачынаецца з"
       ],
       "State or province": [
         "Вобласць або раён"
@@ -4112,6 +4193,12 @@
       ],
       "Update": [
         "Абнавіць"
+      ],
+      "URL wildcard pattern": [
+        "Узор падстаноўчых знакаў URL-адраса"
+      ],
+      "Use ${ PASS_APP_NAME } as SSH agent": [
+        "Выкарыстоўваць ${ PASS_APP_NAME } як агент SSH"
       ],
       "Use for AI agent": [
         "Выкарыстоўваць для агента ШІ"
@@ -4251,6 +4338,18 @@
         "${ count } элементы",
         "${ count } элементаў",
         "${ count } элементаў"
+      ],
+      "'Starts with' matching rule": [
+        "Правіла супадзення \"Пачынаць з\""
+      ],
+      "Exact (sub) domain matching rule": [
+        "Правіла дакладнага супадзення (пад)дамена"
+      ],
+      "Exact URL matching rule": [
+        "Правіла дакладнага супадзення URL-адраса"
+      ],
+      "Regular expression rule": [
+        "Правіла рэгулярнага выразу"
       ],
       "You can drag and drop the selected item to another vault": [
         "Вы можаце перацягнуць выбраны элемент у іншае сховішча",
@@ -4555,6 +4654,20 @@
         "Выкарыстоўваецца на ${ url }"
       ]
     },
+    "Result": {
+      "Enter a URL to check to see if your current rule is matching the URL": [
+        "Увядзіце URL-адрас, каб праверыць, ці адпавядае ваша бягучае правіла URL-адрасу"
+      ],
+      "The rule is matching this URL": [
+        "Правіла адпавядае гэтаму URL-адрасу"
+      ],
+      "This URL will be blocked from autofill": [
+        "Гэты URL-адрас будзе заблакіраваны для аўтазапаўнення"
+      ],
+      "This URL will NOT be blocked from autofill": [
+        "Гэты URL-адрас НЕ будзе заблакіраваны для аўтазапаўнення"
+      ]
+    },
     "Security Center - Info": {
       "${ name } and ${ remainingCount } other potential leaks detected. Turn on ${ DARK_WEB_MONITORING_NAME } to view details. ${ link }": [
         "Выяўлены іншыя патэнцыяльныя ўцечкі з назвай ${ name } і колькасцю роўнай ${ remainingCount }. Уключыце функцыю ${ DARK_WEB_MONITORING_NAME }, каб паглядзець падрабязнасці. ${ link }"
@@ -4708,6 +4821,12 @@
       "Random prefix generation successfully enabled": [
         "Адвольная генерацыя прэфіксу паспяхова ўключана"
       ],
+      "SSH agent successfully started": [
+        "Агент SSH паспяхова запушчаны"
+      ],
+      "SSH agent successfully stopped": [
+        "Агент SSH паспяхова спынены"
+      ],
       "Vaults can’t contain more than ${ targetMaxMembers } user.": [
         "Сховішчы не могуць змяшчаць больш за ${ targetMaxMembers } карыстальніка.",
         "Сховішчы не могуць змяшчаць больш за ${ targetMaxMembers } карыстальнікі.",
@@ -4756,6 +4875,9 @@
       ],
       "Add mailbox": [
         "Дадаць паштовую скрыню"
+      ],
+      "Adjust autofill behaviors to change where logins are suggested.": [
+        "Адрэгулюйце паводзіны аўтазапаўнення, каб змяніць дзе прапаноўваць запісы ўваходу"
       ],
       "Agent setup instructions": [
         "Інструкцыі па наладцы агента"
@@ -4958,6 +5080,9 @@
       "Last modified": [
         "Апошняе змяненне"
       ],
+      "Learn more": [
+        "Даведацца больш"
+      ],
       "Leave this item?": [
         "Выйсці з гэтага элемента?"
       ],
@@ -5126,6 +5251,9 @@
       "Review and share": [
         "Прагляд і абагульванне"
       ],
+      "Screenshot of OpenSSH service on Windows": [
+        "Здымак экрана сэрвісу OpenSSH у Windows"
+      ],
       "Secure your data": [
         "Бяспека вашых даных"
       ],
@@ -5165,6 +5293,9 @@
       "SPF (Optional)": [
         "SPF (неабавязкова)"
       ],
+      "SSH Agent": [
+        "Агент SSH"
+      ],
       "Status": [
         "Статус"
       ],
@@ -5183,6 +5314,9 @@
       "Sync your aliases from SimpleLogin": [
         "Сінхранізацыя вашых псеўданімаў з SimpleLogin"
       ],
+      "Test a URL against this rule": [
+        "Праверце URL-адрас на адпаведнасць гэтаму правілу"
+      ],
       "Transfer ownership": [
         "Перадаць права ўласнасці"
       ],
@@ -5197,6 +5331,9 @@
       ],
       "Update available": [
         "Даступна абнаўленне"
+      ],
+      "URL matching": [
+        "Супадзенне URL-адраса"
       ],
       "Vault": [
         "Сховішча"
@@ -5532,6 +5669,9 @@
       ],
       "This email address will no longer be monitored for data breaches.": [
         "Гэты адрас электроннай пошты больш не будзе адсочвацца на прадмет уцечкі даных."
+      ],
+      "This item can't be suggested for autofill due to the \"${ neverModeDescriptionStrong }\". Add another URL if you want this item to autofill.": [
+        "Гэты элемент не можа быць прапанаваны для аўтазапаўнення з прычыны таго, што ён мае метку \"${ neverModeDescriptionStrong }\". Дадайце іншы URL-адрас, калі хочаце аўтазапаўняць гэты элемент."
       ],
       "This item is currently shared. Deleting it will remove access for all other users.": [
         "Гэты элемент у цяперашні час абагулены. Яго выдаленне пазбавіць доступу ўсіх іншых карыстальнікаў."

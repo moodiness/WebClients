@@ -1,13 +1,14 @@
 import { type PayloadAction, createSlice } from '@reduxjs/toolkit';
 
-import { type Currency, getDefaultMainCurrency } from '@proton/payments';
+import { getDefaultMainCurrency } from '@proton/payments/core/currencies';
+import type { Currency } from '@proton/payments/core/interface';
 import type { ProtonThunkArguments } from '@proton/redux-shared-store-types';
 import { createAsyncModelThunk, handleAsyncModel, previousSelector } from '@proton/redux-utilities/creator';
+import { getInitialModelState } from '@proton/redux-utilities/initialModelState';
+import type { ModelState } from '@proton/redux-utilities/initialModelState/interface';
 import { getReferralsStatus } from '@proton/shared/lib/api/core/referrals';
 import type { Api, Referral, ReferralStatus } from '@proton/shared/lib/interfaces';
 
-import { getInitialModelState } from '../initialModelState';
-import type { ModelState } from '../interface';
 import fetchAllReferralsByOffset from './helpers/fetchAllReferralsByOffset';
 import { getDeduplicatedReferrals } from './helpers/getDeduplicatedReferrals';
 

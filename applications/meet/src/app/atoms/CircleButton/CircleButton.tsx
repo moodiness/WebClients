@@ -3,10 +3,11 @@ import type { CSSProperties, ReactNode, RefObject } from 'react';
 import { Button } from '@proton/atoms/Button/Button';
 import { CircleLoader } from '@proton/atoms/CircleLoader/CircleLoader';
 import type { IconProps } from '@proton/components/components/icon/Icon';
+import type { PopperPlacement } from '@proton/components/index';
 import type { IconSize } from '@proton/icons/types';
 import clsx from '@proton/utils/clsx';
 
-import { ConditionalTooltip } from '../../components/ConditionalTooltip/ConditionalTooltip';
+import { ConditionalTooltip } from '../ConditionalTooltip/ConditionalTooltip';
 
 import './CircleButton.scss';
 
@@ -23,8 +24,12 @@ interface CircleButtonProps {
     variant?: CircleButtonVariant;
     ariaLabel?: string;
     ariaPressed?: boolean;
+    ariaExpanded?: boolean;
+    ariaHasPopup?: React.AriaAttributes['aria-haspopup'];
     noBorder?: boolean;
     tooltipTitle?: string;
+    tooltipClassName?: string;
+    tooltipPlacement?: PopperPlacement;
     anchorRef?: RefObject<HTMLButtonElement>;
     size?: IconSize;
     buttonStyle?: CSSProperties;
@@ -42,8 +47,12 @@ export const CircleButton = ({
     variant = 'default',
     ariaLabel,
     ariaPressed,
+    ariaExpanded,
+    ariaHasPopup,
     noBorder = true,
     tooltipTitle,
+    tooltipClassName,
+    tooltipPlacement,
     anchorRef,
     size = 6,
     buttonStyle,
@@ -66,7 +75,8 @@ export const CircleButton = ({
     return (
         <ConditionalTooltip
             title={tooltipTitle}
-            tooltipClassName="meet-tooltip bg-strong color-norm"
+            placement={tooltipPlacement}
+            tooltipClassName={clsx('meet-tooltip bg-strong color-norm', tooltipClassName)}
             tooltipStyle={{ '--meet-tooltip-bg': 'var(--background-strong)' }}
             isOpen={tooltipTitle ? undefined : false}
             openDelay={750}
@@ -83,6 +93,8 @@ export const CircleButton = ({
                 onClick={onClick}
                 aria-label={ariaLabel}
                 aria-pressed={ariaPressed}
+                aria-expanded={ariaExpanded}
+                aria-haspopup={ariaHasPopup}
                 ref={anchorRef}
                 style={buttonStyle}
                 disabled={disabled || loading}

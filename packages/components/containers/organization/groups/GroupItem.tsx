@@ -3,42 +3,40 @@ import { c } from 'ttag';
 import { getIsScimGroup } from '@proton/account/groups/groupFlags';
 import { useOrganization } from '@proton/account/organization/hooks';
 import { Button } from '@proton/atoms/Button/Button';
+import { Tooltip } from '@proton/atoms/Tooltip/Tooltip';
 import useApi from '@proton/components/hooks/useApi';
-import { IcShareNode } from '@proton/icons/icons/IcShareNode';
-import { IcUsers } from '@proton/icons/icons/IcUsers';
+import { IcArrowRotateRight } from '@proton/icons/icons/IcArrowRotateRight';
+import { IcExclamationCircle } from '@proton/icons/icons/IcExclamationCircle';
 import { deleteAllGroupMembers } from '@proton/shared/lib/api/groups';
-import type { Group, RoleAssignment } from '@proton/shared/lib/interfaces';
+import type { EnhancedGroup } from '@proton/shared/lib/interfaces';
 import clsx from '@proton/utils/clsx';
 
+import GroupIcon from './GroupIcon';
 import GroupItemMoreOptionsDropdown from './GroupItemMoreOptionsDropdown';
+import { useGroupsManagement } from './context/GroupsManagementContext';
 import shouldShowMail from './shouldShowMail';
-import type { GroupsManagementReturn } from './types';
+import { GROUPS_RESTRICTION_REASON, type GroupsManagementReturn } from './types';
 
 interface Props {
     active: boolean;
-    group?: Group;
+    group?: EnhancedGroup;
     onClick?: () => void;
     isNew?: boolean;
     onDeleteGroup?: () => void;
-    name?: string;
     serializedGroup?: ReturnType<GroupsManagementReturn['getSerializedGroup']>;
-    groupOrganizationRoles?: RoleAssignment[];
 }
 
-const GroupItem = ({
-    active,
-    group,
-    serializedGroup,
-    onClick,
-    isNew,
-    onDeleteGroup,
-    groupOrganizationRoles,
-}: Props) => {
+const GroupItem = ({ active, group, serializedGroup, onClick, isNew, onDeleteGroup }: Props) => {
     const api = useApi();
     const [organization] = useOrganization();
+    const { groupRolesMap, restrictedBy } = useGroupsManagement();
     const showMailFeatures = shouldShowMail(organization?.PlanName);
 
+    const groupOrganizationRoles = group ? groupRolesMap[group.ID] : undefined;
     const roleNames = groupOrganizationRoles?.map((assignment) => assignment.Role.Name).join(', ');
+    const isResumingRoleAssignment =
+        restrictedBy.reason === GROUPS_RESTRICTION_REASON.RESUMING_ROLE_ASSIGNMENT &&
+        restrictedBy.groupId === group?.ID;
 
     const handleDeleteGroup = async () => {
         onDeleteGroup?.();
@@ -54,17 +52,42 @@ const GroupItem = ({
     const email = serializedGroup?.payload.email || group?.Address?.Email || '';
     const subtitle = roleNames || (showMailFeatures && email ? email : undefined);
 
-    const GroupIcon = getIsScimGroup(group) ? IcShareNode : IcUsers;
+    const renderRoleAssignmentIcon = () => {
+        if (!group?.hasPendingOrgKeyAccess) {
+            return null;
+        }
+
+        if (isResumingRoleAssignment) {
+            return (
+                <Tooltip title={c('tooltip').t`Resuming role assignment`}>
+                    <span className="inline-flex shrink-0">
+                        <IcArrowRotateRight
+                            className="group-role-assignment-resume-spin color-primary"
+                            alt={c('tooltip').t`Resuming role assignment`}
+                        />
+                    </span>
+                </Tooltip>
+            );
+        }
+
+        return (
+            <Tooltip title={c('tooltip').t`Role assignment paused`}>
+                <span className="inline-flex shrink-0">
+                    <IcExclamationCircle className="color-warning" alt={c('tooltip').t`Role assignment paused`} />
+                </span>
+            </Tooltip>
+        );
+    };
 
     return (
-        <div className="relative">
+        <div className="relative mb-1">
             <Button
-                className={clsx(['group-button interactive-pseudo w-full p-4', active && 'is-active'])}
+                className={clsx(['group-button interactive-pseudo w-full p-4 rounded-xl', active && 'is-active'])}
                 color="weak"
                 shape="ghost"
                 onClick={onClick}
             >
-                <div className="text-left flex items-start flex-nowrap gap-2">
+                <div className="text-left flex items-center flex-nowrap gap-2">
                     <div
                         className="mr-1 rounded flex w-custom h-custom shrink-0"
                         style={{
@@ -73,14 +96,21 @@ const GroupItem = ({
                             backgroundColor: 'var(--interaction-norm-minor-1)',
                         }}
                     >
-                        <GroupIcon className="m-auto color-primary shrink-0" size={4} />
+                        <GroupIcon
+                            isScimGroup={getIsScimGroup(group)}
+                            className="m-auto color-primary shrink-0"
+                            size={4}
+                        />
                     </div>
                     <div className="text-left flex flex-column flex-1">
-                        <span className="block max-w-full text-bold text-ellipsis" title={name}>
-                            {name}
-                        </span>
+                        <div className="flex items-center flex-nowrap gap-1">
+                            <span className="text-bold text-ellipsis min-w-0" title={name}>
+                                {name}
+                            </span>
+                            {renderRoleAssignmentIcon()}
+                        </div>
                         {subtitle && (
-                            <p className="m-0 text-sm color-weak text-ellipsis" title={subtitle}>
+                            <p className="m-0 max-w-full text-sm color-weak text-ellipsis" title={subtitle}>
                                 {subtitle}
                             </p>
                         )}
@@ -88,6 +118,7 @@ const GroupItem = ({
                     {group && !isNew && handleDeleteAllGroupMembers && (
                         <div className="shrink-0">
                             <GroupItemMoreOptionsDropdown
+                                group={group}
                                 showMailFeatures={showMailFeatures}
                                 handleDeleteGroup={handleDeleteGroup}
                                 handleDeleteAllGroupMembers={handleDeleteAllGroupMembers}

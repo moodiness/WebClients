@@ -9,21 +9,6 @@ export enum PAYMENT_TOKEN_STATUS {
 }
 
 export enum PAYMENT_METHOD_TYPES {
-    /**
-     * @deprecated
-     * Use CHARGEBEE_CARD instead.
-     */
-    CARD = 'card',
-    /**
-     * @deprecated
-     * Use CHARGEBEE_PAYPAL instead.
-     */
-    PAYPAL = 'paypal',
-    /**
-     * @deprecated
-     * Use CHARGEBEE_BITCOIN instead.
-     */
-    BITCOIN = 'bitcoin',
     CHARGEBEE_BITCOIN = 'chargebee-bitcoin',
     CASH = 'cash',
     TOKEN = 'token',
@@ -46,11 +31,6 @@ export const signupFlows: readonly PaymentMethodFlow[] = Object.freeze([
 export enum Autopay {
     DISABLE = 0,
     ENABLE = 1,
-}
-
-export enum MethodStorage {
-    INTERNAL = 0,
-    EXTERNAL = 1,
 }
 
 export enum InvoiceType {
@@ -108,6 +88,8 @@ export enum TransactionType {
     CREDIT_TRANSFER = 11,
     MIGRATION = 12,
     ADJUSTMENT_CREDIT = 13,
+    TEST_CREDIT = 14,
+    PREPAYMENT = 15,
 }
 
 export enum ADDON_PREFIXES {
@@ -340,15 +322,12 @@ export const AddonFeatureLimitKeyMapping: Readonly<{
 // Max quantity for all addons
 export const MAX_MEMBER_ADDON = 5000;
 export const MAX_DOMAIN_PRO_ADDON = 200;
-export const MAX_LUMO_ADDON = 1;
-export const MAX_MEMBER_LUMO_ADDON = 5000;
-export const MAX_MEET_ADDON = 1;
-export const MAX_MEMBER_MEET_ADDON = 5000;
+const MAX_LUMO_ADDON = 1;
+const MAX_MEMBER_LUMO_ADDON = 5000;
+const MAX_MEET_ADDON = 1;
+const MAX_MEMBER_MEET_ADDON = 5000;
 // VPN B2B limits
 export const MAX_IPS_ADDON = 100;
-// Pass B2B member limits (only hardcoded FE side not BE side, and only applicable to new subscriptions)
-export const MIN_MEMBER_PASS_B2B_ADDON = 3;
-export const MAX_MEMBER_PASS_PRO_ADDON = 30;
 
 // B2B Trial constants
 export const TRIAL_DURATION_DAYS = 14; // ideally we would use the BE as the source of truth, but we hardcoded it here and there

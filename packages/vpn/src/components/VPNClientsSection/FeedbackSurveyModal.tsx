@@ -7,8 +7,7 @@ import { Button } from '@proton/atoms/Button/Button';
 import { Input } from '@proton/atoms/Input/Input';
 import type { ModalProps } from '@proton/components/components/modalTwo/Modal';
 import { ModalTwo, ModalTwoContent, ModalTwoFooter, ModalTwoHeader } from '@proton/components/index';
-import type { MaybeFreeSubscription } from '@proton/payments/core/subscription/helpers';
-import { getPlan } from '@proton/payments/index';
+import { type MaybeFreeSubscription, getPlan } from '@proton/payments/core/subscription/helpers';
 import { telemetry } from '@proton/shared/lib/telemetry';
 
 import { getFeedbackSurveyOptions } from '../../../constants/feedbackSurveyOptions';
@@ -25,10 +24,11 @@ const getSubscriptionPlan = (subscription: MaybeFreeSubscription) => {
 
 const sendFeedback = (data: Record<string, unknown>) => telemetry.sendCustomEvent('feedbackPurchaseSurvey', data);
 
+const choicesRequiringInput = ['Other', 'Podcast', 'YouTube'];
+
 export const FeedbackSurveyModal = (props: Props) => {
     const [userChoice, setUserChoice] = useState<string | null>(null);
-    const [otherReason, setOtherReason] = useState<string | null>(null);
-    const [podcastValue, setPodcastValue] = useState('');
+    const [supplementaryInputs, setSupplementaryInputs] = useState<Record<string, string>>({});
     const [subscription] = useSubscription();
     const options = useMemo(getFeedbackSurveyOptions, []);
 
@@ -36,10 +36,8 @@ export const FeedbackSurveyModal = (props: Props) => {
         if (!userChoice) {
             return true;
         }
-        if (userChoice === 'Other' && !otherReason) {
-            return true;
-        }
-        if (userChoice === 'Podcast' && !podcastValue) {
+
+        if (choicesRequiringInput.includes(userChoice) && !supplementaryInputs[userChoice]) {
             return true;
         }
 
@@ -47,19 +45,29 @@ export const FeedbackSurveyModal = (props: Props) => {
     };
 
     const submitFeedback = () => {
+        if (!userChoice) {
+            return;
+        }
+
         const channelCategory = options.find((option) => option.value === userChoice)?.category;
         if (!channelCategory) {
             props.onClose(false);
             return;
         }
 
-        sendFeedback({
+        const telemetryData: Record<string, unknown> = {
             channel_category: channelCategory,
-            channel_source: userChoice === 'Other' ? otherReason : userChoice,
+            channel_source: channelCategory === 'other' ? supplementaryInputs.Other : userChoice,
             subscription_plan: getSubscriptionPlan(subscription),
             platform: 'web',
-            ...(podcastValue && userChoice === 'Podcast' ? { podcast_value: podcastValue } : {}),
-        });
+        };
+
+        if (supplementaryInputs[userChoice] && userChoice !== 'Other') {
+            const key = userChoice.toLowerCase() + '_value';
+            telemetryData[key] = supplementaryInputs[userChoice];
+        }
+
+        sendFeedback(telemetryData);
         props.onClose(false);
     };
 
@@ -80,8 +88,10 @@ export const FeedbackSurveyModal = (props: Props) => {
                     <RadioElements
                         onChangeRadio={setUserChoice}
                         radioValue={userChoice || ''}
-                        onChangePodcast={setPodcastValue}
-                        podcastValue={podcastValue}
+                        onChangeSupplementary={(choice, value) =>
+                            setSupplementaryInputs((prev) => ({ ...prev, [choice]: value }))
+                        }
+                        supplementaryInputs={supplementaryInputs}
                         options={options.map((option) => {
                             return {
                                 value: option.value,
@@ -103,7 +113,8 @@ export const FeedbackSurveyModal = (props: Props) => {
                     <Input
                         className="mt-2"
                         placeholder={c('Info').t`Please specify...`}
-                        onChange={(event) => setOtherReason(event.target.value)}
+                        onChange={(event) => setSupplementaryInputs((prev) => ({ ...prev, Other: event.target.value }))}
+                        value={supplementaryInputs.Other || ''}
                     />
                 )}
             </ModalTwoContent>

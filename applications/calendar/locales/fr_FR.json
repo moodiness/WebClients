@@ -3870,12 +3870,6 @@
       "Interval cannot be empty": [
         "L’intervalle ne peut pas être vide."
       ],
-      "Invalid ${ name } code": [
-        "Le code ${ name } n'est pas valide."
-      ],
-      "Invalid card number": [
-        "Le numéro de carte n’est pas valide."
-      ],
       "Invalid code": [
         "Le code n'est pas valide."
       ],
@@ -3884,9 +3878,6 @@
       ],
       "Invalid email address": [
         "L'adresse e-mail n'est pas valide."
-      ],
-      "Invalid expiration date": [
-        "La date d'expiration n’est pas valide."
       ],
       "Invalid IBAN": [
         "Cet IBAN n'est pas valide."
@@ -3959,7 +3950,7 @@
         "Aucun contact n'a été trouvé pour l'importation."
       ],
       "No drive found to import": [
-        "Aucun lecteur détecté pour l'importation"
+        "Aucun disque à importer détecté"
       ],
       "No emails found to import - the account does not have an inbox": [
         "Aucun message n'a été trouvé pour l'importation, le compte n'a pas de boite de réception."
@@ -3975,9 +3966,6 @@
       ],
       "Not a valid number": [
         "Le numéro n'est pas valide."
-      ],
-      "Not enough storage space in your ${ DRIVE_APP_NAME }": [
-        "Espace de stockage insuffisant dans votre ${ DRIVE_APP_NAME }"
       ],
       "Number of occurrences cannot be empty": [
         "Le nombre d’occurrences ne peut pas être vide."
@@ -4218,7 +4206,7 @@
         "Une erreur inattendue s'est produite. Les contacts n'ont pas pu être importés."
       ],
       "Unexpected error, we can't import the files": [
-        "Une erreur inattendue s'est produite. Les fichiers n'ont pas pu être importés."
+        "Une erreur inattendue est survenue, les fichiers n'ont pas pu être importés"
       ],
       "Unknown error": [
         "Erreur inconnue"
@@ -4237,6 +4225,9 @@
       ],
       "VAT number must start with ${ prefixes }": [
         "Le numéro de TVA doit commencer par ${ prefixes }."
+      ],
+      "We couldn’t send a verification code using this method.": [
+        "Nous n'avons pas pu envoyer le code de vérification en utilisant cette méthode."
       ],
       "Wrong billing address": [
         "L'adresse de facturation n'est pas correct."
@@ -4756,6 +4747,9 @@
       ],
       "Security key": [
         "Clé de sécurité"
+      ],
+      "Touch your security key.": [
+        "Touchez votre clé de sécurité."
       ]
     },
     "fido2: Label": {
@@ -5799,7 +5793,7 @@
         "La mise à jour de la réunion n'a pas abouti."
       ],
       "Files only (no photos, ${ DOCS_APP_NAME } or ${ SHEETS_APP_NAME }) - up to 100 GB total, 100,000 files, and 50 GB per file": [
-        "Fichiers uniquement (pas de photos, ni ${ DOCS_APP_NAME } ni ${ SHEETS_APP_NAME }), jusqu'à 100 Go au total, 100 000 fichiers et 50 Go par fichier"
+        "Fichiers uniquement (pas de photos, ${ DOCS_APP_NAME } ou ${ SHEETS_APP_NAME }), jusqu'à 100 Go au total, 100 000 fichiers et 50 Go par fichier"
       ],
       "finance": [
         "finance"
@@ -6132,9 +6126,6 @@
       "PGP/MIME automatically sends the message using the current composer mode.": [
         "PGP/MIME envoie automatiquement le message en utilisant le mode actuel de l'éditeur."
       ],
-      "Please authenticate your card in the verification tab.": [
-        "Authentifiez votre carte dans l'onglet de vérification."
-      ],
       "Please authenticate your payment in the verification tab.": [
         "Authentifiez votre paiement dans l'onglet de vérification."
       ],
@@ -6174,9 +6165,6 @@
       ],
       "Please try again using a different payment method, or contact your bank.": [
         "Nous vous invitons à réessayer en utilisant un autre moyen de paiement, ou bien à contacter votre banque."
-      ],
-      "Please try again, use a different payment method, or contact PayPal for assistance.": [
-        "Nous vous invitons à réessayer, à utiliser un autre moyen de paiement ou à contacter PayPal pour obtenir de l'aide."
       ],
       "Please wait while we look for contacts that can be re-signed with the primary encryption key.": [
         "Veuillez patienter pendant que nous recherchons des contacts qui peuvent être signés une nouvelle fois avec la clé de chiffrement principale."
@@ -6603,6 +6591,9 @@
       "You are about to open your default browser and visit:": [
         "Vous allez ouvrir votre navigateur par défaut et consulter :"
       ],
+      "You are currently signed in as ${ username } for ${ organizationName }.": [
+        "Vous êtes actuellement connecté en tant que ${ username } pour ${ organizationName }."
+      ],
       "You are currently signed in as ${ username }.": [
         "Vous êtes actuellement connecté en tant que ${ username }."
       ],
@@ -6664,9 +6655,6 @@
       ],
       "You will lose all unsaved changes.": [
         "Vous perdrez toutes les modifications non enregistrées."
-      ],
-      "You will soon be redirected to PayPal to verify your payment.": [
-        "Vous serez bientôt redirigé vers PayPal pour vérifier votre paiement."
       ],
       "You will update all the events in this series. Added and removed participants will be notified.": [
         "Vous allez mettre à jour tous les événements de cette série. Les participants ajoutés et retirés seront informés."
@@ -7226,6 +7214,12 @@
       "Every": [
         "Chaque"
       ],
+      "Exact host matching": [
+        "Correspondance exacte de l'hôte"
+      ],
+      "Exact URL matching": [
+        "Correspondance exacte d'URL"
+      ],
       "Expires": [
         "Expire le"
       ],
@@ -7340,6 +7334,9 @@
       "Navigation": [
         "Navigation"
       ],
+      "Never fill on this exact URL": [
+        "Ne saisissez jamais cette URL exacte"
+      ],
       "New password": [
         "Nouveau mot de passe"
       ],
@@ -7369,6 +7366,9 @@
       ],
       "Organizer": [
         "Organisateur"
+      ],
+      "Parent domain and subdomains (default)": [
+        "Domaine parent et sous-domaines (par défaut)"
       ],
       "participant": [
         "participant",
@@ -7428,6 +7428,9 @@
       "Region": [
         "Région"
       ],
+      "Regular expression": [
+        "Expression régulière"
+      ],
       "Remove ${ MEET_APP_NAME } video conference": [
         "Retirer la vidéoconférence ${ MEET_APP_NAME }"
       ],
@@ -7466,6 +7469,9 @@
       ],
       "Start date": [
         "Date de début"
+      ],
+      "Starts with": [
+        "Commence par"
       ],
       "State": [
         "État"
@@ -7514,6 +7520,9 @@
       ],
       "URL": [
         "URL"
+      ],
+      "URL wildcard pattern": [
+        "Modèle d'URL avec caractères génériques"
       ],
       "Username": [
         "Nom d'utilisateur"
@@ -7940,11 +7949,29 @@
       ]
     },
     "Message": {
+      "'Starts with' matching rule": [
+        "Règle de correspondance « commence par »"
+      ],
+      "Exact (sub) domain matching rule": [
+        "Règle de correspondance exacte des (sous-)domaines"
+      ],
+      "Exact URL matching rule": [
+        "Règle de correspondance exacte d'URL"
+      ],
       "Fw:": [
         "Tr :"
       ],
+      "Never fill with this exact URL": [
+        "Ne saisissez jamais cette URL exacte"
+      ],
       "Re:": [
         "Re :"
+      ],
+      "Regular expression rule": [
+        "Règle d'expression régulière"
+      ],
+      "Wildcard pattern matching rule": [
+        "Règle de correspondance avec des caractères génériques"
       ],
       "Your free trial has ended. ${ nonAutoRenewalAction }": [
         "Votre essai gratuit est terminé. ${ nonAutoRenewalAction }"
@@ -11965,7 +11992,7 @@
         "La fonction ${ feature } est maintenant active."
       ],
       "${ LUMO_SHORT_APP_NAME } writing assistant": [
-        "Assistant d'écriture ${ LUMO_SHORT_APP_NAME }"
+        "Assistant conversationnel ${ LUMO_SHORT_APP_NAME }"
       ],
       "Account recovery": [
         "Récupération du compte"
@@ -12424,9 +12451,6 @@
       "Payment verification": [
         "Vérification du paiement"
       ],
-      "PayPal verification failed": [
-        "La vérification PayPal n'a pas abouti."
-      ],
       "Phone numbers": [
         "Numéros de téléphone"
       ],
@@ -12736,6 +12760,26 @@
         "Sélectionner un numéro"
       ]
     },
+    "Title header for keys table": {
+      "Actions": [
+        "Actions"
+      ],
+      "Created": [
+        "Créé"
+      ],
+      "Expires": [
+        "Expire"
+      ],
+      "Fingerprint": [
+        "Empreinte digitale"
+      ],
+      "Status": [
+        "Statut"
+      ],
+      "Type": [
+        "Type"
+      ]
+    },
     "Title; create calendar modal": {
       "Create calendar": [
         "Créer un calendrier"
@@ -12832,6 +12876,9 @@
       ],
       "Upload a public key to enable sending end-to-end encrypted emails to this email": [
         "Chargez une clé publique pour activer l'envoi de messages chiffrés de bout en bout à destination de cette adresse e-mail."
+      ],
+      "Version 6 OpenPGP key": [
+        "Clé OpenPGP version 6"
       ]
     },
     "tooltip": {
@@ -12870,6 +12917,11 @@
       ],
       "The user must have an address to request data access": [
         "L'utilisateur doit disposer d'une adresse pour demander l'accès aux données."
+      ]
+    },
+    "user_modal": {
+      "You'll be able to assign roles once the user has accepted the invitation.": [
+        "Vous pourrez attribuer des rôles une fois l'invitation acceptée par l'utilisateur."
       ]
     },
     "Validation": {
@@ -12984,6 +13036,9 @@
       ],
       "${ BRAND_NAME } will transfer as much data as possible, starting with your most recent messages.": [
         "${ BRAND_NAME } transférera autant de données que possible, en commençant par vos messages les plus récents."
+      ],
+      "${ modeLabelStong } provides powerful control, but a single error can cause autofill to match and fill data on fraudulent or phishing websites.": [
+        "${ modeLabelStong } offre un contrôle très efficace, mais une seule erreur peut entraîner la saisie automatique de données sur des sites frauduleux ou d'hameçonnage."
       ],
       "Are you sure you want to permanently delete ${ count } contact?": [
         "Voulez-vous vraiment supprimer définitivement ${ count } contact ?",

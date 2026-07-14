@@ -204,7 +204,10 @@ function clearPendingLocalChangedKeysTimer(): void {
   pendingLocalChangedKeysClearTimer = undefined
 }
 
-function getComparableLocalValue(key: SpreadsheetLocalYjsAuditKey, state: SpreadsheetLocalYjsUpdateAuditState): unknown {
+function getComparableLocalValue(
+  key: SpreadsheetLocalYjsAuditKey,
+  state: SpreadsheetLocalYjsUpdateAuditState,
+): unknown {
   switch (key) {
     case 'sheets':
       return normalizeSheets(state.sheets)
@@ -424,11 +427,7 @@ function normalizeMapLike(value: unknown): unknown {
 
 function normalizeSheets(value: unknown): unknown {
   const normalizedSheets = normalizeValue(value)
-  if (
-    Array.isArray(normalizedSheets) &&
-    normalizedSheets.length === 1 &&
-    isImplicitDefaultSheet(normalizedSheets[0])
-  ) {
+  if (Array.isArray(normalizedSheets) && normalizedSheets.length === 1 && isImplicitDefaultSheet(normalizedSheets[0])) {
     return []
   }
   return normalizedSheets

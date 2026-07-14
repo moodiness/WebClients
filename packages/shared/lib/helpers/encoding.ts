@@ -1,8 +1,6 @@
 import { binaryStringToUint8Array, uint8ArrayToBinaryString } from '@protontech/crypto/utils';
 
-export const uint8ArrayToString = uint8ArrayToBinaryString;
-
-export const stringToUint8Array = binaryStringToUint8Array;
+export { uint8ArrayToBinaryString, binaryStringToUint8Array };
 
 /**
  * Convert a utf8 string to a so-called binary string, where each character can be encoded as one byte.
@@ -15,22 +13,6 @@ export const validateBase64string = (str: string, useVariantAlphabet?: boolean) 
     const regex = useVariantAlphabet ? /^[-_A-Za-z0-9]*={0,3}$/ : /^[+/A-Za-z0-9]*={0,3}$/;
 
     return regex.test(str);
-};
-
-/**
- * Automatic password reset parameter encoder
- */
-export const encodeAutomaticResetParams = (json: any) => {
-    const jsonString = JSON.stringify(json);
-    return stringToUint8Array(jsonString).toBase64({ alphabet: 'base64url', omitPadding: true });
-};
-
-/**
- * Automatic password reset parameter decoder
- */
-export const decodeAutomaticResetParams = (base64String: string) => {
-    const decodedString = uint8ArrayToString(Uint8Array.fromBase64(base64String, { alphabet: 'base64url' }));
-    return JSON.parse(decodedString);
 };
 
 /**

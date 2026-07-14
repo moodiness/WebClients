@@ -4,7 +4,6 @@ import { c } from 'ttag';
 
 import { Button } from '@proton/atoms/Button/Button';
 import { CircleLoader } from '@proton/atoms/CircleLoader/CircleLoader';
-import { IcExclamationCircle } from '@proton/icons/icons/IcExclamationCircle';
 
 import type { DrawingMode } from '../../features/drawingcanvas/types';
 import { ImageModifyButton } from '../../features/imageActions/ImageActionButtons';
@@ -14,10 +13,13 @@ import { useLumoDispatch } from '../../redux/hooks';
 import { clearAttachmentLoading } from '../../redux/slices/attachmentLoadingState';
 import { setPendingPrefill } from '../../redux/slices/composerActions';
 import { pullAttachmentRequest } from '../../redux/slices/core/attachments';
+import { downloadImage } from '../../remote/lumoImageDownload';
+import { injectNativeImageGenerationHelper } from '../../remote/nativeComposerBridgeHelpers';
 import { attachmentDataCache } from '../../services/attachmentDataCache';
 import type { AttachmentId } from '../../types';
 import { base64ToFile } from '../../util/imageHelpers';
 import { useFileHandling } from '../Composer/hooks/useFileHandling';
+import { LumoIcon } from '../LumoIcon/LumoIcon';
 
 import '../../features/imageActions/imageActions.scss';
 
@@ -35,6 +37,17 @@ export const InlineImageComponent: React.FC<InlineImageComponentProps> = ({ atta
 
     const { handleFilesSelected } = useFileHandling({ messageChain: [] });
 
+    // The overlay covers the viewport, so hide the native composer while it's
+    // open and restore it on close.
+    const handleOpenOverlay = useCallback((mode: 'preview' | 'edit') => {
+        setOverlayDefaultMode(mode);
+        setOverlayOpen(true);
+    }, []);
+
+    const handleCloseOverlay = useCallback(() => {
+        setOverlayOpen(false);
+    }, []);
+
     const imageDataUrl = useMemo(() => {
         if (!attachment) return null;
         const imageData = attachment.data || attachmentDataCache.getData(attachment.id);
@@ -50,15 +63,10 @@ export const InlineImageComponent: React.FC<InlineImageComponentProps> = ({ atta
     };
 
     const handleDownload = useCallback(
-        (e?: React.MouseEvent) => {
+        async (e?: React.MouseEvent) => {
             e?.stopPropagation();
             if (!attachment || !imageDataUrl) return;
-            const link = document.createElement('a');
-            link.href = imageDataUrl;
-            link.download = attachment.filename;
-            document.body.appendChild(link);
-            link.click();
-            document.body.removeChild(link);
+            await downloadImage(imageDataUrl, attachment.filename);
         },
         [attachment, imageDataUrl]
     );
@@ -70,6 +78,7 @@ export const InlineImageComponent: React.FC<InlineImageComponentProps> = ({ atta
             // Prefill the current conversation's composer — do not navigate away.
             const prefill = description || c('collider_2025:Prefill').t`Edit this image:`;
             dispatch(setPendingPrefill(prefill));
+            injectNativeImageGenerationHelper(prefill);
         },
         [handleFilesSelected, dispatch]
     );
@@ -94,14 +103,21 @@ export const InlineImageComponent: React.FC<InlineImageComponentProps> = ({ atta
 
     // ── Error / loading states ─────────────────────────────────────────────────
 
-    if (error || !attachment) {
+    // The reference points to an attachment that doesn't exist in the store (e.g. a
+    // fabricated/duplicated `attachment:<id>` the model wrote into its prose). There is
+    // nothing to load or retry, so render nothing instead of a dead "Failed to load" box.
+    if (!attachment) {
+        return null;
+    }
+
+    if (error) {
         return (
             <span
                 className="inline-block p-4 rounded-lg border"
                 style={{ background: '#f8d7da', borderColor: '#f5c6cb', color: '#721c24', maxWidth: '300px' }}
             >
                 <span className="flex items-center gap-2 mb-2">
-                    <IcExclamationCircle size={4} />
+                    <LumoIcon name="Info" size={16} />
                     <span className="text-sm font-bold">{c('collider_2025:Error').t`Failed to load image`}</span>
                 </span>
                 {error && <span className="block mb-2 text-xs">{error}</span>}
@@ -127,26 +143,41 @@ export const InlineImageComponent: React.FC<InlineImageComponentProps> = ({ atta
 
     return (
         <>
-            {/* Image left, action panel right */}
-            <span className="inline-image-card inline-flex items-start">
+            <span className="inline-image-card">
                 {/* eslint-disable-next-line jsx-a11y/click-events-have-key-events, jsx-a11y/no-static-element-interactions */}
-                <span
-                    className="inline-image-card__img shrink-0 cursor-pointer rounded-xl overflow-hidden"
-                    onClick={() => {
-                        setOverlayDefaultMode('preview');
-                        setOverlayOpen(true);
-                    }}
-                >
+                <span className="cursor-pointer" onClick={() => handleOpenOverlay('preview')}>
                     <img src={imageDataUrl} alt={alt || attachment.filename} />
                 </span>
 
-                <span className="inline-image-card__actions inline-flex flex-column mt-auto">
+                <span className="inline-image-card__overlay">
+                    <Button
+                        className="inline-image-card__btn inline-image-card__btn--expand"
+                        shape="solid"
+                        color="weak"
+                        icon
+                        size="small"
+                        title={c('collider_2025:Action').t`Expand`}
+                        onClick={() => handleOpenOverlay('preview')}
+                    >
+                        <LumoIcon name="Maximize2" size={16} />
+                    </Button>
+
                     <ImageModifyButton
-                        onClick={() => {
-                            setOverlayDefaultMode('edit');
-                            setOverlayOpen(true);
-                        }}
+                        className="inline-image-card__btn inline-image-card__btn--modify"
+                        onClick={() => handleOpenOverlay('edit')}
                     />
+
+                    <Button
+                        className="inline-image-card__btn inline-image-card__btn--download"
+                        shape="solid"
+                        color="weak"
+                        icon
+                        size="small"
+                        title={c('collider_2025:Action').t`Download`}
+                        onClick={(e) => handleDownload(e)}
+                    >
+                        <LumoIcon name="ArrowDownToLine" size={16} />
+                    </Button>
                 </span>
             </span>
 
@@ -155,7 +186,7 @@ export const InlineImageComponent: React.FC<InlineImageComponentProps> = ({ atta
                 defaultMode={overlayDefaultMode}
                 imageDataUrl={imageDataUrl}
                 filename={attachment.filename}
-                onClose={() => setOverlayOpen(false)}
+                onClose={handleCloseOverlay}
                 onDownload={handleDownload}
                 onExport={handleSketchExport}
                 onChangeStyle={handleChangeStyle}

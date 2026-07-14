@@ -3,19 +3,15 @@ import { useHistory, useLocation } from 'react-router-dom';
 
 import { c } from 'ttag';
 
-import { Tooltip } from '@proton/atoms/Tooltip/Tooltip';
-import { Icon, useModalStateObject } from '@proton/components';
-import { IcFolderOpen } from '@proton/icons/icons/IcFolderOpen';
-import { IcPlus } from '@proton/icons/icons/IcPlus';
+import { Button } from '@proton/atoms/Button/Button';
+import { useModalStateObject } from '@proton/components';
 
-import { DismissedFeaturePill } from '../../components/DismissedFeaturePill';
+import { LumoIcon } from '../../components/LumoIcon/LumoIcon';
 import { NewProjectModal, useProjects } from '../../features/projects';
 import { ProjectActionsDropdown } from '../../features/projects/ProjectActionsDropdown';
-import { getProjectCategory } from '../../features/projects/constants';
 import { ProjectLimitModal } from '../../features/projects/modals/ProjectLimitModal';
 import { useIsGuest } from '../../providers/IsGuestProvider';
 import { useLumoPlan } from '../../providers/LumoPlanProvider';
-import { useSidebar } from '../../providers/SidebarProvider';
 import { CollapsibleSidebarSection } from './components/CollapsibleSidebarSection';
 import { SidebarItem } from './components/SidebarItem';
 import { SidebarNavList } from './components/SidebarNavList';
@@ -23,19 +19,17 @@ import { SidebarNavList } from './components/SidebarNavList';
 import './ProjectsSidebarSection.scss';
 
 interface ProjectsSidebarSectionProps {
-    showText: boolean;
     onItemClick?: () => void;
     isSmallScreen: boolean;
 }
 
-export const ProjectsSidebarSection = ({ showText, onItemClick, isSmallScreen }: ProjectsSidebarSectionProps) => {
+export const ProjectsSidebarSection = ({ onItemClick, isSmallScreen }: ProjectsSidebarSectionProps) => {
     const projects = useProjects();
     const history = useHistory();
     const location = useLocation();
 
     const isGuest = useIsGuest();
     const { hasLumoPlus } = useLumoPlan();
-    const { isCollapsed, toggle } = useSidebar();
     const newProjectModal = useModalStateObject();
     const projectLimitModal = useModalStateObject();
 
@@ -45,22 +39,10 @@ export const ProjectsSidebarSection = ({ showText, onItemClick, isSmallScreen }:
     }, [location.pathname]);
 
     const handleProjectsHeaderClick = () => {
-        if (isGuest) {
-            if (onItemClick) {
-                onItemClick();
-            }
-            history.push('/projects');
-            return;
+        if (onItemClick) {
+            onItemClick();
         }
-
-        if (isCollapsed) {
-            toggle();
-        } else {
-            if (onItemClick) {
-                onItemClick();
-            }
-            history.push('/projects');
-        }
+        history.push('/projects');
     };
 
     const handleProjectsClick = () => {
@@ -84,35 +66,18 @@ export const ProjectsSidebarSection = ({ showText, onItemClick, isSmallScreen }:
     if (isGuest) {
         return (
             <div className="projects-sidebar-section">
-                {isCollapsed ? (
-                    <Tooltip title={c('collider_2025:Button').t`Projects`} originalPlacement="right">
-                        <button
-                            className="sidebar-item"
-                            onClick={handleProjectsHeaderClick}
-                            aria-label={c('collider_2025:Button').t`Projects`}
-                        >
-                            <div className="sidebar-item-icon">
-                                <IcFolderOpen size={4} className="rtl:mirror" />
-                            </div>
-                        </button>
-                    </Tooltip>
-                ) : (
-                    <Tooltip title={c('collider_2025:Button').t`Projects`} originalPlacement="right">
-                        <button
-                            className="sidebar-item projects-header-button"
-                            onClick={handleProjectsHeaderClick}
-                            aria-label={c('collider_2025:Button').t`Projects`}
-                        >
-                            <div className="sidebar-item-icon">
-                                <IcFolderOpen size={4} />
-                            </div>
-                            <span className="sidebar-item-text">
-                                {c('collider_2025:Button').t`Projects`}
-                                <DismissedFeaturePill featureId="projects" versionFlag="WhatsNewV1p3" />
-                            </span>
-                        </button>
-                    </Tooltip>
-                )}
+                <button
+                    className="sidebar-item flex items-center w-full cursor-pointer py-2 px-1.5"
+                    onClick={handleProjectsHeaderClick}
+                    aria-label={c('collider_2025:Button').t`Projects`}
+                >
+                    <div className="sidebar-item-icon flex items-center justify-start shrink-0">
+                        <LumoIcon name="FolderOpen" size={16} className="rtl:mirror" />
+                    </div>
+                    <span className="sidebar-item-text flex-1 flex items-center text-nowrap overflow-hidden gap-2">
+                        {c('collider_2025:Button').t`Projects`}
+                    </span>
+                </button>
             </div>
         );
     }
@@ -120,10 +85,9 @@ export const ProjectsSidebarSection = ({ showText, onItemClick, isSmallScreen }:
     if (isSmallScreen) {
         return (
             <SidebarItem
-                icon="folder-open"
+                icon="FolderOpen"
                 label={c('collider_2025:Button').t`Projects`}
                 onClick={handleProjectsHeaderClick}
-                showText={true}
             />
         );
     }
@@ -132,19 +96,18 @@ export const ProjectsSidebarSection = ({ showText, onItemClick, isSmallScreen }:
         <>
             <CollapsibleSidebarSection
                 label={c('collider_2025:Button').t`Projects`}
-                icon={<IcFolderOpen size={4} className="rtl:mirror" />}
-                showText={showText}
                 onHeaderClick={handleProjectsHeaderClick}
-                labelExtra={<DismissedFeaturePill featureId="projects" versionFlag="WhatsNewV1p3" />}
                 actionButton={
-                    <button
-                        className="projects-create-button"
+                    <Button
+                        icon
                         onClick={handleCreateProject}
                         aria-label={c('collider_2025:Button').t`Create project`}
                         title={c('collider_2025:Button').t`Create project`}
+                        size="small"
+                        shape="ghost"
                     >
-                        <IcPlus size={3} />
-                    </button>
+                        <LumoIcon name="Plus" width={14} height={14} />
+                    </Button>
                 }
                 className="projects-sidebar-section"
             >
@@ -152,17 +115,11 @@ export const ProjectsSidebarSection = ({ showText, onItemClick, isSmallScreen }:
                     {projects.length > 0 && (
                         <SidebarNavList
                             items={projects.slice(0, 5).map((project) => {
-                                const category = getProjectCategory(project.icon);
                                 return {
                                     id: project.id,
                                     to: `/projects/${project.id}`,
                                     label: project.name,
                                     isSelected: currentProjectId === project.id,
-                                    leadingContent: (
-                                        <div className="project-icon-small color-norm flex-shrink-0">
-                                            <Icon name={category.icon as any} size={4} className="color-white" />
-                                        </div>
-                                    ),
                                     trailingContent: <ProjectActionsDropdown project={project} />,
                                 };
                             })}
@@ -178,7 +135,7 @@ export const ProjectsSidebarSection = ({ showText, onItemClick, isSmallScreen }:
                         </button>
                     )}
                     {projects.length === 0 && (
-                        <div className="px-3 py-2 text-sm color-weak">{c('collider_2025:Info').t`No projects yet`}</div>
+                        <div className="px-2 py-2 text-sm color-weak">{c('collider_2025:Info').t`No projects yet`}</div>
                     )}
                 </div>
             </CollapsibleSidebarSection>

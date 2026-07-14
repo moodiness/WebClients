@@ -13,11 +13,12 @@ import useEventManager from '@proton/components/hooks/useEventManager';
 import useNotifications from '@proton/components/hooks/useNotifications';
 import { usePaymentFacade } from '@proton/components/payments/client-extensions';
 import { useLoading } from '@proton/hooks';
-import type { Invoice, PaymentProcessorHook } from '@proton/payments';
-import { type Currency, PAYMENT_METHOD_TYPES } from '@proton/payments';
 import { checkInvoice, getPaymentsVersion } from '@proton/payments/core/api/api';
+import { PAYMENT_METHOD_TYPES } from '@proton/payments/core/constants';
+import type { Currency, Invoice } from '@proton/payments/core/interface';
+import type { PaymentProcessorHook } from '@proton/payments/core/payment-processors/interface';
 import { tracePaymentError } from '@proton/payments/sentry/capture';
-import { ChargebeePaypalButton } from '@proton/payments/ui';
+import { ChargebeePaypalButton } from '@proton/payments/ui/components/ChargebeePaypalButton';
 import type { APP_NAMES } from '@proton/shared/lib/constants';
 
 import Form from '../../components/form/Form';
@@ -27,7 +28,6 @@ import ModalTwoFooter from '../../components/modalTwo/ModalFooter';
 import ModalTwoHeader from '../../components/modalTwo/ModalHeader';
 import useApiResult from '../../hooks/useApiResult';
 import PaymentWrapper from '../payments/PaymentWrapper';
-import StyledPayPalButton from '../payments/StyledPayPalButton';
 import { getInvoicePaymentsVersion } from './helpers';
 
 interface CheckInvoiceResponse {
@@ -107,7 +107,7 @@ const PayInvoiceModal = ({ invoice, fetchInvoices, app, ...rest }: Props) => {
                 }
 
                 // The case of selecting the "neutral" payment processor.
-                selectedProcessor = paymentFacade.card;
+                selectedProcessor = paymentFacade.chargebeeCard;
             }
 
             try {
@@ -131,17 +131,6 @@ const PayInvoiceModal = ({ invoice, fetchInvoices, app, ...rest }: Props) => {
         });
 
     const submitButton = (() => {
-        if (paymentFacade.selectedMethodValue === PAYMENT_METHOD_TYPES.PAYPAL) {
-            return (
-                <StyledPayPalButton
-                    type="submit"
-                    paypal={paymentFacade.paypal}
-                    loading={loading}
-                    data-testid="paypal-button"
-                />
-            );
-        }
-
         if (paymentFacade.selectedMethodValue === PAYMENT_METHOD_TYPES.CHARGEBEE_PAYPAL) {
             return (
                 <ChargebeePaypalButton
@@ -151,19 +140,11 @@ const PayInvoiceModal = ({ invoice, fetchInvoices, app, ...rest }: Props) => {
             );
         }
 
-        // userCanTriggerSelected can be false when no payment method selected. It can happen when splitted user
-        // tries to pay for the inhouse invoice. In this case they won't have any new payment methods available by
-        // design. And if it happens that they also don't have any old payment methods, then userCanTriggerSelected
-        // will remain false. However it might happen that they do have enough credits to pay for the invoice. In this
-        // case we should not disable the pay button.
-        const disablePayButton =
-            paymentFacade.methods.loading || (!paymentFacade.userCanTriggerSelected && amountDue > 0);
-
         return (
             <Button
                 color="norm"
                 loading={loading}
-                disabled={disablePayButton}
+                disabled={paymentFacade.methods.loading}
                 type="submit"
                 data-testid="pay-invoice-button"
             >

@@ -3870,12 +3870,6 @@
       "Interval cannot be empty": [
         "L'interval no pot estar buit."
       ],
-      "Invalid ${ name } code": [
-        "Codi ${ name } no vàlid"
-      ],
-      "Invalid card number": [
-        "Número de targeta no vàlid"
-      ],
       "Invalid code": [
         "Codi invàlid"
       ],
@@ -3884,9 +3878,6 @@
       ],
       "Invalid email address": [
         "L'adreça de correu electrònic no és vàlida."
-      ],
-      "Invalid expiration date": [
-        "Data de caducitat invàlida"
       ],
       "Invalid IBAN": [
         "L'IBAN no és vàlid."
@@ -3975,9 +3966,6 @@
       ],
       "Not a valid number": [
         "Número no vàlid"
-      ],
-      "Not enough storage space in your ${ DRIVE_APP_NAME }": [
-        "No hi ha prou espai d'emmagatzematge al vostre ${ DRIVE_APP_NAME }"
       ],
       "Number of occurrences cannot be empty": [
         "El nombre d’ocurrències no pot estar buit."
@@ -4237,6 +4225,9 @@
       ],
       "VAT number must start with ${ prefixes }": [
         "El número d'IVA ha de començar per ${ prefixes }"
+      ],
+      "We couldn’t send a verification code using this method.": [
+        "No hem pogut enviar cap codi de verificació mitjançant aquest mètode."
       ],
       "Wrong billing address": [
         "L'adreça de facturació és incorrecta"
@@ -4756,6 +4747,9 @@
       ],
       "Security key": [
         "Clau de seguretat"
+      ],
+      "Touch your security key.": [
+        "Toqueu la vostra clau de seguretat."
       ]
     },
     "fido2: Label": {
@@ -6132,9 +6126,6 @@
       "PGP/MIME automatically sends the message using the current composer mode.": [
         "PGP/MIME envia automàticament el missatge utilitzant el mode d'editor actual."
       ],
-      "Please authenticate your card in the verification tab.": [
-        "Autentiqueu la vostra targeta a la pestanya de verificació."
-      ],
       "Please authenticate your payment in the verification tab.": [
         "Autentiqueu el vostre pagament a la pestanya de verificació."
       ],
@@ -6174,9 +6165,6 @@
       ],
       "Please try again using a different payment method, or contact your bank.": [
         "Torneu-ho a provar amb un mètode de pagament diferent o poseu-vos en contacte amb el vostre banc."
-      ],
-      "Please try again, use a different payment method, or contact PayPal for assistance.": [
-        "Torneu-ho a provar, utilitzeu un mètode de pagament diferent o bé contacteu per assistència de PayPal."
       ],
       "Please wait while we look for contacts that can be re-signed with the primary encryption key.": [
         "Espereu mentre busquem contactes que es poden tornar a signar amb la clau de xifratge primària."
@@ -6603,6 +6591,9 @@
       "You are about to open your default browser and visit:": [
         "Esteu a punt d'obrir el navegador per defecte i visitar:"
       ],
+      "You are currently signed in as ${ username } for ${ organizationName }.": [
+        "Actualment heu iniciat sessió com a ${ username } per a ${ organizationName }."
+      ],
       "You are currently signed in as ${ username }.": [
         "Heu iniciat sessió com a ${ username }."
       ],
@@ -6664,9 +6655,6 @@
       ],
       "You will lose all unsaved changes.": [
         "Perdreu tots els canvis sense desar."
-      ],
-      "You will soon be redirected to PayPal to verify your payment.": [
-        "Ben aviat sereu redirigits a PayPal per verificar el pagament."
       ],
       "You will update all the events in this series. Added and removed participants will be notified.": [
         "Actualitzareu tots els esdeveniments d'aquesta sèrie. Els participants afegits i els esborrats seran notificats."
@@ -7226,6 +7214,12 @@
       "Every": [
         "Cada"
       ],
+      "Exact host matching": [
+        "Coincidència exacta d'amfitrió"
+      ],
+      "Exact URL matching": [
+        "Coincidència exacta d'URL"
+      ],
       "Expires": [
         "Expira"
       ],
@@ -7340,6 +7334,9 @@
       "Navigation": [
         "Navegació"
       ],
+      "Never fill on this exact URL": [
+        "No empleneu mai en aquest URL exacte"
+      ],
       "New password": [
         "Contrasenya nova"
       ],
@@ -7369,6 +7366,9 @@
       ],
       "Organizer": [
         "Organitzador"
+      ],
+      "Parent domain and subdomains (default)": [
+        "Domini principal i subdominis (per defecte)"
       ],
       "participant": [
         "participant",
@@ -7428,6 +7428,9 @@
       "Region": [
         "Regió"
       ],
+      "Regular expression": [
+        "Expressió regular"
+      ],
       "Remove ${ MEET_APP_NAME } video conference": [
         "Esborreu la videoconferència de ${ MEET_APP_NAME }"
       ],
@@ -7466,6 +7469,9 @@
       ],
       "Start date": [
         "Data d'inici"
+      ],
+      "Starts with": [
+        "Comença amb"
       ],
       "State": [
         "Estat"
@@ -7514,6 +7520,9 @@
       ],
       "URL": [
         "URL"
+      ],
+      "URL wildcard pattern": [
+        "Patró de comodí d'URL"
       ],
       "Username": [
         "Nom d'usuari"
@@ -7940,11 +7949,29 @@
       ]
     },
     "Message": {
+      "'Starts with' matching rule": [
+        "Regla de coincidència «Comença amb»"
+      ],
+      "Exact (sub) domain matching rule": [
+        "Regla de coincidència exacta de (sub)domini"
+      ],
+      "Exact URL matching rule": [
+        "Regla de coincidència exacta d'URL"
+      ],
       "Fw:": [
         "RV:"
       ],
+      "Never fill with this exact URL": [
+        "No ho emplenis mai amb aquest URL exacte"
+      ],
       "Re:": [
         "Re:"
+      ],
+      "Regular expression rule": [
+        "Regla d'expressió regular"
+      ],
+      "Wildcard pattern matching rule": [
+        "Regla de coincidència de patró de comodí"
       ],
       "Your free trial has ended. ${ nonAutoRenewalAction }": [
         "La prova gratuïta us ha finalitzat. ${ nonAutoRenewalAction }"
@@ -12424,9 +12451,6 @@
       "Payment verification": [
         "Verificació de pagament"
       ],
-      "PayPal verification failed": [
-        "La verificació de PayPal no s'ha pogut completar."
-      ],
       "Phone numbers": [
         "Números de telèfon"
       ],
@@ -12736,6 +12760,26 @@
         "Tria un número"
       ]
     },
+    "Title header for keys table": {
+      "Actions": [
+        "Accions"
+      ],
+      "Created": [
+        "S'ha creat"
+      ],
+      "Expires": [
+        "Caduca"
+      ],
+      "Fingerprint": [
+        "Empremta digital"
+      ],
+      "Status": [
+        "Estat"
+      ],
+      "Type": [
+        "Tipus"
+      ]
+    },
     "Title; create calendar modal": {
       "Create calendar": [
         "Crea un calendari"
@@ -12832,6 +12876,9 @@
       ],
       "Upload a public key to enable sending end-to-end encrypted emails to this email": [
         "Pengeu una clau pública per permetre l'enviament de missatges de correu electrònic xifrats de final a extrem a aquest correu electrònic"
+      ],
+      "Version 6 OpenPGP key": [
+        "Clau OpenPGP de la versió 6"
       ]
     },
     "tooltip": {
@@ -12870,6 +12917,11 @@
       ],
       "The user must have an address to request data access": [
         "L'usuari ha de tenir una adreça per sol·licitar l'accés a les dades."
+      ]
+    },
+    "user_modal": {
+      "You'll be able to assign roles once the user has accepted the invitation.": [
+        "Podreu assignar rols un cop l'usuari hagi acceptat la invitació."
       ]
     },
     "Validation": {
@@ -12984,6 +13036,9 @@
       ],
       "${ BRAND_NAME } will transfer as much data as possible, starting with your most recent messages.": [
         "${ BRAND_NAME } transferirà tantes dades com sigui possible, començant pels missatges més recents."
+      ],
+      "${ modeLabelStong } provides powerful control, but a single error can cause autofill to match and fill data on fraudulent or phishing websites.": [
+        "${ modeLabelStong } proporciona un control potent, però un sol error pot fer que l'emplenament automàtic coincideixi i empleni dades a llocs web fraudulents o de suplantació de credencials."
       ],
       "Are you sure you want to permanently delete ${ count } contact?": [
         "Estàs segur de que vols eliminar ${ count } contacte definitivament?",

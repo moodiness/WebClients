@@ -3870,12 +3870,6 @@
       "Interval cannot be empty": [
         "Hehaling mag niet leeg zijn"
       ],
-      "Invalid ${ name } code": [
-        "Ongeldig ${ name } code"
-      ],
-      "Invalid card number": [
-        "Ongeldig creditcardnummer"
-      ],
       "Invalid code": [
         "Ongeldige code"
       ],
@@ -3884,9 +3878,6 @@
       ],
       "Invalid email address": [
         "Ongeldig e-mailadres"
-      ],
-      "Invalid expiration date": [
-        "Ongeldige vervaldatum"
       ],
       "Invalid IBAN": [
         "Ongeldige IBAN"
@@ -4228,6 +4219,9 @@
       ],
       "VAT number must start with ${ prefixes }": [
         "BTW-nummer moet beginnen met ${ prefixes }"
+      ],
+      "We couldn’t send a verification code using this method.": [
+        "We konden via deze methode geen verificatiecode verzenden."
       ],
       "Wrong billing address": [
         "Verkeerd factuuradres"
@@ -4747,6 +4741,9 @@
       ],
       "Security key": [
         "Beveiligingssleutel"
+      ],
+      "Touch your security key.": [
+        "Raak uw beveiligingssleutel aan."
       ]
     },
     "fido2: Label": {
@@ -6120,9 +6117,6 @@
       "PGP/MIME automatically sends the message using the current composer mode.": [
         "PGP/MIME verzendt automatisch het bericht gebruikmakend van de huidige opstelmodus."
       ],
-      "Please authenticate your card in the verification tab.": [
-        "Authenticeer uw kaart in het verificatietabblad."
-      ],
       "Please authenticate your payment in the verification tab.": [
         "Authenticeer uw betaling in het verificatietabblad."
       ],
@@ -6162,9 +6156,6 @@
       ],
       "Please try again using a different payment method, or contact your bank.": [
         "Probeer opnieuw met een andere betalingsmethode, of neem contact op met uw bank."
-      ],
-      "Please try again, use a different payment method, or contact PayPal for assistance.": [
-        "Probeer het opnieuw, gebruik een andere betaalmethode, of neem contact op met PayPal voor hulp."
       ],
       "Please wait while we look for contacts that can be re-signed with the primary encryption key.": [
         "Een moment geduld, we zijn op zoek naar contacten die opnieuw ondertekend kunnen worden met de primaire versleutelingssleutel."
@@ -6591,6 +6582,9 @@
       "You are about to open your default browser and visit:": [
         "U staat op het punt uw standaardbrowser te openen om te bezoeken:"
       ],
+      "You are currently signed in as ${ username } for ${ organizationName }.": [
+        "U bent momenteel aangemeld als ${ username } voor ${ organizationName }."
+      ],
       "You are currently signed in as ${ username }.": [
         "U bent momenteel aangemeld als ${ username }."
       ],
@@ -6652,9 +6646,6 @@
       ],
       "You will lose all unsaved changes.": [
         "U zal alle wijzigingen kwijtraken."
-      ],
-      "You will soon be redirected to PayPal to verify your payment.": [
-        "Binnenkort wordt u doorverwezen naar PayPal om uw betaling te verifiëren."
       ],
       "You will update all the events in this series. Added and removed participants will be notified.": [
         "U zult alle afspraken in deze serie bijwerken. Toegevoegd en verwijderde deelnemers zullen op de hoogte worden gebracht."
@@ -7162,6 +7153,9 @@
       ],
       "Don't show this again": [
         "Toon dit niet opnieuw"
+      ],
+      "Drive": [
+        "Drive"
       ],
       "e.g., Amazon, eBay, Etsy": [
         "bv. Amazon, eBay, Etsy"
@@ -11260,7 +11254,7 @@
         "${ planName } geeft u toegang tot alle premium functies van ${ BRAND_NAME } ${ MAIL_SHORT_APP_NAME }, ${ PASS_SHORT_APP_NAME }, ${ VPN_SHORT_APP_NAME }, ${ DRIVE_SHORT_APP_NAME }, en ${ CALENDAR_SHORT_APP_NAME }. Privacy is ingebouwd, zodat u verder kunt, wetende dat uw gegevens en identiteit veilig zijn."
       ],
       "${ planName } gives you all apps, all features, early access to new releases, and everything you need to be in control of your data and its security.": [
-        "${ planName } geeft u alle apps, alle functies, vroegtijdige toegang tot nieuwe releases, en alles wat u nodig heeft om de controle over de veiligheid van de veiligheid te hebben."
+        "${ planName } geeft u alle apps, alle functies, vroegtijdige toegang tot nieuwe releases, en alles wat u nodig heeft om de controle over uw gegevens en de beveiliging daarvan te hebben."
       ],
       "${ planName } gives you unlimited privacy and more storage for up to 2 people.": [
         "${ planName } geeft u onbeperkte privacy en meer opslagruimte voor tot wel 2 personen."
@@ -12406,9 +12400,6 @@
       "Payment verification": [
         "Betalingsverificatie"
       ],
-      "PayPal verification failed": [
-        "PayPal verificatie mislukt"
-      ],
       "Phone numbers": [
         "Telefoonnummers"
       ],
@@ -12718,6 +12709,26 @@
         "Kies een nummer"
       ]
     },
+    "Title header for keys table": {
+      "Actions": [
+        "Acties"
+      ],
+      "Created": [
+        "Aangemaakt"
+      ],
+      "Expires": [
+        "Verloopt"
+      ],
+      "Fingerprint": [
+        "Vingerafdruk"
+      ],
+      "Status": [
+        "Status"
+      ],
+      "Type": [
+        "Soort"
+      ]
+    },
     "Title; create calendar modal": {
       "Create calendar": [
         "Agenda aanmaken"
@@ -12779,6 +12790,9 @@
       "If you purchased a gift code or received one from our support team, you can enter it here.": [
         "Als u een geschenkcode heeft gekocht of een heeft ontvangen van ons supportteam, kunt u deze hier invoeren."
       ],
+      "Instant AI assistance, human expert on hand!": [
+        "Directe AI-ondersteuning, menselijke expert binnen handbereik!"
+      ],
       "Load image": [
         "Laad foto"
       ],
@@ -12811,6 +12825,9 @@
       ],
       "Upload a public key to enable sending end-to-end encrypted emails to this email": [
         "Upload een openbare sleutel om het sturen van end-to-end versleutelde berichten naar dit e-mailadres mogelijk te maken"
+      ],
+      "Version 6 OpenPGP key": [
+        "Versie 6 OpenPGP-sleutel"
       ]
     },
     "tooltip": {

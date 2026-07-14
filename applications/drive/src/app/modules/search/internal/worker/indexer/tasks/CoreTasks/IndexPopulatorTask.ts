@@ -8,13 +8,7 @@ import { BaseTask } from '../BaseTask';
  * Task wrapper around an IndexPopulator.
  */
 export class IndexPopulatorTask extends BaseTask {
-    constructor(
-        readonly populator: IndexPopulator,
-
-        // True when running during the initial bootstrap sequence, false for
-        // subsequent re-indexes triggered by live events.
-        private readonly isBootstrap: boolean
-    ) {
+    constructor(readonly populator: IndexPopulator) {
         super();
     }
 
@@ -51,27 +45,12 @@ export class IndexPopulatorTask extends BaseTask {
 
         // Signal that indexing is happening.
         ctx.markIndexing();
-        if (this.isBootstrap) {
-            ctx.markInitialIndexing();
-        }
 
         const stopTimer = startSearchTimer();
 
-        const { indexWriter } = await ctx.indexRegistry.get(populator.indexKind, ctx.db);
-        const session = indexWriter.startWriteSession();
-        try {
-            for await (const entry of populator.visitAndProduceIndexEntries(ctx)) {
-                ctx.signal.throwIfAborted();
-                session.insert(entry);
-                ctx.notifyIndexingProgress();
-            }
-            await session.commit();
-        } finally {
-            session.dispose();
-        }
-
-        // Mark done in DB and keep the populator's in-memory mirror in sync.
-        await populator.markAsDone(ctx.db);
+        // Run initial population; the populator marks itself done on success. How it indexes
+        // (resumable folder walk, chunked drain, etc.) is the populator's concern.
+        await populator.populate(ctx);
 
         ctx.searchMetrics.markInitialIndexingSucceeded({ durationInSeconds: stopTimer() });
     }

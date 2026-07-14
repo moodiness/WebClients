@@ -1799,10 +1799,10 @@
         "Немагчыма абагуліць гэты каляндар з большай колькасцю карыстальнікаў ${ BRAND_NAME }"
       ],
       "You have reached the maximum of ${ MAX_CALENDAR_MEMBERS } member for this calendar.\nTo share this calendar with more ${ BRAND_NAME } accounts, remove some members.": [
-        "Вы дасягнулі максімальнай колькасці з ${ MAX_CALENDAR_MEMBERS } удзельніка для гэтага календара.\nДля абагулення календара з большай колькасцю ўліковых запісаў ${ BRAND_NAME }, выдаліце некаторых удзельнікаў.",
-        "Вы дасягнулі максімальнай колькасці з ${ MAX_CALENDAR_MEMBERS } удзельнікаў для гэтага календара.\nДля абагулення календара з большай колькасцю ўліковых запісаў ${ BRAND_NAME }, выдаліце некаторых удзельнікаў.",
-        "Вы дасягнулі максімальнай колькасці з ${ MAX_CALENDAR_MEMBERS } удзельнікаў для гэтага календара.\nДля абагулення календара з большай колькасцю ўліковых запісаў ${ BRAND_NAME }, выдаліце некаторых удзельнікаў.",
-        "Вы дасягнулі максімальнай колькасці з ${ MAX_CALENDAR_MEMBERS } удзельнікаў для гэтага календара.\nДля абагулення календара з большай колькасцю ўліковых запісаў ${ BRAND_NAME }, выдаліце некаторых удзельнікаў."
+        "Вы дасягнулі максімальнай колькасці з ${ MAX_CALENDAR_MEMBERS } удзельніка для гэтага календара.\nДля абагульвання календара з большай колькасцю ўліковых запісаў ${ BRAND_NAME }, выдаліце некаторых удзельнікаў.",
+        "Вы дасягнулі максімальнай колькасці з ${ MAX_CALENDAR_MEMBERS } удзельнікаў для гэтага календара.\nДля абагульвання календара з большай колькасцю ўліковых запісаў ${ BRAND_NAME }, выдаліце некаторых удзельнікаў.",
+        "Вы дасягнулі максімальнай колькасці з ${ MAX_CALENDAR_MEMBERS } удзельнікаў для гэтага календара.\nДля абагульвання календара з большай колькасцю ўліковых запісаў ${ BRAND_NAME }, выдаліце некаторых удзельнікаў.",
+        "Вы дасягнулі максімальнай колькасці з ${ MAX_CALENDAR_MEMBERS } удзельнікаў для гэтага календара.\nДля абагульвання календара з большай колькасцю ўліковых запісаў ${ BRAND_NAME }, выдаліце некаторых удзельнікаў."
       ],
       "You have reached the maximum of ${ MAX_LINKS_PER_CALENDAR } link for this calendar.\nTo create a new link to this calendar, delete an existing one.": [
         "Вы дасягнулі максімальнай колькасці з ${ MAX_LINKS_PER_CALENDAR } спасылкі для гэтага календара.\nДля стварэння новай спасылкі да гэтага календара, выдаліце адну з існуючых.",
@@ -3933,16 +3933,10 @@
         "Няправільнае імя карыстальніка"
       ],
       "Intended recipient does not support calendar sharing": [
-        "У прызначанага атрымальніка функцыя абагулення календара не падтрымліваецца"
+        "У прызначанага атрымальніка функцыя абагульвання календара не падтрымліваецца"
       ],
       "Interval cannot be empty": [
         "Інтэрвал не можа быць пустым"
-      ],
-      "Invalid ${ name } code": [
-        "Памылковы код ${ name }"
-      ],
-      "Invalid card number": [
-        "Памылковы нумар карткі"
       ],
       "Invalid code": [
         "Памылковы код"
@@ -3952,9 +3946,6 @@
       ],
       "Invalid email address": [
         "Памылковы адрас электроннай пошты"
-      ],
-      "Invalid expiration date": [
-        "Памылковая дата завяршэння тэрміну дзеяння"
       ],
       "Invalid IBAN": [
         "Памылковы IBAN"
@@ -4027,6 +4018,9 @@
       ],
       "No contacts found to import": [
         "Не знойдзены кантакты для імпартавання"
+      ],
+      "No drive found to import": [
+        "Не знойдзены дыск для імпартавання"
       ],
       "No emails found to import - the account does not have an inbox": [
         "Не знойдзена лістоў для імпартавання - уліковы запіс не мае ўваходных"
@@ -4289,6 +4283,9 @@
       "Unexpected error, we can't import the contacts": [
         "Нечаканая памылка. Немагчыма імпартаваць кантакты."
       ],
+      "Unexpected error, we can't import the files": [
+        "Нечаканая памылка. Немагчыма імпартаваць файлы."
+      ],
       "Unknown error": [
         "Невядомая памылка"
       ],
@@ -4306,6 +4303,9 @@
       ],
       "VAT number must start with ${ prefixes }": [
         "Нумар ПДВ павінен пачынацца з ${ prefixes }"
+      ],
+      "We couldn’t send a verification code using this method.": [
+        "Немагчыма адправіць код спраўджання з дапамогай гэтага спосабу."
       ],
       "Wrong billing address": [
         "Няправільны плацежны адрас"
@@ -4835,6 +4835,9 @@
       ],
       "Security key": [
         "Ключ бяспекі"
+      ],
+      "Touch your security key.": [
+        "Дакраніцеся да свайго ключа бяспекі."
       ]
     },
     "fido2: Label": {
@@ -5957,6 +5960,9 @@
       "Failed to update meeting schedule": [
         "Не ўдалося абнавіць расклад сустрэчы"
       ],
+      "Files only (no photos, ${ DOCS_APP_NAME } or ${ SHEETS_APP_NAME }) - up to 100 GB total, 100,000 files, and 50 GB per file": [
+        "Толькі файлы (без фатаграфій, ${ DOCS_APP_NAME } або ${ SHEETS_APP_NAME }). Абмежаванні: агульны аб'ём не больш за 100 ГБ, 100 000 файлаў і 50 ГБ на файл."
+      ],
       "finance": [
         "фінансы"
       ],
@@ -6290,9 +6296,6 @@
       "PGP/MIME automatically sends the message using the current composer mode.": [
         "PGP/MIME аўтаматычна адпраўляе паведамленні з выкарыстаннем бягучага рэжыму рэдактара."
       ],
-      "Please authenticate your card in the verification tab.": [
-        "Прайдзіце аўтэнтыфікацыю са сваёй карткай на ўкладцы праверкі."
-      ],
       "Please authenticate your payment in the verification tab.": [
         "Прайдзіце аўтэнтыфікацыю свайго плацяжу на ўкладцы спраўджання."
       ],
@@ -6334,9 +6337,6 @@
       ],
       "Please try again using a different payment method, or contact your bank.": [
         "Паспрабуйце яшчэ раз, скарыстайцеся іншым спосабам аплаты або звярніцеся ў службу падтрымкі вашага банка."
-      ],
-      "Please try again, use a different payment method, or contact PayPal for assistance.": [
-        "Паспрабуйце яшчэ раз, скарыстайцеся іншым спосабам аплаты або звярніцеся ў службу падтрымкі PayPal."
       ],
       "Please wait while we look for contacts that can be re-signed with the primary encryption key.": [
         "Пачакайце, пакуль мы шукаем кантакты, якія можна паўторна падпісаць пры дапамозе асноўнага ключа шыфравання."
@@ -6767,6 +6767,9 @@
       "You are about to open your default browser and visit:": [
         "Вы збіраецеся адкрыць прадвызначаны браўзер і наведаць:"
       ],
+      "You are currently signed in as ${ username } for ${ organizationName }.": [
+        "Вы ўжо ўвайшлі як ${ username } у ${ organizationName }."
+      ],
       "You are currently signed in as ${ username }.": [
         "Вы ўжо ўвайшлі як ${ username }."
       ],
@@ -6832,9 +6835,6 @@
       ],
       "You will lose all unsaved changes.": [
         "Вы страціце ўсе незахаваныя змены."
-      ],
-      "You will soon be redirected to PayPal to verify your payment.": [
-        "Неўзабаве вы будзеце перанакіраваны на сайт PayPal для спраўджання плацяжу."
       ],
       "You will update all the events in this series. Added and removed participants will be notified.": [
         "Вы абновіце ўсе падзеі ў гэтай серыі. Дадзеныя і выдаленыя ўдзельнікі атрымаюць апавяшчэнне."
@@ -7357,6 +7357,9 @@
       "Don't show this again": [
         "Больш не паказваць"
       ],
+      "Drive": [
+        "Дыск"
+      ],
       "e.g., Amazon, eBay, Etsy": [
         "напрыклад, Amazon, eBay, Etsy"
       ],
@@ -7404,6 +7407,12 @@
       ],
       "Every": [
         "Кожны"
+      ],
+      "Exact host matching": [
+        "Дакладнае супадзенне з вузлом"
+      ],
+      "Exact URL matching": [
+        "Дакладнае супадзенне URL-адраса"
       ],
       "Expires": [
         "Дзейнічае да"
@@ -7549,6 +7558,9 @@
       "Organizer": [
         "Арганізатар"
       ],
+      "Parent domain and subdomains (default)": [
+        "Бацькоўскі дамен і паддамены (прадвызначана)"
+      ],
       "participant": [
         "удзельнік",
         "удзельнікі",
@@ -7609,6 +7621,9 @@
       "Region": [
         "Вобласць"
       ],
+      "Regular expression": [
+        "Рэгулярны выраз"
+      ],
       "Remove ${ MEET_APP_NAME } video conference": [
         "Выдаліць відэаканферэнцыю ${ MEET_APP_NAME }"
       ],
@@ -7647,6 +7662,9 @@
       ],
       "Start date": [
         "Дата пачатку"
+      ],
+      "Starts with": [
+        "Пачынаецца з"
       ],
       "State": [
         "Штат"
@@ -7695,6 +7713,9 @@
       ],
       "URL": [
         "URL-адрас"
+      ],
+      "URL wildcard pattern": [
+        "Узор падстаноўчых знакаў URL-адраса"
       ],
       "Username": [
         "Імя карыстальніка"
@@ -8145,11 +8166,23 @@
       ]
     },
     "Message": {
+      "'Starts with' matching rule": [
+        "Правіла супадзення \"Пачынаць з\""
+      ],
+      "Exact (sub) domain matching rule": [
+        "Правіла дакладнага супадзення (пад)дамена"
+      ],
+      "Exact URL matching rule": [
+        "Правіла дакладнага супадзення URL-адраса"
+      ],
       "Fw:": [
         "Пераслаць:"
       ],
       "Re:": [
         "Адказаць:"
+      ],
+      "Regular expression rule": [
+        "Правіла рэгулярнага выразу"
       ],
       "Your free trial has ended. ${ nonAutoRenewalAction }": [
         "Ваш бясплатны пробны перыяд завяршыўся. ${ nonAutoRenewalAction }"
@@ -12869,9 +12902,6 @@
       "Payment verification": [
         "Праверка плацяжу"
       ],
-      "PayPal verification failed": [
-        "Не ўдалося ажыццявіць праверку PayPal"
-      ],
       "Phone numbers": [
         "Нумары тэлефонаў"
       ],
@@ -13181,6 +13211,26 @@
         "Выберыце нумар"
       ]
     },
+    "Title header for keys table": {
+      "Actions": [
+        "Дзеянні"
+      ],
+      "Created": [
+        "Створаны"
+      ],
+      "Expires": [
+        "Дзейнічаюць да"
+      ],
+      "Fingerprint": [
+        "Адбітак пальца"
+      ],
+      "Status": [
+        "Статус"
+      ],
+      "Type": [
+        "Тып"
+      ]
+    },
     "Title; create calendar modal": {
       "Create calendar": [
         "Стварыць каляндар"
@@ -13242,6 +13292,9 @@
       "If you purchased a gift code or received one from our support team, you can enter it here.": [
         "Калі вы купілі падарункавы код або атрымалі яго ад нашай каманды падтрымкі, то яго можна ўвесці тут."
       ],
+      "Instant AI assistance, human expert on hand!": [
+        "Імгненная дапамога ШІ, эксперт-чалавек заўсёды напагатове!"
+      ],
       "Load image": [
         "Загрузіць відарыс"
       ],
@@ -13274,6 +13327,9 @@
       ],
       "Upload a public key to enable sending end-to-end encrypted emails to this email": [
         "Запампуйце адкрыты ключ, каб уключыць адпраўку лістоў з шыфраваннем скразным метадам на гэты адрас электроннай пошты"
+      ],
+      "Version 6 OpenPGP key": [
+        "Ключ OpenPGP версіі 6"
       ]
     },
     "tooltip": {
@@ -13312,6 +13368,11 @@
       ],
       "The user must have an address to request data access": [
         "Карыстальнік павінен мець адрас, каб запытаць доступ да даных"
+      ]
+    },
+    "user_modal": {
+      "You'll be able to assign roles once the user has accepted the invitation.": [
+        "Вы зможаце прызначаць ролі, як толькі карыстальнік прыме запрашэнне."
       ]
     },
     "Validation": {

@@ -4,6 +4,7 @@ import { createSlice, miniSerializeError, original } from '@reduxjs/toolkit';
 import type { ProtonThunkArguments } from '@proton/redux-shared-store-types';
 import { previousSelector } from '@proton/redux-utilities/creator';
 import { getFetchedAt, getFetchedEphemeral } from '@proton/redux-utilities/fetchedAt';
+import type { ModelState } from '@proton/redux-utilities/initialModelState/interface';
 import { CacheType } from '@proton/redux-utilities/interface';
 import { cacheHelper, createPromiseStore } from '@proton/redux-utilities/promiseStore';
 import type { CoreEventV6Response } from '@proton/shared/lib/api/events';
@@ -22,7 +23,6 @@ import { addressesThunk } from '../addresses';
 import { bootstrapEvent } from '../bootstrap/action';
 import { serverEvent } from '../eventLoop';
 import { initEvent } from '../init';
-import type { ModelState } from '../interface';
 import { getGroupSourcedRoleIds, getUserSourcedRoleIds } from '../organizationRoles/helpers';
 import { type UserState, userFulfilled, userThunk } from '../user';
 import { getMember } from './getMember';
@@ -134,7 +134,10 @@ const slice = createSlice({
             state.meta.fetchedAt = getFetchedAt();
             state.meta.fetchedEphemeral = getFetchedEphemeral();
         },
-        upsertMember: (state, action: PayloadAction<{ member: Member; type?: 'delete' }>) => {
+        upsertMember: (
+            state,
+            action: PayloadAction<{ member: Member; type?: 'delete'; invalidateAddresses?: boolean }>
+        ) => {
             if (!state.value) {
                 return;
             }
@@ -158,7 +161,11 @@ const slice = createSlice({
                 const previousAddressState =
                     previousMember.addressState === 'full'
                         ? {
-                              addressState: previousMember.addressState,
+                              // Keep the cached addresses for display, but when the caller signals the
+                              // member's addresses changed (e.g. unprivatization re-encrypts address
+                              // tokens), mark them 'stale' so the next getMemberAddresses refetches
+                              // instead of serving the cached (now invalid) Token/Signature.
+                              addressState: action.payload.invalidateAddresses ? ('stale' as const) : ('full' as const),
                               Addresses: previousMember.Addresses,
                           }
                         : {};
@@ -213,6 +220,12 @@ const slice = createSlice({
             const member = getMemberFromState(state, action.payload.member);
             if (member) {
                 member.roleState = 'rejected';
+            }
+        },
+        invalidateMemberRoles: (state, action: PayloadAction<{ member: Member }>) => {
+            const member = getMemberFromState(state, action.payload.member);
+            if (member && member.roleState !== 'initial') {
+                member.roleState = 'stale';
             }
         },
         setUnprivatizationState: (state, action: PayloadAction<UnprivatizationMemberState>) => {
@@ -496,6 +509,7 @@ export const updateMemberRoles = ({
 export const membersReducer = { [name]: slice.reducer };
 export const membersThunk = modelThunk;
 export const upsertMember = slice.actions.upsertMember;
+export const invalidateMemberRoles = slice.actions.invalidateMemberRoles;
 export const membersActions = slice.actions;
 export const setUnprivatizationState = slice.actions.setUnprivatizationState;
 export { default as UnavailableAddressesError } from './errors/UnavailableAddressesError';

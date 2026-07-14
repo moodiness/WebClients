@@ -336,6 +336,9 @@
       "Download anyway": [
         "Yine de indir"
       ],
+      "Download debug information": [
+        "Hata ayıklama bilgilerini indir"
+      ],
       "Download logs": [
         "Günlüğü indir"
       ],
@@ -378,11 +381,20 @@
       "Export contact group": [
         "Kişi grubunu dışa aktar"
       ],
+      "Export editor state for version": [
+        "Sürümün düzenleyici durumunu dışa aktar"
+      ],
       "Export selection as .vcf": [
         "Seçimi .vcf olarak dışa aktar"
       ],
+      "Export this version (as docx)": [
+        "Bu sürümü dışa aktar (docx olarak)"
+      ],
       "Export this version (as xlsx)": [
         "Bu sürümü dışa aktar (xlsx olarak)"
+      ],
+      "Export YJS state for version": [
+        "Sürümün YJS durumunu dışa aktar"
       ],
       "Forgot password?": [
         "Parolamı unuttum"
@@ -636,6 +648,9 @@
       "Reload": [
         "Yenile"
       ],
+      "Reload spreadsheet": [
+        "Elektonik tabloyu yeniden yükle"
+      ],
       "Remove": [
         "Kaldır"
       ],
@@ -665,6 +680,9 @@
       ],
       "Report a problem": [
         "Sorun bildirin"
+      ],
+      "Report issue": [
+        "Sorun bildireceğim"
       ],
       "Request a call": [
         "Arama isteği gönder"
@@ -3141,9 +3159,6 @@
       "Failed to load 'My files' folder": [
         "'Dosyalarım' klasörü yüklenemedi"
       ],
-      "Failed to load document details": [
-        "Belge ayrıntıları yüklenemedi"
-      ],
       "Failed to load recent documents": [
         "Son çalışılan belgeler yüklenemedi"
       ],
@@ -3156,11 +3171,17 @@
       "Failed to remove older revisions": [
         "Eski sürümler kaldırılamadı"
       ],
+      "Failed to rename document": [
+        "Belge yeniden adlandırılamadı"
+      ],
       "Failed to rename document. Please try again later.": [
         "Belge yeniden adlandırılamadı. Lütfen bir süre sonra yeniden deneyin."
       ],
       "Failed to resend invitation": [
         "Davet yeniden gönderilemedi"
+      ],
+      "Failed to trash document.": [
+        "Belge çöp kutusuna atılamadı."
       ],
       "Failed to unshare node": [
         "Nokta paylaşımı kaldırılamadı"
@@ -3251,7 +3272,7 @@
         "İçe aktarılabilecek bir kişi kaydı bulunamadı"
       ],
       "No drive found to import": [
-        "İçe aktarılacak drive bulunamadı"
+        "İçe aktarılacak bir sürücü bulunamadı"
       ],
       "No emails found to import - the account does not have an inbox": [
         "İçe aktarılabilecek bir e-posta bulunamadı. Bu hesabın bir Gelen kutusu yok"
@@ -3261,9 +3282,6 @@
       ],
       "Not a valid number": [
         "Numara geçerli değil"
-      ],
-      "Not enough storage space in your ${ DRIVE_APP_NAME }": [
-        "${ DRIVE_APP_NAME } alanınızda yeterli depolama alanı yok"
       ],
       "One of the contacts has no email address: ${ noEmailsContactNamesList }": [
         "Kişilerden birinin e-posta adresi yok: ${ noEmailsContactNamesList }",
@@ -3486,7 +3504,7 @@
         "Beklenmeyen bir sorun çıktı. Kişiler içe aktarılamadı"
       ],
       "Unexpected error, we can't import the files": [
-        "Beklenmedik bir hata oluştu. Dosyaları içe aktaramıyoruz"
+        "Beklenmeyen bir sorun çıktı. Dosyalar içe aktarılamadı"
       ],
       "Unknown error": [
         "Bilinmeyen sorun"
@@ -3517,6 +3535,9 @@
       ],
       "We couldn’t import this file into ${ SHEETS_APP_NAME }. You can try to copy and paste the contents into a new ${ SHEETS_APP_NAME }.": [
         "Bu dosya ${ SHEETS_APP_NAME } uygulaması içine aktarılamadı. İçeriği kopyalayıp yeni bir ${ SHEETS_APP_NAME } uygulamasında yapıştırabilirsiniz."
+      ],
+      "We couldn’t send a verification code using this method.": [
+        "Bu yöntemle doğrulama kodunu gönderemedik."
       ],
       "Wrong billing address": [
         "Fatura adresi yanlış"
@@ -3951,6 +3972,9 @@
       ],
       "Security key": [
         "Güvenlik anahtarı"
+      ],
+      "Touch your security key.": [
+        "Güvenlik anahtarınıza dokunun."
       ]
     },
     "fido2: Label": {
@@ -4481,10 +4505,6 @@
         "${ selectedContactsLength }/${ contactsLength } kişi seçildi",
         "${ selectedContactsLength }/${ contactsLength } kişi seçildi"
       ],
-      "${ selectedCount } selected": [
-        "${ selectedCount } seçilmiş",
-        "${ selectedCount } seçilmiş"
-      ],
       "${ selectedFoldersCountLocalized } folder selected": [
         "${ selectedFoldersCountLocalized } klasör seçildi",
         "${ selectedFoldersCountLocalized } klasör seçildi"
@@ -4757,7 +4777,7 @@
         "Sözcük sayısı görüntülensin"
       ],
       "Do you remember your password? ${ verifyButton }": [
-        "Parolanızı anımsıyor musunuz? ${ verifyButton }"
+        "Parolanızı hatırlıyor musunuz? ${ verifyButton }"
       ],
       "Document is in trash": [
         "Belge çöp kutusunda"
@@ -4883,7 +4903,7 @@
         "Dosya güncellenmeyecek"
       ],
       "Files only (no photos, ${ DOCS_APP_NAME } or ${ SHEETS_APP_NAME }) - up to 100 GB total, 100,000 files, and 50 GB per file": [
-        "Yalnızca dosyalar (fotoğraflar, ${ DOCS_APP_NAME } veya ${ SHEETS_APP_NAME } hariç) – toplamda en fazla 100 GB, 100.000 dosya ve dosya başına 50 GB"
+        "Yalnızca dosyalar (fotoğraf dışında, ${ DOCS_APP_NAME } veya ${ SHEETS_APP_NAME }) – toplamda en fazla 100 GB, 100.000 dosya ve dosya başına 50 GB"
       ],
       "finance": [
         "finans"
@@ -4924,8 +4944,14 @@
       "Governments and ISPs can monitor your online activity. By hiding your real IP and encrypting your activity your browsing becomes private.": [
         "Hükümetler ve internet hizmeti sağlayıcılar çevrim içi etkinliğinizi izleyebilir. Gezinme gizliliğinizi korumak için gerçek IP adresiniz gizlenir ve etkinliğiniz şifrelenir."
       ],
+      "Help us improve this experience by reporting the issue. If you’re comfortable sharing spreadsheet content, attach the debug information below to your report.": [
+        "Sorunu bildirerek bu deneyimi iyileştirmemize yardımcı olun. Elektronik tablo içeriğini paylaşmakta bir sakınca görmüyorsanız, aşağıdaki hata ayıklama bilgilerini bildiriminize ekleyin."
+      ],
       "here": [
         "buraya"
+      ],
+      "Hide table of contents": [
+        "İçindekiler tablosunu gizle"
       ],
       "High Priority": [
         "Yüksek öncelik"
@@ -5151,6 +5177,9 @@
       "Only the people with the link and the password can access this folder.": [
         "Bu klasöre yalnızca bağlantıya ve parolaya sahip olan kişiler erişebilir."
       ],
+      "Oops! This spreadsheet can’t save your most recent edits, so we’ve paused editing to prevent you from losing your work.": [
+        "Ne yazık ki bu elektronik tablodaki son düzenlemeleriniz kaydedilemedi. Bu nedenle çalışmalarınızı kaybetmemeniz için düzenleme özelliği duraklatıldı."
+      ],
       "Open the guide for recommended actions and helpful links.": [
         "Önerilen işlemler ve yararlı bağlantılar için rehberi açın."
       ],
@@ -5325,6 +5354,9 @@
       ],
       "Shared on": [
         "Paylaşılma zamanı"
+      ],
+      "Show table of contents": [
+        "İçindekiler tablosunu görüntüle"
       ],
       "Signature cannot be validated due to network error, please try again later.": [
         "Ağ sorunu nedeniyle imza doğrulanamadı. Lütfen bir süre sonra yeniden deneyin."
@@ -5583,7 +5615,7 @@
         "İçe aktarım tamamlandığında sizi bilgilendireceğiz."
       ],
       "We'll remind you to verify your password again later": [
-        "Daha sonra yeniden parolanızı doğrulamanızı anımsatacağız."
+        "Daha sonra yeniden parolanızı doğrulamanızı hatırlatacağız."
       ],
       "We'll send a new verification code to ${ strong }": [
         "${ strong } alıcısına yeni bir doğrulama kodu göndereceğiz"
@@ -5635,6 +5667,9 @@
       ],
       "You are about to open your default browser and visit:": [
         "Varsayılan tarayıcınızı açarak şu adrese gitmek üzeresiniz:"
+      ],
+      "You are currently signed in as ${ username } for ${ organizationName }.": [
+        "${ organizationName } için ${ username } olarak oturum açmış durumdasınız."
       ],
       "You are currently signed in as ${ username }.": [
         "Şu anda ${ username } olarak oturum açmışsınız."
@@ -6101,6 +6136,12 @@
       "Erase this link and remove everyone with access": [
         "Bu bağlantıyı silin ve erişimi olan herkesi kaldırın."
       ],
+      "Exact host matching": [
+        "Tam ana bilgisayar eşleşmesi"
+      ],
+      "Exact URL matching": [
+        "Tam URL eşleşmesi"
+      ],
       "Expiry": [
         "Geçerlilik sonu"
       ],
@@ -6221,6 +6262,9 @@
       "Navigation": [
         "Gezinme"
       ],
+      "Never fill on this exact URL": [
+        "Bu URL'yi asla doldurma"
+      ],
       "New password": [
         "Yeni parola"
       ],
@@ -6241,6 +6285,9 @@
       ],
       "Optional": [
         "İsteğe bağlı"
+      ],
+      "Parent domain and subdomains (default)": [
+        "Ana etki alanı ve alt etki alanları (varsayılan)"
       ],
       "Password": [
         "Parola"
@@ -6281,6 +6328,9 @@
       "Region": [
         "Bölge"
       ],
+      "Regular expression": [
+        "Düzenli ifade"
+      ],
       "Replace existing file": [
         "Var olan dosya değiştirilsin"
       ],
@@ -6317,6 +6367,9 @@
       "Skip folder": [
         "Klasör atlansın"
       ],
+      "Starts with": [
+        "Şununla başlar"
+      ],
       "Stop sharing": [
         "Paylaşmayı durdur"
       ],
@@ -6344,8 +6397,14 @@
       "Trash": [
         "Çöp kutusu"
       ],
+      "Unknown user": [
+        "Kullanıcı bilinmiyor"
+      ],
       "Upload picture": [
         "Görsel yükle"
+      ],
+      "URL wildcard pattern": [
+        "URL genel arama karakteri deseni"
       ],
       "Username": [
         "Kullanıcı adı"
@@ -6681,6 +6740,24 @@
       ]
     },
     "Message": {
+      "'Starts with' matching rule": [
+        "'Şununla başlayan' eşleştirme kuralı"
+      ],
+      "Exact (sub) domain matching rule": [
+        "Tam (alt) etki alanı eşleştirme kuralı"
+      ],
+      "Exact URL matching rule": [
+        "Tam URL eşleştirme kuralı"
+      ],
+      "Never fill with this exact URL": [
+        "Bu tam URL'yi asla doldurma"
+      ],
+      "Regular expression rule": [
+        "Düzenli ifade kuralı"
+      ],
+      "Wildcard pattern matching rule": [
+        "genel arama karakter deseni eşleştirme kuralı"
+      ],
       "Your free trial has ended. ${ nonAutoRenewalAction }": [
         "Ücretsiz deneme süreniz sona erdi. ${ nonAutoRenewalAction }"
       ],
@@ -7790,7 +7867,7 @@
         "Diğer ${ MAIL_APP_NAME } kullanıcılarına gönderilen e-postalar otomatik olarak şifrelenir. ${ MAIL_APP_NAME_TWO } dışındaki kullanıcılara şifrelenmiş e-posta göndermek için, göndermeden önce bir parola ayarlanması gerekir."
       ],
       "You can have more than one admin. All admins can add and manage users but only the primary admin has control over billing.": [
-        "Birden fazla yöneticiniz olabilir. Tüm yöneticiler kullanıcıları ekleyebilir ve yönetebilir. Ancak yalnızca birincil yönetici faturalandırma işlemlerini yönetebilir."
+        "Birden fazla yöneticiniz olabilir. Tüm yöneticiler kullanıcıları ekleyebilir ve yönetebilir. Ancak yalnızca birincil yönetici faturalama işlemlerini yönetebilir."
       ]
     },
     "new_plans: Upsell attribute": {
@@ -7984,6 +8061,15 @@
       "Device renamed": [
         "Aygıt yeniden adlandırıldı"
       ],
+      "Document failed to be restored from trash": [
+        "Belge çöp kutusundan geri yüklenemedi"
+      ],
+      "Document moved to trash": [
+        "Belge çöp kutusuna taşındı"
+      ],
+      "Document restored from trash": [
+        "Belge çöp kutusundan geri yüklendi"
+      ],
       "External invitation removed from the share": [
         "Paylaşımdan dış davet kaldırıldı"
       ],
@@ -8004,6 +8090,9 @@
       ],
       "Failed to reject share invitation": [
         "Paylaşma daveti reddedilemedi"
+      ],
+      "Failed to rename document": [
+        "Belge yeniden adlandırılamadı"
       ],
       "Failed to upload files: ${ err }": [
         "Dosyalar yüklenemedi: ${ err }"
@@ -10152,6 +10241,9 @@
       "Edit image": [
         "Görseli düzenle"
       ],
+      "Editing paused": [
+        "Düzenleme duraklatıldı"
+      ],
       "Email addresses": [
         "E-posta adresleri"
       ],
@@ -10541,6 +10633,26 @@
         "Sızdırılmış bilgileriniz"
       ]
     },
+    "Title header for keys table": {
+      "Actions": [
+        "İşlemler"
+      ],
+      "Created": [
+        "Oluşturulma"
+      ],
+      "Expires": [
+        "Geçerlilik sonu"
+      ],
+      "Fingerprint": [
+        "Parmak izi"
+      ],
+      "Status": [
+        "Durum"
+      ],
+      "Type": [
+        "Tür"
+      ]
+    },
     "Today icon tooltip in mini calendar": {
       "Today": [
         "Bugün"
@@ -10625,6 +10737,9 @@
       "Upload a public key to enable sending end-to-end encrypted emails to this email": [
         "Bu e-posta adresine uçtan uca şifrelenmiş e-postalar göndermek için bir herkese açık anahtar yükleyin"
       ],
+      "Version 6 OpenPGP key": [
+        "6. sürüm OpenPGP anahtarı"
+      ],
       "We have sent them an invite to access the item.": [
         "Dosyaya erişebilmeleri için bir davetiye gönderdik."
       ]
@@ -10657,6 +10772,11 @@
       ],
       "The user must have an address to request data access": [
         "Veri isteğinde bulunabilmek için kullanıcının bir e-posta adresi olmalıdır"
+      ]
+    },
+    "user_modal": {
+      "You'll be able to assign roles once the user has accepted the invitation.": [
+        "Kullanıcı daveti kabul ettikten sonra rol atayabileceksiniz."
       ]
     },
     "Validation": {
@@ -10775,6 +10895,9 @@
       ],
       "${ BRAND_NAME } will transfer as much data as possible, starting with your most recent messages.": [
         "${ BRAND_NAME }, en son iletilerinizden başlayarak olabildiğince fazla veri aktaracak."
+      ],
+      "${ modeLabelStong } provides powerful control, but a single error can cause autofill to match and fill data on fraudulent or phishing websites.": [
+        "${ modeLabelStong } güçlü bir kontrol sağlar ancak tek bir hata bile otomatik doldurma özelliğinin sahte veya kimlik avı amaçlı web sitelerindeki verilerle eşleşip bu verileri doldurmasına neden olabilir."
       ],
       "Are you sure you want to permanently delete ${ count } contact?": [
         "${ count } kişiyi kalıcı olarak silmek istediğinize emin misiniz?",

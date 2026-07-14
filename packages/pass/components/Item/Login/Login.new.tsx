@@ -5,6 +5,7 @@ import { useHistory } from 'react-router-dom';
 import { Form, FormikProvider, useFormik } from 'formik';
 import { c } from 'ttag';
 
+import { usePassCore } from '@proton/pass/components/Core/PassCoreProvider';
 import { FileAttachmentsField } from '@proton/pass/components/FileAttachments/FileAttachmentsField';
 import { ValueControl } from '@proton/pass/components/Form/Field/Control/ValueControl';
 import { ExtraFieldGroup } from '@proton/pass/components/Form/Field/ExtraFieldGroup/ExtraFieldGroup';
@@ -13,7 +14,7 @@ import { FieldsetCluster } from '@proton/pass/components/Form/Field/Layout/Field
 import { TextField } from '@proton/pass/components/Form/Field/TextField';
 import { TextAreaField } from '@proton/pass/components/Form/Field/TextareaField';
 import { TitleField } from '@proton/pass/components/Form/Field/TitleField';
-import { UrlGroupField, createNewUrl } from '@proton/pass/components/Form/Field/UrlGroupField';
+import { UrlGroupField } from '@proton/pass/components/Form/Field/UrlGroup/UrlGroupField';
 import { VaultPickerField } from '@proton/pass/components/Form/Field/VaultPickerField';
 import { LoginEditCredentials } from '@proton/pass/components/Item/Login/Login.edit.credentials';
 import { ItemCreatePanel } from '@proton/pass/components/Layout/Panel/ItemCreatePanel';
@@ -26,22 +27,30 @@ import { useItemDraft } from '@proton/pass/hooks/useItemDraft';
 import { usePortal } from '@proton/pass/hooks/usePortal';
 import { filesFormInitializer } from '@proton/pass/lib/file-attachments/helpers';
 import { obfuscateExtraFields } from '@proton/pass/lib/items/item.obfuscation';
-import { bindOTPSanitizer, getSanitizedUserIdentifiers, sanitizeExtraField } from '@proton/pass/lib/items/item.utils';
+import {
+    bindOTPSanitizer,
+    getSanitizedUserIdentifiers,
+    resolveDefaultItemName,
+    sanitizeExtraField,
+} from '@proton/pass/lib/items/item.utils';
 import { getSecretOrUri } from '@proton/pass/lib/otp/otp';
+import { createNewUrlItem, fromItems } from '@proton/pass/lib/urls/utils/autofill';
+import { sanitizeURL } from '@proton/pass/lib/urls/utils/sanitize';
+import { intoDomainWithPort, resolveSubdomain } from '@proton/pass/lib/urls/utils/utils';
 import { sanitizeLoginAliasHydration, sanitizeLoginAliasSave } from '@proton/pass/lib/validation/alias';
 import { validateLoginForm } from '@proton/pass/lib/validation/login';
 import { selectShowUsernameField, selectTOTPLimits, selectVaultLimits } from '@proton/pass/store/selectors';
 import type { LoginItemFormValues, LoginWithAliasCreationDTO } from '@proton/pass/types';
+import { AutofillMode } from '@proton/pass/types/protobuf';
 import { pipe } from '@proton/pass/utils/fp/pipe';
 import { obfuscate } from '@proton/pass/utils/obfuscate/xor';
 import { isEmptyString } from '@proton/pass/utils/string/is-empty-string';
 import { uniqueId } from '@proton/pass/utils/string/unique-id';
-import { sanitizeURL } from '@proton/pass/utils/url/sanitize';
-import { intoDomainWithPort, resolveSubdomain } from '@proton/pass/utils/url/utils';
 
 const FORM_ID = 'new-login';
 
 export const LoginNew: FC<ItemNewViewProps<'login'>> = ({ shareId, url: currentUrl, onCancel, onSubmit }) => {
+    const { getExtensionClientState } = usePassCore();
     const { vaultTotalCount } = useSelector(selectVaultLimits);
     const { needsUpgrade } = useSelector(selectTOTPLimits);
 
@@ -56,6 +65,7 @@ export const LoginNew: FC<ItemNewViewProps<'login'>> = ({ shareId, url: currentU
         const domain = currentUrl ? resolveSubdomain(currentUrl) : '';
         const domainWithPort = currentUrl ? (intoDomainWithPort({ ...currentUrl, domain }) ?? '') : '';
         const { url, valid } = sanitizeURL(domainWithPort);
+        const currentUrlItem = !clone && valid ? [createNewUrlItem({ url, mode: AutofillMode.Default })] : [];
 
         return {
             aliasPrefix: '',
@@ -65,14 +75,17 @@ export const LoginNew: FC<ItemNewViewProps<'login'>> = ({ shareId, url: currentU
             itemEmail: clone?.content.itemEmail ?? searchParams.get('email') ?? '',
             itemUsername: clone?.content.itemUsername ?? '',
             mailboxes: [],
-            name: clone?.metadata.name ?? domain ?? '',
+            name:
+                clone?.metadata.name ??
+                resolveDefaultItemName({ title: getExtensionClientState?.()?.title, url: currentUrl }),
             note: clone?.metadata.note ?? '',
             passkeys: [],
             password: clone?.content.password ?? '',
             shareId: options?.shareId ?? shareId,
             totpUri: clone?.content.totpUri ? getSecretOrUri(clone.content.totpUri) : '',
-            url: !clone && valid ? createNewUrl(url).url : '',
-            urls: clone?.content.urls.map(createNewUrl) ?? [],
+            url: '',
+            urls: clone?.content.autofillUrls.map(createNewUrlItem) ?? currentUrlItem,
+            editingUrlIndex: null,
             withAlias: false,
             withUsername: Boolean(clone?.content.itemUsername) || showUsernameField,
         };
@@ -143,7 +156,7 @@ export const LoginNew: FC<ItemNewViewProps<'login'>> = ({ shareId, url: currentU
                     itemEmail: obfuscate(email),
                     itemUsername: obfuscate(username),
                     password: obfuscate(password),
-                    urls: Array.from(new Set(urls.map(({ url }) => url).concat(isEmptyString(url) ? [] : [url]))),
+                    autofillUrls: fromItems(urls, url),
                     totpUri: pipe(sanitizeOTP, obfuscate)(totpUri),
                     passkeys: [],
                 },
@@ -229,7 +242,7 @@ export const LoginNew: FC<ItemNewViewProps<'login'>> = ({ shareId, url: currentU
                             </FieldsetCluster>
 
                             <FieldsetCluster>
-                                <UrlGroupField form={form} />
+                                <UrlGroupField initialTestUrl={currentUrl?.url ?? undefined} />
                             </FieldsetCluster>
 
                             <FieldsetCluster>

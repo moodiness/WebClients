@@ -32,13 +32,16 @@ import { addMeeting, removeMeeting, updateMeeting } from '@proton/meet/store/sli
 import { getApiError } from '@proton/shared/lib/api/helpers/apiErrorHelper';
 import { APPS, CALENDAR_APP_NAME, MINUTE } from '@proton/shared/lib/constants';
 import { getTimeZoneOptions, getTimezone } from '@proton/shared/lib/date/timezone';
-import { type Meeting, MeetingType } from '@proton/shared/lib/interfaces/Meet';
+import { type Meeting, MeetingType, WaitingRoomState } from '@proton/shared/lib/interfaces/Meet';
+import { useFlag } from '@proton/unleash/useFlag';
 import clsx from '@proton/utils/clsx';
 
+import { ExpandOptionsButton } from '../../atoms/ExpandOptionsButton/ExpandOptionsButton';
 import { getNextOccurrence } from '../../utils/getNextOccurrence';
 import { formatTimeHHMM } from '../../utils/timeFormat';
 import { ScheduleMeetingRecapModal } from '../ScheduleMeetingRecapModal/ScheduleMeetingRecapModal';
 import { TimeInputBlock } from '../TimeInputBlock';
+import { ScheduleMeetingOptions } from './ScheduleMeetingOptions';
 import { ScheduleMeetingSvgIcon } from './ScheduleMeetingSvgIcon';
 import type { OnDateTimeChange } from './types';
 import { combineDateAndTime, getInitialValues, validate } from './utils';
@@ -91,10 +94,12 @@ export const ScheduleMeetingForm = ({
     onClose,
     onMeetingCreated,
 }: ScheduleMeetingFormProps) => {
+    const isMeetWaitingRoomEnabled = useFlag('MeetWaitingRoom');
+
     const [user] = useUser();
     const [userSettings] = useUserSettings();
     const timeFormat = userSettings.TimeFormat;
-    const { saveMeetingName, saveMeetingSchedule } = useMeetingUpdates();
+    const { saveMeetingName, saveMeetingSchedule, saveMeetingWaitingRoom } = useMeetingUpdates();
     const { deleteMeeting } = useDeleteMeeting();
     const dispatch = useMeetDispatch();
     const getMeetingDependencies = useGetMeetingDependencies();
@@ -120,7 +125,7 @@ export const ScheduleMeetingForm = ({
     } | null>(null);
 
     const [values, setValues] = useState({
-        ...getInitialValues(),
+        ...getInitialValues(isMeetWaitingRoomEnabled),
         timeZone: userTimeZone,
         meetingName: '',
     });
@@ -135,6 +140,7 @@ export const ScheduleMeetingForm = ({
         if (meeting) {
             const updates: Partial<typeof values> = {
                 meetingName: meeting.MeetingName,
+                ...(isMeetWaitingRoomEnabled ? { waitingRoom: meeting.WaitingRoom ?? WaitingRoomState.DISABLED } : {}),
             };
 
             if (meeting.Timezone) {
@@ -170,7 +176,7 @@ export const ScheduleMeetingForm = ({
                 ...updates,
             }));
         }
-    }, [meeting]);
+    }, [isMeetWaitingRoomEnabled, meeting]);
 
     useEffect(() => {
         const generateLink = async () => {
@@ -222,11 +228,20 @@ export const ScheduleMeetingForm = ({
             let meetingId;
 
             if (!!meeting) {
-                await saveMeetingName({
-                    newTitle: meetingName,
-                    id: meeting.ID,
-                    meetingObject: meeting,
-                });
+                await Promise.all([
+                    await saveMeetingName({
+                        newTitle: meetingName,
+                        id: meeting.ID,
+                        meetingObject: meeting,
+                    }),
+                    isMeetWaitingRoomEnabled &&
+                        values.waitingRoom !== undefined &&
+                        (await saveMeetingWaitingRoom({
+                            meetingLinkName: meeting.MeetingLinkName,
+                            waitingRoom: values.waitingRoom,
+                        })),
+                ]);
+
                 const response = await saveMeetingSchedule({
                     startTime: startTime.toISOString(),
                     endTime: endTime.toISOString(),
@@ -235,6 +250,7 @@ export const ScheduleMeetingForm = ({
                     id: meeting.ID,
                     meetingObject: meeting,
                 });
+
                 dispatch(updateMeeting(response));
                 const { userKeys } = await getMeetingDependencies();
                 const meetingForLink = {
@@ -467,15 +483,9 @@ export const ScheduleMeetingForm = ({
                             </div>
                         </div>
                     )}
-                    <div className="w-full flex flex-nowrap items-center justify-end gap-2">
-                        <Button
-                            className="color-primary ml-auto rounded-full timezone-button"
-                            shape="ghost"
-                            onClick={() => setShowTimezones(!showTimezones)}
-                        >
-                            {timeZoneAction}
-                        </Button>
-                    </div>
+                    <ExpandOptionsButton containerClassName="mt-2" onClick={() => setShowTimezones(!showTimezones)}>
+                        {timeZoneAction}
+                    </ExpandOptionsButton>
 
                     <TimeInputBlock
                         name="start"
@@ -542,7 +552,16 @@ export const ScheduleMeetingForm = ({
                             ))}
                         </SelectTwo>
                     </div>
-                    <div className="w-full flex flex-nowrap justify-center flex-row mt-10 gap-4">
+                    {isMeetWaitingRoomEnabled && values.waitingRoom !== undefined && (
+                        <ScheduleMeetingOptions
+                            waitingRoom={values.waitingRoom}
+                            onWaitingRoomChange={(value) => {
+                                setValues({ ...values, waitingRoom: value });
+                            }}
+                        />
+                    )}
+
+                    <div className="w-full flex flex-nowrap justify-center flex-row mt-6 gap-4">
                         <Button
                             type="button"
                             className="tertiary rounded-full text-semibold w-full"

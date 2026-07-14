@@ -8,10 +8,11 @@ import { BYOE_QUOTA_THRESHOLD_RATIO } from '@proton/activation/src/constants';
 import { EASY_SWITCH_SOURCES, OAUTH_PROVIDER } from '@proton/activation/src/interface';
 import type { AppIntent } from '@proton/components/containers/login/interface';
 import { createPreAuthKTVerifier } from '@proton/key-transparency/shared';
-import type { Subscription } from '@proton/payments';
-import { SubscriptionMode, hasPlanIDs } from '@proton/payments';
 import type { PaymentsVersion } from '@proton/payments/core/api/api';
 import { createPaymentSubscription } from '@proton/payments/core/api/createPaymentSubscription';
+import { hasPlanIDs } from '@proton/payments/core/planIDs';
+import { SubscriptionMode } from '@proton/payments/core/subscription/constants';
+import type { Subscription } from '@proton/payments/core/subscription/interface';
 import type { PaymentTelemetryContext } from '@proton/payments/telemetry/helpers';
 import { getAllAddresses, updateAddress } from '@proton/shared/lib/api/addresses';
 import { auth } from '@proton/shared/lib/api/auth';
@@ -398,6 +399,7 @@ export const handleSetupUser = async ({
     reportPaymentSuccess,
     reportPaymentFailure,
     telemetryContext,
+    isShareFeatureEnabled,
 }: {
     cache: SignupCacheResult;
     api: Api;
@@ -407,6 +409,7 @@ export const handleSetupUser = async ({
     reportPaymentSuccess: () => void;
     reportPaymentFailure: () => void;
     telemetryContext?: PaymentTelemetryContext;
+    isShareFeatureEnabled: boolean;
 }): Promise<SignupActionResponse> => {
     const {
         accountData: { username, email, domain, password, signupType },
@@ -485,6 +488,7 @@ export const handleSetupUser = async ({
                 return userKeys;
             },
             api,
+            isShareFeatureEnabled,
         });
     }
 

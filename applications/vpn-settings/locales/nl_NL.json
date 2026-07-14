@@ -227,9 +227,6 @@
       "Connected": [
         "Verbonden"
       ],
-      "Contact support": [
-        "Neem contact op met ondersteuning"
-      ],
       "Contact Support Center": [
         "Bezoek het helpcentrum"
       ],
@@ -503,9 +500,6 @@
       "Forgot password?": [
         "Wachtwoord vergeten?"
       ],
-      "Forgot recovery method?": [
-        "Herstelmethode vergeten?"
-      ],
       "Generate new recovery phrase": [
         "Genereer nieuwe herstelzin"
       ],
@@ -659,9 +653,6 @@
       "Load more": [
         "Laad meer"
       ],
-      "Loading verification": [
-        "Verificatie laden"
-      ],
       "Lost access to your 2FA device?": [
         "Geen toegang meer tot uw 2FA-apparaat?"
       ],
@@ -757,6 +748,9 @@
       ],
       "Organization": [
         "Organisatie"
+      ],
+      "Pause": [
+        "Onderbreken"
       ],
       "Pay": [
         "Betalen"
@@ -4437,12 +4431,6 @@
       "Incorrect username": [
         "Onjuiste gebruikersnaam"
       ],
-      "Invalid ${ name } code": [
-        "Ongeldig ${ name } code"
-      ],
-      "Invalid card number": [
-        "Ongeldig creditcardnummer"
-      ],
       "Invalid code": [
         "Ongeldige code"
       ],
@@ -4454,9 +4442,6 @@
       ],
       "Invalid email address": [
         "Ongeldig e-mailadres"
-      ],
-      "Invalid expiration date": [
-        "Ongeldige vervaldatum"
       ],
       "Invalid IBAN": [
         "Ongeldige IBAN"
@@ -4799,6 +4784,9 @@
       "Verification did not succeed, please try again in an hour.": [
         "Verificatie mislukt, probeer het over een uur opnieuw."
       ],
+      "We couldn’t send a verification code using this method.": [
+        "We konden via deze methode geen verificatiecode verzenden."
+      ],
       "We stopped DKIM signing due to problems with your DNS configuration. Please follow the instructions below to resume signing.": [
         "We zijn gestopt met het ondertekenen van DKIM-ondertekening, vanwege problemen met uw DNS-configuratie. Volg de onderstaande instructies om ondertekenen te hervatten."
       ],
@@ -4991,9 +4979,6 @@
       ]
     },
     "Error message": {
-      "Account is deleted or disabled": [
-        "Account is verwijderd of uitgeschakeld"
-      ],
       "App currently unavailable": [
         "App momenteel niet beschikbaar"
       ],
@@ -5556,9 +5541,6 @@
       "Insert a security key linked to your ${ BRAND_NAME } Account.": [
         "Plaats een beveiligingssleutel die is gekoppeld aan uw ${ BRAND_NAME }-account."
       ],
-      "Insert your security key into your device's USB port.": [
-        "Steek uw beveiligingssleutel in de USB-poort van uw apparaat."
-      ],
       "Security key": [
         "Beveiligingssleutel"
       ],
@@ -5570,6 +5552,9 @@
       ],
       "This will delete all security keys linked to your account.": [
         "Dit zal alle beveiligingssleutels voor uw account verwijderen."
+      ],
+      "Touch your security key.": [
+        "Raak uw beveiligingssleutel aan."
       ],
       "Verify your identity with a physical U2F or FIDO2 security key": [
         "Verifieer uw identiteit met een fysieke U2F of FIDO2 beveiligingssleutel"
@@ -6266,12 +6251,6 @@
       "${ appName } needs your permission to ${ enableDesktopNotifications }.": [
         "${ appName } heeft uw toestemming tot ${ enableDesktopNotifications } nodig."
       ],
-      "${ boldWarning } You will lose access to all current encrypted data in your account if you continue.": [
-        "${ boldWarning } U verliest de toegang tot alle huidige versleutelde gegevens in uw account als u doorgaat."
-      ],
-      "${ BRAND_NAME } Business plans gives your team all the collaboration tools they need to be productive and organized in their work, while safeguarding your business.": [
-        "${ BRAND_NAME } Business abonnementen bieden uw team alle samenwerkingstools die ze nodig hebben om productief en georganiseerd te werken, terwijl uw bedrijf wordt beschermd."
-      ],
       "${ BRAND_NAME } is independently funded and operates without advertising. Below are examples of how this independence has been used in practice.": [
         "${ BRAND_NAME } wordt onafhankelijk gefinancierd en werkt zonder advertenties. Hieronder vindt u voorbeelden van hoe deze onafhankelijkheid in de praktijk is toegepast."
       ],
@@ -6331,6 +6310,10 @@
       "${ hasTwoFAMembersLength }/${ canHaveTwoFAMembersLength } of your non-SSO members use two-factor authentication to sign in to your organization.": [
         "${ hasTwoFAMembersLength }/${ canHaveTwoFAMembersLength } van uw niet-SSO leden gebruiken tweestapsverificatie om in te loggen bij uw organisatie.",
         "${ hasTwoFAMembersLength }/${ canHaveTwoFAMembersLength } van uw niet-SSO leden gebruiken tweestapsverificatie om in te loggen bij uw organisatie."
+      ],
+      "${ invitedMemberCount } user needs to accept their invite to start receiving group emails.": [
+        "${ invitedMemberCount } gebruiker moet hun uitnodiging accepteren om groepsmails te kunnen ontvangen.",
+        "${ invitedMemberCount } gebruikers moeten hun uitnodigingen accepteren om groepsmails te kunnen ontvangen."
       ],
       "${ LUMO_APP_NAME } includes ${ BRAND_NAME } Scribe writing assistant": [
         "${ LUMO_APP_NAME } bevat ${ BRAND_NAME } Scribe schrijfassistent"
@@ -6782,12 +6765,6 @@
       "Beta": [
         "Bèta"
       ],
-      "Billed at ${ monthlyDiscountedPrice } for the first 6 months, renews at ${ monthlyRenewalPrice }.": [
-        "De eerste 6 maanden wordt het abonnement gefactureerd tegen ${ monthlyDiscountedPrice }, waarna het wordt verlengd tegen ${ monthlyRenewalPrice }."
-      ],
-      "Billed at ${ yearlyDiscountedPrice } for the first 12 months, renews at ${ yearlyRenewalPrice }.": [
-        "De eerste 12 maanden wordt het abonnement gefactureerd tegen ${ yearlyDiscountedPrice }, waarna het wordt verlengd tegen ${ yearlyRenewalPrice }."
-      ],
       "Billing cycle: ${ text }": [
         "Facturatiefrequentie: ${ text }"
       ],
@@ -6951,9 +6928,6 @@
       "Data locked": [
         "Gegevens vergrendeld"
       ],
-      "Data recoverable on this device": [
-        "Gegevens herstelbaar op dit apparaat"
-      ],
       "Data recoverable with recovery phrase": [
         "Gegevens kunnen worden hersteld met een herstelzin."
       ],
@@ -7039,9 +7013,6 @@
       ],
       "Don't lose access to your premium features. Enable auto-renew today.": [
         "Raak de toegang tot uw premium functies niet kwijt. Schakel vandaag automatisch vernieuwen in."
-      ],
-      "Done! We sent a code to ${ destination }.": [
-        "Klaar! We hebben een code verzonden naar ${ destination }."
       ],
       "Don’t know your recovery phrase?": [
         "U weet uw herstelzin niet?"
@@ -7165,12 +7136,6 @@
       ],
       "Enter the code from your authenticator app": [
         "Voer de code van uw authenticatie app in"
-      ],
-      "Enter the code sent to your phone number ${ phone }.": [
-        "Voer de code in die naar uw telefoonnummer ${ phone } is gestuurd."
-      ],
-      "Enter the code that was sent to ${ email }. If you can't find the message in your inbox, please check your spam folder.": [
-        "Voer de code in die is verzonden naar ${ email }. Als u het bericht niet kan vinden in uw inbox, kijk dan in de map 'Spam'."
       ],
       "Enter the credentials of the email account you want to import from.": [
         "Voer de inloggegevens in van het e-mailaccount waarvan u wilt importeren."
@@ -7336,9 +7301,6 @@
       ],
       "If you are having trouble creating your account, please request an invitation and we will respond within one business day.": [
         "Als u problemen ondervindt met het aanmaken van uw account, vraag dan een uitnodiging aan. Wij reageren op uw verzoek binnen een werkdag."
-      ],
-      "If you are signed in somewhere else, you may be able to ${ signedInPasswordResetLink }.": [
-        "Indien u ergens anders ingelogd bent, kunt u mogelijk ${ signedInPasswordResetLink }."
       ],
       "If you are signed in to a ${ BRAND_NAME } web app in **another browser**, you may be able to perform a password reset from your active session.": [
         "Als u bent ingelogd bij een ${ BRAND_NAME } web-app in **een andere browser**, kunt u mogelijk uw wachtwoord opnieuw instellen vanuit uw actieve sessie."
@@ -7747,9 +7709,6 @@
       "Once access to your account has been granted, they can access your **Recovery** settings and **change your ${ ACCOUNT_APP_NAME } password** for you.": [
         "Zodra zij toegang tot uw account hebben gekregen, kunnen zij uw **herstelinstellingen** bekijken en **uw wachtwoord voor ${ ACCOUNT_APP_NAME }** voor u wijzigen."
       ],
-      "Once you reset your password:": [
-        "Zodra u uw wachtwoord herstelt:"
-      ],
       "Open source": [
         "Open source"
       ],
@@ -7859,9 +7818,6 @@
       "Please ask the owner to directly invite you to the document.": [
         "Vraag aan de eigenaar om u rechtstreeks uit te nodigen voor het document."
       ],
-      "Please authenticate your card in the verification tab.": [
-        "Authenticeer uw kaart in het verificatietabblad."
-      ],
       "Please authenticate your payment in the verification tab.": [
         "Authenticeer uw betaling in het verificatietabblad."
       ],
@@ -7870,9 +7826,6 @@
       ],
       "Please check your file, or try using our ${ csvTemplateButton }.": [
         "Controleer uw bestand, of probeer onze ${ csvTemplateButton }."
-      ],
-      "Please enter the 12-word recovery phrase associated with your account.": [
-        "Voer de herstelzin van 12 woorden in die bij uw account hoort."
       ],
       "Please fill in all required fields.": [
         "Vul alle verplichte velden in."
@@ -7897,9 +7850,6 @@
       ],
       "Please try again using a different payment method, or contact your bank.": [
         "Probeer opnieuw met een andere betalingsmethode, of neem contact op met uw bank."
-      ],
-      "Please try again, use a different payment method, or contact PayPal for assistance.": [
-        "Probeer het opnieuw, gebruik een andere betaalmethode, of neem contact op met PayPal voor hulp."
       ],
       "Please use another browser or download the file.": [
         "Gebruik een andere browser of download het bestand."
@@ -8218,6 +8168,9 @@
       "Symbols (#$&)": [
         "Symbolen (#$&)"
       ],
+      "Synced from identity provider": [
+        "Gesynct vanuit identiteitsprovider"
+      ],
       "TechRadar Pro recommended with a rating of 4.2 out of 5 stars": [
         "Aanbevolen door TechRadar Pro met een beoordeling van 4,2 van de 5 sterren."
       ],
@@ -8485,9 +8438,6 @@
       "Trial ends on ${ formattedPeriodEndDate }": [
         "Proefversie eindigt op ${ formattedPeriodEndDate }"
       ],
-      "trusted device": [
-        "vertrouwd apparaat"
-      ],
       "Try ${ productName } totally risk free - if for any reason you change your mind, you'll receive a full refund. No questions asked.": [
         "Probeer ${ productName } volledig risicoloos - als u om een andere reden van gedachten verandert, krijgt u een volledige terugbetaling. Zonder vragen."
       ],
@@ -8511,9 +8461,6 @@
       ],
       "Unfortunately there is no recovery method available for this account.": [
         "Helaas is er geen herstelmethode beschikbaar voor dit account."
-      ],
-      "Unfortunately there is no recovery method saved for this account.": [
-        "Helaas is er geen herstelmethode opgeslagen voor dit account."
       ],
       "Unique ID generated by your identity provider, usually in the form of a URL that contains the identity provider’s name within it (e.g. https://idp.example.com/XXXXX).": [
         "Unieke ID gegenereerd door uw identiteitsprovider, meestal in de vorm van een URL die de naam van de identiteitsprovider erin bevat (bv. https://idp.example.com/XXXXX)."
@@ -8650,9 +8597,6 @@
       "Want to learn more?": [
         "Wilt u meer weten?"
       ],
-      "Warning:": [
-        "Waarschuwing:"
-      ],
       "Warning: deleting your account is permanent.": [
         "Opgelet: het verwijderen van uw account is permanent."
       ],
@@ -8689,14 +8633,8 @@
       "We recommend notifying the organization members and asking them to set up 2FA for their accounts before enforcing the use of 2FA.": [
         "We raden aan om de organisatieleden op de hoogte te brengen en ze te vragen om 2FA in te stellen voor hun account voordat u het gebruik van 2FA forceert."
       ],
-      "We recommend using your recovery phrase instead.": [
-        "Wij raden u aan in plaats daarvan uw herstelzin te gebruiken."
-      ],
       "We securely store recovery information on your trusted device to prevent you from losing your data": [
         "Wij slaan herstelinformatie veilig op uw vertrouwde apparaat op om te voorkomen dat u uw gegevens verliest"
-      ],
-      "We stored a backup file in this browser because you allowed data recovery on this ${ deviceLink }. If the backup file is valid, you will immediately regain complete or partial access to your encrypted data.": [
-        "Wij hebben een back-upbestand in deze browser opgeslagen omdat u gegevens herstellen voor dit ${ deviceLink } toestond. Als het back-upbestand geldig is, krijgt u onmiddellijk volledige of gedeeltelijke toegang tot uw versleutelde gegevens."
       ],
       "We use 3-D Secure to protect your payments": [
         "We gebruiken 3-D Secure om uw betalingen te beschermen"
@@ -8730,12 +8668,6 @@
       ],
       "We’ll send a reset code to ${ boldValue }.": [
         "We zullen een reset code sturen naar ${ boldValue }."
-      ],
-      "We’ll send a reset code to the email address you provided for account recovery.": [
-        "We sturen een resetcode naar het e-mailadres dat u hebt opgegeven voor het herstel van uw account."
-      ],
-      "We’ll send a reset code to the phone number you provided for account recovery.": [
-        "We sturen een resetcode naar het telefoonnummer dat u hebt opgegeven voor het herstel van uw account."
       ],
       "When enabling SAML for ${ appName } in your identity provider, you might be prompted to use the callback (ACS) URL and issuer ID. Just copy-paste the data below into your identity provider fields.": [
         "Wanneer u SAML inschakelt voor ${ appName } in uw identiteitsprovider, kunt u worden gevraagd om de callback (ACS) URL en uitgevende ID te gebruiken. Kopieer en plak onderstaande gegevens in de velden van uw identiteitsprovider."
@@ -8796,6 +8728,9 @@
       ],
       "You already have a free account": [
         "U heeft al een gratis account"
+      ],
+      "You are currently signed in as ${ username } for ${ organizationName }.": [
+        "U bent momenteel aangemeld als ${ username } voor ${ organizationName }."
       ],
       "You are currently signed in as ${ username }.": [
         "U bent momenteel aangemeld als ${ username }."
@@ -8949,9 +8884,6 @@
       ],
       "You will regain complete or partial access to your encrypted data.": [
         "U krijgt weer volledige of gedeeltelijke toegang tot uw versleutelde gegevens."
-      ],
-      "You will soon be redirected to PayPal to verify your payment.": [
-        "Binnenkort wordt u doorverwezen naar PayPal om uw betaling te verifiëren."
       ],
       "You won't be charged if you cancel before ${ trialEndsOnFormatted }.": [
         "U wordt niets in rekening gebracht als u annuleert voor ${ trialEndsOnFormatted }."
@@ -9193,9 +9125,6 @@
     "invitation status": {
       "Declined": [
         "Afgewezen"
-      ],
-      "Owner": [
-        "Eigenaar"
       ],
       "Paused": [
         "Onderbroken"
@@ -9468,9 +9397,6 @@
       "City": [
         "Stad"
       ],
-      "Code": [
-        "Code"
-      ],
       "Code is 6 digits without spaces": [
         "Code is 6 cijfers zonder spaties"
       ],
@@ -9594,6 +9520,9 @@
       ],
       "Don't show this again": [
         "Toon dit niet opnieuw"
+      ],
+      "Drive": [
+        "Drive"
       ],
       "e.g. example.com": [
         "bv. voorbeeld.com"
@@ -9922,9 +9851,6 @@
       "Password": [
         "Wachtwoord"
       ],
-      "Password reminders": [
-        "Wachtwoordherinneringen"
-      ],
       "Password strength": [
         "Wachtwoordsterkte"
       ],
@@ -10240,12 +10166,12 @@
     },
     "Label (begin date/advanced search)": {
       "From": [
-        "Afzender"
+        "Van"
       ]
     },
     "Label (end date/advanced search)": {
       "To": [
-        "Naar"
+        "Tot"
       ]
     },
     "Label BYOE": {
@@ -10338,9 +10264,6 @@
       ]
     },
     "Link": {
-      "Account recovery explained": [
-        "Accountherstel uitgelegd"
-      ],
       "activity monitor": [
         "activiteitenmonitor"
       ],
@@ -10376,9 +10299,6 @@
       ],
       "Details": [
         "Details"
-      ],
-      "Don't have access to your 2FA?": [
-        "Heeft u geen toegang tot uw 2FA?"
       ],
       "Encryption and keys": [
         "Versleuteling en sleutels"
@@ -10494,9 +10414,6 @@
       "Pay invoice": [
         "Factuur betalen"
       ],
-      "perform a password reset from your active session": [
-        "mogelijk een wachtwoord reset vanuit uw actieve sessie uitvoeren"
-      ],
       "Privacy policy": [
         "Privacybeleid"
       ],
@@ -10552,20 +10469,6 @@
     "Link (Scribe)": {
       "Users and addresses": [
         "Gebruikers en adressen"
-      ]
-    },
-    "Live Chat Modal": {
-      "Live chat is available with ${ planName }": [
-        "Live chat is beschikbaar met ${ planName }"
-      ],
-      "Open support form": [
-        "Ondersteuningsformulier openen"
-      ],
-      "Upgrade subscription": [
-        "Abonnement upgraden"
-      ],
-      "Upgrade to unlock chat support and other premium features, or use our free support form to report your issue.": [
-        "Upgrade om chatondersteuning en andere premiumfuncties te ontgrendelen, of gebruik ons gratis ondersteuningsformulier om uw probleem te melden."
       ]
     },
     "Loading info": {
@@ -12810,23 +12713,6 @@
       ],
       "Make sure you memorize or securely store your password as it's the key to decrypt your data.": [
         "Zorg ervoor dat u uw wachtwoord onthoudt of veilig opslaat, aangezien dit de sleutel is om uw gegevens te ontsleutelen."
-      ],
-      "Turn off password reminders?": [
-        "Wachtwoordherinneringen uitschakelen?"
-      ],
-      "Turn off reminders": [
-        "Schakel herinneringen uit"
-      ]
-    },
-    "password_reset: info": {
-      "**All your existing data** (emails, events, contacts, files, ${ PASS_APP_NAME } entries, etc.) **will be locked** and can only be unlocked with your **old password**.": [
-        "**Al uw bestaande gegevens** (e-mails, evenementen, contactpersonen, bestanden, ${ PASS_APP_NAME } gegevens, etc.) **zullen worden vergrendeld** en kunnen alleen ontgrendeld worden met uw **oude wachtwoord**."
-      ],
-      "**All your existing data** (emails, events, contacts, files, ${ PASS_APP_NAME } entries, etc.) **will be locked** and can only be unlocked with your **recovery phrase** or your **old password**.": [
-        "**Al uw bestaande gegevens** (e-mails, evenementen, contactpersonen, bestanden, ${ PASS_APP_NAME } gegevens, etc.) **zullen worden vergrendeld** en kunnen alleen ontgrendeld worden met uw **herstelzin** of uw **oude wachtwoord**."
-      ],
-      "Any **two-factor authentication (2FA)** method on your account will be disabled.": [
-        "Elke **tweestapsverificatie (2FA)** methode op uw account wordt uitgeschakeld."
       ]
     },
     "passwordless": {
@@ -13301,7 +13187,7 @@
         "bv. AT#62"
       ],
       "End date": [
-        "Eind datum"
+        "Einddatum"
       ],
       "Enter a name": [
         "Voer een naam in"
@@ -13382,7 +13268,7 @@
         "Selecteer provincie"
       ],
       "Start date": [
-        "Begindatum"
+        "Startdatum"
       ],
       "Thomas": [
         "Thomas"
@@ -13995,7 +13881,7 @@
         "Controleer de veiligheid van uw account"
       ],
       "Safeguard account now": [
-        "Veilige account nu"
+        "Beveilig account nu"
       ],
       "Safeguard your account": [
         "Bescherm uw account"
@@ -14078,6 +13964,36 @@
       ],
       "Testing SAML configuration": [
         "SAML-configuratie aan het testen"
+      ]
+    },
+    "scim": {
+      "${ memberCount } new member": [
+        "${ memberCount } nieuw lid",
+        "${ memberCount } nieuwe leden"
+      ],
+      "${ numberOfPendingGroups } group synced": [
+        "${ numberOfPendingGroups } groep gesynct",
+        "${ numberOfPendingGroups } groepen gesynct"
+      ],
+      "${ numberOfPendingUsers } user synced": [
+        "${ numberOfPendingUsers } gebruiker gesynct",
+        "${ numberOfPendingUsers } gebruikers gesynct"
+      ],
+      "${ pendingGroupsCount } group": [
+        "${ pendingGroupsCount } groep",
+        "${ pendingGroupsCount } groepen"
+      ],
+      "${ pendingGroupsCount } group synced.": [
+        "${ pendingGroupsCount } groep gesynct.",
+        "${ pendingGroupsCount } groepen gesynct."
+      ],
+      "${ pendingUsersCount } user": [
+        "${ pendingUsersCount } gebruiker",
+        "${ pendingUsersCount } gebruikers"
+      ],
+      "${ pendingUsersCount } user synced.": [
+        "${ pendingUsersCount } gebruiker gesynct.",
+        "${ pendingUsersCount } gebruikers gesynct."
       ]
     },
     "scim: Action": {
@@ -14873,14 +14789,6 @@
         "${ n } gebruiker losgekoppeld van SSO",
         "${ n } gebruikers losgekoppeld van SSO"
       ],
-      "${ n } user has joined your organization through your Identity Provider. Review the account now:": [
-        "${ n } gebruiker heeft zich aangesloten bij uw organisatie via uw Identity Provider. Controleer het account nu:",
-        "${ n } gebruikers hebben zich aangesloten bij uw organisatie via uw Identity Provider. Controleer hun accounts nu:"
-      ],
-      "${ n } user is inactive. You can safely remove this user from your organization.": [
-        "${ n } gebruiker is inactief. U kunt deze gebruiker veilig verwijderen uit uw organisatie.",
-        "${ n } gebruikers zijn inactief. U kunt ze veilig verwijderen uit uw organisatie."
-      ],
       "${ n } user is requesting your help to sign in to their ${ BRAND_NAME } Account with single sign-on.": [
         "${ n } gebruiker vraagt om uw hulp om in te loggen op hun ${ BRAND_NAME }-account met een enkel signaal.",
         "${ n } gebruikers vragen om uw hulp om in te loggen op hun ${ BRAND_NAME }-account met een enkel signaal."
@@ -15141,6 +15049,11 @@
         "Uw abonnement wordt geannuleerd, even geduld"
       ]
     },
+    "Status": {
+      "... waiting": [
+        "... wachten"
+      ]
+    },
     "Storage": {
       "Upgrade storage": [
         "Opslag upgraden"
@@ -15389,7 +15302,7 @@
         "${ planName } geeft u toegang tot alle premium functies van ${ BRAND_NAME } ${ MAIL_SHORT_APP_NAME }, ${ PASS_SHORT_APP_NAME }, ${ VPN_SHORT_APP_NAME }, ${ DRIVE_SHORT_APP_NAME }, en ${ CALENDAR_SHORT_APP_NAME }. Privacy is ingebouwd, zodat u verder kunt, wetende dat uw gegevens en identiteit veilig zijn."
       ],
       "${ planName } gives you all apps, all features, early access to new releases, and everything you need to be in control of your data and its security.": [
-        "${ planName } geeft u alle apps, alle functies, vroegtijdige toegang tot nieuwe releases, en alles wat u nodig heeft om de controle over de veiligheid van de veiligheid te hebben."
+        "${ planName } geeft u alle apps, alle functies, vroegtijdige toegang tot nieuwe releases, en alles wat u nodig heeft om de controle over uw gegevens en de beveiliging daarvan te hebben."
       ],
       "${ planName } gives you unlimited privacy and more storage for up to 2 people.": [
         "${ planName } geeft u onbeperkte privacy en meer opslagruimte voor tot wel 2 personen."
@@ -15776,9 +15689,6 @@
       "Compare the key differences that matter for your business.": [
         "Vergelijk de belangrijkste verschillen die relevant zijn voor uw bedrijf."
       ],
-      "Save 50% for 1 year, and keep full access": [
-        "Bespaar 50% gedurende 1 jaar en behoud volledige toegang"
-      ],
       "Save 50% for 6 months, and keep full access": [
         "Bespaar 50% gedurende 6 maanden en behoud volledige toegang."
       ],
@@ -15888,12 +15798,6 @@
       ],
       "Password copied to clipboard": [
         "Wachtwoord gekopieerd naar klembord"
-      ],
-      "Password reminders disabled": [
-        "Wachtwoordherinneringen uitgeschakeld"
-      ],
-      "Password reminders enabled": [
-        "Wachtwoordherinneringen ingeschakeld"
       ],
       "Password updated": [
         "Wachtwoord bijgewerkt"
@@ -16764,9 +16668,6 @@
       "Find email or username": [
         "Vind e-mail of gebruikersnaam"
       ],
-      "Forgot recovery method": [
-        "Herstelmethode vergeten"
-      ],
       "Free plan": [
         "Gratis abonnement"
       ],
@@ -16951,9 +16852,6 @@
       "No events yet": [
         "Nog geen afspraken"
       ],
-      "No recovery method": [
-        "Geen herstelmethode"
-      ],
       "Open": [
         "Open"
       ],
@@ -17019,9 +16917,6 @@
       ],
       "Payment verification": [
         "Betalingsverificatie"
-      ],
-      "PayPal verification failed": [
-        "PayPal verificatie mislukt"
       ],
       "Phone": [
         "Telefoon"
@@ -17626,6 +17521,9 @@
       "Includes professional email at @yourdomain.com, cloud storage with collaborative document editing, scheduling and video conferencing, password management, a secure ${ VPN_SHORT_APP_NAME }, and more.": [
         "Inclusief professioneel e-mailadres bij @yourdomain.com, cloudopslag met mogelijkheden voor gezamenlijke documentbewerking, planning en videoconferenties, wachtwoordbeheer, een beveiligde ${ VPN_SHORT_APP_NAME } en meer."
       ],
+      "Instant AI assistance, human expert on hand!": [
+        "Directe AI-ondersteuning, menselijke expert binnen handbereik!"
+      ],
       "Members who do not use 2FA will get an email asking them to enable it as soon as possible. Single sign-on users will not receive the email reminder.": [
         "Leden die geen 2FA gebruiken krijgen een e-mail met het verzoek om deze zo snel mogelijk in te schakelen. Single sign-on gebruikers zullen de e-mail herinnering niet ontvangen."
       ],
@@ -17723,9 +17621,6 @@
       ],
       "User declined invitation": [
         "Gebruiker weigerde uitnodiging"
-      ],
-      "User is a group": [
-        "Gebruiker is een groep"
       ],
       "via ${ groupNames }": [
         "via ${ groupNames }"
@@ -17835,10 +17730,6 @@
       ],
       "Confirm all": [
         "Alles bevestigen"
-      ],
-      "Could not automatically enable administrator access for ${ n } user, because their encryption keys have been updated in the meanwhile:": [
-        "Kon de beheerderstoegang voor ${ n } -gebruiker niet automatisch inschakelen, omdat de encryptiesleutels in de tussentijd zijn bijgewerkt:",
-        "Kon beheerderstoegang niet automatisch inschakelen voor ${ n } gebruikers, omdat de encryptiesleutels in de tussentijd zijn bijgewerkt:"
       ],
       "Could not enable administrator access: ${ error }": [
         "Kan beheerderstoegang niet inschakelen: ${ error }"

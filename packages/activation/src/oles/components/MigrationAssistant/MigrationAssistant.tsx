@@ -15,7 +15,7 @@ import { useSubscriptionModal } from '@proton/components/containers/payments/sub
 import { SUBSCRIPTION_STEPS } from '@proton/components/containers/payments/subscription/constants';
 import useNotifications from '@proton/components/hooks/useNotifications';
 import { IcExclamationCircleFilled } from '@proton/icons/icons/IcExclamationCircleFilled';
-import { isMemberAddon } from '@proton/payments';
+import { isMemberAddon } from '@proton/payments/core/plan/addons';
 import { useDispatch } from '@proton/redux-shared-store/sharedProvider';
 import { BRAND_NAME } from '@proton/shared/lib/constants';
 import { getIsDomainActive } from '@proton/shared/lib/organization/helper';
@@ -23,6 +23,7 @@ import isTruthy from '@proton/utils/isTruthy';
 import noop from '@proton/utils/noop';
 
 import { useErrorHandler } from '../../errors';
+import { isProviderUserSelectable, shouldCreateUserPredicate } from '../../helpers';
 import { createMigrationBatch, setupJoiningLink } from '../../thunk';
 import { useProviderUsers } from '../../useProviderUsers';
 import type { StepComponentProps } from '../MigrationSetup/MigrationSetup';
@@ -56,7 +57,7 @@ const MigrationAssistant: FC<StepComponentProps> = ({ model, onNext }) => {
     const [reportUser, setReportUser] = useState<UserWithExtendedErrors>();
 
     const [selectedUsers, setSelectedUsers] = useState<string[]>([]);
-    const selectableUsers = providerUsers?.filter((u) => !u.ImporterOrganizationUser).map((u) => u.ID) ?? [];
+    const selectableUsers = providerUsers?.filter(isProviderUserSelectable).map((u) => u.ID) ?? [];
     const filteredSelected = selectedUsers.filter((u) => selectableUsers.includes(u));
 
     const [migrating, setMigrating] = useState<boolean>(false);
@@ -66,14 +67,12 @@ const MigrationAssistant: FC<StepComponentProps> = ({ model, onNext }) => {
     const relevantCount = providerUsers?.filter(isTerminal).length ?? 0;
     const totalCount = providerUsers?.length ?? 0;
 
-    const allAddresses = new Set(
-        Object.values(memberAddressesMap)
-            .flat()
-            .map((a) => a?.Email)
-    );
+    const allAddresses = Object.values(memberAddressesMap)
+        .flat()
+        .map((a) => a?.Email);
 
-    const usersToCreate =
-        providerUsers?.filter((u) => u.Email !== model.tokens?.at(0)?.Account && !allAddresses.has(u.Email)) ?? [];
+    const shouldCreateUser = shouldCreateUserPredicate(model.tokens?.at(0)?.Account, allAddresses);
+    const usersToCreate = providerUsers?.filter(shouldCreateUser) ?? [];
 
     const notEnoughSeats = organization && organization.MaxMembers - organization.UsedMembers < usersToCreate.length;
 
